@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter.Work.Live.Play</title>
+	<title>Welcome to CodeIgniter.Work.Live.Play1</title>
 
 	<style type="text/css">
 
