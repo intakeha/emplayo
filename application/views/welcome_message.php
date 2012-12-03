@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	
-	<title>Welcome to Emplayo, Baby!</title>
+	<title>Welcome to Emplayo - Work.Live.Play</title>
 
 	<style type="text/css">
 
