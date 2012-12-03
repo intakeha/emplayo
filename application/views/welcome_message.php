@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	
-	<title>Welcome to Emplayo, Baby!</title>
+	<title>Welcome to Emplayo, Baby!  We Are the BEST!!!</title>
 
 	<style type="text/css">
 
