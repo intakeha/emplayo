@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to Emplayo, Playa!!!</title>
+	<title>Emplayo Dev Environment</title>
 
 	<style type="text/css">
 
@@ -67,8 +67,8 @@
 <body>
 
 <div id="container">
-	<h1>Welcome to Emplayo Dev Environment</h1>
-	<h2>Work - Live - Play</h2>
+	<h1>Welcome to Emplayo - Dev Environment</h1>
+	<h2>Take Survey</h2>
 
 	<div id="body">
 		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
