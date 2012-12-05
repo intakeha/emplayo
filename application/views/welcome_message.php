@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Emplayo Dev Environment</title>
+	<title>Emplayo Dev Environment. Edited</title>
 
 	<style type="text/css">
 
