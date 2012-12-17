@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Emplayo Dev Environment. Edited!!</title>
+	<title>Welcome to CodeIgniter, OctoCat!</title>
 
 	<style type="text/css">
 
@@ -67,8 +67,7 @@
 <body>
 
 <div id="container">
-	<h1>Welcome to Emplayo - Dev Environment</h1>
-	<h2>Take Survey</h2>
+	<h1>Welcome to CodeIgniter!</h1>
 
 	<div id="body">
 		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
