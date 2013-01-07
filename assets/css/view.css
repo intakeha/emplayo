@@ -1,0 +1,745 @@
+/* Home Page */
+
+#login{
+	margin: 10px 50px 0 0;
+	float: right;
+	color: #bbb;
+}
+
+#banner{
+	background-color:#fff;
+	background: url(../images/banner_bg.jpg) no-repeat;
+	background-position: top center;
+	height: 529px;
+	min-width: 1022px;
+	min-height: 529px;
+	border-bottom: 15px solid #941f1c;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+}
+
+div#banner .content{
+	padding-top: 80px;
+	height: 400px;
+}
+
+div#icon {
+	background: url(../images/icon.png) no-repeat;
+	width: 478px;
+	height: 338px;
+	display: block;
+	margin-left: 540px;
+	top: 270px;
+	position: absolute;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+}
+
+#start{
+	color: #e9b60b;
+	font-size: 50px;
+	line-height: 120%;
+	position: relative;
+	width: 900px;
+	left: 0px;
+	display: block;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+}
+
+#start a{
+	font-size: 30px;
+	color: #1d2a33;
+	background-color: #e9b60b;
+	height: 60px;
+	width: 200px;
+	text-align: center;
+	margin-top: 125px;
+	display: block;
+}
+
+#belt{
+	background-color: #6d7a83;
+	color: #fff;
+	min-width: 1022px;
+}
+
+div#belt .content{
+	height: 100px;
+	line-height: 105%;
+}
+
+.steps {
+	height: 80px;
+	width: 250px;
+	float: left;
+	padding-left: 85px;
+	padding-top: 25px;
+	font-size: 17px;
+}
+
+#step1{
+	background: url(../images/1.png) no-repeat;
+	background-position: 0px -5px;
+}
+
+#step2{
+	background: url(../images/2.png) no-repeat;
+	background-position: 0px -5px;
+}
+
+#step3{
+	background: url(../images/3.png) no-repeat;
+	background-position: 0px -5px;
+}
+
+#story {
+	min-width: 1022px;
+	line-height: 130%;
+}
+
+div#story .content{
+	height: 335px;
+	padding-top: 20px;
+}
+
+#story p{
+	padding-top: 30px;
+	padding-left: 30px;
+}
+
+/* Questionnaire */
+
+#criteria{
+	border-top: 1px solid #ccc;
+	padding-top: 30px;
+}
+
+div#criteria .content{
+	min-height: 600px;
+}
+
+div.questions {
+	text-align: center;
+	min-height: 575px;
+	display: none;
+}
+
+div#nextQuestion{
+	float: right;
+	cursor: pointer;
+	margin-right: 50px;
+	display: none;
+}
+
+div#nextQuestion #next{
+	padding-top: 12px;
+	height: 38px;
+	width: 70px;
+	color: #364954;
+	background-color: #e9b60b;
+	float: left;
+	text-align: center;
+}
+
+#arrow {
+	float: left;
+	width: 0;
+	height: 3px;
+	border-top: 24px solid transparent;
+	border-bottom: 24px solid transparent;
+	border-bottom-width: 24px;
+	border-bottom-style: solid;
+	border-bottom-color: transparent;
+	border-left: 24px solid #e9b60b;
+	border-left-width: 24px;
+	border-left-style: solid;
+	border-left-color: #e9b60b;
+}
+
+#progressBar{
+	width: 900px;
+	height: 30px;
+	margin-left: 60px;
+	background: url(../images/progressBar.png) no-repeat;
+	background-position: 20px 12px;
+}
+
+li.progress{
+	float: left;
+	width: 29px;
+	height: 29px;
+	margin: 0 8px;
+	background: url(../images/progressBar.jpg) no-repeat;
+}
+
+li.ip{
+	background-position: -29px 0px;
+	cursor: pointer;
+}
+
+li.filled{
+	background-position: -58px 0px;
+	cursor: pointer;
+}
+
+/* Question 1 - Company Type*/
+ul#co_type {
+	margin-left: 65px;
+}
+
+ul#co_type li{
+	width: 208px;
+	height: 408px;
+	margin: 30px 20px 0 0;
+	float: left;
+	background: url(../images/co_type.jpg) no-repeat;
+	cursor: pointer;
+}
+
+li.coTypeSelected{
+	height: 445px !important;
+}
+
+li#q1b{
+	background-position: -208px 0px !important;
+}
+
+li#q1c{
+	background-position: -418px 0px !important;
+}
+
+li#q1d{
+	background-position: -627px 0px !important;
+}
+
+/* Question 2 - Company Pace*/
+
+ul#co_pace{
+	padding-top: 100px;
+	margin-left: 231px;
+}
+
+ul#co_pace li{
+	width: 120px;
+	padding-top: 150px;
+	margin-right: 100px;
+	float: left;
+	cursor: pointer;
+}
+
+li#q2a{
+	background: url(../images/co_pace.jpg) no-repeat;
+	background-position: 0px 0px;
+}
+
+li#q2b{
+	background: url(../images/co_pace.jpg) no-repeat;
+	background-position: -120px 0px;
+}
+
+li#q2c{
+	background: url(../images/co_pace.jpg) no-repeat;
+	background-position: -240px 0px;
+}
+
+#co_pace li.selected{
+	color: #364954;
+}
+
+/* Question 3 - Company Cycle*/
+
+div#co_cycle_header{
+	width: 838px;
+	height: 40px;
+	margin-left: 91px;
+	margin-top: 30px;
+	background: url(../images/co_cycle_header.jpg) no-repeat;
+}
+
+ul#co_cycle{
+		margin-left: 91px;
+}
+
+ul#co_cycle li{
+	height: 379px;
+	margin-top: 1px;
+	float: left;
+	background: url(../images/co_cycle.jpg) no-repeat;
+	cursor: pointer;
+}
+
+li.coCycleSelected{
+	height: 414px !important;
+}
+
+li#q3a{
+	width: 105px;
+	background-position: 0px 0px !important;
+}
+
+li#q3b{
+	width: 105px;
+	background-position: -105px 0px !important;
+}
+
+li#q3c{
+	width: 210px;
+	background-position: -210px 0px !important;
+}
+
+li#q3d{
+	width: 210px;
+	background-position: -420px 0px !important;
+}
+
+li#q3e{
+	width: 210px;
+	background-position: -630px 0px !important;
+}
+
+/* Question 4 - Company Benefits*/
+
+div#benefits_bar{
+	background: url("../images/benefits_bar.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    width: 30px;
+	height: 480px;
+    margin: 20px 0 0 275px;
+}
+
+ul#co_benefits {
+    float: left;
+    text-align: center;
+    width: 450px;	
+	margin-top: 20px;
+}
+
+ul#co_benefits li{
+	background-color: #fff;
+    color: #6d7a83;
+    font-size: 14px;
+    font-weight: bold;
+	margin: 0 3px 3px 3px;
+    padding: 0.4em;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+
+ul#co_benefits li span{
+	float: right;
+	filter:alpha(opacity=40);
+	opacity:0.4;
+}
+
+.benefits_placeholder {
+	height: 14px;
+	line-height: 1.2em;
+	background-color: #eef0ff !important;
+	border: 1px dashed #258cd1 !important;
+}
+
+/* Slider Questions - Q5. Corporate Citizenship, Q6.Traveling, Q7. Role Variety, */
+
+div#citizenshipSlider, div#travelSlider, div#roleSlider{
+	width: 801px;
+	margin-left: 111px;
+	margin-top: 75px;
+}
+
+div.questions .ui-state-default {
+    background: url("../images/sliderHandleDefault.png") no-repeat !important;
+    border: 0px;
+}
+
+div.questions .sliderActive {
+    background:  url("../images/sliderHandle.png") no-repeat !important;
+}
+
+div.questions .ui-slider-handle {
+    height: 33px;
+    width: 33px;
+}
+
+div.questions a {
+	outline:none;
+}
+
+div.slider5Markers {
+    background: url("../images/slider_5markers.jpg") no-repeat scroll center top transparent;
+    height: 110px;
+    margin: -39px 0 0 11px;
+    padding-top: 60px;
+    position: absolute;
+    width: 1000px;
+    z-index: -50;
+}
+
+div.slider4Markers {
+    background: url("../images/slider_4markers.jpg") no-repeat scroll center top transparent;
+    height: 110px;
+    margin: -39px 0 0 11px;
+	padding-top: 60px;
+    position: absolute;
+    width: 1000px;
+	z-index: -50;
+}
+
+div.slider5Markers  ul, div.slider4Markers  ul{
+	margin-left: 50px;
+}
+
+div.slider5Markers  li, div.slider4Markers  li{
+	color: #999;
+	font-size: 18px;
+	width: 100px;
+	float: left;
+}
+
+li.right5Marker{
+	margin-right: 100px;
+}
+
+li.right4Marker{
+	margin-right: 167px;
+}
+
+div.sliderSelected{
+    color: #1D71A2;
+    font-size: 40px;
+    margin-top: 75px;
+	height: 60px;
+}
+
+/* Question 8 - Promotion*/
+
+div#promotion_bar{
+	background: url("../images/benefits_bar.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    width: 30px;
+	height: 480px;
+    margin: 20px 0 0 275px;
+}
+
+ul#co_promotion {
+    float: left;
+    text-align: center;
+    width: 450px;	
+	margin-top: 20px;
+}
+
+ul#co_promotion li{
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    color: #1D71A2;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0 3px 3px;
+    padding: 27px;
+}
+
+ul#co_promotion li span{
+	float: right;
+	filter:alpha(opacity=40);
+	opacity:0.4;
+	margin-top: $px;
+}
+
+.sort6_placeholder {
+	height: 22px;
+	line-height: 1.2em;
+	background-color: #eef0ff !important;
+	border: 1px dashed #258cd1 !important;
+}
+
+/* Question 9 - Work environment */
+div#envQuestions{
+	height: 290px;
+}
+
+div.env{
+	margin-left: 149px;
+	display: none;
+}
+
+div.env div{
+    background-color: #E9B60B;
+    color: #FFFFFF;
+    float: left;
+    font-size: 30px;
+    height: 80px;
+    padding-top: 50px;
+    width: 300px;
+	margin: 80px 0 50px 0;
+	border: 5px solid #fff;
+	cursor: pointer;
+}
+
+div.env div.selected{
+	border: 5px solid #1d71a2;
+}
+
+div.env .or{
+	border: 0px;
+	width: 100px;
+	background-color: #fff;
+	color: #1d71a2;
+	padding-top: 56px;
+}
+
+img#envProgressOverlay{
+	background: url("../images/harvey_ball_10.png") no-repeat scroll 0 0 transparent;
+	width: 127px;
+	height: 125px;
+	border: 0px;
+}
+
+/* Question 10 - Recognition */
+
+div#recognition_bar{
+	background: url("../images/recognition_bar.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    width: 30px;
+	height: 480px;
+    margin: 20px 0 0 275px;
+}
+
+ul#co_recognition {
+    float: left;
+    text-align: center;
+    width: 450px;	
+	margin-top: 20px;
+}
+
+ul#co_recognition li{
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    color: #1D71A2;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0 3px 3px;
+    padding: 27px;
+}
+
+ul#co_recognition li span{
+	float: right;
+	filter:alpha(opacity=40);
+	opacity:0.4;
+	margin-top: 4px;
+}
+
+/* Question 11 - Politics */
+
+div#politics {
+	margin: 50px 0 0 55px;
+}
+
+img#politicsOverlay {
+	background: url("../images/politics.jpg") no-repeat scroll 0 0 transparent;
+	width: 910px;
+	height: 390px;
+	overflow: hidden;
+}
+
+/* Question 12 - Tasks */
+
+div#task_bar{
+	background: url("../images/task_bar.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    width: 30px;
+	height: 480px;
+    margin: 25px 0 0 275px;
+}
+
+ul#favTask {
+    float: left;
+    text-align: center;
+    width: 450px;	
+	margin-top: 25px;
+}
+
+ul#favTask li{
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    color: #CCCCCC;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 3px 3px;
+    padding: 17px;
+}
+
+ul#favTask li span{
+	float: right;
+	filter:alpha(opacity=40);
+	opacity:0.4;
+	margin-top: 15px;
+}
+
+ul#favTask font{
+	color: #1D71A2;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.task_placeholder {
+	height: 42px;
+	line-height: 1.2em;
+	background-color: #eef0ff !important;
+	border: 1px dashed #258cd1 !important;
+}
+
+/* Question 13 - Communications */
+
+div#communications {
+	margin: 50px 0 0 55px;
+}
+
+img#communicationOverlay {
+	background: url("../images/communication.jpg") no-repeat scroll 0 0 transparent;
+	width: 910px;
+	height: 390px;
+	overflow: hidden;
+}
+
+/* Question 14 - Resources */
+
+div#steps_bar{
+	background: url("../images/resourceSteps.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    width: 36px;
+	height: 440px;
+    margin: 65px 30px 0 250px;
+}
+
+ul#resource {
+    float: left;
+    text-align: center;
+    width: 450px;	
+	margin-top: 45px;
+}
+
+ul#resource li{
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    color: #1d71a2;
+    cursor: pointer;
+    font-size: 22px;
+    margin: 0 3px 3px;
+    padding: 30px 15px;
+}
+
+ul#resource li span{
+	float: right;
+	filter:alpha(opacity=40);
+	opacity:0.4;
+	margin-top: 5px;
+}
+
+.resource_placeholder {
+	height: 22px;
+	line-height: 1.2em;
+	background-color: #eef0ff !important;
+	border: 1px dashed #258cd1 !important;
+}
+
+/* Question 15 - Supervisor */
+
+div#supervisor {
+	margin: 50px 0 0 25px;
+}
+
+img#supervisorOverlay {
+	background: url("../images/supervisor.jpg") no-repeat scroll 0 0 transparent;
+	width: 928px;
+	height: 445px;
+	overflow: hidden;
+}
+
+/* Question 16 - Intuition */
+div#intuition{
+	margin: 75px 0 0 190px;
+}
+
+
+div#intuition .true_false{
+	width: 215px;
+	height: 215px;
+	background: url("../images/true_false.png") no-repeat scroll 0 0 transparent;
+	color: #1d71a2;
+	cursor: pointer;
+	float: left;
+	margin: 0 50px;
+	font-size: 45px;
+	padding-top: 80px;
+}
+
+div#intuition .selected{
+	color: #e9b60b;
+	background-position: -215px 0px;
+}
+
+/* Question 17 - Respect */
+div#respect {
+	margin: 50px 0 0 55px;
+}
+
+img#respectOverlay {
+	background: url("../images/respect.jpg") no-repeat scroll 0 0 transparent;
+	width: 910px;
+	height: 390px;
+	overflow: hidden;
+}
+
+/* Question 18 - Leadership */
+div#leadership {
+	margin: 50px 0 0 -10px;
+}
+
+img#leadershipOverlay {
+	background: url("../images/leadership.jpg") no-repeat scroll 0 0 transparent;
+	width: 966px;
+	height: 418px;
+	overflow: hidden;
+}
+
+/* Question 19 - Traits */
+div#traits {
+	margin: 20px 0 0 25px;
+}
+
+div#traits div{
+    border: 1px solid #CCCCCC;
+    color: #1d71a2;
+    cursor: pointer;
+    float: left;
+    font-size: 22px;
+    height: 42px;
+    margin: 0 20px 10px 0;
+    padding-top: 18px;
+    width: 175px;
+}
+
+div#traits .selected{
+	background-color: #1d71a2;
+	color: #fff;
+}
+
+/* Question 20 - Motivation */
+div#motivation {
+	margin: 50px 0 0 55px;
+}
+
+img#motivationOverlay {
+	background: url("../images/motivation.jpg") no-repeat scroll 0 0 transparent;
+	width: 910px;
+	height: 390px;
+	overflow: hidden;
+}

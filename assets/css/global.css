@@ -1,0 +1,128 @@
+/* CSS Reset */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+/* Emplayo Palette 
+	#364954 (Dark Blue)
+	#6d7a83 (Dark Blue Shade)
+	#e9b60b (Yellow)
+	#941f1c (Red)
+	#1d71a2 (Blue)
+	#258cd1 (Light Blue)
+	#ad27c1 (Purple)
+	#27c339 (Green)
+*/
+
+/* Page styles */
+ul {
+	list-style-type: none;
+}
+
+span {
+	font-weight: bold;
+}
+
+a:link, a:active, a:visited {
+	color: #6d7a83;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #e9b60b;
+	text-decoration: none;
+}
+
+body{
+	background: none repeat scroll 0 0 #FFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:25px;
+	color: #6d7a83;
+}
+
+#header{
+	height:112px;
+	left: 0;
+    min-width: 1022px;
+}
+
+.content {
+	width: 1022px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#header .content{
+	height: 70px;
+	padding-top: 38px;
+}
+
+#logo{
+	background: url(../images/emplayo.png) no-repeat;
+	display: block;
+	width: 204px;
+	height: 38px;
+	margin-left: 50px;
+}
+
+#footer { 
+	clear:both;
+	min-width: 1022px;
+}
+
+div#skyline{
+	background: url(../images/story_bg.png) no-repeat;
+	background-position: top center;
+	height:100px;
+}
+
+#navigation {
+	background-color:#6d7a83;
+	color: #fff;
+	font-size: 17px;
+	letter-spacing:1px;
+	min-width: 1022px;
+}
+
+div#navigation .content{
+	text-align: center;
+	height:100px;
+}
+
+#nav-list {
+	height: 30px;
+	margin-left: 170px;
+}
+
+#nav-list li{
+	margin: 20px 0;
+	padding: 0 20px;
+	float: left;
+}
+
+#nav-list a:link, #nav-list a:active, #nav-list a:visited {
+	color: #fff;
+	text-decoration: none;
+}
+
+#nav-list a:hover {
+	color: #e9b60b;
+	text-decoration: none;
+}
+
+ul#nav-list .borders{
+	border-right: 1px solid #fff;
+}
+
+.fluid {
+	width: 100%;
+	float: left;
+}
+
+.clear{
+	clear: both;
+}
+
+.block{
+	display: block;
+	cursor: pointer;
+}
+
