@@ -46,7 +46,19 @@ class Survey extends CI_Controller {
                     $this->load->view("survey/results",$data);
                 }
                 */
-                $this->survey_model->get_distance_matrix($data['matches']);
+                
+                //$data['company_info'] = $this->survey_model->get_company($data['matches']);
+                //$this->survey_model->get_distance_matrix($data['company_info']);
+                
+                if (!empty($data['matches']))
+                {
+                    $this->survey_model->get_distance_matrix($data['matches']);
+                } else {
+                    //result set is empty
+                    $data['result_msg'] = 'there were no results!';
+                    $this->load->view("survey/results",$data);
+                }                
+                
                 
             }
         }
