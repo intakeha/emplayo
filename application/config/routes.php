@@ -38,17 +38,9 @@
 |
 */
 
-
-//$route['default_controller'] = "";
-$route['default_controller'] = "home";
+$route['default_controller'] = "emplayo";
 $route['404_override'] = '';
 
-/*
-$route['news/(:any)'] = 'news/view/$1';
-$route['news'] = 'news';
-$route['(:any)'] = 'pages/view/$1';
-$route['default_controller'] = 'pages/view';
-*/
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
