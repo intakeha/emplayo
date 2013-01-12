@@ -38,6 +38,8 @@
 |
 */
 
+//$route['default_controller'] = "emplayo";//chon's setting
+//$route['default_controller'] = "home";//brad's orig setting
 $route['default_controller'] = "emplayo";
 $route['404_override'] = '';
 
