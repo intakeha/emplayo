@@ -3,7 +3,8 @@
 		<div class="content">
 			<div id="icon"></div>
 			<div id="start">Emplayo helps you find jobs<br>that fit you best.
-				<a href="index.php/emplayo/criteria">Get Started</a>
+				<!--<a href="index.php/emplayo/criteria">Get Started</a>-->
+                                <a href="emplayo/criteria">Get Started</a>
 			</div>
 		</div>
 	</div>

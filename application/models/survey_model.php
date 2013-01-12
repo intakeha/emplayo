@@ -111,7 +111,7 @@ class Survey_model extends CI_Model {
             }
             
             arsort($scores);
-            //print_r($scores);
+            print_r($scores);
             //reset($scores);
             //$first_key = key($scores);
             //echo "Best score is company id: ".$first_key;
@@ -130,6 +130,7 @@ class Survey_model extends CI_Model {
     { 
         //$this->output->enable_profiler(TRUE);
         if (!empty($ranked_comps)){
+            
             $companyid_array = implode(',', $ranked_comps);
             //this is to make sure we retrieve the companies in the same order as their scores
             $order_array = 'ORDER BY';
@@ -150,7 +151,13 @@ class Survey_model extends CI_Model {
     { 
         //$this->output->enable_profiler(TRUE);
         if (!empty($ranked_comps)){
+              $ranked_comps = array('4'=>'63','3'=>'45','1'=>'40');
+              $ranked_comps = array_keys($ranked_comps);
+           print_r($ranked_comps);          
+            
             $companyid_array = implode(',', $ranked_comps);
+            print_r($companyid_array);  
+            
             //this is to make sure we retrieve the companies in the same order as their scores
             $order_array = 'ORDER BY';
             foreach ($ranked_comps as $item) {
@@ -160,6 +167,7 @@ class Survey_model extends CI_Model {
 
             $sql = 'SELECT * FROM company WHERE id IN ('.$companyid_array.') '.$order_array.'';
             $query = $this->db->query($sql);
+            print_r($query->result_array());
             return $query->result_array();
         }
 
