@@ -18,7 +18,9 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-	define('ENVIRONMENT', 'development');
+	//
+        require_once 'config/environment.config';//add this filename to git.ignore
+        define('ENVIRONMENT', $current_environment);
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
@@ -33,6 +35,7 @@ if (defined('ENVIRONMENT'))
 	switch (ENVIRONMENT)
 	{
 		case 'development':
+                case 'localhost':                    
 			error_reporting(E_ALL);
 		break;
 	
