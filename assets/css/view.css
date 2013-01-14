@@ -14,10 +14,6 @@
 	min-width: 1022px;
 	min-height: 529px;
 	border-bottom: 15px solid #941f1c;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	filter: alpha(opacity=0);
-	-moz-opacity: 0;
-	opacity: 0;
 }
 
 div#banner .content{
@@ -127,18 +123,18 @@ div#criteria .content{
 
 div.questions {
 	text-align: center;
-	min-height: 575px;
+	min-height: 550px;
 	display: none;
 }
 
-div#nextQuestion{
+div#nextQuestion, div#showPreview{
 	float: right;
 	cursor: pointer;
 	margin-right: 50px;
 	display: none;
 }
 
-div#nextQuestion #next{
+div#nextQuestion .next, div#showPreview .next{
 	padding-top: 12px;
 	height: 38px;
 	width: 70px;
@@ -148,7 +144,7 @@ div#nextQuestion #next{
 	text-align: center;
 }
 
-#arrow {
+.arrow {
 	float: left;
 	width: 0;
 	height: 3px;
@@ -449,7 +445,7 @@ ul#co_promotion li span{
 	float: right;
 	filter:alpha(opacity=40);
 	opacity:0.4;
-	margin-top: $px;
+	margin-top: 5px;
 }
 
 .sort6_placeholder {
@@ -615,15 +611,15 @@ div#steps_bar{
 	background: url("../images/resourceSteps.png") no-repeat scroll 0 0 transparent;
     float: left;
     width: 36px;
-	height: 440px;
-    margin: 65px 30px 0 250px;
+	height: 400px;
+    margin: 55px 30px 0 250px;
 }
 
 ul#resource {
     float: left;
     text-align: center;
     width: 450px;	
-	margin-top: 45px;
+	margin-top: 35px;
 }
 
 ul#resource li{
@@ -742,4 +738,52 @@ img#motivationOverlay {
 	width: 910px;
 	height: 390px;
 	overflow: hidden;
+}
+
+/* Preview Results */
+div#preview .content{
+	padding-top: 25px;
+	height: 550px;
+	text-align: center;
+}
+
+div#preview p{
+	margin-bottom: 20px;
+}
+
+div#preview #title{
+	font-size: 40px;
+}
+
+div#preview span{
+	color: #e9b60b;
+}
+
+div#preview font{
+	font-style: italic;
+}
+
+div#preview #info{
+    margin-left: 110px;
+    width: 800px;
+}
+
+div#preview #previewButtons{
+	margin: 60px 270px;
+}
+
+div#preview #signUp, div#preview #signIn{
+	float: left;
+	width: 155px;
+	height: 50px;
+	background-color: #e9b60b;
+	color: #364954;
+	font-size: 35px;
+	padding-top: 10px;
+	cursor: pointer;
+}
+
+div#preview #progressIcon{
+	float: left;
+	margin: 0 50px;
 }

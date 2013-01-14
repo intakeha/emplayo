@@ -16,4 +16,11 @@ class Emplayo extends CI_Controller {
 		$this->load->view('canvas', $data);
 	}
 	
+	public function preview(){
+		$data['title']="Preview Results";
+		$data['content']="_preview";
+		$this->load->helper('url');
+		$this->load->view('canvas', $data);
+	}
+	
 }
