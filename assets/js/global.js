@@ -2,9 +2,8 @@
 $(document).ready(function(){
 	
 	// Homepage animation
-	$('#banner').delay(500).animate({ opacity: 1, backgroundColor: '#1d2a33'}, 500);
 	$('#start').delay(500).animate({ opacity: 1, left: "50px" }, 500);
-	$('#icon').delay(700).animate({ opacity: 1, top: "-=10px" }, 300);
+	$('#icon').delay(500).animate({ opacity: 1, top: "-=10px" }, 500);
 	$("#start a").hover(
 		function () {
 		$(this).animate({backgroundColor: '#ad27c1'}, 200);
@@ -17,12 +16,6 @@ $(document).ready(function(){
 	// Determine current page
 	var currentPage = $('div#container div').eq(0).attr('id');
 
-	// Display home
-	if(currentPage == 'home'){
-		$('#nextQuestion').hide();
-		$('#login, #footer').show();
-	};
-
 	// Reset all answers to 0
 	$("input[name^='q']").each(function() {      
 		$(this).val(0);
@@ -33,14 +26,14 @@ $(document).ready(function(){
 		$('#login, #footer').hide();
 
 		// Hover animation for next button
-		$("div#nextQuestion").hover(
+		$("div#nextQuestion, div#showPreview").hover(
 			function () {
-				$('div#nextQuestion #next').animate({backgroundColor: '#27c339', color:'#fff'}, 200);
-				$('div#nextQuestion #arrow').animate({borderLeftColor: '#27c339'}, 200);
+				$('div#nextQuestion .next, div#showPreview .next').animate({backgroundColor: '#27c339', color:'#fff'}, 200);
+				$('div#nextQuestion .arrow, div#showPreview .arrow').animate({borderLeftColor: '#27c339'}, 200);
 			},
 			function () {
-				$('div#nextQuestion #next').animate({backgroundColor: '#e9b60b', color:'#364954'}, 200);
-				$('div#nextQuestion #arrow').animate({borderLeftColor: '#e9b60b'}, 200);
+				$('div#nextQuestion .next, div#showPreview .next').animate({backgroundColor: '#e9b60b', color:'#364954'}, 200);
+				$('div#nextQuestion .arrow, div#showPreview .arrow').animate({borderLeftColor: '#e9b60b'}, 200);
 			}
 		);
 			
@@ -61,12 +54,20 @@ $(document).ready(function(){
 			currentQuestion = currentQuestion + 1;
 			if (currentQuestion > lastQuestion){lastQuestion = currentQuestion;};
 			$('div#'+currentQuestion).show();
-			lastEmpty = showNextButton(currentQuestion, lastEmpty);
+			if ((currentQuestion == 20)&&($('input[name=q20]').val()!=0)){
+				$('#nextQuestion').hide();
+				$('#showPreview').show();
+			}else{
+				lastEmpty = showNextButton(currentQuestion, lastEmpty);
+			};
 		});
 		
 		// Assign actions for the progress bar
 		$('li.progress').click(function(){
 			if ((lastQuestion >= (1+$(this).index()))&&(lastEmpty >=(1+$(this).index()))){
+				// Hide preview button
+				$('div#showPreview').hide();
+				
 				// Update progress bar
 				$('#progressBar li').eq(currentQuestion-1).removeClass().addClass('progress filled');
 				$(this).removeClass().addClass('progress ip');
@@ -75,7 +76,12 @@ $(document).ready(function(){
 				currentQuestion = 1+$(this).index();
 				$('div.questions').hide();
 				$('div#'+currentQuestion).show();
-				lastEmpty = showNextButton(currentQuestion, lastEmpty);
+				if ((currentQuestion == 20)&&($('input[name=q20]').val()!=0)){
+					$('#nextQuestion').hide();
+					$('#showPreview').show();
+				}else{
+					lastEmpty = showNextButton(currentQuestion, lastEmpty);
+				};
 			};
 		});
 			
@@ -303,11 +309,9 @@ $(document).ready(function(){
 			
 			//update next subquestion
 			if ((currentEnvQuestion < 10)&&(parseFloat($("input[name^=q9_"+currentEnvQuestion+"]").val())!=0)){
-				$('div#q9_'+currentEnvQuestion).delay(300).fadeOut(500);
+				$('div#q9_'+currentEnvQuestion).delay(400).animate({opacity: 0, marginLeft:'300px'},300).hide(500);
 				currentEnvQuestion = currentEnvQuestion + 1;
-				$('div#q9_'+currentEnvQuestion).delay(800).fadeIn(300);
-			}else{
-				//$('img#envProgressOverlay').css('cursor', 'pointer');
+				$('div#q9_'+currentEnvQuestion).delay(600).animate({opacity: 1, marginLeft:'149px'},300).show(500);
 			};
 			
 			//check for next button
@@ -325,11 +329,11 @@ $(document).ready(function(){
 		$("map#environmentMap area").click(function(){
 			if (parseFloat($("input[name^=q9_"+currentEnvQuestion+"]").val())!=0){
 				envComplete = 1;
-				$('div#q9_'+currentEnvQuestion).delay(200).fadeOut(400);
+				$('div#q9_'+currentEnvQuestion).delay(100).hide(100);
 				currentEnvQuestion = $(this).index()+1;
 				progressBackground = (currentEnvQuestion) * -127;
 				$('#envProgressOverlay').css("background-position", progressBackground+"px 0px");
-				$('div#q9_'+(currentEnvQuestion)).delay(600).fadeIn(300);
+				$('div#q9_'+(currentEnvQuestion)).delay(300).show(100);
 			};
 		});
 		
@@ -433,7 +437,9 @@ $(document).ready(function(){
 		$("map#motivationCloud area").click(function(){
 			$('#motivation img').css("background-position", "0px "+(-390*($(this).index()+1))+"px");
 			$('input[name=q20]').val($(this).index()+1);
-			lastEmpty = showNextButton(20, lastEmpty);
+			lastEmpty = 20;
+			$('#nextQuestion').hide();
+			$('#showPreview').show();
 		});
 		
 	};
