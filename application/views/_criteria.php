@@ -44,22 +44,22 @@
 			<div>Rank the following company benefits &amp; perks you find important:</div>
 			<div id="benefits_bar"></div>
 			<ul id="co_benefits">
-				<li id="q4_1"><span class="ui-icon ui-icon-carat-2-n-s"></span>Training</li>
-				<li id="q4_2"><span class="ui-icon ui-icon-carat-2-n-s"></span>Matching 401(k) Plans</li>
-				<li id="q4_3"><span class="ui-icon ui-icon-carat-2-n-s"></span>Child Care Facilities</li>
-				<li id="q4-4"><span class="ui-icon ui-icon-carat-2-n-s"></span>Health Care</li>
-				<li id="q4_5"><span class="ui-icon ui-icon-carat-2-n-s"></span>Free Meals</li>
-				<li id="q4_6"><span class="ui-icon ui-icon-carat-2-n-s"></span>Profit Sharing</li>
-				<li id="q4_7"><span class="ui-icon ui-icon-carat-2-n-s"></span>Maternity / Paternity Leave</li>
-				<li id="q4_8"><span class="ui-icon ui-icon-carat-2-n-s"></span>Casual Dresscode</li>
-				<li id="q4_9"><span class="ui-icon ui-icon-carat-2-n-s"></span>Paid Overtime</li>
-				<li id="q4_10"><span class="ui-icon ui-icon-carat-2-n-s"></span>Pet Friendly</li>
-				<li id="q4_11"><span class="ui-icon ui-icon-carat-2-n-s"></span>Fitness Facilities / Membership</li>
-				<li id="q4_12"><span class="ui-icon ui-icon-carat-2-n-s"></span>Dependent Care Support</li>
-				<li id="q4_13"><span class="ui-icon ui-icon-carat-2-n-s"></span>Telecommunting / Alternative Work Sites</li>
-				<li id="q4_14"><span class="ui-icon ui-icon-carat-2-n-s"></span>Paid Sabbatical / Paid Time Off</li>
-				<li id="q4_15"><span class="ui-icon ui-icon-carat-2-n-s"></span>Compressed Workweek / Flexible Work Schedule</li>
-				<li id="q4_16"><span class="ui-icon ui-icon-carat-2-n-s"></span>Education Reimbursement</li>
+				<li id="q4_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Training</li>
+				<li id="q4_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Matching 401(k) Plans</li>
+				<li id="q4_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Child Care Facilities</li>
+				<li id="q4-4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Health Care</li>
+				<li id="q4_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Free Meals</li>
+				<li id="q4_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Profit Sharing</li>
+				<li id="q4_7"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Maternity / Paternity Leave</li>
+				<li id="q4_8"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Casual Dresscode</li>
+				<li id="q4_9"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Paid Overtime</li>
+				<li id="q4_10"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Pet Friendly</li>
+				<li id="q4_11"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Fitness Facilities / Membership</li>
+				<li id="q4_12"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Dependent Care Support</li>
+				<li id="q4_13"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Telecommunting / Alternative Work Sites</li>
+				<li id="q4_14"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Paid Sabbatical / Paid Time Off</li>
+				<li id="q4_15"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Compressed Workweek / Flexible Work Schedule</li>
+				<li id="q4_16"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Education Reimbursement</li>
 			</ul>
 			<input type="hidden" name="q4" value="0" />
 			<input type="hidden" name="qFour" value="0" />
@@ -111,12 +111,12 @@
 			<div>Rank the following in order of importance for promotion eligibility:</div>
 			<div id="promotion_bar"></div>
 			<ul id="co_promotion">
-				<li id="q8_1"><span class="ui-icon ui-icon-carat-2-n-s"></span>Business Need</li>
-				<li id="q8_2"><span class="ui-icon ui-icon-carat-2-n-s"></span>Time at Level</li>
-				<li id="q8_3"><span class="ui-icon ui-icon-carat-2-n-s"></span>Skills Qualification</li>
-				<li id="q8_4"><span class="ui-icon ui-icon-carat-2-n-s"></span>Increased Responsibilities</li>
-				<li id="q8_5"><span class="ui-icon ui-icon-carat-2-n-s"></span>Leadership Readiness</li>
-				<li id="q8_6"><span class="ui-icon ui-icon-carat-2-n-s"></span>Job Performance</li>
+				<li id="q8_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Business Need</li>
+				<li id="q8_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Time at Level</li>
+				<li id="q8_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Skills Qualification</li>
+				<li id="q8_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Increased Responsibilities</li>
+				<li id="q8_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Leadership Readiness</li>
+				<li id="q8_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Job Performance</li>
 			</ul>
 			<input type="hidden" name="q8" value="0" />
 		</div>
@@ -184,12 +184,12 @@
 			<div>Rank your most preferred type of recognition for doing exceptional work:</div>
 			<div id="recognition_bar"></div>
 			<ul id="co_recognition">
-				<li id="q10_1"><span class="ui-icon ui-icon-carat-2-n-s"></span>Team Dinners</li>
-				<li id="q10_2"><span class="ui-icon ui-icon-carat-2-n-s"></span>Informal "Thank You"</li>
-				<li id="q10_3"><span class="ui-icon ui-icon-carat-2-n-s"></span>Salary Compensation</li>
-				<li id="q10_4"><span class="ui-icon ui-icon-carat-2-n-s"></span>Time with Senior Leadership</li>
-				<li id="q10_5"><span class="ui-icon ui-icon-carat-2-n-s"></span>Public Recognition</li>
-				<li id="q10_6"><span class="ui-icon ui-icon-carat-2-n-s"></span>Time Away from Work</li>
+				<li id="q10_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Team Dinners</li>
+				<li id="q10_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Informal "Thank You"</li>
+				<li id="q10_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Salary Compensation</li>
+				<li id="q10_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Time with Senior Leadership</li>
+				<li id="q10_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Public Recognition</li>
+				<li id="q10_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Time Away from Work</li>
 			</ul>
 			<input type="hidden" name="q10" value="0" />
 		</div>
@@ -211,12 +211,12 @@
 			<div>Rank the following type of tasks you typically enjoy working on:</div>
 			<div id="task_bar"></div>
 			<ul id="favTask">
-				<li id="q12_1"><span class="ui-icon ui-icon-carat-2-n-s"></span><font>Physical</font><br>skill, strength, coordination, accuracy</li>
-				<li id="q12_2"><span class="ui-icon ui-icon-carat-2-n-s"></span><font>Strategic</font><br>thinking, organizing, understanding</li>
-				<li id="q12_3"><span class="ui-icon ui-icon-carat-2-n-s"></span><font>Creative</font><br>originality, imagination, innovation</li>
-				<li id="q12_4"><span class="ui-icon ui-icon-carat-2-n-s"></span><font>Competitive</font><br>leadership, influence, selling, status</li>
-				<li id="q12_5"><span class="ui-icon ui-icon-carat-2-n-s"></span><font>Orderly</font><br>routine, regulation, process, precision</li>
-				<li id="q12_6"><span class="ui-icon ui-icon-carat-2-n-s"></span><font>Community</font><br>helping, healing, developing others</li>
+				<li id="q12_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Physical</font><br>skill, strength, coordination, accuracy</li>
+				<li id="q12_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Strategic</font><br>thinking, organizing, understanding</li>
+				<li id="q12_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Creative</font><br>originality, imagination, innovation</li>
+				<li id="q12_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Competitive</font><br>leadership, influence, selling, status</li>
+				<li id="q12_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Orderly</font><br>routine, regulation, process, precision</li>
+				<li id="q12_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Community</font><br>helping, healing, developing others</li>
 			</ul>
 			<input type="hidden" name="q12" value="0" />			
 		</div>
@@ -238,11 +238,11 @@
 			<div>If you don't know something about your job, what are the<br>steps you would take to find the answers?</div>
 			<div id="steps_bar"></div>
 			<ul id="resource">
-				<li id="q14_1"><span class="ui-icon ui-icon-carat-2-n-s"></span>Search the Internet</li>
-				<li id="q14_2"><span class="ui-icon ui-icon-carat-2-n-s"></span>Search Company Internal Websites</li>
-				<li id="q14_3"><span class="ui-icon ui-icon-carat-2-n-s"></span>Find a Relevant Book</li>
-				<li id="q14_4"><span class="ui-icon ui-icon-carat-2-n-s"></span>Ask Direct Supervisor / Manager</li>
-				<li id="q14_5"><span class="ui-icon ui-icon-carat-2-n-s"></span>Ask Co-Workers</li>
+				<li id="q14_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Search the Internet</li>
+				<li id="q14_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Search Company Internal Websites</li>
+				<li id="q14_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Find a Relevant Book</li>
+				<li id="q14_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Ask Direct Supervisor / Manager</li>
+				<li id="q14_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Ask Co-Workers</li>
 			</ul>
 			<input type="hidden" name="q14" value="0" />	
 		</div>
