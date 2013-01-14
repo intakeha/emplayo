@@ -75,7 +75,7 @@ class Survey_model extends CI_Model {
             
             //get the user submitted benefits ranking
             $user_benefits_array = $this->input->post('users_benefits');   
-
+            
             //$this->output->enable_profiler(TRUE);
             
             //get all the companies (that meet the previous criteria) and their associated benefits
@@ -87,13 +87,7 @@ class Survey_model extends CI_Model {
             foreach ($query2->result_array() as $row) {
                 $company_set[$row['company_id']][]=$row['benefits_id'];
             }
-            /*
-            echo "<br><br>here is company_set:<br>";
-            echo "<pre>";
-            print_r($company_set);
-            echo "</pre>";
-            */
-            
+                      
             $scores = array();
             // For every company, we will assign it a score based on what benefits it has
             // and how the user ranked that benefit.  Higher ranks are more valuable, so the highest
@@ -105,7 +99,11 @@ class Survey_model extends CI_Model {
                 {
                     //this line grabs the user's ranking for the benefit_id that this particular company has
                     //and assigns it to the score variable.  this will be added to the scores matrix
-                    //and a tally will be kept for each company.
+                    //and a tally will be kept for each company.  
+                    //KEY POINT: The benefit that is most desired has the highest rank value. For example,
+                    // if there are 10 options, the user's most desired benefit has a rank of 10.  The least
+                    // desired has a rank of 1.
+                   
                     $score += $user_benefits_array[$benefit_id]['rank'];
                 }
                 $scores[$company_id] = $score;
@@ -132,6 +130,7 @@ class Survey_model extends CI_Model {
     { 
         //$this->output->enable_profiler(TRUE);
         if (!empty($ranked_comps)){
+            
             $companyid_array = implode(',', $ranked_comps);
             //this is to make sure we retrieve the companies in the same order as their scores
             $order_array = 'ORDER BY';
@@ -148,13 +147,36 @@ class Survey_model extends CI_Model {
 
     }
     
+    function get_company2($ranked_comps)
+    { 
+        //$this->output->enable_profiler(TRUE);
+        if (!empty($ranked_comps)){
+              $ranked_comps = array('4'=>'63','3'=>'45','1'=>'40');
+              $ranked_comps = array_keys($ranked_comps);
+           print_r($ranked_comps);          
+            
+            $companyid_array = implode(',', $ranked_comps);
+            print_r($companyid_array);  
+            
+            //this is to make sure we retrieve the companies in the same order as their scores
+            $order_array = 'ORDER BY';
+            foreach ($ranked_comps as $item) {
+              $order_array .= ' id = ' . $item . ' DESC,';
+            }
+            $order_array = trim($order_array, ',');
+
+            $sql = 'SELECT * FROM company WHERE id IN ('.$companyid_array.') '.$order_array.'';
+            $query = $this->db->query($sql);
+            print_r($query->result_array());
+            return $query->result_array();
+        }
+
+
+    }    
+    
     function get_distance_matrix($ranked_comps)
     {
         
-        echo "<pre>";
-        echo "<br> passed data:<br>";
-        print_r($ranked_comps);
-        echo "</pre>";        
         //1. Create array of data points
         //
         //user's benefit score is always perfect, so we know it is the triangular
@@ -181,13 +203,8 @@ class Survey_model extends CI_Model {
         $user_data = array();
         
         $user_data[0]['id'] = 'user';
-        $user_data[0]['benefits'] = 120;//hardcoded based on total max score of benefits
-        $user_data[0]['citizenship'] = $corp_citizenship;  
-        
-        echo "<pre>";
-        echo "<br> user  data array:<br>";
-        print_r($user_data);
-        echo "</pre>";        
+        $user_data[0]['citizenship'] = $corp_citizenship;        
+        $user_data[0]['benefits'] = 120;//hardcoded based on total max score of benefits  
         
         $comp_ids = array_keys($ranked_comps);
         
@@ -199,200 +216,52 @@ class Survey_model extends CI_Model {
         if ($query->num_rows() > 0)
         {
             $company_data_array = $query->result_array();
+            //walk the array of companies and merge in the benefits data
             array_walk($company_data_array, 'merge_arrays',$ranked_comps);
-            
-        echo "<pre>";
-        echo "<br> company data array:<br>";
-        print_r($company_data_array);
-        echo "</pre>";   
-            
-            foreach ($query->result_array() as $row) 
-            {
-            //echo "<br>corp citizenship: ".$row['corp_citizenship_id'];
-            }
-            
         }
         
         $data = array_merge($user_data,$company_data_array);
-        echo "<pre>";
-        echo "<br> merge result:<br>";
-        print_r($data);
-        echo "</pre>";        
-       
-        
-        
-        /*
-        $i=1;
-        foreach ($ranked_comps as $key => $value) {
-            
-            $newdata[$i]['id'] =$key;
-            $newdata[$i]['benefits'] =$value;
-            $newdata[$i]['citizenship'] = 1;//need to get this value from DB...as well as other 16 questions
-            $i++;
-            
-            
-        }
-        
-        echo "<pre>";
-        echo "<br> new data array:<br>";
-        print_r($newdata);
-        echo "</pre>";        
-        */
-        
         $user_benefit_score = 120;
         $user_citizenship = $this->input->post('corp_citizenship');
-        //$data_array = array("id"=>"user","benefits"=>120,"citizenship"=>$user_citizenship);
-        //array_push($data_array, "4", "45","1");
-        /*$data = array(
-            array("id"=>'user', "benefits"=>120, "citizenship"=>5),
-            array("id"=>4, "benefits"=>63, "citizenship"=>1),
-            array("id"=>3, "benefits"=>45, "citizenship"=>1),
-            array("id"=>1, "benefits"=>90, "citizenship"=>1),
-        );    */    
-        
 
-        
-        echo "<pre>";
-        echo "<br> raw data:<br>";
-        print_r($data);
-        echo "</pre>";
-        //$data_array
-       
-        
-        /*
-        foreach ($ranked_comps as $row) {
-            //$companyid_array[]=$row;
-            $companyid_array[]=$row['id'];
-        }        
-        */
-        
         //2. Transform data into coordinates
         $data_array = $data;
         //normalize citizenship data (convert to rank 1-5, then normalize)
         //our data should already be in rank 1-5
+        echo "<pre>";
+        echo "<br> raw data:<br>";
+        print_r($data_array);
+        echo "</pre>";          
+        
         foreach ($data_array as &$row)
         {
             $row['citizenship']=($row['citizenship']-1)/(5-1);
         }
         $data_array_copy = $data_array;
-        echo "<pre>";
-        echo "<br> normalized data:<br>";
-        print_r($data_array);
-        echo "</pre>";        
 
-        /*
-        function testFunction(&$item,$key,$prefix)
-        {
-            echo $prefix;
-            
-        }    
-         * 
-         */    
-        
         //3. Calculate distance for each variable
-        /**
-         * Calculates eucilean distances for an array dataset
-         *
-         * @param array $sourceCoords In format array(x, y)
-         * @param array $sourceKey Associated array key
-         * @param array $data 
-         * @return array Of distances to the rest of the data set
-         */
-        /*
-        function euclideanDistance(&$sourceCoords, $sourceKey, $data)
-        {   
-            //echo "HIIII!!!";
-            $distances = array();
-            list ($x1, $y1) = $sourceCoords;
-            foreach ($data as $destinationKey => $destinationCoords) {
-                // Same point, ignore
-                if ($sourceKey == $destinationKey) {
-                    continue;
-                }
-                list ($x2, $y2) = $destinationCoords;
-                $distances[$destinationKey] = sqrt(pow($x1 - $x2, 2) + pow($y1 - $y2, 2));
-                //echo "<br>x1: $x1<br>";
-            }
-            asort($distances);
-            $sourceCoords = $distances;
-        }   
-        
-        function city_block_distance0(&$sourceCoords,$sourceKey, $data)
-        {
-            //=+ABS($A19-D$16)
-            //list($x1, $y1) = $sourceCoords;
-            //echo "x: $x1";
-                    echo "<pre>";
-        echo "<br> source coords data:<br>";
-        print_r($sourceCoords);
-        echo "</pre>"; 
-            echo $sourceCoords['id'];
-        $distances = array();
-        echo "<br>sourcekey: ".$sourceKey;
-        
-        
-        
-        foreach ($data as $destKey => $destCoords) {
-            // Same point, ignore
-            $user_benefit_score = 0;
-            if ($sourceCoords['id'] == 'user') {
-                echo "<br>im in the user loop, the user benefit is:".$sourceCoords['benefits'];
-                $user_benefit_score = $sourceCoords['benefits'];
-                //continue;
-            }
-            //list ($x2, $y2) = $destinationCoords;
-            //$distances[$destinationKey] = sqrt(pow($x1 - $x2, 2) + pow($y1 - $y2, 2));
-            echo "<br> inside foreach, destkey = " . $destKey;
-            echo "<br> inside foreach, destcoord[id] = " . $destCoords['id'];
-            $distances[$destCoords['id']] = abs($destCoords['benefits']-$user_benefit_score);
-            
-            //$testing = 250-$user_benefit_score;
-            //echo "testing: ".$testing;
-            
-        }
-        $sourceCoords = $distances;
-            
-        
-        }
-        */
+
         function city_block_distance_benefits(&$sourceCoords,$sourceKey, $data)
-        {
-            //=+ABS($A19-D$16)
-            //list($x1, $y1) = $sourceCoords;
-            //echo "x: $x1";
-        //echo "<pre>";
-        //echo "<br> source coords data:<br>";
-        //print_r($sourceCoords);
-        //echo "</pre>"; 
-            //echo $sourceCoords['id'];
-        //$distances = array();
-        //echo "<br>sourcekey: ".$sourceKey;
-        
-        $user_benefit_score = $data[0]['benefits'];
-        //echo "<br> data 0 id: ".$data[0]['id'];
-        //echo "<br> the user benefit from data array is: ".$user_benefit_score;
-        //echo "<br> data X id: ".$data[]['id'];
-        
-        //$distances[$sourceCoords['id']] = abs($sourceCoords['benefits']-$user_benefit_score);
-        //$sourceCoords = $distances;
-        
-        $sourceCoords['benefits'] = abs($sourceCoords['benefits']-$user_benefit_score);
-        
-        
+        {        
+            $user_benefit_score = $data[0]['benefits'];
+            $sourceCoords['benefits'] = abs($sourceCoords['benefits']-$user_benefit_score);
         }        
         
         function city_block_distance_citizenship(&$sourceCoords,$sourceKey, $data_array_copy)
         {
-        $user_citizenship_score = $data_array_copy[0]['citizenship'];   
-        $sourceCoords['citizenship'] = abs($sourceCoords['citizenship']-$user_citizenship_score);   
+            $user_citizenship_score = $data_array_copy[0]['citizenship'];   
+            $sourceCoords['citizenship'] = abs($sourceCoords['citizenship']-$user_citizenship_score);   
         }         
+
+        echo "<pre>";
+        echo "<br> raw data2:<br>";
+        print_r($data_array);
+        echo "</pre>";         
+        
         
         array_walk($data_array, 'city_block_distance_benefits',$data);   
         array_walk($data_array, 'city_block_distance_citizenship',$data_array_copy);      
-        //array_walk($data_array, 'testFunction', 'hey');
-        
 
-        
         echo "<pre>";
         echo "<br> distance data:<br>";
         print_r($data_array);
@@ -418,12 +287,7 @@ class Survey_model extends CI_Model {
           return $details['benefits'];
         }
         $isolated_benefits = array_map('isolate_benefits', $data_array);  
-        
-        echo "<pre>";
-        echo "<br> isolated benefits:<br>";
-        print_r($isolated_benefits);
-        echo "</pre>";        
-        
+
         array_walk($data_array, 'normalize_benefits',$isolated_benefits);   
 
         echo "<pre>";
@@ -454,7 +318,16 @@ class Survey_model extends CI_Model {
         echo "<pre>";
         echo "<br> aggregate data:<br>";
         print_r($data_array);
-        echo "</pre>";          
+        echo "</pre>";  
+        
+        unset($data_array[0]);
+        
+        echo "<pre>";
+        echo "<br> aggregate data:<br>";
+        print_r($data_array);
+        echo "</pre>";
+        
+        return $data_array;
      
         
         

@@ -52,7 +52,11 @@ class Survey extends CI_Controller {
                 
                 if (!empty($data['matches']))
                 {
-                    $this->survey_model->get_distance_matrix($data['matches']);
+                    $data['ranked_results'] = $this->survey_model->get_distance_matrix($data['matches']);
+                    $data['company_info'] = $this->survey_model->get_company2($data['ranked_results']);
+                    $this->load->view("survey/results",$data);                    
+                    
+                                        
                 } else {
                     //result set is empty
                     $data['result_msg'] = 'there were no results!';

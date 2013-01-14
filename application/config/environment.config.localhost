@@ -1,0 +1,7 @@
+<?php
+//OPTIONS: local, development, testing, production
+// this file should be copied to 'environment.config' (usually by an automated script)
+// once deployed to the proper environment
+
+$current_environment = 'localhost';
+?>
