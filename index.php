@@ -19,9 +19,9 @@
  *
  */
 	//
-        //require_once 'config/environment.config';//add this filename to git.ignore
-        //define('ENVIRONMENT', $current_environment);
-        define('ENVIRONMENT', 'development');
+        require_once 'application/config/environment.config';//add this filename to git.ignore
+        define('ENVIRONMENT', $current_environment);
+        //define('ENVIRONMENT', 'development');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

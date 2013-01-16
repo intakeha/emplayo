@@ -24,4 +24,11 @@
 			<p>Which one is right for you? We'll help you figure it out.</p>
 		</div>
 	</div>
+	<div class="preload">
+		<img src="<?php echo base_url() ?>assets/images/co_type.jpg">
+		<img src="<?php echo base_url() ?>assets/images/co_pace.jpg">
+		<img src="<?php echo base_url() ?>assets/images/co_cycle.jpg">
+		<img src="<?php echo base_url() ?>assets/images/benefits_bar.png">
+		<img src="<?php echo base_url() ?>assets/images/slider_5markers.jpg">
+	</div>
 </div>
