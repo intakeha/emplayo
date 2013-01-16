@@ -488,6 +488,7 @@ div.env .or{
 	background-color: #fff;
 	color: #1d71a2;
 	padding-top: 56px;
+	cursor: default;
 }
 
 img#envProgressOverlay{
