@@ -329,11 +329,11 @@ $(document).ready(function(){
 		$("map#environmentMap area").click(function(){
 			if (parseFloat($("input[name^=q9_"+currentEnvQuestion+"]").val())!=0){
 				envComplete = 1;
-				$('div#q9_'+currentEnvQuestion).delay(100).hide(100);
+				$('div#q9_'+currentEnvQuestion).delay(400).animate({opacity: 0, marginLeft:'300px'},300).hide(500);
 				currentEnvQuestion = $(this).index()+1;
 				progressBackground = (currentEnvQuestion) * -127;
 				$('#envProgressOverlay').css("background-position", progressBackground+"px 0px");
-				$('div#q9_'+(currentEnvQuestion)).delay(300).show(100);
+				$('div#q9_'+(currentEnvQuestion)).delay(600).animate({opacity: 1, marginLeft:'149px'},300).show(500);
 			};
 		});
 		

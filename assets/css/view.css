@@ -7,13 +7,11 @@
 }
 
 #banner{
-	background-color:#fff;
-	background: url(../images/banner_bg.jpg) no-repeat;
-	background-position: top center;
-	height: 529px;
-	min-width: 1022px;
-	min-height: 529px;
-	border-bottom: 15px solid #941f1c;
+    background: url("../images/banner_bg.jpg") no-repeat scroll center top #1D2A33;
+    border-bottom: 15px solid #941F1C;
+    height: 529px;
+    min-height: 529px;
+    min-width: 1022px;
 }
 
 div#banner .content{
@@ -488,6 +486,7 @@ div.env .or{
 	background-color: #fff;
 	color: #1d71a2;
 	padding-top: 56px;
+	cursor: default;
 }
 
 img#envProgressOverlay{
@@ -662,6 +661,8 @@ img#supervisorOverlay {
 /* Question 16 - Intuition */
 div#intuition{
 	margin: 75px 0 0 190px;
+	height: 230px;
+	width: 650px;	
 }
 
 
@@ -709,6 +710,7 @@ img#leadershipOverlay {
 /* Question 19 - Traits */
 div#traits {
 	margin: 20px 0 0 25px;
+	height: 500px;
 }
 
 div#traits div{
