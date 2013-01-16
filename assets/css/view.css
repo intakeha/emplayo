@@ -661,6 +661,8 @@ img#supervisorOverlay {
 /* Question 16 - Intuition */
 div#intuition{
 	margin: 75px 0 0 190px;
+	height: 230px;
+	width: 650px;	
 }
 
 
@@ -708,6 +710,8 @@ img#leadershipOverlay {
 /* Question 19 - Traits */
 div#traits {
 	margin: 20px 0 0 25px;
+	height: 500px;
+	border: 1px solid;
 }
 
 div#traits div{
