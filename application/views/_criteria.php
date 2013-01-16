@@ -378,4 +378,19 @@
 			</ul>
 		</div>
 	</div>
+	<div class="preload">
+		<img src="<?php echo base_url() ?>assets/images/slider_4markers.jpg">
+		<img src="<?php echo base_url() ?>assets/images/harvey_ball_10.png">
+		<img src="<?php echo base_url() ?>assets/images/recognition_bar.png">
+		<img src="<?php echo base_url() ?>assets/images/politics.jpg">
+		<img src="<?php echo base_url() ?>assets/images/task_bar.png">		
+		<img src="<?php echo base_url() ?>assets/images/communication.jpg">
+		<img src="<?php echo base_url() ?>assets/images/resourceSteps.png">
+		<img src="<?php echo base_url() ?>assets/images/supervisor.jpg">
+		<img src="<?php echo base_url() ?>assets/images/true_false.png">
+		<img src="<?php echo base_url() ?>assets/images/respect.jpg">
+		<img src="<?php echo base_url() ?>assets/images/leadership.jpg">
+		<img src="<?php echo base_url() ?>assets/images/motivation.jpg">
+		<img src="<?php echo base_url() ?>assets/images/progressIcon.png">
+	</div>
 </div>
