@@ -16,7 +16,7 @@
 */
 //$config['base_url']	= 'http://localhost/emplayo';//chon's setting
 //$config['base_url']	= 'http://localhost:8888';//brad's orig setting
-$config['base_url']	= 'http://localhost:8888';
+$config['base_url']	= 'http://localhost';
 
 /*
 |--------------------------------------------------------------------------
