@@ -392,5 +392,7 @@
 		<img src="<?php echo base_url() ?>assets/images/leadership.jpg">
 		<img src="<?php echo base_url() ?>assets/images/motivation.jpg">
 		<img src="<?php echo base_url() ?>assets/images/progressIcon.png">
+		<img src="<?php echo base_url() ?>assets/images/preview.png">
+		<img src="<?php echo base_url() ?>assets/images/netapp.png">
 	</div>
 </div>
