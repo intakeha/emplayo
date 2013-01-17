@@ -39,7 +39,7 @@ body{
 }
 
 #header{
-	height:112px;
+	height:80px;
 	left: 0;
     min-width: 1022px;
 }
@@ -51,8 +51,8 @@ body{
 }
 
 div#header .content{
-	height: 70px;
-	padding-top: 38px;
+	height: 55px;
+	padding-top: 25px;
 }
 
 #logo{

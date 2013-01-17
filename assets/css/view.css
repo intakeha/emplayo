@@ -1,7 +1,7 @@
 /* Home Page */
 
 #login{
-	margin: 10px 50px 0 0;
+	margin: 5px 50px 0 0;
 	float: right;
 	color: #bbb;
 }
@@ -133,9 +133,9 @@ div#nextQuestion, div#showPreview{
 }
 
 div#nextQuestion .next, div#showPreview .next{
-	padding-top: 12px;
-	height: 38px;
-	width: 70px;
+	padding-top: 8px;
+	height: 35px;
+	width: 75px;
 	color: #364954;
 	background-color: #e9b60b;
 	float: left;
@@ -146,13 +146,13 @@ div#nextQuestion .next, div#showPreview .next{
 	float: left;
 	width: 0;
 	height: 3px;
-	border-top: 24px solid transparent;
-	border-bottom: 24px solid transparent;
-	border-bottom-width: 24px;
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	border-bottom-width: 20px;
 	border-bottom-style: solid;
 	border-bottom-color: transparent;
-	border-left: 24px solid #e9b60b;
-	border-left-width: 24px;
+	border-left: 20px solid #e9b60b;
+	border-left-width: 20px;
 	border-left-style: solid;
 	border-left-color: #e9b60b;
 }
