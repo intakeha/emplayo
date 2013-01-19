@@ -1,7 +1,7 @@
 <div id="criteria">
 	<div class="content">
 		<div id="1" class="questions">
-			<div>Select the type of companies you want to work for:</div>
+			<div><div class="bulb"></div>Select the type of companies you want to work for:</div>
 			<ul id="co_type">
 				<li id="q1a"></li>
 				<li id="q1b"></li>
@@ -14,7 +14,7 @@
 			<input type="hidden" name="q1d" value="0" />
 		</div>
 		<div id="2" class="questions">
-			<div>Select the pace of the company you want to work in:</div>
+			<div><div class="bulb"></div>Select the pace of the company you want to work in:</div>
 			<ul id="co_pace">
 				<li id="q2a">Slow</li>
 				<li id="q2b">Medium</li>
@@ -25,7 +25,7 @@
 			<input type="hidden" name="q2c" value="0" />
 		</div>
 		<div id="3" class="questions">
-			<div>Select the life cycle of the companies you want to work in:</div>
+			<div><div class="bulb"></div>Select the life cycle of the companies you want to work in:</div>
 			<div id="co_cycle_header"></div>
 			<ul id="co_cycle">
 				<li id="q3a"></li>
@@ -41,7 +41,7 @@
 			<input type="hidden" name="q3e" value="0" />
 		</div>
 		<div id="4" class="questions">
-			<div>Rank the following company benefits &amp; perks you find important:</div>
+			<div><div class="bulb"></div>Rank the following company benefits &amp; perks you find important:</div>
 			<div id="benefits_bar"></div>
 			<ul id="co_benefits">
 				<li id="q4_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Training</li>
@@ -65,7 +65,7 @@
 			<input type="hidden" name="qFour" value="0" />
 		</div>
 		<div id="5" class="questions">
-			<div>How important is corporate citizenship to you?</div>
+			<div><div class="bulb"></div>How important is corporate citizenship to you?</div>
 			<div class="sliderSelected"></div>
 			<div id="citizenshipSlider" style="background: none; border: none; cursor: pointer;"></div>
 			<div class="slider5Markers">
@@ -80,7 +80,7 @@
 			<input type="hidden" name="q5" value="0" />
 		</div>
 		<div id="6" class="questions">
-			<div>How much traveling would you like to do for work?</div>
+			<div><div class="bulb"></div>How much traveling would you like to do for work?</div>
 			<div class="sliderSelected"></div>
 			<div id="travelSlider" style="background: none; border: none; cursor: pointer;"></div>
 			<div class="slider4Markers">
@@ -94,7 +94,7 @@
 			<input type="hidden" name="q6" value="0" />
 		</div>
 		<div id="7" class="questions">
-			<div>How often do you want your roles &amp; responsibilities to change?</div>
+			<div><div class="bulb"></div>How often do you want your roles &amp; responsibilities to change?</div>
 			<div class="sliderSelected"></div>
 			<div id="roleSlider" style="background: none; border: none; cursor: pointer;"></div>
 			<div class="slider4Markers">
@@ -108,7 +108,7 @@
 			<input type="hidden" name="q7" value="0" />
 		</div>
 		<div id="8" class="questions">
-			<div>Rank the following in order of importance for promotion eligibility:</div>
+			<div><div class="bulb"></div>Rank the following in order of importance for promotion eligibility:</div>
 			<div id="promotion_bar"></div>
 			<ul id="co_promotion">
 				<li id="q8_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Business Need</li>
@@ -121,7 +121,7 @@
 			<input type="hidden" name="q8" value="0" />
 		</div>
 		<div id="9" class="questions">
-			<div>Select the work environment you thrive in:</div>
+			<div><div class="bulb"></div>Select the work environment you thrive in:</div>
 			<div id="envQuestions">
 				<div id="q9_1" class="env">
 					<div class="envAnswer1">Supportive</div><div class="or">- or -</div><div class="envAnswer2">Independent</div>
@@ -181,7 +181,7 @@
 			<input type="hidden" name="q9_10" value="0" />
 		</div>
 		<div id="10" class="questions">
-			<div>Rank your most preferred type of recognition for doing exceptional work:</div>
+			<div><div class="bulb"></div>Rank your most preferred type of recognition for doing exceptional work:</div>
 			<div id="recognition_bar"></div>
 			<ul id="co_recognition">
 				<li id="q10_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Team Dinners</li>
@@ -194,7 +194,7 @@
 			<input type="hidden" name="q10" value="0" />
 		</div>
 		<div id="11" class="questions">
-			<div>Pick one of the following views on workplace politics:</div>
+			<div><div class="bulb"></div>Pick one of the following views on workplace politics:</div>
 			<div id="politics" class="clear">
 				<img id="politicsOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#politicsCloud" />
 				<map name="politicsCloud" id="politicsCloud">
@@ -208,7 +208,7 @@
 			<input type="hidden" name="q11" value="0" />
 		</div>
 		<div id="12" class="questions">
-			<div>Rank the following type of tasks you typically enjoy working on:</div>
+			<div><div class="bulb"></div>Rank the following type of tasks you typically enjoy working on:</div>
 			<div id="task_bar"></div>
 			<ul id="favTask">
 				<li id="q12_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Physical</font><br>skill, strength, coordination, accuracy</li>
@@ -221,7 +221,7 @@
 			<input type="hidden" name="q12" value="0" />			
 		</div>
 		<div id="13" class="questions">
-			<div>When communicating ...</div>
+			<div><div class="bulb"></div>When communicating ...</div>
 			<div id="communications" class="clear">
 				<img id="communicationOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#communicationCloud" />
 				<map name="communicationCloud" id="communicationCloud">
@@ -235,7 +235,7 @@
 			<input type="hidden" name="q13" value="0" />
 		</div>
 		<div id="14" class="questions">
-			<div>If you don't know something about your job, what are the<br>steps you would take to find the answers?</div>
+			<div><div class="bulb"></div>If you don't know something about your job, what are the<br>steps you would take to find the answers?</div>
 			<div id="steps_bar"></div>
 			<ul id="resource">
 				<li id="q14_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Search the Internet</li>
@@ -247,7 +247,7 @@
 			<input type="hidden" name="q14" value="0" />	
 		</div>
 		<div id="15" class="questions">
-			<div>Which of the following is most effective role of a supervisor:</div>
+			<div><div class="bulb"></div>Which of the following is most effective role of a supervisor:</div>
 			<div id="supervisor" class="clear">
 				<img id="supervisorOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#supervisorCloud" />
 				<map name="supervisorCloud" id="supervisorCloud">
@@ -262,7 +262,7 @@
 			<input type="hidden" name="q15" value="0" />
 		</div>
 		<div id="16" class="questions">
-			<div>When you ignore a strong gut feel<br>that's trying to tell you something, you tend to regret it later on.</div>
+			<div><div class="bulb"></div>When you ignore a strong gut feel<br>that's trying to tell you something, you tend to regret it later on.</div>
 			<div id="intuition">
 				<div id="true" class="true_false">True</div>
 				<div id="false" class="true_false">False</div>
@@ -270,7 +270,7 @@
 			<input type="hidden" name="q16" value="0" />
 		</div>
 		<div id="17" class="questions">
-			<div>When someone makes inappropriate or derogatory remarks, you typically ...</div>
+			<div><div class="bulb"></div>When someone makes inappropriate or derogatory remarks, you typically ...</div>
 			<div id="respect" class="clear">
 				<img id="respectOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#respectCloud" />
 				<map name="respectCloud" id="respectCloud">
@@ -284,7 +284,7 @@
 			<input type="hidden" name="q17" value="0" />
 		</div>
 		<div id="18" class="questions">
-			<div>How would you effectively lead a team?</div>
+			<div><div class="bulb"></div>How would you effectively lead a team?</div>
 			<div id="leadership" class="clear">
 				<img id="leadershipOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#leadershipCloud" />
 				<map name="leadershipCloud" id="leadershipCloud">
@@ -296,7 +296,7 @@
 			<input type="hidden" name="q18" value="0" />
 		</div>
 		<div id="19" class="questions">
-			<div>Pick the top 10 traits of people you enjoy being around:</div>
+			<div><div class="bulb"></div>Pick the top 10 traits of people you enjoy being around:</div>
 			<div id="traits">
 				<div>Affectionate</div>
 				<div>Competent</div>
@@ -337,7 +337,7 @@
 			<input type="hidden" name="q19" value="0" />
 		</div>
 		<div id="20" class="questions">
-			<div>I want to work ________</div>
+			<div><div class="bulb"></div>I want to work ________</div>
 			<div id="motivation" class="clear">
 				<img id="motivationOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#motivationCloud" />
 				<map name="motivationCloud" id="motivationCloud">
