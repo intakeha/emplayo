@@ -110,6 +110,10 @@ div#story .content{
 
 /* Questionnaire */
 
+area{
+	outline: none;
+}
+
 #criteria{
 	border-top: 1px solid #ccc;
 	padding-top: 30px;
