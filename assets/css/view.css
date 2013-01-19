@@ -110,6 +110,28 @@ div#story .content{
 
 /* Questionnaire */
 
+.modal_popup p{
+	color: #1d71a2;
+	font-weight: bold;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.modal_popup div{
+	margin: 0 20px 10px;
+}
+
+.modal_popup span{
+	color: #258CD1;
+	font-weight: bold;
+}
+
+.modal_popup img{
+	float: right;
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+
 area{
 	outline: none;
 }
@@ -162,7 +184,7 @@ div#nextQuestion .next, div#showPreview .next{
 }
 
 div.bulb{
-	background: url(../images/bulb.png) no-repeat;
+	background: url(../images/survey/bulb.png) no-repeat;
 	width: 36px;
 	height: 36px;
 	cursor: pointer;
@@ -174,7 +196,7 @@ div.bulb{
 	width: 900px;
 	height: 30px;
 	margin-left: 60px;
-	background: url(../images/progressBar.png) no-repeat;
+	background: url(../images/survey/progressBar.png) no-repeat;
 	background-position: 20px 12px;
 }
 
@@ -183,7 +205,7 @@ li.progress{
 	width: 29px;
 	height: 29px;
 	margin: 0 8px;
-	background: url(../images/progressBar.jpg) no-repeat;
+	background: url(../images/survey/progressBar.jpg) no-repeat;
 }
 
 li.ip{
@@ -206,7 +228,7 @@ ul#co_type li{
 	height: 408px;
 	margin: 30px 20px 0 0;
 	float: left;
-	background: url(../images/co_type.jpg) no-repeat;
+	background: url(../images/survey/co_type.jpg) no-repeat;
 	cursor: pointer;
 }
 
@@ -242,17 +264,17 @@ ul#co_pace li{
 }
 
 li#q2a{
-	background: url(../images/co_pace.jpg) no-repeat;
+	background: url(../images/survey/co_pace.jpg) no-repeat;
 	background-position: 0px 0px;
 }
 
 li#q2b{
-	background: url(../images/co_pace.jpg) no-repeat;
+	background: url(../images/survey/co_pace.jpg) no-repeat;
 	background-position: -120px 0px;
 }
 
 li#q2c{
-	background: url(../images/co_pace.jpg) no-repeat;
+	background: url(../images/survey/co_pace.jpg) no-repeat;
 	background-position: -240px 0px;
 }
 
@@ -267,7 +289,7 @@ div#co_cycle_header{
 	height: 40px;
 	margin-left: 91px;
 	margin-top: 30px;
-	background: url(../images/co_cycle_header.jpg) no-repeat;
+	background: url(../images/survey/co_cycle_header.jpg) no-repeat;
 }
 
 ul#co_cycle{
@@ -278,7 +300,7 @@ ul#co_cycle li{
 	height: 379px;
 	margin-top: 1px;
 	float: left;
-	background: url(../images/co_cycle.jpg) no-repeat;
+	background: url(../images/survey/co_cycle.jpg) no-repeat;
 	cursor: pointer;
 }
 
@@ -314,7 +336,7 @@ li#q3e{
 /* Question 4 - Company Benefits*/
 
 div#benefits_bar{
-	background: url("../images/benefits_bar.png") no-repeat scroll 0 0 transparent;
+	background: url("../images/survey/benefits_bar.png") no-repeat scroll 0 0 transparent;
     float: left;
     width: 30px;
 	height: 480px;
@@ -361,12 +383,12 @@ div#citizenshipSlider, div#travelSlider, div#roleSlider{
 }
 
 div.questions .ui-state-default {
-    background: url("../images/sliderHandleDefault.png") no-repeat !important;
+    background: url("../images/survey/sliderHandleDefault.png") no-repeat !important;
     border: 0px;
 }
 
 div.questions .sliderActive {
-    background:  url("../images/sliderHandle.png") no-repeat !important;
+    background:  url("../images/survey/sliderHandle.png") no-repeat !important;
 }
 
 div.questions .ui-slider-handle {
@@ -379,7 +401,7 @@ div.questions a {
 }
 
 div.slider5Markers {
-    background: url("../images/slider_5markers.jpg") no-repeat scroll center top transparent;
+    background: url("../images/survey/slider_5markers.jpg") no-repeat scroll center top transparent;
     height: 110px;
     margin: -39px 0 0 11px;
     padding-top: 60px;
@@ -389,7 +411,7 @@ div.slider5Markers {
 }
 
 div.slider4Markers {
-    background: url("../images/slider_4markers.jpg") no-repeat scroll center top transparent;
+    background: url("../images/survey/slider_4markers.jpg") no-repeat scroll center top transparent;
     height: 110px;
     margin: -39px 0 0 11px;
 	padding-top: 60px;
@@ -427,7 +449,7 @@ div.sliderSelected{
 /* Question 8 - Promotion*/
 
 div#promotion_bar{
-	background: url("../images/benefits_bar.png") no-repeat scroll 0 0 transparent;
+	background: url("../images/survey/benefits_bar.png") no-repeat scroll 0 0 transparent;
     float: left;
     width: 30px;
 	height: 480px;
@@ -503,7 +525,7 @@ div.env .or{
 }
 
 img#envProgressOverlay{
-	background: url("../images/harvey_ball_10.png") no-repeat scroll 0 0 transparent;
+	background: url("../images/survey/harvey_ball_10.png") no-repeat scroll 0 0 transparent;
 	width: 127px;
 	height: 125px;
 	border: 0px;
@@ -512,7 +534,7 @@ img#envProgressOverlay{
 /* Question 10 - Recognition */
 
 div#recognition_bar{
-	background: url("../images/recognition_bar.png") no-repeat scroll 0 0 transparent;
+	background: url("../images/survey/recognition_bar.png") no-repeat scroll 0 0 transparent;
     float: left;
     width: 30px;
 	height: 480px;
@@ -551,7 +573,7 @@ div#politics {
 }
 
 img#politicsOverlay {
-	background: url("../images/politics.jpg") no-repeat scroll 0 0 transparent;
+	background: url("../images/survey/politics.jpg") no-repeat scroll 0 0 transparent;
 	width: 910px;
 	height: 390px;
 	overflow: hidden;
@@ -560,7 +582,7 @@ img#politicsOverlay {
 /* Question 12 - Tasks */
 
 div#task_bar{
-	background: url("../images/task_bar.png") no-repeat scroll 0 0 transparent;
+	background: url("../images/survey/task_bar.png") no-repeat scroll 0 0 transparent;
     float: left;
     width: 30px;
 	height: 480px;
@@ -611,7 +633,7 @@ div#communications {
 }
 
 img#communicationOverlay {
-	background: url("../images/communication.jpg") no-repeat scroll 0 0 transparent;
+	background: url("../images/survey/communication.jpg") no-repeat scroll 0 0 transparent;
 	width: 910px;
 	height: 390px;
 	overflow: hidden;
@@ -620,7 +642,7 @@ img#communicationOverlay {
 /* Question 14 - Resources */
 
 div#steps_bar{
-	background: url("../images/resourceSteps.png") no-repeat scroll 0 0 transparent;
+	background: url("../images/survey/resourceSteps.png") no-repeat scroll 0 0 transparent;
     float: left;
     width: 36px;
 	height: 400px;
@@ -665,7 +687,7 @@ div#supervisor {
 }
 
 img#supervisorOverlay {
-	background: url("../images/supervisor.jpg") no-repeat scroll 0 0 transparent;
+	background: url("../images/survey/supervisor.jpg") no-repeat scroll 0 0 transparent;
 	width: 928px;
 	height: 445px;
 	overflow: hidden;
@@ -682,7 +704,7 @@ div#intuition{
 div#intuition .true_false{
 	width: 215px;
 	height: 215px;
-	background: url("../images/true_false.png") no-repeat scroll 0 0 transparent;
+	background: url("../images/survey/true_false.png") no-repeat scroll 0 0 transparent;
 	color: #1d71a2;
 	cursor: pointer;
 	float: left;
@@ -702,7 +724,7 @@ div#respect {
 }
 
 img#respectOverlay {
-	background: url("../images/respect.jpg") no-repeat scroll 0 0 transparent;
+	background: url("../images/survey/respect.jpg") no-repeat scroll 0 0 transparent;
 	width: 910px;
 	height: 390px;
 	overflow: hidden;
@@ -714,7 +736,7 @@ div#leadership {
 }
 
 img#leadershipOverlay {
-	background: url("../images/leadership.jpg") no-repeat scroll 0 0 transparent;
+	background: url("../images/survey/leadership.jpg") no-repeat scroll 0 0 transparent;
 	width: 966px;
 	height: 418px;
 	overflow: hidden;
@@ -749,7 +771,7 @@ div#motivation {
 }
 
 img#motivationOverlay {
-	background: url("../images/motivation.jpg") no-repeat scroll 0 0 transparent;
+	background: url("../images/survey/motivation.jpg") no-repeat scroll 0 0 transparent;
 	width: 910px;
 	height: 390px;
 	overflow: hidden;

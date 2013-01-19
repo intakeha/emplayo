@@ -1,7 +1,16 @@
 <div id="criteria">
+	<div class="modal_popup" id="modal_q1">
+		<p>Click to select one or more</p>
+		<img src="<?php echo base_url() ?>assets/images/modals/q1.jpg">
+		<div><span>Privately Held - For Profit</span><br>Privately held companies are not subject to the ups and downs of the stock market.  Employees can expect more interaction with executives and more opportunities for increased responsibility. </div>
+		<div><span>Publicly Traded - For Profit</span><br>At a public company, there is constant pressure from the stock market to grow revenue.  This constant growth can result in increased headcount, expanded product lines, and opportunites for employees to grow their career.</div>
+		<div><span>Government</span><br>The public sector has a reputation for stability and job security, as well as a slower pace than private companies.  There can be a high level of taxpayer scrutiny, so red tape and bureaucratic procedures are common.</div>
+		<div><span>Non-Profit</span><br>Non-profits are a good option for people who really want to make a difference in the lives of others.  Compensation and perks may not be as high as for-profit businesses.</div>
+	</div>
+	
 	<div class="content">
 		<div id="1" class="questions">
-			<div><div class="bulb"></div>Select the type of companies you want to work for:</div>
+			<div><div class="bulb" onclick="modal('#modal_q1','600','0');"></div>Select the type of companies you want to work for:</div>
 			<ul id="co_type">
 				<li id="q1a"></li>
 				<li id="q1b"></li>
@@ -379,19 +388,19 @@
 		</div>
 	</div>
 	<div class="preload">
-		<img src="<?php echo base_url() ?>assets/images/slider_4markers.jpg">
-		<img src="<?php echo base_url() ?>assets/images/harvey_ball_10.png">
-		<img src="<?php echo base_url() ?>assets/images/recognition_bar.png">
-		<img src="<?php echo base_url() ?>assets/images/politics.jpg">
-		<img src="<?php echo base_url() ?>assets/images/task_bar.png">		
-		<img src="<?php echo base_url() ?>assets/images/communication.jpg">
-		<img src="<?php echo base_url() ?>assets/images/resourceSteps.png">
-		<img src="<?php echo base_url() ?>assets/images/supervisor.jpg">
-		<img src="<?php echo base_url() ?>assets/images/true_false.png">
-		<img src="<?php echo base_url() ?>assets/images/respect.jpg">
-		<img src="<?php echo base_url() ?>assets/images/leadership.jpg">
-		<img src="<?php echo base_url() ?>assets/images/motivation.jpg">
-		<img src="<?php echo base_url() ?>assets/images/progressIcon.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/slider_4markers.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/harvey_ball_10.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/recognition_bar.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/politics.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/task_bar.png">		
+		<img src="<?php echo base_url() ?>assets/images/survey/communication.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/resourceSteps.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/supervisor.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/true_false.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/respect.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/leadership.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/motivation.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/progressIcon.png">
 		<img src="<?php echo base_url() ?>assets/images/preview.png">
 		<img src="<?php echo base_url() ?>assets/images/netapp.png">
 	</div>

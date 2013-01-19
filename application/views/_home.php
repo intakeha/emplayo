@@ -25,15 +25,15 @@
 		</div>
 	</div>
 	<div class="preload">
-		<img src="<?php echo base_url() ?>assets/images/co_type.jpg">
-		<img src="<?php echo base_url() ?>assets/images/progressBar.jpg">
-		<img src="<?php echo base_url() ?>assets/images/progressBar.png">
-		<img src="<?php echo base_url() ?>assets/images/co_pace.jpg">
-		<img src="<?php echo base_url() ?>assets/images/co_cycle_header.jpg">
-		<img src="<?php echo base_url() ?>assets/images/co_cycle.jpg">
-		<img src="<?php echo base_url() ?>assets/images/benefits_bar.png">
-		<img src="<?php echo base_url() ?>assets/images/slider_5markers.jpg">
-		<img src="<?php echo base_url() ?>assets/images/sliderHandleDefault.png">
-		<img src="<?php echo base_url() ?>assets/images/sliderHandle.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/co_type.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/progressBar.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/progressBar.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/co_pace.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/co_cycle_header.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/co_cycle.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/benefits_bar.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/slider_5markers.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/sliderHandleDefault.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/sliderHandle.png">
 </div>
 </div>
