@@ -1,7 +1,7 @@
 <div id="criteria">
 	<div class="modal_popup" id="modal_q1">
 		<p>Click to select one or more</p>
-		<img src="<?php echo base_url() ?>assets/images/modals/q1.jpg">
+		<img src="<?php echo base_url() ?>assets/images/modals/q1.png">
 		<div><span>Privately Held - For Profit</span><br>Privately held companies are not subject to the ups and downs of the stock market.  Employees can expect more interaction with executives and more opportunities for increased responsibility. </div>
 		<div><span>Publicly Traded - For Profit</span><br>At a public company, there is constant pressure from the stock market to grow revenue.  This constant growth can result in increased headcount, expanded product lines, and opportunites for employees to grow their career.</div>
 		<div><span>Government</span><br>The public sector has a reputation for stability and job security, as well as a slower pace than private companies.  There can be a high level of taxpayer scrutiny, so red tape and bureaucratic procedures are common.</div>
@@ -10,7 +10,7 @@
 	
 	<div class="content">
 		<div id="1" class="questions">
-			<div><div class="bulb" onclick="modal('#modal_q1','600','0');"></div>Select the type of companies you want to work for:</div>
+			<div><div class="bulb" onclick="modal('#modal_q1','600','35');"></div>Select the type of companies you want to work for:</div>
 			<ul id="co_type">
 				<li id="q1a"></li>
 				<li id="q1b"></li>
@@ -92,11 +92,12 @@
 			<div><div class="bulb"></div>How much traveling would you like to do for work?</div>
 			<div class="sliderSelected"></div>
 			<div id="travelSlider" style="background: none; border: none; cursor: pointer;"></div>
-			<div class="slider4Markers">
+			<div class="slider5Markers">
 				<ul>
-					<li class="right4Marker">None</li>
-					<li class="right4Marker">Every<br>3 Months</li>
-					<li class="right4Marker">Every<br>Month</li>
+					<li class="right5Marker">None</li>
+					<li class="right5Marker">Once a<br> Year</li>
+					<li class="right5Marker">Every<br>3 Months</li>
+					<li class="right5Marker">Every<br>Month</li>
 					<li>Every<br>Week</li>
 				</ul>
 			</div>

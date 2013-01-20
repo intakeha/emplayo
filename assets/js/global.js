@@ -210,7 +210,7 @@ $(document).ready(function(){
 		$( '#travelSlider').slider({
 			animate: true,
 			min: 1,
-			max: 4,
+			max: 5,
 			value: 1,
 			change: function(event, ui){
 				$('#travelSlider a').addClass('sliderActive');
@@ -221,16 +221,20 @@ $(document).ready(function(){
 					$('input[name=q6]').val(1);
 					break;
 				case 2:
-					$('div#6 .sliderSelected').html("Little Travel");
+					$('div#6 .sliderSelected').html("Seldom Travel");
 					$('input[name=q6]').val(2);
-					break;
+					break;					
 				case 3:
-					$('div#6 .sliderSelected').html("Some Travel");
+					$('div#6 .sliderSelected').html("Little Travel");
 					$('input[name=q6]').val(3);
 					break;
 				case 4:
-					$('div#6 .sliderSelected').html("Frequent Travel");
+					$('div#6 .sliderSelected').html("Some Travel");
 					$('input[name=q6]').val(4);
+					break;
+				case 5:
+					$('div#6 .sliderSelected').html("Frequent Travel");
+					$('input[name=q6]').val(5);
 					break;
 				default:
 					$('div#6 .sliderSelected').html("No Travel");
