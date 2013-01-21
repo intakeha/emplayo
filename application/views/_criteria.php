@@ -9,6 +9,27 @@
 	</div>
 	
 	<div class="content">
+		<div id="0" class="questions">
+			<div id="intro">
+				<p>Before you begin, we want to give you a quick overview of what to expect.</p>
+				<div>
+					<div id="questions_layout">
+						<span>The Journey</span>
+						<div><div id="textDecor">20</div>You&#39;re going to be presented with 20 questions - don&#39;t worry, they&#39;re pretty fun &amp; easy.
+						Here are a few key elements that will help you as you answer the questions.</div>
+						<img src="<?php echo base_url() ?>assets/images/survey/instructions.png">
+					</div>
+					<div id="questions_preview">
+						<span>The Destination</span>
+						<div><div id="textDecor"><img src="<?php echo base_url() ?>assets/images/progressIcon.png" height=50px></div>
+							When you finish, you&#39;ll get a preview of the top companies that fit you best.  You can then login or create an account to check out the entire list and apply for jobs!
+						</div>
+						<img src="<?php echo base_url() ?>assets/images/survey/instructions_preview.png">
+					</div>
+				</div>
+				
+			</div>
+		</div>
 		<div id="1" class="questions">
 			<div><div class="bulb" onclick="modal('#modal_q1','600','35');"></div>Select the type of companies you want to work for:</div>
 			<ul id="co_type">
@@ -146,7 +167,7 @@
 					<div class="envAnswer1">Family Oriented</div><div class="or">- or -</div><div class="envAnswer2">Business Oriented</div>
 				</div>
 				<div id="q9_5" class="env">
-					<div class="envAnswer1">Calm</div><div class="or">- or -</div><div class="envAnswer2">Agressive</div>
+					<div class="envAnswer1">Calm</div><div class="or">- or -</div><div class="envAnswer2">Aggressive</div>
 				</div>
 				<div id="q9_6" class="env">
 					<div class="envAnswer1">Planned</div><div class="or">- or -</div><div class="envAnswer2">Adhoc</div>

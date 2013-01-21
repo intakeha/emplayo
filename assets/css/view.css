@@ -136,6 +136,41 @@ area{
 	outline: none;
 }
 
+div#intro p{
+	margin-bottom: 25px;
+	color: #258CD1;
+	font-weight: normal;
+}
+
+div#questions_layout, div#questions_preview{
+    float: left;
+    font-size: 20px;
+    padding: 0 20px 20px;
+    width: 470px;
+}
+
+div#questions_layout {
+	border-right: 1px solid #ccc;
+}
+
+div#questions_layout div, div#questions_preview div{
+	text-align: left;
+	margin: 20px 0;
+}
+
+div#questions_layout span, div#questions_preview span{
+	color: #e9b60b;
+	font-size: 25px;
+}
+
+div#textDecor{
+	font-size: 55px;
+	float: left;
+	margin: 0 !important;
+	padding-right: 20px;
+	color: #258CD1;
+}
+
 #criteria{
 	border-top: 1px solid #ccc;
 	padding-top: 30px;

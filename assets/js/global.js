@@ -31,7 +31,7 @@ $(document).ready(function(){
 	
 	// Display questionnaire	 
 	if(currentPage == 'criteria'){
-		$('#login, #footer').hide();
+		$('#login, #footer, #progressBar').hide();
 
 		// Hover animation for next button
 		$("div#nextQuestion, div#showPreview").hover(
@@ -46,16 +46,19 @@ $(document).ready(function(){
 		);
 			
 		// Set variables for pagination 
-		var currentQuestion = 1;
-		var lastEmpty =1;
+		var currentQuestion = 0;
+		var lastEmpty = 1;
 		var lastQuestion = 1;
-		$('div#1').show(); //default to first question on refresh
+		$('div#0, #nextQuestion').show(); //default to first question on refresh
 
 		// Assign actions when next is clicked
 		$('#nextQuestion').click(function(){
+			$('div#progressBar').show();
 			// Update progress bar
-			$('#progressBar li').eq(currentQuestion-1).removeClass().addClass('progress filled');
-			$('#progressBar li').eq(currentQuestion).removeClass().addClass('progress ip');
+			if(currentQuestion>=1){
+				$('#progressBar li').eq(currentQuestion-1).removeClass().addClass('progress filled');
+				$('#progressBar li').eq(currentQuestion).removeClass().addClass('progress ip');
+			}
 			
 			// Show next question
 			$('div.questions').hide();
