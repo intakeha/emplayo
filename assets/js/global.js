@@ -7,7 +7,7 @@ $(document).ready(function(){
 			$('#fade, a.close').remove();
 		});
 		return false;
-	});	
+	});
 	
 	// Homepage animation
 	$('#start').delay(500).animate({ opacity: 1, left: "50px" }, 500);
@@ -54,6 +54,7 @@ $(document).ready(function(){
 		// Assign actions when next is clicked
 		$('#nextQuestion').click(function(){
 			$('div#progressBar').show();
+			$('div.hints, div.hints div').hide();
 			// Update progress bar
 			if(currentQuestion>=1){
 				$('#progressBar li').eq(currentQuestion-1).removeClass().addClass('progress filled');
@@ -64,6 +65,8 @@ $(document).ready(function(){
 			$('div.questions').hide();
 			currentQuestion = currentQuestion + 1;
 			if (currentQuestion > lastQuestion){lastQuestion = currentQuestion;};
+			questionType = $('div#'+currentQuestion).attr("name");
+			if(questionType){$('div.hints, div#'+questionType).show();};
 			$('div#'+currentQuestion).show();
 			if ((currentQuestion == 20)&&($('input[name=q20]').val()!=0)){
 				$('#nextQuestion').hide();
@@ -78,6 +81,7 @@ $(document).ready(function(){
 			if ((lastQuestion >= (1+$(this).index()))&&(lastEmpty >=(1+$(this).index()))){
 				// Hide preview button
 				$('div#showPreview').hide();
+				$('div.hints, div.hints div').hide();
 				
 				// Update progress bar
 				$('#progressBar li').eq(currentQuestion-1).removeClass().addClass('progress filled');
@@ -86,6 +90,8 @@ $(document).ready(function(){
 				//Show current question
 				currentQuestion = 1+$(this).index();
 				$('div.questions').hide();
+				questionType = $('div#'+currentQuestion).attr("name");
+				if(questionType){$('div.hints, div#'+questionType).show();};
 				$('div#'+currentQuestion).show();
 				if ((currentQuestion == 20)&&($('input[name=q20]').val()!=0)){
 					$('#nextQuestion').hide();
@@ -431,7 +437,7 @@ $(document).ready(function(){
 		// Q19 - Traits
 		var traitCount = 0;
 		$("div#traits div").click(function(){
-			if (traitCount < 10){
+			if (traitCount < 5){
 				$(this).toggleClass("selected");
 				if ($(this).hasClass("selected")){
 					traitCount = traitCount + 1;
@@ -445,7 +451,7 @@ $(document).ready(function(){
 				};
 			};
 			$('input[name=q19]').val($(this).index()+1);
-			if (traitCount == 10){$('#nextQuestion').show();}else{$('#nextQuestion').hide(); lastEmpty = 19;};
+			if (traitCount == 5){$('#nextQuestion').show();}else{$('#nextQuestion').hide(); lastEmpty = 19;};
 		});
 		
 		// Q20 - Motivation

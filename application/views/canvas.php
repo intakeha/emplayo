@@ -23,6 +23,12 @@
 			<div id="nextQuestion"><div class="next">next</div><div class="arrow"></div></div>
 			<div id="showPreview"><a href="preview"><div class="next">next</div><div class="arrow"></div></a></div>
 			<a id="logo" href="/"></a>
+			<div class="hints">
+				<div id="singleChoice">select one</div>
+				<div id="multipleChoice">select one or more items</div>
+				<div id="rankChoice">sort by drag and drop</div>
+				<div id="clickChoice">click to select</div>
+			</div>
 		</div>
 	</div>
 	<div id="container">

@@ -110,13 +110,6 @@ div#story .content{
 
 /* Questionnaire */
 
-.modal_popup p{
-	color: #1d71a2;
-	font-weight: bold;
-	font-size: 20px;
-	margin-bottom: 20px;
-}
-
 .modal_popup div{
 	margin: 0 20px 10px;
 }
@@ -130,6 +123,22 @@ div#story .content{
 	float: right;
 	margin-left: 20px;
 	margin-bottom: 10px;
+}
+
+div.hints {
+    border-left: 1px solid #CCCCCC;
+    border-radius: 5px 5px 0 0;
+    border-right: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    color: #E9B60B;
+    display: none;
+    font-size: 16px;
+    height: 22px;
+    margin-left: 410px;
+    margin-top: -10px;
+    padding-top: 5px;
+    text-align: center;
+    width: 200px;
 }
 
 area{
@@ -784,15 +793,15 @@ div#traits {
 }
 
 div#traits div{
-    border: 1px solid #CCCCCC;
-    color: #1d71a2;
-    cursor: pointer;
-    float: left;
-    font-size: 22px;
-    height: 42px;
-    margin: 0 20px 10px 0;
-    padding-top: 18px;
-    width: 175px;
+	border: 1px solid #CCCCCC;
+	color: #1d71a2;
+	cursor: pointer;
+	float: left;
+	font-size: 22px;
+	height: 60px;
+	margin: 10px 20px 10px 0;
+	padding-top: 35px;
+	width: 175px;	
 }
 
 div#traits .selected{

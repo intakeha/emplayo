@@ -1,13 +1,11 @@
 <div id="criteria">
 	<div class="modal_popup" id="modal_q1">
-		<p>Click to select one or more</p>
 		<img src="<?php echo base_url() ?>assets/images/modals/q1.png">
 		<div><span>Privately Held - For Profit</span><br>Privately held companies are not subject to the ups and downs of the stock market.  Employees can expect more interaction with executives and more opportunities for increased responsibility. </div>
 		<div><span>Publicly Traded - For Profit</span><br>At a public company, there is constant pressure from the stock market to grow revenue.  This constant growth can result in increased headcount, expanded product lines, and opportunites for employees to grow their career.</div>
 		<div><span>Government</span><br>The public sector has a reputation for stability and job security, as well as a slower pace than private companies.  There can be a high level of taxpayer scrutiny, so red tape and bureaucratic procedures are common.</div>
 		<div><span>Non-Profit</span><br>Non-profits are a good option for people who really want to make a difference in the lives of others.  Compensation and perks may not be as high as for-profit businesses.</div>
 	</div>
-	
 	<div class="content">
 		<div id="0" class="questions">
 			<div id="intro">
@@ -30,7 +28,7 @@
 				
 			</div>
 		</div>
-		<div id="1" class="questions">
+		<div id="1" class="questions" name="multipleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q1','600','35');"></div>Select the type of companies you want to work for:</div>
 			<ul id="co_type">
 				<li id="q1a"></li>
@@ -43,7 +41,7 @@
 			<input type="hidden" name="q1c" value="0" />
 			<input type="hidden" name="q1d" value="0" />
 		</div>
-		<div id="2" class="questions">
+		<div id="2" class="questions" name="multipleChoice">
 			<div><div class="bulb"></div>Select the pace of the company you want to work in:</div>
 			<ul id="co_pace">
 				<li id="q2a">Slow</li>
@@ -54,7 +52,7 @@
 			<input type="hidden" name="q2b" value="0" />
 			<input type="hidden" name="q2c" value="0" />
 		</div>
-		<div id="3" class="questions">
+		<div id="3" class="questions" name="multipleChoice">
 			<div><div class="bulb"></div>Select the life cycle of the companies you want to work in:</div>
 			<div id="co_cycle_header"></div>
 			<ul id="co_cycle">
@@ -70,7 +68,7 @@
 			<input type="hidden" name="q3d" value="0" />
 			<input type="hidden" name="q3e" value="0" />
 		</div>
-		<div id="4" class="questions">
+		<div id="4" class="questions" name="rankChoice">
 			<div><div class="bulb"></div>Rank the following company benefits &amp; perks you find important:</div>
 			<div id="benefits_bar"></div>
 			<ul id="co_benefits">
@@ -94,7 +92,7 @@
 			<input type="hidden" name="q4" value="0" />
 			<input type="hidden" name="qFour" value="0" />
 		</div>
-		<div id="5" class="questions">
+		<div id="5" class="questions" name="singleChoice">
 			<div><div class="bulb"></div>How important is corporate citizenship to you?</div>
 			<div class="sliderSelected"></div>
 			<div id="citizenshipSlider" style="background: none; border: none; cursor: pointer;"></div>
@@ -109,7 +107,7 @@
 			</div>
 			<input type="hidden" name="q5" value="0" />
 		</div>
-		<div id="6" class="questions">
+		<div id="6" class="questions" name="singleChoice">
 			<div><div class="bulb"></div>How much traveling would you like to do for work?</div>
 			<div class="sliderSelected"></div>
 			<div id="travelSlider" style="background: none; border: none; cursor: pointer;"></div>
@@ -124,7 +122,7 @@
 			</div>
 			<input type="hidden" name="q6" value="0" />
 		</div>
-		<div id="7" class="questions">
+		<div id="7" class="questions" name="singleChoice">
 			<div><div class="bulb"></div>How often do you want your roles &amp; responsibilities to change?</div>
 			<div class="sliderSelected"></div>
 			<div id="roleSlider" style="background: none; border: none; cursor: pointer;"></div>
@@ -138,7 +136,7 @@
 			</div>
 			<input type="hidden" name="q7" value="0" />
 		</div>
-		<div id="8" class="questions">
+		<div id="8" class="questions" name="rankChoice">
 			<div><div class="bulb"></div>Rank the following in order of importance for promotion eligibility:</div>
 			<div id="promotion_bar"></div>
 			<ul id="co_promotion">
@@ -151,7 +149,7 @@
 			</ul>
 			<input type="hidden" name="q8" value="0" />
 		</div>
-		<div id="9" class="questions">
+		<div id="9" class="questions"  name="singleChoice">
 			<div><div class="bulb"></div>Select the work environment you thrive in:</div>
 			<div id="envQuestions">
 				<div id="q9_1" class="env">
@@ -185,7 +183,7 @@
 					<div class="envAnswer1">High-Profile</div><div class="or">- or -</div><div class="envAnswer2">Low-Key</div>
 				</div>
 			</div>
-			<div id="harveyBall" class="clear">
+			<div id="harveyBall" class="clear"  name="singleChoice">
 				<img  id="envProgressOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="progress" usemap="#environmentMap" />
 				<map name="environmentMap" id="environmentMap">
 					  <area shape="poly" coords="64,62,64,4,82,6,98,15" alt="1 of 10" />
@@ -211,7 +209,7 @@
 			<input type="hidden" name="q9_9" value="0" />
 			<input type="hidden" name="q9_10" value="0" />
 		</div>
-		<div id="10" class="questions">
+		<div id="10" class="questions"  name="rankChoice">
 			<div><div class="bulb"></div>Rank your most preferred type of recognition for doing exceptional work:</div>
 			<div id="recognition_bar"></div>
 			<ul id="co_recognition">
@@ -224,7 +222,7 @@
 			</ul>
 			<input type="hidden" name="q10" value="0" />
 		</div>
-		<div id="11" class="questions">
+		<div id="11" class="questions"  name="singleChoice">
 			<div><div class="bulb"></div>Pick one of the following views on workplace politics:</div>
 			<div id="politics" class="clear">
 				<img id="politicsOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#politicsCloud" />
@@ -238,7 +236,7 @@
 			</div>
 			<input type="hidden" name="q11" value="0" />
 		</div>
-		<div id="12" class="questions">
+		<div id="12" class="questions"  name="rankChoice">
 			<div><div class="bulb"></div>Rank the following type of tasks you typically enjoy working on:</div>
 			<div id="task_bar"></div>
 			<ul id="favTask">
@@ -251,7 +249,7 @@
 			</ul>
 			<input type="hidden" name="q12" value="0" />			
 		</div>
-		<div id="13" class="questions">
+		<div id="13" class="questions"  name="singleChoice">
 			<div><div class="bulb"></div>When communicating ...</div>
 			<div id="communications" class="clear">
 				<img id="communicationOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#communicationCloud" />
@@ -265,7 +263,7 @@
 			</div>
 			<input type="hidden" name="q13" value="0" />
 		</div>
-		<div id="14" class="questions">
+		<div id="14" class="questions"  name="rankChoice">
 			<div><div class="bulb"></div>If you don't know something about your job, what are the<br>steps you would take to find the answers?</div>
 			<div id="steps_bar"></div>
 			<ul id="resource">
@@ -277,7 +275,7 @@
 			</ul>
 			<input type="hidden" name="q14" value="0" />	
 		</div>
-		<div id="15" class="questions">
+		<div id="15" class="questions"  name="singleChoice">
 			<div><div class="bulb"></div>Which of the following is most effective role of a supervisor:</div>
 			<div id="supervisor" class="clear">
 				<img id="supervisorOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#supervisorCloud" />
@@ -292,7 +290,7 @@
 			</div>
 			<input type="hidden" name="q15" value="0" />
 		</div>
-		<div id="16" class="questions">
+		<div id="16" class="questions" name="singleChoice">
 			<div><div class="bulb"></div>When you ignore a strong gut feel<br>that's trying to tell you something, you tend to regret it later on.</div>
 			<div id="intuition">
 				<div id="true" class="true_false">True</div>
@@ -300,7 +298,7 @@
 			</div>
 			<input type="hidden" name="q16" value="0" />
 		</div>
-		<div id="17" class="questions">
+		<div id="17" class="questions" name="singleChoice">
 			<div><div class="bulb"></div>When someone makes inappropriate or derogatory remarks, you typically ...</div>
 			<div id="respect" class="clear">
 				<img id="respectOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#respectCloud" />
@@ -314,7 +312,7 @@
 			</div>
 			<input type="hidden" name="q17" value="0" />
 		</div>
-		<div id="18" class="questions">
+		<div id="18" class="questions" name="singleChoice">
 			<div><div class="bulb"></div>How would you effectively lead a team?</div>
 			<div id="leadership" class="clear">
 				<img id="leadershipOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#leadershipCloud" />
@@ -326,16 +324,14 @@
 			</div>
 			<input type="hidden" name="q18" value="0" />
 		</div>
-		<div id="19" class="questions">
-			<div><div class="bulb"></div>Pick the top 10 traits of people you enjoy being around:</div>
-			<div id="traits">
-				<div>Affectionate</div>
+		<div id="19" class="questions" name="clickChoice">
+			<div><div class="bulb"></div>Pick the top 5 traits of people you enjoy being around:</div>
+			<div id="traits">				
 				<div>Competent</div>
 				<div>Patient</div>
 				<div>Dependable</div>
 				<div>Loyal</div>
 				<div>Respectful</div>
-				<div>Sincere</div>
 				<div>Calm</div>
 				<div>Intelligent</div>
 				<div>Creative</div>
@@ -343,31 +339,18 @@
 				<div>Ambitious</div>
 				<div>Genuine</div>
 				<div>Courageous</div>
-				<div>Compassionate</div>
 				<div>Collaborative</div>
-				<div>Integrity</div>
 				<div>Passionate</div>
-				<div>Determined</div>
-				<div>Straightforward</div>
-				<div>Warm</div>
 				<div>Energetic</div>
 				<div>Assertive</div>
-				<div>Humble</div>
-				<div>Predictable</div>
-				<div>Proud</div>
 				<div>Clever</div>
-				<div>Wise</div>
-				<div>Sociable</div>
-				<div>Tactful</div>
 				<div>Inspiring</div>
 				<div>Confident</div>
-				<div>Trustworthy</div>
-				<div>Competitive</div>
 				<div>Humorous</div>
 			</div>
 			<input type="hidden" name="q19" value="0" />
 		</div>
-		<div id="20" class="questions">
+		<div id="20" class="questions"  name="singleChoice">
 			<div><div class="bulb"></div>I want to work ________</div>
 			<div id="motivation" class="clear">
 				<img id="motivationOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#motivationCloud" />

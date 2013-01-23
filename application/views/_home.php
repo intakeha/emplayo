@@ -35,5 +35,7 @@
 		<img src="<?php echo base_url() ?>assets/images/survey/slider_5markers.jpg">
 		<img src="<?php echo base_url() ?>assets/images/survey/sliderHandleDefault.png">
 		<img src="<?php echo base_url() ?>assets/images/survey/sliderHandle.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/instructions.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/instructions_preview.png">
 </div>
 </div>
