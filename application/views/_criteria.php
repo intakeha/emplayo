@@ -6,6 +6,93 @@
 		<div><span>Government</span><br>The public sector has a reputation for stability and job security, as well as a slower pace than private companies.  There can be a high level of taxpayer scrutiny, so red tape and bureaucratic procedures are common.</div>
 		<div><span>Non-Profit</span><br>Non-profits are a good option for people who really want to make a difference in the lives of others.  Compensation and perks may not be as high as for-profit businesses.</div>
 	</div>
+	<div class="modal_popup" id="modal_q2">
+		<div class="intro">Pace is an indicator of life inside a company.  Think of it like life in the big city versus life in the country.</div>
+		<div><span>Slower Pace</span><br>More predictable and stable work environment, with a slower business and/or industry lifecycle (e.g. research laboratory).  This could translate to less stress in the workplace and/or boredom, depnding on your perspective.</div>
+		<div><span>Medium Pace</span><br>A balance of planned and unplanned deadlines.  Some days are fast-paced, while others allow you to catch your breath.</div>
+		<div><span>Face Pace</span><br>Tighter deadlines, more pressure, and a shorter business and/or industry lifecycle (e.g. journalism).  This could be the jolt of excitement you need, or the job you dread daily if it isn't suited to you.</div>
+	</div>
+	<div class="modal_popup" id="modal_q3">
+		<div><span>Start Up | Co-Founders</span><br>You're interested in joining forces with others to start a business from scratch. Highest risk of success and highest potential for reward.</div>
+		<div><span>Start Up | First Employees</span><br>You're interested in getting in on the ground floor as one of the first employees of a company. The risk is still somewhat high, and the chance for equity is still good.</div>
+		<div><span>Rapid Growth</span><br>Once a startup begins to gain significant traction, it enters the Rapid Growth phase.  The risk of success has been reduced slightly, but there is still a ways to go to achieve maturity and stability.</div>
+		<div><span>Maturity</span><br>A solid company structure is in place, long term investments are being made, and financial statements are strong.  The company will be around for a while.</div>
+		<div><span>Rebirth</span><br>If a mature company declines, it will tend to have lower stock prices and significant employee attrition.  Joining a company at this stage entails moderate risk and reward, but with a stable infrastructure, greater resources, and a solid history of performance.</div>
+	</div>	
+	<div class="modal_popup" id="modal_q4">
+		<div class="intro">Use drag and drop to rank/order your items on the list.</div>
+		<div>Companies offer various benefits and perks to keep employees productive, healthy, and happy.  Rank your 'must have' benefits at the top and your 'nice to have' benefits at the bottom.</div>
+	</div>
+	<div class="modal_popup" id="modal_q5">
+		<div><span>Corporate Citizenship</span> is a term used to describe a company's role and responsibilities towards society (e.g., charitable giving, environmental concerns, etc.)</div>
+	</div>	
+	<div class="modal_popup" id="modal_q6">
+		<div>Certain jobs will require you travel for business purposes.  Locations, durations, and frequency can vary significantly depending on the company and job role.  If you like to travel, then it's time to rake up the frequent flyer miles.  Otherwise, this could put a damper on your family and/or personal life.</div>
+	</div>	
+	<div class="modal_popup" id="modal_q7">
+		<div>Some jobs offer the ability to move into new roles and assignments on a regular basis, offering a chance to learn and do something new.  Other jobs focus more on gaining deep expertise in a single area over time.</div>
+	</div>	
+	<div class="modal_popup" id="modal_q8">
+		<div class="intro">Use drag and drop to rank/order your items on the list.</div>
+		<div><span>Business Need</span><br>A spot opened up, or the company has hired so many new people that it needs more supervisors/managers.</div>
+		<div><span>Time at Level</span><br>You've put in the time, now it's your turn to be in the sweet spot.</div>
+		<div><span>Skills Qualification</span><br>You are able to do the job well and have the required certifications, degrees, training, and knowledge.</div>
+		<div><span>Increased Responsibilities</span><br>You have demonstrated the ability to do your job and take on other responsibilities.</div>
+		<div><span>Leadership Readiness</span><br>You have displayed the characteristics required to lead and be successful in the new role.</div>
+		<div><span>Job Performance Compared to Peers</span><br>You are the top performer based on quality and outcome of work products and deliverables.</div>
+	</div>	
+	<div class="modal_popup" id="modal_q9">
+		<div>Choose one of the two choices presented that best match your work environment preferences.</div>
+	</div>	
+	<div class="modal_popup" id="modal_q10">
+		<div class="intro">Use drag and drop to rank/order your items on the list.</div>
+		<div>There are many ways to be rewarded for a job well done. Rank your most preferred method of recognition on the top of the list.</div>
+	</div>	
+	<div class="modal_popup" id="modal_q11">
+		<div class="intro">Workplace politics are inevitible - you can't completely avoid them.  You can, however, control how you think about them.</div>
+		<div><span>Rumors Sometimes Lead to Useful Information</span><br>This is similar to keeping your finger on the pulse of the organization, and keeping up with the watercooler chatter.</div>
+		<div><span>Building Alliances Is Key</span><br>Building alliances involves developing relationships with other employees at various levels.  With a strong network of allies, you can be protected even when your back is turned.</div>
+		<div><span>Keep Your Friends Close and Your Enemies Closer</span><br>Keep tabs on people around you so you can avoid being blindsided by those with an agenda.</div>
+		<div><span>It's a Battlefield, But I Know How To Avoid Landmines</span><br>It takes skill to understand the terrain and avoid costly political missteps.</div>
+		<div><span>Keep Your Head Down and Your Nose to the Grindstone</span><br>Mind your business and focus on your job.  Don't get involved in workplace politics even if everyone else is.</div>
+	</div>	
+	<div class="modal_popup" id="modal_q12">
+		<div class="intro">Use drag and drop to rank/order your items on the list.</div>
+		<div>We all have differerent preferences and skillsets.  Some of us are more interested in working with the community, while others prefer using their creativity.  By using more of your natural strengths at work, you'll make it more enjoyable.</div>
+	</div>	
+	<div class="modal_popup" id="modal_q13">
+		<div>When you have a conversation, what is your usual communication style?</div>
+	</div>	
+	<div class="modal_popup" id="modal_q14">
+		<div class="intro">Use drag and drop to rank/order your items on the list.</div>
+		<div>If you don't know something, you will naturally take steps to find the answer.  What is your usual process, in order of your first option to last?</div>
+	</div>	
+	<div class="modal_popup" id="modal_q15">
+		<div>What do you want and expect from your ideal supervisor?</div>
+	</div>	
+	<div class="modal_popup" id="modal_q16">
+		<div>We've all been there... that inner voice telling us what to do.  Sometimes you go with it, sometimes you ignore it and do something else.  How has that worked out for you? </div>
+	</div>	
+	<div class="modal_popup" id="modal_q17">
+		<div>If someone makes inappropriate comments in the workplace, how would you respond?</div>
+	</div>	
+	<div class="modal_popup" id="modal_q18">
+		<div class="intro">If you were in a position of leadership, which of the following would most closely match your leadership style?</div>
+		<div><span>Open Dialogue</span><br>Direction comes from the top, but the lines of communication remain open for questions, comments, and feedback from workers.</div>
+		<div><span>Group Facilitation</span><br>Management works with the team to generate the plan through an interactive brainstorming session.</div>
+		<div><span>Top-Down Directive</span><br>A clear and non-negotiable plan is delivered to the team from management.</div>
+	</div>	
+	<div class="modal_popup" id="modal_q19">
+		<div>What are the characteristics of the kind of people you like to be around, especially in a work setting?</div>
+	</div>	
+	<div class="modal_popup" id="modal_q20">
+		<div class="intro">What's the most important aspect of your work?</div>
+		<div><span>With people I like to be around</span><br>The most important thing to you is working with a great team of people that you get along with and likely spend time with outside of work.</div>
+		<div><span>On things I am passionate about</span><br>What you work on is the most important thing to you.  Money and prestige are lower in priority.</div>
+		<div><span>Where I can make lots of money</span><br>The amount of money you make is your main motivator.  You'd be willing to do something you aren't passionate about, or work with a team that isn't that great, as long as the money is good.</div>
+		<div><span>At a reputable company</span><br>You want to be associated with a company that is well known, successful, and impressive.  You want to be proud to tell people where you work.</div>
+		<div><span>To live not live to work</span><br>Your life is not centered around or defined by your job.  You merely work to pay your bills; your focus is outside of work</div>
+	</div>	
 	<div class="content">
 		<div id="0" class="questions">
 			<div id="intro">
@@ -42,7 +129,7 @@
 			<input type="hidden" name="q1d" value="0" />
 		</div>
 		<div id="2" class="questions" name="multipleChoice">
-			<div><div class="bulb"></div>Select the pace of the company you want to work in:</div>
+			<div><div class="bulb" onclick="modal('#modal_q2','600','35');"></div>Select the pace of the company you want to work in:</div>
 			<ul id="co_pace">
 				<li id="q2a">Slow</li>
 				<li id="q2b">Medium</li>
@@ -53,7 +140,7 @@
 			<input type="hidden" name="q2c" value="0" />
 		</div>
 		<div id="3" class="questions" name="multipleChoice">
-			<div><div class="bulb"></div>Select the life cycle of the companies you want to work in:</div>
+			<div><div class="bulb" onclick="modal('#modal_q3','600','35');"></div>Select the life cycle of the companies you want to work in:</div>
 			<div id="co_cycle_header"></div>
 			<ul id="co_cycle">
 				<li id="q3a"></li>
@@ -69,7 +156,7 @@
 			<input type="hidden" name="q3e" value="0" />
 		</div>
 		<div id="4" class="questions" name="rankChoice">
-			<div><div class="bulb"></div>Rank the following company benefits &amp; perks you find important:</div>
+			<div><div class="bulb" onclick="modal('#modal_q4','600','35');"></div>Rank the following company benefits &amp; perks you find important:</div>
 			<div id="benefits_bar"></div>
 			<ul id="co_benefits">
 				<li id="q4_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Training</li>
@@ -93,7 +180,7 @@
 			<input type="hidden" name="qFour" value="0" />
 		</div>
 		<div id="5" class="questions" name="singleChoice">
-			<div><div class="bulb"></div>How important is corporate citizenship to you?</div>
+			<div><div class="bulb" onclick="modal('#modal_q5','600','35');"></div>How important is corporate citizenship to you?</div>
 			<div class="sliderSelected"></div>
 			<div id="citizenshipSlider" style="background: none; border: none; cursor: pointer;"></div>
 			<div class="slider5Markers">
@@ -108,7 +195,7 @@
 			<input type="hidden" name="q5" value="0" />
 		</div>
 		<div id="6" class="questions" name="singleChoice">
-			<div><div class="bulb"></div>How much traveling would you like to do for work?</div>
+			<div><div class="bulb" onclick="modal('#modal_q6','600','35');"></div>How much traveling would you like to do for work?</div>
 			<div class="sliderSelected"></div>
 			<div id="travelSlider" style="background: none; border: none; cursor: pointer;"></div>
 			<div class="slider5Markers">
@@ -123,7 +210,7 @@
 			<input type="hidden" name="q6" value="0" />
 		</div>
 		<div id="7" class="questions" name="singleChoice">
-			<div><div class="bulb"></div>How often do you want your roles &amp; responsibilities to change?</div>
+			<div><div class="bulb" onclick="modal('#modal_q7','600','35');"></div>How often do you want your roles &amp; responsibilities to change?</div>
 			<div class="sliderSelected"></div>
 			<div id="roleSlider" style="background: none; border: none; cursor: pointer;"></div>
 			<div class="slider4Markers">
@@ -137,7 +224,7 @@
 			<input type="hidden" name="q7" value="0" />
 		</div>
 		<div id="8" class="questions" name="rankChoice">
-			<div><div class="bulb"></div>Rank the following in order of importance for promotion eligibility:</div>
+			<div><div class="bulb" onclick="modal('#modal_q8','600','35');"></div>What should matter most to management in deciding on promotion?</div>
 			<div id="promotion_bar"></div>
 			<ul id="co_promotion">
 				<li id="q8_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Business Need</li>
@@ -150,7 +237,7 @@
 			<input type="hidden" name="q8" value="0" />
 		</div>
 		<div id="9" class="questions"  name="singleChoice">
-			<div><div class="bulb"></div>Select the work environment you thrive in:</div>
+			<div><div class="bulb" onclick="modal('#modal_q9','600','35');"></div>Which type of work environment allows you to do your best work?</div>
 			<div id="envQuestions">
 				<div id="q9_1" class="env">
 					<div class="envAnswer1">Supportive</div><div class="or">- or -</div><div class="envAnswer2">Independent</div>
@@ -210,7 +297,7 @@
 			<input type="hidden" name="q9_10" value="0" />
 		</div>
 		<div id="10" class="questions"  name="rankChoice">
-			<div><div class="bulb"></div>Rank your most preferred type of recognition for doing exceptional work:</div>
+			<div><div class="bulb" onclick="modal('#modal_q10','600','35');"></div>Rank your most preferred type of recognition for doing exceptional work:</div>
 			<div id="recognition_bar"></div>
 			<ul id="co_recognition">
 				<li id="q10_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Team Dinners</li>
@@ -223,7 +310,7 @@
 			<input type="hidden" name="q10" value="0" />
 		</div>
 		<div id="11" class="questions"  name="singleChoice">
-			<div><div class="bulb"></div>Pick one of the following views on workplace politics:</div>
+			<div><div class="bulb" onclick="modal('#modal_q11','600','35');"></div>Pick one of the following views on workplace politics:</div>
 			<div id="politics" class="clear">
 				<img id="politicsOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#politicsCloud" />
 				<map name="politicsCloud" id="politicsCloud">
@@ -237,7 +324,7 @@
 			<input type="hidden" name="q11" value="0" />
 		</div>
 		<div id="12" class="questions"  name="rankChoice">
-			<div><div class="bulb"></div>Rank the following type of tasks you typically enjoy working on:</div>
+			<div><div class="bulb" onclick="modal('#modal_q12','600','35');"></div>Rank the following type of tasks you typically enjoy working on:</div>
 			<div id="task_bar"></div>
 			<ul id="favTask">
 				<li id="q12_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Physical</font><br>skill, strength, coordination, accuracy</li>
@@ -250,7 +337,7 @@
 			<input type="hidden" name="q12" value="0" />			
 		</div>
 		<div id="13" class="questions"  name="singleChoice">
-			<div><div class="bulb"></div>When communicating ...</div>
+			<div><div class="bulb" onclick="modal('#modal_q13','600','35');"></div>When communicating ...</div>
 			<div id="communications" class="clear">
 				<img id="communicationOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#communicationCloud" />
 				<map name="communicationCloud" id="communicationCloud">
@@ -264,7 +351,7 @@
 			<input type="hidden" name="q13" value="0" />
 		</div>
 		<div id="14" class="questions"  name="rankChoice">
-			<div><div class="bulb"></div>If you don't know something about your job, what are the<br>steps you would take to find the answers?</div>
+			<div><div class="bulb" onclick="modal('#modal_q14','600','35');"></div>If you don't know something about your job, what are the<br>steps you would take to find the answers?</div>
 			<div id="steps_bar"></div>
 			<ul id="resource">
 				<li id="q14_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Search the Internet</li>
@@ -276,7 +363,7 @@
 			<input type="hidden" name="q14" value="0" />	
 		</div>
 		<div id="15" class="questions"  name="singleChoice">
-			<div><div class="bulb"></div>Which of the following is most effective role of a supervisor:</div>
+			<div><div class="bulb" onclick="modal('#modal_q15','600','35');"></div>Which of the following is most effective role of a supervisor:</div>
 			<div id="supervisor" class="clear">
 				<img id="supervisorOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#supervisorCloud" />
 				<map name="supervisorCloud" id="supervisorCloud">
@@ -291,7 +378,7 @@
 			<input type="hidden" name="q15" value="0" />
 		</div>
 		<div id="16" class="questions" name="singleChoice">
-			<div><div class="bulb"></div>When you ignore a strong gut feel<br>that's trying to tell you something, you tend to regret it later on.</div>
+			<div><div class="bulb" onclick="modal('#modal_q16','600','35');"></div>When you ignore a strong gut feel<br>that's trying to tell you something, you tend to regret it later on.</div>
 			<div id="intuition">
 				<div id="true" class="true_false">True</div>
 				<div id="false" class="true_false">False</div>
@@ -299,7 +386,7 @@
 			<input type="hidden" name="q16" value="0" />
 		</div>
 		<div id="17" class="questions" name="singleChoice">
-			<div><div class="bulb"></div>When someone makes inappropriate or derogatory remarks, you typically ...</div>
+			<div><div class="bulb" onclick="modal('#modal_q17','600','35');"></div>When someone makes inappropriate or derogatory remarks, you typically ...</div>
 			<div id="respect" class="clear">
 				<img id="respectOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#respectCloud" />
 				<map name="respectCloud" id="respectCloud">
@@ -313,7 +400,7 @@
 			<input type="hidden" name="q17" value="0" />
 		</div>
 		<div id="18" class="questions" name="singleChoice">
-			<div><div class="bulb"></div>How would you effectively lead a team?</div>
+			<div><div class="bulb" onclick="modal('#modal_q18','600','35');"></div>How would you effectively lead a team?</div>
 			<div id="leadership" class="clear">
 				<img id="leadershipOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#leadershipCloud" />
 				<map name="leadershipCloud" id="leadershipCloud">
@@ -325,7 +412,7 @@
 			<input type="hidden" name="q18" value="0" />
 		</div>
 		<div id="19" class="questions" name="clickChoice">
-			<div><div class="bulb"></div>Pick the top 5 traits of people you enjoy being around:</div>
+			<div><div class="bulb" onclick="modal('#modal_q19','600','35');"></div>Pick the top 5 traits of people you enjoy being around:</div>
 			<div id="traits">				
 				<div>Competent</div>
 				<div>Patient</div>
@@ -351,7 +438,7 @@
 			<input type="hidden" name="q19" value="0" />
 		</div>
 		<div id="20" class="questions"  name="singleChoice">
-			<div><div class="bulb"></div>I want to work ________</div>
+			<div><div class="bulb" onclick="modal('#modal_q20','600','35');"></div>I want to work ________</div>
 			<div id="motivation" class="clear">
 				<img id="motivationOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#motivationCloud" />
 				<map name="motivationCloud" id="motivationCloud">

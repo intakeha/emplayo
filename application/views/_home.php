@@ -2,8 +2,7 @@
 	<div id="banner">
 		<div class="content">
 			<div id="icon"></div>
-			<div id="start">Emplayo helps you find jobs<br>that fit you best.
-				<!--<a href="index.php/emplayo/criteria">Get Started</a>-->
+			<div id="start">Emplayo helps you find the companies<br>that fit you best.
                                 <a href="emplayo/criteria">Get Started</a>
 			</div>
 		</div>

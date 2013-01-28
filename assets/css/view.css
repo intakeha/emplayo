@@ -119,6 +119,16 @@ div#story .content{
 	font-weight: bold;
 }
 
+.modal_popup span{
+	color: #258CD1;
+	font-weight: bold;
+}
+
+.modal_popup .intro{
+	color: #e9b60b;
+	font-weight: bold;
+}
+
 .modal_popup img{
 	float: right;
 	margin-left: 20px;
@@ -140,6 +150,11 @@ div.hints {
     text-align: center;
     width: 200px;
 }
+
+div.hints div {
+    display: none;
+}
+
 
 area{
 	outline: none;
