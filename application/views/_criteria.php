@@ -8,7 +8,7 @@
 	</div>
 	<div class="modal_popup" id="modal_q2">
 		<div class="intro">Pace is an indicator of life inside a company.  Think of it like life in the big city versus life in the country.</div>
-		<div><span>Slower Pace</span><br>More predictable and stable work environment, with a slower business and/or industry lifecycle (e.g. research laboratory).  This could translate to less stress in the workplace and/or boredom, depnding on your perspective.</div>
+		<div><span>Slower Pace</span><br>More predictable and stable work environment, with a slower business and/or industry lifecycle (e.g. research laboratory).  This could translate to less stress in the workplace and/or boredom, depending on your perspective.</div>
 		<div><span>Medium Pace</span><br>A balance of planned and unplanned deadlines.  Some days are fast-paced, while others allow you to catch your breath.</div>
 		<div><span>Face Pace</span><br>Tighter deadlines, more pressure, and a shorter business and/or industry lifecycle (e.g. journalism).  This could be the jolt of excitement you need, or the job you dread daily if it isn't suited to you.</div>
 	</div>
@@ -27,7 +27,7 @@
 		<div><span>Corporate Citizenship</span> is a term used to describe a company's role and responsibilities towards society (e.g., charitable giving, environmental concerns, etc.)</div>
 	</div>	
 	<div class="modal_popup" id="modal_q6">
-		<div>Certain jobs will require you travel for business purposes.  Locations, durations, and frequency can vary significantly depending on the company and job role.  If you like to travel, then it's time to rake up the frequent flyer miles.  Otherwise, this could put a damper on your family and/or personal life.</div>
+		<div>Certain jobs will require you travel for business purposes.  Locations, durations, and frequency can vary significantly depending on the company and job role.  If you like to travel, then it's time to rack up the frequent flyer miles.  Otherwise, this could put a damper on your family and/or personal life.</div>
 	</div>	
 	<div class="modal_popup" id="modal_q7">
 		<div>Some jobs offer the ability to move into new roles and assignments on a regular basis, offering a chance to learn and do something new.  Other jobs focus more on gaining deep expertise in a single area over time.</div>
