@@ -1,11 +1,3 @@
 /application/config/environment.config
-<<<<<<< HEAD
-/application/config/localhost/*
-/application/config/localhost/config.php
-/application/config/localhost/autoload.php
-/application/config/localhost/database.php
-=======
 /application/config/localhost/config.php
 /application/config/localhost
-
->>>>>>> e1b2bb17d9a26ad8f5e5570b166f90430ef14d91
