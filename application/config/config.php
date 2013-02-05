@@ -28,7 +28,7 @@ $config['base_url']	= '//localhost';//removed the http: to use protocol relative
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
