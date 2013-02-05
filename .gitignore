@@ -1,8 +1,4 @@
 /application/config/environment.config
-<<<<<<< HEAD
 /application/config/localhost/config.php
 /application/config/localhost
-=======
-/application/config/localhost/*
-/application/config/localhost/config.php
->>>>>>> 473a86f23bd3e89a626a29372cc2071aefe001a1
+
