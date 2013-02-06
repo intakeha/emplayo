@@ -1,6 +1,6 @@
 /* Home Page */
 
-#login{
+#headerLogin{
 	margin: 5px 50px 0 0;
 	float: right;
 	color: #bbb;
@@ -106,6 +106,72 @@ div#story .content{
 #story p{
 	padding-top: 30px;
 	padding-left: 30px;
+}
+
+/* Login */
+
+div#login .content{
+	height: 550px;
+}
+
+div#login label {
+    display: block;
+	margin: 20px 0 10px 0;
+	color: #258CD1;
+}
+
+div#login input{
+	font-size: 25px;
+	color: #777;
+}
+
+div#login .submit {
+    background-color: #258CD1;
+    background-image: -moz-linear-gradient(center top , #4D90FE, #258CD1);
+    border: 1px solid #258CD1;
+    color: #FFFFFF;
+    border-radius: 2px;
+    font-weight: bold;
+	cursor: pointer;
+	margin: 15px 0 10px 0;
+}
+
+#login_left{
+	float: left;
+	padding: 50px 100px 0 50px;
+	width: 545px;
+}
+
+#login_left div{
+	margin: 20px 0;
+}
+
+div#login_left span{
+	color: #e9b60b;
+}
+
+#login_right{
+	float: left;
+	border: 1px solid #ccc;
+	margin-top: 30px;
+	padding: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+div#login_right span{
+	color: #258CD1;
+}
+
+
+div#login_right p{
+	font-size: 15px;
+}
+
+div#login .errors{
+	font-size: 15px;
+	color: #941f1c;
+	margin-top: 10px;
+	width: 260px;
 }
 
 /* Questionnaire */

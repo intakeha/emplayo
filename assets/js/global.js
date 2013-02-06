@@ -23,6 +23,11 @@ $(document).ready(function(){
 	
 	// Determine current page
 	var currentPage = $('div#container div').eq(0).attr('id');
+		
+	// Remove Sign Up & Log In
+	if(currentPage == 'login'){
+		$('#headerLogin').hide();
+	}
 
 	// Reset all answers to 0
 	$("input[name^='q']").each(function() {      
@@ -31,7 +36,7 @@ $(document).ready(function(){
 	
 	// Display questionnaire	 
 	if(currentPage == 'criteria'){
-		$('#login, #footer, #progressBar').hide();
+		$('#members, #footer, #progressBar').hide();
 
 		// Hover animation for next button
 		$("div#nextQuestion, div#showPreview").hover(

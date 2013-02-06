@@ -42,7 +42,7 @@
 //$route['default_controller'] = "home";//brad's orig setting
 $route['default_controller'] = "emplayo";
 $route['404_override'] = '';
-
+$route['login'] = 'user/login';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

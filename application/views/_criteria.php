@@ -492,7 +492,7 @@
 		<img src="<?php echo base_url() ?>assets/images/survey/respect.jpg">
 		<img src="<?php echo base_url() ?>assets/images/survey/leadership.jpg">
 		<img src="<?php echo base_url() ?>assets/images/survey/motivation.jpg">
-		<img src="<?php echo base_url() ?>assets/images/survey/progressIcon.png">
+		<img src="<?php echo base_url() ?>assets/images/progressIcon.png">
 		<img src="<?php echo base_url() ?>assets/images/preview.png">
 		<img src="<?php echo base_url() ?>assets/images/netapp.png">
 	</div>
