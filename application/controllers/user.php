@@ -2,16 +2,15 @@
 
 class User extends CI_Controller {
     
-    function __construct() {
-        parent::__construct();
-        session_start();
-    }
+	function __construct() {
+		parent::__construct();
+		session_start();
+	}
 
-    public function login()
-	{
+	public function login(){
             //if the user has been authenticated, and has a session, then they should not see the login page again.
             if (isset($_SESSION['username'])){
-            redirect('user/home');
+		redirect('inquire');
 		}
             //set up the validation library and rules
             $this->load->library('form_validation');
@@ -30,15 +29,20 @@ class User extends CI_Controller {
                     //Set the session varible.
                     $_SESSION['username']= $this->input->post('email_address');
                     //Redirect them to their user home page.
-                    redirect('user/home');
+                    redirect('inquire');
                 }
                 
             }
             //User has not been authenticated.  Load login view.
-		$data['title']="Login";
+		$data['title']="Login";	
 		$data['content']="_login";
 		$this->load->helper('url');
 		$this->load->view('canvas', $data);
+	}
+
+	public function logout(){
+		session_destroy();
+		redirect('login');
 	}
         
 }

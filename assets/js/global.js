@@ -36,7 +36,7 @@ $(document).ready(function(){
 	
 	// Display questionnaire	 
 	if(currentPage == 'criteria'){
-		$('#members, #footer, #progressBar').hide();
+		$('#headerLogin, #footer, #progressBar').hide();
 
 		// Hover animation for next button
 		$("div#nextQuestion, div#showPreview").hover(
