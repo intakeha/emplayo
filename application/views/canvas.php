@@ -19,7 +19,7 @@
 <body>
 	<div id="header">
 		<div class="content">
-			<div id="login" class="clear"><a href="user/signup">Sign Up</a> | <a href="user/login">Sign In</a></div>
+			<div id="headerLogin" class="clear"><a href="user/signup">Sign Up</a> | <a href="login">Log In</a></div>
 			<div id="nextQuestion"><div class="next">next</div><div class="arrow"></div></div>
 			<div id="showPreview"><a href="preview"><div class="next">next</div><div class="arrow"></div></a></div>
 			<a id="logo" href="./"></a>
