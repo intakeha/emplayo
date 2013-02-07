@@ -126,6 +126,10 @@ div#login input{
 	width: 300px;
 }
 
+div#login input#email_address, div#login input#password{
+	width: 255px;
+}
+
 div#login .submit {
     background-color: #258CD1;
     background-image: -moz-linear-gradient(center top , #4D90FE, #258CD1);
