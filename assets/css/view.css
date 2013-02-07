@@ -123,7 +123,6 @@ div#login label {
 div#login input{
 	font-size: 25px;
 	color: #777;
-	width: 300px;
 }
 
 div#login input#email_address, div#login input#password{
