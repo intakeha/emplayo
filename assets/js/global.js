@@ -25,7 +25,7 @@ $(document).ready(function(){
 	var currentPage = $('div#container div').eq(0).attr('id');
 		
 	// Remove Sign Up & Log In
-	if(currentPage == 'login'){
+	if(currentPage == 'login' || currentPage == 'signup'){
 		$('#headerLogin').hide();
 	}
 

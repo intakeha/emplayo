@@ -20,10 +20,9 @@
 			<div class="errors"><?php echo form_error('password'); ?></div>
 			<?php echo form_submit('submit','Login','class="submit"')?>			
 			<?php echo form_close() ;?>
-			<div class="errors"><?php //echo validation_errors();?></div>  
 			<p><a href="forgot">Forgot your password?</a></p>
 			<hr>
-			<p><span>New to Emplayo?</span></p>
+			<p id="new_text">New to Emplayo?</p>
 			<p><a href="signup">Create an Account</a></p>
 		</div>
 	</div>

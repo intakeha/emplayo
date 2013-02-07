@@ -6,6 +6,13 @@ class User extends CI_Controller {
 		parent::__construct();
 		session_start();
 	}
+	
+	public function signup(){
+		$data['title']="Account Sign Up";	
+		$data['content']="_signup";
+		$this->load->helper('url');
+		$this->load->view('canvas', $data);
+	}
 
 	public function login(){
             //if the user has been authenticated, and has a session, then they should not see the login page again.
