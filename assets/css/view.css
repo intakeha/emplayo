@@ -108,36 +108,64 @@ div#story .content{
 	padding-left: 30px;
 }
 
-/* Login */
-
-div#login .content{
+/* Sign Up */
+div#signup .content{
 	height: 550px;
 }
 
-div#login label {
+#signup_left{
+	width: 300px;
+	float: left;
+	border: 1px solid #ccc;
+	font-size: 20px;
+	margin: 30px 0 0 50px;
+	padding: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#signup_left span{
+	color: #e9b60b;
+}
+
+div#signup label {
     display: block;
 	margin: 20px 0 10px 0;
-	color: #258CD1;
+	color: #e9b60b;
 }
 
-div#login input{
-	font-size: 25px;
-	color: #777;
-}
-
-div#login input#email_address, div#login input#password{
-	width: 255px;
-}
-
-div#login .submit {
-    background-color: #258CD1;
-    background-image: -moz-linear-gradient(center top , #4D90FE, #258CD1);
-    border: 1px solid #258CD1;
+div#signup .submit{
+    background-color: #e9b60b;
+    background-image: -moz-linear-gradient(center top , #e9b60b, #e9b60b);
+    border: 1px solid #e9b60b;
     color: #FFFFFF;
     border-radius: 2px;
     font-weight: bold;
 	cursor: pointer;
 	margin: 15px 0 10px 0;
+	width: 90px;
+}
+
+#signup_right{
+	float: left;
+	width: 530px;
+	margin-left: 40px;
+	padding: 20px 30px;
+}
+
+#signup_right div{
+	margin-top: 25px;
+	font-size: 20px;
+}
+
+#signup_right span{
+	color: #258CD1;
+	font-size: 22px;
+}
+
+/* Login */
+
+div#login .content{
+	height: 550px;
 }
 
 #login_left{
@@ -160,21 +188,50 @@ div#login_left span{
 	margin: 30px 0 0 80px;
 	padding: 20px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	font-size: 20px;
 }
 
 div#login_right span{
 	color: #258CD1;
+	font-size: 25px;
 }
 
+div#login #new_text{
+	color: #258CD1;
+}
 
-div#login_right p{
+div#login label {
+    display: block;
+	margin: 20px 0 10px 0;
+	color: #258CD1;
+}
+
+div#login input, div#signup input{
+	font-size: 20px;
+	color: #777;
+	width: 255px;
+}
+
+div#login .submit{
+    background-color: #258CD1;
+    background-image: -moz-linear-gradient(center top , #4D90FE, #258CD1);
+    border: 1px solid #258CD1;
+    color: #FFFFFF;
+    border-radius: 2px;
+    font-weight: bold;
+	cursor: pointer;
+	margin: 15px 0 10px 0;
+	width: 90px;
+}
+
+div#login_right p, div#signup_left p{
 	font-size: 15px;
 }
 
 div#login .errors{
 	font-size: 15px;
 	color: #941f1c;
-	margin-top: 10px;
+	margin-top: 5px;
 	width: 260px;
 }
 
