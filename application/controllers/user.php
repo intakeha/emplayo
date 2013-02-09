@@ -48,7 +48,7 @@ class User extends CI_Controller {
 	}
 
     
-    public function signup()
+    public function signup2()
     {
             //if the user has been authenticated, and has a session, then they should not see the signup page again.
             if (isset($_SESSION['username'])){
