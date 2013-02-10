@@ -318,7 +318,6 @@ class Auth extends CI_Controller {
 		if ($this->form_validation->run() == false)
 		{
 			//setup the input
-                    echo "crappy form validation!";
 			$this->data['email'] = array('name' => 'email',
 				'id' => 'email',
 			);
@@ -333,32 +332,59 @@ class Auth extends CI_Controller {
 
 			//set any errors and display the form
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			$this->_render_page('auth/forgot_password', $this->data);
-                        //$this->data['title']="Forgot Password";
-                        //$this->data['content']="_forgot";
-                        //$this->_render_page('canvas', $this->data);                        
+			//$this->_render_page('auth/forgot_password', $this->data);
+                        $this->data['title']="Forgot Password";
+                        $this->data['content']="_forgot";
+                        $this->_render_page('canvas', $this->data);                        
 		}
 		else
 		{
-                    echo "here i am";
 			// get identity for that email
 			$config_tables = $this->config->item('tables', 'ion_auth');
 			$identity = $this->db->where('email', $this->input->post('email'))->limit('1')->get($config_tables['users'])->row();
+                        //$identity is an array; the entire row from the user db, with all of the user info
+                        if (!empty($identity))                            
+                        {
+                            //we found a matching email address in our system
+                            //run the forgotten password method to email an activation code to the user
+                            $forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity', 'ion_auth')});
 
-			//run the forgotten password method to email an activation code to the user
-			$forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity', 'ion_auth')});
+                            if ($forgotten)
+                            {
+                                    //if there were no errors
+                                    $this->session->set_flashdata('message', $this->ion_auth->messages());
+                                    redirect("auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
+                            }
+                            else
+                            {
+                                    $this->session->set_flashdata('message', $this->ion_auth->errors());
+                                    redirect("auth/forgot_password", 'refresh');
+                            }
+                        }
+                         else 
+                         {
+                             //we did NOT find a matching email address in our system
+                             //re-display the form with an error
+			//setup the input
+			$this->data['email'] = array('name' => 'email',
+				'id' => 'email',
+			);
 
-			if ($forgotten)
-			{
-				//if there were no errors
-				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect("auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
+			if ( $this->config->item('identity', 'ion_auth') == 'username' ){
+				$this->data['identity_label'] = 'Username';
 			}
 			else
 			{
-				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect("auth/forgot_password", 'refresh');
-			}
+				$this->data['identity_label'] = 'Email';
+			}                             
+                             
+                            $this->data['message'] = 'There is no user with that email address in our system.';
+                            //$this->_render_page('auth/forgot_password', $this->data);
+                            $this->data['title']="Forgot Password";
+                            $this->data['content']="_forgot";
+                            $this->_render_page('canvas', $this->data);
+
+                         }
 		}
 	}
 

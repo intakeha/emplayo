@@ -7,11 +7,9 @@
 			</div>
 
 		</div>
+            <div id="infoMessage"><?php echo $message;?></div>
 		<div id="login_right">
 			<div><span>Forgot Password</span></div>
-                        
-                        <div id="infoMessage"><?php //echo $message;?></div>
-                        
 			<?php echo form_open('auth/forgot_password') ;?>
 			<?php echo form_label('Email:','email')?>
 			<?php echo form_input('email',set_value('email'),'id=email')?>
