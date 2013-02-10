@@ -44,6 +44,7 @@ $route['default_controller'] = "emplayo";
 $route['404_override'] = '';
 $route['login'] = 'user/login';
 $route['signup'] = 'user/signup';
+$route['auth/forgot'] = 'auth/forgot_password';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

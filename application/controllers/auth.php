@@ -61,7 +61,7 @@ class Auth extends CI_Controller {
                     $this->data['title'] = "Login";
 
                     //validate form input
-                    $this->form_validation->set_rules('identity', 'Identity', 'required');
+                    $this->form_validation->set_rules('email', 'Email', 'required');
                     $this->form_validation->set_rules('password', 'Password', 'required');
 
                     if ($this->form_validation->run() == true)
@@ -70,7 +70,7 @@ class Auth extends CI_Controller {
                             //check for "remember me"
                             $remember = (bool) $this->input->post('remember');
 
-                            if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
+                            if ($this->ion_auth->login($this->input->post('email'), $this->input->post('password'), $remember))
                             {
                                     //if the login is successful
                                     //redirect them back to the home page
@@ -91,17 +91,19 @@ class Auth extends CI_Controller {
                             //set the flash data error message if there is one
                             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
-                            $this->data['identity'] = array('name' => 'identity',
-                                    'id' => 'identity',
+                            $this->data['email'] = array('name' => 'email',
+                                    'id' => 'email',
                                     'type' => 'text',
-                                    'value' => $this->form_validation->set_value('identity'),
+                                    'value' => $this->form_validation->set_value('email'),
                             );
                             $this->data['password'] = array('name' => 'password',
                                     'id' => 'password',
                                     'type' => 'password',
                             );
 
-                            $this->_render_page('auth/login', $this->data);
+                            $this->data['title']="Login";	
+                            $this->data['content']="_login";
+                            $this->_render_page('canvas', $this->data);                                                     
                     }
             }
 	}
@@ -128,6 +130,7 @@ class Auth extends CI_Controller {
 		$this->data['title'] = "Signup";
 
 		//validate form input
+                $this->form_validation->set_rules('email', 'Email', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'required');
 
@@ -182,11 +185,63 @@ class Auth extends CI_Controller {
 				'value' => $this->form_validation->set_value('password_confirm'),
 			);
 
-			$this->_render_page('auth/signup', $this->data);
+			//$this->_render_page('auth/signup', $this->data);
+                        $this->data['title']="Account Sign Up";
+                        $this->data['content']="_signup";
+                        $this->_render_page('canvas', $this->data);
 		}
             }
 	}        
 
+	function forgot_passwordNEW()
+	{           
+            
+		$this->form_validation->set_rules('email', 'Email', 'required|valid');
+		if ($this->form_validation->run() == false)
+		{
+			//setup the input
+			$this->data['email'] = array('name' => 'email',
+				'id' => 'email',
+			);
+
+			if ( $this->config->item('identity', 'ion_auth') == 'username' ){
+				$this->data['identity_label'] = 'Username';
+			}
+			else
+			{
+				$this->data['identity_label'] = 'Email';
+			}
+
+			//set any errors and display the form
+			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+			//$this->_render_page('auth/forgot_password', $this->data);
+                        $this->data['title']="Forgot Password";
+                        $this->data['content']="_forgot";
+                        $this->_render_page('canvas', $this->data);                        
+		}
+		else
+		{
+			// get identity for that email
+			$config_tables = $this->config->item('tables', 'ion_auth');
+			$identity = $this->db->where('email', $this->input->post('email'))->limit('1')->get($config_tables['users'])->row();
+
+			//run the forgotten password method to email an activation code to the user
+			$forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity', 'ion_auth')});
+
+			if ($forgotten)
+			{
+				//if there were no errors
+				$this->session->set_flashdata('message', $this->ion_auth->messages());
+				//redirect("auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
+			}
+			else
+			{
+				$this->session->set_flashdata('message', $this->ion_auth->errors());
+				//redirect("auth/forgot_password", 'refresh');
+			}
+		}
+	}        
+        
 	//change password
 	function change_password()
 	{
@@ -257,11 +312,13 @@ class Auth extends CI_Controller {
 
 	//forgot password
 	function forgot_password()
-	{
-		$this->form_validation->set_rules('email', 'Email Address', 'required');
+	{           
+            
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 		if ($this->form_validation->run() == false)
 		{
 			//setup the input
+                    echo "crappy form validation!";
 			$this->data['email'] = array('name' => 'email',
 				'id' => 'email',
 			);
@@ -277,9 +334,13 @@ class Auth extends CI_Controller {
 			//set any errors and display the form
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 			$this->_render_page('auth/forgot_password', $this->data);
+                        //$this->data['title']="Forgot Password";
+                        //$this->data['content']="_forgot";
+                        //$this->_render_page('canvas', $this->data);                        
 		}
 		else
 		{
+                    echo "here i am";
 			// get identity for that email
 			$config_tables = $this->config->item('tables', 'ion_auth');
 			$identity = $this->db->where('email', $this->input->post('email'))->limit('1')->get($config_tables['users'])->row();
