@@ -9,6 +9,9 @@
 			<?php echo form_label('Password:','password')?>
 			<?php echo form_password('password','','id=password')?>
 			<div class="errors"><?php echo form_error('password'); ?></div>
+			<?php echo form_label('Confirm Password:','password_confirm')?>
+			<?php echo form_password('password','','id=password_confirm')?>
+			<div class="errors"><?php echo form_error('password_confirm'); ?></div>
 			<?php echo form_submit('submit','Sign Up','class="submit"')?>			
 			<?php echo form_close() ;?>
 			<p>By clicking Sign Up, you agree to Emplayo's Terms of Service.</p>

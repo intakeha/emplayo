@@ -8,6 +8,28 @@ class User extends CI_Controller {
 	}
 	
 	public function signup(){
+	
+		//set up the validation library and rules
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('email_address','Email','required|valid_email');
+		$this->form_validation->set_rules('password','Password','required|min_length[4]');
+		//TODO: improve password requirements
+
+		if ($this->form_validation->run() !== false){
+			//Form validation passed...
+			$this->load->model('user_model');
+			$res = $this
+				->user_model
+				->verify_user($this->input->post('email_address'),  $this->input->post('password'));
+			if ($res !== false){
+				//if a row is returned, then it means the validation passed.
+				//Set the session varible.
+				$_SESSION['username']= $this->input->post('email_address');
+				//Redirect them to their user home page.
+				redirect('inquire');
+			}
+		}
+		    
 		$data['title']="Account Sign Up";	
 		$data['content']="_signup";
 		$this->load->helper('url');
@@ -45,6 +67,20 @@ class User extends CI_Controller {
 		$data['content']="_login";
 		$this->load->helper('url');
 		$this->load->view('canvas', $data);
+	}
+	
+	public function forgot(){
+		$data['title']="Forgot Password";	
+		$data['content']="_forgot";
+		$this->load->helper('url');
+		$this->load->view('canvas', $data);	
+	}
+
+	public function reset(){
+		$data['title']="Password Reset";	
+		$data['content']="_reset";
+		$this->load->helper('url');
+		$this->load->view('canvas', $data);	
 	}
 
 	public function logout(){

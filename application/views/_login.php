@@ -22,7 +22,7 @@
 			<?php echo form_close() ;?>
 			<p><a href="forgot">Forgot your password?</a></p>
 			<hr>
-			<p id="new_text">New to Emplayo?</p>
+			<p><span>New to Emplayo?</span></p>
 			<p><a href="signup">Create an Account</a></p>
 		</div>
 	</div>

@@ -114,7 +114,7 @@ div#signup .content{
 }
 
 #signup_left{
-	width: 300px;
+	width: 260px;
 	float: left;
 	border: 1px solid #ccc;
 	font-size: 20px;
@@ -135,7 +135,7 @@ div#signup label {
 
 div#signup .submit{
     background-color: #e9b60b;
-    background-image: -moz-linear-gradient(center top , #e9b60b, #e9b60b);
+    background-image: -moz-linear-gradient(center top , #ffcc00, #e9b60b);
     border: 1px solid #e9b60b;
     color: #FFFFFF;
     border-radius: 2px;
@@ -143,6 +143,13 @@ div#signup .submit{
 	cursor: pointer;
 	margin: 15px 0 10px 0;
 	width: 90px;
+}
+
+div#signup .errors{
+	font-size: 15px;
+	color: #ad27c1;
+	margin-top: 5px;
+	width: 260px;
 }
 
 #signup_right{
@@ -193,11 +200,6 @@ div#login_left span{
 
 div#login_right span{
 	color: #258CD1;
-	font-size: 25px;
-}
-
-div#login #new_text{
-	color: #258CD1;
 }
 
 div#login label {
@@ -206,7 +208,7 @@ div#login label {
 	color: #258CD1;
 }
 
-div#login input, div#signup input{
+div#login input, div#signup input, div#forgot input, div#reset input{
 	font-size: 20px;
 	color: #777;
 	width: 255px;
@@ -224,11 +226,103 @@ div#login .submit{
 	width: 90px;
 }
 
-div#login_right p, div#signup_left p{
+div#login_right p, div#signup_left p, div#forgot p{
 	font-size: 15px;
 }
 
 div#login .errors{
+	font-size: 15px;
+	color: #941f1c;
+	margin-top: 5px;
+	width: 260px;
+}
+
+/* Forgot */
+div#forgot .content{
+	height: 500px;
+	font-size: 20px;
+}
+
+div#forgot span, div#forgot label {
+    color: #258CD1;
+}
+
+div#forgot div{
+	margin-bottom: 20px;
+}
+
+div#forgot #panel{
+	width: 400px;
+	border: 1px solid #ccc;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 50px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	font-size: 20px;
+	text-align: center;
+}
+
+div#forgot .submit{
+    background-color: #258CD1;
+    background-image: -moz-linear-gradient(center top , #4D90FE, #258CD1);
+    border: 1px solid #258CD1;
+    color: #FFFFFF;
+    border-radius: 2px;
+    font-weight: bold;
+	cursor: pointer;
+	margin: 15px 0 10px 0;
+	width: 90px;
+}
+
+div#forgot .errors{
+	font-size: 15px;
+	color: #941f1c;
+	margin-top: 5px;
+	width: 260px;
+}
+
+/* Password Reset */
+
+div#reset .content{
+	height: 500px;
+	font-size: 20px;
+}
+
+div#reset span, div#reset label {
+    color: #258CD1;
+	display: block;
+}
+
+div#reset div{
+	margin-bottom: 20px;
+}
+
+div#reset #panel{
+	width: 250px;
+	border: 1px solid #ccc;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 50px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	font-size: 20px;
+	text-align: left;
+}
+
+div#reset .submit{
+    background-color: #258CD1;
+    background-image: -moz-linear-gradient(center top , #4D90FE, #258CD1);
+    border: 1px solid #258CD1;
+    color: #FFFFFF;
+    border-radius: 2px;
+    font-weight: bold;
+	cursor: pointer;
+	margin: 15px 0 10px 0;
+	width: 90px;
+}
+
+div#reset .errors{
 	font-size: 15px;
 	color: #941f1c;
 	margin-top: 5px;
