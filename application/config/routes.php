@@ -42,10 +42,11 @@
 //$route['default_controller'] = "home";//brad's orig setting
 $route['default_controller'] = "emplayo";
 $route['404_override'] = '';
-$route['login'] = 'user/login';
-$route['signup'] = 'user/signup';
-$route['forgot'] = 'user/forgot';
-$route['reset'] = 'user/reset';
+$route['login'] = 'auth/login';
+$route['signup'] = 'auth/signup';
+$route['forgot'] = 'auth/forgot_password';
+$route['change'] = 'auth/change_password';
+$route['logout'] = 'auth/logout';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -83,10 +83,6 @@ class User extends CI_Controller {
 		$this->load->view('canvas', $data);	
 	}
 
-	public function logout(){
-		session_destroy();
-		redirect('login');
-	}
-        
+
 }
 

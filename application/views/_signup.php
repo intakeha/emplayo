@@ -2,15 +2,18 @@
 	<div class="content">
 		<div id="signup_left">
 			<div><span>Create Account</span></div>
+                        <!--<div id="infoMessage"><?php //echo $message;?></div>-->
+                        
 			<?php echo form_open('signup') ;?>
-			<?php echo form_label('Email:','email_address')?>
-			<?php echo form_input('email_address',set_value('email_address'),'id=email_address')?>
-			<div class="errors"><?php echo form_error('email_address'); ?></div>
+			<?php echo form_label('Email:','email')?>
+			<?php echo form_input('email',set_value('email'),'id=email')?>
+			<div class="errors"><?php echo form_error('email'); ?></div>
 			<?php echo form_label('Password:','password')?>
 			<?php echo form_password('password','','id=password')?>
 			<div class="errors"><?php echo form_error('password'); ?></div>
+
 			<?php echo form_label('Confirm Password:','password_confirm')?>
-			<?php echo form_password('password','','id=password_confirm')?>
+			<?php echo form_password('password_confirm','','id=password_confirm')?>
 			<div class="errors"><?php echo form_error('password_confirm'); ?></div>
 			<?php echo form_submit('submit','Sign Up','class="submit"')?>			
 			<?php echo form_close() ;?>
