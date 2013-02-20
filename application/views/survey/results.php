@@ -54,6 +54,7 @@
                 echo "</div>";
             }            
             
+            //$this->session->all_userdata();
             
             
             if (!empty($full_company_info))
@@ -85,12 +86,17 @@
                 echo '<pre>aggregate data:<br>',print_r($aggregate_data,1),'</pre>';
                 echo '<pre>company fit:<br>',print_r($company_fit,1),'</pre>';
                 */
-                
+                $raw_data = unserialize(file_get_contents('temp_arrays/raw_array.txt'));
                 table_print('Raw Data', $raw_data);
+                $coord_data = unserialize(file_get_contents('temp_arrays/coord_array.txt')); 
                 table_print('Coordinate Data', $coord_data);
+                $dist_data = unserialize(file_get_contents('temp_arrays/dist_array.txt'));
                 table_print('Distance Data', $dist_data);
-                table_print('Normalize Disparate Data', $norm_disp_data);
+                $norm_disp_data = unserialize(file_get_contents('temp_arrays/norm_disp_array.txt'));
+                table_print('Normalized Data', $norm_disp_data);
+                $aggregate_data = unserialize(file_get_contents('temp_arrays/aggregate_array.txt'));
                 table_print('Aggregate Data', $aggregate_data);
+                $company_fit = unserialize(file_get_contents('temp_arrays/fit_array.txt'));
                 table_print('Company Fit Data', $company_fit);
                 
                 

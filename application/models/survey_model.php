@@ -48,8 +48,8 @@ class Survey_model extends CI_Model {
 
         foreach ($query->result_array() as $row)
         {
-            print_r($row['company_name']);
-            echo '<br>';
+            /*print_r($row['company_name']);
+            echo '<br>';*/
         }
 
     }
@@ -158,8 +158,8 @@ class Survey_model extends CI_Model {
             }
             
             arsort($scores);
-            echo "scores: <br>";
-            print_r($scores);
+           /* echo "scores: <br>";
+            print_r($scores);*/
             //reset($scores);
             //$first_key = key($scores);
             //echo "Best score is company id: ".$first_key;
@@ -219,6 +219,8 @@ class Survey_model extends CI_Model {
 
         //put the values from those arrays into strings so they can be added to the query
         $imploded_type = implode(",", $type_array);
+        
+        /*
         echo "these are the passed company types:<br>";
         echo $imploded_type;
         echo "<br>";
@@ -226,7 +228,7 @@ class Survey_model extends CI_Model {
         echo "this is the passed company list:<br>";
         echo $company_list;
         echo "<br>";        
-
+        */
         $sql = 'SELECT id,company_name FROM company WHERE type_id IN ('.$imploded_type.')
                 AND id IN ('.$company_list.')';
         ////TODO: this query cannot handle the case where there is only one choice passed.  
@@ -243,10 +245,11 @@ class Survey_model extends CI_Model {
                 $companyid_array[]=$row['id'];
             }
             $queried_comp_ids = implode(',', $companyid_array);
+            /*
             echo "queried comp ids based on TYPE: <br>";
             print_r($queried_comp_ids);
             echo '<br>';
-            
+            */
             return $queried_comp_ids;
             
         }
@@ -569,7 +572,7 @@ class Survey_model extends CI_Model {
     
     function get_distance_matrix3($ranked_comps,$history_scoring)
     {
-        
+        //$this->session->set_userdata('some_name', 'some_value');
         //1. Create array of data points
         //
         //user's benefit score is always perfect, so we know it is the triangular
@@ -645,12 +648,15 @@ class Survey_model extends CI_Model {
         $data_array = $data;
         //normalize citizenship data (convert to rank 1-5, then normalize)
         //our data should already be in rank 1-5
+        /*
         echo "<pre>";
-        echo "<br> raw data:<br>";
+        echo "<br>(data_array) raw data:<br>";
         print_r($data_array);
         echo "</pre>";
+        */
         
-        $raw_data_array = $data_array;
+        //$raw_data_array = $data_array;
+        file_put_contents('temp_arrays/raw_array.txt', serialize($data_array)); 
         
         foreach ($data_array as &$row)
         {
@@ -659,32 +665,39 @@ class Survey_model extends CI_Model {
         $data_array_copy = $data_array;
 
         //3. Calculate distance for each variable
-
+        /*
         echo "<pre>";
-        echo "<br> after transforming citizenship into coordinates:<br>";
+        echo "<br> (data_array) after transforming citizenship into coordinates:<br>";
         print_r($data_array);
-        echo "</pre>";         
-        $coord_array = $data_array;
+        echo "</pre>";  
+        */
+        //$coord_array = $data_array;
+        file_put_contents('temp_arrays/coord_array.txt', serialize($data_array)); 
 
-        echo "<pre>";
+       /* echo "<pre>";
         echo "<br> new coordinate array:<br>";
         print_r($coord_array);
-        echo "</pre>";         
+        echo "</pre>";  */       
         
         array_walk($data_array, array($this,'city_block_distance_benefits'),$data);   
         array_walk($data_array, array($this,'city_block_distance_history'),$data); 
         array_walk($data_array, array($this,'city_block_distance_citizenship'),$data_array_copy);      
 
+        /*
         echo "<pre>";
-        echo "<br> distance data:<br>";
+        echo "<br> distance data (data_array):<br>";
         print_r($data_array);
         echo "</pre>"; 
-        $dist_array = $data_array;
-
+        */
+        
+        //$dist_array = $data_array;
+        file_put_contents('temp_arrays/dist_array.txt', serialize($data_array));
+        
+        /*
         echo "<pre>";
         echo "<br> coordinate array AFTER:<br>";
         print_r($coord_array);
-        echo "</pre>";          
+        echo "</pre>";  */        
         
         //4. Normalize each variable's distance
         //for quantitative data: norm = (d-dmin)/(dmax-dmin)
@@ -704,16 +717,21 @@ class Survey_model extends CI_Model {
             //check to make sure we aren't already between 0&1
             array_walk($data_array, array($this,'normalize_history'),$isolated_history);          
         }
+        
+        /*
         echo "<pre>";
-        echo "<br> normalized disparate data:<br>";
+        echo "<br> normalized disparate data (data_array):<br>";
         print_r($data_array);
-        echo "</pre>";      
-        $norm_disp_array = $data_array;
+        echo "</pre>";   
+        */
+        
+        //$norm_disp_array = $data_array;
+        file_put_contents('temp_arrays/norm_disp_array.txt', serialize($data_array));
 
         //5. Aggregate the normalized distance matrix
         //assuming each feature variable has the same weight, sum them up then divide
         //by the number of feature variables
-        echo "<pre>";
+        /*echo "<pre>";
         echo "<br> coordinate array BEFORE AGGREGATE:<br>";
         print_r($coord_array);
         echo "</pre>";     
@@ -722,48 +740,56 @@ class Survey_model extends CI_Model {
         echo "<br> coordinate array BEFORE AGGREGATE:<br>";
         print_r($coord_array);
         echo "</pre>";        
+        */
         
+        //$agg_array = $data_array;
         
-        $agg_array = $data_array;
+        array_walk($data_array, array($this,'aggregate')); 
         
-        array_walk($agg_array, array($this,'aggregate')); 
-        
-                echo "<pre>";
+        /*        echo "<pre>";
         echo "<br> coordinate array AFTER AGGREGATE:<br>";
         print_r($coord_array);
-        echo "</pre>";  
+        echo "</pre>"; */ 
         
+        /*
         echo "<pre>";
         echo "<br> aggregate data:<br>";
-        print_r($agg_array);
+        print_r($data_array);
         echo "</pre>";  
+        */
         
-        unset($agg_array[0]);
+        file_put_contents('temp_arrays/aggregate_array.txt', serialize($data_array));
         
+        unset($data_array[0]);
+        
+        /*
         echo "<pre>";
         echo "<br> aggregate data without user:<br>";
-        print_r($agg_array);
+        print_r($data_array);
         echo "</pre>";
+        */
+        
         //$aggregate_array = $data_array;
+        //file_put_contents('temp_arrays/aggregate_array.txt', serialize(array_values($data_array)));
         
         //sort the array
-        foreach ($agg_array as $array) {
+        foreach ($data_array as $array) {
             $agscore[] = $array['ag_score'];
         }
 
-        array_multisort($agscore,SORT_NUMERIC,SORT_ASC,$agg_array);
-        echo '<pre>sorted:<br>',print_r($agg_array,1),'</pre>';         
+        array_multisort($agscore,SORT_NUMERIC,SORT_ASC,$data_array);
+        //echo '<pre>sorted:<br>',print_r($data_array,1),'</pre>';         
         
         $dist_data = array();
-        $dist_data['raw_data'] =  $raw_data_array;
+       /* $dist_data['raw_data'] =  $raw_data_array;
         $dist_data['coord_data'] =  $coord_array;
         $dist_data['dist_data'] =  $dist_array;
         $dist_data['norm_disp_data'] =  $norm_disp_array;
         $dist_data['aggregate_data'] =  $agg_array;       
+        */
+        $dist_data['ranked_results']   = $data_array;
         
-        $dist_data['ranked_results']   = $agg_array;
-        
-        echo '<pre>dist_data:<br>',print_r($dist_data,1),'</pre>';
+        //echo '<pre>dist_data:<br>',print_r($dist_data,1),'</pre>';
         
         
         return $dist_data;
@@ -786,7 +812,9 @@ class Survey_model extends CI_Model {
             $company_row['ag_score'] = round(1 - $company_row['ag_score'],3);
             
         }
-        echo '<pre>fit scored up!:<br>',print_r($ranked_results,1),'</pre>'; 
+        //echo '<pre>fit scored up!:<br>',print_r($ranked_results,1),'</pre>'; 
+        file_put_contents('temp_arrays/fit_array.txt', serialize($ranked_results));
+        
         return $ranked_results;
     }
 
@@ -804,7 +832,7 @@ class Survey_model extends CI_Model {
             }
 
         }
-            echo "<br>company data name: ".$companyData['company_name'];
+            //echo "<br>company data name: ".$companyData['company_name'];
     }      
     
     
@@ -812,7 +840,7 @@ class Survey_model extends CI_Model {
     {
         array_walk($company_info, array($this,'merge_fit_arrays'),$company_fit);
 
-        echo '<pre>fit scored up!:<br>',print_r($company_info,1),'</pre>'; 
+        //echo '<pre>fit scored up!:<br>',print_r($company_info,1),'</pre>'; 
         return $company_info;       
     }
     

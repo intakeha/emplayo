@@ -1,6 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Survey extends CI_Controller {
+    
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->library('session');
+
+	}    
+    
     public function load(){
         //get list of categories from database
         $this->load->model('survey_model');
