@@ -158,6 +158,17 @@
             echo form_fieldset_close();             
             
             
+            //History
+            echo form_fieldset('HISTORY: In what industry have you worked before?');
+            echo form_multiselect('history[]', $categories, '');
+            echo form_fieldset_close();
+            
+            //Do Next
+            echo form_fieldset('DO NEXT: What do you want to do next?');
+            echo form_multiselect('category[]', $categories, '');
+            echo form_fieldset_close();  
+
+            
             
             echo '<br/>';
             echo form_submit('mysubmit', 'Submit');

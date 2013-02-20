@@ -4,12 +4,30 @@
 	<meta charset="utf-8">
 	<title>Welcome to Emplayo!</title>
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/reset-fonts-grids.css" type="text/css"/>
-        <link rel="stylesheet" href="<?php echo base_url();?>assets/css/base.css" type="text/css"/>        
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/css/base.css" type="text/css"/>   
+        <style>
+            .table  {
+                    float: left;
+                    margin: 10px;
+            }
+            .company  {
+                    float: left;
+                    margin: 10px;
+            }    
+            .clearfloat {
+                    font-size: 1px;
+                    line-height: 0px;
+                    margin: 0px;
+                    clear: both;
+                    height: 0px;
+            }            
+            
+        </style>
 </head>
 <body>
 
-<div id="container">
-    <div id="doc2">
+<div class="content">
+  
     <div id="hd"><!-- header -->
 	<h1>Results</h1>
 
@@ -20,17 +38,65 @@
             <?php echo $result_msg;?>
             <?php //print_r($matches);?>
             <?php //print_r($company_info);
-            if (!empty($company_info))
+            
+            function table_print($title,$this_array) 
+            {               
+                $keys = array_keys($this_array[0]);
+                echo "<div class = 'table'>";
+                echo "<h3>$title</h3>";
+                echo "<table><tr><th>".implode("</th><th>", $keys)."</th></tr>";
+                foreach ($this_array as $row) {
+                  if (!is_array($row))
+                    continue;
+                  echo "<tr><td>".implode("</td><td>", $row )."</td></tr>";
+                }
+                echo "</table>";
+                echo "</div>";
+            }            
+            
+            
+            
+            if (!empty($full_company_info))
             {
                 echo "<br>";
                 echo "Here are the companies that meet your criteria, in order of best match:<br>";
-                foreach ($company_info as $row)
+                foreach ($full_company_info as $row)
                 {
+                    echo "<div class = 'company'>";
                     echo '<br>';
                     echo '<a href="'.$row['company_url'].'">'.$row['company_name'].'</a>';
+                    echo '<br>';
+                    echo "id: ".$row['id'];
+                    echo '<br>';
                     echo '<img src="'.$row['company_logo'].'" height="50" />';
                     echo '<br>';
+                    echo "fit score: ".$row['fit_score'];
+                    echo '<br>';
+                    echo "</div>";
                 }
+                
+                echo '<br class="clearfloat" />';
+                
+                /*
+                echo '<pre>raw data:<br>',print_r($raw_data,1),'</pre>';
+                echo '<pre>coordinate data:<br>',print_r($coord_data,1),'</pre>';
+                echo '<pre>distance data:<br>',print_r($dist_data,1),'</pre>';
+                echo '<pre>normalized disparate data:<br>',print_r($norm_disp_data,1),'</pre>';
+                echo '<pre>aggregate data:<br>',print_r($aggregate_data,1),'</pre>';
+                echo '<pre>company fit:<br>',print_r($company_fit,1),'</pre>';
+                */
+                
+                table_print('Raw Data', $raw_data);
+                table_print('Coordinate Data', $coord_data);
+                table_print('Distance Data', $dist_data);
+                table_print('Normalize Disparate Data', $norm_disp_data);
+                table_print('Aggregate Data', $aggregate_data);
+                table_print('Company Fit Data', $company_fit);
+                
+                
+                
+                
+                
             }
 
             ?>
@@ -38,7 +104,7 @@
         </p>
 
 	</div>
-    </div>
+
 </div>
 
 </body>
