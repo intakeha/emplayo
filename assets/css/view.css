@@ -1,6 +1,6 @@
 /* Home Page */
 
-#headerLogin{
+#header_login{
 	margin: 5px 50px 0 0;
 	float: right;
 	color: #bbb;
@@ -154,7 +154,7 @@ div#signup .errors{
 
 #signup_right{
 	float: left;
-	width: 530px;
+	width: 535px;
 	margin-left: 40px;
 	padding: 20px 30px;
 }
@@ -167,6 +167,14 @@ div#signup .errors{
 #signup_right span{
 	color: #258CD1;
 	font-size: 22px;
+}
+
+#signup_message, #login_message{
+	background-color: #900;
+	text-align: center;
+	color: #fff;
+	padding: 10px;
+	width: 240px;
 }
 
 /* Login */
@@ -271,15 +279,26 @@ div#forgot .submit{
     border-radius: 2px;
     font-weight: bold;
 	cursor: pointer;
-	margin: 15px 0 10px 0;
+	margin-bottom: 10px;
 	width: 90px;
 }
 
 div#forgot .errors{
-	font-size: 15px;
-	color: #941f1c;
-	margin-top: 5px;
-	width: 260px;
+    background: #900;
+    color: #fff;
+    font-size: 15px;
+    margin: 15px auto;
+    text-align: center;
+    width: 300px;
+	padding: 10px;
+}
+
+#forgot_message{
+	background-color: #900;
+	text-align: center;
+	color: #fff;
+	padding: 10px;
+	width: 238px;
 }
 
 /* Password Reset */
@@ -431,14 +450,14 @@ div.questions {
 	display: none;
 }
 
-div#nextQuestion, div#showPreview{
+div#next_question, div#show_preview{
 	float: right;
 	cursor: pointer;
 	margin-right: 50px;
 	display: none;
 }
 
-div#nextQuestion .next, div#showPreview .next{
+div#next_question .next, div#show_preview .next{
 	padding-top: 8px;
 	height: 35px;
 	width: 75px;
@@ -1104,3 +1123,11 @@ div#preview #progressIcon{
 	float: left;
 	margin: 0 50px;
 }
+
+/* Profile Page */
+
+div#profile{
+	height: 550px;
+}
+
+div#profile_nav

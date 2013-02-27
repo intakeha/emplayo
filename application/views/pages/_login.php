@@ -18,9 +18,9 @@
 			<?php echo form_label('Password:','password')?>
 			<?php echo form_password('password','','id=password')?>
 			<div class="errors"><?php echo form_error('password'); ?></div>                
+			<?php if($message){echo '<div id="login_message">'.$message.'</div>';} ?>
 			<?php echo form_submit('submit','Login','class="submit"')?>			
 			<?php echo form_close() ;?>
-			<div id="infoMessage"><?php echo $message;?></div>
 			<p><a href="forgot">Forgot your password?</a></p>
 			<hr>
 			<p><span>New to Emplayo?</span></p>

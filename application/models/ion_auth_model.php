@@ -760,7 +760,7 @@ class Ion_auth_model extends CI_Model
 	 * @return bool
 	 * @author Mathew
 	 **/
-	public function register($username, $password, $email, $additional_data = array(), $groups = array())
+	public function register($password, $email, $additional_data = array(), $groups = array())
 	{
 		$this->trigger_events('pre_register');
 
@@ -771,24 +771,6 @@ class Ion_auth_model extends CI_Model
 			$this->set_error('account_creation_duplicate_email');
 			return FALSE;
 		}
-		elseif ($this->identity_column == 'username' && $this->username_check($username))
-		{
-			$this->set_error('account_creation_duplicate_username');
-			return FALSE;
-		}
-
-		// If username is taken, use username1 or username2, etc.
-		if ($this->identity_column != 'username')
-		{
-			$original_username = $username;
-			for($i = 0; $this->username_check($username); $i++)
-			{
-				if($i > 0)
-				{
-					$username = $original_username . $i;
-				}
-			}
-		}
 
 		// IP Address
 		$ip_address = $this->_prepare_ip($this->input->ip_address());
@@ -797,9 +779,8 @@ class Ion_auth_model extends CI_Model
 
 		// Users table.
 		$data = array(
-		    'username'   => $username,
-		    'password'   => $password,
 		    'email'      => $email,
+		    'password'   => $password,
 		    'ip_address' => $ip_address,
 		    'created_on' => time(),
 		    'last_login' => time(),

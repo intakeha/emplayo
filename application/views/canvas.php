@@ -19,9 +19,17 @@
 <body>
 	<div id="header">
 		<div class="content">
-			<div id="headerLogin" class="clear"><a href="signup">Sign Up</a> | <a href="login">Log In</a></div>
-			<div id="nextQuestion"><div class="next">next</div><div class="arrow"></div></div>
-			<div id="showPreview"><a href="preview"><div class="next">next</div><div class="arrow"></div></a></div>
+			<div id="header_login" class="clear"><a href="signup">Sign Up</a> | <a href="login">Log In</a></div>
+			<div id="next_question"><div class="next">next</div><div class="arrow"></div></div>
+			<div id="show_preview"><a href="preview"><div class="next">next</div><div class="arrow"></div></a></div>
+			<div id="profile_icon" onclick="settings('#modal_settings');"></div>
+			<div id="modal_settings">
+				<ul>
+					<li><a href="#">Account Settings</a></li>
+					<li><a href="#">Send Invitation</a></li>
+					<li><a href="logout">Logout</a></li>
+				</ul>
+			</div>
 			<a id="logo" href="/"></a>
 			<div class="hints">
 				<div id="singleChoice">select one</div>

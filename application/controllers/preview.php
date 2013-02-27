@@ -4,7 +4,7 @@ class Preview extends CI_Controller {
 
 	public function index(){
 		$data['title']="Preview Results";
-		$data['content']="_preview";
+		$data['content']="pages/_preview";
 		$this->load->helper('url');
 		$this->load->view('canvas', $data);
 	}
