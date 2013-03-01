@@ -1130,4 +1130,19 @@ div#profile{
 	height: 550px;
 }
 
-div#profile_nav
+div#profile .content{
+	text-align: center;
+}
+
+div#profile div{
+	height: 100px;
+	padding: 20px 0;
+}
+
+div#profile li{
+	width: 250px;
+	height: 250px;
+	border: #000 1px solid;
+	float: left;
+	margin: 0 3px 3px 0;
+}

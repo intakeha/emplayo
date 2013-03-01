@@ -24,13 +24,13 @@ $(document).ready(function(){
 	// Determine current page
 	var currentPage = $('div#container div').eq(0).attr('id');
 		
-	// Remove Sign Up & Log In
+	// Customize header elements based on current page
 	if(currentPage == 'login' || currentPage == 'signup' || currentPage == 'reset' || currentPage == 'profile' || currentPage == 'forgot'){
 		$('#header_login').hide();
 	}
 	
 	if(currentPage == 'profile'){
-		$('#profile_icon').show();
+		$('#header_icon, #header_email').show();
 	}
 
 	// Reset all answers to 0

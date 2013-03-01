@@ -72,7 +72,7 @@ div#header .content{
 	margin-left: 50px;
 }
 
-div#profile_icon{
+div#header_icon{
 	width: 40px;
 	height: 40px;
 	background-color: #ccc;
@@ -82,6 +82,17 @@ div#profile_icon{
 	margin-right: 10px;
 	cursor: pointer;
 	display: none;
+}
+
+div#header_email{
+	float: right;
+	font-size: 16px;
+	margin: 14px 15px 0; 
+	display: none;
+}
+
+div#header_email a:link, div#header_email a:active, div#header_email a:visited, div#header_email a:hover{
+	color: #ccc;
 }
 
 /* Settings Modal */
@@ -105,12 +116,16 @@ div#profile_icon{
 	left: 971px;
 	z-index: 99999;
 	width: 240px;
-	height: 110px;
+	height: 180px;
 	margin-top: 50px;
 	padding: 10px 0px;
 	-moz-box-shadow: 0px 0px 5px #ccc;
 	-webkit-box-shadow: 0px 0px 5px #ccc;
 	box-shadow: 0px 0px 5px #ccc;
+}
+
+#modal_settings div{
+	text-align: center;
 }
 
 #modal_settings a{
@@ -127,6 +142,7 @@ div#profile_icon{
 #footer { 
 	clear:both;
 	min-width: 1022px;
+	padding-top: 25px;
 }
 
 div#skyline{

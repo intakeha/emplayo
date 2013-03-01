@@ -22,14 +22,18 @@
 			<div id="header_login" class="clear"><a href="signup">Sign Up</a> | <a href="login">Log In</a></div>
 			<div id="next_question"><div class="next">next</div><div class="arrow"></div></div>
 			<div id="show_preview"><a href="preview"><div class="next">next</div><div class="arrow"></div></a></div>
-			<div id="profile_icon" onclick="settings('#modal_settings');"></div>
+			<div id="header_icon" onclick="settings('#modal_settings');"></div>
+			<div id="header_email"><a href="/"><?php if ($this->ion_auth->user()->row()){$user = $this->ion_auth->user()->row(); echo $user->email;}?></a></div>
 			<div id="modal_settings">
 				<ul>
-					<li><a href="#">Account Settings</a></li>
-					<li><a href="#">Send Invitation</a></li>
+					<li><a href="/">View Dashboard</a></li>
+					<li><a href="/">Update Profile</a></li>
+					<li><a href="/">Account Settings</a></li>
+					<li><a href="/">Send Invitation</a></li>
 					<li><a href="logout">Logout</a></li>
 				</ul>
 			</div>
+			
 			<a id="logo" href="/"></a>
 			<div class="hints">
 				<div id="singleChoice">select one</div>

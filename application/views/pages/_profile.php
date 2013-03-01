@@ -1,9 +1,20 @@
 <div id="profile">
 	<div class="content">
-		<?php $user = $this->ion_auth->user()->row();?>
-		<?php if($this->session->userdata('message')){echo '<div class="errors">'.$this->session->userdata('message').'</div>';} ?>
-		<p>You're logged in as <?php echo $user->email;?></p>
+		<div>Here are the company results based on your <br>preferences and work history.</div>
+		<ul>
+			<li><img src="assets/images/companies/LogoSHC.jpg"/ width="200" style="margin-top: 90px;"></li>
+			<li><img src="assets/images/companies/LogoSHC.jpg"/ width="200" style="margin-top: 90px;"></li>
+			<li><img src="assets/images/companies/LogoSHC.jpg"/ width="200" style="margin-top: 90px;"></li>
+			<li><img src="assets/images/companies/LogoSHC.jpg"/ width="200" style="margin-top: 90px;"></li>
+			<li><img src="assets/images/companies/LogoSHC.jpg"/ width="200" style="margin-top: 90px;"></li>
+			<li><img src="assets/images/companies/LogoSHC.jpg"/ width="200" style="margin-top: 90px;"></li>
+			<li><img src="assets/images/companies/LogoSHC.jpg"/ width="200" style="margin-top: 90px;"></li>
+			<li><img src="assets/images/companies/LogoSHC.jpg"/ width="200" style="margin-top: 90px;"></li>
+			<li><img src="assets/images/companies/LogoSHC.jpg"/ width="200" style="margin-top: 90px;"></li>
+			<li><img src="assets/images/companies/LogoSHC.jpg"/ width="200" style="margin-top: 90px;"></li>
+			<li><img src="assets/images/companies/LogoSHC.jpg"/ width="200" style="margin-top: 90px;"></li>
+			<li><img src="assets/images/companies/LogoSHC.jpg"/ width="200" style="margin-top: 90px;"></li>
 
-		Click here to <a href="logout">logout</a>
+		</ul>
 	</div>
 </div>
