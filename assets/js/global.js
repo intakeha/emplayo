@@ -1,8 +1,57 @@
 // Using jQuery for front-end functionalities
 $(document).ready(function(){
 	
-	//Close Modal and Fade Layer
-	$('#fade, a.close, #transparent_fade').live('click', function() {
+	// Determine current page
+	var currentPage = $('div#container div').eq(0).attr('id');
+		
+
+	// Default cursor location
+	if(currentPage == 'login' || currentPage == 'signup' || currentPage == 'reset' || currentPage == 'forgot'){
+		$('input#email').focus();
+		$('#header_login').hide(); // hide login link
+		$('#header_icon, #header_email').hide(); // show profile navigation
+	};
+	
+	// Customize header elements based on current page
+	if(currentPage == 'profile'){
+		$('#header_login').hide(); // hide login link
+		$('#header_icon, #header_email').show(); // show profile navigation
+
+		//mouseover on company tiles
+		$('div#profile li').mouseenter(function() {
+			$(this).find('img.photo').hide();
+			$(this).find('div.fit').slideDown(50);
+			$(this).find('img.logo').show();
+		}).mouseleave(function(){
+			$(this).find('img.photo').show();
+			$(this).find('div.fit').hide();
+			$(this).find('img.logo').hide();
+		});
+	};
+	
+	if(currentPage == 'company'){
+		$('#header_login').hide(); // hide login link
+		$('#header_icon, #header_email').show(); // show profile navigation
+
+		var $container = $('#tiles');
+		// initialize isotope
+		$container.isotope({
+			masonry: {
+				columnWidth: 200,
+			}
+		});
+
+		// filter items when filter link is clicked
+		$('#filters a').click(function(){
+			var selector = $(this).attr('data-filter');
+			$container.isotope({ filter: selector });
+			return false;
+		});
+		
+	};
+
+	//Close Modal and Fade Layer	
+	$(document).on("click", "#fade, a.close, #transparent_fade", function() {
 		$('#fade , .modal_popup, #modal_settings, #transparent_fade').fadeOut(function() {
 			$('#fade, a.close, #transparent_fade').remove();
 		});
@@ -10,7 +59,7 @@ $(document).ready(function(){
 	});
 	
 	// Homepage animation
-	$('#start').delay(500).animate({ opacity: 1, left: "50px" }, 500);
+	$('#start').delay(500).animate({ opacity: 1, left: "0px" }, 500);
 	$('#icon').delay(500).animate({ opacity: 1, top: "-=10px" }, 500);
 	$("#start a").hover(
 		function () {
@@ -19,20 +68,8 @@ $(document).ready(function(){
 		function () {
 		$(this).animate({backgroundColor: '#e9b60b'}, 200);
 		}
-	);
+	);	
 	
-	// Determine current page
-	var currentPage = $('div#container div').eq(0).attr('id');
-		
-	// Customize header elements based on current page
-	if(currentPage == 'login' || currentPage == 'signup' || currentPage == 'reset' || currentPage == 'profile' || currentPage == 'forgot'){
-		$('#header_login').hide();
-	}
-	
-	if(currentPage == 'profile'){
-		$('#header_icon, #header_email').show();
-	}
-
 	// Reset all answers to 0
 	$("input[name^='q']").each(function() {      
 		$(this).val(0);

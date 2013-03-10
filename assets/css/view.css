@@ -1,7 +1,7 @@
 /* Home Page */
 
 #header_login{
-	margin: 5px 50px 0 0;
+	margin: 5px 10px 0 0;
 	float: right;
 	color: #bbb;
 }
@@ -15,7 +15,7 @@
 }
 
 div#banner .content{
-	padding-top: 80px;
+	padding-top: 50px;
 	height: 400px;
 }
 
@@ -25,7 +25,7 @@ div#icon {
 	height: 338px;
 	display: block;
 	margin-left: 540px;
-	top: 270px;
+	top: 240px;
 	position: absolute;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	filter: alpha(opacity=0);
@@ -39,7 +39,7 @@ div#icon {
 	line-height: 120%;
 	position: relative;
 	width: 900px;
-	left: 0px;
+	left: -50px;
 	display: block;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	filter: alpha(opacity=0);
@@ -118,7 +118,7 @@ div#signup .content{
 	float: left;
 	border: 1px solid #ccc;
 	font-size: 20px;
-	margin: 30px 0 0 50px;
+	margin: 30px 0 0;
 	padding: 20px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
@@ -154,7 +154,7 @@ div#signup .errors{
 
 #signup_right{
 	float: left;
-	width: 535px;
+	width: 600px;
 	margin-left: 40px;
 	padding: 20px 30px;
 }
@@ -185,8 +185,8 @@ div#login .content{
 
 #login_left{
 	float: left;
-	padding: 50px 0 0 50px;
-	width: 545px;
+	padding: 50px 0 0;
+	width: 635px;
 }
 
 #login_left div{
@@ -1126,17 +1126,14 @@ div#preview #progressIcon{
 
 /* Profile Page */
 
-div#profile{
+div#profile .content{
+	text-align: center;
 	height: 550px;
 }
 
-div#profile .content{
-	text-align: center;
-}
-
-div#profile div{
-	height: 100px;
-	padding: 20px 0;
+div#profile #summary{
+	height: 50px;
+	padding: 30px 0;
 }
 
 div#profile li{
@@ -1145,4 +1142,105 @@ div#profile li{
 	border: #000 1px solid;
 	float: left;
 	margin: 0 3px 3px 0;
+	cursor: pointer;
+}
+
+div#profile .fit{
+	position: absolute;
+	width: 250px;
+	background-color: #ccc;
+	color: #1d71a2;
+	height: 54px;
+	padding-top: 8px;
+	margin-top: -66px;
+	font-size: 50px;
+	font-weight: bold;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+	filter: alpha(opacity=60);
+	-moz-opacity: 0.6;
+	opacity: 0.6;
+}
+
+/* Company */
+
+div#company #tiles{
+	width: 1022px;
+	margin-left: auto;
+	margin-right: auto;
+	color: #fff;
+}
+
+div#company ul#filters{
+	height: 30px;
+	width: 450px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}
+
+div#company ul#filters li{
+	float: left;
+	width: 150px;
+	text-align: center;
+}
+
+div#company .smallTile{
+	width: 200px;
+	height: 200px;
+}
+
+div#company .horizontalTile{
+	width: 400px;
+	height: 200px;
+}
+
+div#company .verticalTile{
+	width: 200px;
+	height: 400px;
+}
+
+div#company .bigTile{
+	width: 400px;
+	height: 400px;
+}
+
+div#company .smallContent{
+	background: #364954;
+	width: 190px;
+	height: 190px;
+
+	text-align: center;
+	vertical-align: middle; 
+	display: table-cell;
+}
+
+div#company .horizontalContent{
+	background: #e9b60b;
+	width: 390px;
+	height: 190px;
+	margin-left: 15px;
+}
+
+div#company .verticalContent{
+	background: #ad27c1;
+	width: 190px;
+	height: 390px;
+	margin-left: 15px;
+}
+
+div#company .bigContent{
+	background: #1d71a2;
+	width: 390px;
+	height: 390px;
+	margin-left: 15px;
+}
+
+div#company .message{
+	font-size: 32px;
+	height: 190px;
+	text-align: center;
+	display: table-cell;
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: middle; 
 }

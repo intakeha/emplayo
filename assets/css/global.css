@@ -69,7 +69,6 @@ div#header .content{
 	display: block;
 	width: 204px;
 	height: 38px;
-	margin-left: 50px;
 }
 
 div#header_icon{
@@ -113,11 +112,10 @@ div#header_email a:link, div#header_email a:active, div#header_email a:visited, 
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
 	position: absolute;
-	left: 971px;
+	margin: 50px 0 0 770px;
 	z-index: 99999;
 	width: 240px;
 	height: 180px;
-	margin-top: 50px;
 	padding: 10px 0px;
 	-moz-box-shadow: 0px 0px 5px #ccc;
 	-webkit-box-shadow: 0px 0px 5px #ccc;
@@ -252,3 +250,56 @@ img.btn_close {
 	position: absolute;
 }
 
+/* Start: Recommended Isotope styles */
+
+/**** Isotope Filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
