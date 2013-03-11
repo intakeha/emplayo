@@ -28,7 +28,7 @@
 			<div class="smallTile pictures"><div class="smallContent"></div></div>
 			<div class="horizontalTile highlights"><div class="horizontalContent"><img src="./assets/images/tiles/square_390x190.6.png"/></div></div>
 			<div class="verticalTile highlights"><div class="verticalContent"><img src="./assets/images/tiles/square_190x390.3.png"/></div></div>
-			<div class="smallTile pictures"><div class="smallContent">Job Openings</div></div>
+			<div class="smallTile pictures"><div class="smallContent"></div></div>
 			<div class="verticalTile pictures"><div class="verticalContent"><img src="./assets/images/tiles/square_190x390.4.png"/></div></div>
 			<div class="bigTile pictures"><div class="bigContent"><img src="./assets/images/tiles/square_390x390.4.png"/></div></div>
 			<div class="bigTile highlights"><div class="bigContent"><img src="./assets/images/tiles/square_390x390.5.png"/></div></div>
@@ -37,9 +37,9 @@
 			<div class="bigTile pictures"><div class="bigContent"><img src="./assets/images/tiles/square_390x390.6.png"/></div></div>
 			<div class="smallTile highlights"><div class="smallContent"></div></div>
 			<div class="verticalTile highlights"><div class="verticalContent"><img src="./assets/images/tiles/square_190x390.6.png"/></div></div>
-			<div class="horizontalTile highlights"><div class="horizontalContent"><div class="message">Make an impact. Rethink commerce at Square.</div></div></div>
-			<div class="horizontalTile highlights"><div class="horizontalContent"><div class="message">Square an impact. sdsd sdsd</div></div></div>
-			<div class="horizontalTile pictures"><div class="horizontalContent"><div class="message">squareup<br>com</div></div></div>
+			<div class="horizontalTile highlights"><div class="horizontalContent"><div class="message"></div></div></div>
+			<div class="horizontalTile highlights"><div class="horizontalContent"><div class="message"></div></div></div>
+			<div class="horizontalTile pictures"><div class="horizontalContent"><div class="message"></div></div></div>
 			<div class="smallTile pictures"><div class="smallContent"></div></div>
 			<div class="verticalTile pictures"><div class="verticalContent"><img src="./assets/images/tiles/square_190x390.7.png"/></div></div>
 			<div class="horizontalTile pictures"><div class="horizontalContent"></div></div>
