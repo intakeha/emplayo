@@ -48,6 +48,18 @@ $(document).ready(function(){
 			return false;
 		});
 		
+		 $container.on('click', '.smallTile', function(){
+			$(this).toggleClass('bigTile');
+			$(this).find('div').toggleClass('bigContent');
+			$(this).find('img').toggle();
+			if ($(this).find('img').eq(1).hasClass('smallPic')){
+				$(this).find('img').eq(1).switchClass('smallPic','bigPic',100);
+			}else{
+				$(this).find('img').eq(1).switchClass('bigPic','smallPic',100);
+			};
+			$container.isotope('reLayout');
+		}); 
+		
 	};
 
 	//Close Modal and Fade Layer	

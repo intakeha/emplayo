@@ -8,10 +8,10 @@
 		<div id="tiles">
 			<div class="smallTile highlights pictures"><div class="smallContent"><img src="./assets/images/tiles/square_190x190.1.png"/></div></div>
 			<div class="horizontalTile pictures"><div class="horizontalContent"><img src="./assets/images/tiles/square_390x190.1.png"/></div></div>
-			<div class="smallTile pictures"><div class="smallContent"><img src="./assets/images/tiles/square_190x190.2.png"/></div></div>
+			<div class="smallTile pictures"><div class="smallContent"><img src="./assets/images/tiles/square_190x190.2.png"/><img class="smallPic" style="display: none;" src="./assets/images/tiles/square_390x390.7.png"/></div></div>
 			<div class="horizontalTile highlights"><div class="horizontalContent"><div class="message">Make an impact. Rethink commerce at Square.</div></div></div>
 			<div class="bigTile pictures"><div class="bigContent"><img src="./assets/images/tiles/square_390x390.1.png"/></div></div>
-			<div class="smallTile highlights"><div class="smallContent"><a href="www.squareup.com/careers/"><div class="message">Job Openings</div></a></div></div>
+			<div class="smallTile highlights"><div class="smallContent"><a href="http://squareup.com/careers/"><div class="message">Job Openings</div></a></div></div>
 			<div class="smallTile pictures"><div class="smallContent"><img src="./assets/images/tiles/square_190x190.3.png"/></div></div>
 			<div class="verticalTile highlights"><div class="verticalContent"><img src="./assets/images/tiles/square_190x390.1.png"/></div></div>
 			<div class="horizontalTile highlights"><div class="horizontalContent"><img src="./assets/images/tiles/square_390x190.2.png"/></div></div>

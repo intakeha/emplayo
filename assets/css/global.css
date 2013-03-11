@@ -201,6 +201,10 @@ ul#nav-list .borders{
 	cursor: pointer;
 }
 
+.zindex{
+	z-index: 9999;
+}
+
 div.preload{
 	display: none;
 	width: 1px;
