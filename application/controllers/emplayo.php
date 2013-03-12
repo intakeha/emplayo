@@ -2,11 +2,38 @@
 
 class Emplayo extends CI_Controller {
 
-	public function index(){
-		$data['title']="Home";
-		$data['content']="_home";
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->library('ion_auth');
+		$this->load->library('session');
+		$this->load->library('form_validation');
 		$this->load->helper('url');
-		$this->load->view('canvas', $data);
+
+		// Load MongoDB library instead of native db driver if required
+		$this->config->item('use_mongodb', 'ion_auth') ?
+		$this->load->library('mongo_db') :
+		$this->load->database();
+
+		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 	}
 
+	public function index(){
+		
+		if ($this->ion_auth->logged_in()){
+			$data['title']="Home";
+			$data['content']="pages/_profile";
+			$this->load->helper('url');
+			$this->load->view('canvas', $data);
+			$this->session->unset_userdata('message');
+			
+		}   else {
+			$data['title']="Home";
+			$data['content']="pages/_home";
+			$this->load->helper('url');
+			$this->load->view('canvas', $data);
+		}
+
+	}
+	
 }

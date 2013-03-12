@@ -22,7 +22,7 @@ class Auth extends CI_Controller {
 	//redirect if needed, otherwise display the user list
 	function index()
 	{
-            redirect('auth/login', 'refresh');
+            redirect('login', 'refresh');
 /*
 		if (!$this->ion_auth->logged_in())
 		{
@@ -82,14 +82,14 @@ class Auth extends CI_Controller {
                                     //if the login was un-successful
                                     //redirect them back to the login page
                                     $this->session->set_flashdata('message', $this->ion_auth->errors());
-                                    redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
+                                    redirect('login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
                             }
                     }
                     else
                     {
                             //the user is not logging in so display the login page
                             //set the flash data error message if there is one
-                            $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+                            $this->data['message'] = $this->session->flashdata('message');
 
                             $this->data['email'] = array('name' => 'email',
                                     'id' => 'email',
@@ -118,7 +118,7 @@ class Auth extends CI_Controller {
 
 		//redirect them to the login page
 		$this->session->set_flashdata('message', $this->ion_auth->messages());
-		redirect('auth/login', 'refresh');
+		redirect('login', 'refresh');
 	}
         
 	//signup a new user
@@ -192,55 +192,6 @@ class Auth extends CI_Controller {
 		}
             }
 	}        
-
-	function forgot_passwordNEW()
-	{           
-            
-		$this->form_validation->set_rules('email', 'Email', 'required|valid');
-		if ($this->form_validation->run() == false)
-		{
-			//setup the input
-			$this->data['email'] = array('name' => 'email',
-				'id' => 'email',
-			);
-
-			if ( $this->config->item('identity', 'ion_auth') == 'username' ){
-				$this->data['identity_label'] = 'Username';
-			}
-			else
-			{
-				$this->data['identity_label'] = 'Email';
-			}
-
-			//set any errors and display the form
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			//$this->_render_page('auth/forgot_password', $this->data);
-                        $this->data['title']="Forgot Password";
-                        $this->data['content']="_forgot";
-                        $this->_render_page('canvas', $this->data);                        
-		}
-		else
-		{
-			// get identity for that email
-			$config_tables = $this->config->item('tables', 'ion_auth');
-			$identity = $this->db->where('email', $this->input->post('email'))->limit('1')->get($config_tables['users'])->row();
-
-			//run the forgotten password method to email an activation code to the user
-			$forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity', 'ion_auth')});
-
-			if ($forgotten)
-			{
-				//if there were no errors
-				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				//redirect("auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
-			}
-			else
-			{
-				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				//redirect("auth/forgot_password", 'refresh');
-			}
-		}
-	}        
         
 	//change password
 	function change_password()
@@ -251,7 +202,7 @@ class Auth extends CI_Controller {
 
 		if (!$this->ion_auth->logged_in())
 		{
-			redirect('auth/login', 'refresh');
+			redirect('login', 'refresh');
 		}
 
 		$user = $this->ion_auth->user()->row();
@@ -288,7 +239,7 @@ class Auth extends CI_Controller {
 			);
 
 			//render
-			$this->_render_page('auth/change_password', $this->data);
+			$this->_render_page('change', $this->data);
 		}
 		else
 		{
@@ -305,7 +256,7 @@ class Auth extends CI_Controller {
 			else
 			{
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('auth/change_password', 'refresh');
+				redirect('change', 'refresh');
 			}
 		}
 	}
@@ -353,12 +304,12 @@ class Auth extends CI_Controller {
                             {
                                     //if there were no errors
                                     $this->session->set_flashdata('message', $this->ion_auth->messages());
-                                    redirect("auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
+                                    redirect("login", 'refresh'); //we should display a confirmation page here instead of the login page
                             }
                             else
                             {
                                     $this->session->set_flashdata('message', $this->ion_auth->errors());
-                                    redirect("auth/forgot_password", 'refresh');
+                                    redirect("forgot", 'refresh');
                             }
                         }
                          else 
@@ -391,6 +342,7 @@ class Auth extends CI_Controller {
 	//reset password - final step for forgotten password
 	public function reset_password($code = NULL)
 	{
+		
 		if (!$code)
 		{
 			show_404();
@@ -410,13 +362,13 @@ class Auth extends CI_Controller {
 				//display the form
 
 				//set the flash data error message if there is one
-				$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+				$this->data['message'] = $this->session->flashdata('message');
 
 				$this->data['min_password_length'] = $this->config->item('min_password_length', 'ion_auth');
 				$this->data['new_password'] = array(
 					'name' => 'new',
 					'id'   => 'new',
-				'type' => 'password',
+					'type' => 'password',
 					'pattern' => '^.{'.$this->data['min_password_length'].'}.*$',
 				);
 				$this->data['new_password_confirm'] = array(
@@ -435,7 +387,10 @@ class Auth extends CI_Controller {
 				$this->data['code'] = $code;
 
 				//render
-				$this->_render_page('auth/reset_password', $this->data);
+				//$this->_render_page('auth/reset_password', $this->data);
+				$this->data['title']="Reset Password";
+				$this->data['content']="_reset";
+				$this->_render_page('canvas', $this->data);
 			}
 			else
 			{
@@ -474,7 +429,7 @@ class Auth extends CI_Controller {
 		{
 			//if the code is invalid then send them back to the forgot password page
 			$this->session->set_flashdata('message', $this->ion_auth->errors());
-			redirect("auth/forgot_password", 'refresh');
+			redirect("forgot", 'refresh');
 		}
 	}
 
@@ -501,7 +456,7 @@ class Auth extends CI_Controller {
 		{
 			//redirect them to the forgot password page
 			$this->session->set_flashdata('message', $this->ion_auth->errors());
-			redirect("auth/forgot_password", 'refresh');
+			redirect("forgot", 'refresh');
 		}
 	}
 
@@ -545,7 +500,7 @@ class Auth extends CI_Controller {
 		}
 	}
 
-	//create a new user
+	//create a new user - came with the original ion_auth | created our own version called signup
 	function create_user()
 	{
 		$this->data['title'] = "Create User";

@@ -27,7 +27,7 @@
             [companies will be listed here...]
         </p>
         <p>
-            <a href="/auth/logout">logout</a>
+            <a href="logout">logout</a>
         </p>        
 
 	</div>

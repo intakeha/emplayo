@@ -1,7 +1,7 @@
 /* Home Page */
 
-#headerLogin{
-	margin: 5px 50px 0 0;
+#header_login{
+	margin: 5px 10px 0 0;
 	float: right;
 	color: #bbb;
 }
@@ -15,7 +15,7 @@
 }
 
 div#banner .content{
-	padding-top: 80px;
+	padding-top: 50px;
 	height: 400px;
 }
 
@@ -25,7 +25,7 @@ div#icon {
 	height: 338px;
 	display: block;
 	margin-left: 540px;
-	top: 270px;
+	top: 240px;
 	position: absolute;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	filter: alpha(opacity=0);
@@ -39,7 +39,7 @@ div#icon {
 	line-height: 120%;
 	position: relative;
 	width: 900px;
-	left: 0px;
+	left: -50px;
 	display: block;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	filter: alpha(opacity=0);
@@ -114,11 +114,11 @@ div#signup .content{
 }
 
 #signup_left{
-	width: 300px;
+	width: 260px;
 	float: left;
 	border: 1px solid #ccc;
 	font-size: 20px;
-	margin: 30px 0 0 50px;
+	margin: 30px 0 0;
 	padding: 20px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
@@ -135,7 +135,7 @@ div#signup label {
 
 div#signup .submit{
     background-color: #e9b60b;
-    background-image: -moz-linear-gradient(center top , #e9b60b, #e9b60b);
+    background-image: -moz-linear-gradient(center top , #ffcc00, #e9b60b);
     border: 1px solid #e9b60b;
     color: #FFFFFF;
     border-radius: 2px;
@@ -145,9 +145,16 @@ div#signup .submit{
 	width: 90px;
 }
 
+div#signup .errors{
+	font-size: 15px;
+	color: #ad27c1;
+	margin-top: 5px;
+	width: 260px;
+}
+
 #signup_right{
 	float: left;
-	width: 530px;
+	width: 600px;
 	margin-left: 40px;
 	padding: 20px 30px;
 }
@@ -162,6 +169,14 @@ div#signup .submit{
 	font-size: 22px;
 }
 
+#signup_message, #login_message{
+	background-color: #900;
+	text-align: center;
+	color: #fff;
+	padding: 10px;
+	width: 240px;
+}
+
 /* Login */
 
 div#login .content{
@@ -170,8 +185,8 @@ div#login .content{
 
 #login_left{
 	float: left;
-	padding: 50px 0 0 50px;
-	width: 545px;
+	padding: 50px 0 0;
+	width: 635px;
 }
 
 #login_left div{
@@ -193,11 +208,6 @@ div#login_left span{
 
 div#login_right span{
 	color: #258CD1;
-	font-size: 25px;
-}
-
-div#login #new_text{
-	color: #258CD1;
 }
 
 div#login label {
@@ -206,7 +216,7 @@ div#login label {
 	color: #258CD1;
 }
 
-div#login input, div#signup input{
+div#login input, div#signup input, div#forgot input, div#reset input{
 	font-size: 20px;
 	color: #777;
 	width: 255px;
@@ -224,11 +234,114 @@ div#login .submit{
 	width: 90px;
 }
 
-div#login_right p, div#signup_left p{
+div#login_right p, div#signup_left p, div#forgot p{
 	font-size: 15px;
 }
 
 div#login .errors{
+	font-size: 15px;
+	color: #941f1c;
+	margin-top: 5px;
+	width: 260px;
+}
+
+/* Forgot */
+div#forgot .content{
+	height: 500px;
+	font-size: 20px;
+}
+
+div#forgot span, div#forgot label {
+    color: #258CD1;
+}
+
+div#forgot div{
+	margin-bottom: 20px;
+}
+
+div#forgot #panel{
+	width: 400px;
+	border: 1px solid #ccc;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 50px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	font-size: 20px;
+	text-align: center;
+}
+
+div#forgot .submit{
+    background-color: #258CD1;
+    background-image: -moz-linear-gradient(center top , #4D90FE, #258CD1);
+    border: 1px solid #258CD1;
+    color: #FFFFFF;
+    border-radius: 2px;
+    font-weight: bold;
+	cursor: pointer;
+	margin-bottom: 10px;
+	width: 90px;
+}
+
+div#forgot .errors{
+    background: #900;
+    color: #fff;
+    font-size: 15px;
+    margin: 15px auto;
+    text-align: center;
+    width: 300px;
+	padding: 10px;
+}
+
+#forgot_message{
+	background-color: #900;
+	text-align: center;
+	color: #fff;
+	padding: 10px;
+	width: 238px;
+}
+
+/* Password Reset */
+
+div#reset .content{
+	height: 500px;
+	font-size: 20px;
+}
+
+div#reset span, div#reset label {
+    color: #258CD1;
+	display: block;
+}
+
+div#reset div{
+	margin-bottom: 20px;
+}
+
+div#reset #panel{
+	width: 250px;
+	border: 1px solid #ccc;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 50px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	font-size: 20px;
+	text-align: left;
+}
+
+div#reset .submit{
+    background-color: #258CD1;
+    background-image: -moz-linear-gradient(center top , #4D90FE, #258CD1);
+    border: 1px solid #258CD1;
+    color: #FFFFFF;
+    border-radius: 2px;
+    font-weight: bold;
+	cursor: pointer;
+	margin: 15px 0 10px 0;
+	width: 90px;
+}
+
+div#reset .errors{
 	font-size: 15px;
 	color: #941f1c;
 	margin-top: 5px;
@@ -337,14 +450,14 @@ div.questions {
 	display: none;
 }
 
-div#nextQuestion, div#showPreview{
+div#next_question, div#show_preview{
 	float: right;
 	cursor: pointer;
 	margin-right: 50px;
 	display: none;
 }
 
-div#nextQuestion .next, div#showPreview .next{
+div#next_question .next, div#show_preview .next{
 	padding-top: 8px;
 	height: 35px;
 	width: 75px;
@@ -1009,4 +1122,130 @@ div#preview #signUp, div#preview #signIn{
 div#preview #progressIcon{
 	float: left;
 	margin: 0 50px;
+}
+
+/* Profile Page */
+
+div#profile .content{
+	text-align: center;
+	height: 550px;
+}
+
+div#profile #summary{
+	height: 50px;
+	padding: 30px 0;
+}
+
+div#profile li{
+	width: 250px;
+	height: 250px;
+	border: #000 1px solid;
+	float: left;
+	margin: 0 3px 3px 0;
+	cursor: pointer;
+}
+
+div#profile .fit{
+	position: absolute;
+	width: 250px;
+	background-color: #ccc;
+	color: #1d71a2;
+	height: 54px;
+	padding-top: 8px;
+	margin-top: -66px;
+	font-size: 50px;
+	font-weight: bold;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+	filter: alpha(opacity=60);
+	-moz-opacity: 0.6;
+	opacity: 0.6;
+}
+
+/* Company */
+
+div#company #tiles{
+	width: 1022px;
+	margin-left: auto;
+	margin-right: auto;
+	color: #fff;
+}
+
+div#company ul#filters{
+	height: 30px;
+	width: 450px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}
+
+div#company ul#filters li{
+	float: left;
+	width: 150px;
+	text-align: center;
+}
+
+div#company .smallTile{
+	width: 200px;
+	height: 200px;
+}
+
+div#company .horizontalTile{
+	width: 400px;
+	height: 200px;
+}
+
+div#company .verticalTile{
+	width: 200px;
+	height: 400px;
+}
+
+div#company .bigTile{
+	width: 400px;
+	height: 400px;
+}
+
+div#company .smallContent{
+	background: #364954;
+	width: 190px;
+	height: 190px;
+	margin-left: 15px;
+}
+
+div#company .horizontalContent{
+	background: #e9b60b;
+	width: 390px;
+	height: 190px;
+	margin-left: 15px;
+}
+
+div#company .verticalContent{
+	background: #ad27c1;
+	width: 190px;
+	height: 390px;
+	margin-left: 15px;
+}
+
+div#company .bigContent{
+	background: #1d71a2;
+	width: 390px;
+	height: 390px;
+	margin-left: 15px;
+}
+
+div#company .message{
+	font-size: 32px;
+	height: 190px;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle; 
+}
+
+div#company .smallPic{
+	width: 190px;
+	height: 190px;
+}
+
+div#company .bigPic{
+	width: 390px;
+	height: 390px;
 }

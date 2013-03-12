@@ -1,16 +1,77 @@
 // Using jQuery for front-end functionalities
 $(document).ready(function(){
 	
-	//Close Modal and Fade Layer
-	$('#fade, a.close').live('click', function() {
-		$('#fade , .modal_popup').fadeOut(function() {
-			$('#fade, a.close').remove();
+	// Determine current page
+	var currentPage = $('div#container div').eq(0).attr('id');
+		
+
+	// Default cursor location
+	if(currentPage == 'login' || currentPage == 'signup' || currentPage == 'reset' || currentPage == 'forgot'){
+		$('input#email').focus();
+		$('#header_login').hide(); // hide login link
+		$('#header_icon, #header_email').hide(); // show profile navigation
+	};
+	
+	// Customize header elements based on current page
+	if(currentPage == 'profile'){
+		$('#header_login').hide(); // hide login link
+		$('#header_icon, #header_email').show(); // show profile navigation
+
+		//mouseover on company tiles
+		$('div#profile li').mouseenter(function() {
+			$(this).find('img.photo').hide();
+			$(this).find('div.fit').slideDown(50);
+			$(this).find('img.logo').show();
+		}).mouseleave(function(){
+			$(this).find('img.photo').show();
+			$(this).find('div.fit').hide();
+			$(this).find('img.logo').hide();
+		});
+	};
+	
+	if(currentPage == 'company'){
+		$('#header_login').hide(); // hide login link
+		$('#header_icon, #header_email').show(); // show profile navigation
+
+		var $container = $('#tiles');
+		// initialize isotope
+		$container.isotope({
+			masonry: {
+				columnWidth: 200,
+			}
+		});
+
+		// filter items when filter link is clicked
+		$('#filters a').click(function(){
+			var selector = $(this).attr('data-filter');
+			$container.isotope({ filter: selector });
+			return false;
+		});
+		
+		 $container.on('click', '.smallTile', function(){
+			$(this).toggleClass('bigTile');
+			$(this).find('div').toggleClass('bigContent');
+			$(this).find('img').toggle();
+			if ($(this).find('img').eq(1).hasClass('smallPic')){
+				$(this).find('img').eq(1).switchClass('smallPic','bigPic',100);
+			}else{
+				$(this).find('img').eq(1).switchClass('bigPic','smallPic',100);
+			};
+			$container.isotope('reLayout');
+		}); 
+		
+	};
+
+	//Close Modal and Fade Layer	
+	$(document).on("click", "#fade, a.close, #transparent_fade", function() {
+		$('#fade , .modal_popup, #modal_settings, #transparent_fade').fadeOut(function() {
+			$('#fade, a.close, #transparent_fade').remove();
 		});
 		return false;
 	});
 	
 	// Homepage animation
-	$('#start').delay(500).animate({ opacity: 1, left: "50px" }, 500);
+	$('#start').delay(500).animate({ opacity: 1, left: "0px" }, 500);
 	$('#icon').delay(500).animate({ opacity: 1, top: "-=10px" }, 500);
 	$("#start a").hover(
 		function () {
@@ -19,16 +80,8 @@ $(document).ready(function(){
 		function () {
 		$(this).animate({backgroundColor: '#e9b60b'}, 200);
 		}
-	);
+	);	
 	
-	// Determine current page
-	var currentPage = $('div#container div').eq(0).attr('id');
-		
-	// Remove Sign Up & Log In
-	if(currentPage == 'login' || currentPage == 'signup'){
-		$('#headerLogin').hide();
-	}
-
 	// Reset all answers to 0
 	$("input[name^='q']").each(function() {      
 		$(this).val(0);
@@ -36,17 +89,17 @@ $(document).ready(function(){
 	
 	// Display questionnaire	 
 	if(currentPage == 'criteria'){
-		$('#headerLogin, #footer, #progressBar').hide();
+		$('#header_login, #footer, #progressBar').hide();
 
 		// Hover animation for next button
-		$("div#nextQuestion, div#showPreview").hover(
+		$("div#next_question, div#show_preview").hover(
 			function () {
-				$('div#nextQuestion .next, div#showPreview .next').animate({backgroundColor: '#27c339', color:'#fff'}, 200);
-				$('div#nextQuestion .arrow, div#showPreview .arrow').animate({borderLeftColor: '#27c339'}, 200);
+				$('div#next_question .next, div#show_preview .next').animate({backgroundColor: '#27c339', color:'#fff'}, 200);
+				$('div#next_question .arrow, div#show_preview .arrow').animate({borderLeftColor: '#27c339'}, 200);
 			},
 			function () {
-				$('div#nextQuestion .next, div#showPreview .next').animate({backgroundColor: '#e9b60b', color:'#364954'}, 200);
-				$('div#nextQuestion .arrow, div#showPreview .arrow').animate({borderLeftColor: '#e9b60b'}, 200);
+				$('div#next_question .next, div#show_preview .next').animate({backgroundColor: '#e9b60b', color:'#364954'}, 200);
+				$('div#next_question .arrow, div#show_preview .arrow').animate({borderLeftColor: '#e9b60b'}, 200);
 			}
 		);
 			
@@ -54,10 +107,10 @@ $(document).ready(function(){
 		var currentQuestion = 0;
 		var lastEmpty = 1;
 		var lastQuestion = 1;
-		$('div#0, #nextQuestion').show(); //default to first question on refresh
+		$('div#0, #next_question').show(); //default to first question on refresh
 
 		// Assign actions when next is clicked
-		$('#nextQuestion').click(function(){
+		$('#next_question').click(function(){
 			$('div#progressBar').show();
 			$('div.hints, div.hints div').hide();
 			// Update progress bar
@@ -74,8 +127,8 @@ $(document).ready(function(){
 			if(questionType){$('div.hints, div#'+questionType).show();};
 			$('div#'+currentQuestion).show();
 			if ((currentQuestion == 20)&&($('input[name=q20]').val()!=0)){
-				$('#nextQuestion').hide();
-				$('#showPreview').show();
+				$('#next_question').hide();
+				$('#show_preview').show();
 			}else{
 				lastEmpty = showNextButton(currentQuestion, lastEmpty);
 			};
@@ -85,7 +138,7 @@ $(document).ready(function(){
 		$('li.progress').click(function(){
 			if ((lastQuestion >= (1+$(this).index()))&&(lastEmpty >=(1+$(this).index()))){
 				// Hide preview button
-				$('div#showPreview').hide();
+				$('div#show_preview').hide();
 				$('div.hints, div.hints div').hide();
 				
 				// Update progress bar
@@ -99,8 +152,8 @@ $(document).ready(function(){
 				if(questionType){$('div.hints, div#'+questionType).show();};
 				$('div#'+currentQuestion).show();
 				if ((currentQuestion == 20)&&($('input[name=q20]').val()!=0)){
-					$('#nextQuestion').hide();
-					$('#showPreview').show();
+					$('#next_question').hide();
+					$('#show_preview').show();
 				}else{
 					lastEmpty = showNextButton(currentQuestion, lastEmpty);
 				};
@@ -347,7 +400,7 @@ $(document).ready(function(){
 					nextEnvFlag=0;
 				};
 			 });
-			if (nextEnvFlag == 1){$('#nextQuestion').show(); $('map#environmentMap area').attr('href','#');}else{$('#nextQuestion').hide(); lastEmpty = 9;};
+			if (nextEnvFlag == 1){$('#next_question').show(); $('map#environmentMap area').attr('href','#');}else{$('#next_question').hide(); lastEmpty = 9;};
 			
 		});
 		
@@ -456,7 +509,7 @@ $(document).ready(function(){
 				};
 			};
 			$('input[name=q19]').val($(this).index()+1);
-			if (traitCount == 5){$('#nextQuestion').show();}else{$('#nextQuestion').hide(); lastEmpty = 19;};
+			if (traitCount == 5){$('#next_question').show();}else{$('#next_question').hide(); lastEmpty = 19;};
 		});
 		
 		// Q20 - Motivation
@@ -464,8 +517,8 @@ $(document).ready(function(){
 			$('#motivation img').css("background-position", "0px "+(-390*($(this).index()+1))+"px");
 			$('input[name=q20]').val($(this).index()+1);
 			lastEmpty = 20;
-			$('#nextQuestion').hide();
-			$('#showPreview').show();
+			$('#next_question').hide();
+			$('#show_preview').show();
 		});
 		
 	};
@@ -477,7 +530,7 @@ function showNextButton(e, lastEmpty) { // determine if user selected an answer
 	$("input[name^=q"+e+"]").each(function() {      
 		nextFlag += parseFloat($(this).val());
 	 });
-	if (nextFlag > 0){$('#nextQuestion').show();}else{$('#nextQuestion').hide(); lastEmpty = e;};
+	if (nextFlag > 0){$('#next_question').show();}else{$('#next_question').hide(); lastEmpty = e;};
 	return lastEmpty;
 };
 
@@ -501,6 +554,20 @@ function modal(modalID, modalWidth, topMargin){
 	//Fade in Background
 	$('body').append('<div id="fade"></div>'); //Add the fade layer to bottom of the body tag.
 	$('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn(); //Fade in the fade layer - .css({'filter' : 'alpha(opacity=80)'}) is used to fix the IE Bug on fading transparencies 
+
+	return false;
+
+};
+
+// Settings modal popup function
+function settings(modalID){
+
+	//Fade in the Popup
+	$(modalID).fadeIn();
+
+	//Fade in Background
+	$('body').append('<div id="transparent_fade"></div>'); //Add the fade layer to bottom of the body tag.
+	$('#transparent_fade').css({'filter' : 'alpha(opacity=0)'}).fadeIn(); //Fade in the fade layer - .css({'filter' : 'alpha(opacity=80)'}) is used to fix the IE Bug on fading transparencies 
 
 	return false;
 

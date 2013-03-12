@@ -4,7 +4,7 @@ class Inquire extends CI_Controller {
 	
 	public function index(){
 		$data['title']="Work-Life-Play";
-		$data['content']="_criteria";
+		$data['content']="pages/_criteria";
 		$this->load->helper('url');
 		$this->load->view('canvas', $data);
 	}

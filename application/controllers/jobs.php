@@ -4,7 +4,7 @@ class Jobs extends CI_Controller {
 
 	public function index(){
 		$data['title']="Job Postings";
-		$data['content']="_companyJobs";
+		$data['content']="pages/_companyJobs";
 		$this->load->helper('url');
 		$this->load->view('canvas', $data);
 	}
