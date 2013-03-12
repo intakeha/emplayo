@@ -1,0 +1,539 @@
+/* CSS reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, 
+footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	text-align:center;
+	color: #666;
+	min-width: 960px;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Woorus color palette 
+	#99B8D7 (Light Blue Sky)
+	#4980B7 (Medium Blue Sky - Two)
+	#215086 (Deep Blue - Top of Water)
+	#000418 (Dark Blue/Black - Deep Ocean)
+	#78BCE3 (Medium Highlighted Blue - Shadows)
+	#173966 (Dark Blue - Ocean Floor Footer)
+*/
+
+/* Page styles */
+ul {
+	list-style-type: none;
+}
+
+span {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+a:link, a:active, a:visited {
+	color: #4980B7;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #4980B7;
+	text-decoration: underline;
+}
+
+.globalContainer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.fluid {
+	width: 100%;
+	float: left;
+}
+ 
+/* Header */
+#header_container {
+	background: #fff url(../images/global/header_bg.jpg) no-repeat center;
+}
+
+.header {
+	background: url(../images/global/header.jpg) no-repeat;
+	height: 160px;
+	text-align: left;
+	margin-bottom: 15px;
+	width: 960px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+#top_menu {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	height: 110px;
+	position: relative;
+}
+
+#menu li {
+	margin: 44px 0px 0px 0px;
+	float:left;
+}
+
+#nav_logo {
+	background: none;
+	height: 80px;
+	margin-top: -20px;
+	width: 400px;
+	display: block;
+}
+
+div#nav_space {
+	width: 70px;
+	height: 75px;
+}
+
+a.nav_icon {
+	display:block;
+	background: url(../images/global/navigation.png) no-repeat;
+	width: 70px;
+	height: 60px;
+}
+
+a.nav_icon:hover {
+	border-bottom: 5px solid #215086;
+}
+
+#menu .selected {
+	border-bottom: 5px solid #215086;
+}
+
+a#nav_home {
+	background-position: 0px 0px;
+}
+
+a#nav_home_1 {
+	background-position: -70px 0px;
+	border-bottom: 5px solid #b7cfeb;
+}
+
+a#nav_mosaic {
+	background-position: 0px -60px;
+}
+
+a#nav_mosaic_1 {
+	background-position: -70px -60px;
+	border-bottom: 5px solid #b7cfeb;
+}
+
+a#nav_search {
+	background-position: 0px -120px;
+}
+
+a#nav_search_1 {
+	background-position: -70px -120px;
+	border-bottom: 5px solid #b7cfeb;
+}
+
+a#nav_lounge {
+	background-position: 0px -180px;
+}
+
+a#nav_lounge_1 {
+	background-position: -70px -180px;
+	border-bottom: 5px solid #b7cfeb;
+}
+
+a#nav_contacts {
+	background-position: 0px -240px;
+}
+
+a#nav_contacts_1 {
+	background-position: -70px -240px;
+	border-bottom: 5px solid #b7cfeb;
+}
+
+a#nav_mail {
+	background-position: 0px -300px;
+}
+
+a#nav_mail_1 {
+	background-position: -70px -300px;
+	border-bottom: 5px solid #b7cfeb;
+}
+
+a#nav_trends {
+	background-position: 0px -360px;
+}
+
+a#nav_trends_1 {
+	background-position: -70px -360px;
+	border-bottom: 5px solid #b7cfeb;
+}
+
+#sub_menu {
+	height: 40px;
+	text-align: right;
+	padding: 10px;
+}
+
+/* Footer */
+#footer_container {
+	background: #173966 url(../images/global/footer.jpg) no-repeat center;
+}
+
+.footer {
+	font-family: Arial,Helvetica,sans-serif;
+	height: 100px;
+	font-size: 16px;
+	color: #78BCE3;
+	text-align: center;
+	margin: 0 auto;
+	overflow: hidden;
+	border-top: 5px solid #99B8D7;
+	border-bottom: none;
+}
+
+.footer a:link, .footer a:active, .footer a:visited {
+	color: #78BCE3;
+	text-decoration: none;
+}
+
+.footer a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+#nav_footer {
+	padding-top: 40px;
+}
+
+.error_text {
+	font-size: 12px;
+	color: #C00;
+	font-weight: bold;
+}
+
+.success_text {
+	font-size: 12px;
+	color: #0C0;
+	font-weight: bold;
+}
+
+.buttons {
+	font-size: 18px;
+	color: #FFF;
+	cursor: pointer; 
+	cursor: hand; 
+	background: #0A246A;
+	border: 2px solid #4980B7;
+	height: 30px;
+	border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -webkit-appearance: none;
+}
+
+.crop_buttons {
+	width: 100px;
+	margin: 10px 10px 0 0;
+}
+
+.modal_buttons {
+	width: 100px;
+	margin-top: 10px;
+}
+
+.cancel {
+	background-color: #999;
+	margin-left: 10px;
+}
+
+div.clear {
+	clear: both;
+}
+
+/*	Pagination */
+
+div.arrows {
+	display: block;
+	width: 70px;
+	height: 60px;
+}
+
+.pagination_left {
+	background: url(../images/global/page_arrows.png) no-repeat;
+	cursor: pointer; 
+	cursor: hand; 
+}
+
+.pagination_right {
+	background: url(../images/global/page_arrows.png) no-repeat;
+	background-position: 20px -60px;
+	cursor: pointer; 
+	cursor: hand; 
+}
+
+.pagination_div{
+	width:40px;
+	float: left;
+	margin: -200px 0px 0px 305px;
+	position: relative;
+	z-index: 1000;
+}
+
+/* Pagination for the slider */
+
+.pagination li {
+	float:left;
+}
+
+.pagination li a {
+	display:block;
+	width:12px;
+	height:12px;
+	background: url(../images/global/pagination.png) no-repeat;
+	background-position:0 0;
+	float:left;
+	overflow:hidden;
+}
+
+.pagination li.current a {
+	background-position:0 -13px;
+}
+
+/* Image Crop */
+
+.imgareaselect-border1 {
+	background: url(../images/global/border-v.gif) repeat-y left top;
+}
+
+.imgareaselect-border2 {
+    background: url(../images/global/border-h.gif) repeat-x left top;
+}
+
+.imgareaselect-border3 {
+    background: url(../images/global/border-v.gif) repeat-y right top;
+}
+
+.imgareaselect-border4 {
+    background: url(../images/global/border-h.gif) repeat-x left bottom;
+}
+
+.imgareaselect-border1, .imgareaselect-border2,
+.imgareaselect-border3, .imgareaselect-border4 {
+    filter: alpha(opacity=50);
+	opacity: 0.5;
+}
+
+.imgareaselect-handle {
+    background-color: #fff;
+    border: solid 1px #000;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+}
+
+.imgareaselect-outer {
+    background-color: #000;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+}
+
+/* Autocomplete CSS */
+.ac_results {
+	padding: 0px;
+	border: 1px solid black;
+	background-color: white;
+	overflow: hidden;
+	z-index: 99999;
+}
+
+.ac_results ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ac_results li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: default;
+	display: block;
+	/* 
+	if width will be 100% horizontal scrollbar will apear 
+	when scroll mode will be used
+	*/
+	/*width: 100%;*/
+	font: menu;
+	font-size: 12px;
+	/* 
+	it is very important, if line-height not setted or setted 
+	in relative units scroll will be broken in firefox
+	*/
+	line-height: 16px;
+	overflow: hidden;
+	text-align: left;
+}
+
+.ac_loading {
+	background: white url('../images/global/loading_sm.gif') right center no-repeat;
+}
+
+.ac_odd {
+	background-color: #eee;
+}
+
+.ac_over {
+	background-color: #0A246A;
+	color: white;
+}
+
+/* Online & Social Status */
+
+.online_status {
+	width: 66px;
+	height: 20px;
+	background: url(../images/global/online.png) no-repeat;
+}
+
+.offline_status {
+	background-position: 0 -20px;
+}
+
+.away_status {
+	background-position: 0 -40px;
+}
+
+.busy_status {
+	background-position: 0 -60px;
+}
+
+.online_status_sm {
+	width: 20px;
+	height: 20px;
+	background: url(../images/global/online.png) no-repeat;
+}
+
+.offline_status_sm {
+	background-position: 0 -20px;
+}
+
+.away_status_sm {
+	background-position: 0 -40px;
+}
+
+.busy_status_sm {
+	background-position: 0 -60px;
+}
+
+.social_status {
+	width: 30px;
+	height: 28px;
+	float: left;
+	background:url(../images/global/social_status_sm.png) no-repeat;
+	background-position: 0px 0px;
+}
+
+.warning_status {
+	background-position: 0px -23px;
+}
+
+.float_right {
+	float: right;
+}
+
+/* Action Buttons */
+
+.talk_button {
+	display: block;
+	width: 74px;
+	height: 75px;
+	background:url(../images/global/action_buttons.png) no-repeat;
+	background-position: 0px 0px;
+}
+
+.write_button {
+	display: block;
+	width: 74px;
+	height: 75px;
+	background:url(../images/global/action_buttons.png) no-repeat;
+	background-position: -74px 0px;
+}
+
+.add_button {
+	display: block;
+	width: 74px;
+	height: 75px;
+	background:url(../images/global/action_buttons.png) no-repeat;
+	background-position: -148px 0px;
+}
+
+.block_button {
+	display: block;
+	width: 74px;
+	height: 75px;
+	background:url(../images/global/action_buttons.png) no-repeat;
+	background-position: -222px 0px;
+}
+
+.action_button_sm {
+	display: block;
+	width: 62px;
+	height: 50px;
+	background:url(../images/global/action_buttons_sm.png) no-repeat;
+	float: right;
+}
+
+.talk_button_sm {
+	background-position: 0px 0px;
+}
+
+.write_button_sm {
+	background-position: -62px 0px;
+}
+
+.add_button_sm {
+	background-position: -124px 0px;
+}
+
+.block_button_sm {
+	background-position: -186px 0px;
+}
+
+.end_button_sm {
+	background-position: -248px 0px;
+}
+
+.archive_button {
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin-top: 30px;
+	float: right;
+	background:url(../images/global/archive.png) no-repeat;
+}

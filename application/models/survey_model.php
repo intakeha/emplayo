@@ -10,7 +10,7 @@ class Survey_model extends CI_Model {
        
         function get_categories()
     { 
-        $sql = 'SELECT category_id,name FROM category';
+        $sql = 'SELECT category_id,name FROM ref_category';
         $query = $this->db->query($sql);
         
       //transformation  
@@ -37,7 +37,7 @@ class Survey_model extends CI_Model {
         $categories = implode(',', $categories);
 
         $sql = 'SELECT b.*
-                FROM category_map bt, company b, category t
+                FROM company_category bt, company b, ref_category t
                 WHERE bt.category_id = t.category_id
                 AND (t.category_id IN ('.$categories.'))
                 AND b.id = bt.company_id
@@ -178,14 +178,20 @@ class Survey_model extends CI_Model {
     {
         //find companies that match the DO NEXT categories
         $categories = implode(',', $categories);
-
+        /*
         $sql = 'SELECT b.*
                 FROM category_map bt, company b, category t
                 WHERE bt.category_id = t.category_id
                 AND (t.category_id IN ('.$categories.'))
                 AND b.id = bt.company_id
                 GROUP BY b.id';
-
+        */
+        $sql = 'SELECT b.*
+                FROM company_category bt, company b, ref_category t
+                WHERE bt.category_id = t.category_id
+                AND (t.category_id IN ('.$categories.'))
+                AND b.id = bt.company_id
+                GROUP BY b.id';
         $query = $this->db->query($sql);
 
         if ($query->num_rows() > 0)
@@ -360,7 +366,7 @@ class Survey_model extends CI_Model {
             //$this->output->enable_profiler(TRUE);
             
             //get all the companies (that meet the previous criteria) and their associated benefits
-            $sql2 = 'SELECT company_id,category_id FROM category_map WHERE company_id IN ('.$queried_comp_ids.')';
+            $sql2 = 'SELECT company_id,category_id FROM company_category WHERE company_id IN ('.$queried_comp_ids.')';
             $query2 = $this->db->query($sql2);
 
             //$user_history_cats = implode(',', $user_history_cats);            
@@ -514,8 +520,16 @@ class Survey_model extends CI_Model {
      $min = min($isolated_benefits);
      //$min = 1;   
      $max = max($isolated_benefits);
+     if (!(($min >= 0 && $min <= 1)&&($max >= 0 && $max <= 1))){
+         //we're already in the range of normalization, between 0 & 1
+         if ($max == $min){
+             //we don't want to divide by zero...so do something else here
+             echo "caught prior to dividing by zero inside of normalize_benefits";
+         }else {
 
-    $sourceCoords['benefits'] = ($sourceCoords['benefits']-$min)/($max-$min);   
+            $sourceCoords['benefits'] = ($sourceCoords['benefits']-$min)/($max-$min);  
+         }
+     }
     }    
     
     function isolate_benefits($details) {
@@ -528,8 +542,15 @@ class Survey_model extends CI_Model {
 
      $min = min($isolated_history);
      $max = max($isolated_history);
-
-    $sourceCoords['history'] = ($sourceCoords['history']-$min)/($max-$min);   
+     if (!(($min >= 0 && $min <= 1)&&($max >= 0 && $max <= 1))){
+         //we're already in the range of normalization, between 0 & 1
+         if ($max == $min){
+             //we don't want to divide by zero...so do something else here
+             echo "caught prior to dividing by zero inside of normalize_benefits";
+         }else {
+            $sourceCoords['history'] = ($sourceCoords['history']-$min)/($max-$min);  
+         }
+     }
     }         
    
     function isolate_history($details) {

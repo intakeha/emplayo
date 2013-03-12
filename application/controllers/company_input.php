@@ -9,7 +9,7 @@ class Survey extends CI_Controller {
 
 	}    
     
-    public function load(){
+    public function index(){
         //get list of categories from database
         $this->load->model('survey_model');
         $data['categories'] = $this->survey_model->get_categories();
@@ -17,25 +17,8 @@ class Survey extends CI_Controller {
         $this->load->view("survey/load",$data);
         //$this->load->view("survey/newload",$data);
     }
-
-        public function submit2(){
-            //validation required?
-            //find all the companies that match the submitted 'tags'
-            $categories = $this->input->post('category');
-            $history = $this->input->post('history');
-            /*
-            echo '<pre>';
-            print_r($categories);
-            echo '</pre>';
-            */
-            
-            $this->load->model('survey_model');
-            $data['category_tags'] = $this->survey_model->match_tags($categories);
-            
-            $this->load->view("survey/newresults",$data);
-        }
     
-    public function submit(){
+    public function enter(){
         $this->load->library("form_validation");
         $this->form_validation->set_rules('company_type[]', 'Company Type', 'required');
         $this->form_validation->set_rules('users_benefits[][]', 'Benefits', 'required');

@@ -45,6 +45,7 @@ $route['404_override'] = '';
 $route['login'] = 'user/login';
 $route['signup'] = 'user/signup';
 $route['auth/forgot'] = 'auth/forgot_password';
+$route['admin'] = 'admin/home';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

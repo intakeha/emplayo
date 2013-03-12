@@ -1,0 +1,950 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+//Main controller for all company CRUD functions
+
+class Company extends CI_Controller {
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->library('session');
+        $this->load->library('ion_auth');
+        $this->load->library('form_validation');
+        $this->load->helper(array('form', 'url'));        
+        $this->load->database();
+        $this->load->helper('image_functions_helper');
+        
+        $this->load->model('company_model');
+    }
+    
+    //Listing - displays a list of the companies in the database
+    public function listing()
+    {
+        //load table library for table generation
+        $this->load->library('table');
+        
+        //this indicates the segment of the URI to look at for the offset paramater
+        $uri_segment = 4;
+        
+        //params sent to the db lookup
+        $offset = $this->uri->segment($uri_segment);
+        $limit = 10;
+
+        //grabbing the table data and format from the model
+        $table_data = $this->company_model->build_company_table($limit,$offset);
+        $data['table'] = $table_data['table'];
+        $data['num_rows'] = $table_data['num_rows'];
+        
+        //load pagination library
+        $this->load->library('pagination');
+        
+        //pagination config parameters
+        $config['base_url'] = site_url('admin/company/listing');
+        $config['total_rows'] = $data['num_rows'];
+        $config['per_page'] = $limit;         
+        $config['uri_segment'] = $uri_segment;
+
+        //initialize the pagination library with our config
+        $this->pagination->initialize($config); 
+        
+        //build the pagination display
+        $data['pagination'] = $this->pagination->create_links();
+
+        //load the view
+        $this->load->view("admin/company/listing",$data);        
+    }
+    
+    //Create a new company record
+    public function create_step_1()
+    {
+        //Grab the data to be used to populate the form by default
+        $data['category_array'] = $this->company_model->get_categories();
+        $data['type_array'] = $this->company_model->get_ref('type');
+        $data['pace_array'] = $this->company_model->get_ref('pace');
+        $data['lifecycle_array'] = $this->company_model->get_ref('lifecycle');
+        $data['corp_citizenship_array'] = $this->company_model->get_ref('corp_citizenship');
+        $data['benefits_array'] = $this->company_model->get_ref('benefits');
+        
+        //validate the form (except for the file upload)
+        $this->form_validation->set_rules('company_name', 'Company Name', 'required');
+        $this->form_validation->set_rules('company_url', 'Company URL', 'required|prep_url');
+        $this->form_validation->set_rules('company_type', 'Company Type', 'required');
+        $this->form_validation->set_rules('company_pace', 'Company Pace', 'required');
+        $this->form_validation->set_rules('company_lifecycle', 'Company Lifecycle', 'required');
+        $this->form_validation->set_rules('corp_citizenship', 'Corporate Citizenship', 'required');
+        $this->form_validation->set_rules('benefits', 'Benefits', 'required');
+        $this->form_validation->set_rules('category[]', 'Category', 'required');            
+
+        if ($this->form_validation->run() == true)
+        {
+            //validation is good.  setup the data to pass to the session
+            $step_1_post = array();
+            $step_1_post['company_name'] = $this->input->post('company_name');
+            $step_1_post['company_url'] = $this->input->post('company_url');
+            $step_1_post['company_type'] = $this->input->post('company_type');
+            $step_1_post['company_pace'] = $this->input->post('company_pace');
+            $step_1_post['company_lifecycle'] = $this->input->post('company_lifecycle');
+            $step_1_post['corp_citizenship'] = $this->input->post('corp_citizenship');
+            $step_1_post['benefits'] = $this->input->post('benefits');
+            $step_1_post['category'] = $this->input->post('category');
+ 
+            //save the data to the session
+            $this->session->set_userdata($step_1_post);//should confirm that this is actually set...
+            
+            //pass the user to step 2 of the process..
+            redirect('admin/company/create_step_2', 'refresh');
+
+        }  
+        else //form validation errors.  re-load the form
+        {
+            $data['message'] = $this->session->flashdata('message');
+
+            //load the view
+            $this->load->view("admin/company/create_step_1",$data);          
+        }        
+    }      
+    
+
+    function create_step_2()
+    {
+
+        $this->load->view("admin/company/create_step_2");     
+
+    }      
+
+    function create_save()
+    {
+        //grab the data from the session, then send to the model to insert
+        $post_data = array();
+        $post_data['company_name'] = $this->session->userdata('company_name');
+        $post_data['company_url'] = $this->session->userdata('company_url');
+        $post_data['company_type'] = $this->session->userdata('company_type');
+        $post_data['company_pace'] = $this->session->userdata('company_pace');
+        $post_data['company_lifecycle'] = $this->session->userdata('company_lifecycle');
+        $post_data['corp_citizenship'] = $this->session->userdata('corp_citizenship');
+        $post_data['benefits'] = $this->session->userdata('benefits');
+        $post_data['category'] = $this->session->userdata('category');
+        $post_data['company_logo'] = $this->session->userdata('company_logo');
+        $post_data['creative_logo'] = $this->session->userdata('creative_logo');
+
+        //commit all session data to the database
+        if ($this->company_model->create_company($post_data))
+        {
+            //success
+            //move the image files from temp to the working directory
+            $original_path = "./assets/images/company_logos/temp/";
+            $destination_path = "./assets/images/company_logos/";
+            $original_logo = $original_path.$post_data['company_logo'];
+            $original_creative = $original_path.$post_data['creative_logo'];
+            $destination_logo = $destination_path.$post_data['company_logo'];
+            $destination_creative = $destination_path.$post_data['creative_logo'];            
+            
+            
+            rename($original_logo,$destination_logo);
+            rename($original_creative,$destination_creative);
+        
+            //clear the session data
+            $this->session->unset_userdata($post_data);
+
+
+            //update the message
+            $message =  "Record successfully inserted.";
+            $this->session->set_flashdata('message', $message);
+
+            //load the view                
+           redirect('admin/company/listing', 'refresh');                     
+        } 
+        else
+        {
+            //there were errors
+            $data['errors'] = $this->company_model->errors;
+
+            //load the view
+            $this->load->view("admin/company/create_step_1",$data); 
+        }      
+    }     
+    
+    //Delete a company from the database and all linked tables
+    public function delete($company_id)
+    {
+        $data['company_info'] = $this->company_model->get_company_info($company_id);
+        $data['company_id'] = $company_id;
+        
+        if ($this->input->post())
+            //If the form has been posted...
+        {
+            if ($this->input->post('delete')=='1')
+            {
+                //Attempt to delete the company
+                $result = $this->company_model->delete_company($company_id);
+                
+                if ($result)
+                {
+                    //successfully deleted from database
+                    //now delete images from filesystem:
+                    $image_path = "./assets/images/company_logos/";
+                    $company_logo_path = $image_path.$data['company_info']['company_logo'];
+                    $creative_logo_path = $image_path.$data['company_info']['creative_logo'];
+                    if (file_exists($creative_logo_path)){
+                        unlink($creative_logo_path);
+                    }
+                    if (file_exists($company_logo_path)){
+                        unlink($company_logo_path);
+                    }                    
+ 
+                    //successfully deleted files
+                    $message =  $data['company_info']['company_name']." company information deleted";
+                    $this->session->set_flashdata('message', $message);
+                    //echo "success";
+                    redirect('admin/company/listing', 'refresh');                         
+                  
+                   
+                }
+                else
+                {
+                    //there was an error
+                    $message =  "There was an error while attempting to delete the following company: ".$data['company_info']['company_name']." from the database.";
+                    $this->session->set_flashdata('message', $message);
+                    //echo "db error";
+                    redirect('admin/company/listing', 'refresh');                       
+                }
+            }
+            else
+            {
+                $message =  "No delete performed.  Action cancelled.";
+                $this->session->set_flashdata('message', $message);                
+                redirect('admin/company/listing', 'refresh');
+            }
+            
+        }
+        else//the form has not been posted
+        {
+            //redisplay the view
+            $this->load->view("admin/company/delete",$data);
+        }  
+    }    
+
+    //Update an existing company record
+    public function update($id)
+    {
+        //Grab the data to be used to populate the form
+        $data['company_id'] = $id;
+        $data['category_array'] = $this->company_model->get_categories();
+        $data['type_array'] = $this->company_model->get_ref('type');
+        $data['pace_array'] = $this->company_model->get_ref('pace');
+        $data['lifecycle_array'] = $this->company_model->get_ref('lifecycle');
+        $data['corp_citizenship_array'] = $this->company_model->get_ref('corp_citizenship');
+        $data['benefits_array'] = $this->company_model->get_ref('benefits');
+        
+        if (isset($id)){
+            //get the data for the specified company id
+            $data['company_info'] = '';
+            $data['company_info'] = $this->company_model->get_company_info($id);
+            $data['benefits_info'] = $this->company_model->get_benefits_info($id);
+            $data['categories_info'] = $this->company_model->get_categories_info($id);
+ 
+        }
+        
+        
+        //validate the form (except for the file upload)
+        $this->form_validation->set_rules('company_name', 'Company Name', 'required');
+        $this->form_validation->set_rules('company_url', 'Company URL', 'required|prep_url');
+        $this->form_validation->set_rules('company_type', 'Company Type', 'required');
+        $this->form_validation->set_rules('company_pace', 'Company Pace', 'required');
+        $this->form_validation->set_rules('company_lifecycle', 'Company Lifecycle', 'required');
+        $this->form_validation->set_rules('corp_citizenship', 'Corporate Citizenship', 'required');
+        $this->form_validation->set_rules('benefits', 'Benefits', 'required');
+        $this->form_validation->set_rules('category[]', 'Category', 'required');            
+
+        if ($this->form_validation->run() == true)
+        {   
+            //validation is good.  setup the data to pass to the model
+            $post = $this->input->post();
+
+            //setup the file upload config values
+            $config['upload_path'] = './assets/images/company_logos/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']	= '100';
+            $config['max_width']  = '1024';
+            $config['max_height']  = '768';
+            $config['remove_spaces']  = 'TRUE';
+            //$config['max_filename']  = 20;
+            $config['file_name']  = strtolower($post['company_name'].'_'.substr(md5($post['company_name']),10));
+
+            //load the upload library
+            $this->load->library('upload', $config);            
+            
+            if ($this->upload->do_upload())
+            {
+                $upload_data = array('upload_data' => $this->upload->data());
+                
+                //if everything looks good, insert the data into the db
+                if ($this->company_model->update_company($post,$upload_data,$id))
+                {
+                    //success
+                    $message =  "Record successfully updated.";
+                    $this->session->set_flashdata('message', $message);
+                    //load the view
+                   redirect($this->uri->uri_string(), 'refresh');
+                } 
+                else
+                {
+                    //there were errors
+                    $data['errors'] = $this->company_model->errors;
+
+                    //load the view
+                    $this->load->view("admin/company/update",$data); 
+                }                
+            }
+            else //there was an error with the file upload
+            {
+                $upload_error = array('error' => $this->upload->display_errors());
+                $data['message'] = $this->session->flashdata('message');
+                $data['upload_error'] = $upload_error;
+
+                //load the view
+                $this->load->view("admin/company/update",$data);                   
+            }
+        }  
+        else //form validation errors.  re-load the form
+        {
+            $data['message'] = $this->session->flashdata('message');
+
+            //load the view
+            $this->load->view("admin/company/update",$data); 
+        }        
+    }        
+ 
+    //Update an existing company record
+    public function view($id)
+    {
+        //Grab the data to be used to populate the form
+        $data['company_id'] = $id;
+        $data['category_array'] = $this->company_model->get_categories();
+        $data['type_array'] = $this->company_model->get_ref('type');
+        $data['pace_array'] = $this->company_model->get_ref('pace');
+        $data['lifecycle_array'] = $this->company_model->get_ref('lifecycle');
+        $data['corp_citizenship_array'] = $this->company_model->get_ref('corp_citizenship');
+        $data['benefits_array'] = $this->company_model->get_ref('benefits');
+        
+        if (isset($id)){
+            //get the data for the specified company id
+            $data['company_info'] = '';
+            $data['company_info'] = $this->company_model->get_company_info($id);
+            $data['benefits_info'] = $this->company_model->get_benefits_info($id);
+            $data['categories_info'] = $this->company_model->get_categories_info($id);
+        }
+
+        //load the view
+        $this->load->view("admin/company/view",$data); 
+               
+    }//view  
+    
+    //Update an existing company record
+    public function update_step_1($id)
+    {
+        //Grab the data to be used to populate the form
+        $data['company_id'] = $id;
+        $data['category_array'] = $this->company_model->get_categories();
+        $data['type_array'] = $this->company_model->get_ref('type');
+        $data['pace_array'] = $this->company_model->get_ref('pace');
+        $data['lifecycle_array'] = $this->company_model->get_ref('lifecycle');
+        $data['corp_citizenship_array'] = $this->company_model->get_ref('corp_citizenship');
+        $data['benefits_array'] = $this->company_model->get_ref('benefits');
+        
+        if (isset($id)){
+            //get the data for the specified company id
+            $data['company_info'] = '';
+            $data['company_info'] = $this->company_model->get_company_info($id);
+            $data['benefits_info'] = $this->company_model->get_benefits_info($id);
+            $data['categories_info'] = $this->company_model->get_categories_info($id);
+        }
+        //validate the form (except for the file upload)
+        $this->form_validation->set_rules('company_name', 'Company Name', 'required');
+        $this->form_validation->set_rules('company_url', 'Company URL', 'required|prep_url');
+        $this->form_validation->set_rules('company_type', 'Company Type', 'required');
+        $this->form_validation->set_rules('company_pace', 'Company Pace', 'required');
+        $this->form_validation->set_rules('company_lifecycle', 'Company Lifecycle', 'required');
+        $this->form_validation->set_rules('corp_citizenship', 'Corporate Citizenship', 'required');
+        $this->form_validation->set_rules('benefits', 'Benefits', 'required');
+        $this->form_validation->set_rules('category[]', 'Category', 'required');            
+
+        if ($this->form_validation->run() == true)
+        {   
+            //validation is good.  setup the data to pass to the session
+            $step_1_post = array();
+            $step_1_post['company_name'] = $this->input->post('company_name');
+            $step_1_post['company_url'] = $this->input->post('company_url');
+            $step_1_post['company_type'] = $this->input->post('company_type');
+            $step_1_post['company_pace'] = $this->input->post('company_pace');
+            $step_1_post['company_lifecycle'] = $this->input->post('company_lifecycle');
+            $step_1_post['corp_citizenship'] = $this->input->post('corp_citizenship');
+            $step_1_post['benefits'] = $this->input->post('benefits');
+            $step_1_post['category'] = $this->input->post('category');
+ 
+            //save the data to the session
+            $this->session->set_userdata($step_1_post);//should confirm that this is actually set...
+            
+            //pass the user to step 2 of the process..
+            redirect('admin/company/update_step_2/'.$id, 'refresh');
+        }  
+        else //form validation errors.  re-load the form
+        {
+            $data['message'] = $this->session->flashdata('message');
+
+            //load the view
+            $this->load->view("admin/company/update_step_1",$data); 
+        }        
+    }//update_step_1
+    
+    function update_step_2($id)
+    {
+        $company_info = $this->company_model->get_company_info($id);
+        $data['company_logo'] =  $company_info['company_logo'];
+        $data['creative_logo'] =  $company_info['creative_logo'];
+        $data['company_id'] = $id;
+        
+        $this->load->view("admin/company/update_step_2",$data);     
+
+    }         
+    //Update Save function will commit all changes
+    //(should consider adding cancel functionality in case a user wants to abort the process
+    //...would include a cancel button in the view.  In the controller we would need
+    //to clear the files from the temp folder and also clear out the session.
+    //granularity would be useful, as in: cancel just the photo change, or cancel the entire change?
+    function update_save($id)
+    {
+     
+        //grab the data from the session, then send to the model to insert
+        $post_data = array();
+        $post_data['company_name'] = $this->session->userdata('company_name');
+        $post_data['company_url'] = $this->session->userdata('company_url');
+        $post_data['company_type'] = $this->session->userdata('company_type');
+        $post_data['company_pace'] = $this->session->userdata('company_pace');
+        $post_data['company_lifecycle'] = $this->session->userdata('company_lifecycle');
+        $post_data['corp_citizenship'] = $this->session->userdata('corp_citizenship');
+        $post_data['benefits'] = $this->session->userdata('benefits');
+        $post_data['category'] = $this->session->userdata('category');
+        $post_data['company_logo'] = $this->session->userdata('company_logo');
+        $post_data['creative_logo'] = $this->session->userdata('creative_logo');   
+        $new_company_logo = '';
+        $new_creative_logo = '';
+        
+        
+        //the user may not have changed the logos..if not, assign the current value to the array
+        if (empty($post_data['company_logo'])){
+            //echo "1";
+            $company_info = $this->company_model->get_company_info($id);
+            $post_data['company_logo'] =  $company_info['company_logo'];
+            $new_company_logo = FALSE;     
+        } else {
+            $new_company_logo = TRUE;
+            }
+        
+        if (empty($post_data['creative_logo'])){
+            //echo "2";
+            $company_info = $this->company_model->get_company_info($id);
+            $post_data['creative_logo'] =  $company_info['creative_logo']; 
+            $new_creative_logo = FALSE;
+        } else {
+            $new_creative_logo = TRUE;
+            }    
+
+        //commit all session data to the database
+        if ($this->company_model->update_company($post_data,$id))
+        { //success
+                //move the image files from temp to the working directory
+                $original_path = "./assets/images/company_logos/temp/";
+                $destination_path = "./assets/images/company_logos/";            
+            
+            if ($new_company_logo){               
+                $original_logo = $original_path.$post_data['company_logo'];
+                $destination_logo = $destination_path.$post_data['company_logo'];           
+                rename($original_logo,$destination_logo);
+            }
+            
+            if ($new_creative_logo){
+                $original_creative = $original_path.$post_data['creative_logo'];
+                $destination_creative = $destination_path.$post_data['creative_logo'];            
+                rename($original_creative,$destination_creative);
+            }            
+        
+            //clear the session data
+            $this->session->unset_userdata($post_data);
+
+
+            //update the message
+            $message =  "Company successfully updated.";
+            $this->session->set_flashdata('message', $message);
+
+            //load the view                
+            //echo "successful update";
+           redirect('admin/company/listing', 'refresh');                     
+        } 
+        else
+        {
+            //there were errors
+            $data['errors'] = $this->company_model->errors;
+
+            //load the view
+            $this->load->view("admin/company/update_step_1",$data); 
+        }      
+        
+    }//update_save     
+        
+    
+    public function company_name_search()
+    {
+        
+        if(($this->input->post('kw')) && ($this->input->post('kw') != ''))    
+        {
+            $kws = $this->input->post('kw');
+            $this->company_model->company_name_search($kws);
+            
+        }        
+    }//end of company_name_search      
+
+    function logo_upload()
+    {    
+        
+        //setup the file upload config values
+        $config['upload_path'] = './assets/images/company_logos/temp/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size']	= '500';
+        //$config['max_width']  = '2024';
+        //$config['max_height']  = '2024';
+        $config['remove_spaces']  = 'TRUE';
+        //$config['file_name']  = strtolower($name.'_'.substr(md5($name),10));
+        $config['encrypt_name']  = 'TRUE';
+        $config['max_filename']  = 15;
+        
+        $max_dimension = "500";		// Max width allowed for the large image
+        $min_dimension = "250";        
+        
+        //get the value for the last temp file that was uploaded (if this is beyond the first upload)
+        //we can use this to clean up any abandoned files
+        $last_temp_file = $this->input->post('last_temp_file');
+        $full_temp_path = $config['upload_path'].$last_temp_file;
+
+        if ($last_temp_file){
+            unlink($full_temp_path);
+        }
+
+        //load the upload library
+        $this->load->library('upload', $config);            
+
+        //attempt to upload the file
+        if ($this->upload->do_upload())      
+        {
+            $upload_data = array('upload_data' => $this->upload->data());
+            $pic_name = $upload_data['upload_data']['file_name'];  
+            
+            $temp_image_location = $config['upload_path'].$pic_name;            
+            
+            //get height, width & scale if too big
+            $width = getWidth($temp_image_location);
+            $height = getHeight($temp_image_location);			
+
+            //find out which dimension is larger (we need both min and max)
+            //this only works because the picture is a square
+            if ($width > $height){
+                    $max_dimension_num = $width;
+                    $min_dimension_num = $height;
+            }else
+            {
+                    $max_dimension_num = $height;
+                    $min_dimension_num = $width;
+            }
+
+            //error if image is too small
+            if ($min_dimension_num < $min_dimension){
+                    $error_message = "Please use a larger image.";
+                    $this->sendToJS(0, $error_message);                    
+                    
+            }
+
+            /*
+            //test file conversion to .jpg
+            $large_image_location = convertImage($large_image_location);
+            chmod($large_image_location, 0777);*/
+
+            //Scale the image if it is greater than the max dimension
+            if ($max_dimension_num > $max_dimension){
+                    $scale = $max_dimension/$max_dimension_num;
+                    $uploaded = resizeImage($temp_image_location,$width,$height,$scale);
+                    $square_image = squarify($uploaded,$max_dimension);
+            }else{
+                    $scale = 1;
+                    $uploaded = resizeImage($temp_image_location,$width,$height,$scale);
+                    $square_image = squarify($uploaded,$max_dimension);
+            } 
+            $new_pic_name = basename($uploaded);
+
+            //set data array of picture location & print to JavaSrcipt
+
+            //$new_file_name  = substr($file_name, 0, strrpos($file_name, '.')).".jpg";
+            //$this->sendToJS(1, $new_file_name);
+
+            //sendToJS(1, $file_name);            
+
+            //upload was successful.  grab some data, then return a success message
+
+            $messageToSend = array('success' => '1', 'message'=>$new_pic_name, 'last_temp_file'=>$last_temp_file);
+            $output = json_encode($messageToSend);
+            echo $output; 
+
+        }
+        else //there was an error with the file upload
+        {
+            $messageToSend = array('success' => '0', 'message'=>'There was an error with the upload.  Please try again.');
+            $output = json_encode($messageToSend);
+            echo $output;  
+        }            
+    } 
+
+    function sendToJS($successFlag, $message){
+
+        $messageToSend = array('success' => $successFlag, 'message'=>$message);
+        $output = json_encode($messageToSend);
+        die($output);
+    }    
+    
+    //The Crop function is called via AJAX
+    public function crop()
+    {
+        //$this->load->helper('image_functions_helper');
+        
+        $profile_width = "250";		// Width of profile picture
+        $profile_height = "250";	// Height of profile picture       
+        
+        $x1 = $this->input->post('x1');
+        $y1 = $this->input->post('y1');
+        $x2 = $this->input->post('x2');
+        $y2 = $this->input->post('y2');
+        $w = $this->input->post('w');
+        $h = $this->input->post('h');   
+        $picture_name_input= $this->input->post('cropFile');
+        $pic_db_field= $this->input->post('pic_db_field');
+
+        
+        //if coordinates are empty or not numeric, send error message to JS
+        if ($x1 === NULL || $y1 === NULL || $x2 === NULL || $y2 === NULL || $w === NULL || $h === NULL || $picture_name_input === NULL || $pic_db_field === NULL
+                || !is_numeric($x1) || !is_numeric($y1) || !is_numeric($x2) || !is_numeric($y2) || !is_numeric($w) || !is_numeric($h))
+        {          
+            $message = "Please click on the image & crop to create your profile picture."; 
+            $messageToSend = array('success' => '0', 'message'=>$message);
+            $output = json_encode($messageToSend);
+            echo $output;              
+        }
+        else
+        {
+        
+            $original_location = "./assets/images/company_logos/temp/".$picture_name_input;
+            $profile_path = "./assets/images/company_logos";
+            $profile_image_location = $profile_path."/".$picture_name_input;
+
+            $scale = $profile_width/$w;
+            $cropped = '';
+            //$cropped = resizeThumbnailImage($profile_image_location, $original_location,$w,$h,$x1,$y1,$scale);
+            $cropped = resizeThumbnailImage($original_location, $original_location,$w,$h,$x1,$y1,$scale);
+            //the resizeThumbnailImage function will resize the image and save it into the $profile_path
+
+            if (!empty($cropped)){
+                //delete the temp file
+                //unlink($original_location);//removed this...will commit all deletes and moves in the final step
+
+                //save the image name to the session
+                $this->session->set_userdata($pic_db_field,$picture_name_input);
+
+                //success
+                $messageToSend = array('success' => '1', 'message'=>'Photo successfully processed.');
+                $output = json_encode($messageToSend);
+                echo $output;              
+
+            }
+            else
+            {
+                //There was an error with the DB insert
+                $messageToSend = array('success' => '0', 'message'=>'There was an error processing the photo.');
+                $output = json_encode($messageToSend);
+                echo $output;  
+            }  
+        }
+    }    
+    
+    function validateCoordinates($number){
+
+	if($number == NULL || strlen($number) == 0)
+	{
+		//$error_message = "Please click on the image & crop to create your tile.";
+		//sendToJS(0, $error_message);
+            return FALSE;
+	
+	}elseif (!preg_match('/^[0-9 ]+$/', $number)){
+		
+		//$error_message = "Please click on the image & crop to create your tile.";
+		//sendToJS(0, $error_message);
+            return FALSE;
+	
+	}else
+	{
+		return $number;
+	}
+
+} 
+
+/******* OLD FUNCTIONS - TO BE DELETED *******************/
+
+    //The Crop_Logo function is called via AJAX
+    public function XXXcrop_logo()
+    {
+        $this->load->helper('image_functions_helper');
+        
+        $profile_width = "250";		// Width of profile picture
+        $profile_height = "250";	// Height of profile picture
+
+        $x1 = $this->validateCoordinates($this->input->post('x1'));
+        $y1 = $this->validateCoordinates($this->input->post('y1'));
+        $x2 = $this->validateCoordinates($this->input->post('x2'));
+        $y2 = $this->validateCoordinates($this->input->post('y2'));
+        $w = $this->validateCoordinates($this->input->post('w'));
+        $h = $this->validateCoordinates($this->input->post('h'));   
+        $picture_name_input= $this->input->post('cropFile');
+        $pic_db_field= $this->input->post('pic_db_field');
+        
+        //if coordinates are null, send error message to JS
+        if ($x1 === NULL || $y1 === NULL || $x2 === NULL || $y2 === NULL || $w === NULL || $h === NULL || $picture_name_input === NULL )
+        {          
+            $message = "Please click on the image & crop to create your profile picture."; 
+            echo $message;
+        }
+        
+        $original_location = "./assets/images/company_logos/temp/".$picture_name_input;
+        $profile_path = "./assets/images/company_logos";
+        $profile_image_location = $profile_path."/".$picture_name_input;
+
+        $scale = $profile_width/$w;
+        $cropped = resizeThumbnailImage($profile_image_location, $original_location,$w,$h,$x1,$y1,$scale);
+        
+        //delete the temp file
+        unlink($original_location);
+        
+        //if there are errors, send json back to the browser.  otherwise, move on...
+        
+        //if no errors, save the data to the DB...including the company data in the session.
+        //build array to pass to the model:
+        $post_data = array();
+        $post_data['company_name'] = $this->session->userdata('company_name');
+        $post_data['company_url'] = $this->session->userdata('company_url');
+        $post_data['company_type'] = $this->session->userdata('company_type');
+        $post_data['company_pace'] = $this->session->userdata('company_pace');
+        $post_data['company_lifecycle'] = $this->session->userdata('company_lifecycle');
+        $post_data['corp_citizenship'] = $this->session->userdata('corp_citizenship');
+        $post_data['benefits'] = $this->session->userdata('benefits');
+        $post_data['category'] = $this->session->userdata('category');
+
+        if ($this->company_model->create_company($post_data,$picture_name_input))
+        {
+            //success
+            $messageToSend = array('success' => '1', 'message'=>'Record successfully inserted.');
+            $output = json_encode($messageToSend);
+            echo $output;              
+        } 
+        else
+        {
+            //There was an error with the DB insert
+            $messageToSend = array('success' => '0', 'message'=>'There was an error inserting into the database.');
+            $output = json_encode($messageToSend);
+            echo $output;  
+        }              
+    }
+
+function XXXcreate_step_3()
+{
+
+            $this->load->view("admin/company/create_step_3");     
+    
+} 
+    //Create a new company record
+    public function XXXcreateORIG()
+    {
+        //Grab the data to be used to populate the form by default
+        $data['category_array'] = $this->company_model->get_categories();
+        $data['type_array'] = $this->company_model->get_ref('type');
+        $data['pace_array'] = $this->company_model->get_ref('pace');
+        $data['lifecycle_array'] = $this->company_model->get_ref('lifecycle');
+        $data['corp_citizenship_array'] = $this->company_model->get_ref('corp_citizenship');
+        $data['benefits_array'] = $this->company_model->get_ref('benefits');
+        
+        //validate the form (except for the file upload)
+        $this->form_validation->set_rules('company_name', 'Company Name', 'required');
+        $this->form_validation->set_rules('company_url', 'Company URL', 'required|prep_url');
+        $this->form_validation->set_rules('company_type', 'Company Type', 'required');
+        $this->form_validation->set_rules('company_pace', 'Company Pace', 'required');
+        $this->form_validation->set_rules('company_lifecycle', 'Company Lifecycle', 'required');
+        $this->form_validation->set_rules('corp_citizenship', 'Corporate Citizenship', 'required');
+        $this->form_validation->set_rules('benefits', 'Benefits', 'required');
+        $this->form_validation->set_rules('category[]', 'Category', 'required');            
+
+        if ($this->form_validation->run() == true)
+        {   
+            //validation is good.  setup the data to pass to the model
+            $post = $this->input->post();
+            
+            //setup the file upload config values
+            $config['upload_path'] = './assets/images/company_logos/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']	= '100';
+            $config['max_width']  = '1024';
+            $config['max_height']  = '768';
+            $config['remove_spaces']  = 'TRUE';
+            //$config['max_filename']  = 20;
+            $config['file_name']  = strtolower($post['company_name'].'_'.substr(md5($post['company_name']),10));
+
+            //load the upload library
+            $this->load->library('upload', $config);            
+            
+            //attempt to upload the file
+            if ($this->upload->do_upload())
+            {
+                $upload_data = array('upload_data' => $this->upload->data());
+                
+                //if everything looks good, insert the data into the db
+                if ($this->company_model->create_company($post,$upload_data))
+                {
+                    //success
+                    $message =  "Record successfully inserted.";
+                    $this->session->set_flashdata('message', $message);
+                    
+                    //load the view                
+                   redirect('admin/company/create', 'refresh');  
+                } 
+                else
+                {
+                    //there were errors
+                    $data['errors'] = $this->company_model->errors;
+
+                    //load the view
+                    $this->load->view("admin/company/create",$data); 
+                }                
+            }
+            else //there was an error with the file upload
+            {
+                $upload_error = array('error' => $this->upload->display_errors());
+                $data['message'] = $this->session->flashdata('message');
+                $data['upload_error'] = $upload_error;
+
+                //load the view
+                $this->load->view("admin/company/create",$data);                
+                
+            }
+        }  
+        else //form validation errors.  re-load the form
+        {
+            $data['message'] = $this->session->flashdata('message');
+
+            //load the view
+            $this->load->view("admin/company/create",$data);          
+        }        
+    }
+    
+    public function XXXcrop_submit()
+    {    
+        $this->load->view("admin/company/crop_view");
+    }
+    
+    
+    public function XXXupload_company_pic()
+    {
+        
+        //echo "Beginning";
+        if ($this->input->post()){
+        print_r($this->input->post());
+        }       
+            //setup the file upload config values
+            $config['upload_path'] = './assets/images/company_logos/temp/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']	= '100';
+            $config['max_width']  = '1024';
+            $config['max_height']  = '768';
+            $config['remove_spaces']  = 'TRUE';
+            //$config['max_filename']  = 20;
+            //$config['file_name']  = strtolower($post['company_name'].'_'.substr(md5($post['company_name']),10));        
+        
+            //load the upload library
+            $this->load->library('upload', $config);            
+            
+            //attempt to upload the file
+            if ($this->upload->do_upload())
+            {
+                //echo "Hello!";
+                $upload_data = array('upload_data' => $this->upload->data());
+                
+                //print_r($upload_data);
+                
+                $pic_name = $upload_data['upload_data']['file_name'];
+                
+	$messageToSend = array('success' => '1', 'message'=>$pic_name);
+	$output = json_encode($messageToSend);
+	die($output); 
+     
+            }
+            else //there was an error with the file upload
+            {
+                //echo "inside else";
+                $upload_error = array('error' => $this->upload->display_errors());
+                $data['message'] = $this->session->flashdata('message');
+                $data['upload_error'] = $upload_error;
+               
+                
+            }        
+                    //load the view
+            $this->load->view("admin/company/client_upload"); 
+        
+    }
+    
+function XXXblueimp()
+{
+
+            $this->load->view("admin/company/blueimp");     
+    
+}    
+    
+function XXXblueimp_upload()
+{
+        
+            //setup the file upload config values
+            $config['upload_path'] = './assets/images/company_logos/temp/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']	= '100';
+            $config['max_width']  = '1024';
+            $config['max_height']  = '768';
+            $config['remove_spaces']  = 'TRUE';
+            //$config['file_name']  = strtolower($name.'_'.substr(md5($name),10));
+            $config['encrypt_name']  = 'TRUE';
+            $config['max_filename']  = 15;
+        
+            //load the upload library
+            $this->load->library('upload', $config);            
+            
+            //attempt to upload the file
+            if ($this->upload->do_upload())
+            {
+                $upload_data = array('upload_data' => $this->upload->data());
+                $pic_name = $upload_data['upload_data']['file_name'];
+                
+                $messageToSend = array('success' => '1', 'message'=>$pic_name);
+
+                $output = json_encode($messageToSend);
+                echo $output; 
+     
+            }
+            else //there was an error with the file upload
+            {
+                $messageToSend = array('success' => '0', 'message'=>'There was an error!');
+
+                $output = json_encode($messageToSend);
+                echo $output;  
+            }            
+    
+}     
+
+}//end of class

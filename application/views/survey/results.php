@@ -61,6 +61,7 @@
             {
                 echo "<br>";
                 echo "Here are the companies that meet your criteria, in order of best match:<br>";
+                
                 foreach ($full_company_info as $row)
                 {
                     echo "<div class = 'company'>";
@@ -77,6 +78,11 @@
                 }
                 
                 echo '<br class="clearfloat" />';
+                /*
+                echo "Citizenship Weight: .4<br> ";
+                echo "Benefits Weight: .4<br> ";
+                echo "History Weight: .2<br> ";
+                */
                 
                 /*
                 echo '<pre>raw data:<br>',print_r($raw_data,1),'</pre>';

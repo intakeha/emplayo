@@ -8,7 +8,28 @@
 <!--begin jquery sortabe stuff-->
 
  <!--end jquery sortabe stuff-->       
-
+        <style>
+            .clearfloat {
+                    font-size: 1px;
+                    line-height: 0px;
+                    margin: 0px;
+                    clear: both;
+                    height: 0px;
+            }       
+            .env_1 {
+                    float: left;
+                    margin: 10px 10px 0px 0px;
+                    width: 140px;
+            }
+            .env_2 {
+                float: left;
+                margin: 10px 10px 0px 0px;
+            }
+            .env_subbox {
+                width: 400px;
+            }
+            
+        </style>
 </head>
 <body>
 
@@ -135,7 +156,10 @@
             echo form_label('Paid Overtime', '14');
             echo '<br/>';
             echo '<input type="text" name="users_benefits[15][rank]" id="15" maxlength="2" size="2" style="width:3%" />';
-            echo form_label('Pet Friendly', '15');            
+            echo form_label('Pet Friendly', '15');         
+            echo '<br/>';
+            echo '<input type="text" name="users_benefits[16][rank]" id="16" maxlength="2" size="2" style="width:3%" />';
+            echo form_label('Casual Dresscode', '16');             
             echo form_fieldset_close(); 
             echo '<br/>';
             
@@ -156,7 +180,39 @@
             echo '<input type="radio" name="corp_citizenship" value="5" id="very_important"  />';
             echo form_label('Very Important','very_important');            
             echo form_fieldset_close();             
+            /*
+            echo form_fieldset('Which type of work environment allows you to do your best work?');
             
+            echo '<div class="env_subbox">';
+            echo '<div class="env_1">';
+            echo '<input type="radio" name="q9_1" value="q9_1a" id="q9_1a"  />';
+            echo form_label('Supportive','supportive');
+            echo '</div>';
+            echo '<div class="env_2">';
+            echo '<input type="radio" name="q9_1" value="q9_1b" id="q9_1b"  />';
+            echo form_label('Independent','independent');
+            echo '</div>';   
+            echo '</div>';//end of env_subbox div 
+            
+            echo '<br class="clearfloat" />';
+            
+            echo '<div class="env_subbox">';
+            echo '<div class="env_1">';
+            echo '<input type="radio" name="q9_2" value="q9_2a" id="q9_2a"  />';
+            echo form_label('Customer-Focused','customer-focused');
+            echo '</div>';
+            echo '<div class="env_2">';
+            echo '<input type="radio" name="q9_2" value="q9_2b" id="q9_2b"  />';
+            echo form_label('Product-Focused','product-focused');
+            echo '</div>';   
+            echo '</div>';//end of env_subbox div             
+            
+            */
+            echo form_fieldset_close();
+            
+            
+            
+            echo '<br class="clearfloat" />';
             
             //History
             echo form_fieldset('HISTORY: In what industry have you worked before?');

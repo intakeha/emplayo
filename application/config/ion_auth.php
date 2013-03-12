@@ -110,9 +110,7 @@ $config['forgot_password_expiration'] = 0; 				// The number of seconds after wh
 $config['use_ci_email'] = TRUE; // Send Email using the builtin CI email class, if false it will return the code and the identity
 
 $config['email_config'] = array(
-	'mailtype' => 'html',
-        'protocol' => 'sendmail',
-        'mailpath' => 'sudo -u bullzyye /Users/bullzyye/smtp_out/smtp_catcher.php'
+	'mailtype' => 'html'
 );
 
 //$config['email_config'] = '/application/config/email.php';
