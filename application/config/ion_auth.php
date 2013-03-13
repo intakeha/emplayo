@@ -111,8 +111,6 @@ $config['use_ci_email'] = TRUE; // Send Email using the builtin CI email class, 
 
 $config['email_config'] = array(
 	'mailtype' => 'html',
-        'protocol' => 'sendmail',
-        'mailpath' => 'sudo -u bullzyye /Users/bullzyye/smtp_out/smtp_catcher.php'
 );
 
 //$config['email_config'] = '/application/config/email.php';

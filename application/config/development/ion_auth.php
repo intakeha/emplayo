@@ -111,8 +111,6 @@ $config['use_ci_email'] = TRUE; // Send Email using the builtin CI email class, 
 
 $config['email_config'] = array(
 	'mailtype' => 'html',
-        'protocol' => 'sendmail',
-        'mailpath' => 'C:\wamp\bin\sendmail\sendmail.exe -t -i'
 );
 
 //$config['email_config'] = '/application/config/email.php';
