@@ -599,6 +599,92 @@ class Company extends CI_Controller {
             echo $output;  
         }            
     } 
+    
+    function tile_upload()
+    {    
+        //setup the file upload config values
+        $config['upload_path'] = './assets/images/company_logos/temp/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size']	= '1024';
+        $config['remove_spaces']  = 'TRUE';
+        $config['encrypt_name']  = 'TRUE';
+        $config['max_filename']  = 15;     
+        $max_dimension = "600";		// They can upload a larger image.  This is the max size we will scale it down to.
+        $min_dimension = "390";         // They must upload an image at least this big in both dimensions.
+        
+        //get the value for the last temp file that was uploaded (if this is beyond the first upload)
+        //we can use this to clean up any abandoned files
+        $last_temp_file = $this->input->post('last_temp_file');
+        $full_temp_path = $config['upload_path'].$last_temp_file;
+
+        if ($last_temp_file){
+            unlink($full_temp_path);
+        }
+
+        //load the upload library
+        $this->load->library('upload', $config);            
+
+        //attempt to upload the file
+        if ($this->upload->do_upload())      
+        {
+            $upload_data = array('upload_data' => $this->upload->data());
+            $pic_name = $upload_data['upload_data']['file_name'];  
+            
+            $temp_image_location = $config['upload_path'].$pic_name;            
+            
+            //get height, width & scale if too big
+            $width = getWidth($temp_image_location);
+            $height = getHeight($temp_image_location);			
+
+            //find out which dimension is larger (we need both min and max)
+            //this only works because the picture is a square
+            if ($width > $height){
+                    $max_dimension_num = $width;
+                    $min_dimension_num = $height;
+            }else
+            {
+                    $max_dimension_num = $height;
+                    $min_dimension_num = $width;
+            }
+
+            //error if image is too small
+            if ($min_dimension_num < $min_dimension){
+                    $error_message = "Please use a larger image.";
+                    $this->sendToJS(0, $error_message);                    
+                    
+            }
+
+            //Scale the image if it is greater than the max dimension
+            if ($max_dimension_num > $max_dimension){
+                    $scale = $max_dimension/$max_dimension_num;
+                    if (($scale*$min_dimension_num)<$min_dimension){
+                        $error_message = "This image does not meet our dimension requirements.  Please use a different image.";
+                        $this->sendToJS(0, $error_message);                     
+                    } else {
+                        $uploaded = resizeImage($temp_image_location,$width,$height,$scale);
+                        //$square_image = squarify($uploaded,$max_dimension);
+                    }
+            }else{
+                    $scale = 1;
+                    $uploaded = resizeImage($temp_image_location,$width,$height,$scale);
+                    //$square_image = squarify($uploaded,$max_dimension);
+            } 
+            $new_pic_name = basename($uploaded);    
+
+            //upload was successful.  grab some data, then return a success message
+
+            $messageToSend = array('success' => '1', 'message'=>$new_pic_name, 'last_temp_file'=>$last_temp_file);
+            $output = json_encode($messageToSend);
+            echo $output; 
+
+        }
+        else //there was an error with the file upload
+        {
+            $messageToSend = array('success' => '0', 'message'=>'There was an error with the upload.  Please try again.');
+            $output = json_encode($messageToSend);
+            echo $output;  
+        }            
+    }//end of tile_upload     
 
     function sendToJS($successFlag, $message){
 
@@ -668,8 +754,133 @@ class Company extends CI_Controller {
                 echo $output;  
             }  
         }
-    }    
+    }  
     
+     //The Crop function is called via AJAX
+    public function tile_crop()
+    {
+        //$this->load->helper('image_functions_helper');
+        
+        $pic_shape = $this->input->post('pic_shape');
+        
+        switch ($pic_shape) {
+            case 1://small
+                $profile_width = "190";
+                $profile_height = "190";
+                break;
+            case 2://wide
+                $profile_width = "390";
+                $profile_height = "190";
+                break;
+            case 3://tall
+                $profile_width = "190";
+                $profile_height = "390";
+                break;
+            case 4://large
+                $profile_width = "390";
+                $profile_height = "390";
+                break;            
+        }             
+        
+        $x1 = $this->input->post('x1');
+        $y1 = $this->input->post('y1');
+        $x2 = $this->input->post('x2');
+        $y2 = $this->input->post('y2');
+        $w = $this->input->post('w');
+        $h = $this->input->post('h');   
+        $picture_name_input= $this->input->post('cropFile');
+        $pic_db_field= $this->input->post('pic_db_field');
+        $company_id= $this->input->post('company_id');
+
+        
+        //if coordinates are empty or not numeric, send error message to JS
+        if ($x1 === NULL || $y1 === NULL || $x2 === NULL || $y2 === NULL || $w === NULL || $h === NULL || $picture_name_input === NULL || $pic_db_field === NULL
+                || !is_numeric($x1) || !is_numeric($y1) || !is_numeric($x2) || !is_numeric($y2) || !is_numeric($w) || !is_numeric($h))
+        {          
+            $message = "Please click on the image & crop to create your profile picture."; 
+            $messageToSend = array('success' => '0', 'message'=>$message);
+            $output = json_encode($messageToSend);
+            echo $output;              
+        }
+        else
+        {
+        
+            $original_location = "./assets/images/company_logos/temp/".$picture_name_input;
+            $cropped_image_name = '';
+            //$cropped_image_name = 't_'.$picture_name_input;
+            $cropped_image_name  = substr($picture_name_input, 0, strrpos($picture_name_input, '.'))."_c".$pic_shape.".jpg";
+            $cropped_image_location = "./assets/images/company_logos/temp/".$cropped_image_name;
+            
+            //$profile_path = "./assets/images/company_logos";
+            //$profile_image_location = $profile_path."/".$picture_name_input;
+
+            $scale = $profile_width/$w;
+            $cropped = '';
+            //$cropped = resizeThumbnailImage($profile_image_location, $original_location,$w,$h,$x1,$y1,$scale);
+            $cropped = resizeThumbnailImage($cropped_image_location, $original_location,$w,$h,$x1,$y1,$scale);
+            //the resizeThumbnailImage function will resize the image and save it into the $profile_path
+
+            if (!empty($cropped)){
+                //delete the temp file
+                //unlink($original_location);//removed this...will commit all deletes and moves in the final step
+
+                //save the image name to the session
+                $this->session->set_userdata($pic_db_field,$picture_name_input);
+                
+                
+                if ($this->tile_save($company_id,$pic_shape,$picture_name_input,$cropped_image_name))
+                {
+                    //success
+                    $messageToSend = array('success' => '1', 'message'=>'Photo successfully processed.', 'pic_name'=>$picture_name_input);
+                    $output = json_encode($messageToSend);
+                    echo $output;   
+                } else 
+                {
+                    $messageToSend = array('success' => '0', 'message'=>'There was an error saving the photo');
+                    $output = json_encode($messageToSend);
+                    echo $output;                       
+                }
+               
+            }
+            else
+            {
+                //There was an error with the DB insert
+                $messageToSend = array('success' => '0', 'message'=>'There was an error processing the photo.');
+                $output = json_encode($messageToSend);
+                echo $output;  
+            }  
+        }
+    }//end of tile_crop  
+    
+    function tile_save($company_id,$pic_shape,$picture_name_input,$cropped_image_name){
+        
+        //save the image info to the db
+        $result = $this->company_model->insert_profile_pics($company_id,$pic_shape,$cropped_image_name);
+        
+        //move the files from temp to the proper path
+            $original_path = "./assets/images/company_logos/temp/";
+            $destination_path = "./assets/images/company_logos/";
+            $original_pic = $original_path.$picture_name_input;
+            $original_crop = $original_path.$cropped_image_name;
+            $destination_pic = $destination_path.$picture_name_input;
+            $destination_crop = $destination_path.$cropped_image_name;                 
+        
+        if ($result){
+            $move_pic = rename($original_pic,$destination_pic);
+            $move_crop = rename($original_crop,$destination_crop);  
+            
+            if ($move_pic && $move_crop){
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        }
+        else {
+            return FALSE;
+        }
+    }
+
+
     function validateCoordinates($number){
 
 	if($number == NULL || strlen($number) == 0)
@@ -689,9 +900,23 @@ class Company extends CI_Controller {
 		return $number;
 	}
 
-} 
+}
 
+    function profile_edit($id)
+    {
+        $company_info = $this->company_model->get_company_info($id);
+        $data['company_logo'] =  $company_info['company_logo'];
+        $data['creative_logo'] =  $company_info['creative_logo'];
+        $data['company_id'] = $id;
+        $data['company_info'] = $company_info;
+        
+        $this->load->view("admin/company/profile_edit",$data);     
+
+    }   
+
+/**********************************************************/
 /******* OLD FUNCTIONS - TO BE DELETED *******************/
+/**********************************************************/
 
     //The Crop_Logo function is called via AJAX
     public function XXXcrop_logo()

@@ -79,7 +79,8 @@ class Company_model extends MY_Model {
             $delete_link = '<a href="/admin/company/delete/'.$row->id.'">Delete</a>';
             $edit_link = '<a href="/admin/company/update_step_1/'.$row->id.'">Edit</a>';
             $view_link = '<a href="/admin/company/view/'.$row->id.'">View</a>';
-            $actions_link = $view_link.'  &nbsp; '.$edit_link.'  &nbsp; '.$delete_link;
+            $profile_link = '<a href="/admin/company/profile_edit/'.$row->id.'">Profile</a>';
+            $actions_link = $view_link.'  &nbsp; '.$edit_link.'  &nbsp; '.$delete_link.'  &nbsp; '.$profile_link;
             $this->table->add_row($id_link,$row->company_name, $row->company_url, $row->update_time,$actions_link); 
         }
         
@@ -540,6 +541,17 @@ class Company_model extends MY_Model {
            return $category_array;
         }        
     }     
+
+    function insert_profile_pics($company_id,$pic_shape,$cropped_image_name)
+    {
+        $data = array(
+           'company_id' => $company_id,
+           'pic_shape' => $pic_shape,
+           'file_name' => $cropped_image_name
+        );
+        $query = $this->db->insert('company_profile_pics', $data);       
+        return $query;
+    }    
     
     //function for setting errors in the model and returning them to the controller
     public function set_error($error)

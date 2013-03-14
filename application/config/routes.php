@@ -48,6 +48,7 @@ $route['forgot'] = 'user/forgot_password';
 $route['change'] = 'user/change_password';
 $route['logout'] = 'user/logout';
 $route['company'] = 'company';
+$route['admin'] = 'admin/home';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
