@@ -23,14 +23,12 @@ class Emplayo extends CI_Controller {
 		if ($this->ion_auth->logged_in()){
 			$data['title']="Home";
 			$data['content']="pages/_profile";
-			$this->load->helper('url');
 			$this->load->view('canvas', $data);
 			$this->session->unset_userdata('message');
 			
 		}   else {
 			$data['title']="Home";
 			$data['content']="pages/_home";
-			$this->load->helper('url');
 			$this->load->view('canvas', $data);
 		}
 
