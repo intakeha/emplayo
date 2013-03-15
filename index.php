@@ -36,11 +36,15 @@ if (defined('ENVIRONMENT'))
 	switch (ENVIRONMENT)
 	{
 		case 'development':
+			error_reporting(E_ALL);
+		break;                    
                 case 'localhost':                    
 			error_reporting(E_ALL);
 		break;
 	
 		case 'testing':
+			error_reporting(0);
+		break;                    
 		case 'production':
 			error_reporting(0);
 		break;

@@ -110,7 +110,7 @@ $config['forgot_password_expiration'] = 86400; 			// The number of seconds after
 $config['use_ci_email'] = TRUE; // Send Email using the builtin CI email class, if false it will return the code and the identity
 
 $config['email_config'] = array(
-	'mailtype' => 'html',
+	'mailtype' => 'html'
 );
 
 //$config['email_config'] = '/application/config/email.php';
