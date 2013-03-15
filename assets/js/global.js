@@ -49,6 +49,7 @@ $(document).ready(function(){
 		});
 		
 		 $container.on('click', '.smallTile', function(){
+			$('#profile img.smallTile.bigTile').removeClass('bigTile');
 			$(this).toggleClass('bigTile');
 			$(this).find('div').toggleClass('bigContent');
 			$(this).find('img').toggle();
