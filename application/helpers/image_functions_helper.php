@@ -127,7 +127,6 @@ if ( ! function_exists('getWidth'))
 //Added by BLC on 3/11/13
 if ( ! function_exists('squarify'))
 {
-    //You do not need to alter these functions
     function squarify($image,$max_dimension) {
         //get the dimensions of the image
         $size = getimagesize($image);

@@ -570,6 +570,8 @@ class Company extends CI_Controller {
             if ($max_dimension_num > $max_dimension){
                     $scale = $max_dimension/$max_dimension_num;
                     $uploaded = resizeImage($temp_image_location,$width,$height,$scale);
+                    //squarify was causing problems with 250x250 images...need to review the math here and 
+                    // probably put a conditional in front of this...
                     $square_image = squarify($uploaded,$max_dimension);
             }else{
                     $scale = 1;

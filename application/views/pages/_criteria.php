@@ -126,7 +126,7 @@
 			<input type="hidden" name="q1a" value="0" />
 			<input type="hidden" name="q1b" value="0" />
 			<input type="hidden" name="q1c" value="0" />
-			<input type="hidden" name="q1d" value="0" />
+			<input type="hidden" name="q1d" value="0" />                     
 		</div>
 		<div id="2" class="questions" name="multipleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q2','600','35');"></div>Select the pace of the company you want to work in:</div>

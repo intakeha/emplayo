@@ -29,7 +29,7 @@
 <div class="content">
   
     <div id="hd"><!-- header -->
-	<h1>Results</h1>
+	<h1>Preview</h1>
 
     </div>
 
@@ -105,8 +105,13 @@
                 $company_fit = unserialize(file_get_contents('temp_arrays/fit_array.txt'));
                 table_print('Company Fit Data', $company_fit);
                 
+                //this action will simulate what happens once they sign up
+                echo form_open('survey/insert_matches');
+                echo form_submit('mysubmit', 'Save My Data');
+                echo form_close();                
                 
-                
+                echo '<br>';
+                echo "<a href='/signup'>Signup to see the full list!</a>";
                 
                 
             }

@@ -1,5 +1,5 @@
 <?php
-class Survey_model extends CI_Model {
+class Preview_model extends CI_Model {
 
     public function __construct()
     {
@@ -42,8 +42,7 @@ class Survey_model extends CI_Model {
                 AND (t.category_id IN ('.$categories.'))
                 AND b.id = bt.company_id
                 GROUP BY b.id';
-            
-        //$sql = 'SELECT name FROM category WHERE category_id IN ('.$categories.')';
+
         $query = $this->db->query($sql);
 
         foreach ($query->result_array() as $row)
@@ -60,8 +59,7 @@ class Survey_model extends CI_Model {
         $user_id = 1;       
         //INSERT Company Type into User Type table
         $company_array = $this->input->post('company_type');
-        //print_r($company_array);
-        
+
         foreach($company_array as $comptype)
         {           
             $data = array(
@@ -76,11 +74,6 @@ class Survey_model extends CI_Model {
         $user_benefits_array = $this->input->post('users_benefits');
         foreach($user_benefits_array as $benefits_id=>$user_ranking)
         {
-            /*
-            echo "benefits_id: $benefits_id <br>";
-            echo "user_ranking: $user_ranking[rank] <br>";
-            echo "<br><br>";
-            */
             $rank = (int) $user_ranking['rank'];
             
             $data = array(
@@ -158,12 +151,6 @@ class Survey_model extends CI_Model {
             }
             
             arsort($scores);
-           /* echo "scores: <br>";
-            print_r($scores);*/
-            //reset($scores);
-            //$first_key = key($scores);
-            //echo "Best score is company id: ".$first_key;
-            //Array ( [1] => 88 [3] => 67 [4] => 65 )
             $ranked_comps = array_keys($scores);
             //return $ranked_comps;
             return $scores;
@@ -178,14 +165,7 @@ class Survey_model extends CI_Model {
     {
         //find companies that match the DO NEXT categories
         $categories = implode(',', $categories);
-        /*
-        $sql = 'SELECT b.*
-                FROM category_map bt, company b, category t
-                WHERE bt.category_id = t.category_id
-                AND (t.category_id IN ('.$categories.'))
-                AND b.id = bt.company_id
-                GROUP BY b.id';
-        */
+
         $sql = 'SELECT b.*
                 FROM company_category bt, company b, ref_category t
                 WHERE bt.category_id = t.category_id
@@ -202,10 +182,6 @@ class Survey_model extends CI_Model {
                 $companyid_array[]=$row['id'];
             }
             $queried_comp_ids = implode(',', $companyid_array);
-            
-           /* echo "queried comp ids based on CATEGORY: <br>";
-            print_r($queried_comp_ids);
-            echo '<br>';*/
             
             //return a comma-separated squeried comp ids: tring of the company ids that match
             return $queried_comp_ids;
@@ -225,16 +201,7 @@ class Survey_model extends CI_Model {
 
         //put the values from those arrays into strings so they can be added to the query
         $imploded_type = implode(",", $type_array);
-        
-        /*
-        echo "these are the passed company types:<br>";
-        echo $imploded_type;
-        echo "<br>";
-        
-        echo "this is the passed company list:<br>";
-        echo $company_list;
-        echo "<br>";        
-        */
+
         $sql = 'SELECT id,company_name FROM company WHERE type_id IN ('.$imploded_type.')
                 AND id IN ('.$company_list.')';
         ////TODO: this query cannot handle the case where there is only one choice passed.  
@@ -251,11 +218,7 @@ class Survey_model extends CI_Model {
                 $companyid_array[]=$row['id'];
             }
             $queried_comp_ids = implode(',', $companyid_array);
-            /*
-            echo "queried comp ids based on TYPE: <br>";
-            print_r($queried_comp_ids);
-            echo '<br>';
-            */
+
             return $queried_comp_ids;
             
         }
@@ -293,8 +256,6 @@ class Survey_model extends CI_Model {
                 $companyid_array[]=$row['id'];
             }
             $queried_comp_ids = implode(',', $companyid_array);
-            /*echo "queried comp ids: <br>";
-            print_r($queried_comp_ids);*/
             
             return $queried_comp_ids;
             
@@ -344,11 +305,7 @@ class Survey_model extends CI_Model {
             }
             
             arsort($scores);
-            /*echo "<br><br>benefits scores: <br>";
-            echo "<pre>";
-            print_r($scores);
-            echo "</pre>";*/
-            
+
             return $scores;
     }    
 
@@ -357,13 +314,6 @@ class Survey_model extends CI_Model {
 
             //get the user submitted history categories
             $user_history_cats = $this->input->post('history');   
-
-           /* echo "<br><br>user history cats: <br>";
-            echo "<pre>";
-            print_r($user_history_cats);
-            echo "</pre>";    */      
-            
-            //$this->output->enable_profiler(TRUE);
             
             //get all the companies (that meet the previous criteria) and their associated benefits
             $sql2 = 'SELECT company_id,category_id FROM company_category WHERE company_id IN ('.$queried_comp_ids.')';
@@ -376,13 +326,7 @@ class Survey_model extends CI_Model {
             foreach ($query2->result_array() as $row) {
                 $company_set[$row['company_id']][]=$row['category_id'];
             }
-            
-            /*echo "<br><br>history category array pre-scoring: <br>";
-            echo "<pre>";
-            print_r($company_set);
-            echo "</pre>";   */
-            
-            
+
             $scores = array();
             // For every company, we will assign it a score based on how many
             // of the user's category choices it has.  Each category is worth 1 point.
@@ -409,10 +353,7 @@ class Survey_model extends CI_Model {
             }
             
             arsort($scores);
-            /*
-            echo "<br>history category scoring: <br>";
-            print_r($scores);
-            */
+
             return $scores;
     }      
    
@@ -423,33 +364,15 @@ class Survey_model extends CI_Model {
     { 
         //$this->output->enable_profiler(TRUE);
         if (!empty($ranked_comps)){
-              //$ranked_comps = array('4'=>'63','3'=>'45','1'=>'40');
-            /*
-                          echo "ranked_comps (before):<br>";
-              echo '<pre>';
-               print_r($ranked_comps);
-               echo '<br><br>';
-            */
-              //$ranked_comps = array_keys($ranked_comps);
+
                $new_ranked_comps = array();
               foreach ($ranked_comps as $row) {
-                  /*
-                  echo "row id: ".$row['id'];
-                  echo "<br>";
-                  */
                   $new_ranked_comps[]=$row['id'];
                   
               }
-              /*echo "ranked_comps (after):<br>";
-              echo '<pre>';
-               print_r($new_ranked_comps);
-               echo '</pre>';*/
-            
+
             $companyid_array = implode(',', $new_ranked_comps);
-            
-            /*echo "company id array:<br>";
-            print_r($companyid_array);  */
-            
+
             //this is to make sure we retrieve the companies in the same order as their scores
             $order_array = 'ORDER BY';
             foreach ($ranked_comps as $item) {
@@ -467,6 +390,36 @@ class Survey_model extends CI_Model {
 
     }    
     
+    function get_company3($ranked_comps)
+    { 
+        //$this->output->enable_profiler(TRUE);
+        if (!empty($ranked_comps)){
+
+               $new_ranked_comps = array();
+              foreach ($ranked_comps as $row) {
+                  $new_ranked_comps[]=$row['id'];
+                  
+              }
+
+            $companyid_array = implode(',', $new_ranked_comps);
+
+            //this is to make sure we retrieve the companies in the same order as their scores
+            $order_array = 'ORDER BY';
+            foreach ($ranked_comps as $item) {
+              $order_array .= ' id = ' . $item['id'] . ' DESC,';
+            }
+            $order_array = trim($order_array, ',');
+
+            $sql = 'SELECT * FROM company WHERE id IN ('.$companyid_array.') '.$order_array.' LIMIT 5';
+            $query = $this->db->query($sql);
+
+            return $query->result_array();
+            
+        }
+
+
+    }      
+    
     function merge_arrays(&$companyData,$companyKey, $benefitsArray)
     {
         //when the 'id' of companyData equals the key of benefitsArray, add the 'benefits' key=>value to companyData
@@ -474,7 +427,6 @@ class Survey_model extends CI_Model {
         {
             if ($companyData['id'] == $key)
             {
-                //echo "<br>the key:$key, matches the id: ".$companyData['id'];
                 $companyData['benefits'] = $value;
             }
         }
@@ -488,7 +440,6 @@ class Survey_model extends CI_Model {
         {
             if ($companyData['id'] == $key)
             {
-                //echo "<br>the key:$key, matches the id: ".$companyData['id'];
                 $companyData['history'] = $value;
             }
         }
@@ -569,17 +520,7 @@ class Survey_model extends CI_Model {
         //$next_weight = .5;
 
         $aggregate_array['id'] = $sourceCoords['id'];
-/*          
-        $aggregate_array['ag_score'] = 
-                ($sourceCoords['benefits']*$benefits_weight 
-                + $sourceCoords['history']*$history_weight
-                + $sourceCoords['citizenship']*$citizenship_weight
-                )/(
-                $benefits_weight
-                +$history_weight
-                +$citizenship_weight
-                );
-*/
+
         $aggregate_array['ag_score'] = 
                 ($sourceCoords['benefits']*$benefits_weight 
                 + $sourceCoords['history']*$history_weight
@@ -598,14 +539,7 @@ class Survey_model extends CI_Model {
         //
         //user's benefit score is always perfect, so we know it is the triangular
         //number of the highest ranking 15t=>120.
-        //user's citizenship score is in the post data.  Company info is in the database.
-                
-        /*
-        function merge_arrays_next(&$companyData,$key)
-        {
-
-            $companyData['next'] = 0;
-        }   */      
+        //user's citizenship score is in the post data.  Company info is in the database.    
         
         $corp_citizenship = $this->input->post('corp_citizenship');
         $pace_array = $this->input->post('company_pace');
@@ -625,8 +559,7 @@ class Survey_model extends CI_Model {
         } else {
             $user_data[0]['history'] = 1;
         }
-        //$user_data[0]['next'] = 0;
-        
+
         //get the company citizenship values from the database
         $comp_ids = array_keys($ranked_comps);//company ids, along with benefit scores
         $comp_ids_imploded = implode(',', $comp_ids);
@@ -645,20 +578,7 @@ class Survey_model extends CI_Model {
         //walk the array of company company data and merge in the history scoring
         //$temp_comp_data = $company_data_array;
         array_walk($company_data_array, array($this, 'merge_arrays_history'),$history_scoring); 
-        /*
-        echo "<pre>";
-        echo "<br> company_data_array right after merging with history:<br>";
-        print_r($company_data_array);
-        echo "</pre>";  */       
 
-        //walk the array to add generic scoring for the Do Next stuff
-        //array_walk($company_data_array, 'merge_arrays_next'); 
-        /*
-        echo "<pre>";
-        echo "<br> company_data_array right after merging with Do Next score:<br>";
-        print_r($company_data_array);
-        echo "</pre>";          
-        */
         //create one array that includes the user coordinates along with all the companies
         //we will walk this array to determine distances
         $data = array_merge($user_data,$company_data_array);
@@ -669,12 +589,6 @@ class Survey_model extends CI_Model {
         $data_array = $data;
         //normalize citizenship data (convert to rank 1-5, then normalize)
         //our data should already be in rank 1-5
-        /*
-        echo "<pre>";
-        echo "<br>(data_array) raw data:<br>";
-        print_r($data_array);
-        echo "</pre>";
-        */
         
         //$raw_data_array = $data_array;
         file_put_contents('temp_arrays/raw_array.txt', serialize($data_array)); 
@@ -686,40 +600,14 @@ class Survey_model extends CI_Model {
         $data_array_copy = $data_array;
 
         //3. Calculate distance for each variable
-        /*
-        echo "<pre>";
-        echo "<br> (data_array) after transforming citizenship into coordinates:<br>";
-        print_r($data_array);
-        echo "</pre>";  
-        */
-        //$coord_array = $data_array;
-        file_put_contents('temp_arrays/coord_array.txt', serialize($data_array)); 
-
-       /* echo "<pre>";
-        echo "<br> new coordinate array:<br>";
-        print_r($coord_array);
-        echo "</pre>";  */       
+        file_put_contents('temp_arrays/coord_array.txt', serialize($data_array));      
         
         array_walk($data_array, array($this,'city_block_distance_benefits'),$data);   
         array_walk($data_array, array($this,'city_block_distance_history'),$data); 
         array_walk($data_array, array($this,'city_block_distance_citizenship'),$data_array_copy);      
 
-        /*
-        echo "<pre>";
-        echo "<br> distance data (data_array):<br>";
-        print_r($data_array);
-        echo "</pre>"; 
-        */
-        
-        //$dist_array = $data_array;
         file_put_contents('temp_arrays/dist_array.txt', serialize($data_array));
-        
-        /*
-        echo "<pre>";
-        echo "<br> coordinate array AFTER:<br>";
-        print_r($coord_array);
-        echo "</pre>";  */        
-        
+
         //4. Normalize each variable's distance
         //for quantitative data: norm = (d-dmin)/(dmax-dmin)
         //for ordinal data, with rank of 1-5: norm = (r-1)/(R-1)
@@ -738,58 +626,20 @@ class Survey_model extends CI_Model {
             //check to make sure we aren't already between 0&1
             array_walk($data_array, array($this,'normalize_history'),$isolated_history);          
         }
-        
-        /*
-        echo "<pre>";
-        echo "<br> normalized disparate data (data_array):<br>";
-        print_r($data_array);
-        echo "</pre>";   
-        */
-        
+
         //$norm_disp_array = $data_array;
         file_put_contents('temp_arrays/norm_disp_array.txt', serialize($data_array));
 
         //5. Aggregate the normalized distance matrix
         //assuming each feature variable has the same weight, sum them up then divide
         //by the number of feature variables
-        /*echo "<pre>";
-        echo "<br> coordinate array BEFORE AGGREGATE:<br>";
-        print_r($coord_array);
-        echo "</pre>";     
-        
-        echo "<pre>";
-        echo "<br> coordinate array BEFORE AGGREGATE:<br>";
-        print_r($coord_array);
-        echo "</pre>";        
-        */
-        
-        //$agg_array = $data_array;
-        
+
         array_walk($data_array, array($this,'aggregate')); 
-        
-        /*        echo "<pre>";
-        echo "<br> coordinate array AFTER AGGREGATE:<br>";
-        print_r($coord_array);
-        echo "</pre>"; */ 
-        
-        /*
-        echo "<pre>";
-        echo "<br> aggregate data:<br>";
-        print_r($data_array);
-        echo "</pre>";  
-        */
         
         file_put_contents('temp_arrays/aggregate_array.txt', serialize($data_array));
         
         unset($data_array[0]);
-        
-        /*
-        echo "<pre>";
-        echo "<br> aggregate data without user:<br>";
-        print_r($data_array);
-        echo "</pre>";
-        */
-        
+
         //$aggregate_array = $data_array;
         //file_put_contents('temp_arrays/aggregate_array.txt', serialize(array_values($data_array)));
         
@@ -802,30 +652,11 @@ class Survey_model extends CI_Model {
         //echo '<pre>sorted:<br>',print_r($data_array,1),'</pre>';         
         
         $dist_data = array();
-       /* $dist_data['raw_data'] =  $raw_data_array;
-        $dist_data['coord_data'] =  $coord_array;
-        $dist_data['dist_data'] =  $dist_array;
-        $dist_data['norm_disp_data'] =  $norm_disp_array;
-        $dist_data['aggregate_data'] =  $agg_array;       
-        */
         $dist_data['ranked_results']   = $data_array;
-        
-        //echo '<pre>dist_data:<br>',print_r($dist_data,1),'</pre>';
-        
-        
+
         return $dist_data;
         
-        
-       /* return array('raw_data' => $raw_data_array,
-                    'coord_data' => $coord_array,
-                    'dist_data' => $dist_array,
-                    'norm_disp_data' => $norm_disp_array,
-                    'aggregate_data' => $aggregate_array,
-                    'ranked_results' => $data_array,
-                    );*/
-        
-        //END OF get_distance_matrix FUNCTION
-    }
+    }//END OF get_distance_matrix FUNCTION
     
     function fit_score($ranked_results)
     {
@@ -848,22 +679,40 @@ class Survey_model extends CI_Model {
             if ($value['id']==$companyData['id'])
             {
             $companyData['fit_score'] = $value['ag_score'];
-
-            /*echo "<br>company_fit score: ".$companyData['fit_score'];*/
             }
 
         }
-            //echo "<br>company data name: ".$companyData['company_name'];
     }      
     
     
     function merge_company_info($company_info,$company_fit)
     {
         array_walk($company_info, array($this,'merge_fit_arrays'),$company_fit);
-
-        //echo '<pre>fit scored up!:<br>',print_r($company_info,1),'</pre>'; 
         return $company_info;       
     }
+    
+    function save_user_inquiry()
+    {
+ 
+    }
+    
+    function insert_matches($company_fit)
+    {
+        //build new array for db insertion
+        //
+        //$user_id = $this->session->userdata('user_id');
+        $user_id = 3;//hard code for now
+        
+        $new_array = array();
+        foreach ($company_fit as $key=>$value) {          
+            $new_array[$key]['user_id'] = $user_id;
+            $new_array[$key]['company_id'] = $value['id'];
+            $new_array[$key]['score'] = ($value['ag_score']*100);
+        }   
+        
+        $query = $this->db->insert_batch('user_matches', $new_array); 
+        return $query;        
+    }    
     
 }
 

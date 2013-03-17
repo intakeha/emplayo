@@ -60,7 +60,7 @@
            echo validation_errors();
            //
             
-           echo form_open('survey/submit');
+           echo form_open('preview');
 
             echo '<br/>';         
             

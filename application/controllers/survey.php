@@ -6,6 +6,7 @@ class Survey extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('session');
+                $this->load->model('survey_model');
 
 	}    
     
@@ -48,12 +49,26 @@ class Survey extends CI_Controller {
         } else {//data is good...process it.
             
             if($this->input->post('mysubmit')){
+                //let's save all the submitted data to the session so we can get it later if the user decides to sign up
+                $categories = $this->input->post('category');
+                $company_pace = $this->input->post('company_pace');
+                $corp_citizenship = $this->input->post('corp_citizenship');
+                $history = $this->input->post('history');
+                $lifecycle = $this->input->post('lifecycle');
+                $users_benefits = $this->input->post('users_benefits');
                 
+                $this->session->set_userdata('category',$categories);
+                $this->session->set_userdata('company_pace',$company_pace);
+                $this->session->set_userdata('corp_citizenship',$corp_citizenship);
+                $this->session->set_userdata('history',$history);
+                $this->session->set_userdata('lifecycle',$lifecycle);
+                $this->session->set_userdata('users_benefits',$users_benefits);
+
                 $this->load->model('survey_model');
 
                 //get initial list of companies that match basic criteria
                 //$data['company_list'] = $this->survey_model->survey_filter();
-                $categories = $this->input->post('category');
+                //$categories = $this->input->post('category');
                 $data['company_list'] = $this->survey_model->survey_filter2($categories);
                 if (!empty($data['company_list']))
                 {
@@ -76,6 +91,13 @@ class Survey extends CI_Controller {
 
                     //translate the distance info into 'fit' scores, based on 100% being perfect
                     $data['company_fit'] = $this->survey_model->fit_score($data['ranked_results']);
+                    $company_fit = $data['company_fit'];
+                    
+                    //write the fit data to the session in case the user decides to sign up, so we can save it
+                    $this->session->set_userdata('company_fit',$company_fit);
+                    
+                    //set a flag so we know to save this user's data if they sign up
+                    $this->session->set_userdata('save_data',TRUE);       
                     
                     //now that we have the ranked companies, let's go get their info, so we can display it 
                     //to the user
@@ -93,5 +115,36 @@ class Survey extends CI_Controller {
                 
             }
         }
-    } 
+    } //end of submit()
+    
+    public function insert_matches(){
+        //echo "i'm saving you data!";
+        //$result = $this->survey_model->save_user_inquiry();
+        
+        $company_fit = $this->session->userdata('company_fit');
+
+        if (!empty($company_fit)){
+            $result = $this->survey_model->insert_matches($company_fit);
+            if ($result){
+                echo "success!";
+            }
+            else {
+                echo "failure :-(";
+            }
+        }
+        else {
+            //return error
+       
+        }
+        
+    }
+    
+    public function jsform(){
+        $this->load->view("survey/jsform");
+    }
+    
+	public function match(){
+            echo "I'm in the match function!";
+	}     
+    
 }
