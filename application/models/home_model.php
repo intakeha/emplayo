@@ -1,0 +1,564 @@
+<?php
+class Company_model extends MY_Model {
+
+    public function __construct()
+    {
+        // Call the Model constructor
+        parent::__construct();            
+        $this->load->database();
+        
+        $this->messages = array();
+        $this->errors = array();
+    }
+    /**
+    * Get Company List
+    * This function simply gets a list of all companies in the company table
+    *
+    * @param void
+    * @return array
+    **/ 
+    function get_company_list()
+    {
+        $query = $this->db->query("SELECT id,company_name,company_url,update_time FROM company");       
+        return $query;
+    }
+    
+    /**
+    * Build Company Table
+    * Builds a table of companies using the Codeigniter Table class
+    *
+    * @param int $limit, int $offset
+    * @return array
+    **/     
+    function build_company_table($limit = 5,$offset = 0)
+    {   
+        //get the company data from the db
+        $this->db->select('id,company_name,company_url,update_time');
+        $this->db->limit($limit, $offset);
+        $query = $this->db->get('company');
+        
+        //count the total number of rows (to be used for pagination)
+        $num_rows = $this->db->count_all('company');
+        
+        //this is a default 'styling' template from the Codeigniter folks.  Can be changed to whatever...
+        $tmpl = array (
+                        'table_open'          => '<table border="1" cellpadding="4" cellspacing="1" class="mytable">',
+
+                        'heading_row_start'   => '<tr class="table_heading">',
+                        'heading_row_end'     => '</tr>',
+                        'heading_cell_start'  => '<th>',
+                        'heading_cell_end'    => '</th>',
+
+                        'row_start'           => '<tr>',
+                        'row_end'             => '</tr>',
+                        'cell_start'          => '<td>',
+                        'cell_end'            => '</td>',
+
+                        'row_alt_start'       => '<tr>',
+                        'row_alt_end'         => '</tr>',
+                        'cell_alt_start'      => '<td>',
+                        'cell_alt_end'        => '</td>',
+
+                        'table_close'         => '</table>'
+                      );
+
+        //Apply the template to the table
+        $this->table->set_template($tmpl);
+        
+        //set empty fields in the table to a default value
+        $this->table->set_empty("&nbsp;");
+        $this->table->set_caption('Companies');
+        
+        //Give names to each heading.  Default is the db field name
+        $this->table->set_heading('ID', 'Name', 'Website', 'Last Updated', 'Actions'); 
+
+        //define each table row exactly how we want it
+        foreach ($query->result() as $row) {
+            //echo $row->company_name;
+            $id_link = '<a href="/admin/company/update_step_1/'.$row->id.'">'.$row->id.'</a>';
+            $delete_link = '<a href="/admin/company/delete/'.$row->id.'">Delete</a>';
+            $edit_link = '<a href="/admin/company/update_step_1/'.$row->id.'">Edit</a>';
+            $view_link = '<a href="/admin/company/view/'.$row->id.'">View</a>';
+            $profile_link = '<a href="/admin/company/profile_edit/'.$row->id.'">Profile</a>';
+            $actions_link = $view_link.'  &nbsp; '.$edit_link.'  &nbsp; '.$delete_link.'  &nbsp; '.$profile_link;
+            $this->table->add_row($id_link,$row->company_name, $row->company_url, $row->update_time,$actions_link); 
+        }
+        
+        //generate the table code
+        $table = $this->table->generate();
+
+        //send an array of variables back to the controller
+        return array('num_rows' => $num_rows, 'table' => $table);
+    }
+ 
+    /**
+    * Get Categories
+    * Fetches category reference data.
+    *
+    * @param void
+    * @return array
+    **/      
+    function get_categories()
+    { 
+        $this->db->select('category_id, name');
+        $query = $this->db->get('ref_category');        
+
+      //transformation  
+        $newarray = array();
+        foreach($query->result_array() as $row)
+        {
+            foreach ($row as $key=>$value)
+            {              
+                if ($key=='category_id')
+                {
+                    $cat_key = $value;
+                    $newarray[$cat_key]=$value;
+                } else {
+                    $newarray[$cat_key]=$value;
+                }
+            }
+        }
+       //transformation end 
+        return $newarray;
+    } 
+    
+    /**
+    * Get Types
+    * Fetches company type reference data.
+    *
+    * @param void
+    * @return array
+    **/          
+    function get_types()
+    { 
+        $query = $this->db->get('ref_type');
+        
+      //build our array  
+        $type_array = array();
+        foreach($query->result_array() as $key=>$row)
+        {
+            $type_array[$key]['id'] = $row['id'];
+            $type_array[$key]['type'] = $row['type'];
+        }
+        return $type_array;
+    }     
+    
+    /**
+    * Get Pace
+    * Fetches company pace reference data.
+    *
+    * @param void
+    * @return array
+    **/          
+    function get_pace()
+    { 
+        $query = $this->db->get('ref_pace');
+        
+      //build our array    
+        $pace_array = array();
+        foreach($query->result_array() as $key=>$row)
+        {
+            $type_array[$key]['id'] = $row['id'];
+            $type_array[$key]['pace'] = $row['pace'];
+        }
+        return $pace_array;
+    }
+  
+    /**
+    * Get Ref(erence)
+    * Fetches generic reference data.  Can be used for type, pace, etc
+    *
+    * @param void
+    * @return array
+    **/          
+    function get_ref($ref)
+    { 
+        $table_name = 'ref_'.$ref;
+        $query = $this->db->get($table_name);
+        
+      //build our array    
+        $new_array = array();
+        foreach($query->result_array() as $key=>$row)
+        {
+            $new_array[$key]['id'] = $row['id'];
+            $new_array[$key][$ref] = $row[$ref];
+        }
+        return $new_array;
+    } 
+  
+    /**
+    * Company Exists
+    * Checks to see if a company exists, based on exact name match.
+    * This is not perfect, but pretty good.  Search while typing in
+    * the UI also helps prevent duplicate entries.
+    *
+    **/          
+    function company_exists($name)
+    {
+        $query = $this->db->get_where('company', array('company_name' => $name));
+        if ($query->num_rows() > 0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }     
+    }
+    
+    /**
+    * Company Name Search
+    * AJAX code to check to see if a company name exists, based on
+    * each letter sent on keyup in the browser
+    *
+    **/          
+    function company_name_search($kws)
+    {
+        //Need to format this data into an array and pass it back to the controller->view...
+        //should not echo from the model...
+        //http://www.invlessons.com/live-search-using-jquery-ajax/
+        
+        $this->db->select('company_name, id');
+        $this->db->like('company_name', $kws, 'after');
+        $this->db->limit('10');
+        $query = $this->db->get('company');
+        $count = $query->num_rows();
+  
+        $i = 0;
+        if($count > 0)
+        {      
+            echo "<ul>";
+            foreach($query->result_array() as $row)
+            {
+                echo '<a href="update_step_1/'.$row['id'].'">'.$row['company_name'].'</a><br>';
+              $i++;
+              if($i == 5) break;
+            }
+            echo "</ul>";
+            if($count >= 5)
+            {
+              echo "<div id='view_more'><a href='#'>View more results</a></div>";
+              //Need to code this to display the full list...
+            }            
+        }
+        else
+        {
+        echo "<div id='no_result'>No result found !</div>";
+        }          
+    }    
+ 
+    /**
+    * Create Company
+    * Checks to see if a company exists.
+    *
+    **/        
+    function create_company($post)
+    { //NEED TO ESCAPE THE USER INPUT!!!
+
+        //build array based on (dirty) user input
+        //will be escaped by using active record insert below
+        //and/or query bindings...
+        $company_array = array(
+            'company_name' => $post['company_name'],
+            'company_url' => $post['company_url'],
+            'company_logo' => $post['company_logo'],
+            'creative_logo' => $post['creative_logo'],
+            'type_id' => $post['company_type'],
+            'pace_id' => $post['company_pace'],
+            'lifecycle_id' => $post['company_lifecycle'],
+            'corp_citizenship_id' => $post['corp_citizenship'],
+            'update_time' => date('Y-m-d H:i:s') 
+        );   
+        
+        //Check to make sure company does not alrady exist
+        if ($this->company_exists($post['company_name']))
+        {
+            $this->set_error('Company Name already exists');
+            return FALSE;
+        }
+        else 
+        {
+            //START A TRANSACTION, SO ALL INSERTS MUST SUCCEED OR EVERYTHING IS ROLLED BACK
+            $this->db->trans_start();
+
+                //INSERT COMPANY DATA (escaped using Active Records)
+                $this->db->insert('company', $company_array);
+
+                //grab the id of this inserted record to use later...
+                $company_id = $this->db->insert_id();
+
+                //BUILD PROPERLY FORMATTED ARRAY FOR BENEFITS INSERT
+                $new_benefits_array = array();
+                foreach ($post['benefits'] as $key=>$value)
+                {
+                    $new_benefits_array[$key]['company_id'] = $company_id;
+                    $new_benefits_array[$key]['benefits_id'] = $value;
+                } 
+                //INSERT BENEFITS DATA (escaped using Active Records)
+                $this->db->insert_batch('company_benefits', $new_benefits_array);
+
+                //BUILD PROPERLY FORMATTED ARRAY FOR CATEGORY INSERT
+                $new_category_array = array();
+                foreach ($post['category'] as $key=>$value)
+                {
+                    $new_category_array[$key]['company_id'] = $company_id;
+                    $new_category_array[$key]['category_id'] = $value;
+                }           
+                //INSERT CATEGORY DATA (escaped using Active Records)
+                $this->db->insert_batch('company_category', $new_category_array);
+
+            //COMMIT ALL OF THE UPDATES
+            $this->db->trans_complete();
+
+            if ($this->db->trans_status() === FALSE)
+            {
+                $this->set_error('Unable to create new company record');
+                return FALSE;
+            }
+            else 
+            {
+                return TRUE;
+            }
+        }
+    }//end of create_company
+    
+    function update_company($post,$id)
+    {
+        //NEED TO ESCAPE THE USER INPUT!!!
+
+        //NEED TO FINALIZE HOW TO DEAL WITH 'UPDATED' IMAGE FILES:
+        //In the view, the user should be able to see the image file, and possibly edit it, 
+        //using Chon's Woorus code.  If they make changes, we update.  If not, no need to...
+        //If we upload a new file, or change it, then we need to delete the old one.
+        //http://stackoverflow.com/questions/5454044/deleting-files-using-codeigniter
+            
+        //this user input is dirty.  we will use active records to escape the data and make
+        // it safe for db insertion.
+        $company_array = array(
+            'company_name' => $post['company_name'],
+            'company_url' => $post['company_url'],
+            'company_logo' => $post['company_logo'],
+            'creative_logo' => $post['creative_logo'],
+            'type_id' => $post['company_type'],
+            'pace_id' => $post['company_pace'],
+            'lifecycle_id' => $post['company_lifecycle'],
+            'corp_citizenship_id' => $post['corp_citizenship'],
+            'update_time' => date('Y-m-d H:i:s') 
+        );   
+        
+        // check to ensure the company exists prior to trying to update it
+        if (!$this->company_exists($post['company_name']))
+        {
+            $this->set_error('Company does not exist');
+            return FALSE;
+        }
+        else 
+        {
+            //BEGIN A TRANSACTION, SO ALL UPDATES MUST SUCCEED OR EVERYTHING IS ROLLED BACK:
+            $this->db->trans_start();
+
+            //UPDATE COMPANY DATA
+            $this->db->where('id', $id);
+            $this->db->update('company', $company_array);
+
+            //BUILD PROPERLY FORMATTED ARRAY FOR BENEFITS INSERT
+            foreach ($post['benefits'] as $key=>$value)
+            {
+                $insert_ben_array[] = '('.$id.','.$value.')';
+            }                        
+            $imploded_ins_benefits = implode(',', $insert_ben_array);     
+            
+            // array to be used for deleting old benefit selections
+            // same data as array above, but using a different format
+            // 
+            $new_benefits = $post['benefits'];
+            $imploded_new_benefits = implode(',',$new_benefits);
+            
+            //UPDATE BENEFITS DATA
+            //
+            //based on http://stackoverflow.com/questions/548541/insert-ignore-vs-insert-on-duplicate-key-update
+            //http://stackoverflow.com/questions/9384974/update-tag-mapping-table-in-mysql
+            //http://stackoverflow.com/questions/9334766/updating-in-a-many-to-many-relationship
+            //http://stackoverflow.com/questions/8637691/best-practice-for-many-to-many-data-mapping
+            //
+            //first delete all the rows that are not in the new set
+            //$sql = "DELETE FROM company_benefits WHERE company_id = ? AND benefits_id NOT IN (?)"; 
+            //$this->db->query($sql, array($id, $imploded_new_benefits));
+            
+            //then insert all the new benefits that are not in the db for this company
+            //manually escaping these inputs since we cannot use active records or query binding on the sql statements
+            //either method causes the addition of an extra pair of enclosing quotes which causes a sql syntax error.
+            $imploded_ins_benefits = $this->db->escape_str($imploded_ins_benefits);
+            $imploded_new_benefits = $this->db->escape_str($imploded_new_benefits);
+            
+            $sql_del_ben = "DELETE FROM company_benefits WHERE company_id = $id AND benefits_id NOT IN ($imploded_new_benefits)";
+            $sql_ins_ben = "INSERT INTO company_benefits (company_id,benefits_id) VALUES $imploded_ins_benefits ON DUPLICATE KEY UPDATE company_id=company_id";
+
+            //execute the queries
+            $this->db->query($sql_del_ben);
+            $this->db->query($sql_ins_ben); 
+
+            
+            //BUILD PROPERLY FORMATTED ARRAY FOR CATEGORY UPDATE  
+            foreach ($post['category'] as $key=>$value)
+            {
+                $insert_cat_array[] = '('.$id.','.$value.')';
+            }                        
+            $imploded_ins_category = implode(',', $insert_cat_array);   
+            
+            // array to be used for deleting old category selections
+            // same data as array above, but using a different format
+            $new_categories = $post['category'];
+            $imploded_new_categories = implode(',',$new_categories);  
+    
+            //manually escape the data
+            $imploded_ins_category = $this->db->escape_str($imploded_ins_category);
+            $imploded_new_categories = $this->db->escape_str($imploded_new_categories);            
+            
+            //first delete all the rows that are not in the new set
+            $sql_del_cat = "DELETE FROM company_category WHERE company_id = $id AND category_id NOT IN ($imploded_new_categories)";
+            $sql_ins_cat = "INSERT INTO company_category (company_id,category_id) VALUES $imploded_ins_category ON DUPLICATE KEY UPDATE company_id=company_id";
+
+            //execute the queries
+            $this->db->query($sql_del_cat);
+            $this->db->query($sql_ins_cat); 
+
+            //COMMIT ALL OF THE UPDATES
+            $this->db->trans_complete();
+            
+            if ($this->db->trans_status() === FALSE)
+            {
+                $this->set_error('Unable to update company record');
+                return FALSE;
+            }
+            else 
+            {
+                return TRUE;
+            }
+            
+        }
+        
+    }//end of update_company
+    
+    /**
+    * Company Exists
+    * Checks to see if a company exists, based on exact name match.
+    * This is not perfect, but pretty good.  Search while typing in
+    * the UI also helps prevent duplicate entries.
+    *
+    **/          
+    function delete_company($company_id)
+    {
+        
+        $this->db->where('id', $company_id);
+        $this->db->delete('company');        
+        
+         return (bool)($this->db->affected_rows() > 0);
+        /*
+            //BEGIN A TRANSACTION, SO ALL UPDATES MUST SUCCEED OR EVERYTHING IS ROLLED BACK:
+            $this->db->trans_start();   
+            
+            //DELETE THE FOLLOWING INFO:
+            //
+
+            //COMMIT ALL OF THE UPDATES
+            $this->db->trans_complete();            
+            
+            if ($this->db->trans_status() === FALSE)
+            {
+                //$this->set_error('Unable to update company record');
+                return FALSE;
+            }
+            else 
+            {
+                return TRUE;
+            }       
+            */
+    }    
+    
+    public function get_company_info($id)
+    {
+        //using the company_id ($id), need to get and return the following:
+        //from COMPANY: company_name, company_url, company_logo, type_id, pace_id, lifecycle_id
+        //corp_citizenship_id
+        //from BENEFITS: benefits_id[]
+        //from CATEGORY: category_id[]
+
+        $query = $this->db->get_where('company', array('id' => $id));
+        $company_array = array();
+        if ($query->num_rows() > 0)
+        {
+           foreach ($query->result() as $row)
+           {
+              $company_array['company_name'] = $row->company_name;
+              $company_array['company_url'] = $row->company_url;
+              $company_array['company_logo'] = $row->company_logo;
+              $company_array['creative_logo'] = $row->creative_logo;
+              $company_array['type_id'] = $row->type_id;
+              $company_array['pace_id'] = $row->pace_id;
+              $company_array['lifecycle_id'] = $row->lifecycle_id;
+              $company_array['corp_citizenship_id'] = $row->corp_citizenship_id;
+              
+           }
+           return $company_array;
+        }        
+    }
+    
+    public function get_benefits_info($id)
+    {
+        //using the company_id ($id), need to get and return the following:
+        //from COMPANY_BENEFIT: benefits_id[]
+
+        $query = $this->db->get_where('company_benefits', array('company_id' => $id));
+        
+        //format the results
+        $benefits_array = array();
+        if ($query->num_rows() > 0)
+        {  
+            foreach($query->result_array() as $outer_key => $array)
+            { 
+                $benefits_array[] = $array['benefits_id']; 
+            } 
+           return $benefits_array;
+        }        
+    }   
+    
+    public function get_categories_info($id)
+    {
+        //using the company_id ($id), need to get and return the following:
+        //from COMPANY_CATEGORY: category_id[]
+
+        $query = $this->db->get_where('company_category', array('company_id' => $id));
+        
+        //format the results
+        $category_array = array();
+        if ($query->num_rows() > 0)
+        {  
+            foreach($query->result_array() as $outer_key => $array)
+            { 
+                $category_array[] = $array['category_id']; 
+            } 
+           return $category_array;
+        }        
+    }     
+
+    function insert_profile_pics($company_id,$pic_shape,$cropped_image_name)
+    {
+        $data = array(
+           'company_id' => $company_id,
+           'pic_shape' => $pic_shape,
+           'file_name' => $cropped_image_name
+        );
+        $query = $this->db->insert('company_profile_pics', $data);       
+        return $query;
+    }    
+    
+    //function for setting errors in the model and returning them to the controller
+    public function set_error($error)
+    {
+        $this->errors[] = $error;
+
+        return $error;
+    }    
+}
+
