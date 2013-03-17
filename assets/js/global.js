@@ -191,36 +191,36 @@ $(document).ready(function(){
 		$('#co_pace li').click(function () {
 			var selected = $(this).attr('id');  // get id of selected choice
 			
-			if(selected == 'q2a'){
-				if($('li#q2a').hasClass('selected')){
-					$('li#q2a').removeClass('selected');
-					$('li#q2a').css('background-position','-0px 0px');
+			if(selected == 'q2_1'){
+				if($('li#q2_1').hasClass('selected')){
+					$('li#q2_1').removeClass('selected');
+					$('li#q2_1').css('background-position','-0px 0px');
 					$('input[id='+selected+'_0]').prop('checked', false);
 				}else{
-					$('li#q2a').addClass('selected');
-					$('li#q2a').css('background-position','-360px 0px');
+					$('li#q2_1').addClass('selected');
+					$('li#q2_1').css('background-position','-360px 0px');
 					$('input[id='+selected+'_0]').prop('checked', true);
 				};
 			};
-			if(selected == 'q2b'){
-				if($('li#q2b').hasClass('selected')){
-					$('li#q2b').removeClass('selected');
-					$('li#q2b').css('background-position','-120px 0px');
+			if(selected == 'q2_2'){
+				if($('li#q2_2').hasClass('selected')){
+					$('li#q2_2').removeClass('selected');
+					$('li#q2_2').css('background-position','-120px 0px');
 					$('input[id='+selected+'_0]').prop('checked', false);
 				}else{
-					$('li#q2b').addClass('selected');
-					$('li#q2b').css('background-position','-480px 0px');
+					$('li#q2_2').addClass('selected');
+					$('li#q2_2').css('background-position','-480px 0px');
 					$('input[id='+selected+'_0]').prop('checked', true);
 				};
 			};
-			if(selected == 'q2c'){
-				if($('li#q2c').hasClass('selected')){
-					$('li#q2c').removeClass('selected');
-					$('li#q2c').css('background-position','-240px 0px');
+			if(selected == 'q2_3'){
+				if($('li#q2_3').hasClass('selected')){
+					$('li#q2_3').removeClass('selected');
+					$('li#q2_3').css('background-position','-240px 0px');
 					$('input[id='+selected+'_0]').prop('checked', false);
 				}else{
-					$('li#q2c').addClass('selected');
-					$('li#q2c').css('background-position','-600px 0px');
+					$('li#q2_3').addClass('selected');
+					$('li#q2_3').css('background-position','-600px 0px');
 					$('input[id='+selected+'_0]').prop('checked', true);
 				};
 			};
@@ -272,6 +272,9 @@ $(document).ready(function(){
 			min: 1,
 			max: 5,
 			value: 1,
+			create: function( event, ui ) { // reset choices
+				$('input[id=q5_0]').val(1);
+			},
 			change: function(event, ui){
 				$('div#citizenshipSlider a').addClass('sliderActive');
 				$("div#q5_flag").text(1);
@@ -311,29 +314,33 @@ $(document).ready(function(){
 			min: 1,
 			max: 5,
 			value: 1,
+			create: function( event, ui ) { // reset choices
+				$('input[id=q6_0]').val(1);
+			},
 			change: function(event, ui){
 				$('#travelSlider a').addClass('sliderActive');
+				$("div#q6_flag").text(1);
 				switch(ui.value)
 				{
 				case 1:
 					$('div#6 .sliderSelected').html("No Travel");
-					$('input[name=q6]').val(1);
+					$('input[id=q6_0]').val(1);
 					break;
 				case 2:
 					$('div#6 .sliderSelected').html("Seldom Travel");
-					$('input[name=q6]').val(2);
+					$('input[id=q6_0]').val(2);
 					break;					
 				case 3:
 					$('div#6 .sliderSelected').html("Little Travel");
-					$('input[name=q6]').val(3);
+					$('input[id=q6_0]').val(3);
 					break;
 				case 4:
 					$('div#6 .sliderSelected').html("Some Travel");
-					$('input[name=q6]').val(4);
+					$('input[id=q6_0]').val(4);
 					break;
 				case 5:
 					$('div#6 .sliderSelected').html("Frequent Travel");
-					$('input[name=q6]').val(5);
+					$('input[id=q6_0]').val(5);
 					break;
 				default:
 					$('div#6 .sliderSelected').html("No Travel");
@@ -349,25 +356,29 @@ $(document).ready(function(){
 			min: 1,
 			max: 4,
 			value: 1,
+			create: function( event, ui ) { // reset choices
+				$('input[id=q7_0]').val(1);
+			},			
 			change: function(event, ui){
 				$('#roleSlider a').addClass('sliderActive');
+				$("div#q7_flag").text(1);
 				switch(ui.value)
 				{
 				case 1:
 					$('div#7 .sliderSelected').html("Seldom");
-					$('input[name=q7]').val(1);
+					$('input[id=q7_0]').val(1);
 					break;
 				case 2:
 					$('div#7 .sliderSelected').html("Occasionally");
-					$('input[name=q7]').val(2);
+					$('input[id=q7_0]').val(2);
 					break;
 				case 3:
 					$('div#7 .sliderSelected').html("Frequent");
-					$('input[name=q7]').val(3);
+					$('input[id=q7_0]').val(3);
 					break;
 				case 4:
 					$('div#7 .sliderSelected').html("Always");
-					$('input[name=q7]').val(4);
+					$('input[id=q7_0]').val(4);
 					break;
 				default:
 					$('div#7 .sliderSelected').html("Seldom");
@@ -381,9 +392,25 @@ $(document).ready(function(){
 		$('#co_promotion').sortable({
 			placeholder: "sort6_placeholder",
 			revert: true,
-			start: function(event, ui) {
-				$('input[name=q8]').val(1);
+			create: function( event, ui ) { // initialize ranking
+				var count = $("#co_promotion li").length;
+				for (var i=0;i<count;i++)
+				{
+					sortID = $('#co_promotion').find('li:eq('+i+')').attr("id");
+					$('input[id='+sortID+'_0]').val(count-i);
+				}
+			},
+			start: function( event, ui ) {
+				$("div#q8_flag").text(1);
 				lastEmpty = showNextButton(8, lastEmpty);
+			},
+			stop: function( event, ui ) {
+				var count = $("#co_promotion li").length;
+				for (var i=0;i<count;i++)
+				{
+					sortID = $('#co_promotion').find('li:eq('+i+')').attr("id");
+					$('input[id='+sortID+'_0]').val(count-i);
+				}
 			}
 		});
 		$('#co_promotion').disableSelection();
@@ -392,18 +419,19 @@ $(document).ready(function(){
 		var currentEnvQuestion = 1;
 		var envComplete = 0;
 		var progressBackground = 0;
-		$('div#q9_1').show();
+		$('div#q9_1').show();	
+		$("input[id^=q9]").val(0);
 		
 		$('div.envAnswer1, div.envAnswer2').click(function () {
 			var inputName = $(this).parent().attr('id');
 			if ($(this).hasClass('envAnswer1')){
 				$(this).addClass('selected');
-				$('input[name='+inputName+']').val(1);
+				$('input[id='+inputName+'_0]').val(1);
 				$(this).parent().children('div.envAnswer2').removeClass('selected');
 			};
 			if ($(this).hasClass('envAnswer2')){
 				$(this).addClass('selected');
-				$('input[name='+inputName+']').val(2);
+				$('input[id='+inputName+'_0]').val(2);
 				$(this).parent().children('div.envAnswer1').removeClass('selected');
 			};
 
@@ -419,7 +447,7 @@ $(document).ready(function(){
 			};
 			
 			//update next subquestion
-			if ((currentEnvQuestion < 10)&&(parseFloat($("input[name^=q9_"+currentEnvQuestion+"]").val())!=0)){
+			if ((currentEnvQuestion < 10)&&(parseFloat($("input[id^=q9_"+currentEnvQuestion+"]").val())!=0)){
 				$('div#q9_'+currentEnvQuestion).delay(400).animate({opacity: 0, marginLeft:'300px'},300).hide(500);
 				currentEnvQuestion = currentEnvQuestion + 1;
 				$('div#q9_'+currentEnvQuestion).delay(600).animate({opacity: 1, marginLeft:'149px'},300).show(500);
@@ -427,7 +455,7 @@ $(document).ready(function(){
 			
 			//check for next button
 			var nextEnvFlag = 1;
-			$("input[name^=q9]").each(function() {
+			$("input[id^=q9]").each(function() {
 				if (parseFloat($(this).val())==0){
 					nextEnvFlag=0;
 				};
@@ -452,105 +480,145 @@ $(document).ready(function(){
 		$('#co_recognition').sortable({
 			placeholder: "sort6_placeholder",
 			revert: true,
-			start: function(event, ui) {
-				$('input[name=q10]').val(1);
+			create: function( event, ui ) { // initialize ranking
+				var count = $("#co_recognition li").length;
+				for (var i=0;i<count;i++)
+				{
+					sortID = $('#co_recognition').find('li:eq('+i+')').attr("id");
+					$('input[id='+sortID+'_0]').val(count-i);
+				}
+			},
+			start: function( event, ui ) {
+				$("div#q10_flag").text(1);
 				lastEmpty = showNextButton(10, lastEmpty);
+			},
+			stop: function( event, ui ) {
+				var count = $("#co_recognition li").length;
+				for (var i=0;i<count;i++)
+				{
+					sortID = $('#co_recognition').find('li:eq('+i+')').attr("id");
+					$('input[id='+sortID+'_0]').val(count-i);
+				}
 			}
 		});
 		$('#co_recognition').disableSelection();
 		
-		// Q11 - Politics
-		$("map#politicsCloud area").click(function(){
-			$('#politics img').css("background-position", "0px "+(-390*($(this).index()+1))+"px");
-			$('input[name=q11]').val($(this).index()+1);
-			lastEmpty = showNextButton(11, lastEmpty);
-		});
-		
-		// Q12 - Favorite tasks
+		// Q11 - Favorite tasks
 		$('#favTask').sortable({
 			placeholder: "task_placeholder",
 			revert: true,
-			start: function(event, ui) {
-				$('input[name=q12]').val(1);
-				lastEmpty = showNextButton(12, lastEmpty);
+			create: function( event, ui ) { // initialize ranking
+				var count = $("#favTask li").length;
+				for (var i=0;i<count;i++)
+				{
+					sortID = $('#favTask').find('li:eq('+i+')').attr("id");
+					$('input[id='+sortID+'_0]').val(count-i);
+				}
+			},
+			start: function( event, ui ) {
+				$("div#q11_flag").text(1);
+				lastEmpty = showNextButton(11, lastEmpty);
+			},
+			stop: function( event, ui ) {
+				var count = $("#favTask li").length;
+				for (var i=0;i<count;i++)
+				{
+					sortID = $('#favTask').find('li:eq('+i+')').attr("id");
+					$('input[id='+sortID+'_0]').val(count-i);
+				}
 			}
 		});
 		$('#favTask').disableSelection();
 		
-		// Q13 - Communications
+		// Q12 - Communications
+		$("input[id=q12_0]").val("");
 		$("map#communicationCloud area").click(function(){
 			$('#communications img').css("background-position", "0px "+(-390*($(this).index()+1))+"px");
-			$('input[name=q13]').val($(this).index()+1);
-			lastEmpty = showNextButton(13, lastEmpty);
+			$('input[id=q12_0]').val($(this).index()+1);
+			$("div#q12_flag").text(1);
+			lastEmpty = showNextButton(12, lastEmpty);
 		});
 		
-		// Q14 - Resources
+		// Q13 - Resources
 		$('#resource').sortable({
 			placeholder: "resource_placeholder",
 			revert: true,
-			start: function(event, ui) {
-				$('input[name=q14]').val(1);
-				lastEmpty = showNextButton(14, lastEmpty);
+			create: function( event, ui ) { // initialize ranking
+				var count = $("#resource li").length;
+				for (var i=0;i<count;i++)
+				{
+					sortID = $('#resource').find('li:eq('+i+')').attr("id");
+					$('input[id='+sortID+'_0]').val(count-i);
+				}
+			},
+			start: function( event, ui ) {
+				$("div#q13_flag").text(1);
+				lastEmpty = showNextButton(11, lastEmpty);
+			},
+			stop: function( event, ui ) {
+				var count = $("#resource li").length;
+				for (var i=0;i<count;i++)
+				{
+					sortID = $('#resource').find('li:eq('+i+')').attr("id");
+					$('input[id='+sortID+'_0]').val(count-i);
+				}
 			}
 		});
 		$('#resource').disableSelection();
 		
-		// Q15 - Supervisor
+		// Q14 - Supervisor
+		$("input[id=q14_0]").val("");
 		$('map#supervisorCloud area').click(function(){
 			$('#supervisor img').css("background-position", "0px "+(-445*($(this).index()+1))+"px");
-			$('input[name=q15]').val($(this).index()+1);
+			$('input[id=q14_0]').val($(this).index()+1);
+			$("div#q14_flag").text(1);
+			lastEmpty = showNextButton(14, lastEmpty);
+		});
+		
+		// Q15 - Leadership
+		$("input[id=q15_0]").val("");
+		$("map#leadershipCloud area").click(function(){
+			$('#leadership img').css("background-position", "0px "+(-418*($(this).index()+1))+"px");
+			$('input[id=q15_0]').val($(this).index()+1);
+			$("div#q15_flag").text(1);
 			lastEmpty = showNextButton(15, lastEmpty);
 		});
 		
-		// Q16 - Intuition
-		$('div#intuition div').click(function(){
-			$('div#intuition div').removeClass("selected");
-			$(this).addClass("selected");
-			$('input[name=q16]').val($(this).index()+1);
-			lastEmpty = showNextButton(16, lastEmpty);
-		});
-		
-		// Q17 - Respect
-		$("map#respectCloud area").click(function(){
-			$('#respect img').css("background-position", "0px "+(-390*($(this).index()+1))+"px");
-			$('input[name=q17]').val($(this).index()+1);
-			lastEmpty = showNextButton(17, lastEmpty);
-		});
-		
-		// Q18 - Leadership
-		$("map#leadershipCloud area").click(function(){
-			$('#leadership img').css("background-position", "0px "+(-418*($(this).index()+1))+"px");
-			$('input[name=q18]').val($(this).index()+1);
-			lastEmpty = showNextButton(18, lastEmpty);
-		});
-		
-		// Q19 - Traits
+		// Q16 - Traits
 		var traitCount = 0;
+		
 		$("div#traits div").click(function(){
+			var selected = $(this).attr('id');  // get id of selected choice
 			if (traitCount < 5){
 				$(this).toggleClass("selected");
 				if ($(this).hasClass("selected")){
 					traitCount = traitCount + 1;
+					$('input[id='+selected+'_0]').prop('checked', true);
 				}else{
 					traitCount = traitCount - 1;
+					$('input[id='+selected+'_0]').prop('checked', false);
 				};
 			}else{
 				if ($(this).hasClass("selected")){
 					$(this).toggleClass("selected");
 					traitCount = traitCount - 1;
+					$('input[id='+selected+'_0]').prop('checked', false);
 				};
 			};
-			$('input[name=q19]').val($(this).index()+1);
-			if (traitCount == 5){$('#next_question').show();}else{$('#next_question').hide(); lastEmpty = 19;};
+			if (traitCount == 5){$('#next_question').show();}else{$('#next_question').hide(); lastEmpty = 16;};
 		});
 		
-		// Q20 - Motivation
+		// Q17 - Motivation
+		$("input[id=q17_0]").val("");
 		$("map#motivationCloud area").click(function(){
 			$('#motivation img').css("background-position", "0px "+(-390*($(this).index()+1))+"px");
-			$('input[name=q20]').val($(this).index()+1);
-			lastEmpty = 20;
+			$('input[id=q17_0]').val($(this).index()+1);
+			$("div#q17_flag").text(1);
+			lastEmpty = showNextButton(17, lastEmpty);
+			
+			/*lastEmpty = 17;
 			$('#next_question').hide();
-			$('#show_preview').show();
+			$('#show_preview').show(); */
 		});
 		
 	};

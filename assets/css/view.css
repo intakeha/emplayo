@@ -350,9 +350,9 @@ div#reset .errors{
 
 /* Questionnaire */
 
-#criteria input[type="checkbox"], #criteria input[type="text"]{
+/* #criteria input[type="checkbox"], #criteria input[type="text"]{
 	display: none;
-}
+} */
 
 .modal_popup div{
 	margin: 0 20px 10px;
@@ -539,15 +539,15 @@ li.coTypeSelected{
 	height: 445px !important;
 }
 
-li#q1b{
+li#q1_2{
 	background-position: -208px 0px !important;
 }
 
-li#q1c{
+li#q1_3{
 	background-position: -418px 0px !important;
 }
 
-li#q1d{
+li#q1_4{
 	background-position: -627px 0px !important;
 }
 
@@ -566,17 +566,17 @@ ul#co_pace li{
 	cursor: pointer;
 }
 
-li#q2a{
+li#q2_1{
 	background: url(../images/survey/co_pace.jpg) no-repeat;
 	background-position: 0px 0px;
 }
 
-li#q2b{
+li#q2_2{
 	background: url(../images/survey/co_pace.jpg) no-repeat;
 	background-position: -120px 0px;
 }
 
-li#q2c{
+li#q2_3{
 	background: url(../images/survey/co_pace.jpg) no-repeat;
 	background-position: -240px 0px;
 }
@@ -611,27 +611,27 @@ li.coCycleSelected{
 	height: 414px !important;
 }
 
-li#q3a{
+li#q3_1{
 	width: 105px;
 	background-position: 0px 0px !important;
 }
 
-li#q3b{
+li#q3_2{
 	width: 105px;
 	background-position: -105px 0px !important;
 }
 
-li#q3c{
+li#q3_3{
 	width: 210px;
 	background-position: -210px 0px !important;
 }
 
-li#q3d{
+li#q3_4{
 	width: 210px;
 	background-position: -420px 0px !important;
 }
 
-li#q3e{
+li#q3_5{
 	width: 210px;
 	background-position: -630px 0px !important;
 }
@@ -869,20 +869,7 @@ ul#co_recognition li span{
 	margin-top: 4px;
 }
 
-/* Question 11 - Politics */
-
-div#politics {
-	margin: 50px 0 0 55px;
-}
-
-img#politicsOverlay {
-	background: url("../images/survey/politics.jpg") no-repeat scroll 0 0 transparent;
-	width: 910px;
-	height: 390px;
-	overflow: hidden;
-}
-
-/* Question 12 - Tasks */
+/* Question 11 - Tasks */
 
 div#task_bar{
 	background: url("../images/survey/task_bar.png") no-repeat scroll 0 0 transparent;
@@ -929,7 +916,7 @@ ul#favTask font{
 	border: 1px dashed #258cd1 !important;
 }
 
-/* Question 13 - Communications */
+/* Question 12 - Communications */
 
 div#communications {
 	margin: 50px 0 0 55px;
@@ -942,7 +929,7 @@ img#communicationOverlay {
 	overflow: hidden;
 }
 
-/* Question 14 - Resources */
+/* Question 13 - Resources */
 
 div#steps_bar{
 	background: url("../images/survey/resourceSteps.png") no-repeat scroll 0 0 transparent;
@@ -983,7 +970,7 @@ ul#resource li span{
 	border: 1px dashed #258cd1 !important;
 }
 
-/* Question 15 - Supervisor */
+/* Question 14 - Supervisor */
 
 div#supervisor {
 	margin: 50px 0 0 25px;
@@ -996,44 +983,7 @@ img#supervisorOverlay {
 	overflow: hidden;
 }
 
-/* Question 16 - Intuition */
-div#intuition{
-	margin: 75px 0 0 190px;
-	height: 230px;
-	width: 650px;	
-}
-
-
-div#intuition .true_false{
-	width: 215px;
-	height: 215px;
-	background: url("../images/survey/true_false.png") no-repeat scroll 0 0 transparent;
-	color: #1d71a2;
-	cursor: pointer;
-	float: left;
-	margin: 0 50px;
-	font-size: 45px;
-	padding-top: 80px;
-}
-
-div#intuition .selected{
-	color: #e9b60b;
-	background-position: -215px 0px;
-}
-
-/* Question 17 - Respect */
-div#respect {
-	margin: 50px 0 0 55px;
-}
-
-img#respectOverlay {
-	background: url("../images/survey/respect.jpg") no-repeat scroll 0 0 transparent;
-	width: 910px;
-	height: 390px;
-	overflow: hidden;
-}
-
-/* Question 18 - Leadership */
+/* Question 15 - Leadership */
 div#leadership {
 	margin: 50px 0 0 -10px;
 }
@@ -1045,7 +995,7 @@ img#leadershipOverlay {
 	overflow: hidden;
 }
 
-/* Question 19 - Traits */
+/* Question 16 - Traits */
 div#traits {
 	margin: 20px 0 0 25px;
 	height: 500px;
@@ -1068,7 +1018,7 @@ div#traits .selected{
 	color: #fff;
 }
 
-/* Question 20 - Motivation */
+/* Question 17 - Motivation */
 div#motivation {
 	margin: 50px 0 0 55px;
 }
