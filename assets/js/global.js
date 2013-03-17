@@ -49,6 +49,7 @@ $(document).ready(function(){
 		});
 		
 		 $container.on('click', '.smallTile', function(){
+			$('#profile img.smallTile.bigTile').removeClass('bigTile');
 			$(this).toggleClass('bigTile');
 			$(this).find('div').toggleClass('bigContent');
 			$(this).find('img').toggle();
@@ -82,9 +83,9 @@ $(document).ready(function(){
 		}
 	);	
 	
-	// Reset all answers to 0
-	$("input[name^='q']").each(function() {      
-		$(this).val(0);
+	// Uncheck all checkboxes
+	$("input[type='checkbox']").each(function() {      
+		$(this).prop('checked', false);
 	 });
 	
 	// Display questionnaire	 
@@ -113,6 +114,7 @@ $(document).ready(function(){
 		$('#next_question').click(function(){
 			$('div#progressBar').show();
 			$('div.hints, div.hints div').hide();
+			
 			// Update progress bar
 			if(currentQuestion>=1){
 				$('#progressBar li').eq(currentQuestion-1).removeClass().addClass('progress filled');
@@ -130,7 +132,15 @@ $(document).ready(function(){
 				$('#next_question').hide();
 				$('#show_preview').show();
 			}else{
-				lastEmpty = showNextButton(currentQuestion, lastEmpty);
+				$('#next_question').hide();
+				// Determine type of questions
+				questionType = $('div#'+currentQuestion).find('input').attr('type');
+				if (questionType == "checkbox"){
+					lastEmpty = showNextButtonCheckbox(currentQuestion, lastEmpty);
+				};
+				if (questionType == "text"){
+					lastEmpty = showNextButton(currentQuestion, lastEmpty);
+				};
 			};
 		});
 		
@@ -155,7 +165,12 @@ $(document).ready(function(){
 					$('#next_question').hide();
 					$('#show_preview').show();
 				}else{
-					lastEmpty = showNextButton(currentQuestion, lastEmpty);
+					if (questionType == "checkbox"){
+						lastEmpty = showNextButtonCheckbox(currentQuestion, lastEmpty);
+					};
+					if (questionType == "text"){
+						lastEmpty = showNextButton(currentQuestion, lastEmpty);
+					};
 				};
 			};
 		});
@@ -165,11 +180,11 @@ $(document).ready(function(){
 			var selected = $(this).attr('id');  // get id of selected choice
 			$(this).toggleClass('coTypeSelected'); // mark selected choice		
 			if ($(this).hasClass('coTypeSelected')){
-				$('input[name='+selected+']').val(1);
+				$('input[id='+selected+'_0]').prop('checked', true);
 			}else{
-				$('input[name='+selected+']').val(0);
-			};			
-			lastEmpty = showNextButton(1, lastEmpty);
+				$('input[id='+selected+'_0]').prop('checked', false);
+			};
+			lastEmpty = showNextButtonCheckbox(1, lastEmpty);
 		});
 
 		// Q2 - Company pace
@@ -180,36 +195,36 @@ $(document).ready(function(){
 				if($('li#q2a').hasClass('selected')){
 					$('li#q2a').removeClass('selected');
 					$('li#q2a').css('background-position','-0px 0px');
-					$('input[name='+selected+']').val(0);
+					$('input[id='+selected+'_0]').prop('checked', false);
 				}else{
 					$('li#q2a').addClass('selected');
 					$('li#q2a').css('background-position','-360px 0px');
-					$('input[name='+selected+']').val(1);
+					$('input[id='+selected+'_0]').prop('checked', true);
 				};
 			};
 			if(selected == 'q2b'){
 				if($('li#q2b').hasClass('selected')){
 					$('li#q2b').removeClass('selected');
 					$('li#q2b').css('background-position','-120px 0px');
-					$('input[name='+selected+']').val(0);
+					$('input[id='+selected+'_0]').prop('checked', false);
 				}else{
 					$('li#q2b').addClass('selected');
 					$('li#q2b').css('background-position','-480px 0px');
-					$('input[name='+selected+']').val(1);
+					$('input[id='+selected+'_0]').prop('checked', true);
 				};
 			};
 			if(selected == 'q2c'){
 				if($('li#q2c').hasClass('selected')){
 					$('li#q2c').removeClass('selected');
 					$('li#q2c').css('background-position','-240px 0px');
-					$('input[name='+selected+']').val(0);
+					$('input[id='+selected+'_0]').prop('checked', false);
 				}else{
 					$('li#q2c').addClass('selected');
 					$('li#q2c').css('background-position','-600px 0px');
-					$('input[name='+selected+']').val(1);
+					$('input[id='+selected+'_0]').prop('checked', true);
 				};
 			};
-			lastEmpty = showNextButton(2, lastEmpty);
+			lastEmpty = showNextButtonCheckbox(2, lastEmpty);
 		});
 		
 		// Q3 - Company cycle
@@ -217,20 +232,36 @@ $(document).ready(function(){
 			var selected = $(this).attr('id');  // get id of selected choice
 			$(this).toggleClass('coCycleSelected'); // mark selected choice		
 			if ($(this).hasClass('coCycleSelected')){
-				$('input[name='+selected+']').val(1);
+				$('input[id='+selected+'_0]').prop('checked', true);
 			}else{
-				$('input[name='+selected+']').val(0);
+				$('input[id='+selected+'_0]').prop('checked', false);
 			};			
-			lastEmpty = showNextButton(3, lastEmpty);
+			lastEmpty = showNextButtonCheckbox(3, lastEmpty);
 		});
 		
 		// Q4 - Company benefits
 		$('#co_benefits').sortable({
 			placeholder: "benefits_placeholder",
 			revert: true,
+			create: function( event, ui ) { // initialize ranking
+				var count = $("#co_benefits li").length;
+				for (var i=0;i<count;i++)
+				{
+					sortID = $('#co_benefits').find('li:eq('+i+')').attr("id");
+					$('input[id='+sortID+'_0]').val(count-i);
+				}
+			},
 			start: function( event, ui ) {
-				$('input[name=q4]').val(1);
+				$("div#q4_flag").text(1);
 				lastEmpty = showNextButton(4, lastEmpty);
+			},
+			stop: function( event, ui ) {
+				var count = $("#co_benefits li").length;
+				for (var i=0;i<count;i++)
+				{
+					sortID = $('#co_benefits').find('li:eq('+i+')').attr("id");
+					$('input[id='+sortID+'_0]').val(count-i);
+				}
 			}
 		});
 		$('#co_benefits').disableSelection();
@@ -243,27 +274,28 @@ $(document).ready(function(){
 			value: 1,
 			change: function(event, ui){
 				$('div#citizenshipSlider a').addClass('sliderActive');
+				$("div#q5_flag").text(1);
 				switch(ui.value)
 				{
 				case 1:
 					$('div#5 .sliderSelected').html("Not Important");
-					$('input[name=q5]').val(1);
+					$('input[id=q5_0]').val(1);
 					break;
 				case 2:
 					$('div#5 .sliderSelected').html("Somewhat Important");
-					$('input[name=q5]').val(2);
+					$('input[id=q5_0]').val(2);
 					break;
 				case 3:
 					$('div#5 .sliderSelected').html("Important");
-					$('input[name=q5]').val(3);
+					$('input[id=q5_0]').val(3);
 					break;
 				case 4:
 					$('div#5 .sliderSelected').html("Very Important");
-					$('input[name=q5]').val(4);
+					$('input[id=q5_0]').val(4);
 					break;
 				case 5:
 					$('div#5 .sliderSelected').html("Extremely Important");
-					$('input[name=q5]').val(5);
+					$('input[id=q5_0]').val(5);
 					break;
 				default:
 					$('div#5 .sliderSelected').html("Not Important");
@@ -526,9 +558,16 @@ $(document).ready(function(){
 
 // Questionnaire function | Show next button when user clicks an answer
 function showNextButton(e, lastEmpty) { // determine if user selected an answer
+	if ($("div#q"+e+"_flag").text()){$('#next_question').show();}else{$('#next_question').hide(); lastEmpty = e;};
+	return lastEmpty;
+};
+
+function showNextButtonCheckbox(e, lastEmpty) { // determine if user selected an answer
 	var nextFlag = 0;
-	$("input[name^=q"+e+"]").each(function() {      
-		nextFlag += parseFloat($(this).val());
+	$("input[id^=q"+e+"]").each(function() { 
+		if ($(this).prop('checked')){
+			nextFlag = 1;
+		};
 	 });
 	if (nextFlag > 0){$('#next_question').show();}else{$('#next_question').hide(); lastEmpty = e;};
 	return lastEmpty;

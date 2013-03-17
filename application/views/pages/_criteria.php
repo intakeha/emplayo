@@ -123,10 +123,10 @@
 				<li id="q1c"></li>
 				<li id="q1d"></li>
 			</ul>
-			<input type="hidden" name="q1a" value="0" />
-			<input type="hidden" name="q1b" value="0" />
-			<input type="hidden" name="q1c" value="0" />
-			<input type="hidden" name="q1d" value="0" />                     
+			<input id="q1a_0" type="checkbox" value="1" name="company_type[]" >
+			<input id="q1b_0" type="checkbox" value="2" name="company_type[]" >
+			<input id="q1c_0" type="checkbox" value="3" name="company_type[]" >
+			<input id="q1d_0" type="checkbox" value="4" name="company_type[]" >
 		</div>
 		<div id="2" class="questions" name="multipleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q2','600','35');"></div>Select the pace of the company you want to work in:</div>
@@ -135,9 +135,9 @@
 				<li id="q2b">Medium</li>
 				<li id="q2c">Fast</li>
 			</ul>
-			<input type="hidden" name="q2a" value="0" />
-			<input type="hidden" name="q2b" value="0" />
-			<input type="hidden" name="q2c" value="0" />
+			<input id="q2a_0" type="checkbox" value="1" name="company_pace[]">
+			<input id="q2b_0" type="checkbox" value="2" name="company_pace[]">
+			<input id="q2c_0" type="checkbox" value="3" name="company_pace[]">
 		</div>
 		<div id="3" class="questions" name="multipleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q3','600','35');"></div>Select the life cycle of the companies you want to work in:</div>
@@ -149,11 +149,11 @@
 				<li id="q3d"></li>
 				<li id="q3e"></li>
 			</ul>
-			<input type="hidden" name="q3a" value="0" />
-			<input type="hidden" name="q3b" value="0" />
-			<input type="hidden" name="q3c" value="0" />
-			<input type="hidden" name="q3d" value="0" />
-			<input type="hidden" name="q3e" value="0" />
+			<input id="q3a_0" type="checkbox" value="1" name="lifecycle[]" >
+			<input id="q3b_0" type="checkbox" value="2" name="lifecycle[]" >
+			<input id="q3c_0" type="checkbox" value="3" name="lifecycle[]" >
+			<input id="q3d_0" type="checkbox" value="4" name="lifecycle[]" >
+			<input id="q3e_0" type="checkbox" value="5" name="lifecycle[]" >
 		</div>
 		<div id="4" class="questions" name="rankChoice">
 			<div><div class="bulb" onclick="modal('#modal_q4','600','35');"></div>Rank the following company benefits &amp; perks you find important:</div>
@@ -162,7 +162,7 @@
 				<li id="q4_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Training</li>
 				<li id="q4_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Matching 401(k) Plans</li>
 				<li id="q4_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Child Care Facilities</li>
-				<li id="q4-4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Health Care</li>
+				<li id="q4_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Health Care</li>
 				<li id="q4_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Free Meals</li>
 				<li id="q4_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Profit Sharing</li>
 				<li id="q4_7"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Maternity / Paternity Leave</li>
@@ -176,8 +176,23 @@
 				<li id="q4_15"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Compressed Workweek / Flexible Work Schedule</li>
 				<li id="q4_16"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Education Reimbursement</li>
 			</ul>
-			<input type="hidden" name="q4" value="0" />
-			<input type="hidden" name="qFour" value="0" />
+				<input id="q4_1_0" type="text" name="users_benefits[1][rank]"  value="16">
+				<input id="q4_2_0" type="text" name="users_benefits[2][rank]"  value="15">
+				<input id="q4_3_0" type="text" name="users_benefits[3][rank]"  value="14">
+				<input id="q4_4_0" type="text" name="users_benefits[4][rank]"  value="13">
+				<input id="q4_5_0" type="text" name="users_benefits[5][rank]"  value="12">
+				<input id="q4_6_0" type="text" name="users_benefits[6][rank]"  value="11">
+				<input id="q4_7_0" type="text" name="users_benefits[7][rank]"  value="10">
+				<input id="q4_8_0" type="text" name="users_benefits[8][rank]"  value="9">
+				<input id="q4_9_0" type="text" name="users_benefits[9][rank]"  value="8">
+				<input id="q4_10_0" type="text" name="users_benefits[10][rank]"  value="7">
+				<input id="q4_11_0" type="text" name="users_benefits[11][rank]"  value="6">
+				<input id="q4_12_0" type="text" name="users_benefits[12][rank]"  value="5">
+				<input id="q4_13_0" type="text" name="users_benefits[13][rank]"  value="4">
+				<input id="q4_14_0" type="text" name="users_benefits[14][rank]"  value="3">
+				<input id="q4_15_0" type="text" name="users_benefits[15][rank]"  value="2">
+				<input id="q4_16_0" type="text" name="users_benefits[16][rank]"  value="1">
+				<div id="q4_flag" style="display: none;"></div>
 		</div>
 		<div id="5" class="questions" name="singleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q5','600','35');"></div>How important is corporate citizenship to you?</div>
@@ -192,7 +207,8 @@
 					<li>Extremely Important</li>
 				</ul>
 			</div>
-			<input type="hidden" name="q5" value="0" />
+			<input id="q5_0" type="text" name="corp_citizenship" />
+			<div id="q5_flag" style="display: none;"></div>
 		</div>
 		<div id="6" class="questions" name="singleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q6','600','35');"></div>How much traveling would you like to do for work?</div>

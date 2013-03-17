@@ -350,6 +350,10 @@ div#reset .errors{
 
 /* Questionnaire */
 
+#criteria input[type="checkbox"], #criteria input[type="text"]{
+	display: none;
+}
+
 .modal_popup div{
 	margin: 0 20px 10px;
 }
