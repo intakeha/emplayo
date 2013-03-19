@@ -238,12 +238,12 @@
 				<li id="q8_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Leadership Readiness</li>
 				<li id="q8_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Job Performance</li>
 			</ul>
-				<input id="q8_1_0" type="text" name="user_benefits[1][rank]"  value="6">
-				<input id="q8_2_0" type="text" name="user_benefits[2][rank]"  value="5">
-				<input id="q8_3_0" type="text" name="user_benefits[3][rank]"  value="4">
-				<input id="q8_4_0" type="text" name="user_benefits[4][rank]"  value="3">
-				<input id="q8_5_0" type="text" name="user_benefits[5][rank]"  value="2">
-				<input id="q8_6_0" type="text" name="user_benefits[6][rank]"  value="1">
+				<input id="q8_1_0" type="text" name="user_promotion[1][rank]"  value="6">
+				<input id="q8_2_0" type="text" name="user_promotion[2][rank]"  value="5">
+				<input id="q8_3_0" type="text" name="user_promotion[3][rank]"  value="4">
+				<input id="q8_4_0" type="text" name="user_promotion[4][rank]"  value="3">
+				<input id="q8_5_0" type="text" name="user_promotion[5][rank]"  value="2">
+				<input id="q8_6_0" type="text" name="user_promotion[6][rank]"  value="1">
 				<div id="q8_flag" style="display: none;"></div>
 		</div>
 		<div id="9" class="questions"  name="singleChoice">
@@ -466,6 +466,77 @@
 			</div>
 			<input id="q17_0" type="text" name="user_motivation" />
 			<div id="q17_flag" style="display: none;"></div>
+		</div>
+		<div id="18" class="questions"  name="textChoice">
+			<div><div class="bulb" onclick="modal('#modal_q18','600','35');"></div>Which industry or field do you want to work in?</div>
+			<div id="industry" class="clear">
+				<input id="q18_0" class="industry" type="text" value="" name="user_industry[]" />
+			</div>
+			<div id="q18_flag" style="display: none;"></div>
+		</div>		
+		<div id="19" class="questions q19"  name="textChoice">
+			<div><div class="bulb" onclick="modal('#modal_q19','600','35');"></div>Where would you like to work?</div>
+			<div id="location" class="clear">
+				<input id="q19_0" class="location" type="text" value="" name="user_location[]" />
+			</div>
+			<div id="q19_flag" style="display: none;"></div>
+		</div>
+		<div id="20" class="questions"  name="textChoice">
+			<div><div class="bulb" onclick="modal('#modal_q19','600','35');"></div>What's your education and work history?</div>
+			<!-- <div id="history" class="clear">
+				Education:
+				<input id="q20" class="history" type="text" value="" name="user_location[]" />
+			</div> -->
+			
+			<div id="history">
+				<div>
+					<div id="education_layout">
+						<p>Education</p>
+						<div class="details">
+							<ul>
+								<li><label>School</label><input class="text_form" type="text" maxlength="150" name="school"></li>
+								<li><label>Graduation Year</label><input class="text_form" type="text" maxlength="4" name="graduation"></li>
+								<li><label>Degree</label><input class="text_form" type="text" maxlength="150" name="degree"></li>
+								<li><label>Field of Study</label><input class="text_form" type="text" maxlength="150" name="major"></li>
+							</ul>
+							<div class="addButton"> </div>
+						</div>
+					</div>
+					<div id="experience_layout">
+						<p>Work Experience</p>
+						<div class="details"> 
+							<ul>
+								<li><label>Company</label><input class="text_form" type="text" maxlength="150" name="company"></li>
+								<li><label>Time Period</label><input class="text_form" type="text" maxlength="4" name="graduation"></li>
+								<li><label>Satisfaction</label><input class="text_form" type="text" maxlength="150" name="degree"></li>
+								<li><label>Job</label><input class="text_form" type="text" maxlength="150" name="major"></li>
+							</ul>
+							<div class="addButton"> </div>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<div id="q20_flag" style="display: none;"></div>
 		</div>
 		<div id="21" class="questions">
 			<div>Congrats! You finished</div>

@@ -491,8 +491,9 @@ div.bulb{
 	width: 52px;
 	height: 52px;
 	cursor: pointer;
-	margin-top: -27px;
+	margin: -27px 0 0 970px;
 	float: right;
+	position: absolute;
 }
 
 #progressBar{
@@ -1028,6 +1029,114 @@ img#motivationOverlay {
 	width: 910px;
 	height: 390px;
 	overflow: hidden;
+}
+
+/* Question 18 - Industry */
+div#industry input, div#location input{
+	margin-top: 175px;
+	padding-left: 10px;
+	color: #777;
+    font-size: 20px;
+    width: 350px;
+	height: 40px;
+	border-width: 1px;
+}
+
+div#industry .tt-hint, div#location .tt-hint{
+	margin-top: 175px;
+	padding-left: 10px;
+	color: #ccc;
+    font-size: 20px;
+    width: 350px;
+	height: 40px;
+	border-width: 1px;
+}
+
+div#industry .tt-dropdown-menu, div#location .tt-dropdown-menu {
+	background-color: #fff;
+	border: 1px solid #6d7a83;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	text-align: left;
+	width: 360px;
+	-moz-box-shadow: 0px 0px 5px #ccc;
+	-webkit-box-shadow: 0px 0px 5px #ccc;
+	box-shadow: 0px 0px 5px #ccc;
+}
+
+div#industry .tt-suggestion, div#location .tt-suggestion{
+	padding: 10px;
+	font-weight: normal;
+}
+
+div#industry .tt-is-under-cursor, div#location .tt-is-under-cursor {
+	background-color: #1d71a2;
+	color: #fff;
+	font-weight: normal;
+}
+
+/* Question 19 - City */
+div.q19 {
+	background: url("../images/survey/globe.jpg") no-repeat;
+}
+
+/* Question 20 - History */
+
+div#history {
+	margin-top: 25px;
+}
+
+#history div#education_layout, div#experience_layout{
+    float: left;
+    font-size: 20px;
+    padding: 0 10px 20px;
+    width: 490px;
+	height: 460px;
+}
+
+div#education_layout {
+	border-right: 1px solid #258cd1;
+}
+
+div#history .details{
+	text-align: left;
+	margin: 10px 0;
+	height: 430px;
+}
+
+div#history p{
+    border-bottom: 2px solid #258cd1;
+    color: #258cd1;
+    font-size: 22px;
+    text-align: left;
+	padding-bottom: 5px;
+}
+
+#history label {
+    display: inline-block;
+    width: 150px;
+	font-size: 18px;
+}
+
+div#history input {
+    color: #777777;
+    font-size: 20px;
+    margin-top: 10px;
+    width: 325px;
+}
+
+.addButton {
+	width: 50px;
+	height: 64px;
+	background: url("../images/survey/add.png") no-repeat;
+	cursor: pointer;
+    float: right;
+    margin: 30px 10px 0 0;
+}
+
+.addButton:hover {
+	background-position: -50px 0px;
+	cursor: pointer;
 }
 
 /* Preview Results */
