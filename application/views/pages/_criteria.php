@@ -47,45 +47,31 @@
 	<div class="modal_popup" id="modal_q10">
 		<div class="intro">Use drag and drop to rank/order your items on the list.</div>
 		<div>There are many ways to be rewarded for a job well done. Rank your most preferred method of recognition on the top of the list.</div>
-	</div>	
+	</div>
 	<div class="modal_popup" id="modal_q11">
-		<div class="intro">Workplace politics are inevitible - you can't completely avoid them.  You can, however, control how you think about them.</div>
-		<div><span>Rumors Sometimes Lead to Useful Information</span><br>This is similar to keeping your finger on the pulse of the organization, and keeping up with the watercooler chatter.</div>
-		<div><span>Building Alliances Is Key</span><br>Building alliances involves developing relationships with other employees at various levels.  With a strong network of allies, you can be protected even when your back is turned.</div>
-		<div><span>Keep Your Friends Close and Your Enemies Closer</span><br>Keep tabs on people around you so you can avoid being blindsided by those with an agenda.</div>
-		<div><span>It's a Battlefield, But I Know How To Avoid Landmines</span><br>It takes skill to understand the terrain and avoid costly political missteps.</div>
-		<div><span>Keep Your Head Down and Your Nose to the Grindstone</span><br>Mind your business and focus on your job.  Don't get involved in workplace politics even if everyone else is.</div>
-	</div>	
-	<div class="modal_popup" id="modal_q12">
 		<div class="intro">Use drag and drop to rank/order your items on the list.</div>
 		<div>We all have differerent preferences and skillsets.  Some of us are more interested in working with the community, while others prefer using their creativity.  By using more of your natural strengths at work, you'll make it more enjoyable.</div>
 	</div>	
-	<div class="modal_popup" id="modal_q13">
+	<div class="modal_popup" id="modal_q12">
 		<div>When you have a conversation, what is your usual communication style?</div>
 	</div>	
-	<div class="modal_popup" id="modal_q14">
+	<div class="modal_popup" id="modal_q13">
 		<div class="intro">Use drag and drop to rank/order your items on the list.</div>
 		<div>If you don't know something, you will naturally take steps to find the answer.  What is your usual process, in order of your first option to last?</div>
 	</div>	
-	<div class="modal_popup" id="modal_q15">
+	<div class="modal_popup" id="modal_q14">
 		<div>What do you want and expect from your ideal supervisor?</div>
-	</div>	
-	<div class="modal_popup" id="modal_q16">
-		<div>We've all been there... that inner voice telling us what to do.  Sometimes you go with it, sometimes you ignore it and do something else.  How has that worked out for you? </div>
-	</div>	
-	<div class="modal_popup" id="modal_q17">
-		<div>If someone makes inappropriate comments in the workplace, how would you respond?</div>
-	</div>	
-	<div class="modal_popup" id="modal_q18">
+	</div>
+	<div class="modal_popup" id="modal_q15">
 		<div class="intro">If you were in a position of leadership, which of the following would most closely match your leadership style?</div>
 		<div><span>Open Dialogue</span><br>Direction comes from the top, but the lines of communication remain open for questions, comments, and feedback from workers.</div>
 		<div><span>Group Facilitation</span><br>Management works with the team to generate the plan through an interactive brainstorming session.</div>
 		<div><span>Top-Down Directive</span><br>A clear and non-negotiable plan is delivered to the team from management.</div>
 	</div>	
-	<div class="modal_popup" id="modal_q19">
+	<div class="modal_popup" id="modal_q16">
 		<div>What are the characteristics of the kind of people you like to be around, especially in a work setting?</div>
 	</div>	
-	<div class="modal_popup" id="modal_q20">
+	<div class="modal_popup" id="modal_q17">
 		<div class="intro">What's the most important aspect of your work?</div>
 		<div><span>With people I like to be around</span><br>The most important thing to you is working with a great team of people that you get along with and likely spend time with outside of work.</div>
 		<div><span>On things I am passionate about</span><br>What you work on is the most important thing to you.  Money and prestige are lower in priority.</div>
@@ -118,42 +104,42 @@
 		<div id="1" class="questions" name="multipleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q1','600','35');"></div>Select the type of companies you want to work for:</div>
 			<ul id="co_type">
-				<li id="q1a"></li>
-				<li id="q1b"></li>
-				<li id="q1c"></li>
-				<li id="q1d"></li>
+				<li id="q1_1"></li>
+				<li id="q1_2"></li>
+				<li id="q1_3"></li>
+				<li id="q1_4"></li>
 			</ul>
-			<input id="q1a_0" type="checkbox" value="1" name="company_type[]" >
-			<input id="q1b_0" type="checkbox" value="2" name="company_type[]" >
-			<input id="q1c_0" type="checkbox" value="3" name="company_type[]" >
-			<input id="q1d_0" type="checkbox" value="4" name="company_type[]" >
+			<input id="q1_1_0" type="checkbox" value="1" name="user_type[]" >
+			<input id="q1_2_0" type="checkbox" value="2" name="user_type[]" >
+			<input id="q1_3_0" type="checkbox" value="3" name="user_type[]" >
+			<input id="q1_4_0" type="checkbox" value="4" name="user_type[]" >
 		</div>
 		<div id="2" class="questions" name="multipleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q2','600','35');"></div>Select the pace of the company you want to work in:</div>
 			<ul id="co_pace">
-				<li id="q2a">Slow</li>
-				<li id="q2b">Medium</li>
-				<li id="q2c">Fast</li>
+				<li id="q2_1">Slow</li>
+				<li id="q2_2">Medium</li>
+				<li id="q2_3">Fast</li>
 			</ul>
-			<input id="q2a_0" type="checkbox" value="1" name="company_pace[]">
-			<input id="q2b_0" type="checkbox" value="2" name="company_pace[]">
-			<input id="q2c_0" type="checkbox" value="3" name="company_pace[]">
+			<input id="q2_1_0" type="checkbox" value="1" name="user_pace[]">
+			<input id="q2_2_0" type="checkbox" value="2" name="user_pace[]">
+			<input id="q2_3_0" type="checkbox" value="3" name="user_pace[]">
 		</div>
 		<div id="3" class="questions" name="multipleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q3','600','35');"></div>Select the life cycle of the companies you want to work in:</div>
 			<div id="co_cycle_header"></div>
 			<ul id="co_cycle">
-				<li id="q3a"></li>
-				<li id="q3b"></li>
-				<li id="q3c"></li>
-				<li id="q3d"></li>
-				<li id="q3e"></li>
+				<li id="q3_1"></li>
+				<li id="q3_2"></li>
+				<li id="q3_3"></li>
+				<li id="q3_4"></li>
+				<li id="q3_5"></li>
 			</ul>
-			<input id="q3a_0" type="checkbox" value="1" name="lifecycle[]" >
-			<input id="q3b_0" type="checkbox" value="2" name="lifecycle[]" >
-			<input id="q3c_0" type="checkbox" value="3" name="lifecycle[]" >
-			<input id="q3d_0" type="checkbox" value="4" name="lifecycle[]" >
-			<input id="q3e_0" type="checkbox" value="5" name="lifecycle[]" >
+			<input id="q3_1_0" type="checkbox" value="1" name="user_lifecycle[]" >
+			<input id="q3_2_0" type="checkbox" value="2" name="user_lifecycle[]" >
+			<input id="q3_3_0" type="checkbox" value="3" name="user_lifecycle[]" >
+			<input id="q3_4_0" type="checkbox" value="4" name="user_lifecycle[]" >
+			<input id="q3_5_0" type="checkbox" value="5" name="user_lifecycle[]" >
 		</div>
 		<div id="4" class="questions" name="rankChoice">
 			<div><div class="bulb" onclick="modal('#modal_q4','600','35');"></div>Rank the following company benefits &amp; perks you find important:</div>
@@ -176,22 +162,22 @@
 				<li id="q4_15"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Compressed Workweek / Flexible Work Schedule</li>
 				<li id="q4_16"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Education Reimbursement</li>
 			</ul>
-				<input id="q4_1_0" type="text" name="users_benefits[1][rank]"  value="16">
-				<input id="q4_2_0" type="text" name="users_benefits[2][rank]"  value="15">
-				<input id="q4_3_0" type="text" name="users_benefits[3][rank]"  value="14">
-				<input id="q4_4_0" type="text" name="users_benefits[4][rank]"  value="13">
-				<input id="q4_5_0" type="text" name="users_benefits[5][rank]"  value="12">
-				<input id="q4_6_0" type="text" name="users_benefits[6][rank]"  value="11">
-				<input id="q4_7_0" type="text" name="users_benefits[7][rank]"  value="10">
-				<input id="q4_8_0" type="text" name="users_benefits[8][rank]"  value="9">
-				<input id="q4_9_0" type="text" name="users_benefits[9][rank]"  value="8">
-				<input id="q4_10_0" type="text" name="users_benefits[10][rank]"  value="7">
-				<input id="q4_11_0" type="text" name="users_benefits[11][rank]"  value="6">
-				<input id="q4_12_0" type="text" name="users_benefits[12][rank]"  value="5">
-				<input id="q4_13_0" type="text" name="users_benefits[13][rank]"  value="4">
-				<input id="q4_14_0" type="text" name="users_benefits[14][rank]"  value="3">
-				<input id="q4_15_0" type="text" name="users_benefits[15][rank]"  value="2">
-				<input id="q4_16_0" type="text" name="users_benefits[16][rank]"  value="1">
+				<input id="q4_1_0" type="text" name="user_benefits[1][rank]"  value="16">
+				<input id="q4_2_0" type="text" name="user_benefits[2][rank]"  value="15">
+				<input id="q4_3_0" type="text" name="user_benefits[3][rank]"  value="14">
+				<input id="q4_4_0" type="text" name="user_benefits[4][rank]"  value="13">
+				<input id="q4_5_0" type="text" name="user_benefits[5][rank]"  value="12">
+				<input id="q4_6_0" type="text" name="user_benefits[6][rank]"  value="11">
+				<input id="q4_7_0" type="text" name="user_benefits[7][rank]"  value="10">
+				<input id="q4_8_0" type="text" name="user_benefits[8][rank]"  value="9">
+				<input id="q4_9_0" type="text" name="user_benefits[9][rank]"  value="8">
+				<input id="q4_10_0" type="text" name="user_benefits[10][rank]"  value="7">
+				<input id="q4_11_0" type="text" name="user_benefits[11][rank]"  value="6">
+				<input id="q4_12_0" type="text" name="user_benefits[12][rank]"  value="5">
+				<input id="q4_13_0" type="text" name="user_benefits[13][rank]"  value="4">
+				<input id="q4_14_0" type="text" name="user_benefits[14][rank]"  value="3">
+				<input id="q4_15_0" type="text" name="user_benefits[15][rank]"  value="2">
+				<input id="q4_16_0" type="text" name="user_benefits[16][rank]"  value="1">
 				<div id="q4_flag" style="display: none;"></div>
 		</div>
 		<div id="5" class="questions" name="singleChoice">
@@ -207,7 +193,7 @@
 					<li>Extremely Important</li>
 				</ul>
 			</div>
-			<input id="q5_0" type="text" name="corp_citizenship" />
+			<input id="q5_0" type="text" name="user_citizenship" />
 			<div id="q5_flag" style="display: none;"></div>
 		</div>
 		<div id="6" class="questions" name="singleChoice">
@@ -223,7 +209,8 @@
 					<li>Every<br>Week</li>
 				</ul>
 			</div>
-			<input type="hidden" name="q6" value="0" />
+			<input id="q6_0" type="text" name="user_travel" />
+			<div id="q6_flag" style="display: none;"></div>
 		</div>
 		<div id="7" class="questions" name="singleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q7','600','35');"></div>How often do you want your roles &amp; responsibilities to change?</div>
@@ -237,7 +224,8 @@
 					<li>Every<br>6 Months</li>
 				</ul>
 			</div>
-			<input type="hidden" name="q7" value="0" />
+			<input id="q7_0" type="text" name="user_responsibilities" />
+			<div id="q7_flag" style="display: none;"></div>
 		</div>
 		<div id="8" class="questions" name="rankChoice">
 			<div><div class="bulb" onclick="modal('#modal_q8','600','35');"></div>What should matter most to management in deciding on promotion?</div>
@@ -250,7 +238,13 @@
 				<li id="q8_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Leadership Readiness</li>
 				<li id="q8_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Job Performance</li>
 			</ul>
-			<input type="hidden" name="q8" value="0" />
+				<input id="q8_1_0" type="text" name="user_benefits[1][rank]"  value="6">
+				<input id="q8_2_0" type="text" name="user_benefits[2][rank]"  value="5">
+				<input id="q8_3_0" type="text" name="user_benefits[3][rank]"  value="4">
+				<input id="q8_4_0" type="text" name="user_benefits[4][rank]"  value="3">
+				<input id="q8_5_0" type="text" name="user_benefits[5][rank]"  value="2">
+				<input id="q8_6_0" type="text" name="user_benefits[6][rank]"  value="1">
+				<div id="q8_flag" style="display: none;"></div>
 		</div>
 		<div id="9" class="questions"  name="singleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q9','600','35');"></div>Which type of work environment allows you to do your best work?</div>
@@ -301,16 +295,17 @@
 					  <area shape="poly" coords="64,63,27,17,44,6,64,4" alt="10 of 10" />
 				</map>
 			</div>
-			<input type="hidden" name="q9_1" value="0" />
-			<input type="hidden" name="q9_2" value="0" />
-			<input type="hidden" name="q9_3" value="0" />
-			<input type="hidden" name="q9_4" value="0" />
-			<input type="hidden" name="q9_5" value="0" />
-			<input type="hidden" name="q9_6" value="0" />
-			<input type="hidden" name="q9_7" value="0" />
-			<input type="hidden" name="q9_8" value="0" />
-			<input type="hidden" name="q9_9" value="0" />
-			<input type="hidden" name="q9_10" value="0" />
+			<input id="q9_1_0" type="text" name="user_environment[1][choice]" />
+			<input id="q9_2_0" type="text" name="user_environment[2][choice]" />
+			<input id="q9_3_0" type="text" name="user_environment[3][choice]" />
+			<input id="q9_4_0" type="text" name="user_environment[4][choice]" />
+			<input id="q9_5_0" type="text" name="user_environment[5][choice]" />
+			<input id="q9_6_0" type="text" name="user_environment[6][choice]" />
+			<input id="q9_7_0" type="text" name="user_environment[7][choice]" />
+			<input id="q9_8_0" type="text" name="user_environment[8][choice]" />
+			<input id="q9_9_0" type="text" name="user_environment[9][choice]" />
+			<input id="q9_10_0" type="text" name="user_environment[10][choice]" />
+			<div id="q9_flag" style="display: none;"></div>
 		</div>
 		<div id="10" class="questions"  name="rankChoice">
 			<div><div class="bulb" onclick="modal('#modal_q10','600','35');"></div>Rank your most preferred type of recognition for doing exceptional work:</div>
@@ -323,37 +318,35 @@
 				<li id="q10_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Public Recognition</li>
 				<li id="q10_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Time Away from Work</li>
 			</ul>
-			<input type="hidden" name="q10" value="0" />
+			<input id="q10_1_0" type="text" name="user_recognition[1][rank]"  value="6">
+			<input id="q10_2_0" type="text" name="user_recognition[2][rank]"  value="5">
+			<input id="q10_3_0" type="text" name="user_recognition[3][rank]"  value="4">
+			<input id="q10_4_0" type="text" name="user_recognition[4][rank]"  value="3">
+			<input id="q10_5_0" type="text" name="user_recognition[5][rank]"  value="2">
+			<input id="q10_6_0" type="text" name="user_recognition[6][rank]"  value="1">
+			<div id="q10_flag" style="display: none;"></div>
 		</div>
-		<div id="11" class="questions"  name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q11','600','35');"></div>Pick one of the following views on workplace politics:</div>
-			<div id="politics" class="clear">
-				<img id="politicsOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#politicsCloud" />
-				<map name="politicsCloud" id="politicsCloud">
-					<area shape="poly" coords="32,72,40,56,61,45,83,43,92,22,110,10,139,5,164,10,181,20,190,33,214,30,238,34,256,45,261,52,288,53,310,63,321,80,317,98,301,111,281,116,263,117,254,140,226,156,199,162,171,161,148,150,126,158,95,156,72,146,61,132,58,123,39,125,20,119,8,104,7,93,17,80"  href="#" />
-					<area shape="poly" coords="440,104,467,107,487,117,500,132,521,129,544,132,561,141,571,151,593,151,616,158,630,176,628,193,608,209,589,215,573,214,567,233,546,250,513,260,482,259,457,248,435,256,400,253,378,242,367,222,347,222,325,214,315,198,322,179,343,170,348,155,367,144,393,141,400,123,418,110"  href="#" />
-					<area shape="poly" coords="646,55,658,42,682,33,701,33,716,36,732,19,754,10,780,9,802,16,818,28,824,45,847,48,867,58,875,74,894,83,901,100,894,117,872,126,849,126,844,139,826,153,795,161,773,159,758,153,738,161,707,164,683,159,657,146,647,134,643,118,624,118,599,109,588,96,586,82,595,68,615,56,630,54"  href="#" />
-					<area shape="poly" coords="243,257,268,253,292,258,307,267,315,276,341,275,358,284,370,294,374,309,366,326,349,336,329,341,318,340,310,357,292,373,268,383,232,385,201,374,176,381,148,380,128,371,115,358,110,347,91,347,68,339,58,324,62,309,72,301,86,295,94,279,111,268,133,266,144,247,164,234,187,229,212,232,231,243"  href="#" />
-					<area shape="poly" coords="693,257,704,241,722,233,743,230,762,231,782,239,796,251,801,265,817,267,834,273,845,281,849,295,865,302,873,310,877,325,870,337,857,345,841,349,825,347,820,360,807,373,786,381,759,381,735,373,711,383,681,386,645,375,625,358,619,338,596,339,572,327,563,315,561,303,572,287,594,276,612,275,623,277,634,262,653,253,671,252"  href="#" />
-				</map>
-			</div>
-			<input type="hidden" name="q11" value="0" />
-		</div>
-		<div id="12" class="questions"  name="rankChoice">
-			<div><div class="bulb" onclick="modal('#modal_q12','600','35');"></div>Rank the following type of tasks you typically enjoy working on:</div>
+		<div id="11" class="questions"  name="rankChoice">
+			<div><div class="bulb" onclick="modal('#modal_q11','600','35');"></div>Rank the following type of tasks you typically enjoy working on:</div>
 			<div id="task_bar"></div>
 			<ul id="favTask">
-				<li id="q12_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Physical</font><br>skill, strength, coordination, accuracy</li>
-				<li id="q12_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Strategic</font><br>thinking, organizing, understanding</li>
-				<li id="q12_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Creative</font><br>originality, imagination, innovation</li>
-				<li id="q12_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Competitive</font><br>leadership, influence, selling, status</li>
-				<li id="q12_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Orderly</font><br>routine, regulation, process, precision</li>
-				<li id="q12_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Community</font><br>helping, healing, developing others</li>
+				<li id="q11_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Physical</font><br>skill, strength, coordination, accuracy</li>
+				<li id="q11_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Strategic</font><br>thinking, organizing, understanding</li>
+				<li id="q11_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Creative</font><br>originality, imagination, innovation</li>
+				<li id="q11_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Competitive</font><br>leadership, influence, selling, status</li>
+				<li id="q11_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Orderly</font><br>routine, regulation, process, precision</li>
+				<li id="q11_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Community</font><br>helping, healing, developing others</li>
 			</ul>
-			<input type="hidden" name="q12" value="0" />			
+			<input id="q11_1_0" type="text" name="user_tasks[1][rank]"  value="6">
+			<input id="q11_2_0" type="text" name="user_tasks[2][rank]"  value="5">
+			<input id="q11_3_0" type="text" name="user_tasks[3][rank]"  value="4">
+			<input id="q11_4_0" type="text" name="user_tasks[4][rank]"  value="3">
+			<input id="q11_5_0" type="text" name="user_tasks[5][rank]"  value="2">
+			<input id="q11_6_0" type="text" name="user_tasks[6][rank]"  value="1">
+			<div id="q11_flag" style="display: none;"></div>		
 		</div>
-		<div id="13" class="questions"  name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q13','600','35');"></div>When communicating ...</div>
+		<div id="12" class="questions"  name="singleChoice">
+			<div><div class="bulb" onclick="modal('#modal_q12','600','35');"></div>When communicating ...</div>
 			<div id="communications" class="clear">
 				<img id="communicationOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#communicationCloud" />
 				<map name="communicationCloud" id="communicationCloud">
@@ -364,22 +357,28 @@
 					<area shape="poly" coords="693,257,704,241,722,233,743,230,762,231,782,239,796,251,801,265,817,267,834,273,845,281,849,295,865,302,873,310,877,325,870,337,857,345,841,349,825,347,820,360,807,373,786,381,759,381,735,373,711,383,681,386,645,375,625,358,619,338,596,339,572,327,563,315,561,303,572,287,594,276,612,275,623,277,634,262,653,253,671,252"  href="#" />
 				</map>
 			</div>
-			<input type="hidden" name="q13" value="0" />
+			<input id="q12_0" type="text" name="user_communication" />
+			<div id="q12_flag" style="display: none;"></div>
 		</div>
-		<div id="14" class="questions"  name="rankChoice">
-			<div><div class="bulb" onclick="modal('#modal_q14','600','35');"></div>If you don't know something about your job, what are the<br>steps you would take to find the answers?</div>
+		<div id="13" class="questions"  name="rankChoice">
+			<div><div class="bulb" onclick="modal('#modal_q13','600','35');"></div>If you don't know something about your job, what are the<br>steps you would take to find the answers?</div>
 			<div id="steps_bar"></div>
 			<ul id="resource">
-				<li id="q14_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Search the Internet</li>
-				<li id="q14_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Search Company Internal Websites</li>
-				<li id="q14_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Find a Relevant Book</li>
-				<li id="q14_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Ask Direct Supervisor / Manager</li>
-				<li id="q14_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Ask Co-Workers</li>
+				<li id="q13_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Search the Internet</li>
+				<li id="q13_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Search Company Internal Websites</li>
+				<li id="q13_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Find a Relevant Book</li>
+				<li id="q13_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Ask Direct Supervisor / Manager</li>
+				<li id="q13_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Ask Co-Workers</li>
 			</ul>
-			<input type="hidden" name="q14" value="0" />	
+			<input id="q13_1_0" type="text" name="user_resource[1][rank]"  value="5">
+			<input id="q13_2_0" type="text" name="user_resource[2][rank]"  value="4">
+			<input id="q13_3_0" type="text" name="user_resource[3][rank]"  value="3">
+			<input id="q13_4_0" type="text" name="user_resource[4][rank]"  value="2">
+			<input id="q13_5_0" type="text" name="user_resource[5][rank]"  value="1">
+			<div id="q13_flag" style="display: none;"></div>
 		</div>
-		<div id="15" class="questions"  name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q15','600','35');"></div>Which of the following is most effective role of a supervisor:</div>
+		<div id="14" class="questions"  name="singleChoice">
+			<div><div class="bulb" onclick="modal('#modal_q14','600','35');"></div>Which of the following is most effective role of a supervisor:</div>
 			<div id="supervisor" class="clear">
 				<img id="supervisorOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#supervisorCloud" />
 				<map name="supervisorCloud" id="supervisorCloud">
@@ -391,32 +390,11 @@
 					<area shape="poly" coords="664,240,678,226,699,218,716,217,735,222,749,205,770,196,796,193,818,199,835,210,844,231,864,232,882,240,890,250,893,260,909,267,919,279,919,290,909,304,889,312,869,311,861,325,840,340,812,345,790,343,777,338,754,347,722,349,697,343,676,329,666,317,662,302,646,303,626,297,614,288,605,274,609,258,623,246,643,240" href="#" />
 				</map> 
 			</div>
-			<input type="hidden" name="q15" value="0" />
+			<input id="q14_0" type="text" name="user_supervisor" />
+			<div id="q14_flag" style="display: none;"></div>
 		</div>
-		<div id="16" class="questions" name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q16','600','35');"></div>When you ignore a strong gut feel<br>that's trying to tell you something, you tend to regret it later on.</div>
-			<div id="intuition">
-				<div id="true" class="true_false">True</div>
-				<div id="false" class="true_false">False</div>
-			</div>
-			<input type="hidden" name="q16" value="0" />
-		</div>
-		<div id="17" class="questions" name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q17','600','35');"></div>When someone makes inappropriate or derogatory remarks, you typically ...</div>
-			<div id="respect" class="clear">
-				<img id="respectOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#respectCloud" />
-				<map name="respectCloud" id="respectCloud">
-					<area shape="poly" coords="32,72,40,56,61,45,83,43,92,22,110,10,139,5,164,10,181,20,190,33,214,30,238,34,256,45,261,52,288,53,310,63,321,80,317,98,301,111,281,116,263,117,254,140,226,156,199,162,171,161,148,150,126,158,95,156,72,146,61,132,58,123,39,125,20,119,8,104,7,93,17,80"  href="#" />
-					<area shape="poly" coords="440,104,467,107,487,117,500,132,521,129,544,132,561,141,571,151,593,151,616,158,630,176,628,193,608,209,589,215,573,214,567,233,546,250,513,260,482,259,457,248,435,256,400,253,378,242,367,222,347,222,325,214,315,198,322,179,343,170,348,155,367,144,393,141,400,123,418,110"  href="#" />
-					<area shape="poly" coords="646,55,658,42,682,33,701,33,716,36,732,19,754,10,780,9,802,16,818,28,824,45,847,48,867,58,875,74,894,83,901,100,894,117,872,126,849,126,844,139,826,153,795,161,773,159,758,153,738,161,707,164,683,159,657,146,647,134,643,118,624,118,599,109,588,96,586,82,595,68,615,56,630,54"  href="#" />
-					<area shape="poly" coords="243,257,268,253,292,258,307,267,315,276,341,275,358,284,370,294,374,309,366,326,349,336,329,341,318,340,310,357,292,373,268,383,232,385,201,374,176,381,148,380,128,371,115,358,110,347,91,347,68,339,58,324,62,309,72,301,86,295,94,279,111,268,133,266,144,247,164,234,187,229,212,232,231,243"  href="#" />
-					<area shape="poly" coords="693,257,704,241,722,233,743,230,762,231,782,239,796,251,801,265,817,267,834,273,845,281,849,295,865,302,873,310,877,325,870,337,857,345,841,349,825,347,820,360,807,373,786,381,759,381,735,373,711,383,681,386,645,375,625,358,619,338,596,339,572,327,563,315,561,303,572,287,594,276,612,275,623,277,634,262,653,253,671,252"  href="#" />
-				</map>
-			</div>
-			<input type="hidden" name="q17" value="0" />
-		</div>
-		<div id="18" class="questions" name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q18','600','35');"></div>How would you effectively lead a team?</div>
+		<div id="15" class="questions" name="singleChoice">
+			<div><div class="bulb" onclick="modal('#modal_q15','600','35');"></div>How would you effectively lead a team?</div>
 			<div id="leadership" class="clear">
 				<img id="leadershipOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#leadershipCloud" />
 				<map name="leadershipCloud" id="leadershipCloud">
@@ -425,36 +403,57 @@
 					<area shape="rect" coords="648,-1,972,418" href="#" />
 				</map>
 			</div>
-			<input type="hidden" name="q18" value="0" />
+			<input id="q15_0" type="text" name="user_leadership" />
+			<div id="q15_flag" style="display: none;"></div>
 		</div>
-		<div id="19" class="questions" name="clickChoice">
-			<div><div class="bulb" onclick="modal('#modal_q19','600','35');"></div>Pick the top 5 traits of people you enjoy being around:</div>
+		<div id="16" class="questions" name="clickChoice">
+			<div><div class="bulb" onclick="modal('#modal_q16','600','35');"></div>Pick the top 5 traits of people you enjoy being around:</div>
 			<div id="traits">				
-				<div>Competent</div>
-				<div>Patient</div>
-				<div>Dependable</div>
-				<div>Loyal</div>
-				<div>Respectful</div>
-				<div>Calm</div>
-				<div>Intelligent</div>
-				<div>Creative</div>
-				<div>Supportive</div>
-				<div>Ambitious</div>
-				<div>Genuine</div>
-				<div>Courageous</div>
-				<div>Collaborative</div>
-				<div>Passionate</div>
-				<div>Energetic</div>
-				<div>Assertive</div>
-				<div>Clever</div>
-				<div>Inspiring</div>
-				<div>Confident</div>
-				<div>Humorous</div>
+				<div id="q16_1">Competent</div>
+				<div id="q16_2">Patient</div>
+				<div id="q16_3">Dependable</div>
+				<div id="q16_4">Loyal</div>
+				<div id="q16_5">Respectful</div>
+				<div id="q16_6">Calm</div>
+				<div id="q16_7">Intelligent</div>
+				<div id="q16_8">Creative</div>
+				<div id="q16_9">Supportive</div>
+				<div id="q16_10">Ambitious</div>
+				<div id="q16_11">Genuine</div>
+				<div id="q16_12">Courageous</div>
+				<div id="q16_13">Collaborative</div>
+				<div id="q16_14">Passionate</div>
+				<div id="q16_15">Energetic</div>
+				<div id="q16_16">Assertive</div>
+				<div id="q16_17">Clever</div>
+				<div id="q16_18">Inspiring</div>
+				<div id="q16_19">Confident</div>
+				<div id="q16_20">Humorous</div>
 			</div>
-			<input type="hidden" name="q19" value="0" />
+			<input id="q16_1_0" type="checkbox" value="1" name="user_traits[]" >
+			<input id="q16_2_0" type="checkbox" value="2" name="user_traits[]" >
+			<input id="q16_3_0" type="checkbox" value="3" name="user_traits[]" >
+			<input id="q16_4_0" type="checkbox" value="4" name="user_traits[]" >
+			<input id="q16_5_0" type="checkbox" value="5" name="user_traits[]" >
+			<input id="q16_6_0" type="checkbox" value="6" name="user_traits[]" >
+			<input id="q16_7_0" type="checkbox" value="7" name="user_traits[]" >
+			<input id="q16_8_0" type="checkbox" value="8" name="user_traits[]" >
+			<input id="q16_9_0" type="checkbox" value="9" name="user_traits[]" >
+			<input id="q16_10_0" type="checkbox" value="10" name="user_traits[]" >
+			<input id="q16_11_0" type="checkbox" value="11" name="user_traits[]" >
+			<input id="q16_12_0" type="checkbox" value="12" name="user_traits[]" >
+			<input id="q16_13_0" type="checkbox" value="13" name="user_traits[]" >
+			<input id="q16_14_0" type="checkbox" value="14" name="user_traits[]" >
+			<input id="q16_15_0" type="checkbox" value="15" name="user_traits[]" >
+			<input id="q16_16_0" type="checkbox" value="16" name="user_traits[]" >
+			<input id="q16_17_0" type="checkbox" value="17" name="user_traits[]" >
+			<input id="q16_18_0" type="checkbox" value="18" name="user_traits[]" >
+			<input id="q16_19_0" type="checkbox" value="19" name="user_traits[]" >
+			<input id="q16_20_0" type="checkbox" value="20" name="user_traits[]" >
+			<div id="q16_flag" style="display: none;"></div>
 		</div>
-		<div id="20" class="questions"  name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q20','600','35');"></div>I want to work ________</div>
+		<div id="17" class="questions"  name="singleChoice">
+			<div><div class="bulb" onclick="modal('#modal_q17','600','35');"></div>I want to work ________</div>
 			<div id="motivation" class="clear">
 				<img id="motivationOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#motivationCloud" />
 				<map name="motivationCloud" id="motivationCloud">
@@ -465,7 +464,8 @@
 					<area shape="poly" coords="693,257,704,241,722,233,743,230,762,231,782,239,796,251,801,265,817,267,834,273,845,281,849,295,865,302,873,310,877,325,870,337,857,345,841,349,825,347,820,360,807,373,786,381,759,381,735,373,711,383,681,386,645,375,625,358,619,338,596,339,572,327,563,315,561,303,572,287,594,276,612,275,623,277,634,262,653,253,671,252"  href="#" />
 				</map>
 			</div>
-			<input type="hidden" name="q20" value="0" />
+			<input id="q17_0" type="text" name="user_motivation" />
+			<div id="q17_flag" style="display: none;"></div>
 		</div>
 		<div id="21" class="questions">
 			<div>Congrats! You finished</div>
