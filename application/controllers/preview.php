@@ -28,33 +28,87 @@ class Preview extends CI_Controller {
     public function index(){
         
         $this->load->library("form_validation");
-        $this->form_validation->set_rules('company_type[]', 'Company Type', 'required');
-        $this->form_validation->set_rules('users_benefits[][]', 'Benefits', 'required');
+        
+        //Form Validation...need to flesh this out. http://stackoverflow.com/a/5843435/1011500
+
+/*01*/  $this->form_validation->set_rules('user_type[]', 'Company Type', 'required|greater_than[0]|less_than[5]');
+/*02*/  $this->form_validation->set_rules('user_pace[]', 'Company Pace', 'required|greater_than[0]|less_than[4]');
+/*03*/  $this->form_validation->set_rules('user_lifecycle[]', 'Company Lifecycle', 'required|greater_than[0]|less_than[6]');
+/*04*/  $this->form_validation->set_rules('user_benefits[]', 'Benefits', 'required|greater_than[0]|less_than[17]');
+/*05*/  $this->form_validation->set_rules('user_citizenship', 'Corporate Citizenship', 'required|greater_than[0]|less_than[6]');
+/*06*/  $this->form_validation->set_rules('user_travel', 'Travel', 'required|greater_than[0]|less_than[6]');
+/*07*/  $this->form_validation->set_rules('user_responsibilities', 'Responsibilities', 'required|greater_than[0]|less_than[5]');
+/*08*/  $this->form_validation->set_rules('user_promotion', 'Promotion', 'required|greater_than[0]|less_than[7]');
+/*09*/  $this->form_validation->set_rules('user_environment', 'Environment', 'required|greater_than[0]|less_than[3]');
+/*10*/  $this->form_validation->set_rules('user_recognition', 'Recognition', 'required|greater_than[0]|less_than[7]');
+/*11*/  $this->form_validation->set_rules('user_tasks', 'Tasks', 'required|greater_than[0]|less_than[7]');
+/*12*/  $this->form_validation->set_rules('user_communication', 'Communication', 'required|greater_than[0]|less_than[5]');
+/*13*/  $this->form_validation->set_rules('user_resource', 'Resource', 'required|greater_than[0]|less_than[6]');
+/*14*/  $this->form_validation->set_rules('user_supervisor', 'Supervisor', 'required|greater_than[0]|less_than[7]');
+/*15*/  $this->form_validation->set_rules('user_leadership', 'Leadership', 'required|greater_than[0]|less_than[4]');
+/*16*/  $this->form_validation->set_rules('user_traits[]', 'Traits', 'required|greater_than[0]|less_than[21]');
+/*17*/  $this->form_validation->set_rules('user_motivation', 'Motivation', 'required|greater_than[0]|less_than[6]');
+//etc...
         
         if ($this->form_validation->run() == FALSE){
             //reload the form
-            $data['message'] = '';
-            $data['title']="Preview Results";
-            $data['content']="pages/_preview";
+            $this->load->library('ion_auth');
+            $data['title']="Work-Life-Play";
+            $data['content']="pages/_criteria";
             $this->load->view('canvas', $data);
             
         } else {//data is good...process it.
             
             if($this->input->post('mysubmit')){
+                
+                /*01*/$user_type = $this->input->post('user_type');
+                /*02*/$user_pace = $this->input->post('user_pace');
+                /*03*/$user_lifecycle = $this->input->post('user_lifecycle');
+                /*04*/$user_benefits = $this->input->post('user_benefits');
+                /*05*/$user_citizenship = $this->input->post('user_citizenship');
+                /*06*/$user_travel = $this->input->post('user_travel');
+                /*07*/$user_responsibilities = $this->input->post('user_responsibilities');
+                /*08*/$user_promotion = $this->input->post('user_promotion');
+                /*09*/$user_environment = $this->input->post('user_environment');
+                /*10*/$user_recognition = $this->input->post('user_recognition');
+                /*11*/$user_tasks = $this->input->post('user_tasks');
+                /*12*/$user_communication = $this->input->post('user_communication');
+                /*13*/$user_resource = $this->input->post('user_resource');
+                /*14*/$user_supervisor = $this->input->post('user_supervisor');
+                /*15*/$user_leadership = $this->input->post('user_leadership');
+                /*16*/$user_traits = $this->input->post('user_traits');
+                /*17*/$user_motivation = $this->input->post('user_motivation');
+                $categories = $this->input->post('user_next');//NOT SURE OF THIS NAME!!!                
+                $history = $this->input->post('user_history'); //NOT SURE OF THIS NAME!!!                
+                
+                //TODO: MAKE SURE WE MAKE WORK AND EDUCATION HISTORY OPTIONAL!
+                //TODO: FIX THESE NAMES ASSIGNED TO THE SESSION AND EVERYWHERE ELSE THEY MAY BE USED:
+                //
                 //let's save all the submitted data to the session so we can get it later if the user decides to sign up
-                $categories = $this->input->post('category');
-                $company_pace = $this->input->post('company_pace');
-                $corp_citizenship = $this->input->post('corp_citizenship');
-                $history = $this->input->post('history');
-                $lifecycle = $this->input->post('lifecycle');
-                $users_benefits = $this->input->post('users_benefits');
-
-                $this->session->set_userdata('category',$categories);
-                $this->session->set_userdata('company_pace',$company_pace);
-                $this->session->set_userdata('corp_citizenship',$corp_citizenship);
-                $this->session->set_userdata('history',$history);
-                $this->session->set_userdata('lifecycle',$lifecycle);
-                $this->session->set_userdata('users_benefits',$users_benefits);
+                
+                /*01*/$this->session->set_userdata('user_type',$user_type);
+                /*02*/$this->session->set_userdata('user_pace',$user_pace);
+                /*03*/$this->session->set_userdata('user_lifecycle',$user_lifecycle);
+                /*04*/$this->session->set_userdata('user_benefits',$user_benefits);
+                /*05*/$this->session->set_userdata('user_citizenship',$user_citizenship);
+                /*06*/$this->session->set_userdata('user_travel',$user_travel);
+                /*07*/$this->session->set_userdata('user_responsibilities',$user_responsibilities);
+                /*08*/$this->session->set_userdata('user_promotion',$user_promotion);
+                /*09*/$this->session->set_userdata('user_environment',$user_environment);
+                /*10*/$this->session->set_userdata('user_recognition',$user_recognition);
+                /*11*/$this->session->set_userdata('user_tasks',$user_tasks);
+                /*12*/$this->session->set_userdata('user_communication',$user_communication);
+                /*13*/$this->session->set_userdata('user_resource',$user_resource);
+                /*14*/$this->session->set_userdata('user_supervisor',$user_supervisor);
+                /*15*/$this->session->set_userdata('user_leadership',$user_leadership);
+                /*16*/$this->session->set_userdata('user_traits',$user_traits);
+                /*17*/$this->session->set_userdata('user_motivation',$user_motivation);
+                $this->session->set_userdata('category',$categories); //NEED TO REVIEW THIS!!
+                $this->session->set_userdata('history',$history); //NEED TO REVIEW THIS!!                
+                
+                //$this->session->set_userdata('company_pace',$user_pace);
+                //$this->session->set_userdata('corp_citizenship',$user_citizenship);               
+                //$this->session->set_userdata('lifecycle',$user_lifecycle);
 
                 $this->load->model('preview_model');
 
@@ -99,6 +153,12 @@ class Preview extends CI_Controller {
                     
                     //$data['result_msg'] = 'Success!';
                     //$this->load->view("survey/results",$data); 
+                    
+                    //just a quick test to make sure we can save the data correctly.  
+                    //Remove this:
+                    //$this->load->model('home_model');
+                    //$result2 = $this->home_model->save_user_inquiry();
+                    
                     $data['title']="Preview Results";
                     $data['content']="pages/_preview";
                     $this->load->view('canvas', $data);                    
