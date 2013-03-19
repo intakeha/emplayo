@@ -96,8 +96,8 @@ class Home_model extends MY_Model {
     
     function save_user_inquiry()
     {
-        //$user_id = $this->session->userdata('user_id');
-        $user_id = 2;
+        $user_id = $this->session->userdata('user_id');
+        //$user_id = 2;
 
         /*01-mu*/$user_type = $this->input->post('user_type');
         /*02-mu*/$user_pace = $this->session->userdata('user_pace');   
@@ -107,7 +107,7 @@ class Home_model extends MY_Model {
         /*06-sg*/$user_travel = $this->session->userdata('user_travel');
         /*07-sg*/$user_responsibilities = $this->session->userdata('user_responsibilities');
         /*08-rk*/$user_promotion = $this->session->userdata('user_promotion');
-        /*09-sg*/$user_environment = $this->session->userdata('user_environment');
+        /*09-mu*/$user_environment = $this->session->userdata('user_environment');
         /*10-rk*/$user_recognition = $this->session->userdata('user_recognition');
         /*11-rk*/$user_tasks = $this->session->userdata('user_tasks');
         /*12-sg*/$user_communication = $this->session->userdata('user_communication');
@@ -157,8 +157,8 @@ class Home_model extends MY_Model {
         $promotion_array = $this->build_array_rank($user_promotion, 'promotion', $user_id);
         $this->db->insert_batch('user_promotion', $promotion_array);         
         
-        //9. ENVIRONMENT (radio)
-        $environment_array = $this->build_array_radio($user_environment, 'environment', $user_id);
+        //9. ENVIRONMENT (checkbox)
+        $environment_array = $this->build_array_checkbox($user_environment, 'environment', $user_id);
         $this->db->insert('user_environment', $environment_array); 
  
         //10. RECOGNITION (rank)
@@ -184,6 +184,8 @@ class Home_model extends MY_Model {
         //15. LEADERSHIP (radio)
         $leadership_array = $this->build_array_radio($user_leadership, 'leadership', $user_id);
         $this->db->insert('user_leadership', $leadership_array); 
+        
+        //16. TRAITS (special)
         
         //17. MOTIVATION (radio)
         $motivation_array = $this->build_array_radio($user_motivation, 'motivation', $user_id);

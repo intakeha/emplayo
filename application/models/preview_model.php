@@ -228,13 +228,13 @@ class Preview_model extends CI_Model {
         }
     }
     
-    function toggle_filters($company_list)
+    function toggle_filters($company_list,$type_array,$pace_array,$lifecycle_array,$corp_citizenship)
     {            
         //build arrays of user submitted info from post data
-        $type_array = $this->input->post('company_type');
-        $pace_array = $this->input->post('company_pace');
-        $lifecycle_array = $this->input->post('lifecycle');
-        $corp_citizenship = $this->input->post('corp_citizenship');
+        //$type_array = $this->input->post('company_type');
+        //$pace_array = $this->input->post('company_pace');
+        //$lifecycle_array = $this->input->post('lifecycle');
+        //$corp_citizenship = $this->input->post('corp_citizenship');
 
         //put the values from those arrays into strings so they can be added to the query
         $imploded_type = implode(" OR ", $type_array);
@@ -266,15 +266,20 @@ class Preview_model extends CI_Model {
         }
     }    
  
-    function benefits_scoring($queried_comp_ids)
+    function benefits_scoring($queried_comp_ids,$user_benefits_array)
     {            
 
             //get the user submitted benefits ranking
-            $user_benefits_array = $this->input->post('users_benefits');              
+            //$user_benefits_array = $this->input->post('users_benefits');              
 
             //get all the companies (that meet the previous criteria) and their associated benefits
+        if (!empty($queried_comp_ids)){
             $sql2 = 'SELECT company_id,benefits_id FROM company_benefits WHERE company_id IN ('.$queried_comp_ids.')';
             $query2 = $this->db->query($sql2);
+        }
+        else {
+            return FALSE;          
+        }
             
             //build an array with a specific format to be used in the upcoming scoring process
             $company_set = array();
@@ -309,11 +314,11 @@ class Preview_model extends CI_Model {
             return $scores;
     }    
 
-    function history_scoring($queried_comp_ids)
+    function history_scoring($queried_comp_ids,$user_history_cats)
     {            
 
             //get the user submitted history categories
-            $user_history_cats = $this->input->post('history');   
+            //$user_history_cats = $this->input->post('history');   
             
             //get all the companies (that meet the previous criteria) and their associated benefits
             $sql2 = 'SELECT company_id,category_id FROM company_category WHERE company_id IN ('.$queried_comp_ids.')';
@@ -532,7 +537,7 @@ class Preview_model extends CI_Model {
     
     
     
-    function get_distance_matrix3($ranked_comps,$history_scoring)
+    function get_distance_matrix3($ranked_comps,$history_scoring,$corp_citizenship,$pace_array,$lifecycle_array,$history_array)
     {
         //$this->session->set_userdata('some_name', 'some_value');
         //1. Create array of data points
@@ -541,10 +546,10 @@ class Preview_model extends CI_Model {
         //number of the highest ranking 15t=>120.
         //user's citizenship score is in the post data.  Company info is in the database.    
         
-        $corp_citizenship = $this->input->post('corp_citizenship');
-        $pace_array = $this->input->post('company_pace');
-        $lifecycle_array = $this->input->post('lifecycle');
-        $history_array = $this->input->post('history');        
+        //$corp_citizenship = $this->input->post('corp_citizenship');
+        //$pace_array = $this->input->post('company_pace');
+        //$lifecycle_array = $this->input->post('lifecycle');
+        //$history_array = $this->input->post('history');        
         
         //build the one row user coordinates array in order to measure distance from it to the companies
         //the user's coordinates are 'perfect', so the distance from user to company is what matters.

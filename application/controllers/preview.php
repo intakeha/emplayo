@@ -31,25 +31,26 @@ class Preview extends CI_Controller {
         
         //Form Validation...need to flesh this out. http://stackoverflow.com/a/5843435/1011500
 
-/*01*/  $this->form_validation->set_rules('user_type[]', 'Company Type', 'required|greater_than[0]|less_than[5]');
-/*02*/  $this->form_validation->set_rules('user_pace[]', 'Company Pace', 'required|greater_than[0]|less_than[4]');
-/*03*/  $this->form_validation->set_rules('user_lifecycle[]', 'Company Lifecycle', 'required|greater_than[0]|less_than[6]');
-/*04*/  $this->form_validation->set_rules('user_benefits[]', 'Benefits', 'required|greater_than[0]|less_than[17]');
-/*05*/  $this->form_validation->set_rules('user_citizenship', 'Corporate Citizenship', 'required|greater_than[0]|less_than[6]');
-/*06*/  $this->form_validation->set_rules('user_travel', 'Travel', 'required|greater_than[0]|less_than[6]');
-/*07*/  $this->form_validation->set_rules('user_responsibilities', 'Responsibilities', 'required|greater_than[0]|less_than[5]');
-/*08*/  $this->form_validation->set_rules('user_promotion', 'Promotion', 'required|greater_than[0]|less_than[7]');
-/*09*/  $this->form_validation->set_rules('user_environment', 'Environment', 'required|greater_than[0]|less_than[3]');
-/*10*/  $this->form_validation->set_rules('user_recognition', 'Recognition', 'required|greater_than[0]|less_than[7]');
-/*11*/  $this->form_validation->set_rules('user_tasks', 'Tasks', 'required|greater_than[0]|less_than[7]');
-/*12*/  $this->form_validation->set_rules('user_communication', 'Communication', 'required|greater_than[0]|less_than[5]');
-/*13*/  $this->form_validation->set_rules('user_resource', 'Resource', 'required|greater_than[0]|less_than[6]');
-/*14*/  $this->form_validation->set_rules('user_supervisor', 'Supervisor', 'required|greater_than[0]|less_than[7]');
-/*15*/  $this->form_validation->set_rules('user_leadership', 'Leadership', 'required|greater_than[0]|less_than[4]');
-/*16*/  $this->form_validation->set_rules('user_traits[]', 'Traits', 'required|greater_than[0]|less_than[21]');
-/*17*/  $this->form_validation->set_rules('user_motivation', 'Motivation', 'required|greater_than[0]|less_than[6]');
+/*01*/  //$this->form_validation->set_rules('user_type[]', 'Company Type', 'required|greater_than[0]|less_than[5]');
+/*02*/  //$this->form_validation->set_rules('user_pace[]', 'Company Pace', 'required|greater_than[0]|less_than[4]');
+/*03*/  //$this->form_validation->set_rules('user_lifecycle[]', 'Company Lifecycle', 'required|greater_than[0]|less_than[6]');
+/*04*/  //$this->form_validation->set_rules('user_benefits[]', 'Benefits', 'required|greater_than[0]|less_than[17]');
+/*05*/  //$this->form_validation->set_rules('user_citizenship', 'Corporate Citizenship', 'required|greater_than[0]|less_than[6]');
+/*06*/  //$this->form_validation->set_rules('user_travel', 'Travel', 'required|greater_than[0]|less_than[6]');
+/*07*/  //$this->form_validation->set_rules('user_responsibilities', 'Responsibilities', 'required|greater_than[0]|less_than[5]');
+/*08*/  //$this->form_validation->set_rules('user_promotion', 'Promotion', 'required|greater_than[0]|less_than[7]');
+/*09*/  //$this->form_validation->set_rules('user_environment', 'Environment', 'required|greater_than[0]|less_than[3]');
+/*10*/  //$this->form_validation->set_rules('user_recognition', 'Recognition', 'required|greater_than[0]|less_than[7]');
+/*11*/  //$this->form_validation->set_rules('user_tasks', 'Tasks', 'required|greater_than[0]|less_than[7]');
+/*12*/  //$this->form_validation->set_rules('user_communication', 'Communication', 'required|greater_than[0]|less_than[5]');
+/*13*/  //$this->form_validation->set_rules('user_resource', 'Resource', 'required|greater_than[0]|less_than[6]');
+/*14*/  //$this->form_validation->set_rules('user_supervisor', 'Supervisor', 'required|greater_than[0]|less_than[7]');
+/*15*/  //$this->form_validation->set_rules('user_leadership', 'Leadership', 'required|greater_than[0]|less_than[4]');
+/*16*/  //$this->form_validation->set_rules('user_traits[]', 'Traits', 'required|greater_than[0]|less_than[21]');
+/*17*/  //$this->form_validation->set_rules('user_motivation', 'Motivation', 'required|greater_than[0]|less_than[6]');
 //etc...
-        
+ $this->form_validation->set_rules('user_type[]', 'Company Type', 'required');
+ 
         if ($this->form_validation->run() == FALSE){
             //reload the form
             $this->load->library('ion_auth');
@@ -78,8 +79,8 @@ class Preview extends CI_Controller {
                 /*15*/$user_leadership = $this->input->post('user_leadership');
                 /*16*/$user_traits = $this->input->post('user_traits');
                 /*17*/$user_motivation = $this->input->post('user_motivation');
-                $categories = $this->input->post('user_next');//NOT SURE OF THIS NAME!!!                
-                $history = $this->input->post('user_history'); //NOT SURE OF THIS NAME!!!                
+                $categories = $this->input->post('category');//NOT SURE OF THIS NAME!!!                
+                $history = $this->input->post('history'); //NOT SURE OF THIS NAME!!!                
                 
                 //TODO: MAKE SURE WE MAKE WORK AND EDUCATION HISTORY OPTIONAL!
                 //TODO: FIX THESE NAMES ASSIGNED TO THE SESSION AND EVERYWHERE ELSE THEY MAY BE USED:
@@ -109,27 +110,29 @@ class Preview extends CI_Controller {
                 //$this->session->set_userdata('company_pace',$user_pace);
                 //$this->session->set_userdata('corp_citizenship',$user_citizenship);               
                 //$this->session->set_userdata('lifecycle',$user_lifecycle);
-
+                
                 $this->load->model('preview_model');
 
                 //get initial list of companies that match basic criteria
                 $data['company_list'] = $this->preview_model->survey_filter2($categories);
                 if (!empty($data['company_list']))
                 {
+                    //TODO: Add error handling and make sure all of the returned vars are not empty...
+                    
                     //send this list of companies to the next filter to reduce based on type
-                    $data['company_list'] = $this->preview_model->toggle_filters($data['company_list']);
+                    $data['company_list'] = $this->preview_model->toggle_filters($data['company_list'],$user_type,$user_pace,$user_lifecycle,$user_citizenship);
                     
                     //TODO: Need to put a conditional statement on each of these steps....
                     
                     //using initial list of companies, rank them based on their benefits
-                    $benefit_scoring = $this->preview_model->benefits_scoring($data['company_list']);
-                    $history_scoring = $this->preview_model->history_scoring($data['company_list']);
+                    $benefit_scoring = $this->preview_model->benefits_scoring($data['company_list'],$user_benefits);
+                    $history_scoring = $this->preview_model->history_scoring($data['company_list'],$history);
                     
                     //based on these benefits scores, go grab the citizenship scores, and find
                     //nearest neighbor, in ranked order
 
                     //$data['ranked_results'] = $this->preview_model->get_distance_matrix3($benefit_scoring,$history_scoring);
-                    $data = $this->preview_model->get_distance_matrix3($benefit_scoring,$history_scoring);
+                    $data = $this->preview_model->get_distance_matrix3($benefit_scoring,$history_scoring,$user_citizenship,$user_pace,$user_lifecycle,$history);
 
                     //translate the distance info into 'fit' scores, based on 100% being perfect
                     $data['company_fit'] = $this->preview_model->fit_score($data['ranked_results']);
