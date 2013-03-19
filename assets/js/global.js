@@ -105,9 +105,9 @@ $(document).ready(function(){
 		);
 			
 		// Set variables for pagination 
-		var currentQuestion = 0;
-		var lastEmpty = 1;
-		var lastQuestion = 1;
+		var currentQuestion = 8;
+		var lastEmpty = 9;
+		var lastQuestion = 9;
 		$('div#0, #next_question').show(); //default to first question on refresh
 
 		// Assign actions when next is clicked
@@ -426,12 +426,12 @@ $(document).ready(function(){
 			var inputName = $(this).parent().attr('id');
 			if ($(this).hasClass('envAnswer1')){
 				$(this).addClass('selected');
-				$('input[id='+inputName+'_0]').val(1);
+				$('input[id='+inputName+'_0]').val((currentEnvQuestion*2)-1);
 				$(this).parent().children('div.envAnswer2').removeClass('selected');
 			};
 			if ($(this).hasClass('envAnswer2')){
 				$(this).addClass('selected');
-				$('input[id='+inputName+'_0]').val(2);
+				$('input[id='+inputName+'_0]').val(currentEnvQuestion*2);
 				$(this).parent().children('div.envAnswer1').removeClass('selected');
 			};
 
@@ -619,6 +619,74 @@ $(document).ready(function(){
 			/*lastEmpty = 17;
 			$('#next_question').hide();
 			$('#show_preview').show(); */
+		});
+		
+		// Q18 - Industry
+		 $('.industry').typeahead({
+			local: [
+				"Accounting",
+				"Agriculture",
+				"Airlines - Aviation",
+				"Alternative Dispute Resolution",
+				"Alternative Medicine",
+				"Animation",
+				"Apparel - Fashion",
+				"Architecture - Planning",
+				"Arts and Crafts",
+				"Automotive",
+				"Aviation - Aerospace",
+				"Banking",
+				"Biotechnology",
+				"Broadcast Media",
+				"Building Materials",
+				"Business Supplies and Equipment",
+				"Capital / Markets",
+				"Chemicals",
+				"Civic - Social Organization",
+				"Civil Engineering",
+				"Commercial Real Estate",
+				"Computer - Network Security",
+				"Computer Games",
+				"Computer Hardware",
+				"Computer Networking",
+				"Computer Software",
+				"Construction",
+				"Consumer Electronics",
+				"Consumer Goods",
+				"Consumer Services",
+				"Cosmetics",
+				"Dairy",
+				"Defense - Space",
+				"Design",
+				"Education Management",
+				"E-Learning",
+				"Electrical - Electronic Manufacturing",
+				"Entertainment",
+				"Environmental Services",
+				"Events Services"
+			]
+		});
+		
+		// Q19 - Work Location
+		 $('.location').typeahead({
+			local: [
+				"San Francisco, CA",
+				"Las Vegas, NV",
+				"New York, NY",
+				"Miami, FL",
+				"San Jose, CA",
+				"London, United Kingdom",
+				"Bangkok, Thailand",
+				"Sydney, Australia",
+				"Paris, France"
+			]
+		});
+		
+		// Q20 - Work History
+		$('#history img').mouseenter(function() {
+			$(this).toggleClass('addhover');
+		}).mouseleave(function(){
+			$(this).toggleClass('addhover');
 		});
 		
 	};
