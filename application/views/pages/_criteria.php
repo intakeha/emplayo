@@ -145,39 +145,40 @@
 			<div><div class="bulb" onclick="modal('#modal_q4','600','35');"></div>Rank the following company benefits &amp; perks you find important:</div>
 			<div id="benefits_bar"></div>
 			<ul id="co_benefits">
-				<li id="q4_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Training</li>
-				<li id="q4_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Matching 401(k) Plans</li>
-				<li id="q4_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Child Care Facilities</li>
-				<li id="q4_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Health Care</li>
-				<li id="q4_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Free Meals</li>
-				<li id="q4_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Profit Sharing</li>
-				<li id="q4_7"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Maternity / Paternity Leave</li>
-				<li id="q4_8"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Casual Dresscode</li>
-				<li id="q4_9"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Paid Overtime</li>
-				<li id="q4_10"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Pet Friendly</li>
-				<li id="q4_11"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Fitness Facilities / Membership</li>
-				<li id="q4_12"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Dependent Care Support</li>
-				<li id="q4_13"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Telecommunting / Alternative Work Sites</li>
-				<li id="q4_14"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Paid Sabbatical / Paid Time Off</li>
-				<li id="q4_15"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Compressed Workweek / Flexible Work Schedule</li>
-				<li id="q4_16"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Education Reimbursement</li>
+				<li id="q4_10"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Training / Education Reimbursement</li>
+				<li id="q4_11"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Matching 401(k) Plans</li>
+				<li id="q4_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Child Care</li>
+				<li id="q4_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Health Care</li>
+				<li id="q4_7"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Paid Time Off</li>
+				<li id="q4_13"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Free Meals</li>
+				<li id="q4_12"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Bonus / Profit Sharing</li>
+				<li id="q4_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Maternity / Paternity Leave</li>
+				<li id="q4_16"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Casual Dresscode</li>
+				<li id="q4_14"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Paid Overtime</li>
+				<li id="q4_15"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Pet Friendly</li>
+				<li id="q4_8"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Paid Sabbatical</li>
+				<li id="q4_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Dependent Care Support</li>
+				<li id="q4_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Fitness Facilities / Membership</li>
+				<li id="q4_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Telecommunting / Alternative Work Sites</li>
+				<li id="q4_9"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Compressed Workweek / Flexible Work Schedule</li>
+				
 			</ul>
-				<input id="q4_1_0" type="text" name="user_benefits[1][rank]"  value="16">
-				<input id="q4_2_0" type="text" name="user_benefits[2][rank]"  value="15">
-				<input id="q4_3_0" type="text" name="user_benefits[3][rank]"  value="14">
-				<input id="q4_4_0" type="text" name="user_benefits[4][rank]"  value="13">
-				<input id="q4_5_0" type="text" name="user_benefits[5][rank]"  value="12">
-				<input id="q4_6_0" type="text" name="user_benefits[6][rank]"  value="11">
-				<input id="q4_7_0" type="text" name="user_benefits[7][rank]"  value="10">
-				<input id="q4_8_0" type="text" name="user_benefits[8][rank]"  value="9">
-				<input id="q4_9_0" type="text" name="user_benefits[9][rank]"  value="8">
-				<input id="q4_10_0" type="text" name="user_benefits[10][rank]"  value="7">
-				<input id="q4_11_0" type="text" name="user_benefits[11][rank]"  value="6">
-				<input id="q4_12_0" type="text" name="user_benefits[12][rank]"  value="5">
-				<input id="q4_13_0" type="text" name="user_benefits[13][rank]"  value="4">
-				<input id="q4_14_0" type="text" name="user_benefits[14][rank]"  value="3">
-				<input id="q4_15_0" type="text" name="user_benefits[15][rank]"  value="2">
-				<input id="q4_16_0" type="text" name="user_benefits[16][rank]"  value="1">
+				<input id="q4_10_0" type="text" name="user_benefits[10][rank]"  value="16">
+				<input id="q4_11_0" type="text" name="user_benefits[11][rank]"  value="15">
+				<input id="q4_2_0" type="text" name="user_benefits[2][rank]"  value="14">
+				<input id="q4_1_0" type="text" name="user_benefits[1][rank]"  value="13">
+				<input id="q4_13_0" type="text" name="user_benefits[13][rank]"  value="12">
+				<input id="q4_12_0" type="text" name="user_benefits[12][rank]"  value="11">
+				<input id="q4_3_0" type="text" name="user_benefits[3][rank]"  value="10">
+				<input id="q4_16_0" type="text" name="user_benefits[16][rank]"  value="9">
+				<input id="q4_14_0" type="text" name="user_benefits[14][rank]"  value="8">
+				<input id="q4_15_0" type="text" name="user_benefits[15][rank]"  value="7">
+				<input id="q4_4_0" type="text" name="user_benefits[4][rank]"  value="6">
+				<input id="q4_5_0" type="text" name="user_benefits[5][rank]"  value="5">
+				<input id="q4_6_0" type="text" name="user_benefits[6][rank]"  value="4">
+				<input id="q4_8_0" type="text" name="user_benefits[8][rank]"  value="3">
+				<input id="q4_9_0" type="text" name="user_benefits[9][rank]"  value="2">
+				<input id="q4_7_0" type="text" name="user_benefits[7][rank]"  value="1">
 				<div id="q4_flag" style="display: none;"></div>
 		</div>
 		<div id="5" class="questions" name="singleChoice">
@@ -249,35 +250,35 @@
 		<div id="9" class="questions"  name="singleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q9','600','35');"></div>Which type of work environment allows you to do your best work?</div>
 			<div id="envQuestions">
-				<div id="q9_1" class="env">
-					<div class="envAnswer1">Supportive</div><div class="or">- or -</div><div class="envAnswer2">Independent</div>
+				<div class="env">
+					<div id="q9_1" class="envAnswer1">Supportive</div><div class="or">- or -</div><div id="q9_2" class="envAnswer2">Independent</div>
 				</div>
-				<div id="q9_2" class="env">
-					<div class="envAnswer1">Customer-Focused</div><div class="or">- or -</div><div class="envAnswer2">Product-Focused</div>
+				<div class="env">
+					<div id="q9_3" class="envAnswer1">Customer-Focused</div><div class="or">- or -</div><div id="q9_4" class="envAnswer2">Product-Focused</div>
 				</div>
-				<div id="q9_3" class="env">
-					<div class="envAnswer1">Quiet</div><div class="or">- or -</div><div class="envAnswer2">Lively</div>
+				<div class="env">
+					<div id="q9_5" class="envAnswer1">Quiet</div><div class="or">- or -</div><div id="q9_6" class="envAnswer2">Lively</div>
 				</div>
-				<div id="q9_4" class="env">
-					<div class="envAnswer1">Family Oriented</div><div class="or">- or -</div><div class="envAnswer2">Business Oriented</div>
+				<div class="env">
+					<div id="q9_7" class="envAnswer1">Family Oriented</div><div class="or">- or -</div><div id="q9_8" class="envAnswer2">Business Oriented</div>
 				</div>
-				<div id="q9_5" class="env">
-					<div class="envAnswer1">Calm</div><div class="or">- or -</div><div class="envAnswer2">Aggressive</div>
+				<div class="env">
+					<div id="q9_9" class="envAnswer1">Calm</div><div class="or">- or -</div><div id="q9_10" class="envAnswer2">Aggressive</div>
 				</div>
-				<div id="q9_6" class="env">
-					<div class="envAnswer1">Planned</div><div class="or">- or -</div><div class="envAnswer2">Adhoc</div>
+				<div class="env">
+					<div id="q9_11" class="envAnswer1">Planned</div><div class="or">- or -</div><div id="q9_12" class="envAnswer2">Adhoc</div>
 				</div>
-				<div id="q9_7" class="env">
-					<div class="envAnswer1">Existing Technology</div><div class="or">- or -</div><div class="envAnswer2">New Technology</div>
+				<div class="env">
+					<div id="q9_13" class="envAnswer1">Existing Technology</div><div class="or">- or -</div><div id="q9_14" class="envAnswer2">New Technology</div>
 				</div>
-				<div id="q9_8" class="env">
-					<div class="envAnswer1">Open &amp; Transparent</div><div class="or">- or -</div><div class="envAnswer2"> Hidden &amp; Undefined</div>
+				<div class="env">
+					<div id="q9_15" class="envAnswer1">Open &amp; Transparent</div><div class="or">- or -</div><div id="q9_16" class="envAnswer2"> Hidden &amp; Undefined</div>
 				</div>
-				<div id="q9_9" class="env">
-					<div class="envAnswer1">Structured</div><div class="or">- or -</div><div class="envAnswer2">Relaxed</div>
+				<div class="env">
+					<div id="q9_17" class="envAnswer1">Structured</div><div class="or">- or -</div><div id="q9_18" class="envAnswer2">Relaxed</div>
 				</div>
-				<div id="q9_10" class="env">
-					<div class="envAnswer1">High-Profile</div><div class="or">- or -</div><div class="envAnswer2">Low-Key</div>
+				<div class="env">
+					<div id="q9_19" class="envAnswer1">High-Profile</div><div class="or">- or -</div><div id="q9_20" class="envAnswer2">Low-Key</div>
 				</div>
 			</div>
 			<div id="harveyBall" class="clear"  name="singleChoice">
@@ -295,16 +296,26 @@
 					  <area shape="poly" coords="64,63,27,17,44,6,64,4" alt="10 of 10" />
 				</map>
 			</div>
-			<input id="q9_1_0" type="text" name="user_environment[1][choice]" />
-			<input id="q9_2_0" type="text" name="user_environment[2][choice]" />
-			<input id="q9_3_0" type="text" name="user_environment[3][choice]" />
-			<input id="q9_4_0" type="text" name="user_environment[4][choice]" />
-			<input id="q9_5_0" type="text" name="user_environment[5][choice]" />
-			<input id="q9_6_0" type="text" name="user_environment[6][choice]" />
-			<input id="q9_7_0" type="text" name="user_environment[7][choice]" />
-			<input id="q9_8_0" type="text" name="user_environment[8][choice]" />
-			<input id="q9_9_0" type="text" name="user_environment[9][choice]" />
-			<input id="q9_10_0" type="text" name="user_environment[10][choice]" />
+			<input id="q9_1_0" type="checkbox" value="1" name="user_environment[]" >
+			<input id="q9_2_0" type="checkbox" value="2" name="user_environment[]" >
+			<input id="q9_3_0" type="checkbox" value="3" name="user_environment[]" >
+			<input id="q9_4_0" type="checkbox" value="4" name="user_environment[]" >
+			<input id="q9_5_0" type="checkbox" value="5" name="user_environment[]" >
+			<input id="q9_6_0" type="checkbox" value="6" name="user_environment[]" >
+			<input id="q9_7_0" type="checkbox" value="7" name="user_environment[]" >
+			<input id="q9_8_0" type="checkbox" value="8" name="user_environment[]" >
+			<input id="q9_9_0" type="checkbox" value="9" name="user_environment[]" >
+			<input id="q9_10_0" type="checkbox" value="10" name="user_environment[]" >
+			<input id="q9_11_0" type="checkbox" value="11" name="user_environment[]" >
+			<input id="q9_12_0" type="checkbox" value="12" name="user_environment[]" >
+			<input id="q9_13_0" type="checkbox" value="13" name="user_environment[]" >
+			<input id="q9_14_0" type="checkbox" value="14" name="user_environment[]" >
+			<input id="q9_15_0" type="checkbox" value="15" name="user_environment[]" >
+			<input id="q9_16_0" type="checkbox" value="16" name="user_environment[]" >
+			<input id="q9_17_0" type="checkbox" value="17" name="user_environment[]" >
+			<input id="q9_18_0" type="checkbox" value="18" name="user_environment[]" >
+			<input id="q9_19_0" type="checkbox" value="19" name="user_environment[]" >
+			<input id="q9_20_0" type="checkbox" value="20" name="user_environment[]" >
 			<div id="q9_flag" style="display: none;"></div>
 		</div>
 		<div id="10" class="questions"  name="rankChoice">

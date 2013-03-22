@@ -419,19 +419,22 @@ $(document).ready(function(){
 		var currentEnvQuestion = 1;
 		var envComplete = 0;
 		var progressBackground = 0;
-		$('div#q9_1').show();	
-		$("input[id^=q9]").val(0);
+		$('div.env:eq('+(currentEnvQuestion-1)+')').show();
 		
 		$('div.envAnswer1, div.envAnswer2').click(function () {
-			var inputName = $(this).parent().attr('id');
+			var inputName = $(this).attr('id');
 			if ($(this).hasClass('envAnswer1')){
 				$(this).addClass('selected');
-				$('input[id='+inputName+'_0]').val((currentEnvQuestion*2)-1);
+				$('input[id='+inputName+'_0]').prop('checked', true);
+				removeCheckmark = $(this).parent().children('div.envAnswer2').attr('id');
+				$('input[id='+removeCheckmark+'_0]').prop('checked', false);
 				$(this).parent().children('div.envAnswer2').removeClass('selected');
 			};
 			if ($(this).hasClass('envAnswer2')){
 				$(this).addClass('selected');
-				$('input[id='+inputName+'_0]').val(currentEnvQuestion*2);
+				$('input[id='+inputName+'_0]').prop('checked', true);
+				removeCheckmark = $(this).parent().children('div.envAnswer1').attr('id');
+				$('input[id='+removeCheckmark+'_0]').prop('checked', false);
 				$(this).parent().children('div.envAnswer1').removeClass('selected');
 			};
 
@@ -447,10 +450,10 @@ $(document).ready(function(){
 			};
 			
 			//update next subquestion
-			if ((currentEnvQuestion < 10)&&(parseFloat($("input[id^=q9_"+currentEnvQuestion+"]").val())!=0)){
-				$('div#q9_'+currentEnvQuestion).delay(400).animate({opacity: 0, marginLeft:'300px'},300).hide(500);
+			if (currentEnvQuestion < 10){
+				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(400).animate({opacity: 0, marginLeft:'300px'},300).hide(500);
 				currentEnvQuestion = currentEnvQuestion + 1;
-				$('div#q9_'+currentEnvQuestion).delay(600).animate({opacity: 1, marginLeft:'149px'},300).show(500);
+				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(600).animate({opacity: 1, marginLeft:'149px'},300).show(500);
 			};
 			
 			//check for next button
@@ -460,20 +463,23 @@ $(document).ready(function(){
 					nextEnvFlag=0;
 				};
 			 });
+			 
 			if (nextEnvFlag == 1){$('#next_question').show(); $('map#environmentMap area').attr('href','#');}else{$('#next_question').hide(); lastEmpty = 9;};
 			
 		});
 		
 		// Activating image map
 		$("map#environmentMap area").click(function(){
-			if (parseFloat($("input[name^=q9_"+currentEnvQuestion+"]").val())!=0){
+			alert($('div#9 input:checked').index());
+			
+			//if(($(this).index()+1)<=){
 				envComplete = 1;
-				$('div#q9_'+currentEnvQuestion).delay(400).animate({opacity: 0, marginLeft:'300px'},300).hide(500);
-				currentEnvQuestion = $(this).index()+1;
+				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(400).animate({opacity: 0, marginLeft:'300px'},300).hide(500);
+				currentEnvQuestion = $(this).index()+1; // assign the current environment question to the associated map index
 				progressBackground = (currentEnvQuestion) * -127;
 				$('#envProgressOverlay').css("background-position", progressBackground+"px 0px");
-				$('div#q9_'+(currentEnvQuestion)).delay(600).animate({opacity: 1, marginLeft:'149px'},300).show(500);
-			};
+				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(600).animate({opacity: 1, marginLeft:'149px'},300).show(500);
+			//}
 		});
 		
 		// Q10 - Recognition
