@@ -25,7 +25,7 @@ div#container {
 	padding: 10px 10px 7px;
 	text-transform: uppercase;
 	color: #fff;
-	background:url(images/head.gif) left -5px repeat-x;
+	/*background:url(images/head.gif) left -5px repeat-x;*/
 }
 .table_heading{
     background-color: gray;
@@ -75,7 +75,7 @@ div.paging b {
 
 div.success {
 	font-size:14pt;
-	background:url(images/accept.png) left 5px no-repeat;
+	/*background:url(images/accept.png) left 5px no-repeat;*/
 	padding:0px;
 	padding-left:20px;
 	margin:0px 0px 10px;
@@ -91,19 +91,19 @@ a.update, a.delete, a.add, a.view, a.back {
 	text-decoration: none;
 }
 a.update {
-	background:url(images/update.png) left center no-repeat;
+	/*background:url(images/update.png) left center no-repeat;*/
 }
 a.delete {
-	background:url(images/delete.png) left center no-repeat;
+	/*background:url(images/delete.png) left center no-repeat;*/
 }
 a.add {
-	background:url(images/add.png) left center no-repeat;
+	/*background:url(images/add.png) left center no-repeat;*/
 }
 a.view {
-	background:url(images/view.png) left center no-repeat;
+	/*background:url(images/view.png) left center no-repeat;*/
 }
 a.back {
-	background:url(images/prev.gif) left center no-repeat;
+	/*background:url(images/prev.gif) left center no-repeat;*/
 }
 a.update:hover, a.delete:hover, a.add:hover, a.view:hover {
 	color:#000;

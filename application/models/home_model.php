@@ -99,7 +99,7 @@ class Home_model extends MY_Model {
         $user_id = $this->session->userdata('user_id');
         //$user_id = 2;
 
-        /*01-mu*/$user_type = $this->input->post('user_type');
+        /*01-mu*/$user_type = $this->session->userdata('user_type');
         /*02-mu*/$user_pace = $this->session->userdata('user_pace');   
         /*03-mu*/$user_lifecycle = $this->session->userdata('user_lifecycle');        
         /*04-rk*/$user_benefits = $this->session->userdata('user_benefits');
@@ -158,8 +158,8 @@ class Home_model extends MY_Model {
         $this->db->insert_batch('user_promotion', $promotion_array);         
         
         //9. ENVIRONMENT (checkbox)
-        $environment_array = $this->build_array_checkbox($user_environment, 'environment', $user_id);
-        $this->db->insert('user_environment', $environment_array); 
+//        $environment_array = $this->build_array_checkbox($user_environment, 'environment', $user_id);
+//        $this->db->insert('user_environment', $environment_array); 
  
         //10. RECOGNITION (rank)
         $recognition_array = $this->build_array_rank($user_recognition, 'recognition', $user_id);
@@ -185,7 +185,9 @@ class Home_model extends MY_Model {
         $leadership_array = $this->build_array_radio($user_leadership, 'leadership', $user_id);
         $this->db->insert('user_leadership', $leadership_array); 
         
-        //16. TRAITS (special)
+        //16. TRAITS (checkbox)
+        $traits_array = $this->build_array_checkbox($user_traits, 'traits', $user_id);
+        $this->db->insert_batch('user_traits', $traits_array);         
         
         //17. MOTIVATION (radio)
         $motivation_array = $this->build_array_radio($user_motivation, 'motivation', $user_id);
@@ -211,6 +213,28 @@ class Home_model extends MY_Model {
         }
         else 
         {
+            //CLEAR OUT THE SESSION VARIABLES
+            /*01-mu*/$this->session->unset_userdata('user_type');
+            /*02-mu*/$this->session->unset_userdata('user_pace');   
+            /*03-mu*/$this->session->unset_userdata('user_lifecycle');        
+            /*04-rk*/$this->session->unset_userdata('user_benefits');
+            /*05-sg*/$this->session->unset_userdata('user_citizenship');
+            /*06-sg*/$this->session->unset_userdata('user_travel');
+            /*07-sg*/$this->session->unset_userdata('user_responsibilities');
+            /*08-rk*/$this->session->unset_userdata('user_promotion');
+            /*09-mu*/$this->session->unset_userdata('user_environment');
+            /*10-rk*/$this->session->unset_userdata('user_recognition');
+            /*11-rk*/$this->session->unset_userdata('user_tasks');
+            /*12-sg*/$this->session->unset_userdata('user_communication');
+            /*13-rk*/$this->session->unset_userdata('user_resource');
+            /*14-sg*/$this->session->unset_userdata('user_supervisor');
+            /*15-sg*/$this->session->unset_userdata('user_leadership');
+            /*16-mu*/$this->session->unset_userdata('user_traits');
+            /*17-sg*/$this->session->unset_userdata('user_motivation'); 
+            
+            /*18*/$this->session->unset_userdata('category');
+            /*19-sg*/$this->session->unset_userdata('history');             
+            
             return TRUE;
         }    
         

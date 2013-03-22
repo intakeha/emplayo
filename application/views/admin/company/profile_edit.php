@@ -34,8 +34,8 @@ $(document).ready(function(){
                     $('#next_one').hide();
                     $('#upload_result').html('');
                     $('#crop_logo_pic').show("fast");
-                    $('.logo_pic').attr('src','/assets/images/company_logos/temp/'+data.result.message);
-                    $('#logo_preview img').attr('src','/assets/images/company_logos/temp/'+data.result.message);
+                    $('.logo_pic').attr('src','/assets/images/company_tiles/temp/'+data.result.message);
+                    $('#logo_preview img').attr('src','/assets/images/company_tiles/temp/'+data.result.message);
                     $('input[name=cropFile]').val(data.result.message); 
                      
                 } else {

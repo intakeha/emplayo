@@ -65,7 +65,7 @@ class User extends CI_Controller {
                                     redirect('/', 'refresh');
                                     $this->session->unset_userdata('save_data');
                                 } else {
-                                    $this->session->set_flashdata('message', 'There was an error saving your data.');
+                                    $this->session->set_flashdata('message', $this->home_model->errors);
                                     redirect('/', 'refresh');
                                 }
                             }

@@ -552,6 +552,93 @@ class Company_model extends MY_Model {
         $query = $this->db->insert('company_profile_pics', $data);       
         return $query;
     }    
+
+    function get_profile_pics($company_id)
+    {
+        $query = $this->db->get_where('company_profile_pics', array('company_id' => $company_id)); 
+        if ($query)
+        {
+            $pic_array = array();
+            foreach ($query->result_array() as $key=>$value)
+            {
+               $pic_array[$key]['pic_shape'] = $value['pic_shape'];
+               $pic_array[$key]['file_name'] = $value['file_name'];
+            }
+
+            $randomized_array = $this->distribute_pics($pic_array);
+            
+            if (!empty($randomized_array)){       
+                return $randomized_array; 
+            }
+            else
+            {
+                return $pic_array;
+            }
+        }
+        else
+        {
+            return FALSE;
+        }
+
+    }  //end of get_profile_pics       
+    
+    public function distribute_pics($pic_array)
+    {
+            $count = count($pic_array);
+            $i = 0;    
+            $prev_shape = 0;
+            $leftovers = array();
+            $new_array = array();
+            while ($i < $count)
+            {      
+                if (!empty($leftovers))
+                {
+                    $leftovers_copy = $leftovers;
+                    $leftovers = array();
+                    foreach ($leftovers_copy as $row=>$item)
+                    {
+                        if (($item['pic_shape'] != $prev_shape) OR (count($leftovers_copy)==1))
+                        {
+                            $new_array[$row]['pic_shape']= $item['pic_shape'];
+                            $new_array[$row]['file_name'] = $item['file_name'];
+                            $i++;
+                            $prev_shape = $item['pic_shape'];                           
+                        }
+                        else {
+                            $leftovers[$row]['pic_shape']= $item['pic_shape'];
+                            $leftovers[$row]['file_name'] = $item['file_name'];
+                        }
+                        if ($i >$count){
+                            break 2;                           
+                            }
+                    }
+                }
+                
+                if (empty($leftovers) && ($i<$count))
+                {
+                    foreach ($pic_array as $row=>$item)
+                    {
+                        if ($item['pic_shape'] != $prev_shape)
+                        {
+                            $new_array[$row]['pic_shape']= $item['pic_shape'];
+                            $new_array[$row]['file_name'] = $item['file_name'];
+                            $i++;
+                            $prev_shape = $item['pic_shape'];
+                        }
+                        else {
+                            $leftovers[$row]['pic_shape']= $item['pic_shape'];
+                            $leftovers[$row]['file_name'] = $item['file_name'];
+                        }
+                        if ($i > $count){
+                            break 2;                           
+                            }                        
+                    }
+                }
+            } 
+            return $new_array;
+        
+    }//end of distribute_pics
+    
     
     //function for setting errors in the model and returning them to the controller
     public function set_error($error)

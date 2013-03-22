@@ -605,7 +605,7 @@ class Company extends CI_Controller {
     function tile_upload()
     {    
         //setup the file upload config values
-        $config['upload_path'] = './assets/images/company_logos/temp/';
+        $config['upload_path'] = './assets/images/company_tiles/temp/';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']	= '1024';
         $config['remove_spaces']  = 'TRUE';
@@ -807,13 +807,13 @@ class Company extends CI_Controller {
         else
         {
         
-            $original_location = "./assets/images/company_logos/temp/".$picture_name_input;
+            $original_location = "./assets/images/company_tiles/temp/".$picture_name_input;
             $cropped_image_name = '';
             //$cropped_image_name = 't_'.$picture_name_input;
             $cropped_image_name  = substr($picture_name_input, 0, strrpos($picture_name_input, '.'))."_c".$pic_shape.".jpg";
-            $cropped_image_location = "./assets/images/company_logos/temp/".$cropped_image_name;
+            $cropped_image_location = "./assets/images/company_tiles/temp/".$cropped_image_name;
             
-            //$profile_path = "./assets/images/company_logos";
+            //$profile_path = "./assets/images/company_tiles";
             //$profile_image_location = $profile_path."/".$picture_name_input;
 
             $scale = $profile_width/$w;
@@ -860,8 +860,8 @@ class Company extends CI_Controller {
         $result = $this->company_model->insert_profile_pics($company_id,$pic_shape,$cropped_image_name);
         
         //move the files from temp to the proper path
-            $original_path = "./assets/images/company_logos/temp/";
-            $destination_path = "./assets/images/company_logos/";
+            $original_path = "./assets/images/company_tiles/temp/";
+            $destination_path = "./assets/images/company_tiles/";
             $original_pic = $original_path.$picture_name_input;
             $original_crop = $original_path.$cropped_image_name;
             $destination_pic = $destination_path.$picture_name_input;

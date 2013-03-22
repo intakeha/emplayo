@@ -24,7 +24,7 @@ class Home extends CI_Controller {
 		if ($this->ion_auth->logged_in()){
                         //get the user's match data
                         $user_id = $this->session->userdata('user_id');
-                        $data['matches'] = $this->emplayo_model->get_matches($user_id);
+                        $data['matches'] = $this->home_model->get_matches($user_id);
                         $data['image_path'] = "assets/images/company_logos/";
                         
 			$data['title']="Home";
