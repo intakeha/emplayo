@@ -100,7 +100,7 @@
 				</div>
 				
 			</div>
-		</div>              
+		</div>
 		<div id="1" class="questions" name="multipleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q1','600','35');"></div>Select the type of companies you want to work for:</div>
 			<ul id="co_type">
@@ -477,7 +477,7 @@
 			</div>
 			<input id="q17_0" type="text" name="user_motivation" />
 			<div id="q17_flag" style="display: none;"></div>
-		</div>           
+		</div>
 		<div id="18" class="questions"  name="textChoice">
 			<div><div class="bulb" onclick="modal('#modal_q18','600','35');"></div>Which industry or field do you want to work in?</div>
 			<div id="industry" class="clear">
@@ -523,7 +523,7 @@
 									<select name="user_work[0][start_year]" class=" year prefill"></select> 
 									&ndash; <span class="presentFlag" style="display: none;">Present</span>
 									<select name="user_work[0][end_month]" class=" month prefill endDateFlag"></select> <select name="user_work[0][end_year]" class=" year prefill endDateFlag"></select>
-									<span class="presentText">I currently work here</span><input type="checkbox" style="width: 13px; float: left;" />
+									<span class="presentText">I currently work here</span><input type="checkbox" style="width: 13px; float: left;" name="user_work[0][current]"/>
 								</li>
 							</ul>
 							<div class="addButton" id="addWork"> </div>

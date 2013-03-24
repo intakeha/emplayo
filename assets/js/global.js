@@ -720,7 +720,7 @@ $(document).ready(function(){
 							<select name="user_work['+experienceRef+'][start_year]" class=" yearEmpty prefill"></select> \
 							&ndash; <span class="presentFlag" style="display: none;">Present</span>\
 							<select name="user_work['+experienceRef+'][end_month]" class=" monthEmpty prefill endDateFlag"></select> <select name="user_work['+experienceRef+'][end_year]" class=" yearEmpty prefill endDateFlag"></select>\
-							<span class="presentText">I currently work here</span><input type="checkbox" style="width: 13px; float: left;" />\
+							<span class="presentText">I currently work here</span><input type="checkbox" style="width: 13px; float: left;" name="user_work['+experienceRef+'][current]"/>\
 						</li>\
 					'
 				);
