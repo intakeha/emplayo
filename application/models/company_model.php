@@ -79,8 +79,9 @@ class Company_model extends MY_Model {
             $delete_link = '<a href="/admin/company/delete/'.$row->id.'">Delete</a>';
             $edit_link = '<a href="/admin/company/update_step_1/'.$row->id.'">Edit</a>';
             $view_link = '<a href="/admin/company/view/'.$row->id.'">View</a>';
-            $profile_link = '<a href="/admin/company/profile_edit/'.$row->id.'">Profile</a>';
-            $actions_link = $view_link.'  &nbsp; '.$edit_link.'  &nbsp; '.$delete_link.'  &nbsp; '.$profile_link;
+            $profile_link = '<a href="/admin/company/profile_view/'.$row->id.'">Profile</a>';
+            $quotes_link = '<a href="/admin/company/quotes_view/'.$row->id.'">Quotes</a>';
+            $actions_link = $view_link.'  &nbsp; '.$edit_link.'  &nbsp; '.$delete_link.'  &nbsp; '.$profile_link.'  &nbsp; '.$quotes_link;
             $this->table->add_row($id_link,$row->company_name, $row->company_url, $row->update_time,$actions_link); 
         }
         
@@ -261,6 +262,9 @@ class Company_model extends MY_Model {
         $company_array = array(
             'company_name' => $post['company_name'],
             'company_url' => $post['company_url'],
+            'jobs_url' => $post['jobs_url'],
+            'facebook_url' => $post['facebook_url'],
+            'twitter_url' => $post['twitter_url'],
             'company_logo' => $post['company_logo'],
             'creative_logo' => $post['creative_logo'],
             'type_id' => $post['company_type'],
@@ -337,6 +341,9 @@ class Company_model extends MY_Model {
         $company_array = array(
             'company_name' => $post['company_name'],
             'company_url' => $post['company_url'],
+            'jobs_url' => $post['jobs_url'],
+            'facebook_url' => $post['facebook_url'],
+            'twitter_url' => $post['twitter_url'],            
             'company_logo' => $post['company_logo'],
             'creative_logo' => $post['creative_logo'],
             'type_id' => $post['company_type'],
@@ -492,6 +499,9 @@ class Company_model extends MY_Model {
            {
               $company_array['company_name'] = $row->company_name;
               $company_array['company_url'] = $row->company_url;
+              $company_array['jobs_url'] = $row->jobs_url;
+              $company_array['facebook_url'] = $row->facebook_url;
+              $company_array['twitter_url'] = $row->twitter_url;
               $company_array['company_logo'] = $row->company_logo;
               $company_array['creative_logo'] = $row->creative_logo;
               $company_array['type_id'] = $row->type_id;
@@ -551,29 +561,78 @@ class Company_model extends MY_Model {
         );
         $query = $this->db->insert('company_profile_pics', $data);       
         return $query;
-    }    
+    }   
+    
+    function delete_profile_pics($pics_to_delete,$company_id)
+    {
+        $this->db->where('company_id', $company_id);
+        $this->db->where_in('file_name', $pics_to_delete);
+        $query = $this->db->delete('company_profile_pics');
+        return $query;
+       
+    }      
 
     function get_profile_pics($company_id)
     {
+        //get the profile pics from the database
         $query = $this->db->get_where('company_profile_pics', array('company_id' => $company_id)); 
         if ($query)
         {
             $pic_array = array();
+            //build the array to be sent to the view
             foreach ($query->result_array() as $key=>$value)
             {
                $pic_array[$key]['pic_shape'] = $value['pic_shape'];
                $pic_array[$key]['file_name'] = $value['file_name'];
             }
 
-            $randomized_array = $this->distribute_pics($pic_array);
+            //shuffle the array values to get a random distribution each time
+            //this could be removed if we want the same order every time.
+            shuffle($pic_array);
             
-            if (!empty($randomized_array)){       
-                return $randomized_array; 
+            //randomizing could randomly put all the small pics next to each other...
+            //so, distribute the pictures to spread the types/shapes out
+            $distributed_array = $this->distribute_pics($pic_array);
+            
+            if (!empty($distributed_array)){       
+                return $distributed_array; 
             }
             else
             {
                 return $pic_array;
             }
+            
+        }
+        else
+        {
+            return FALSE;
+        }
+
+    }  //end of get_profile_pics       
+    
+    function view_profile_pics($company_id)//for admin panel
+    {
+        //get the profile pics from the database
+        $query = $this->db->get_where('company_profile_pics', array('company_id' => $company_id)); 
+        if ($query)
+        {
+            $pic_array = array();
+            //build the array to be sent to the view
+            foreach ($query->result_array() as $key=>$value)
+            {
+               $pic_array[$key]['pic_shape'] = $value['pic_shape'];
+               $pic_array[$key]['file_name'] = $value['file_name'];
+            }
+
+            //shuffle the array values to get a random distribution each time
+            //this could be removed if we want the same order every time.
+            //shuffle($pic_array);
+            
+            //randomizing could randomly put all the small pics next to each other...
+            //so, distribute the pictures to spread the types/shapes out
+            //$distributed_array = $this->distribute_pics($pic_array);
+            return $pic_array;
+            
         }
         else
         {
@@ -584,15 +643,22 @@ class Company_model extends MY_Model {
     
     public function distribute_pics($pic_array)
     {
+        //This funtion distributes the values in the pic_array to try and 
+        //minimize pics of the same shape/size from being right next to each
+        //other.  It is not very elegant, but it gets the job done.
+        
             $count = count($pic_array);
-            $i = 0;    
+            $i = 0; 
+            $j=0;
             $prev_shape = 0;
             $leftovers = array();
             $new_array = array();
+            
             while ($i < $count)
             {      
                 if (!empty($leftovers))
                 {
+                    $leftovers_count = count($leftovers);                   
                     $leftovers_copy = $leftovers;
                     $leftovers = array();
                     foreach ($leftovers_copy as $row=>$item)
@@ -607,10 +673,21 @@ class Company_model extends MY_Model {
                         else {
                             $leftovers[$row]['pic_shape']= $item['pic_shape'];
                             $leftovers[$row]['file_name'] = $item['file_name'];
+                            $j++;
                         }
                         if ($i >$count){
                             break 2;                           
+                        }
+                        if ($j>$leftovers_count){
+                            //add the remaining values to the new_array
+                            foreach ($leftovers as $key=>$value)
+                            {
+                                $new_array[$row]['pic_shape']= $item['pic_shape'];
+                                $new_array[$row]['file_name'] = $item['file_name'];                                
                             }
+                            break 2;
+                        }
+                            
                     }
                 }
                 
@@ -639,6 +716,75 @@ class Company_model extends MY_Model {
         
     }//end of distribute_pics
     
+    public function insert_quote($company_id,$quote,$tile_shape)
+    {
+        $data = array(
+           'company_id' => $company_id,
+           'tile_shape' => $tile_shape,
+           'quote' => $quote
+        );
+        $query = $this->db->insert('company_quotes', $data);       
+        return $query;        
+    }
+    
+    function delete_quotes($quotes_to_delete,$company_id)
+    {
+        $this->db->where('company_id', $company_id);
+        $this->db->where_in('id', $quotes_to_delete);
+        $query = $this->db->delete('company_quotes');
+        return $query;
+       
+    }     
+
+    function get_quotes($company_id)
+    {
+        //get the quotes from the database
+        $query = $this->db->get_where('company_quotes', array('company_id' => $company_id)); 
+        if ($query)
+        {
+            $quote_array = array();
+            //build the array to be sent to the view
+            foreach ($query->result_array() as $key=>$value)
+            {
+               $quote_array[$key]['tile_shape'] = $value['tile_shape'];
+               $quote_array[$key]['quote'] = $value['quote'];
+            }
+
+            //shuffle the array values to get a random distribution each time
+            //this could be removed if we want the same order every time.
+            shuffle($quote_array);
+            return $quote_array;
+        }
+        else
+        {
+            return FALSE;
+        }
+
+    }  //end of get_quotes   
+    
+    function view_quotes($company_id)
+    {
+        //get the quotes from the database
+        $query = $this->db->get_where('company_quotes', array('company_id' => $company_id)); 
+        if ($query)
+        {
+            $quote_array = array();
+            //build the array to be sent to the view
+            foreach ($query->result_array() as $key=>$value)
+            {
+               $quote_array[$key]['id'] = $value['id'];
+               $quote_array[$key]['tile_shape'] = $value['tile_shape'];
+               $quote_array[$key]['quote'] = $value['quote'];
+            }
+
+            return $quote_array;
+        }
+        else
+        {
+            return FALSE;
+        }
+
+    }  //end of get_quotes     
     
     //function for setting errors in the model and returning them to the controller
     public function set_error($error)

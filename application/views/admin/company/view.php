@@ -133,6 +133,36 @@
             echo "<a href=\"$default_url\" target=\"_blank\">$default_url</a>";
             echo form_fieldset_close();            
 
+            //JOBS URL        
+            echo form_fieldset('Jobs URL');  
+
+            if (isset($company_info['jobs_url'])){
+                $jobs_url = $company_info['jobs_url'];
+            } else {$jobs_url = '';}              
+            
+            echo "<a href='{$jobs_url}' target='_blank'>$jobs_url</a>";
+            echo form_fieldset_close();             
+
+            //FACEBOOK URL        
+            echo form_fieldset('Facebook URL');  
+       
+            if (isset($company_info['facebook_url'])){
+                $facebook_url = $company_info['facebook_url'];
+            } else {$facebook_url = '';}             
+
+            echo "<a href='{$facebook_url}' target='_blank'>$facebook_url</a>";            
+            echo form_fieldset_close();             
+
+            //TWITTER URL      
+            echo form_fieldset('Twitter URL');  
+
+            if (isset($company_info['twitter_url'])){
+                $twitter_url = $company_info['twitter_url'];
+            } else {$twitter_url = '';}              
+            
+            echo "<a href='{$twitter_url}' target='_blank'>$twitter_url</a>"; 
+            echo form_fieldset_close();              
+            
             //COMPANY TYPE        
             echo form_fieldset('Company Type');
 

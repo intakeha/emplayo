@@ -10,8 +10,10 @@ class Home extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->helper(array('form', 'url'));        
         $this->load->database();
-        
-        //$this->load->model('company_model');
+        if (!$this->ion_auth->logged_in() OR !$this->ion_auth->is_admin())
+        {
+                redirect('/login', 'refresh');
+        }   
     }
     
     //Listing - displays a list of the companies in the database

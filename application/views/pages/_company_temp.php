@@ -23,22 +23,45 @@
                         {
                             switch ($row['pic_shape']) {
                                 case 1://small
-                                    echo "<div class='smallTile'><div class='smallContent'>";
+                                    echo "<div class='smallTile pictures'><div class='smallContent'>";
                                     break;
                                 case 2://horizontal
-                                    echo "<div class='horizontalTile'><div class='horizontalContent'>";
+                                    echo "<div class='horizontalTile pictures'><div class='horizontalContent'>";
                                     break;
                                 case 3://vertical
-                                    echo "<div class='verticalTile'><div class='verticalContent'>";
+                                    echo "<div class='verticalTile pictures'><div class='verticalContent'>";
                                     break;
                                 case 4://large
-                                    echo "<div class='bigTile'><div class='bigContent'>";
+                                    echo "<div class='bigTile pictures'><div class='bigContent'>";
                                     break;                                
                             }                            
                             echo "<img src='{$image_path}{$row['file_name']}'/>";
                             echo "</div></div>";
                         }
                     }
+
+                    if (!empty($quote_array) && !empty($company_info))
+                    {
+                        foreach ($quote_array as $row)
+                        {
+                            switch ($row['tile_shape']) {
+                                case 1://small
+                                    echo "<div class='smallTile highlights'><div class='smallContent'><div class='message'>";
+                                    break;
+                                case 2://horizontal
+                                    echo "<div class='horizontalTile highlights'><div class='horizontalContent'><div class='message'>";
+                                    break;
+                                case 3://vertical
+                                    echo "<div class='verticalTile highlights'><div class='verticalContent'><div class='message'>";
+                                    break;
+                                case 4://large
+                                    echo "<div class='bigTile highlights'><div class='bigContent'><div class='message'>";
+                                    break;                                
+                            }                            
+                            echo "{$row['quote']}";
+                            echo "</div></div></div>";
+                        }
+                    }                    
                     ?>            
 
 			
@@ -54,7 +77,7 @@
 			<div class="horizontalTile pictures"><div class="horizontalContent"><img src="/assets/images/tiles/square_390x190.3.png"/></div></div>
 			<div class="smallTile highlights"><div class="smallContent"><img src="/assets/images/tiles/square_190x190.4.png"/></div></div>
 			<div class="horizontalTile pictures"><div class="horizontalContent"><img src="/assets/images/tiles/square_390x190.4.png"/></div></div>
-			<div class="verticalTile pictures"><div class="verticalContent"></div></div>
+			<div class="verticalTile pictures "><div class="verticalContent ">1234567890 </div></div>
 			<div class="smallTile highlights"><div class="smallContent"><img src="/assets/images/tiles/square_190x190.5.png"/></div></div>
 			<div class="bigTile pictures"><div class="bigContent"><img src="/assets/images/tiles/square_390x390.2.png"/></div></div>
 			<div class="verticalTile highlights"><div class="verticalContent"><img src="/assets/images/tiles/square_190x390.2.png"/></div></div>

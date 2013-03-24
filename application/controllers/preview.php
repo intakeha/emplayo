@@ -79,8 +79,14 @@ class Preview extends CI_Controller {
                 /*15*/$user_leadership = $this->input->post('user_leadership');
                 /*16*/$user_traits = $this->input->post('user_traits');
                 /*17*/$user_motivation = $this->input->post('user_motivation');
+                /*18a*/$user_education = $this->input->post('user_education');
+                /*18b*/$user_work = $this->input->post('user_work');
+                /*19*/$user_location = $this->input->post('user_location');                
                 $categories = $this->input->post('category');//NOT SURE OF THIS NAME!!!                
-                $history = $this->input->post('history'); //NOT SURE OF THIS NAME!!!                
+                $history = $this->input->post('history'); //NOT SURE OF THIS NAME!!!  
+                
+
+                
                 
                 //TODO: MAKE SURE WE MAKE WORK AND EDUCATION HISTORY OPTIONAL!
                 //TODO: FIX THESE NAMES ASSIGNED TO THE SESSION AND EVERYWHERE ELSE THEY MAY BE USED:
@@ -104,6 +110,9 @@ class Preview extends CI_Controller {
                 /*15*/$this->session->set_userdata('user_leadership',$user_leadership);
                 /*16*/$this->session->set_userdata('user_traits',$user_traits);
                 /*17*/$this->session->set_userdata('user_motivation',$user_motivation);
+                /*18a*/$this->session->set_userdata('user_education',$user_education);
+                /*18b*/$this->session->set_userdata('user_work',$user_work);
+                /*19*/$this->session->set_userdata('user_location',$user_location);                
                 $this->session->set_userdata('category',$categories); //NEED TO REVIEW THIS!!
                 $this->session->set_userdata('history',$history); //NEED TO REVIEW THIS!!                
                 

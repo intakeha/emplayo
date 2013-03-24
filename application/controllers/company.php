@@ -41,6 +41,7 @@ class Company extends CI_Controller {
                     //get_profile_pics
                     $data['pic_array'] = $this->company_model->get_profile_pics($company_id);
                     $data['company_info'] = $this->company_model->get_company_info($company_id);
+                    $data['quote_array'] = $this->company_model->get_quotes($company_id);
                     
                     $data['title']="Company";
                     $data['content']="pages/_company_temp";

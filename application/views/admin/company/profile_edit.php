@@ -261,7 +261,8 @@ $(document).ready(function(){
 <div id="container">
     <div id="logo">
         <div id="hd"><h1>Emplayo - Edit Profile Pics for <a href="/admin/company/view/<?php echo $company_id;?>"><?php echo $company_info['company_name'];?></a></h1></div>   
-        <a href = "/admin/company/listing">Back to Listing</a>
+        <div><a href = "/admin/company/listing">Back to Listing</a></div>
+        <div><a href = "/admin/company/profile_view/<?php echo $company_id;?>">Back to Profile Pic View</a></div>
         <p> Browse to select and upload a picture for the company profile page... </p>
         
         
