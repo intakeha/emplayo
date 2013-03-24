@@ -43,6 +43,9 @@ class Company extends CI_Controller {
                     $data['company_info'] = $this->company_model->get_company_info($company_id);
                     $data['quote_array'] = $this->company_model->get_quotes($company_id);
                     
+                    $data['merged_array'] = $this->company_model->array_interlace($data['pic_array'], $data['quote_array']);
+                    //shuffle($data['merged_array']);
+                    
                     $data['title']="Company";
                     $data['content']="pages/_company_temp";
                     $this->load->helper('url');

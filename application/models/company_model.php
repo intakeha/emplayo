@@ -588,7 +588,7 @@ class Company_model extends MY_Model {
 
             //shuffle the array values to get a random distribution each time
             //this could be removed if we want the same order every time.
-            shuffle($pic_array);
+            //shuffle($pic_array);
             
             //randomizing could randomly put all the small pics next to each other...
             //so, distribute the pictures to spread the types/shapes out
@@ -752,7 +752,7 @@ class Company_model extends MY_Model {
 
             //shuffle the array values to get a random distribution each time
             //this could be removed if we want the same order every time.
-            shuffle($quote_array);
+            //shuffle($quote_array);
             return $quote_array;
         }
         else
@@ -785,6 +785,29 @@ class Company_model extends MY_Model {
         }
 
     }  //end of get_quotes     
+
+function array_interlace ($a, $b)
+{
+    $c = array();
+    
+    $shorty = (count($a) > count($b)) ? $b : $a;
+    $biggy = (count($a) > count($b)) ? $a : $b;
+    
+    $slen = count($shorty);
+    $blen = count($biggy);
+
+    for ($i = 0; $i < $slen; ++$i){
+        $c[$i * 2] = $a[$i];
+        $c[$i * 2 + 1] = $b[$i];
+    }
+    
+    for ($i = $slen; $i < $blen; ++$i)
+    {
+        $c[] = $biggy[$i];
+    }
+    
+    return $c;
+}    
     
     //function for setting errors in the model and returning them to the controller
     public function set_error($error)
