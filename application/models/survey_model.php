@@ -865,5 +865,28 @@ class Survey_model extends CI_Model {
         return $company_info;       
     }
     
+    function save_user_inquiry()
+    {
+ 
+    }
+    
+    function insert_matches($company_fit)
+    {
+        //build new array for db insertion
+        //
+        //$user_id = $this->session->userdata('user_id');
+        $user_id = 3;//hard code for now
+        
+        $new_array = array();
+        foreach ($company_fit as $key=>$value) {          
+            $new_array[$key]['user_id'] = $user_id;
+            $new_array[$key]['company_id'] = $value['id'];
+            $new_array[$key]['score'] = ($value['ag_score']*100);
+        }   
+        
+        $query = $this->db->insert_batch('user_matches', $new_array); 
+        return $query;        
+    }    
+    
 }
 

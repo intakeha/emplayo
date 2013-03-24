@@ -13,6 +13,11 @@ class Company extends CI_Controller {
         $this->load->helper('image_functions_helper');
         
         $this->load->model('company_model');
+        
+        if (!$this->ion_auth->logged_in() OR !$this->ion_auth->is_admin())
+        {
+                redirect('/login', 'refresh');
+        }        
     }
     
     //Listing - displays a list of the companies in the database
@@ -66,6 +71,9 @@ class Company extends CI_Controller {
         //validate the form (except for the file upload)
         $this->form_validation->set_rules('company_name', 'Company Name', 'required');
         $this->form_validation->set_rules('company_url', 'Company URL', 'required|prep_url');
+        $this->form_validation->set_rules('jobs_url', 'Jobs URL', 'required|prep_url');
+        $this->form_validation->set_rules('facebook_url', 'Facebook URL', 'prep_url');
+        $this->form_validation->set_rules('twitter_url', 'Twitter URL', 'prep_url');
         $this->form_validation->set_rules('company_type', 'Company Type', 'required');
         $this->form_validation->set_rules('company_pace', 'Company Pace', 'required');
         $this->form_validation->set_rules('company_lifecycle', 'Company Lifecycle', 'required');
@@ -79,6 +87,9 @@ class Company extends CI_Controller {
             $step_1_post = array();
             $step_1_post['company_name'] = $this->input->post('company_name');
             $step_1_post['company_url'] = $this->input->post('company_url');
+            $step_1_post['jobs_url'] = $this->input->post('jobs_url');
+            $step_1_post['facebook_url'] = $this->input->post('facebook_url');
+            $step_1_post['twitter_url'] = $this->input->post('twitter_url');
             $step_1_post['company_type'] = $this->input->post('company_type');
             $step_1_post['company_pace'] = $this->input->post('company_pace');
             $step_1_post['company_lifecycle'] = $this->input->post('company_lifecycle');
@@ -116,6 +127,9 @@ class Company extends CI_Controller {
         $post_data = array();
         $post_data['company_name'] = $this->session->userdata('company_name');
         $post_data['company_url'] = $this->session->userdata('company_url');
+        $post_data['jobs_url'] = $this->session->userdata('jobs_url');
+        $post_data['facebook_url'] = $this->session->userdata('facebook_url');
+        $post_data['twitter_url'] = $this->session->userdata('twitter_url');
         $post_data['company_type'] = $this->session->userdata('company_type');
         $post_data['company_pace'] = $this->session->userdata('company_pace');
         $post_data['company_lifecycle'] = $this->session->userdata('company_lifecycle');
@@ -247,6 +261,9 @@ class Company extends CI_Controller {
         //validate the form (except for the file upload)
         $this->form_validation->set_rules('company_name', 'Company Name', 'required');
         $this->form_validation->set_rules('company_url', 'Company URL', 'required|prep_url');
+        $this->form_validation->set_rules('jobs_url', 'Jobs URL', 'required|prep_url');
+        $this->form_validation->set_rules('facebook_url', 'Facebook URL', 'prep_url');
+        $this->form_validation->set_rules('twitter_url', 'Twitter URL', 'prep_url');        
         $this->form_validation->set_rules('company_type', 'Company Type', 'required');
         $this->form_validation->set_rules('company_pace', 'Company Pace', 'required');
         $this->form_validation->set_rules('company_lifecycle', 'Company Lifecycle', 'required');
@@ -360,6 +377,9 @@ class Company extends CI_Controller {
         //validate the form (except for the file upload)
         $this->form_validation->set_rules('company_name', 'Company Name', 'required');
         $this->form_validation->set_rules('company_url', 'Company URL', 'required|prep_url');
+        $this->form_validation->set_rules('jobs_url', 'Jobs URL', 'required|prep_url');
+        $this->form_validation->set_rules('facebook_url', 'Facebook URL', 'prep_url');
+        $this->form_validation->set_rules('twitter_url', 'Twitter URL', 'prep_url');        
         $this->form_validation->set_rules('company_type', 'Company Type', 'required');
         $this->form_validation->set_rules('company_pace', 'Company Pace', 'required');
         $this->form_validation->set_rules('company_lifecycle', 'Company Lifecycle', 'required');
@@ -373,6 +393,9 @@ class Company extends CI_Controller {
             $step_1_post = array();
             $step_1_post['company_name'] = $this->input->post('company_name');
             $step_1_post['company_url'] = $this->input->post('company_url');
+            $step_1_post['jobs_url'] = $this->input->post('jobs_url');
+            $step_1_post['facebook_url'] = $this->input->post('facebook_url');
+            $step_1_post['twitter_url'] = $this->input->post('twitter_url');            
             $step_1_post['company_type'] = $this->input->post('company_type');
             $step_1_post['company_pace'] = $this->input->post('company_pace');
             $step_1_post['company_lifecycle'] = $this->input->post('company_lifecycle');
@@ -417,6 +440,9 @@ class Company extends CI_Controller {
         $post_data = array();
         $post_data['company_name'] = $this->session->userdata('company_name');
         $post_data['company_url'] = $this->session->userdata('company_url');
+        $post_data['jobs_url'] = $this->session->userdata('jobs_url');
+        $post_data['facebook_url'] = $this->session->userdata('facebook_url');
+        $post_data['twitter_url'] = $this->session->userdata('twitter_url');        
         $post_data['company_type'] = $this->session->userdata('company_type');
         $post_data['company_pace'] = $this->session->userdata('company_pace');
         $post_data['company_lifecycle'] = $this->session->userdata('company_lifecycle');
@@ -570,6 +596,8 @@ class Company extends CI_Controller {
             if ($max_dimension_num > $max_dimension){
                     $scale = $max_dimension/$max_dimension_num;
                     $uploaded = resizeImage($temp_image_location,$width,$height,$scale);
+                    //squarify was causing problems with 250x250 images...need to review the math here and 
+                    // probably put a conditional in front of this...
                     $square_image = squarify($uploaded,$max_dimension);
             }else{
                     $scale = 1;
@@ -603,7 +631,7 @@ class Company extends CI_Controller {
     function tile_upload()
     {    
         //setup the file upload config values
-        $config['upload_path'] = './assets/images/company_logos/temp/';
+        $config['upload_path'] = './assets/images/company_tiles/temp/';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']	= '1024';
         $config['remove_spaces']  = 'TRUE';
@@ -805,13 +833,13 @@ class Company extends CI_Controller {
         else
         {
         
-            $original_location = "./assets/images/company_logos/temp/".$picture_name_input;
+            $original_location = "./assets/images/company_tiles/temp/".$picture_name_input;
             $cropped_image_name = '';
             //$cropped_image_name = 't_'.$picture_name_input;
             $cropped_image_name  = substr($picture_name_input, 0, strrpos($picture_name_input, '.'))."_c".$pic_shape.".jpg";
-            $cropped_image_location = "./assets/images/company_logos/temp/".$cropped_image_name;
+            $cropped_image_location = "./assets/images/company_tiles/temp/".$cropped_image_name;
             
-            //$profile_path = "./assets/images/company_logos";
+            //$profile_path = "./assets/images/company_tiles";
             //$profile_image_location = $profile_path."/".$picture_name_input;
 
             $scale = $profile_width/$w;
@@ -858,8 +886,8 @@ class Company extends CI_Controller {
         $result = $this->company_model->insert_profile_pics($company_id,$pic_shape,$cropped_image_name);
         
         //move the files from temp to the proper path
-            $original_path = "./assets/images/company_logos/temp/";
-            $destination_path = "./assets/images/company_logos/";
+            $original_path = "./assets/images/company_tiles/temp/";
+            $destination_path = "./assets/images/company_tiles/";
             $original_pic = $original_path.$picture_name_input;
             $original_crop = $original_path.$cropped_image_name;
             $destination_pic = $destination_path.$picture_name_input;
@@ -912,264 +940,146 @@ class Company extends CI_Controller {
         
         $this->load->view("admin/company/profile_edit",$data);     
 
-    }   
-
-/**********************************************************/
-/******* OLD FUNCTIONS - TO BE DELETED *******************/
-/**********************************************************/
-
-    //The Crop_Logo function is called via AJAX
-    public function XXXcrop_logo()
+    }  
+    
+    function profile_view($id)
     {
-        $this->load->helper('image_functions_helper');
-        
-        $profile_width = "250";		// Width of profile picture
-        $profile_height = "250";	// Height of profile picture
+        $this->form_validation->set_rules('pics_to_delete', 'A selected picture to delete', 'required');            
 
-        $x1 = $this->validateCoordinates($this->input->post('x1'));
-        $y1 = $this->validateCoordinates($this->input->post('y1'));
-        $x2 = $this->validateCoordinates($this->input->post('x2'));
-        $y2 = $this->validateCoordinates($this->input->post('y2'));
-        $w = $this->validateCoordinates($this->input->post('w'));
-        $h = $this->validateCoordinates($this->input->post('h'));   
-        $picture_name_input= $this->input->post('cropFile');
-        $pic_db_field= $this->input->post('pic_db_field');
-        
-        //if coordinates are null, send error message to JS
-        if ($x1 === NULL || $y1 === NULL || $x2 === NULL || $y2 === NULL || $w === NULL || $h === NULL || $picture_name_input === NULL )
-        {          
-            $message = "Please click on the image & crop to create your profile picture."; 
-            echo $message;
-        }
-        
-        $original_location = "./assets/images/company_logos/temp/".$picture_name_input;
-        $profile_path = "./assets/images/company_logos";
-        $profile_image_location = $profile_path."/".$picture_name_input;
+        if ($this->form_validation->run() == true)
+        {   
+            $pics_to_delete = $this->input->post('pics_to_delete');
+            if ($this->company_model->delete_profile_pics($pics_to_delete,$id))
+            {
+                //update the message
+                $message =  "Profile Pictures successfully deleted.";
+                $this->session->set_flashdata('message', $message);
 
-        $scale = $profile_width/$w;
-        $cropped = resizeThumbnailImage($profile_image_location, $original_location,$w,$h,$x1,$y1,$scale);
-        
-        //delete the temp file
-        unlink($original_location);
-        
-        //if there are errors, send json back to the browser.  otherwise, move on...
-        
-        //if no errors, save the data to the DB...including the company data in the session.
-        //build array to pass to the model:
-        $post_data = array();
-        $post_data['company_name'] = $this->session->userdata('company_name');
-        $post_data['company_url'] = $this->session->userdata('company_url');
-        $post_data['company_type'] = $this->session->userdata('company_type');
-        $post_data['company_pace'] = $this->session->userdata('company_pace');
-        $post_data['company_lifecycle'] = $this->session->userdata('company_lifecycle');
-        $post_data['corp_citizenship'] = $this->session->userdata('corp_citizenship');
-        $post_data['benefits'] = $this->session->userdata('benefits');
-        $post_data['category'] = $this->session->userdata('category');
+                //load the view                
+                redirect('admin/company/profile_view/'.$id, 'refresh');
+            }
+            else
+            {
+                 //update the message
+                $message =  "There was an error with your request";
+                $this->session->set_flashdata('message', $message);
 
-        if ($this->company_model->create_company($post_data,$picture_name_input))
-        {
-            //success
-            $messageToSend = array('success' => '1', 'message'=>'Record successfully inserted.');
-            $output = json_encode($messageToSend);
-            echo $output;              
-        } 
+                //load the view                
+                redirect('admin/company/quotes_view/'.$id, 'refresh');
+            }
+        }   
         else
         {
-            //There was an error with the DB insert
-            $messageToSend = array('success' => '0', 'message'=>'There was an error inserting into the database.');
-            $output = json_encode($messageToSend);
-            echo $output;  
-        }              
-    }
+            $company_info = $this->company_model->get_company_info($id);
+            $profile_pics = $this->company_model->view_profile_pics($id);
+            $data['company_logo'] =  $company_info['company_logo'];
+            $data['creative_logo'] =  $company_info['creative_logo'];
+            $data['company_id'] = $id;
+            $data['company_info'] = $company_info;
+            $data['profile_pics'] = $profile_pics;
 
-function XXXcreate_step_3()
-{
+            $this->load->view("admin/company/profile_view",$data); 
+        }
+    }      
 
-            $this->load->view("admin/company/create_step_3");     
-    
-} 
-    //Create a new company record
-    public function XXXcreateORIG()
+    function quotes_view($id)
     {
-        //Grab the data to be used to populate the form by default
-        $data['category_array'] = $this->company_model->get_categories();
-        $data['type_array'] = $this->company_model->get_ref('type');
-        $data['pace_array'] = $this->company_model->get_ref('pace');
-        $data['lifecycle_array'] = $this->company_model->get_ref('lifecycle');
-        $data['corp_citizenship_array'] = $this->company_model->get_ref('corp_citizenship');
-        $data['benefits_array'] = $this->company_model->get_ref('benefits');
-        
-        //validate the form (except for the file upload)
-        $this->form_validation->set_rules('company_name', 'Company Name', 'required');
-        $this->form_validation->set_rules('company_url', 'Company URL', 'required|prep_url');
-        $this->form_validation->set_rules('company_type', 'Company Type', 'required');
-        $this->form_validation->set_rules('company_pace', 'Company Pace', 'required');
-        $this->form_validation->set_rules('company_lifecycle', 'Company Lifecycle', 'required');
-        $this->form_validation->set_rules('corp_citizenship', 'Corporate Citizenship', 'required');
-        $this->form_validation->set_rules('benefits', 'Benefits', 'required');
-        $this->form_validation->set_rules('category[]', 'Category', 'required');            
+        $this->form_validation->set_rules('quotes_to_delete', 'A selected quote to delete', 'required');            
+
+        if ($this->form_validation->run() == true)
+        {   
+            $quotes_to_delete = $this->input->post('quotes_to_delete');
+            if ($this->company_model->delete_quotes($quotes_to_delete,$id))
+            {
+                //update the message
+                $message =  "Quotes successfully deleted.";
+                $this->session->set_flashdata('message', $message);
+
+                //load the view                
+                redirect('admin/company/quotes_view/'.$id, 'refresh');
+            }
+            else
+            {
+                 //update the message
+                $message =  "There was an error with your request";
+                $this->session->set_flashdata('message', $message);
+
+                //load the view                
+                redirect('admin/company/quotes_view/'.$id, 'refresh');
+            }
+        }   
+        else
+        {
+            $company_info = $this->company_model->get_company_info($id);
+            $data['quotes'] = $this->company_model->view_quotes($id);
+            $data['company_logo'] =  $company_info['company_logo'];
+            $data['company_id'] = $id;
+            $data['company_info'] = $company_info;
+
+            $this->load->view("admin/company/quotes_view",$data);             
+        }
+    }       
+    
+    function enter_quotes($id)
+    {
+        $this->form_validation->set_rules('quote', 'Quote', 'required|max_length[200]');            
 
         if ($this->form_validation->run() == true)
         {   
             //validation is good.  setup the data to pass to the model
-            $post = $this->input->post();
-            
-            //setup the file upload config values
-            $config['upload_path'] = './assets/images/company_logos/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size']	= '100';
-            $config['max_width']  = '1024';
-            $config['max_height']  = '768';
-            $config['remove_spaces']  = 'TRUE';
-            //$config['max_filename']  = 20;
-            $config['file_name']  = strtolower($post['company_name'].'_'.substr(md5($post['company_name']),10));
 
-            //load the upload library
-            $this->load->library('upload', $config);            
-            
-            //attempt to upload the file
-            if ($this->upload->do_upload())
+            $quote = $this->input->post('quote');
+            $quote_length = strlen($quote);
+            $tile_shape = NULL;
+
+            $small = 50;
+            $medium = 100;
+            $large = 150;
+            $xlarge = 200;
+
+            if (($quote_length > 0) && ($quote_length <= $small))
             {
-                $upload_data = array('upload_data' => $this->upload->data());
-                
-                //if everything looks good, insert the data into the db
-                if ($this->company_model->create_company($post,$upload_data))
-                {
-                    //success
-                    $message =  "Record successfully inserted.";
-                    $this->session->set_flashdata('message', $message);
-                    
-                    //load the view                
-                   redirect('admin/company/create', 'refresh');  
-                } 
-                else
-                {
-                    //there were errors
-                    $data['errors'] = $this->company_model->errors;
-
-                    //load the view
-                    $this->load->view("admin/company/create",$data); 
-                }                
+                $tile_shape = 1; 
             }
-            else //there was an error with the file upload
+            elseif (($quote_length > $small) && ($quote_length <= $medium))
             {
-                $upload_error = array('error' => $this->upload->display_errors());
-                $data['message'] = $this->session->flashdata('message');
-                $data['upload_error'] = $upload_error;
-
-                //load the view
-                $this->load->view("admin/company/create",$data);                
-                
+                $tile_shape = 2;
             }
-        }  
-        else //form validation errors.  re-load the form
+            elseif (($quote_length > $medium) && ($quote_length <= $large))
+            {
+                $tile_shape = 3;
+            }                
+            elseif (($quote_length > $large) && ($quote_length <= $xlarge))
+            {
+                $tile_shape = 4;
+            }
+            else
+            {
+                $tile_shape = 4;
+            }
+
+            if ($this->company_model->insert_quote($id,$quote,$tile_shape))
+            {
+                //update the message
+                $message =  "Quote successfully inserted.";
+                $this->session->set_flashdata('message', $message);
+
+                //load the view                
+                redirect('admin/company/enter_quotes/'.$id, 'refresh');        
+            }
+
+        }
+        else
         {
-            $data['message'] = $this->session->flashdata('message');
+            $company_info = $this->company_model->get_company_info($id);
+            $data['company_id'] = $id;
+            $data['company_info'] = $company_info;
 
-            //load the view
-            $this->load->view("admin/company/create",$data);          
-        }        
+            $this->load->view("admin/company/enter_quotes",$data); 
+        }
+
     }
-    
-    public function XXXcrop_submit()
-    {    
-        $this->load->view("admin/company/crop_view");
-    }
-    
-    
-    public function XXXupload_company_pic()
-    {
-        
-        //echo "Beginning";
-        if ($this->input->post()){
-        print_r($this->input->post());
-        }       
-            //setup the file upload config values
-            $config['upload_path'] = './assets/images/company_logos/temp/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size']	= '100';
-            $config['max_width']  = '1024';
-            $config['max_height']  = '768';
-            $config['remove_spaces']  = 'TRUE';
-            //$config['max_filename']  = 20;
-            //$config['file_name']  = strtolower($post['company_name'].'_'.substr(md5($post['company_name']),10));        
-        
-            //load the upload library
-            $this->load->library('upload', $config);            
-            
-            //attempt to upload the file
-            if ($this->upload->do_upload())
-            {
-                //echo "Hello!";
-                $upload_data = array('upload_data' => $this->upload->data());
-                
-                //print_r($upload_data);
-                
-                $pic_name = $upload_data['upload_data']['file_name'];
-                
-	$messageToSend = array('success' => '1', 'message'=>$pic_name);
-	$output = json_encode($messageToSend);
-	die($output); 
-     
-            }
-            else //there was an error with the file upload
-            {
-                //echo "inside else";
-                $upload_error = array('error' => $this->upload->display_errors());
-                $data['message'] = $this->session->flashdata('message');
-                $data['upload_error'] = $upload_error;
-               
-                
-            }        
-                    //load the view
-            $this->load->view("admin/company/client_upload"); 
-        
-    }
-    
-function XXXblueimp()
-{
 
-            $this->load->view("admin/company/blueimp");     
     
-}    
-    
-function XXXblueimp_upload()
-{
-        
-            //setup the file upload config values
-            $config['upload_path'] = './assets/images/company_logos/temp/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size']	= '100';
-            $config['max_width']  = '1024';
-            $config['max_height']  = '768';
-            $config['remove_spaces']  = 'TRUE';
-            //$config['file_name']  = strtolower($name.'_'.substr(md5($name),10));
-            $config['encrypt_name']  = 'TRUE';
-            $config['max_filename']  = 15;
-        
-            //load the upload library
-            $this->load->library('upload', $config);            
-            
-            //attempt to upload the file
-            if ($this->upload->do_upload())
-            {
-                $upload_data = array('upload_data' => $this->upload->data());
-                $pic_name = $upload_data['upload_data']['file_name'];
-                
-                $messageToSend = array('success' => '1', 'message'=>$pic_name);
-
-                $output = json_encode($messageToSend);
-                echo $output; 
-     
-            }
-            else //there was an error with the file upload
-            {
-                $messageToSend = array('success' => '0', 'message'=>'There was an error!');
-
-                $output = json_encode($messageToSend);
-                echo $output;  
-            }            
-    
-}     
 
 }//end of class

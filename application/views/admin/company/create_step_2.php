@@ -27,6 +27,7 @@
 	width: 600px;
 	float: left;
 	margin-right: 30px;
+        border: 1px solid #ccc;
 }
 
 #creative_preview_area {
@@ -49,6 +50,7 @@
 	width: 600px;
 	float: left;
 	margin-right: 30px;
+        border: 1px solid #ccc;
 }
 </style>
 <script src="<?php echo base_url();?>assets/js/jquery.min.js"></script>

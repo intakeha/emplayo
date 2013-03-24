@@ -5,19 +5,17 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/global.css" type="text/css"/>  
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/view.css" type="text/css"/>
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/typeahead.css" type="text/css"/>
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/jquery-ui.css" />
 	
-	<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>-->
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>	
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.isotope.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/typeahead.min.js"></script>
+	<script src="http://twitter.github.com/hogan.js/builds/2.0.0/hogan-2.0.0.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.raty.min.js"></script>
         
-	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script> 
 </head>
 <body>
 	<div id="header">
@@ -30,6 +28,12 @@
 			<div id="modal_settings">
 				<ul>
 					<li><a href="/">Home</a></li>
+                                        <?php
+                                        if ($this->ion_auth->logged_in() && $this->ion_auth->is_admin())
+                                            {
+                                                echo '<li><a href="/admin">Admin</a></li>';
+                                            }                                        
+                                        ?>
 					<li><a href="/">Update Profile</a></li>
 					<li><a href="/">Account Settings</a></li>
 					<li><a href="/">Send Invitation</a></li>

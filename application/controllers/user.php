@@ -52,9 +52,26 @@ class User extends CI_Controller {
 
                         if ($this->ion_auth->login($email, $password, $remember))
                         {
-                                //if the login is successful, redirect user to the user home page
-                                $this->session->set_flashdata('message', $this->ion_auth->messages());
-                                redirect('/', 'refresh');
+                            //the login was successful, now save any inquiry/preference data
+                            if ($this->session->userdata('save_data') == TRUE)
+                            {
+                                $this->load->model('home_model');
+                                $result = $this->home_model->insert_matches();
+                                $result2 = $this->home_model->save_user_inquiry();
+
+                                if ($result && $result2){                     
+                                    //if the db write is successful, redirect user to the user home page
+                                    $this->session->set_flashdata('message', $this->ion_auth->messages());
+                                    redirect('/', 'refresh');
+                                    $this->session->unset_userdata('save_data');
+                                } else {
+                                    $this->session->set_flashdata('message', $this->home_model->errors);
+                                    redirect('/', 'refresh');
+                                }
+                            }
+                            $this->session->set_flashdata('message', $this->ion_auth->messages());
+                            redirect('/', 'refresh');                            
+                            
                         } 
                         // ***END OF AUTO LOGIN***
 		}

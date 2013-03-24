@@ -196,7 +196,77 @@ $(document).ready(function()
             );
 
             echo form_input($url_data);
-            echo form_fieldset_close();            
+            echo form_fieldset_close();  
+            
+            //JOBS URL        
+            echo form_fieldset('Jobs URL');  
+       
+            echo "<div class='errors'>";
+            echo form_error('jobs_url');
+            echo "</div>";
+
+            if (isset($company_info['jobs_url'])){
+                $jobs_url = $company_info['jobs_url'];
+            } else {$jobs_url = '';}              
+            
+            $jobs_data = array(
+              'name'        => 'jobs_url',
+              'id'          => 'jobs_url',
+              'value'       => set_value('jobs_url',$jobs_url),
+              'maxlength'   => '100',
+              'size'        => '20',
+              'style'       => 'width: 250px',
+            );
+
+            echo form_input($jobs_data);
+            echo form_fieldset_close();             
+
+            //FACEBOOK URL        
+            echo form_fieldset('Facebook URL');  
+       
+            echo "<div class='errors'>";
+            echo form_error('facebook_url');
+            echo "</div>";
+ 
+            if (isset($company_info['facebook_url'])){
+                $facebook_url = $company_info['facebook_url'];
+            } else {$facebook_url = '';}             
+            
+            $facebook_data = array(
+              'name'        => 'facebook_url',
+              'id'          => 'facebook_url',
+              'value'       => set_value('facebook_url',$facebook_url),
+              'maxlength'   => '100',
+              'size'        => '20',
+              'style'       => 'width: 250px',
+            );
+
+            echo form_input($facebook_data);
+            echo form_fieldset_close();             
+
+            //TWITTER URL      
+            echo form_fieldset('Twitter URL');  
+       
+            echo "<div class='errors'>";
+            echo form_error('twitter_url');
+            echo "</div>";
+  
+            if (isset($company_info['twitter_url'])){
+                $twitter_url = $company_info['twitter_url'];
+            } else {$twitter_url = '';}              
+            
+            $twitter_data = array(
+              'name'        => 'twitter_url',
+              'id'          => 'twitter_url',
+              'value'       => set_value('twitter_url',$twitter_url),
+              'maxlength'   => '100',
+              'size'        => '20',
+              'style'       => 'width: 250px',
+            );
+
+            echo form_input($twitter_data);
+            echo form_fieldset_close();              
+            
 
             //COMPANY TYPE        
             echo form_fieldset('Company Type');

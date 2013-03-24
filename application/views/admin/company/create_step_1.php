@@ -191,31 +191,64 @@ $(document).ready(function()
 
             echo form_input($url_data);
             echo form_fieldset_close();            
-            
-            /*
-            //COMPANY LOGO       
-            echo form_fieldset('Company Logo');  
-            $file_data = array(
-              'name'        => 'userfile',
-              'id'          => 'userfile',
-              'value'       => set_value('userfile'),
-              'size'        => '20',
-            );            
-            
-            
-            echo "<div class='errors'>";
-            
-            if (isset($upload_error)){
-               foreach ($upload_error as $item => $value)
-               {
-                   echo $value; 
-               }
-            }
-            echo "</div>";
-            echo form_upload($file_data);       
-            echo form_fieldset_close();       
-            */
 
+            //JOBS URL        
+            echo form_fieldset('Jobs URL');  
+       
+            echo "<div class='errors'>";
+            echo form_error('jobs_url');
+            echo "</div>";
+            
+            $jobs_data = array(
+              'name'        => 'jobs_url',
+              'id'          => 'jobs_url',
+              'value'       => set_value('jobs_url'),
+              'maxlength'   => '100',
+              'size'        => '20',
+              'style'       => 'width: 250px',
+            );
+
+            echo form_input($jobs_data);
+            echo form_fieldset_close();             
+
+            //FACEBOOK URL        
+            echo form_fieldset('Facebook URL');  
+       
+            echo "<div class='errors'>";
+            echo form_error('facebook_url');
+            echo "</div>";
+            
+            $facebook_data = array(
+              'name'        => 'facebook_url',
+              'id'          => 'facebook_url',
+              'value'       => set_value('facebook_url'),
+              'maxlength'   => '100',
+              'size'        => '20',
+              'style'       => 'width: 250px',
+            );
+
+            echo form_input($facebook_data);
+            echo form_fieldset_close();             
+
+            //TWITTER URL      
+            echo form_fieldset('Twitter URL');  
+       
+            echo "<div class='errors'>";
+            echo form_error('twitter_url');
+            echo "</div>";
+            
+            $twitter_data = array(
+              'name'        => 'twitter_url',
+              'id'          => 'twitter_url',
+              'value'       => set_value('twitter_url'),
+              'maxlength'   => '100',
+              'size'        => '20',
+              'style'       => 'width: 250px',
+            );
+
+            echo form_input($twitter_data);
+            echo form_fieldset_close();             
+            
             //COMPANY TYPE        
             echo form_fieldset('Company Type');
             echo "<div class='errors'>";
