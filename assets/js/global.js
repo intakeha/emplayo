@@ -105,9 +105,9 @@ $(document).ready(function(){
 		);
 			
 		// Set variables for pagination 
-		var currentQuestion = 8;
-		var lastEmpty = 9;
-		var lastQuestion = 9;
+		var currentQuestion = 19;
+		var lastEmpty = 20;
+		var lastQuestion = 20;
 		$('div#0, #next_question').show(); //default to first question on refresh
 
 		// Assign actions when next is clicked
@@ -442,44 +442,42 @@ $(document).ready(function(){
 			if (envComplete == 0){
 				progressBackground = (currentEnvQuestion) * -127;
 				$('#envProgressOverlay').css("background-position", progressBackground+"px 0px");
+				$('map#environmentMap area').eq(currentEnvQuestion-1).addClass('block');
 			} else {
 				if (currentEnvQuestion < 10){
 					progressBackground = (currentEnvQuestion+1) * -127;
 					$('#envProgressOverlay').css("background-position", progressBackground+"px 0px");
+					$('map#environmentMap area').eq(currentEnvQuestion).addClass('block');
 				};
 			};
 			
 			//update next subquestion
 			if (currentEnvQuestion < 10){
-				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(400).animate({opacity: 0, marginLeft:'300px'},300).hide(500);
+				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(50).animate({opacity: 0, marginLeft:'300px'},50).hide(50);
 				currentEnvQuestion = currentEnvQuestion + 1;
-				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(600).animate({opacity: 1, marginLeft:'149px'},300).show(500);
+				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(80).animate({opacity: 1, marginLeft:'149px'},80).show(80);
 			};
 			
 			//check for next button
-			var nextEnvFlag = 1;
-			$("input[id^=q9]").each(function() {
-				if (parseFloat($(this).val())==0){
-					nextEnvFlag=0;
-				};
-			 });
+			var nextEnvFlag = 0;
+			if ($('div#9 input:checked').length==10){
+				nextEnvFlag=1;
+			};
 			 
 			if (nextEnvFlag == 1){$('#next_question').show(); $('map#environmentMap area').attr('href','#');}else{$('#next_question').hide(); lastEmpty = 9;};
 			
 		});
 		
 		// Activating image map
-		$("map#environmentMap area").click(function(){
-			alert($('div#9 input:checked').index());
-			
-			//if(($(this).index()+1)<=){
+		$("map#environmentMap area").click(function(){			
+			if(($(this).index()+1)<=$('div#9 input:checked').length){
 				envComplete = 1;
-				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(400).animate({opacity: 0, marginLeft:'300px'},300).hide(500);
+				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(50).animate({opacity: 0, marginLeft:'300px'},50).hide(50);
 				currentEnvQuestion = $(this).index()+1; // assign the current environment question to the associated map index
 				progressBackground = (currentEnvQuestion) * -127;
 				$('#envProgressOverlay').css("background-position", progressBackground+"px 0px");
-				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(600).animate({opacity: 1, marginLeft:'149px'},300).show(500);
-			//}
+				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(80).animate({opacity: 1, marginLeft:'149px'},80).show(80);
+			}
 		});
 		
 		// Q10 - Recognition
@@ -689,10 +687,96 @@ $(document).ready(function(){
 		});
 		
 		// Q20 - Work History
-		$('#history img').mouseenter(function() {
-			$(this).toggleClass('addhover');
-		}).mouseleave(function(){
-			$(this).toggleClass('addhover');
+		ratings('.happiness', '"user_work[0][rating]"');  // Initiate stars rating
+		dateSelect('#history .prefill'); // Change font color when selected
+		$('#history input').val(''); // reset all forms
+		monthDropdown('#history .month');
+		yearDropdown('#history .year');
+		presentFlag();
+		
+		$('#history .addButton').on("click", function(event){
+			var educationRef = $('#education_layout li').length / 4;
+			var experienceRef = $('#experience_layout li').length / 4;
+			if ($(this).attr('id') == 'addEducation'){
+				$('#education_layout ul').append(
+					'<hr/> \
+					<li><label>School</label><input class="text_form" type="text" maxlength="150" name="user_education['+educationRef+'][school_name]"><input type="hidden" name="user_education['+educationRef+'][school_id]" value=""></li>\
+					<li><label>Degree</label><input class="text_form" type="text" maxlength="150" name="user_education['+educationRef+'][degree_name]"><input type="hidden" name="user_education['+educationRef+'][degree_id]" value=""></li>\
+					<li><label>Field of Study</label><input class="text_form" type="text" maxlength="150" name="user_education['+educationRef+'][field_name]"><input type="hidden" name="user_education['+educationRef+'][field_id]" value=""></li>\
+					<li class="history_sets"><label>Time Period</label><select name="user_education['+educationRef+'][start_month]" class=" monthEmpty prefill"></select>\
+						<select name="user_education['+educationRef+'][start_year]" class=" yearEmpty prefill"></select> &ndash; <select name="user_education['+educationRef+'][end_month]" class=" monthEmpty prefill"></select> \
+						<select name="user_education['+educationRef+'][end_month]" class=" yearEmpty prefill"></select>\
+					</li>\
+					'
+				);
+			} else {
+				$('#experience_layout ul').append(
+					'<hr/> \
+						<li><label>Company</label><input class="text_form" type="text" maxlength="150" name="user_work['+experienceRef+'][company_name]"><input type="hidden" name="user_work['+experienceRef+'][company_id]" value=""></li>\
+						<li><label>Job</label><input class="text_form" type="text" maxlength="150" name="user_work['+experienceRef+'][job_type]"><input type="hidden" name="user_work['+experienceRef+'][job_id]" value=""></li>\
+						<li><label class="happiness_label">Happiness</label><div class="happiness"></div></li>\
+						<li class="history_sets">\
+							<label>Time Period</label><select name="user_work['+experienceRef+'][start_month]" class=" monthEmpty prefill"></select>\
+							<select name="user_work['+experienceRef+'][start_year]" class=" yearEmpty prefill"></select> \
+							&ndash; <span class="presentFlag" style="display: none;">Present</span>\
+							<select name="user_work['+experienceRef+'][end_month]" class=" monthEmpty prefill endDateFlag"></select> <select name="user_work['+experienceRef+'][end_year]" class=" yearEmpty prefill endDateFlag"></select>\
+							<span class="presentText">I currently work here</span><input type="checkbox" style="width: 13px; float: left;" />\
+						</li>\
+					'
+				);
+				ratings($(this).parent().find('.happiness').eq(experienceRef), "user_work["+experienceRef+"][rating]");
+			}
+			dateSelect('#history .prefill');
+			monthDropdown('#history .monthEmpty');
+			yearDropdown('#history .yearEmpty');
+			presentFlag();
+			
+			var education_sets = $('#education_layout li').length / 4;
+			var experience_sets = $('#experience_layout li').length / 4;
+			var sets, question_height, layout_height;
+			
+			sets = Math.max(education_sets, experience_sets);
+			
+			switch (sets)
+			{
+				case 2:
+					if($('div#20').height() < 620){
+						$('div#20').css('min-height','600px');
+						$('#history div#education_layout, #history div#experience_layout').css('height','510px');
+					};
+					break;
+				case 3:
+					if($('div#20').height() < 620){
+						question_height = $('div#20').height();
+						layout_height = $('#history div#education_layout').height();
+						$('div#20').css('min-height',question_height+210+'px');
+						$('#history div#education_layout, div#experience_layout').css('height',layout_height+210+'px');
+					};
+					break;
+				case 4:
+					if($('div#20').height() < 830){
+						question_height = $('div#20').height();
+						layout_height = $('#history div#education_layout').height();
+						$('div#20').css('min-height',question_height+210+'px');
+						$('#history div#education_layout, div#experience_layout').css('height',layout_height+210+'px');
+					};
+					break;
+				case 5:
+					if($('div#20').height() < 1100){
+						question_height = $('div#20').height();
+						layout_height = $('#history div#education_layout').height();
+						$('div#20').css('min-height',question_height+100+'px');
+						$('#history div#education_layout, div#experience_layout').css('height',layout_height+100+'px');
+					};
+					if (education_sets == 5) {
+						$('#history #addEducation').hide();
+					}
+					if (experience_sets == 5) {
+						$('#history #addWork').hide();
+					};
+					break;
+			};
+			
 		});
 		
 	};
@@ -713,6 +797,70 @@ function showNextButtonCheckbox(e, lastEmpty) { // determine if user selected an
 	 });
 	if (nextFlag > 0){$('#next_question').show();}else{$('#next_question').hide(); lastEmpty = e;};
 	return lastEmpty;
+};
+
+function monthDropdown(selector){
+	$(selector).append('<option value="0"> Month</option><option value="1"> Jan</option><option value="2"> Feb</option><option value="3"> Mar</option><option value="4"> Apr</option><option value="5"> May</option><option value="6"> Jun</option><option value="7"> Jul</option><option value="8"> Aug</option><option value="9"> Sept</option><option value="10"> Oct</option><option value="11"> Nov</option><option value="12"> Dec</option>');
+	$(selector).removeClass('monthEmpty').addClass('month');
+	
+};
+
+function yearDropdown(selector){
+	var i = 1, year = 2013;
+	var html = '<option value="0">Year</option>';
+	
+	for (var i=1;i<65;i++)
+	{ 
+		html += '<option value="'+year+'">'+year+'</option>';
+		year -= 1;
+	}
+	
+	$(selector).append(html);
+	$(selector).switchClass('yearEmpty').addClass('year');
+};
+
+function ratings(containerID, scoreID){ // initialize raty
+	$(containerID).raty({ 
+		path: 'assets/images/survey',
+		number: 10,
+		starOff  : 'star00.jpg',
+		iconRange: [
+			{ range: 1, on: 'star01.jpg'},
+			{ range: 2, on: 'star02.jpg'},
+			{ range: 3, on: 'star03.jpg'},
+			{ range: 4, on: 'star04.jpg'},
+			{ range: 5, on: 'star05.jpg'},
+			{ range: 6, on: 'star06.jpg'},
+			{ range: 7, on: 'star07.jpg'},
+			{ range: 8, on: 'star08.jpg'},
+			{ range: 9, on: 'star09.jpg'},
+			{ range: 10, on: 'star10.jpg'}
+		  ],
+		hints: ['Terrible', 'Dissatisfied', 'Sucky', 'Sad', 'So-So', 'Decent', 'Good', 'Thrilled', 'Ecstatic', 'Unreal'],
+		width: 490,
+		space: false,
+		scoreName: scoreID,
+		targetType: 'number',
+		targetKeep: true
+	});
+};
+
+function presentFlag(){
+	$("#history input[type='checkbox']").on("change",function(event){
+		if ($(this).prop('checked')){
+			$(this).parent().find('.endDateFlag').hide();
+			$(this).parent().find('.presentFlag').show();
+		}else{
+			$(this).parent().find('.endDateFlag').show();
+			$(this).parent().find('.presentFlag').hide();
+		};
+	});
+};
+
+function dateSelect(id){  // remove the prefill color on click
+	$(id).on("focusin",function () {
+		$(this).removeClass("prefill");
+	});
 };
 
 // Modal popup function

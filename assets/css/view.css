@@ -1118,11 +1118,64 @@ div#history p{
 	font-size: 18px;
 }
 
-div#history input {
+div#history input, div#history select {
     color: #777777;
     font-size: 20px;
     margin-top: 10px;
     width: 325px;
+}
+
+div#history select.month{
+	width: 80px;
+}
+
+div#history select.year{
+	width: 69px;
+}
+
+div#history .presentFlag{
+	width: 100px;
+}
+
+
+div#history .prefill{
+	color: #ddd;
+}
+
+div#history .happiness_label{
+    float: left;
+    margin-top: 9px;
+    width: 145px;
+}
+
+div#history .happiness{
+     margin-bottom: -4px;
+    margin-top: 7px;
+}
+
+div#history .happiness img{
+	width: 34px;
+	height: 34px;
+}
+
+div#history .history_sets {
+	margin-bottom: 20px;
+	height: 55px;
+}
+
+div#history .present{
+	float: right;
+	width: 20px;
+}
+
+div#history .presentText{
+    display: block;
+    float: left;
+    font-size: 11px;
+    font-weight: normal;
+    margin-left: 359px;
+    margin-top: 12px;
+    width: 105px;
 }
 
 .addButton {
@@ -1131,7 +1184,7 @@ div#history input {
 	background: url("../images/survey/add.png") no-repeat;
 	cursor: pointer;
     float: right;
-    margin: 30px 10px 0 0;
+    margin-right: 10px;
 }
 
 .addButton:hover {

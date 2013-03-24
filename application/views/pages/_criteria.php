@@ -494,59 +494,45 @@
 		</div>
 		<div id="20" class="questions"  name="textChoice">
 			<div><div class="bulb" onclick="modal('#modal_q19','600','35');"></div>What's your education and work history?</div>
-			<!-- <div id="history" class="clear">
-				Education:
-				<input id="q20" class="history" type="text" value="" name="user_location[]" />
-			</div> -->
-			
-			<div id="history">
+			<div id="history" class="clear">
 				<div>
 					<div id="education_layout">
 						<p>Education</p>
 						<div class="details">
 							<ul>
-								<li><label>School</label><input class="text_form" type="text" maxlength="150" name="school"></li>
-								<li><label>Graduation Year</label><input class="text_form" type="text" maxlength="4" name="graduation"></li>
-								<li><label>Degree</label><input class="text_form" type="text" maxlength="150" name="degree"></li>
-								<li><label>Field of Study</label><input class="text_form" type="text" maxlength="150" name="major"></li>
+								<li><label>School</label><input class="text_form" type="text" maxlength="150" name="user_education[0][school_name]"><input type="hidden" name="user_education[0][school_id]" value=""></li>								
+								<li><label>Degree</label><input class="text_form" type="text" maxlength="150" name="user_education[0][degree_name]"><input type="hidden" name="user_education[0][degree_id]" value=""></li>
+								<li><label>Field of Study</label><input class="text_form" type="text" maxlength="150" name="user_education[0][field_name]"><input type="hidden" name="user_education[0][field_id]" value=""></li>
+								<li class="history_sets"><label>Time Period</label><select name="user_education[0][start_month]" class=" month prefill"></select>
+									<select name="user_education[0][start_year]" class=" year prefill"></select> &ndash; <select name="user_education[0][end_month]" class=" month prefill"></select> 
+									<select name="user_education[0][end_month]" class=" year prefill"></select>
+								</li>
 							</ul>
-							<div class="addButton"> </div>
+							<div class="addButton" id="addEducation"> </div>
 						</div>
 					</div>
 					<div id="experience_layout">
 						<p>Work Experience</p>
 						<div class="details"> 
 							<ul>
-								<li><label>Company</label><input class="text_form" type="text" maxlength="150" name="company"></li>
-								<li><label>Time Period</label><input class="text_form" type="text" maxlength="4" name="graduation"></li>
-								<li><label>Satisfaction</label><input class="text_form" type="text" maxlength="150" name="degree"></li>
-								<li><label>Job</label><input class="text_form" type="text" maxlength="150" name="major"></li>
+								<li><label>Company</label><input class="text_form" type="text" maxlength="150" name="user_work[0][company_name]"><input type="hidden" name="user_work[0][company_id]" value=""></li>
+								<li><label>Job</label><input class="text_form" type="text" maxlength="150" name="user_work[0][job_type]"><input type="hidden" name="user_work[0][job_id]" value=""></li>
+								<li><label class="happiness_label">Happiness</label><div class="happiness"></div></li>
+								<li class="history_sets">
+									<label>Time Period</label><select name="user_work[0][start_month]" class=" month prefill"></select>
+									<select name="user_work[0][start_year]" class=" year prefill"></select> 
+									&ndash; <span class="presentFlag" style="display: none;">Present</span>
+									<select name="user_work[0][end_month]" class=" month prefill endDateFlag"></select> <select name="user_work[0][end_year]" class=" year prefill endDateFlag"></select>
+									<span class="presentText">I currently work here</span><input type="checkbox" style="width: 13px; float: left;" />
+								</li>
 							</ul>
-							<div class="addButton"> </div>
+							<div class="addButton" id="addWork"> </div>
 						</div>
 						
 					</div>
 				</div>
 				
 			</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			<div id="q20_flag" style="display: none;"></div>
 		</div>
 		<div id="21" class="questions">
