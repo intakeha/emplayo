@@ -26,7 +26,7 @@ class Inquire_model extends MY_Model {
             foreach($query->result_array() as $row=>$item)
             {
                 $result_array[$row]['id'] = $item['id'];
-                $result_array[$row]['city'] = $item['display_city'];
+                $result_array[$row]['value'] = $item['display_city'];
                 $result_array[$row]['region'] = $item['region'];
             }
             $output = json_encode($result_array);    
