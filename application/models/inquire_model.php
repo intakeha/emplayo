@@ -13,10 +13,10 @@ class Inquire_model extends MY_Model {
 
     function location_search($search_term)
     {
-
         $this->db->select('id, display_city, region');
-        $this->db->like('city', $search_term, 'after');
-        $this->db->limit('10');
+        $this->db->like('display_city', $search_term, 'after');
+        $this->db->limit('30');
+        $this->db->order_by("display_city", "asc");
         $query = $this->db->get('ref_city');
         $count = $query->num_rows();        
 
@@ -26,21 +26,20 @@ class Inquire_model extends MY_Model {
             foreach($query->result_array() as $row=>$item)
             {
                 $result_array[$row]['id'] = $item['id'];
-                //$result_array[$row]['city'] = $item['display_city'];
-                $result_array[$row]['region'] = $item['region'];
-                $result_array[$row]['value'] = $item['display_city'];
+                $result_array[$row]['text'] = $item['display_city'].', '.$item['region'];
             }
             $output = json_encode($result_array);    
             return $output;            
-        }        
+        }      
     }  
   
     function location_search2($search_term)
     {
 
         $this->db->select('id, display_city, region');
-        $this->db->like('city', $search_term, 'after');
-        $this->db->limit('10');
+        $this->db->like('display_city', $search_term, 'after');
+        $this->db->limit('30');
+        $this->db->order_by("display_city", "asc");
         $query = $this->db->get('ref_city');
         $count = $query->num_rows();        
 
@@ -62,10 +61,10 @@ class Inquire_model extends MY_Model {
     function industry_search($search_term)
     {
 
-        $this->db->select('id, display_city, region');
-        $this->db->like('city', $search_term, 'after');
+        $this->db->select('category_id, name');
+        $this->db->like('name', $search_term, 'after');
         $this->db->limit('10');
-        $query = $this->db->get('ref_city');
+        $query = $this->db->get('ref_category');
         $count = $query->num_rows();        
 
         if($query)
@@ -73,22 +72,43 @@ class Inquire_model extends MY_Model {
             $result_array = array();
             foreach($query->result_array() as $row=>$item)
             {
-                $result_array[$row]['id'] = $item['id'];
-                $result_array[$row]['text'] = $item['display_city'].', '.$item['region'];
-                //$result_array[$row]['region'] = $item['region'];
-                //$result_array[$row]['value'] = $item['display_city'];
+                $result_array[$row]['id'] = $item['category_id'];
+                $result_array[$row]['text'] = $item['name'];
             }
             $output = json_encode($result_array);    
             return $output;            
         }        
     }      
     
+    function industry_search2($search_term)
+    {
+
+        $this->db->select('industry_id, name');
+        $this->db->like('name', $search_term, 'after');
+        $this->db->limit('30');
+        $query = $this->db->get('ref_industry');
+        $count = $query->num_rows();        
+
+        if($query)
+        {      
+            $result_array = array();
+            foreach($query->result_array() as $row=>$item)
+            {
+                $result_array[$row]['id'] = $item['industry_id'];
+                $result_array[$row]['text'] = $item['name'];
+            }
+            $output = json_encode($result_array);    
+            return $output;            
+        }        
+    }    
+    
     function college_search($search_term)
     {
 
         $this->db->select('id, college');
         $this->db->like('college', $search_term, 'both');
-        $this->db->limit('10');
+        $this->db->limit('50');
+        $this->db->order_by("college", "asc");
         $query = $this->db->get('ref_college');
         $count = $query->num_rows();        
 
@@ -98,7 +118,7 @@ class Inquire_model extends MY_Model {
             foreach($query->result_array() as $row=>$item)
             {
                 $result_array[$row]['id'] = $item['id'];
-                $result_array[$row]['college'] = $item['college'];
+                $result_array[$row]['text'] = $item['college'];
             }
             $output = json_encode($result_array);    
             return $output;            
@@ -126,7 +146,28 @@ class Inquire_model extends MY_Model {
             $output = json_encode($result_array);    
             return $output;            
         }        
-    }  
+    } 
+    
+    function get_degree_type()
+    {
+
+        $this->db->select('id, degree_type, degree_type_short');
+        $query = $this->db->get('ref_degree_type');
+        $count = $query->num_rows();        
+
+        if($query)
+        {      
+            $result_array = array();
+            foreach($query->result_array() as $row=>$item)
+            {
+                $result_array[$row]['id'] = $item['id'];
+                $result_array[$row]['degree'] = $item['degree_type'];
+                $result_array[$row]['short'] = $item['degree_type_short'];
+            }
+            //$output = json_encode($result_array);    
+            return $result_array;            
+        }        
+    }      
     
     function major_search($search_term)
     {

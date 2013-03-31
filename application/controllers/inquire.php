@@ -50,7 +50,7 @@ class Inquire extends CI_Controller {
         
         public function industry_search()
         {
-            $searchterm = $this->input->get('searchterm');
+                $searchterm = $this->input->get('searchterm');
                 $search_term = $searchterm;
                 $decoded_search_term = urldecode($search_term);
                 $result = $this->inquire_model->industry_search($decoded_search_term);
@@ -58,29 +58,38 @@ class Inquire extends CI_Controller {
                 echo $result;
 
                
-        }//end of         
+        }//end of     
         
-        public function location_search($search_term)
+        public function industry_search2()
         {
-            if(($search_term) && ($search_term) != '')    
-            {
+                $searchterm = $this->input->get('searchterm');
+                $search_term = $searchterm;
                 $decoded_search_term = urldecode($search_term);
-                $result = $this->inquire_model->location_search($decoded_search_term);
+                $result = $this->inquire_model->industry_search2($decoded_search_term);
                 header('Content-Type: application/json');
                 echo $result;
 
-            }        
-        }//end of company_name_search          
-
-        public function college_search($search_term)
+               
+        }//end of         
+        
+        public function location_search()
         {
-            if(($search_term) && ($search_term) != '')    
-            {
-                $decoded_search_term = urldecode($search_term);
-                $result = $this->inquire_model->college_search($decoded_search_term);
-                echo $result;
+            $searchterm = $this->input->get('searchterm');
+            $search_term = $searchterm;
+            $decoded_search_term = urldecode($search_term);
+            $result = $this->inquire_model->location_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end of location_search          
 
-            }        
+        public function college_search()
+        {
+            $searchterm = $this->input->get('searchterm');
+            $search_term = $searchterm;
+            $decoded_search_term = urldecode($search_term);
+            $result = $this->inquire_model->college_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;                  
         }//end of college_search             
     
         public function degree_type_search($search_term)
@@ -117,7 +126,10 @@ class Inquire extends CI_Controller {
         }//end of degree_type_search    
         
 	public function typetest(){
-		$this->load->view('pages/typetest');
+            $data['degree_array'] = $this->inquire_model->get_degree_type();
+            
+            
+		$this->load->view('pages/typetest',$data);
 	}        
         
 }//end of controller
