@@ -19,6 +19,14 @@ class Survey extends CI_Controller {
         //$this->load->view("survey/newload",$data);
     }
 
+    public function user_tester(){
+        //get list of categories from database
+        $this->load->model('survey_model');
+        $data['categories'] = $this->survey_model->get_categories();
+        $data['message'] = '';
+        $this->load->view("survey/user_tester",$data);
+        //$this->load->view("survey/newload",$data);
+    }    
         public function submit2(){
             //validation required?
             //find all the companies that match the submitted 'tags'

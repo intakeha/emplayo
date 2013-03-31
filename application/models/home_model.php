@@ -93,6 +93,59 @@ class Home_model extends MY_Model {
         return $array;
     }
 
+    function build_array_education($original_array, $keyword, $user_id){
+        $array = array();
+        foreach ($original_array as $key=>$value)
+        {
+            $array[$key]['user_id'] = $user_id;
+            if (!empty ($value['school_id'])){
+                $array[$key]['college_id'] = $value['school_id'];
+                $array[$key]['college_name'] = NULL;
+            } else {
+                $array[$key]['college_id'] = NULL;
+                $array[$key]['college_name'] = $value['school_name'];                
+            }
+            $array[$key]['start_date'] = $value['start_year'].'-'.$value['start_month'].'-01';
+            $array[$key]['end_date'] = $value['end_year'].'-'.$value['end_month'].'-01';
+            $array[$key]['degree_id'] = $value['degree_id'];
+            $array[$key]['major_id'] = $value['field_id'];           
+        }   
+        return $array; 
+    }
+    
+    function build_array_work($original_array, $keyword, $user_id){
+        $array = array();
+        foreach ($original_array as $key=>$value)
+        {
+            $array[$key]['user_id'] = $user_id;
+            
+            if (!empty ($value['company_id'])){
+                $array[$key]['company_id'] = $value['company_id'];
+                $array[$key]['company_name'] = NULL;
+            } else {
+                $array[$key]['company_id'] = NULL;
+                $array[$key]['company_name'] = $value['company_name'];                
+            }
+            
+            $array[$key]['start_date'] = $value['start_year'].'-'.$value['start_month'].'-01';
+            if (isset($value['current'])){
+                if ($value['current'] == 0){
+                    $array[$key]['end_date'] = $value['end_year'].'-'.$value['end_month'].'-01';
+                }else {
+                    $array[$key]['end_date'] = NULL;
+                }
+                $array[$key]['current'] = $value['current'];
+            }else {
+                $array[$key]['end_date'] = $value['end_year'].'-'.$value['end_month'].'-01';
+                $array[$key]['current'] = 0;
+            }
+            
+            
+            $array[$key]['job_type_id'] = $value['job_id'];   
+            $array[$key]['rating'] = $value['rating'];
+        }   
+        return $array; 
+    }    
     
     function save_user_inquiry()
     {
@@ -115,11 +168,14 @@ class Home_model extends MY_Model {
         /*14-sg*/$user_supervisor = $this->session->userdata('user_supervisor');
         /*15-sg*/$user_leadership = $this->session->userdata('user_leadership');
         /*16-mu*/$user_traits = $this->session->userdata('user_traits');
-        /*17-sg*/$user_motivation = $this->session->userdata('user_motivation');
+        /*17-sg*/$user_motivation = $this->session->userdata('user_motivation');        
+        /*18-ar*/$user_education = $this->session->userdata('user_education');
+        /*18-ar*/$user_work = $this->session->userdata('user_work');
+        /*19-mu*/$user_location = $this->session->userdata('user_location');
+        /*20-mu*/$user_category = $this->session->userdata('user_industry');       
         
-        
-        $user_next = $this->session->userdata('category');//??
-        $user_history = $this->session->userdata('history');  //??
+        //$user_next = $this->session->userdata('category');//??
+        //$user_history = $this->session->userdata('history');  //??
         
         
         //START A TRANSACTION, SO ALL INSERTS MUST SUCCEED OR EVERYTHING IS ROLLED BACK
@@ -158,8 +214,8 @@ class Home_model extends MY_Model {
         $this->db->insert_batch('user_promotion', $promotion_array);         
         
         //9. ENVIRONMENT (checkbox)
-//        $environment_array = $this->build_array_checkbox($user_environment, 'environment', $user_id);
-//        $this->db->insert('user_environment', $environment_array); 
+        $environment_array = $this->build_array_checkbox($user_environment, 'environment', $user_id);
+        $this->db->insert('user_environment', $environment_array); 
  
         //10. RECOGNITION (rank)
         $recognition_array = $this->build_array_rank($user_recognition, 'recognition', $user_id);
@@ -192,17 +248,23 @@ class Home_model extends MY_Model {
         //17. MOTIVATION (radio)
         $motivation_array = $this->build_array_radio($user_motivation, 'motivation', $user_id);
         $this->db->insert('user_motivation', $motivation_array);         
+
+        //18a. USER_EDUCATION (checkbox)
+        $education_array = $this->build_array_education($user_education, 'education', $user_id);
+        $this->db->insert_batch('user_education', $education_array);             
         
-/*      
-        //19. DO NEXT
-        $next_array = array();
-        foreach ($user_next as $key=>$value)
-        {
-            $next_array[$key]['user_id'] = $user_id;
-            $next_array[$key]['category_id'] = $value;
-        }           
-        $this->db->insert_batch('user_next', $next_array);        
- */
+        //18b. USER_WORK (checkbox)
+        $work_array = $this->build_array_work($user_work, 'work', $user_id);
+        $this->db->insert_batch('user_work', $work_array);        
+        
+        //19. LOCATION/CITY (checkbox)
+        $location_array = $this->build_array_checkbox($user_location, 'location', $user_id);
+        $this->db->insert_batch('user_location', $location_array);        
+        
+        //20. INDUSTRY/CATEGORY (checkbox)
+        $category_array = $this->build_array_checkbox($user_category, 'category', $user_id);
+        $this->db->insert_batch('user_category', $category_array);
+        
         //COMMIT ALL OF THE UPDATES      
         $this->db->trans_complete();
 
@@ -231,9 +293,11 @@ class Home_model extends MY_Model {
             /*15-sg*/$this->session->unset_userdata('user_leadership');
             /*16-mu*/$this->session->unset_userdata('user_traits');
             /*17-sg*/$this->session->unset_userdata('user_motivation'); 
-            
-            /*18*/$this->session->unset_userdata('category');
-            /*19-sg*/$this->session->unset_userdata('history');             
+            /*18-ar*/$this->session->unset_userdata('user_education');
+            /*18-ar*/$this->session->unset_userdata('user_work');
+            /*19-sg*/$this->session->unset_userdata('user_location');
+            /*20-sg*/$this->session->unset_userdata('user_industry');
+         
             
             return TRUE;
         }    

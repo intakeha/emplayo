@@ -194,6 +194,39 @@ class Preview_model extends CI_Model {
 
     }
     
+    function industry_filter($industry)
+    {
+        //find companies that match the DO NEXT categories
+        $categories = implode(',', $industry);
+
+        $sql = 'SELECT b.*
+                FROM company_category bt, company b, ref_category t
+                WHERE bt.category_id = t.category_id
+                AND (t.category_id IN ('.$categories.'))
+                AND b.id = bt.company_id
+                GROUP BY b.id';
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0)
+        {
+            //build array of company ids that came from the last query...so we can use them in the upcoming query
+            foreach ($query->result_array() as $row) {
+                //$companyid_array[]=$row;
+                $companyid_array[]=$row['id'];
+            }
+            $queried_comp_ids = implode(',', $companyid_array);
+            
+            //return a comma-separated squeried comp ids: tring of the company ids that match
+            return $queried_comp_ids;
+            
+        }
+        else //no companies were found
+        {
+            return FALSE;
+        }
+
+    }    
+    
     function survey_filter3($company_list)
     {            
         //build arrays of user submitted info from post data
@@ -228,26 +261,28 @@ class Preview_model extends CI_Model {
         }
     }
     
-    function toggle_filters($company_list,$type_array,$pace_array,$lifecycle_array,$corp_citizenship)
+    function toggle_filters($company_list,$type_array,$pace_array,$lifecycle_array)
     {            
-        //build arrays of user submitted info from post data
-        //$type_array = $this->input->post('company_type');
-        //$pace_array = $this->input->post('company_pace');
-        //$lifecycle_array = $this->input->post('lifecycle');
-        //$corp_citizenship = $this->input->post('corp_citizenship');
-
         //put the values from those arrays into strings so they can be added to the query
-        $imploded_type = implode(" OR ", $type_array);
-        $imploded_pace = implode(" OR ", $pace_array);
-        $imploded_lifecycle = implode(" OR ", $lifecycle_array);
+        //$imploded_type = implode(" OR ", $type_array);
+        $imploded_type = implode(',', $type_array);
+        //$imploded_pace = implode(" OR ", $pace_array);
+        $imploded_pace = implode(',', $pace_array);
+        //$imploded_lifecycle = implode(" OR ", $lifecycle_array);
+        $imploded_lifecycle = implode(',', $lifecycle_array);
 
-        $sql = 'SELECT id,company_name FROM company where (type_id = '.$imploded_type.')
+       /* $sql = 'SELECT id,company_name FROM company where (type_id = '.$imploded_type.')
                     AND (pace_id = '.$imploded_pace.')
                     AND (lifecycle_id = '.$imploded_lifecycle.')
-                    AND id IN ('.$company_list.')    ';
+                    AND id IN ('.$company_list.')    ';*/
+        
+        $sql = 'SELECT id,company_name FROM company where type_id IN ('.$imploded_type.')
+                    AND pace_id IN ('.$imploded_pace.')
+                    AND lifecycle_id IN ('.$imploded_lifecycle.')
+                    AND id IN ('.$company_list.')    ';        
         //run the query
         $query = $this->db->query($sql);
-        //return $query->result();        
+
         if ($query->num_rows() > 0)
         {
             //build array of company ids that came from the last query...so we can use them in the upcoming query
@@ -314,6 +349,28 @@ class Preview_model extends CI_Model {
             return $scores;
     }    
 
+    function prev_job_types($user_work)
+    {            
+        /*
+        user_work[0][company_id]	69
+        user_work[0][company_name...	Apple Inc
+        user_work[0][end_month]	03
+        user_work[0][end_year]	2005
+        user_work[0][job_id]	1
+        user_work[0][job_type]	Accounting
+        user_work[0][start_month]	01
+        user_work[0][start_year]	2003
+         */        
+        //walk through user_work array and pull out the historical job types
+        $prev_job_types = array();
+        foreach ($user_work as $key=>$value)
+        {
+            $prev_job_types[$key] = $value['job_type'];        
+        }
+        
+        return $prev_job_types;
+    }
+    
     function history_scoring($queried_comp_ids,$user_history_cats)
     {            
 
@@ -656,10 +713,14 @@ class Preview_model extends CI_Model {
         array_multisort($agscore,SORT_NUMERIC,SORT_ASC,$data_array);
         //echo '<pre>sorted:<br>',print_r($data_array,1),'</pre>';         
         
+        /* commented out by BLC on 3-26-13
         $dist_data = array();
         $dist_data['ranked_results']   = $data_array;
 
         return $dist_data;
+         * 
+        */
+        return $data_array;
         
     }//END OF get_distance_matrix FUNCTION
     
@@ -669,8 +730,9 @@ class Preview_model extends CI_Model {
             $company_row['ag_score'] = round(1 - $company_row['ag_score'],3);
             
         }
+        $ranked_results_copy = $ranked_results;
         //echo '<pre>fit scored up!:<br>',print_r($ranked_results,1),'</pre>'; 
-        file_put_contents('temp_arrays/fit_array.txt', serialize($ranked_results));
+        file_put_contents('temp_arrays/fit_array.txt', serialize($ranked_results_copy));
         
         return $ranked_results;
     }

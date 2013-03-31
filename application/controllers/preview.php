@@ -31,34 +31,38 @@ class Preview extends CI_Controller {
         
         //Form Validation...need to flesh this out. http://stackoverflow.com/a/5843435/1011500
 
-/*01*/  //$this->form_validation->set_rules('user_type[]', 'Company Type', 'required|greater_than[0]|less_than[5]');
-/*02*/  //$this->form_validation->set_rules('user_pace[]', 'Company Pace', 'required|greater_than[0]|less_than[4]');
-/*03*/  //$this->form_validation->set_rules('user_lifecycle[]', 'Company Lifecycle', 'required|greater_than[0]|less_than[6]');
-/*04*/  //$this->form_validation->set_rules('user_benefits[]', 'Benefits', 'required|greater_than[0]|less_than[17]');
-/*05*/  //$this->form_validation->set_rules('user_citizenship', 'Corporate Citizenship', 'required|greater_than[0]|less_than[6]');
-/*06*/  //$this->form_validation->set_rules('user_travel', 'Travel', 'required|greater_than[0]|less_than[6]');
-/*07*/  //$this->form_validation->set_rules('user_responsibilities', 'Responsibilities', 'required|greater_than[0]|less_than[5]');
-/*08*/  //$this->form_validation->set_rules('user_promotion', 'Promotion', 'required|greater_than[0]|less_than[7]');
-/*09*/  //$this->form_validation->set_rules('user_environment', 'Environment', 'required|greater_than[0]|less_than[3]');
-/*10*/  //$this->form_validation->set_rules('user_recognition', 'Recognition', 'required|greater_than[0]|less_than[7]');
-/*11*/  //$this->form_validation->set_rules('user_tasks', 'Tasks', 'required|greater_than[0]|less_than[7]');
-/*12*/  //$this->form_validation->set_rules('user_communication', 'Communication', 'required|greater_than[0]|less_than[5]');
-/*13*/  //$this->form_validation->set_rules('user_resource', 'Resource', 'required|greater_than[0]|less_than[6]');
-/*14*/  //$this->form_validation->set_rules('user_supervisor', 'Supervisor', 'required|greater_than[0]|less_than[7]');
-/*15*/  //$this->form_validation->set_rules('user_leadership', 'Leadership', 'required|greater_than[0]|less_than[4]');
-/*16*/  //$this->form_validation->set_rules('user_traits[]', 'Traits', 'required|greater_than[0]|less_than[21]');
-/*17*/  //$this->form_validation->set_rules('user_motivation', 'Motivation', 'required|greater_than[0]|less_than[6]');
-//etc...
- $this->form_validation->set_rules('user_type[]', 'Company Type', 'required');
+        /*01*/  $this->form_validation->set_rules('user_type[]', 'Company Type', 'required|greater_than[0]|less_than[5]');
+        /*02*/  $this->form_validation->set_rules('user_pace[]', 'Company Pace', 'required|greater_than[0]|less_than[4]');
+        /*03*/  $this->form_validation->set_rules('user_lifecycle[]', 'Company Lifecycle', 'required|greater_than[0]|less_than[6]');
+        /*04*/  $this->form_validation->set_rules('user_benefits[]', 'Benefits', 'required');
+        /*05*/  $this->form_validation->set_rules('user_citizenship', 'Corporate Citizenship', 'required|greater_than[0]|less_than[6]');
+        /*06*/  $this->form_validation->set_rules('user_travel', 'Travel', 'required|greater_than[0]|less_than[6]');
+        /*07*/  $this->form_validation->set_rules('user_responsibilities', 'Responsibilities', 'required|greater_than[0]|less_than[5]');
+        /*08*/  $this->form_validation->set_rules('user_promotion', 'Promotion', 'required');
+        /*09*/  $this->form_validation->set_rules('user_environment[]', 'Environment', 'required|greater_than[0]|less_than[21]');
+        /*10*/  $this->form_validation->set_rules('user_recognition[]', 'Recognition', 'required');
+        /*11*/  $this->form_validation->set_rules('user_tasks[]', 'Tasks', 'required');
+        /*12*/  $this->form_validation->set_rules('user_communication', 'Communication', 'required|greater_than[0]|less_than[5]');
+        /*13*/  $this->form_validation->set_rules('user_resource[]', 'Resource', 'required');
+        /*14*/  $this->form_validation->set_rules('user_supervisor', 'Supervisor', 'required|greater_than[0]|less_than[7]');
+        /*15*/  $this->form_validation->set_rules('user_leadership', 'Leadership', 'required|greater_than[0]|less_than[4]');
+        /*16*/  $this->form_validation->set_rules('user_traits[]', 'Traits', 'required|greater_than[0]|less_than[21]');
+        /*17*/  $this->form_validation->set_rules('user_motivation', 'Motivation', 'required|greater_than[0]|less_than[6]');
+        /*18a*/  //$this->form_validation->set_rules('user_education', 'Education', 'required');
+        /*18b*/  //$this->form_validation->set_rules('user_work', 'Work', 'required');
+        /*19*/  //$this->form_validation->set_rules('user_location', 'Location', 'required');
+        /*20*/  $this->form_validation->set_rules('user_industry', 'Industry', 'required');
+
  
         if ($this->form_validation->run() == FALSE){
             //reload the form
-            $this->load->library('ion_auth');
-            $data['title']="Work-Life-Play";
-            $data['content']="pages/_criteria";
-            $this->load->view('canvas', $data);
-            
-        } else {//data is good...process it.
+            //$this->load->library('ion_auth');
+            //$data['title']="Work-Life-Play";
+            //$data['content']="pages/_criteria";
+            //$this->load->view('canvas', $data);
+            $this->load->view("survey/user_tester");
+        }
+        else {//data is good...process it.
             
             if($this->input->post('mysubmit')){
                 
@@ -81,11 +85,13 @@ class Preview extends CI_Controller {
                 /*17*/$user_motivation = $this->input->post('user_motivation');
                 /*18a*/$user_education = $this->input->post('user_education');
                 /*18b*/$user_work = $this->input->post('user_work');
-                /*19*/$user_location = $this->input->post('user_location');                
-                $categories = $this->input->post('category');//NOT SURE OF THIS NAME!!!                
-                $history = $this->input->post('history'); //NOT SURE OF THIS NAME!!!  
+                /*19*/$user_location = $this->input->post('user_location');
+                /*20*/$user_industry = $this->input->post('user_industry');
+                //$categories = $this->input->post('category');//NOT SURE OF THIS NAME!!!                
+                //$history = $this->input->post('history'); //NOT SURE OF THIS NAME!!!  
+ 
                 
-
+                //print_r($user_work);
                 
                 
                 //TODO: MAKE SURE WE MAKE WORK AND EDUCATION HISTORY OPTIONAL!
@@ -112,80 +118,116 @@ class Preview extends CI_Controller {
                 /*17*/$this->session->set_userdata('user_motivation',$user_motivation);
                 /*18a*/$this->session->set_userdata('user_education',$user_education);
                 /*18b*/$this->session->set_userdata('user_work',$user_work);
-                /*19*/$this->session->set_userdata('user_location',$user_location);                
-                $this->session->set_userdata('category',$categories); //NEED TO REVIEW THIS!!
-                $this->session->set_userdata('history',$history); //NEED TO REVIEW THIS!!                
+                /*19*/$this->session->set_userdata('user_location',$user_location);    
+                /*20*/$this->session->set_userdata('user_industry',$user_industry); 
+                //$this->session->set_userdata('category',$categories); //NEED TO REVIEW THIS!!
+                //$this->session->set_userdata('history',$history); //NEED TO REVIEW THIS!!                
                 
-                //$this->session->set_userdata('company_pace',$user_pace);
-                //$this->session->set_userdata('corp_citizenship',$user_citizenship);               
-                //$this->session->set_userdata('lifecycle',$user_lifecycle);
+                //SEND THE USER ENTERED DATA OFF TO THE MATCHING ALGORITHM
+                $data = $this->run_matching_algorithm($user_type,$user_pace,$user_lifecycle,$user_benefits,$user_citizenship,$user_industry,$user_work);
+                //$data VAR IS AN ARRAY THAT CONTAINS LIST OF COMPANIES WITH ALL REQUIRED INFO TO DISPLAY
                 
-                $this->load->model('preview_model');
-
-                //get initial list of companies that match basic criteria
-                $data['company_list'] = $this->preview_model->survey_filter2($categories);
-                if (!empty($data['company_list']))
+                if ($data['company_count']>0)
                 {
-                    //TODO: Add error handling and make sure all of the returned vars are not empty...
-                    
-                    //send this list of companies to the next filter to reduce based on type
-                    $data['company_list'] = $this->preview_model->toggle_filters($data['company_list'],$user_type,$user_pace,$user_lifecycle,$user_citizenship);
-                    
-                    //TODO: Need to put a conditional statement on each of these steps....
-                    
-                    //using initial list of companies, rank them based on their benefits
-                    $benefit_scoring = $this->preview_model->benefits_scoring($data['company_list'],$user_benefits);
-                    $history_scoring = $this->preview_model->history_scoring($data['company_list'],$history);
-                    
-                    //based on these benefits scores, go grab the citizenship scores, and find
-                    //nearest neighbor, in ranked order
-
-                    //$data['ranked_results'] = $this->preview_model->get_distance_matrix3($benefit_scoring,$history_scoring);
-                    $data = $this->preview_model->get_distance_matrix3($benefit_scoring,$history_scoring,$user_citizenship,$user_pace,$user_lifecycle,$history);
-
-                    //translate the distance info into 'fit' scores, based on 100% being perfect
-                    $data['company_fit'] = $this->preview_model->fit_score($data['ranked_results']);
-                    $company_fit = $data['company_fit'];
-                    $data['company_count'] = count($data['ranked_results']);
-                    $data['image_path'] = "assets/images/company_logos/";
-                    
-                    //write the fit data to the session in case the user decides to sign up, so we can save it
-                    $this->session->set_userdata('company_fit',$company_fit);
-                    
-                    //set a flag so we know to save this user's data if they sign up
-                    $this->session->set_userdata('save_data',TRUE);       
-                    
-                    //now that we have the ranked companies, let's go get their info, so we can display it 
-                    //to the user
-                    //$data['company_info'] = $this->preview_model->get_company2($data['ranked_results']);
-                    
-                    //using get_company3 to only return 5 compamies.  get_company2 returns the full list...
-                    $data['company_info'] = $this->preview_model->get_company3($data['ranked_results']);
-                    $data['full_company_info'] = $this->preview_model->merge_company_info($data['company_info'],$data['company_fit']);
-                    
-                    //$data['result_msg'] = 'Success!';
-                    //$this->load->view("survey/results",$data); 
-                    
-                    //just a quick test to make sure we can save the data correctly.  
-                    //Remove this:
-                    //$this->load->model('home_model');
-                    //$result2 = $this->home_model->save_user_inquiry();
-                    
+                    //WE FOUND MATCHES! DISPLAY THE VIEW
                     $data['title']="Preview Results";
                     $data['content']="pages/_preview";
-                    $this->load->view('canvas', $data);                    
-                    
-                } 
-                 else {
-                    //result set is empty
-                    //$data['result_msg'] = 'there were no results!';
-                    //$this->load->view("survey/results",$data);
-                     echo "there were no results!";
-                 }
-                
+                    $this->load->view('canvas', $data);
+                }
+                else
+                {
+                    //THERE WERE NO MATCHES...DISPLAY THE VIEW
+                    //$data['company_count'] = 0;
+                    $data['title']="Preview Results";
+                    $data['content']="pages/_preview";
+                    $this->load->view('canvas', $data);
+                }
             }
         }
-    } //end of submit()
+    } //end of index()
+
+    public function run_matching_algorithm($user_type,$user_pace,$user_lifecycle,$user_benefits,$user_citizenship,$user_industry,$user_work){
+        
+        $this->load->model('preview_model');
+
+        //FIND COMPANIES THAT MATCH THE USER'S INDUSTRY CHOICE
+        $comps_by_industry = $this->preview_model->industry_filter($user_industry);
+        //print_r($comps_by_industry);
+        if (!empty($comps_by_industry))
+        {
+            //FIND COMPANIES THAT MATCH THE USER'S BASIC CRITERIA
+            $basic_criteria_list = $this->preview_model->toggle_filters($comps_by_industry,$user_type,$user_pace,$user_lifecycle);
+
+            if (!empty($basic_criteria_list))
+            {
+                //RANK THE COMPANIES BY THEIR BENEFITS
+                $benefit_scoring = $this->preview_model->benefits_scoring($basic_criteria_list,$user_benefits);
+
+                //GET USER'S PREVIOUS JOB TYPE IDs
+                $prev_job_types = $this->preview_model->prev_job_types($user_work);
+                if (!empty($prev_job_types)){
+                    //SCORE THE COMPANIES BASED ON WHETHER THEY HAVE A JOB TYPE THAT MATCHES THE USER'S HISTORY
+                    $history_scoring = $this->preview_model->history_scoring($basic_criteria_list,$prev_job_types);
+                }
+                //SCORE THE COMPANIES USING KNN METHOD
+                $ranked_results = $this->preview_model->get_distance_matrix3($benefit_scoring,$history_scoring,$user_citizenship,$user_pace,$user_lifecycle,$prev_job_types);
+
+                //TRANSLATE THE RESULTS INTO 'FIT SCORES', WITH 100% OR 1.0 BEING PERFECT
+                $company_fit = $this->preview_model->fit_score($ranked_results);
+                $company_fit = $company_fit;
+
+                //COUNT THE NUMBER OF COMPANIES IN THE LIST
+                $company_count = count($ranked_results);
+                $image_path = "assets/images/company_logos/";
+
+                //WRITE THE FIT DATA TO THE SESSION FOR USE IF THE USER SIGNS UP
+                $this->session->set_userdata('company_fit',$company_fit);
+
+                //SET A FLAG SO WE KNOW TO SAVE THE USER'S DATA IF THEY SIGN UP
+                $this->session->set_userdata('save_data',TRUE);       
+
+                //RETURN THE FIRST 5 COMPANIES FOR THE PREVIEW.  get_company2 returns the full list...
+                $company_info = $this->preview_model->get_company3($ranked_results);
+                $full_company_info = $this->preview_model->merge_company_info($company_info,$company_fit); 
+                
+                $match_data = array();
+                $match_data['company_count']   = $company_count;
+                $match_data['full_company_info']   = $full_company_info;
+                $match_data['image_path']   = $image_path;
+                
+                return $match_data;                    
+            }
+            else 
+            {
+                $match_data = array();
+                $match_data['company_count']   = 0;
+                $match_data['full_company_info']   = NULL;
+                $match_data['image_path']   = $image_path;
+                
+                return $match_data;                     
+            }
+        }
+        else 
+        {
+            $match_data = array();
+            $match_data['company_count']   = 0;
+            $match_data['full_company_info']   = NULL;
+            $match_data['image_path']   = $image_path;
+
+            return $match_data;                     
+        }        
+        
+    }//end of run_matching_algorithm
+    
+    
+    public function user_tester(){
+        //get list of categories from database
+        $this->load->model('survey_model');
+        $data['categories'] = $this->survey_model->get_categories();
+        $data['message'] = '';
+        $this->load->view("survey/user_tester",$data);
+        //$this->load->view("survey/newload",$data);
+    }     
     
     public function insert_matches(){
         //echo "i'm saving you data!";

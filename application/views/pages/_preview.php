@@ -1,28 +1,37 @@
 <div id="preview">
 	<div class="content">
-		<p id="title">Here are your results!</p>
-		<p>You have <span><?php echo $company_count;?> companies</span> in your list. Here are the first few...</p>
-		<p><a href="jobs">
+
                         
                 <?php
-                
-                if (!empty($full_company_info))
+                if ($company_count>0)
                 {
-                    echo "<div class = 'company'>";
-                    foreach ($full_company_info as $row)
+                    echo '<p id="title">Here are your results!</p>';
+                    echo "<p>You have <span>{$company_count} companies</span> in your list. Here are the first few...</p>";
+                    echo '<p><a href="jobs">';
+
+                    if (!empty($full_company_info))
                     {
-                        
-                        //echo '<br>';
-                        //echo '<a href="'.$row['company_url'].'">'.$row['company_name'].'</a>';
-                        //echo '<br>';
-                        echo "<img src='{$image_path}{$row['company_logo']}' height='100' style = 'margin:30px;'/>";
-                        //echo '<br>';
-                        //echo "fit score: ".$row['fit_score'];
-                        //echo '<br>';
-                        
+                        echo "<div class = 'company'>";
+                        foreach ($full_company_info as $row)
+                        {
+                            //echo '<br>';
+                            //echo '<a href="'.$row['company_url'].'">'.$row['company_name'].'</a>';
+                            //echo '<br>';
+                            echo "<img src='{$image_path}{$row['company_logo']}' height='100' style = 'margin:30px;'/>";
+                            //echo '<br>';
+                            //echo "fit score: ".$row['fit_score'];
+                            //echo '<br>';
+                        }
+                        echo "</div>";
                     }
-                    echo "</div>";
                 }
+                else
+                {
+                    echo '<p id="title">Bummer!</p>';
+                    echo "<p>We didn't find any matches for you.</p>";                   
+                }
+                
+                
                 
                 ?>
                         
