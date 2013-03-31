@@ -8,14 +8,16 @@
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/typeahead.css" type="text/css"/>
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/jquery-ui.css" />
 	
+	<script src="http://twitter.github.com/typeahead.js/js/hogan-2.0.0.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>	
-	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.isotope.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/typeahead.min.js"></script>
-	<script src="http://twitter.github.com/hogan.js/builds/2.0.0/hogan-2.0.0.js"></script>
-	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.raty.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.raty.min.js"></script> 
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.isotope.min.js"></script>
         
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script> 
+	
+	
 </head>
 <body>
 	<div id="header">

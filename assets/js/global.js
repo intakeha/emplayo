@@ -48,7 +48,7 @@ $(document).ready(function(){
 			return false;
 		});
 		
-		 $container.on('click', '.smallTile', function(){
+		 $container.on('click', '.smallHighlight', function(){
 			$('#profile img.smallTile.bigTile').removeClass('bigTile');
 			$(this).toggleClass('bigTile');
 			$(this).find('div').toggleClass('bigContent');
@@ -619,10 +619,6 @@ $(document).ready(function(){
 			$('input[id=q17_0]').val($(this).index()+1);
 			$("div#q17_flag").text(1);
 			lastEmpty = showNextButton(17, lastEmpty);
-			
-			/*lastEmpty = 17;
-			$('#next_question').hide();
-			$('#show_preview').show(); */
 		});
 		
 		// Q18 - Industry
@@ -672,18 +668,12 @@ $(document).ready(function(){
 		});
 		
 		// Q19 - Work Location
-		 $('.location').typeahead({
-			local: [
-				"San Francisco, CA",
-				"Las Vegas, NV",
-				"New York, NY",
-				"Miami, FL",
-				"San Jose, CA",
-				"London, United Kingdom",
-				"Bangkok, Thailand",
-				"Sydney, Australia",
-				"Paris, France"
-			]
+		$('.location').typeahead({
+                    name: 'location',
+                    limit: 5,
+                    remote: '/inquire/location_search/%QUERY',
+                    template: '<p><strong>{{value}}</strong> - {{region}}</p>',
+                    engine: Hogan                    
 		});
 		
 		// Q20 - Work History
@@ -693,6 +683,11 @@ $(document).ready(function(){
 		monthDropdown('#history .month');
 		yearDropdown('#history .year');
 		presentFlag();
+		
+		
+		/*lastEmpty = 20; // Get preview
+		$('#next_question').hide();
+		$('#show_preview').show();*/
 		
 		$('#history .addButton').on("click", function(event){
 			var educationRef = $('#education_layout li').length / 4;
@@ -862,6 +857,7 @@ function dateSelect(id){  // remove the prefill color on click
 		$(this).removeClass("prefill");
 	});
 };
+
 
 // Modal popup function
 function modal(modalID, modalWidth, topMargin){
