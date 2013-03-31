@@ -25,6 +25,40 @@ class Inquire extends CI_Controller {
 		$data['content']="pages/_criteria";
 		$this->load->view('canvas', $data);
 	}
+ 
+/*       if(($this->input->post('kw')) && ($this->input->post('kw') != ''))    
+        {
+            $kws = $this->input->post('kw');
+            $this->company_model->company_name_search($kws);
+            
+        }  */        
+  
+        public function location_search2()
+        {
+            $searchterm = $this->input->get('searchterm');
+            //$searchterm = 'hey';
+               // echo "this is searchterm:".$searchterm;
+                
+                $search_term = $searchterm;
+                $decoded_search_term = urldecode($search_term);
+                $result = $this->inquire_model->location_search2($decoded_search_term);
+                header('Content-Type: application/json');
+                echo $result;
+
+               
+        }//end of       
+        
+        public function industry_search()
+        {
+            $searchterm = $this->input->get('searchterm');
+                $search_term = $searchterm;
+                $decoded_search_term = urldecode($search_term);
+                $result = $this->inquire_model->industry_search($decoded_search_term);
+                header('Content-Type: application/json');
+                echo $result;
+
+               
+        }//end of         
         
         public function location_search($search_term)
         {
@@ -32,6 +66,7 @@ class Inquire extends CI_Controller {
             {
                 $decoded_search_term = urldecode($search_term);
                 $result = $this->inquire_model->location_search($decoded_search_term);
+                header('Content-Type: application/json');
                 echo $result;
 
             }        
@@ -79,6 +114,10 @@ class Inquire extends CI_Controller {
                 echo $result;
 
             }        
-        }//end of degree_type_search          
+        }//end of degree_type_search    
+        
+	public function typetest(){
+		$this->load->view('pages/typetest');
+	}        
         
 }//end of controller

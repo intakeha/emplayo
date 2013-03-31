@@ -26,13 +26,62 @@ class Inquire_model extends MY_Model {
             foreach($query->result_array() as $row=>$item)
             {
                 $result_array[$row]['id'] = $item['id'];
-                $result_array[$row]['city'] = $item['display_city'];
+                //$result_array[$row]['city'] = $item['display_city'];
                 $result_array[$row]['region'] = $item['region'];
+                $result_array[$row]['value'] = $item['display_city'];
             }
             $output = json_encode($result_array);    
             return $output;            
         }        
     }  
+  
+    function location_search2($search_term)
+    {
+
+        $this->db->select('id, display_city, region');
+        $this->db->like('city', $search_term, 'after');
+        $this->db->limit('10');
+        $query = $this->db->get('ref_city');
+        $count = $query->num_rows();        
+
+        if($query)
+        {      
+            $result_array = array();
+            foreach($query->result_array() as $row=>$item)
+            {
+                $result_array[$row]['id'] = $item['id'];
+                $result_array[$row]['text'] = $item['display_city'].', '.$item['region'];
+                //$result_array[$row]['region'] = $item['region'];
+                //$result_array[$row]['value'] = $item['display_city'];
+            }
+            $output = json_encode($result_array);    
+            return $output;            
+        }        
+    }      
+  
+    function industry_search($search_term)
+    {
+
+        $this->db->select('id, display_city, region');
+        $this->db->like('city', $search_term, 'after');
+        $this->db->limit('10');
+        $query = $this->db->get('ref_city');
+        $count = $query->num_rows();        
+
+        if($query)
+        {      
+            $result_array = array();
+            foreach($query->result_array() as $row=>$item)
+            {
+                $result_array[$row]['id'] = $item['id'];
+                $result_array[$row]['text'] = $item['display_city'].', '.$item['region'];
+                //$result_array[$row]['region'] = $item['region'];
+                //$result_array[$row]['value'] = $item['display_city'];
+            }
+            $output = json_encode($result_array);    
+            return $output;            
+        }        
+    }      
     
     function college_search($search_term)
     {
