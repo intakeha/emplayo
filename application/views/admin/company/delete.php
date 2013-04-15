@@ -33,7 +33,7 @@
 
 <div id="container">
     <div class="">Are you sure you want to delete <b><?php echo $company_info['company_name'];?></b>?  This cannot be undone!</div><br>
-<?    
+<?php   
 $submit_url = 'admin/company/delete/'.$company_id;
     echo form_open($submit_url);
 

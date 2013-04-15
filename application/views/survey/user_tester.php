@@ -397,7 +397,7 @@ user_education[0][end_month]
                     </select>
             </li>
     </ul>        
- <?           
+ <?php          
             
             
 /*            
@@ -471,7 +471,7 @@ user_work[0][current]
                 <span class="presentText">I currently work here</span><input type="checkbox" checked="checked" name="user_work[1][current]" value="1"/>
         </li>
 </ul>          
- <?    
+ <?php   
             
             echo '<br/>';
             echo form_submit('mysubmit', 'Submit');

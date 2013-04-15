@@ -256,8 +256,7 @@ $(document).ready(function()
                 ?>
                 <input type="radio" name="company_type" value="<?php echo $row['id'];?>" 
                        id="company_type" <?php echo set_radio('company_type', ''.$row['id'].''); ?>/>
-                <?
-                echo form_label($row['type'],'company_type');
+                <?php                echo form_label($row['type'],'company_type');
                 echo '<br/>';
             }
             echo form_fieldset_close();               
@@ -275,7 +274,7 @@ $(document).ready(function()
                 ?>
                 <input type="radio" name="company_pace" value="<?php echo $row['id'];?>" 
                        id="company_pace" <?php echo set_radio('company_pace', ''.$row['id'].''); ?>/>
-                <?                
+                <?php               
                 echo form_label($row['pace'],'company_pace');
                 echo '<br/>';
             }
@@ -292,7 +291,7 @@ $(document).ready(function()
                 ?>
                 <input type="radio" name="company_lifecycle" value="<?php echo $row['id'];?>" 
                        id="company_lifecycle" <?php echo set_radio('company_lifecycle', ''.$row['id'].''); ?>/>
-                <?                 
+                <?php                
                 echo form_label($row['lifecycle'],'company_lifecycle');
                 echo '<br/>';
             }
@@ -309,7 +308,7 @@ $(document).ready(function()
                 ?>
                 <input type="radio" name="corp_citizenship" value="<?php echo $row['id'];?>" 
                        id="corp_citizenship" <?php echo set_radio('corp_citizenship', ''.$row['id'].''); ?>/>
-                <?                    
+                <?php                   
                 echo form_label($row['corp_citizenship'],'corp_citizenship');
                 echo '<br/>';
             }            
