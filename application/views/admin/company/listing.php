@@ -37,7 +37,8 @@
     <div id="hd">
 	<h1>Emplayo - Company Listing</h1>
     </div>    
-<?php
+
+<?php   
     echo '<div class ="message">';
     echo $this->session->flashdata('message');
     echo '</div>';

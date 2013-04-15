@@ -35,7 +35,7 @@ class Inquire_model extends MY_Model {
  
     function industry_search($search_term)
     {
-        $this->db->select('industry_id, name');
+        $this->db->select('id, name');
         $this->db->like('name', $search_term, 'both');
         $this->db->limit('5');
         $query = $this->db->get('ref_industry');
@@ -46,7 +46,7 @@ class Inquire_model extends MY_Model {
             $result_array = array();
             foreach($query->result_array() as $row=>$item)
             {
-                $result_array[$row]['id'] = $item['industry_id'];
+                $result_array[$row]['id'] = $item['id'];
                 $result_array[$row]['value'] = $item['name'];
             }
             $output = json_encode($result_array);    
@@ -166,7 +166,7 @@ class Inquire_model extends MY_Model {
     function jobtype_search($search_term)
     {
 
-        $this->db->select('job_type_id, name');
+        $this->db->select('id, name');
         $this->db->like('name', $search_term, 'after');
         $this->db->limit('5');
         $query = $this->db->get('ref_job_type');
@@ -177,7 +177,7 @@ class Inquire_model extends MY_Model {
             $result_array = array();
             foreach($query->result_array() as $row=>$item)
             {
-                $result_array[$row]['id'] = $item['job_type_id'];
+                $result_array[$row]['id'] = $item['id'];
                 $result_array[$row]['value'] = $item['name'];
             }
             $output = json_encode($result_array);    

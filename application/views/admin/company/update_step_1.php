@@ -291,8 +291,10 @@ $(document).ready(function()
                 {
                  echo set_radio('company_type', ''.$row['id'].'');   
                 } ?> />
-                <?php
+
+	<?php
                 echo form_label($row['type'],'company_type');
+
                 echo '<br/>';
             }
             echo form_fieldset_close();               
@@ -322,7 +324,7 @@ $(document).ready(function()
                 }
                        
                        ?>/>
-                <?php                
+                <?php               
                 echo form_label($row['pace'],'company_pace');
                 echo '<br/>';
             }
@@ -380,7 +382,7 @@ $(document).ready(function()
                     echo set_radio('corp_citizenship', ''.$row['id'].'');
                 }
                        ?>/>
-                <?php                    
+                <?php                   
                 echo form_label($row['corp_citizenship'],'corp_citizenship');
                 echo '<br/>';
             }            
