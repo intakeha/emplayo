@@ -26,13 +26,6 @@ class Inquire extends CI_Controller {
 		$this->load->view('canvas', $data);
 	}
  
-/*       if(($this->input->post('kw')) && ($this->input->post('kw') != ''))    
-        {
-            $kws = $this->input->post('kw');
-            $this->company_model->company_name_search($kws);
-            
-        }  */ 
-        
         public function industry_search($search_term)
         {
 		if(($search_term) && ($search_term) != '')    

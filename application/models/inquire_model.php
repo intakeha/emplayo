@@ -32,7 +32,7 @@ class Inquire_model extends MY_Model {
             return $output;            
         }      
     } 
-  
+ 
     function industry_search($search_term)
     {
         $this->db->select('industry_id, name');

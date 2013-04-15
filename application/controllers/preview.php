@@ -64,99 +64,90 @@ class Preview extends CI_Controller {
 	    echo "5 - validate data fail";
         }
         else {//data is good...process it.
-	
-	 echo "7 - validate data pass";
-            
                 
-                /*01*/$user_type = $this->input->post('user_type');
-                /*02*/$user_pace = $this->input->post('user_pace');
-                /*03*/$user_lifecycle = $this->input->post('user_lifecycle');
-                /*04*/$user_benefits = $this->input->post('user_benefits');
-                /*05*/$user_citizenship = $this->input->post('user_citizenship');
-                /*06*/$user_travel = $this->input->post('user_travel');
-                /*07*/$user_responsibilities = $this->input->post('user_responsibilities');
-                /*08*/$user_promotion = $this->input->post('user_promotion');
-                /*09*/$user_environment = $this->input->post('user_environment');
-                /*10*/$user_recognition = $this->input->post('user_recognition');
-                /*11*/$user_tasks = $this->input->post('user_tasks');
-                /*12*/$user_communication = $this->input->post('user_communication');
-                /*13*/$user_resource = $this->input->post('user_resource');
-                /*14*/$user_supervisor = $this->input->post('user_supervisor');
-                /*15*/$user_leadership = $this->input->post('user_leadership');
-                /*16*/$user_traits = $this->input->post('user_traits');
-                /*17*/$user_motivation = $this->input->post('user_motivation');
-                /*18a*/$user_education = $this->input->post('user_education');
-                /*18b*/$user_work = $this->input->post('user_work');
-                /*19*/$user_location = $this->input->post('user_location');
-                /*20*/$user_industry = $this->input->post('user_industry');
-                //$categories = $this->input->post('category');//NOT SURE OF THIS NAME!!!                
-                //$history = $this->input->post('history'); //NOT SURE OF THIS NAME!!!  
- 
-               
-                //print_r($user_work);
-                
-                
-                //TODO: MAKE SURE WE MAKE WORK AND EDUCATION HISTORY OPTIONAL!
-                //TODO: FIX THESE NAMES ASSIGNED TO THE SESSION AND EVERYWHERE ELSE THEY MAY BE USED:
-                //
-                //let's save all the submitted data to the session so we can get it later if the user decides to sign up
-                
-                /*01*/$this->session->set_userdata('user_type',$user_type);
-                /*02*/$this->session->set_userdata('user_pace',$user_pace);
-                /*03*/$this->session->set_userdata('user_lifecycle',$user_lifecycle);
-                /*04*/$this->session->set_userdata('user_benefits',$user_benefits);
-                /*05*/$this->session->set_userdata('user_citizenship',$user_citizenship);
-                /*06*/$this->session->set_userdata('user_travel',$user_travel);
-                /*07*/$this->session->set_userdata('user_responsibilities',$user_responsibilities);
-                /*08*/$this->session->set_userdata('user_promotion',$user_promotion);
-                /*09*/$this->session->set_userdata('user_environment',$user_environment);
-                /*10*/$this->session->set_userdata('user_recognition',$user_recognition);
-                /*11*/$this->session->set_userdata('user_tasks',$user_tasks);
-                /*12*/$this->session->set_userdata('user_communication',$user_communication);
-                /*13*/$this->session->set_userdata('user_resource',$user_resource);
-                /*14*/$this->session->set_userdata('user_supervisor',$user_supervisor);
-                /*15*/$this->session->set_userdata('user_leadership',$user_leadership);
-                /*16*/$this->session->set_userdata('user_traits',$user_traits);
-                /*17*/$this->session->set_userdata('user_motivation',$user_motivation);
-                /*18a*/$this->session->set_userdata('user_education',$user_education);
-                /*18b*/$this->session->set_userdata('user_work',$user_work);
-                /*19*/$this->session->set_userdata('user_location',$user_location);    
-                /*20*/$this->session->set_userdata('user_industry',$user_industry); 
-                //$this->session->set_userdata('category',$categories); //NEED TO REVIEW THIS!!
-                //$this->session->set_userdata('history',$history); //NEED TO REVIEW THIS!!       
+            /*01*/$user_type = $this->input->post('user_type');
+            /*02*/$user_pace = $this->input->post('user_pace');
+            /*03*/$user_lifecycle = $this->input->post('user_lifecycle');
+            /*04*/$user_benefits = $this->input->post('user_benefits');
+            /*05*/$user_citizenship = $this->input->post('user_citizenship');
+            /*06*/$user_travel = $this->input->post('user_travel');
+            /*07*/$user_responsibilities = $this->input->post('user_responsibilities');
+            /*08*/$user_promotion = $this->input->post('user_promotion');
+            /*09*/$user_environment = $this->input->post('user_environment');
+            /*10*/$user_recognition = $this->input->post('user_recognition');
+            /*11*/$user_tasks = $this->input->post('user_tasks');
+            /*12*/$user_communication = $this->input->post('user_communication');
+            /*13*/$user_resource = $this->input->post('user_resource');
+            /*14*/$user_supervisor = $this->input->post('user_supervisor');
+            /*15*/$user_leadership = $this->input->post('user_leadership');
+            /*16*/$user_traits = $this->input->post('user_traits');
+            /*17*/$user_motivation = $this->input->post('user_motivation');
+            /*18a*/$user_education = $this->input->post('user_education');
+            /*18b*/$user_work = $this->input->post('user_work');
+            /*19*/$user_location = $this->input->post('user_location');
+            /*20*/$user_industry = $this->input->post('user_industry');
+            //$categories = $this->input->post('category');//NOT SURE OF THIS NAME!!!                
+            //$history = $this->input->post('history'); //NOT SURE OF THIS NAME!!!  
 
-		echo "1 - before data";
-                
-                //SEND THE USER ENTERED DATA OFF TO THE MATCHING ALGORITHM
-                $data = $this->run_matching_algorithm($user_type,$user_pace,$user_lifecycle,$user_benefits,$user_citizenship,$user_industry,$user_work);
-                //$data VAR IS AN ARRAY THAT CONTAINS LIST OF COMPANIES WITH ALL REQUIRED INFO TO DISPLAY
-		
-		echo "2 - after data";
-                
-                if ($data['company_count']>0)
-                {
-                    //WE FOUND MATCHES! DISPLAY THE VIEW
-                    $data['title']="Preview Results";
-                    $data['content']="pages/_preview";
-                    $this->load->view('canvas', $data);
-		    echo "3 - found matches";
-                }
-                else
-                {
-                    //THERE WERE NO MATCHES...DISPLAY THE VIEW
-                    //$data['company_count'] = 0;
-                    $data['title']="Preview Results";
-                    $data['content']="pages/_preview";
-                    $this->load->view('canvas', $data);
-			echo "4 - no matches";
-                }
-            
+
+            //print_r($user_work);
+
+
+            //TODO: MAKE SURE WE MAKE WORK AND EDUCATION HISTORY OPTIONAL!
+            //TODO: FIX THESE NAMES ASSIGNED TO THE SESSION AND EVERYWHERE ELSE THEY MAY BE USED:
+            //
+            //let's save all the submitted data to the session so we can get it later if the user decides to sign up
+
+            /*01*/$this->session->set_userdata('user_type',$user_type);
+            /*02*/$this->session->set_userdata('user_pace',$user_pace);
+            /*03*/$this->session->set_userdata('user_lifecycle',$user_lifecycle);
+            /*04*/$this->session->set_userdata('user_benefits',$user_benefits);
+            /*05*/$this->session->set_userdata('user_citizenship',$user_citizenship);
+            /*06*/$this->session->set_userdata('user_travel',$user_travel);
+            /*07*/$this->session->set_userdata('user_responsibilities',$user_responsibilities);
+            /*08*/$this->session->set_userdata('user_promotion',$user_promotion);
+            /*09*/$this->session->set_userdata('user_environment',$user_environment);
+            /*10*/$this->session->set_userdata('user_recognition',$user_recognition);
+            /*11*/$this->session->set_userdata('user_tasks',$user_tasks);
+            /*12*/$this->session->set_userdata('user_communication',$user_communication);
+            /*13*/$this->session->set_userdata('user_resource',$user_resource);
+            /*14*/$this->session->set_userdata('user_supervisor',$user_supervisor);
+            /*15*/$this->session->set_userdata('user_leadership',$user_leadership);
+            /*16*/$this->session->set_userdata('user_traits',$user_traits);
+            /*17*/$this->session->set_userdata('user_motivation',$user_motivation);
+            /*18a*/$this->session->set_userdata('user_education',$user_education);
+            /*18b*/$this->session->set_userdata('user_work',$user_work);
+            /*19*/$this->session->set_userdata('user_location',$user_location);    
+            /*20*/$this->session->set_userdata('user_industry',$user_industry); 
+            //$this->session->set_userdata('category',$categories); //NEED TO REVIEW THIS!!
+            //$this->session->set_userdata('history',$history); //NEED TO REVIEW THIS!!                
+
+            //SEND THE USER ENTERED DATA OFF TO THE MATCHING ALGORITHM
+            $data = $this->run_matching_algorithm($user_type,$user_pace,$user_lifecycle,$user_benefits,$user_citizenship,$user_industry,$user_work);
+            //$data VAR IS AN ARRAY THAT CONTAINS LIST OF COMPANIES WITH ALL REQUIRED INFO TO DISPLAY
+
+            if ($data['company_count']>0)
+            {
+                //WE FOUND MATCHES! DISPLAY THE VIEW
+                $data['title']="Preview Results";
+                $data['content']="pages/_preview";
+                $this->load->view('canvas', $data);
+            }
+            else
+            {
+                //THERE WERE NO MATCHES...DISPLAY THE VIEW
+                //$data['company_count'] = 0;
+                $data['title']="Preview Results";
+                $data['content']="pages/_preview";
+                $this->load->view('canvas', $data);
+            }
         }
     } //end of index()
 
     public function run_matching_algorithm($user_type,$user_pace,$user_lifecycle,$user_benefits,$user_citizenship,$user_industry,$user_work){
         
         $this->load->model('preview_model');
+        $image_path = "assets/images/company_logos/";
 
         //FIND COMPANIES THAT MATCH THE USER'S INDUSTRY CHOICE
         $comps_by_industry = $this->preview_model->industry_filter($user_industry);
@@ -186,7 +177,7 @@ class Preview extends CI_Controller {
 
                 //COUNT THE NUMBER OF COMPANIES IN THE LIST
                 $company_count = count($ranked_results);
-                $image_path = "assets/images/company_logos/";
+                
 
                 //WRITE THE FIT DATA TO THE SESSION FOR USE IF THE USER SIGNS UP
                 $this->session->set_userdata('company_fit',$company_fit);
