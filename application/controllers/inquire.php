@@ -36,17 +36,32 @@ class Inquire extends CI_Controller {
         public function location_search2()
         {
             $searchterm = $this->input->get('searchterm');
-            //$searchterm = 'hey';
-               // echo "this is searchterm:".$searchterm;
+            if (!empty($searchterm)){
                 
                 $search_term = $searchterm;
                 $decoded_search_term = urldecode($search_term);
                 $result = $this->inquire_model->location_search2($decoded_search_term);
                 header('Content-Type: application/json');
                 echo $result;
+            }
 
                
-        }//end of       
+        }//end of
+        
+        public function location_search3($searchterm)
+        {
+            //$searchterm = $this->input->get('searchterm');
+            if (!empty($searchterm)){
+                
+                $search_term = $searchterm;
+                $decoded_search_term = urldecode($search_term);
+                $result = $this->inquire_model->location_search3($decoded_search_term);
+                header('Content-Type: application/json');
+                echo $result;
+            }
+
+               
+        }//end of           
         
         public function industry_search()
         {

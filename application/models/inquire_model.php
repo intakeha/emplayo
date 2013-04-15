@@ -57,7 +57,32 @@ class Inquire_model extends MY_Model {
             return $output;            
         }        
     }      
-  
+ 
+    function location_search3($search_term)
+    {
+
+        $this->db->select('id, display_city, region');
+        $this->db->like('display_city', $search_term, 'after');
+        $this->db->limit('30');
+        $this->db->order_by("display_city", "asc");
+        $query = $this->db->get('ref_city');
+        $count = $query->num_rows();        
+
+        if($query)
+        {      
+            $result_array = array();
+            foreach($query->result_array() as $row=>$item)
+            {
+                $result_array[$row]['id'] = $item['id'];
+                $result_array[$row]['value'] = $item['display_city'].', '.$item['region'];
+                //$result_array[$row]['region'] = $item['region'];
+                //$result_array[$row]['value'] = $item['display_city'];
+            }
+            $output = json_encode($result_array);    
+            return $output;            
+        }        
+    }      
+    
     function industry_search($search_term)
     {
 

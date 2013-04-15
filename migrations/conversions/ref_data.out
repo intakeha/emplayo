@@ -1,0 +1,236 @@
+// group
+$group = $this->create_table("group", array("id"=>false));
+
+$group->column("id", "smallinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$group->column("name", "string");
+$group->column("description", "string");
+
+$group->finish();
+
+// ref_benefits
+$ref_benefits = $this->create_table("ref_benefits", array("id"=>false));
+
+$ref_benefits->column("id", "smallinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_benefits->column("benefits", "string");
+
+$ref_benefits->finish();
+
+// ref_category
+$ref_category = $this->create_table("ref_category", array("id"=>false));
+
+$ref_category->column("category_id", "tinyinteger");
+$ref_category->column("name", "string");
+
+$ref_category->finish();
+
+// ref_city
+$ref_city = $this->create_table("ref_city", array("id"=>false));
+
+$ref_city->column("id", "smallinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_city->column("country_code", "string");
+$ref_city->column("city", "string");
+$ref_city->column("display_city", "string");
+$ref_city->column("region", "string");
+$ref_city->column("population", "smallinteger");
+$ref_city->column("latitude", "decimal");
+$ref_city->column("longitude", "decimal");
+
+$ref_city->finish();
+
+// ref_college
+$ref_college = $this->create_table("ref_college", array("id"=>false));
+
+$ref_college->column("id", "smallinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_college->column("college", "string");
+
+$ref_college->finish();
+
+// ref_communication
+$ref_communication = $this->create_table("ref_communication", array("id"=>false));
+
+$ref_communication->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_communication->column("communication", "string");
+
+$ref_communication->finish();
+
+// ref_corp_citizenship
+$ref_corp_citizenship = $this->create_table("ref_corp_citizenship", array("id"=>false));
+
+$ref_corp_citizenship->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_corp_citizenship->column("corp_citizenship", "string");
+
+$ref_corp_citizenship->finish();
+
+// ref_degree_type
+$ref_degree_type = $this->create_table("ref_degree_type", array("id"=>false));
+
+$ref_degree_type->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_degree_type->column("degree_type", "string");
+$ref_degree_type->column("degree_type_short", "string");
+
+$ref_degree_type->finish();
+
+// ref_environment
+$ref_environment = $this->create_table("ref_environment", array("id"=>false));
+
+$ref_environment->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_environment->column("environment", "string");
+
+$ref_environment->finish();
+
+// ref_leadership
+$ref_leadership = $this->create_table("ref_leadership", array("id"=>false));
+
+$ref_leadership->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_leadership->column("leadership", "string");
+
+$ref_leadership->finish();
+
+// ref_lifecycle
+$ref_lifecycle = $this->create_table("ref_lifecycle", array("id"=>false));
+
+$ref_lifecycle->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_lifecycle->column("lifecycle", "string");
+
+$ref_lifecycle->finish();
+
+// ref_major
+$ref_major = $this->create_table("ref_major", array("id"=>false));
+
+$ref_major->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_major->column("major", "string");
+$ref_major->column("major_category_id", "tinyinteger");
+
+$ref_major->finish();
+
+// ref_major_category
+$ref_major_category = $this->create_table("ref_major_category", array("id"=>false));
+
+$ref_major_category->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_major_category->column("major_category", "string");
+
+$ref_major_category->finish();
+
+// ref_motivation
+$ref_motivation = $this->create_table("ref_motivation", array("id"=>false));
+
+$ref_motivation->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_motivation->column("motivation", "string");
+
+$ref_motivation->finish();
+
+// ref_pace
+$ref_pace = $this->create_table("ref_pace", array("id"=>false));
+
+$ref_pace->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_pace->column("pace", "string");
+
+$ref_pace->finish();
+
+// ref_pic_shape
+$ref_pic_shape = $this->create_table("ref_pic_shape", array("id"=>false));
+
+$ref_pic_shape->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_pic_shape->column("pic_shape", "string");
+
+$ref_pic_shape->finish();
+
+// ref_promotion
+$ref_promotion = $this->create_table("ref_promotion", array("id"=>false));
+
+$ref_promotion->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_promotion->column("promotion", "string");
+
+$ref_promotion->finish();
+
+// ref_recognition
+$ref_recognition = $this->create_table("ref_recognition", array("id"=>false));
+
+$ref_recognition->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_recognition->column("recognition", "string");
+
+$ref_recognition->finish();
+
+// ref_resource
+$ref_resource = $this->create_table("ref_resource", array("id"=>false));
+
+$ref_resource->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_resource->column("resource", "string");
+
+$ref_resource->finish();
+
+// ref_responsibilities
+$ref_responsibilities = $this->create_table("ref_responsibilities", array("id"=>false));
+
+$ref_responsibilities->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_responsibilities->column("responsibilities", "string");
+
+$ref_responsibilities->finish();
+
+// ref_supervisor
+$ref_supervisor = $this->create_table("ref_supervisor", array("id"=>false));
+
+$ref_supervisor->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_supervisor->column("supervisor", "string");
+
+$ref_supervisor->finish();
+
+// ref_tasks
+$ref_tasks = $this->create_table("ref_tasks", array("id"=>false));
+
+$ref_tasks->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_tasks->column("tasks", "string");
+
+$ref_tasks->finish();
+
+// ref_traits
+$ref_traits = $this->create_table("ref_traits", array("id"=>false));
+
+$ref_traits->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_traits->column("traits", "string");
+
+$ref_traits->finish();
+
+// ref_travel
+$ref_travel = $this->create_table("ref_travel", array("id"=>false));
+
+$ref_travel->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_travel->column("travel", "string");
+
+$ref_travel->finish();
+
+// ref_type
+$ref_type = $this->create_table("ref_type", array("id"=>false));
+
+$ref_type->column("id", "tinyinteger", array('primary_key' => true, 'auto_increment' => true, 'null' => false, 'unsigned' => true));
+$ref_type->column("type", "string");
+
+$ref_type->finish();
+
+
+
+$this->drop_table("group");
+$this->drop_table("ref_benefits");
+$this->drop_table("ref_category");
+$this->drop_table("ref_city");
+$this->drop_table("ref_college");
+$this->drop_table("ref_communication");
+$this->drop_table("ref_corp_citizenship");
+$this->drop_table("ref_degree_type");
+$this->drop_table("ref_environment");
+$this->drop_table("ref_leadership");
+$this->drop_table("ref_lifecycle");
+$this->drop_table("ref_major");
+$this->drop_table("ref_major_category");
+$this->drop_table("ref_motivation");
+$this->drop_table("ref_pace");
+$this->drop_table("ref_pic_shape");
+$this->drop_table("ref_promotion");
+$this->drop_table("ref_recognition");
+$this->drop_table("ref_resource");
+$this->drop_table("ref_responsibilities");
+$this->drop_table("ref_supervisor");
+$this->drop_table("ref_tasks");
+$this->drop_table("ref_traits");
+$this->drop_table("ref_travel");
+$this->drop_table("ref_type");

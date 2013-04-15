@@ -1,0 +1,14 @@
+Convert.php is used to convert an SQL file to the format needed by ruckusing.
+This file was found at: https://gist.github.com/Jmayhak/998477/download#
+It required some tweaking to know how to deal with different column types (e.g. tinyint,etc)
+
+TO RUN:
+edit the file variable $string to be the name of the sql file you want to convert.  This sql file should 
+be in the same folder as convert.php
+
+Run from the command line version of php
+
+The output can be piped into a file as such:
+
+    php convert.php>converted_data.out
+

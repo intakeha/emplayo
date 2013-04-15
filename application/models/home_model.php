@@ -103,7 +103,7 @@ class Home_model extends MY_Model {
                 $array[$key]['college_name'] = NULL;
             } else {
                 $array[$key]['college_id'] = NULL;
-                $array[$key]['college_name'] = $value['school_name'];                
+                $array[$key]['college_name'] = $value['school_id'];                
             }
             $array[$key]['start_date'] = $value['start_year'].'-'.$value['start_month'].'-01';
             $array[$key]['end_date'] = $value['end_year'].'-'.$value['end_month'].'-01';
@@ -124,7 +124,7 @@ class Home_model extends MY_Model {
                 $array[$key]['company_name'] = NULL;
             } else {
                 $array[$key]['company_id'] = NULL;
-                $array[$key]['company_name'] = $value['company_name'];                
+                $array[$key]['company_name'] = $value['company_id'];                
             }
             
             $array[$key]['start_date'] = $value['start_year'].'-'.$value['start_month'].'-01';
@@ -140,8 +140,14 @@ class Home_model extends MY_Model {
                 $array[$key]['current'] = 0;
             }
             
-            
-            $array[$key]['job_type_id'] = $value['job_id'];   
+            if (!empty ($value['job_id'])){
+                $array[$key]['job_type_id'] = $value['job_id'];
+                $array[$key]['job_type_name'] = NULL;
+            } else {
+                $array[$key]['job_type_id'] = NULL;
+                $array[$key]['job_type_name'] = $value['job_id'];                
+            }            
+  
             $array[$key]['rating'] = $value['rating'];
         }   
         return $array; 
