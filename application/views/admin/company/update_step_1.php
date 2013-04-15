@@ -291,7 +291,7 @@ $(document).ready(function()
                 {
                  echo set_radio('company_type', ''.$row['id'].'');   
                 } ?> />
-                <?
+                <?php
                 echo form_label($row['type'],'company_type');
                 echo '<br/>';
             }
@@ -322,7 +322,7 @@ $(document).ready(function()
                 }
                        
                        ?>/>
-                <?                
+                <?php                
                 echo form_label($row['pace'],'company_pace');
                 echo '<br/>';
             }
@@ -351,7 +351,7 @@ $(document).ready(function()
                     echo set_radio('company_lifecycle', ''.$row['id'].'');
                 }                       
                        ?>/>
-                <?                 
+                <?php                
                 echo form_label($row['lifecycle'],'company_lifecycle');
                 echo '<br/>';
             }
@@ -380,7 +380,7 @@ $(document).ready(function()
                     echo set_radio('corp_citizenship', ''.$row['id'].'');
                 }
                        ?>/>
-                <?                    
+                <?php                    
                 echo form_label($row['corp_citizenship'],'corp_citizenship');
                 echo '<br/>';
             }            
