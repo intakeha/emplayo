@@ -31,66 +31,37 @@ class Inquire extends CI_Controller {
             $kws = $this->input->post('kw');
             $this->company_model->company_name_search($kws);
             
-        }  */        
-  
-        public function location_search2()
-        {
-            $searchterm = $this->input->get('searchterm');
-            //$searchterm = 'hey';
-               // echo "this is searchterm:".$searchterm;
-                
-                $search_term = $searchterm;
-                $decoded_search_term = urldecode($search_term);
-                $result = $this->inquire_model->location_search2($decoded_search_term);
-                header('Content-Type: application/json');
-                echo $result;
-
-               
-        }//end of       
+        }  */ 
         
-        public function industry_search()
+        public function industry_search($search_term)
         {
-                $searchterm = $this->input->get('searchterm');
-                $search_term = $searchterm;
-                $decoded_search_term = urldecode($search_term);
-                $result = $this->inquire_model->industry_search($decoded_search_term);
-                header('Content-Type: application/json');
-                echo $result;
-
-               
-        }//end of     
+		if(($search_term) && ($search_term) != '')    
+		{
+			$decoded_search_term = urldecode($search_term);
+			$result = $this->inquire_model->industry_search($decoded_search_term);
+			echo $result;
+		}
+        }//end of industry_search
         
-        public function industry_search2()
+        public function location_search($search_term)
         {
-                $searchterm = $this->input->get('searchterm');
-                $search_term = $searchterm;
-                $decoded_search_term = urldecode($search_term);
-                $result = $this->inquire_model->industry_search2($decoded_search_term);
-                header('Content-Type: application/json');
-                echo $result;
+		if(($search_term) && ($search_term) != '')    
+		{
+		    $decoded_search_term = urldecode($search_term);
+		    $result = $this->inquire_model->location_search($decoded_search_term);
+		    echo $result;
+		}	    
+        }//end of location_search
 
-               
-        }//end of         
-        
-        public function location_search()
+        public function college_search($search_term)
         {
-            $searchterm = $this->input->get('searchterm');
-            $search_term = $searchterm;
-            $decoded_search_term = urldecode($search_term);
-            $result = $this->inquire_model->location_search($decoded_search_term);
-            header('Content-Type: application/json');
-            echo $result;     
-        }//end of location_search          
-
-        public function college_search()
-        {
-            $searchterm = $this->input->get('searchterm');
-            $search_term = $searchterm;
-            $decoded_search_term = urldecode($search_term);
-            $result = $this->inquire_model->college_search($decoded_search_term);
-            header('Content-Type: application/json');
-            echo $result;                  
-        }//end of college_search             
+		if(($search_term) && ($search_term) != '')    
+		{
+			$decoded_search_term = urldecode($search_term);
+			$result = $this->inquire_model->college_search($decoded_search_term);
+			echo $result;    
+		}	    
+        }//end of college_search 
     
         public function degree_type_search($search_term)
         {
@@ -99,7 +70,6 @@ class Inquire extends CI_Controller {
                 $decoded_search_term = urldecode($search_term);
                 $result = $this->inquire_model->degree_type_search($decoded_search_term);
                 echo $result;
-
             }        
         }//end of degree_type_search                
       
@@ -110,7 +80,6 @@ class Inquire extends CI_Controller {
                 $decoded_search_term = urldecode($search_term);
                 $result = $this->inquire_model->major_search($decoded_search_term);
                 echo $result;
-
             }        
         }//end of degree_type_search  
         
@@ -121,15 +90,17 @@ class Inquire extends CI_Controller {
                 $decoded_search_term = urldecode($search_term);
                 $result = $this->inquire_model->company_search($decoded_search_term);
                 echo $result;
-
             }        
-        }//end of degree_type_search    
-        
-	public function typetest(){
-            $data['degree_array'] = $this->inquire_model->get_degree_type();
-            
-            
-		$this->load->view('pages/typetest',$data);
-	}        
+        }//end of company_type_search    
+
+        public function jobtype_search($search_term)
+        {
+            if(($search_term) && ($search_term) != '')    
+            {
+                $decoded_search_term = urldecode($search_term);
+                $result = $this->inquire_model->jobtype_search($decoded_search_term);
+                echo $result;
+            }        
+        }//end of company_type_search    
         
 }//end of controller

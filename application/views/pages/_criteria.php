@@ -80,6 +80,7 @@
 		<div><span>To live not live to work</span><br>Your life is not centered around or defined by your job.  You merely work to pay your bills; your focus is outside of work</div>
 	</div>	
 	<div class="content">
+		<form id="criteria" action="preview" method="post">
 		<div id="0" class="questions">
 			<div id="intro">
 				<p>Before you begin, we want to give you a quick overview of what to expect.</p>
@@ -478,31 +479,39 @@
 			<input id="q17_0" type="text" name="user_motivation" />
 			<div id="q17_flag" style="display: none;"></div>
 		</div>
-		<div id="18" class="questions"  name="textChoice">
+		<div id="18" class="questions q18"  name="textChoice">
 			<div><div class="bulb" onclick="modal('#modal_q18','600','35');"></div>Which industry or field do you want to work in?</div>
-			<div id="industry" class="clear">
-				<input id="q18_0" class="industry" type="text" value="" name="user_industry[]" />
+			<div class="chosenIndustry">
+				<img src="<?php echo base_url() ?>assets/images/survey/undo_icon.png" alt="undo">
+				<ul></ul>
+			</div>
+			<div id="industry" class="clear">			
+				<input class="industry clear" type="text" value=""/>
 			</div>
 			<div id="q18_flag" style="display: none;"></div>
 		</div>		
 		<div id="19" class="questions q19"  name="textChoice">
 			<div><div class="bulb" onclick="modal('#modal_q19','600','35');"></div>Where would you like to work?</div>
-			<div id="location" class="clear">
-				<input id="q19_0" class="location" type="text" value="" name="user_location[]" />
+			<div class="chosenCities">
+				<img src="<?php echo base_url() ?>assets/images/survey/undo_icon.png" alt="undo">
+				<ul></ul>
+			</div>
+			<div id="location" class="clear">			
+				<input class="location clear" type="text" value=""/>
 			</div>
 			<div id="q19_flag" style="display: none;"></div>
 		</div>
-		<div id="20" class="questions"  name="textChoice">
+		<div id="20" class="questions q20"  name="textChoice">
 			<div><div class="bulb" onclick="modal('#modal_q19','600','35');"></div>What's your education and work history?</div>
 			<div id="history" class="clear">
 				<div>
 					<div id="education_layout">
-						<p>Education</p>
+						<p class="titles">Education</p>
 						<div class="details">
 							<ul>
-								<li><label>School</label><input class="text_form" type="text" maxlength="150" name="user_education[0][school_name]"><input type="hidden" name="user_education[0][school_id]" value=""></li>								
-								<li><label>Degree</label><input class="text_form" type="text" maxlength="150" name="user_education[0][degree_name]"><input type="hidden" name="user_education[0][degree_id]" value=""></li>
-								<li><label>Field of Study</label><input class="text_form" type="text" maxlength="150" name="user_education[0][field_name]"><input type="hidden" name="user_education[0][field_id]" value=""></li>
+								<li><label>School</label><input class="text_form school0" type="text" maxlength="150" name="user_education[0][school_name]"><input type="hidden" name="user_education[0][school_id]" value=""></li>								
+								<li><label>Degree</label><input class="text_form degree0" type="text" maxlength="150" name="user_education[0][degree_name]"><input type="hidden" name="user_education[0][degree_id]" value=""></li>
+								<li><label>Field of Study</label><input class="text_form study0" type="text" maxlength="150" name="user_education[0][field_name]"><input type="hidden" name="user_education[0][field_id]" value=""></li>
 								<li class="history_sets"><label>Time Period</label><select name="user_education[0][start_month]" class=" month prefill"></select>
 									<select name="user_education[0][start_year]" class=" year prefill"></select> &ndash; <select name="user_education[0][end_month]" class=" month prefill"></select> 
 									<select name="user_education[0][end_month]" class=" year prefill"></select>
@@ -512,11 +521,11 @@
 						</div>
 					</div>
 					<div id="experience_layout">
-						<p>Work Experience</p>
+						<p class="titles">Work Experience</p>
 						<div class="details"> 
 							<ul>
-								<li><label>Company</label><input class="text_form" type="text" maxlength="150" name="user_work[0][company_name]"><input type="hidden" name="user_work[0][company_id]" value=""></li>
-								<li><label>Job</label><input class="text_form" type="text" maxlength="150" name="user_work[0][job_type]"><input type="hidden" name="user_work[0][job_id]" value=""></li>
+								<li><label>Company</label><input class="text_form company0" type="text" maxlength="150" name="user_work[0][company_name]"><input type="hidden" name="user_work[0][company_id]" value=""></li>
+								<li><label>Job</label><input class="text_form job0" type="text" maxlength="150" name="user_work[0][job_type]"><input type="hidden" name="user_work[0][job_id]" value=""></li>
 								<li><label class="happiness_label">Happiness</label><div class="happiness"></div></li>
 								<li class="history_sets">
 									<label>Time Period</label><select name="user_work[0][start_month]" class=" month prefill"></select>
@@ -562,6 +571,7 @@
 				<li class="progress"></li>
 			</ul>
 		</div>
+		</form>
 	</div>
 	<div class="preload">
 		<img src="<?php echo base_url() ?>assets/images/survey/slider_4markers.jpg">

@@ -5,13 +5,13 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/global.css" type="text/css"/>  
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/view.css" type="text/css"/>
-	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/typeahead.css" type="text/css"/>
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/jquery-ui.css" />
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/typeahead.css" type="text/css"/>
 	
 	<script src="http://twitter.github.com/typeahead.js/js/hogan-2.0.0.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>	
-	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/typeahead.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/typeahead.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.raty.min.js"></script> 
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.isotope.min.js"></script>
         
@@ -24,7 +24,7 @@
 		<div class="content">
 			<div id="header_login" class="clear"><a href="signup">Sign Up</a> | <a href="login">Log In</a></div>
 			<div id="next_question"><div class="next">next</div><div class="arrow"></div></div>
-			<div id="show_preview"><a href="preview"><div class="next">next</div><div class="arrow"></div></a></div>
+			<div id="show_preview"><div class="next">next</div><div class="arrow"></div></div>
 			<div id="header_icon" onclick="settings('#modal_settings');"></div>
 			<div id="header_email"><a href="/"><?php if ($this->ion_auth->user()->row()){$user = $this->ion_auth->user()->row(); echo $user->email;}?></a></div>
 			<div id="modal_settings">

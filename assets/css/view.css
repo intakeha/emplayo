@@ -1031,14 +1031,20 @@ img#motivationOverlay {
 	overflow: hidden;
 }
 
-/* Question 18 - Industry */
+/* Question 18 & 19 - Industry & City */
+
+div.q18 {
+	background: url("../images/survey/industries.png") no-repeat;
+}
+
 div#industry input, div#location input{
 	margin-top: 175px;
-	padding-left: 10px;
+	padding: 5px 0 0 10px;
 	color: #777;
     font-size: 20px;
     width: 350px;
 	height: 40px;
+	line-height: 35px;
 	border-width: 1px;
 }
 
@@ -1049,6 +1055,7 @@ div#industry .tt-hint, div#location .tt-hint{
     font-size: 20px;
     width: 350px;
 	height: 40px;
+	line-height: 35px;
 	border-width: 1px;
 }
 
@@ -1064,20 +1071,53 @@ div#industry .tt-dropdown-menu, div#location .tt-dropdown-menu {
 	box-shadow: 0px 0px 5px #ccc;
 }
 
-div#industry .tt-suggestion, div#location .tt-suggestion{
+div.questions .tt-suggestion{
 	padding: 10px;
 	font-weight: normal;
 }
 
-div#industry .tt-is-under-cursor, div#location .tt-is-under-cursor {
+div.questions .tt-is-under-cursor {
 	background-color: #1d71a2;
 	color: #fff;
 	font-weight: normal;
 }
 
-/* Question 19 - City */
 div.q19 {
 	background: url("../images/survey/globe.jpg") no-repeat;
+}
+
+div.chosenCities, div.chosenIndustry{
+	background-color: #364954;
+	color: #fff;
+	padding: 10px 0;
+	font-size: 16px;
+    border-radius: 20px 0 0 20px;
+    margin-left: 825px;
+    margin-top: 50px;
+    min-height: 35px;
+    position: absolute;
+	text-align: left;
+    width: 200px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	filter: alpha(opacity=80);
+	-moz-opacity: 0.8;
+	opacity: 0.8;
+	display: none;
+}
+
+div.chosenCities ul, div.chosenIndustry ul{
+	list-style-type:circle;
+	margin: 10px 5px 10px 25px;
+}
+
+div.chosenCities li, div.chosenIndustry li{
+	margin: 15px 0px;
+}
+
+div.chosenCities img, div.chosenIndustry img{
+	float: right;
+	margin: -5px 5px 0 0;
+	cursor: pointer;
 }
 
 /* Question 20 - History */
@@ -1104,7 +1144,7 @@ div#history .details{
 	height: 430px;
 }
 
-div#history p{
+div#history p.titles{
     border-bottom: 2px solid #258cd1;
     color: #258cd1;
     font-size: 22px;
@@ -1119,10 +1159,39 @@ div#history p{
 }
 
 div#history input, div#history select {
-    color: #777777;
+    color: #777;
     font-size: 20px;
-    margin-top: 10px;
+    margin-bottom: 10px;
     width: 325px;
+	border-width: 1px;
+}
+
+div#history .twitter-typeahead {
+    top: -2px;
+}
+
+div#history .tt-hint{
+	color: #ccc;
+    font-size: 20px;
+    width: 325px;
+	border-width: 1px;
+}
+
+div#history .tt-dropdown-menu{
+	background-color: #fff;
+	border: 1px solid #6d7a83;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	text-align: left;
+	width: 325px;
+	-moz-box-shadow: 0px 0px 5px #ccc;
+	-webkit-box-shadow: 0px 0px 5px #ccc;
+	box-shadow: 0px 0px 5px #ccc;
+}
+
+div#history .tt-suggestion{
+	padding: 0px;
+	font-weight: normal;
 }
 
 div#history select.month{
@@ -1137,7 +1206,6 @@ div#history .presentFlag{
 	width: 100px;
 }
 
-
 div#history .prefill{
 	color: #ddd;
 }
@@ -1149,8 +1217,8 @@ div#history .happiness_label{
 }
 
 div#history .happiness{
-     margin-bottom: -4px;
-    margin-top: 7px;
+	margin-bottom: 9px;
+    margin-top: -8px;
 }
 
 div#history .happiness img{

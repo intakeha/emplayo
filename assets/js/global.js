@@ -1,3 +1,24 @@
+// Prevent delete button to send user to previous browser page
+$(document).unbind('keydown').bind('keydown', function (event) {
+    var doPrevent = false;
+    if (event.keyCode === 8) {
+        var d = event.srcElement || event.target;
+        if ((d.tagName.toUpperCase() === 'INPUT' && (d.type.toUpperCase() === 'TEXT' || d.type.toUpperCase() === 'PASSWORD')) 
+             || d.tagName.toUpperCase() === 'TEXTAREA') {
+            doPrevent = d.readOnly || d.disabled;
+        }
+        else {
+            doPrevent = true;
+        }
+    }
+
+    if (doPrevent) {
+        event.preventDefault();
+    }
+});
+
+
+
 // Using jQuery for front-end functionalities
 $(document).ready(function(){
 	
@@ -90,7 +111,13 @@ $(document).ready(function(){
 	
 	// Display questionnaire	 
 	if(currentPage == 'criteria'){
+		
 		$('#header_login, #footer, #progressBar').hide();
+		
+		//Activiate form submit button
+		$('div#show_preview').click(function(){
+			$('form#criteria').submit();
+		});
 
 		// Hover animation for next button
 		$("div#next_question, div#show_preview").hover(
@@ -105,9 +132,9 @@ $(document).ready(function(){
 		);
 			
 		// Set variables for pagination 
-		var currentQuestion = 19;
-		var lastEmpty = 20;
-		var lastQuestion = 20;
+		var currentQuestion = 0;
+		var lastEmpty = 1;
+		var lastQuestion = 1;
 		$('div#0, #next_question').show(); //default to first question on refresh
 
 		// Assign actions when next is clicked
@@ -171,6 +198,7 @@ $(document).ready(function(){
 					if (questionType == "text"){
 						lastEmpty = showNextButton(currentQuestion, lastEmpty);
 					};
+					if(currentQuestion == 19){showNextButtonDropdown($('.chosenCities li').length, lastEmpty);};
 				};
 			};
 		});
@@ -622,72 +650,105 @@ $(document).ready(function(){
 		});
 		
 		// Q18 - Industry
-		 $('.industry').typeahead({
-			local: [
-				"Accounting",
-				"Agriculture",
-				"Airlines - Aviation",
-				"Alternative Dispute Resolution",
-				"Alternative Medicine",
-				"Animation",
-				"Apparel - Fashion",
-				"Architecture - Planning",
-				"Arts and Crafts",
-				"Automotive",
-				"Aviation - Aerospace",
-				"Banking",
-				"Biotechnology",
-				"Broadcast Media",
-				"Building Materials",
-				"Business Supplies and Equipment",
-				"Capital / Markets",
-				"Chemicals",
-				"Civic - Social Organization",
-				"Civil Engineering",
-				"Commercial Real Estate",
-				"Computer - Network Security",
-				"Computer Games",
-				"Computer Hardware",
-				"Computer Networking",
-				"Computer Software",
-				"Construction",
-				"Consumer Electronics",
-				"Consumer Goods",
-				"Consumer Services",
-				"Cosmetics",
-				"Dairy",
-				"Defense - Space",
-				"Design",
-				"Education Management",
-				"E-Learning",
-				"Electrical - Electronic Manufacturing",
-				"Entertainment",
-				"Environmental Services",
-				"Events Services"
-			]
+		$('.industry').typeahead({
+			name: 'industry',
+			limit: 5,
+			remote: '/inquire/industry_search/%QUERY',
+			template: '<p><strong>{{value}}</strong></p>',
+			engine: Hogan
+		}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
+			numChosen = $('.chosenIndustry li').length;
+			if(numChosen >= 0 && numChosen < 5){
+				var duplicationFlag = 0;
+				$('.chosenIndustry').show("slide", { direction: "right" }, 100);
+				if (numChosen == 0){
+					$('.chosenIndustry ul').append('<li>'+datum.value+'</li>');
+					$('div.q18').append('<input id="q18_1_0" type="text" name="user_industry[]"  value="'+datum.id+'">');
+					$("div#q18_flag").text(1);
+				} else {
+					$("input[id^=q18]").each(function(){
+						if($(this).val() == datum.id){
+							duplicationFlag = 1;
+						};
+					});
+					if (duplicationFlag == 1){
+						console.log('You already picked this one');
+					}else{
+						$('div.q18').append('<input id="q18_'+(numChosen+1)+'_0" type="text" name="user_industry[]"  value="'+datum.id+'">');
+						$('.chosenIndustry ul').append('<li>'+datum.value+'</li>');
+					};
+				}
+			};
+			lastEmpty = showNextButton(18, lastEmpty);
 		});
 		
-		// Q19 - Work Location
+		$(".chosenIndustry img").click(function(){
+			numChosen = $('.chosenIndustry li').length;
+			if (numChosen > 0){
+				$('.chosenIndustry li:last').remove();
+				$('input#q18_'+(numChosen)+'_0').remove();
+			};
+			if(numChosen == 1){$('.chosenIndustry').hide(); $("div#q18_flag").text("");};
+			lastEmpty = showNextButton(18, lastEmpty);
+		});
+		
+		// Q19 - Work Location	
 		$('.location').typeahead({
-                    name: 'location',
-                    limit: 5,
-                    remote: '/inquire/location_search/%QUERY',
-                    template: '<p><strong>{{value}}</strong> - {{region}}</p>',
-                    engine: Hogan                    
+			name: 'cities',
+			limit: 5,
+			remote: '/inquire/location_search/%QUERY',
+			template: '<p><strong>{{value}}</strong></p>',
+			engine: Hogan
+		}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
+			numChosen = $('.chosenCities li').length;
+			if(numChosen >= 0 && numChosen < 5){
+				var duplicationFlag = 0;
+				$('.chosenCities').show("slide", { direction: "right" }, 100);
+				if (numChosen == 0){
+					$('.chosenCities ul').append('<li>'+datum.value+'</li>');
+					$('div.q19').append('<input id="q19_1_0" type="text" name="user_location[]"  value="'+datum.id+'">');
+					$("div#q19_flag").text(1);
+				} else {
+					$("input[id^=q19]").each(function(){
+						if($(this).val() == datum.id){
+							duplicationFlag = 1;
+						};
+					});
+					if (duplicationFlag == 1){
+						console.log('You already picked this one');
+					}else{
+						$('div.q19').append('<input id="q19_'+(numChosen+1)+'_0" type="text" name="user_location[]"  value="'+datum.id+'">');
+						$('.chosenCities ul').append('<li>'+datum.value+'</li>');
+					};
+				}
+			};
+			lastEmpty = showNextButton(19, lastEmpty);
+		});
+		
+		$(".chosenCities img").click(function(){
+			numChosen = $('.chosenCities li').length;
+			if (numChosen > 0){
+				$('.chosenCities li:last').remove();
+				$('input#q19_'+(numChosen)+'_0').remove();
+			};
+			if(numChosen == 1){$('.chosenCities').hide(); $("div#q19_flag").text("");};
+			lastEmpty = showNextButton(19, lastEmpty);
 		});
 		
 		// Q20 - Work History
-		ratings('.happiness', '"user_work[0][rating]"');  // Initiate stars rating
+		ratings('.happiness', 'user_work[0][rating]');  // Initiate stars rating
 		dateSelect('#history .prefill'); // Change font color when selected
 		$('#history input').val(''); // reset all forms
 		monthDropdown('#history .month');
 		yearDropdown('#history .year');
 		presentFlag();
+		educationHistoryTypeahead(0);
+		workHistoryTypeahead(0);
 		
-		
-		/*lastEmpty = 20; // Get preview
-		$('#next_question').hide();
-		$('#show_preview').show();*/
+		if (lastEmpty == 20){
+			$('#next_question').hide();
+			$('#show_preview').show();
+		};
 		
 		$('#history .addButton').on("click", function(event){
 			var educationRef = $('#education_layout li').length / 4;
@@ -695,20 +756,21 @@ $(document).ready(function(){
 			if ($(this).attr('id') == 'addEducation'){
 				$('#education_layout ul').append(
 					'<hr/> \
-					<li><label>School</label><input class="text_form" type="text" maxlength="150" name="user_education['+educationRef+'][school_name]"><input type="hidden" name="user_education['+educationRef+'][school_id]" value=""></li>\
-					<li><label>Degree</label><input class="text_form" type="text" maxlength="150" name="user_education['+educationRef+'][degree_name]"><input type="hidden" name="user_education['+educationRef+'][degree_id]" value=""></li>\
-					<li><label>Field of Study</label><input class="text_form" type="text" maxlength="150" name="user_education['+educationRef+'][field_name]"><input type="hidden" name="user_education['+educationRef+'][field_id]" value=""></li>\
+					<li><label>School</label><input class="text_form school'+educationRef+'" type="text" maxlength="150" name="user_education['+educationRef+'][school_name]"><input type="hidden" name="user_education['+educationRef+'][school_id]" value=""></li>\
+					<li><label>Degree</label><input class="text_form degree'+educationRef+'" type="text" maxlength="150" name="user_education['+educationRef+'][degree_name]"><input type="hidden" name="user_education['+educationRef+'][degree_id]" value=""></li>\
+					<li><label>Field of Study</label><input class="text_form study'+educationRef+'" type="text" maxlength="150" name="user_education['+educationRef+'][field_name]"><input type="hidden" name="user_education['+educationRef+'][field_id]" value=""></li>\
 					<li class="history_sets"><label>Time Period</label><select name="user_education['+educationRef+'][start_month]" class=" monthEmpty prefill"></select>\
 						<select name="user_education['+educationRef+'][start_year]" class=" yearEmpty prefill"></select> &ndash; <select name="user_education['+educationRef+'][end_month]" class=" monthEmpty prefill"></select> \
 						<select name="user_education['+educationRef+'][end_month]" class=" yearEmpty prefill"></select>\
 					</li>\
 					'
 				);
+				educationHistoryTypeahead(educationRef);
 			} else {
 				$('#experience_layout ul').append(
 					'<hr/> \
-						<li><label>Company</label><input class="text_form" type="text" maxlength="150" name="user_work['+experienceRef+'][company_name]"><input type="hidden" name="user_work['+experienceRef+'][company_id]" value=""></li>\
-						<li><label>Job</label><input class="text_form" type="text" maxlength="150" name="user_work['+experienceRef+'][job_type]"><input type="hidden" name="user_work['+experienceRef+'][job_id]" value=""></li>\
+						<li><label>Company</label><input class="text_form company'+educationRef+'" type="text" maxlength="150" name="user_work['+experienceRef+'][company_name]"><input type="hidden" name="user_work['+experienceRef+'][company_id]" value=""></li>\
+						<li><label>Job</label><input class="text_form job'+educationRef+'" type="text" maxlength="150" name="user_work['+experienceRef+'][job_type]"><input type="hidden" name="user_work['+experienceRef+'][job_id]" value=""></li>\
 						<li><label class="happiness_label">Happiness</label><div class="happiness"></div></li>\
 						<li class="history_sets">\
 							<label>Time Period</label><select name="user_work['+experienceRef+'][start_month]" class=" monthEmpty prefill"></select>\
@@ -720,6 +782,7 @@ $(document).ready(function(){
 					'
 				);
 				ratings($(this).parent().find('.happiness').eq(experienceRef), "user_work["+experienceRef+"][rating]");
+				workHistoryTypeahead(experienceRef);
 			}
 			dateSelect('#history .prefill');
 			monthDropdown('#history .monthEmpty');
@@ -812,6 +875,60 @@ function yearDropdown(selector){
 	
 	$(selector).append(html);
 	$(selector).switchClass('yearEmpty').addClass('year');
+};
+
+function educationHistoryTypeahead(educationRef){ // initialize typeahead for education history
+	$('.school'+educationRef).typeahead({
+		name: 'schools',
+		limit: 5,
+		remote: '/inquire/college_search/%QUERY',
+		template: '<p><strong>{{value}}</strong></p>',
+		engine: Hogan
+	}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
+		$("#history input[name='user_education["+educationRef+"][school_id]']").val(datum.id);
+	});
+
+	$('.degree'+educationRef).typeahead({
+		name: 'degrees',
+		limit: 5,
+		remote: '/inquire/degree_type_search/%QUERY',
+		template: '<p><strong>{{value}}</strong></p>',
+		engine: Hogan
+	}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
+		$("#history input[name='user_education["+educationRef+"][degree_id]']").val(datum.id);
+	});
+	
+	$('.study'+educationRef).typeahead({
+		name: 'studies',
+		limit: 5,
+		remote: '/inquire/major_search/%QUERY',
+		template: '<p><strong>{{value}}</strong></p>',
+		engine: Hogan
+	}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
+		$("#history input[name='user_education["+educationRef+"][field_id]']").val(datum.id);
+	});
+};
+
+function workHistoryTypeahead(experienceRef){ // initialize typeahead for work history
+	$('.company'+experienceRef).typeahead({
+		name: 'companies',
+		limit: 5,
+		remote: '/inquire/company_search/%QUERY',
+		template: '<p><strong>{{value}}</strong></p>',
+		engine: Hogan
+	}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
+		$("#history input[name='user_education["+experienceRef+"][company_id]']").val(datum.id);
+	});
+	
+	$('.job'+experienceRef).typeahead({
+		name: 'jobs',
+		limit: 5,
+		remote: '/inquire/jobtype_search/%QUERY',
+		template: '<p><strong>{{value}}</strong></p>',
+		engine: Hogan
+	}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
+		$("#history input[name='user_education["+experienceRef+"][job_id]']").val(datum.id);
+	});
 };
 
 function ratings(containerID, scoreID){ // initialize raty

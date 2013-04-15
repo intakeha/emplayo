@@ -61,10 +61,12 @@ class Preview extends CI_Controller {
             //$data['content']="pages/_criteria";
             //$this->load->view('canvas', $data);
             $this->load->view("survey/user_tester");
+	    echo "5 - validate data fail";
         }
         else {//data is good...process it.
+	
+	 echo "7 - validate data pass";
             
-            if($this->input->post('mysubmit')){
                 
                 /*01*/$user_type = $this->input->post('user_type');
                 /*02*/$user_pace = $this->input->post('user_pace');
@@ -90,7 +92,7 @@ class Preview extends CI_Controller {
                 //$categories = $this->input->post('category');//NOT SURE OF THIS NAME!!!                
                 //$history = $this->input->post('history'); //NOT SURE OF THIS NAME!!!  
  
-                
+               
                 //print_r($user_work);
                 
                 
@@ -121,11 +123,15 @@ class Preview extends CI_Controller {
                 /*19*/$this->session->set_userdata('user_location',$user_location);    
                 /*20*/$this->session->set_userdata('user_industry',$user_industry); 
                 //$this->session->set_userdata('category',$categories); //NEED TO REVIEW THIS!!
-                //$this->session->set_userdata('history',$history); //NEED TO REVIEW THIS!!                
+                //$this->session->set_userdata('history',$history); //NEED TO REVIEW THIS!!       
+
+		echo "1 - before data";
                 
                 //SEND THE USER ENTERED DATA OFF TO THE MATCHING ALGORITHM
                 $data = $this->run_matching_algorithm($user_type,$user_pace,$user_lifecycle,$user_benefits,$user_citizenship,$user_industry,$user_work);
                 //$data VAR IS AN ARRAY THAT CONTAINS LIST OF COMPANIES WITH ALL REQUIRED INFO TO DISPLAY
+		
+		echo "2 - after data";
                 
                 if ($data['company_count']>0)
                 {
@@ -133,6 +139,7 @@ class Preview extends CI_Controller {
                     $data['title']="Preview Results";
                     $data['content']="pages/_preview";
                     $this->load->view('canvas', $data);
+		    echo "3 - found matches";
                 }
                 else
                 {
@@ -141,8 +148,9 @@ class Preview extends CI_Controller {
                     $data['title']="Preview Results";
                     $data['content']="pages/_preview";
                     $this->load->view('canvas', $data);
+			echo "4 - no matches";
                 }
-            }
+            
         }
     } //end of index()
 
