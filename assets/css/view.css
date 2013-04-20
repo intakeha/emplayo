@@ -350,9 +350,18 @@ div#reset .errors{
 
 /* Questionnaire */
 
-/* #criteria input[type="checkbox"], #criteria input[type="text"]{
+form#criteria{
+	border: none;
+}
+
+#criteria input[type="checkbox"], #criteria input[type="text"]{
 	display: none;
-} */
+}
+
+#criteria input.text_form, #experience_layout input[type="checkbox"]{
+	display: inherit !important;
+	background-color: #fff !important;
+}
 
 .modal_popup div{
 	margin: 0 20px 10px;
@@ -1242,7 +1251,7 @@ div#history .presentText{
     font-size: 11px;
     font-weight: normal;
     margin-left: 359px;
-    margin-top: 12px;
+    margin-top: 5px;
     width: 105px;
 }
 

@@ -486,7 +486,7 @@
 				<ul></ul>
 			</div>
 			<div id="industry" class="clear">			
-				<input class="industry clear" type="text" value=""/>
+				<input class="industry text_form clear" type="text" value=""/>
 			</div>
 			<div id="q18_flag" style="display: none;"></div>
 		</div>		
@@ -497,7 +497,7 @@
 				<ul></ul>
 			</div>
 			<div id="location" class="clear">			
-				<input class="location clear" type="text" value=""/>
+				<input class="location text_form clear" type="text" value=""/>
 			</div>
 			<div id="q19_flag" style="display: none;"></div>
 		</div>
