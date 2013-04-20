@@ -446,6 +446,131 @@ class Company_model extends MY_Model {
         }
         
     }//end of update_company
+ 
+    function update_company_flexible($post,$id)
+    {
+        //NEED TO ESCAPE THE USER INPUT!!!
+
+        //NEED TO FINALIZE HOW TO DEAL WITH 'UPDATED' IMAGE FILES:
+        //In the view, the user should be able to see the image file, and possibly edit it, 
+        //using Chon's Woorus code.  If they make changes, we update.  If not, no need to...
+        //If we upload a new file, or change it, then we need to delete the old one.
+        //http://stackoverflow.com/questions/5454044/deleting-files-using-codeigniter
+            
+        //this user input is dirty.  we will use active records to escape the data and make
+        // it safe for db insertion.
+        $company_array = array(
+            'company_name' => $post['company_name'],
+            'company_url' => $post['company_url'],
+            'jobs_url' => $post['jobs_url'],
+            'facebook_url' => $post['facebook_url'],
+            'twitter_url' => $post['twitter_url'],            
+            'company_logo' => $post['company_logo'],
+            'creative_logo' => $post['creative_logo'],
+            'type_id' => $post['company_type'],
+            'pace_id' => $post['company_pace'],
+            'lifecycle_id' => $post['company_lifecycle'],
+            'corp_citizenship_id' => $post['corp_citizenship'],
+            'update_time' => date('Y-m-d H:i:s') 
+        );   
+        
+        // check to ensure the company exists prior to trying to update it
+        if (!$this->company_exists($post['company_name']))
+        {
+            $this->set_error('Company does not exist');
+            return FALSE;
+        }
+        else 
+        {
+            //BEGIN A TRANSACTION, SO ALL UPDATES MUST SUCCEED OR EVERYTHING IS ROLLED BACK:
+            $this->db->trans_start();
+
+            //UPDATE COMPANY DATA
+            $this->db->where('id', $id);
+            $this->db->update('company', $company_array);
+
+            //BUILD PROPERLY FORMATTED ARRAY FOR BENEFITS INSERT
+            if ($post['benefits']) 
+                {
+                foreach ($post['benefits'] as $key=>$value)
+                {
+                    $insert_ben_array[] = '('.$id.','.$value.')';
+                }                        
+                $imploded_ins_benefits = implode(',', $insert_ben_array);     
+
+                // array to be used for deleting old benefit selections
+                // same data as array above, but using a different format
+                // 
+                $new_benefits = $post['benefits'];
+                $imploded_new_benefits = implode(',',$new_benefits);
+
+                //UPDATE BENEFITS DATA
+                //
+                //based on http://stackoverflow.com/questions/548541/insert-ignore-vs-insert-on-duplicate-key-update
+                //http://stackoverflow.com/questions/9384974/update-tag-mapping-table-in-mysql
+                //http://stackoverflow.com/questions/9334766/updating-in-a-many-to-many-relationship
+                //http://stackoverflow.com/questions/8637691/best-practice-for-many-to-many-data-mapping
+                //
+                //first delete all the rows that are not in the new set
+                //$sql = "DELETE FROM company_benefits WHERE company_id = ? AND benefits_id NOT IN (?)"; 
+                //$this->db->query($sql, array($id, $imploded_new_benefits));
+
+                //then insert all the new benefits that are not in the db for this company
+                //manually escaping these inputs since we cannot use active records or query binding on the sql statements
+                //either method causes the addition of an extra pair of enclosing quotes which causes a sql syntax error.
+                $imploded_ins_benefits = $this->db->escape_str($imploded_ins_benefits);
+                $imploded_new_benefits = $this->db->escape_str($imploded_new_benefits);
+
+                $sql_del_ben = "DELETE FROM company_benefits WHERE company_id = $id AND benefits_id NOT IN ($imploded_new_benefits)";
+                $sql_ins_ben = "INSERT INTO company_benefits (company_id,benefits_id) VALUES $imploded_ins_benefits ON DUPLICATE KEY UPDATE company_id=company_id";
+
+                //execute the queries
+                $this->db->query($sql_del_ben);
+                $this->db->query($sql_ins_ben); 
+            }
+            
+            //BUILD PROPERLY FORMATTED ARRAY FOR CATEGORY UPDATE  
+            if ($post['category'])
+            {
+                foreach ($post['category'] as $key=>$value)
+                {
+                    $insert_cat_array[] = '('.$id.','.$value.')';
+                }                        
+                $imploded_ins_category = implode(',', $insert_cat_array);   
+
+                // array to be used for deleting old category selections
+                // same data as array above, but using a different format
+                $new_categories = $post['category'];
+                $imploded_new_categories = implode(',',$new_categories);  
+
+                //manually escape the data
+                $imploded_ins_category = $this->db->escape_str($imploded_ins_category);
+                $imploded_new_categories = $this->db->escape_str($imploded_new_categories);            
+
+                //first delete all the rows that are not in the new set
+                $sql_del_cat = "DELETE FROM company_category WHERE company_id = $id AND category_id NOT IN ($imploded_new_categories)";
+                $sql_ins_cat = "INSERT INTO company_category (company_id,category_id) VALUES $imploded_ins_category ON DUPLICATE KEY UPDATE company_id=company_id";
+
+                //execute the queries
+                $this->db->query($sql_del_cat);
+                $this->db->query($sql_ins_cat); 
+            }
+            //COMMIT ALL OF THE UPDATES
+            $this->db->trans_complete();
+            
+            if ($this->db->trans_status() === FALSE)
+            {
+                $this->set_error('Unable to update company record');
+                return FALSE;
+            }
+            else 
+            {
+                return TRUE;
+            }
+            
+        }
+        
+    }//end of update_company    
     
     /**
     * Company Exists

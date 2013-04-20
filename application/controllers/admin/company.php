@@ -375,6 +375,19 @@ class Company extends CI_Controller {
             $data['categories_info'] = $this->company_model->get_categories_info($id);
         }
         //validate the form (except for the file upload)
+        $this->form_validation->set_rules('company_name', 'Company Name');
+        $this->form_validation->set_rules('company_url', 'Company URL', 'prep_url');
+        $this->form_validation->set_rules('jobs_url', 'Jobs URL', 'prep_url');
+        $this->form_validation->set_rules('facebook_url', 'Facebook URL', 'prep_url');
+        $this->form_validation->set_rules('twitter_url', 'Twitter URL', 'prep_url');        
+        $this->form_validation->set_rules('company_type', 'Company Type');
+        $this->form_validation->set_rules('company_pace', 'Company Pace');
+        $this->form_validation->set_rules('company_lifecycle', 'Company Lifecycle');
+        $this->form_validation->set_rules('corp_citizenship', 'Corporate Citizenship');
+        $this->form_validation->set_rules('benefits', 'Benefits');
+        $this->form_validation->set_rules('category[]', 'Category'); 
+        
+        /*
         $this->form_validation->set_rules('company_name', 'Company Name', 'required');
         $this->form_validation->set_rules('company_url', 'Company URL', 'required|prep_url');
         $this->form_validation->set_rules('jobs_url', 'Jobs URL', 'required|prep_url');
@@ -385,7 +398,8 @@ class Company extends CI_Controller {
         $this->form_validation->set_rules('company_lifecycle', 'Company Lifecycle', 'required');
         $this->form_validation->set_rules('corp_citizenship', 'Corporate Citizenship', 'required');
         $this->form_validation->set_rules('benefits', 'Benefits', 'required');
-        $this->form_validation->set_rules('category[]', 'Category', 'required');            
+        $this->form_validation->set_rules('category[]', 'Category', 'required'); 
+        */
 
         if ($this->form_validation->run() == true)
         {   
@@ -475,7 +489,8 @@ class Company extends CI_Controller {
             }    
 
         //commit all session data to the database
-        if ($this->company_model->update_company($post_data,$id))
+       // if ($this->company_model->update_company($post_data,$id))
+        if ($this->company_model->update_company_flexible($post_data,$id))        
         { //success
                 //move the image files from temp to the working directory
                 $original_path = "./assets/images/company_logos/temp/";
