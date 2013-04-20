@@ -291,7 +291,10 @@ $(document).ready(function()
                 {
                  echo set_radio('company_type', ''.$row['id'].'');   
                 } ?> />
-                <?php                echo form_label($row['type'],'company_type');
+
+	<?php
+                echo form_label($row['type'],'company_type');
+
                 echo '<br/>';
             }
             echo form_fieldset_close();               
