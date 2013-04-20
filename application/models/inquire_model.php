@@ -38,7 +38,7 @@ class Inquire_model extends MY_Model {
         $this->db->select('id, name');
         $this->db->like('name', $search_term, 'both');
         $this->db->limit('5');
-        $query = $this->db->get('ref_industry');
+        $query = $this->db->get('ref_category');
         $count = $query->num_rows();        
 
         if($query)

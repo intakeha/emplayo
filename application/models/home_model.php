@@ -221,7 +221,7 @@ class Home_model extends MY_Model {
         
         //9. ENVIRONMENT (checkbox)
         $environment_array = $this->build_array_checkbox($user_environment, 'environment', $user_id);
-        $this->db->insert('user_environment', $environment_array); 
+        $this->db->insert_batch('user_environment', $environment_array); 
  
         //10. RECOGNITION (rank)
         $recognition_array = $this->build_array_rank($user_recognition, 'recognition', $user_id);
