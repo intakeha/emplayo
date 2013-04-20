@@ -10,7 +10,7 @@ class Survey_model extends CI_Model {
        
         function get_categories()
     { 
-        $sql = 'SELECT category_id,name FROM ref_category';
+        $sql = 'SELECT id,name FROM ref_category';
         $query = $this->db->query($sql);
         
       //transformation  
@@ -19,7 +19,7 @@ class Survey_model extends CI_Model {
         {
             foreach ($row as $key=>$value)
             {              
-                if ($key=='category_id')
+                if ($key=='id')
                 {
                     $cat_key = $value;
                     $newarray[$cat_key]=$value;
@@ -38,12 +38,12 @@ class Survey_model extends CI_Model {
 
         $sql = 'SELECT b.*
                 FROM company_category bt, company b, ref_category t
-                WHERE bt.category_id = t.category_id
-                AND (t.category_id IN ('.$categories.'))
+                WHERE bt.category_id = t.id
+                AND (t.id IN ('.$categories.'))
                 AND b.id = bt.company_id
                 GROUP BY b.id';
             
-        //$sql = 'SELECT name FROM category WHERE category_id IN ('.$categories.')';
+        //$sql = 'SELECT name FROM category WHERE id IN ('.$categories.')';
         $query = $this->db->query($sql);
 
         foreach ($query->result_array() as $row)
@@ -181,15 +181,15 @@ class Survey_model extends CI_Model {
         /*
         $sql = 'SELECT b.*
                 FROM category_map bt, company b, category t
-                WHERE bt.category_id = t.category_id
-                AND (t.category_id IN ('.$categories.'))
+                WHERE bt.category_id = t.id
+                AND (t.id IN ('.$categories.'))
                 AND b.id = bt.company_id
                 GROUP BY b.id';
         */
         $sql = 'SELECT b.*
                 FROM company_category bt, company b, ref_category t
-                WHERE bt.category_id = t.category_id
-                AND (t.category_id IN ('.$categories.'))
+                WHERE bt.category_id = t.id
+                AND (t.id IN ('.$categories.'))
                 AND b.id = bt.company_id
                 GROUP BY b.id';
         $query = $this->db->query($sql);

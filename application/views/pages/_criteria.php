@@ -514,7 +514,7 @@
 								<li><label>Field of Study</label><input class="text_form study0" type="text" maxlength="150" name="user_education[0][field_name]"><input type="hidden" name="user_education[0][field_id]" value=""></li>
 								<li class="history_sets"><label>Time Period</label><select name="user_education[0][start_month]" class=" month prefill"></select>
 									<select name="user_education[0][start_year]" class=" year prefill"></select> &ndash; <select name="user_education[0][end_month]" class=" month prefill"></select> 
-									<select name="user_education[0][end_month]" class=" year prefill"></select>
+									<select name="user_education[0][end_year]" class=" year prefill"></select>
 								</li>
 							</ul>
 							<div class="addButton" id="addEducation"> </div>

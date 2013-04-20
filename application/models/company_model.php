@@ -101,7 +101,7 @@ class Company_model extends MY_Model {
     **/      
     function get_categories()
     { 
-        $this->db->select('category_id, name');
+        $this->db->select('id, name');
         $query = $this->db->get('ref_category');        
 
       //transformation  
@@ -110,7 +110,7 @@ class Company_model extends MY_Model {
         {
             foreach ($row as $key=>$value)
             {              
-                if ($key=='category_id')
+                if ($key=='id')
                 {
                     $cat_key = $value;
                     $newarray[$cat_key]=$value;
