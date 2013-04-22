@@ -32,9 +32,33 @@ class Company extends CI_Controller {
         //params sent to the db lookup
         $offset = $this->uri->segment($uri_segment);
         $limit = 10;
+  
+        /*
+        $c = $this->input->post('report');
+        
+        switch ($c) {
+            case 1:
+                echo "case 1";
+                $completion_array = array(0);
+                print_r($completion_array);
+                break;
+            case 2:
+                echo "case 2";
+                $completion_array = array(100);
+                print_r($completion_array);
+                break;
+            default:
+                echo "case default";
+                $completion_array = array(0,20,40,60,80,100);
+                print_r($completion_array);
+                break;
+        }        
+        */
+        
+        $completion_array = array(0,20,40,60,80,100);
 
         //grabbing the table data and format from the model
-        $table_data = $this->company_model->build_company_table($limit,$offset);
+        $table_data = $this->company_model->build_company_table($limit,$offset,$completion_array);
         $data['table'] = $table_data['table'];
         $data['num_rows'] = $table_data['num_rows'];
         
@@ -42,7 +66,9 @@ class Company extends CI_Controller {
         $this->load->library('pagination');
         
         //pagination config parameters
-        $config['base_url'] = site_url('admin/company/listing');
+        $config['base_url'] = '/admin/company/listing';
+        //$config['use_page_numbers'] = TRUE;
+        //$config['first_url'] = '1';
         $config['total_rows'] = $data['num_rows'];
         $config['per_page'] = $limit;         
         $config['uri_segment'] = $uri_segment;

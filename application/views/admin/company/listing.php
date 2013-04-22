@@ -44,7 +44,7 @@
     echo '</div>';
     
     echo '<a href = "/admin/company/create_step_1">Add New...</a>';
-    
+     
     echo '<br><br>A total of '.$num_rows.' companies were returned.';
     echo '<div id="table">';
     echo $table;
