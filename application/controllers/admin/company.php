@@ -33,30 +33,34 @@ class Company extends CI_Controller {
         $offset = $this->uri->segment($uri_segment);
         $limit = 10;
   
-        /*
-        $c = $this->input->post('report');
         
-        switch ($c) {
+        $display_filter = $this->input->post('filter');
+        
+        if (!empty($display_filter)){
+            $this->session->set_userdata('display_filter',$display_filter);
+        }
+        
+        $display_filter_from_session = $this->session->userdata('display_filter');
+        
+        switch ($display_filter_from_session) {
             case 1:
-                echo "case 1";
+                //echo "case 1";
                 $completion_array = array(0);
-                print_r($completion_array);
+                //print_r($completion_array);
                 break;
             case 2:
-                echo "case 2";
+                //echo "case 2";
                 $completion_array = array(100);
-                print_r($completion_array);
+                //print_r($completion_array);
                 break;
             default:
-                echo "case default";
+                //echo "case default";
                 $completion_array = array(0,20,40,60,80,100);
-                print_r($completion_array);
+                //print_r($completion_array);
                 break;
         }        
-        */
         
-        $completion_array = array(0,20,40,60,80,100);
-
+        
         //grabbing the table data and format from the model
         $table_data = $this->company_model->build_company_table($limit,$offset,$completion_array);
         $data['table'] = $table_data['table'];

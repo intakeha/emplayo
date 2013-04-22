@@ -23,7 +23,7 @@ class Company_model extends MY_Model {
         return $query;
     }
     
-    function count_seed_completion($query){
+    function count_seed_completion($query, $limit, $offset, $completion_array){
         $new_array = array();
         $logo_count_needed = 2;
         $url_count_needed = 4;
@@ -162,14 +162,27 @@ class Company_model extends MY_Model {
             //$new_array[$key]['completion_score'] = settype($completion_score, "integer");
             $new_array[$key]['completion_score'] = $completion_score;
             
+            if (!in_array($completion_score, $completion_array, true)){
+                unset($new_array[$key]);
+            }
+            
         }
+        
+        $total_rows = count($new_array);
+        $new_array = array_slice($new_array, $offset, $limit, false);
+        
         /*
+        echo "<br> limit: ".$limit;
+        echo "<br> offset: ".$offset;
+        echo "<br> total rows: ".$total_rows;
+        
         echo '<pre>';
         print_r($new_array);
         echo '</pre>';
-       */ 
+        */
        
-        return $new_array;
+        return array('total_rows' => $total_rows, 'new_array' => $new_array);
+        //return $new_array;
     }
     
     /**
@@ -181,17 +194,22 @@ class Company_model extends MY_Model {
     **/     
     function build_company_table($limit = 5,$offset = 0,$completion_array)
     {   
+        $result_rows = 0;
         //get the company data from the db
         $this->db->select('id, company_name, company_url, jobs_url, facebook_url,
             twitter_url, company_logo, creative_logo, type_id, pace_id, lifecycle_id, 
             corp_citizenship_id, update_time');
-        $this->db->limit($limit, $offset);
+        //$this->db->limit($limit, $offset);
         $query = $this->db->get('company');
+        //$num_rows = $this->db->count_all('company');
   
-        $new_array = $this->count_seed_completion($query);
+        $return_array = $this->count_seed_completion($query, $limit, $offset, $completion_array);
+        $new_array = $return_array['new_array'];
+        $num_rows = $return_array['total_rows'];
+        //$num_rows = count($new_array);
         
         //count the total number of rows (to be used for pagination)
-        $num_rows = $this->db->count_all('company');
+        //$num_rows = $this->db->count_all('company');
         
         //this is a default 'styling' template from the Codeigniter folks.  Can be changed to whatever...
         $tmpl = array (
@@ -286,9 +304,10 @@ class Company_model extends MY_Model {
             $completion = "{$row['completion_score']}%";
             $actions_link = $view_link.'  &nbsp; '.$edit_link.'  &nbsp; '.$delete_link.'  &nbsp; '.$profile_link.'  &nbsp; '.$quotes_link;
 
-            if (in_array($row['completion_score'], $completion_array, true)){
+           // if (in_array($row['completion_score'], $completion_array, true)){
+           //     $result_rows++;
                 $this->table->add_row($row['company_name'], $icon_field ,$completion ,$row['update_time'],$actions_link); 
-            }
+           // }
         }
         
         //generate the table code

@@ -25,6 +25,22 @@
             .errors {
                 color: red;   
             }
+            
+    .hyperlink-style-button{
+      background:none;
+      border:0;
+      color:#666;
+      text-decoration:underline;
+    }
+
+    .hyperlink-style-button:hover{
+      background:none;
+      border:0;
+      color:#666;
+      text-decoration:none;
+      cursor:pointer;
+      cursor:hand;
+    }            
 
 
 </style>
@@ -45,6 +61,25 @@
     
     echo '<a href = "/admin/company/create_step_1">Add New...</a>';
      
+?>
+    <br><br>
+    <form action="/admin/company/listing" method="post">
+        <input type="hidden" name="filter" value="1"/>
+        <input type="submit" name="completed_link" value="Show Not Started" class="hyperlink-style-button"/>
+    </form>    
+
+    <form action="/admin/company/listing" method="post">
+        <input type="hidden" name="filter" value="2"/>
+        <input type="submit" name="completed_link" value="Show Completed" class="hyperlink-style-button"/>
+    </form>   
+    
+    <form action="/admin/company/listing" method="post">
+        <input type="hidden" name="filter" value="3"/>
+        <input type="submit" name="completed_link" value="Show All" class="hyperlink-style-button"/>
+    </form>     
+    
+<?php
+    
     echo '<br><br>A total of '.$num_rows.' companies were returned.';
     echo '<div id="table">';
     echo $table;
