@@ -17,8 +17,6 @@ $(document).unbind('keydown').bind('keydown', function (event) {
     }
 });
 
-
-
 // Using jQuery for front-end functionalities
 $(document).ready(function(){
 	
@@ -34,7 +32,7 @@ $(document).ready(function(){
 	};
 	
 	// Customize header elements based on current page
-	if(currentPage == 'profile'){
+	if(currentPage == 'profile' || currentPage == 'admin'){
 		$('#header_login').hide(); // hide login link
 		$('#header_icon, #header_email').show(); // show profile navigation
 

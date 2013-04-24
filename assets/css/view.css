@@ -177,6 +177,42 @@ div#signup .errors{
 	width: 240px;
 }
 
+/* Administration */
+
+div#admin .content{
+	height: 500px;
+	font-size: 20px;
+}
+ul#admin_menu a{
+	background: url(../images/admin/circle.png) no-repeat;
+	display: block;
+	width: 200px;
+	height: 200px;
+	line-height: 200px;
+	text-align: center;
+}
+
+ul#admin_menu a:hover{
+	background-position: -201px 0px;
+}
+
+div#admin .flip-counter{
+    display: block;
+    float: left;
+    margin-right: 20px;
+}
+
+div#admin .title{
+    color: #EEEEEE;
+    font-size: 80px;
+    font-weight: 100;
+	padding-left: 25px;
+}
+
+div#admin a#add_company{
+	float: right;
+}
+
 /* Login */
 
 div#login .content{
@@ -1310,6 +1346,10 @@ div#preview #signUp, div#preview #signIn{
 	font-size: 35px;
 	padding-top: 10px;
 	cursor: pointer;
+}
+
+div#preview #signUp:hover, div#preview #signIn:hover{
+	color: #fff;
 }
 
 div#preview #progressIcon{

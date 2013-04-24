@@ -39,9 +39,9 @@
 		<p id="info">Based on your answers, we have customized a list of companies<br>that fit <font>your</font> work-life-play
 		preferences.  Sign in or create a free account<br>to see the entire list and immediately apply for jobs.</p>
 		<div id="previewButtons">
-			<div id="signUp">Sign Up</div>
+			<a href="signup" id="signUp">Sign Up</a>
 			<div id="progressIcon"><img src="<?php echo base_url() ?>assets/images/progressIcon.png"></img></div>
-			<div id="signIn">Sign In</div>
+			<a href="login" id="signIn">Sign In</a>
 		</div>
 	</div>
 </div>
