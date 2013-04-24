@@ -7,7 +7,10 @@
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/base.css" type="text/css"/>     
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/crud.css" type="text/css"/>  
      
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/hogan-2.0.0.js"></script>
         <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/typeahead.js"></script>
         
         <style>
             .clearfloat {
@@ -44,7 +47,23 @@
 
 
 </style>
-        
+  
+<script>
+$(document).ready(function(){
+    $('.company_search').typeahead({
+            name: 'company_search',
+            limit: 5,
+            remote: '/inquire/company_search/%QUERY',
+            template: '<p><strong>{{value}}</strong></p>',
+            engine: Hogan
+    }).on('typeahead:selected typeahead:autocompleted', function($e, datum){
+            $("#listing_search input[name='search_id']").val(datum.id);
+            //alert(datum.id);
+    });    
+});//end of document ready    
+    
+</script>
+
         
 </head>
 <body>
@@ -77,6 +96,14 @@
         <input type="hidden" name="filter" value="3"/>
         <input type="submit" name="completed_link" value="Show All" class="hyperlink-style-button"/>
     </form>     
+ 
+    <form action="/admin/company/listing" method="post">
+        <div id="listing_search">			
+                <input class="company_search" name="company_search" type="text" value=""/>
+                <input type="hidden" name="search_id" value=""/>
+                <input type="submit" name="search" value="Submit" />
+        </div>	    
+    </form>
     
 <?php
     

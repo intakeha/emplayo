@@ -192,24 +192,23 @@ class Company_model extends MY_Model {
     * @param int $limit, int $offset
     * @return array
     **/     
-    function build_company_table($limit = 5,$offset = 0,$completion_array)
+    function build_company_table($limit = 5,$offset = 0,$completion_array, $id = NULL)
     {   
         $result_rows = 0;
         //get the company data from the db
         $this->db->select('id, company_name, company_url, jobs_url, facebook_url,
             twitter_url, company_logo, creative_logo, type_id, pace_id, lifecycle_id, 
             corp_citizenship_id, update_time');
-        //$this->db->limit($limit, $offset);
+        
+        if (!empty($id)){
+            $this->db->where('id', $id);
+        }
+
         $query = $this->db->get('company');
-        //$num_rows = $this->db->count_all('company');
-  
+
         $return_array = $this->count_seed_completion($query, $limit, $offset, $completion_array);
         $new_array = $return_array['new_array'];
         $num_rows = $return_array['total_rows'];
-        //$num_rows = count($new_array);
-        
-        //count the total number of rows (to be used for pagination)
-        //$num_rows = $this->db->count_all('company');
         
         //this is a default 'styling' template from the Codeigniter folks.  Can be changed to whatever...
         $tmpl = array (

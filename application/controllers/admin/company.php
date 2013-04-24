@@ -59,10 +59,16 @@ class Company extends CI_Controller {
                 //print_r($completion_array);
                 break;
         }        
+
+        $id = $this->input->post('search_id');
+
+        if (!empty($display_filter)){
+            $this->session->set_userdata('display_filter',$display_filter);
+        }        
         
         
         //grabbing the table data and format from the model
-        $table_data = $this->company_model->build_company_table($limit,$offset,$completion_array);
+        $table_data = $this->company_model->build_company_table($limit,$offset,$completion_array,$id);
         $data['table'] = $table_data['table'];
         $data['num_rows'] = $table_data['num_rows'];
         
