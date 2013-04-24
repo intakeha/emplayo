@@ -737,7 +737,7 @@ class Company extends CI_Controller {
             if ($max_dimension_num > $max_dimension){
                     $scale = $max_dimension/$max_dimension_num;
                     if (($scale*$min_dimension_num)<$min_dimension){
-                        $error_message = "This image does not meet our dimension requirements.  Please use a different image.";
+                        $error_message = "This image does not meet our dimension requirements of $min_dimension pixels tall and wide.  Please use a different image.";
                         $this->sendToJS(0, $error_message);                     
                     } else {
                         $uploaded = resizeImage($temp_image_location,$width,$height,$scale);
