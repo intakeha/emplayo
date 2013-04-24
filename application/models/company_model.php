@@ -23,6 +23,168 @@ class Company_model extends MY_Model {
         return $query;
     }
     
+    function count_seed_completion($query, $limit, $offset, $completion_array){
+        $new_array = array();
+        $logo_count_needed = 2;
+        $url_count_needed = 4;
+        $core_data_count_needed = 6;
+        $profile_pics_count_needed = 8;
+        $quotes_count_needed = 4;
+        $completion_base = 5;//total number of areas we're counting
+        
+        
+        
+        foreach ($query->result() as $key=>$value) {
+            $logo_count = 0;
+            $logo_done = FALSE;
+            $url_count = 0;
+            $url_done = FALSE;
+            $core_data_count = 0;
+            $core_data_done = FALSE;
+            $profile_pics_count = 0;
+            $profile_pics_done = FALSE;
+            $quotes_count = 0;
+            $quotes_done = FALSE;
+            $completion_count = 0;
+            
+            $new_array[$key]['id'] = $value->id;
+            $new_array[$key]['company_name'] = $value->company_name;
+            //Count URLs
+            if (!empty($value->company_url)){
+                $url_count++;              
+            }            
+            if (!empty($value->jobs_url)){
+                $url_count++;              
+            }
+            if (!empty($value->facebook_url)){
+                $url_count++;              
+            }            
+            if (!empty($value->twitter_url)){
+                $url_count++;              
+            }
+            $new_array[$key]['url_count'] = $url_count;
+            if ($url_count == $url_count_needed){
+                $url_done = TRUE;
+                $completion_count++;
+            }
+            
+            $new_array[$key]['url_done'] = $url_done;
+            
+            //Count Logos
+            if (!empty($value->company_logo)){
+                $logo_count++;              
+            }              
+            if (!empty($value->creative_logo)){
+                $logo_count++;              
+            }            
+            $new_array[$key]['logo_count'] = $logo_count; 
+            if ($logo_count == $logo_count_needed){
+                $logo_done = TRUE;
+                $completion_count++;
+            }
+            $new_array[$key]['logo_done'] = $logo_done;        
+            $new_array[$key]['update_time'] = $value->update_time;
+            
+            
+            //Count Core Data
+            if (!empty($value->type_id)){
+                $core_data_count++;              
+            }            
+            if (!empty($value->pace_id)){
+                $core_data_count++;              
+            }              
+            if (!empty($value->lifecycle_id)){
+                $core_data_count++;              
+            } 
+            if (!empty($value->corp_citizenship_id)){
+                $core_data_count++;              
+            }             
+            
+            
+            //Count Benefits
+            $this->db->select('benefits_id');
+            $this->db->where('company_id', $value->id);
+            $this->db->from('company_benefits');
+            $benefits_count = $this->db->count_all_results();
+            //echo "<br>benefits count for $value->id: ". $benefits_count;
+            if ($benefits_count>0){
+                $core_data_count++;
+            }
+
+            //Count Category/Industry
+            $this->db->select('category_id');
+            $this->db->where('company_id', $value->id);
+            $this->db->from('company_category');
+            $category_count = $this->db->count_all_results();
+            //echo "<br>benefits count for $value->id: ". $benefits_count;
+            if ($category_count>0){
+                $core_data_count++;
+            }            
+ 
+            $new_array[$key]['core_data_count'] = $core_data_count; 
+            if ($core_data_count == $core_data_count_needed){
+                $core_data_done = TRUE;
+                $completion_count++;
+            }
+            $new_array[$key]['core_data_done'] = $core_data_done;              
+            
+             //Count Profile Pics
+            $this->db->select('file_name');
+            $this->db->where('company_id', $value->id);
+            $this->db->from('company_profile_pics');
+            $profile_pics_count = $this->db->count_all_results();           
+            //echo "<br>profile pic count for $value->id: ". $profile_pics_count;        
+ 
+            $new_array[$key]['profile_pics_count'] = $profile_pics_count; 
+            if ($profile_pics_count >= $profile_pics_count_needed){
+                $profile_pics_done = TRUE;
+                $completion_count++;
+            }
+            $new_array[$key]['profile_pics_done'] = $profile_pics_done;             
+            
+             //Count Quotes
+            $this->db->select('quote');
+            $this->db->where('company_id', $value->id);
+            $this->db->from('company_quotes');
+            $quotes_count = $this->db->count_all_results();           
+            //echo "<br>quotes count for $value->id: ". $quotes_count;       
+            
+            $new_array[$key]['quotes_count'] = $quotes_count; 
+            if ($quotes_count >= $quotes_count_needed){
+                $quotes_done = TRUE;
+                $completion_count++;
+            }
+            $new_array[$key]['quotes_done'] = $quotes_done;    
+            
+            //Completion Score
+            $completion_score = ($completion_count/$completion_base)*100;
+            settype($completion_score, "integer");
+            //$new_array[$key]['completion_score'] = settype($completion_score, "integer");
+            $new_array[$key]['completion_score'] = $completion_score;
+            
+            if (!in_array($completion_score, $completion_array, true)){
+                unset($new_array[$key]);
+            }
+            
+        }
+        
+        $total_rows = count($new_array);
+        $new_array = array_slice($new_array, $offset, $limit, false);
+        
+        /*
+        echo "<br> limit: ".$limit;
+        echo "<br> offset: ".$offset;
+        echo "<br> total rows: ".$total_rows;
+        
+        echo '<pre>';
+        print_r($new_array);
+        echo '</pre>';
+        */
+       
+        return array('total_rows' => $total_rows, 'new_array' => $new_array);
+        //return $new_array;
+    }
+    
     /**
     * Build Company Table
     * Builds a table of companies using the Codeigniter Table class
@@ -30,15 +192,24 @@ class Company_model extends MY_Model {
     * @param int $limit, int $offset
     * @return array
     **/     
- /*   function build_company_table($limit = 5,$offset = 0)
+
+    function build_company_table($limit = 5,$offset = 0,$completion_array, $id = NULL)
     {   
+        $result_rows = 0;
         //get the company data from the db
-        $this->db->select('id,company_name,company_url,update_time');
-        $this->db->limit($limit, $offset);
-        $query = $this->db->get('company');
+        $this->db->select('id, company_name, company_url, jobs_url, facebook_url,
+            twitter_url, company_logo, creative_logo, type_id, pace_id, lifecycle_id, 
+            corp_citizenship_id, update_time');
         
-        //count the total number of rows (to be used for pagination)
-        $num_rows = $this->db->count_all('company');
+        if (!empty($id)){
+            $this->db->where('id', $id);
+        }
+
+        $query = $this->db->get('company');
+
+        $return_array = $this->count_seed_completion($query, $limit, $offset, $completion_array);
+        $new_array = $return_array['new_array'];
+        $num_rows = $return_array['total_rows'];
         
         //this is a default 'styling' template from the Codeigniter folks.  Can be changed to whatever...
         $tmpl = array (
@@ -70,9 +241,11 @@ class Company_model extends MY_Model {
         //$this->table->set_caption('Companies');
         
         //Give names to each heading.  Default is the db field name
-        $this->table->set_heading('ID', 'Name', 'Website', 'Last Updated', 'Actions'); 
+        $this->table->set_heading('Name', 'Areas','% Complete', 'Last Updated', 'Actions'); 
 
+        
         //define each table row exactly how we want it
+        /*
         foreach ($query->result() as $row) {
             //echo $row->company_name;
             $id_link = '<a href="/admin/company/update_step_1/'.$row->id.'">'.$row->id.'</a>';
@@ -82,7 +255,59 @@ class Company_model extends MY_Model {
             $profile_link = '<a href="/admin/company/profile_view/'.$row->id.'">Profile</a>';
             $quotes_link = '<a href="/admin/company/quotes_view/'.$row->id.'">Quotes</a>';
             $actions_link = $view_link.'  &nbsp; '.$edit_link.'  &nbsp; '.$delete_link.'  &nbsp; '.$profile_link.'  &nbsp; '.$quotes_link;
-            $this->table->add_row($id_link,$row->company_name, $row->company_url, $row->update_time,$actions_link); 
+            $this->table->add_row($row->company_name, '' ,'' ,$row->update_time,$actions_link); 
+        }
+        */
+        foreach ($new_array as $row) {
+            
+            if($row['url_done'] == TRUE){
+                $url_class = "url_1";
+            }else {
+                $url_class = "url_0";
+            }
+            
+            if($row['logo_done'] == TRUE){
+                $logo_class = "logo_1";
+            }else {
+                $logo_class = "logo_0";
+            } 
+            
+            if($row['core_data_done'] == TRUE){
+                $core_data_class = "core_data_1";
+            }else {
+                $core_data_class = "core_data_0";
+            }              
+            
+            if($row['profile_pics_done'] == TRUE){
+                $profile_pic_class = "profile_pics_1";
+            }else {
+                $profile_pic_class = "profile_pics_0";
+            }
+            
+            if($row['quotes_done'] == TRUE){
+                $quotes_class = "quotes_1";
+            }else {
+                $quotes_class = "quotes_0";
+            }            
+            
+            $icon_field = "<img class='$url_class'/>
+                <img class='$logo_class'/>
+                <img class='$core_data_class'/>
+                <img class='$profile_pic_class'/>
+                <img class='$quotes_class'/>";
+            $id_link = '<a href="/admin/company/update_step_1/'.$row['id'].'">'.$row['id'].'</a>';
+            $delete_link = '<a href="/admin/company/delete/'.$row['id'].'">Delete</a>';
+            $edit_link = '<a href="/admin/company/update_step_1/'.$row['id'].'">Edit</a>';
+            $view_link = '<a href="/admin/company/view/'.$row['id'].'">View</a>';
+            $profile_link = '<a href="/admin/company/profile_view/'.$row['id'].'">Profile</a>';
+            $quotes_link = '<a href="/admin/company/quotes_view/'.$row['id'].'">Quotes</a>';
+            $completion = "{$row['completion_score']}%";
+            $actions_link = $view_link.'  &nbsp; '.$edit_link.'  &nbsp; '.$delete_link.'  &nbsp; '.$profile_link.'  &nbsp; '.$quotes_link;
+
+           // if (in_array($row['completion_score'], $completion_array, true)){
+           //     $result_rows++;
+                $this->table->add_row($row['company_name'], $icon_field ,$completion ,$row['update_time'],$actions_link); 
+           // }
         }
         
         //generate the table code
@@ -506,6 +731,131 @@ class Company_model extends MY_Model {
         }
         
     }//end of update_company
+ 
+    function update_company_flexible($post,$id)
+    {
+        //NEED TO ESCAPE THE USER INPUT!!!
+
+        //NEED TO FINALIZE HOW TO DEAL WITH 'UPDATED' IMAGE FILES:
+        //In the view, the user should be able to see the image file, and possibly edit it, 
+        //using Chon's Woorus code.  If they make changes, we update.  If not, no need to...
+        //If we upload a new file, or change it, then we need to delete the old one.
+        //http://stackoverflow.com/questions/5454044/deleting-files-using-codeigniter
+            
+        //this user input is dirty.  we will use active records to escape the data and make
+        // it safe for db insertion.
+        $company_array = array(
+            'company_name' => $post['company_name'],
+            'company_url' => $post['company_url'],
+            'jobs_url' => $post['jobs_url'],
+            'facebook_url' => $post['facebook_url'],
+            'twitter_url' => $post['twitter_url'],            
+            'company_logo' => $post['company_logo'],
+            'creative_logo' => $post['creative_logo'],
+            'type_id' => $post['company_type'],
+            'pace_id' => $post['company_pace'],
+            'lifecycle_id' => $post['company_lifecycle'],
+            'corp_citizenship_id' => $post['corp_citizenship'],
+            'update_time' => date('Y-m-d H:i:s') 
+        );   
+        
+        // check to ensure the company exists prior to trying to update it
+        if (!$this->company_exists($post['company_name']))
+        {
+            $this->set_error('Company does not exist');
+            return FALSE;
+        }
+        else 
+        {
+            //BEGIN A TRANSACTION, SO ALL UPDATES MUST SUCCEED OR EVERYTHING IS ROLLED BACK:
+            $this->db->trans_start();
+
+            //UPDATE COMPANY DATA
+            $this->db->where('id', $id);
+            $this->db->update('company', $company_array);
+
+            //BUILD PROPERLY FORMATTED ARRAY FOR BENEFITS INSERT
+            if ($post['benefits']) 
+                {
+                foreach ($post['benefits'] as $key=>$value)
+                {
+                    $insert_ben_array[] = '('.$id.','.$value.')';
+                }                        
+                $imploded_ins_benefits = implode(',', $insert_ben_array);     
+
+                // array to be used for deleting old benefit selections
+                // same data as array above, but using a different format
+                // 
+                $new_benefits = $post['benefits'];
+                $imploded_new_benefits = implode(',',$new_benefits);
+
+                //UPDATE BENEFITS DATA
+                //
+                //based on http://stackoverflow.com/questions/548541/insert-ignore-vs-insert-on-duplicate-key-update
+                //http://stackoverflow.com/questions/9384974/update-tag-mapping-table-in-mysql
+                //http://stackoverflow.com/questions/9334766/updating-in-a-many-to-many-relationship
+                //http://stackoverflow.com/questions/8637691/best-practice-for-many-to-many-data-mapping
+                //
+                //first delete all the rows that are not in the new set
+                //$sql = "DELETE FROM company_benefits WHERE company_id = ? AND benefits_id NOT IN (?)"; 
+                //$this->db->query($sql, array($id, $imploded_new_benefits));
+
+                //then insert all the new benefits that are not in the db for this company
+                //manually escaping these inputs since we cannot use active records or query binding on the sql statements
+                //either method causes the addition of an extra pair of enclosing quotes which causes a sql syntax error.
+                $imploded_ins_benefits = $this->db->escape_str($imploded_ins_benefits);
+                $imploded_new_benefits = $this->db->escape_str($imploded_new_benefits);
+
+                $sql_del_ben = "DELETE FROM company_benefits WHERE company_id = $id AND benefits_id NOT IN ($imploded_new_benefits)";
+                $sql_ins_ben = "INSERT INTO company_benefits (company_id,benefits_id) VALUES $imploded_ins_benefits ON DUPLICATE KEY UPDATE company_id=company_id";
+
+                //execute the queries
+                $this->db->query($sql_del_ben);
+                $this->db->query($sql_ins_ben); 
+            }
+            
+            //BUILD PROPERLY FORMATTED ARRAY FOR CATEGORY UPDATE  
+            if ($post['category'])
+            {
+                foreach ($post['category'] as $key=>$value)
+                {
+                    $insert_cat_array[] = '('.$id.','.$value.')';
+                }                        
+                $imploded_ins_category = implode(',', $insert_cat_array);   
+
+                // array to be used for deleting old category selections
+                // same data as array above, but using a different format
+                $new_categories = $post['category'];
+                $imploded_new_categories = implode(',',$new_categories);  
+
+                //manually escape the data
+                $imploded_ins_category = $this->db->escape_str($imploded_ins_category);
+                $imploded_new_categories = $this->db->escape_str($imploded_new_categories);            
+
+                //first delete all the rows that are not in the new set
+                $sql_del_cat = "DELETE FROM company_category WHERE company_id = $id AND category_id NOT IN ($imploded_new_categories)";
+                $sql_ins_cat = "INSERT INTO company_category (company_id,category_id) VALUES $imploded_ins_category ON DUPLICATE KEY UPDATE company_id=company_id";
+
+                //execute the queries
+                $this->db->query($sql_del_cat);
+                $this->db->query($sql_ins_cat); 
+            }
+            //COMMIT ALL OF THE UPDATES
+            $this->db->trans_complete();
+            
+            if ($this->db->trans_status() === FALSE)
+            {
+                $this->set_error('Unable to update company record');
+                return FALSE;
+            }
+            else 
+            {
+                return TRUE;
+            }
+            
+        }
+        
+    }//end of update_company    
     
     /**
     * Company Exists

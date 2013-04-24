@@ -32,9 +32,43 @@ class Company extends CI_Controller {
         //params sent to the db lookup
         $offset = $this->uri->segment($uri_segment);
         $limit = 10;
+  
+        
+        $display_filter = $this->input->post('filter');
+        
+        if (!empty($display_filter)){
+            $this->session->set_userdata('display_filter',$display_filter);
+        }
+        
+        $display_filter_from_session = $this->session->userdata('display_filter');
+        
+        switch ($display_filter_from_session) {
+            case 1:
+                //echo "case 1";
+                $completion_array = array(0);
+                //print_r($completion_array);
+                break;
+            case 2:
+                //echo "case 2";
+                $completion_array = array(100);
+                //print_r($completion_array);
+                break;
+            default:
+                //echo "case default";
+                $completion_array = array(0,20,40,60,80,100);
+                //print_r($completion_array);
+                break;
+        }        
 
+        $id = $this->input->post('search_id');
+
+        if (!empty($display_filter)){
+            $this->session->set_userdata('display_filter',$display_filter);
+        }        
+        
+        
         //grabbing the table data and format from the model
-        $table_data = $this->company_model->build_company_table($limit,$offset);
+        $table_data = $this->company_model->build_company_table($limit,$offset,$completion_array,$id);
         $data['table'] = $table_data['table'];
         $data['num_rows'] = $table_data['num_rows'];
         
@@ -43,6 +77,9 @@ class Company extends CI_Controller {
         
         //pagination config parameters
         $config['base_url'] = '/admin/company/listing';
+        //$config['use_page_numbers'] = TRUE;
+        //$config['first_url'] = '1';
+
         $config['total_rows'] = $data['num_rows'];
         $config['per_page'] = $limit;         
         $config['uri_segment'] = $uri_segment;
@@ -386,6 +423,19 @@ class Company extends CI_Controller {
             $data['categories_info'] = $this->company_model->get_categories_info($id);
         }
         //validate the form (except for the file upload)
+        $this->form_validation->set_rules('company_name', 'Company Name');
+        $this->form_validation->set_rules('company_url', 'Company URL', 'prep_url');
+        $this->form_validation->set_rules('jobs_url', 'Jobs URL', 'prep_url');
+        $this->form_validation->set_rules('facebook_url', 'Facebook URL', 'prep_url');
+        $this->form_validation->set_rules('twitter_url', 'Twitter URL', 'prep_url');        
+        $this->form_validation->set_rules('company_type', 'Company Type');
+        $this->form_validation->set_rules('company_pace', 'Company Pace');
+        $this->form_validation->set_rules('company_lifecycle', 'Company Lifecycle');
+        $this->form_validation->set_rules('corp_citizenship', 'Corporate Citizenship');
+        $this->form_validation->set_rules('benefits', 'Benefits');
+        $this->form_validation->set_rules('category[]', 'Category'); 
+        
+        /*
         $this->form_validation->set_rules('company_name', 'Company Name', 'required');
         $this->form_validation->set_rules('company_url', 'Company URL', 'required|prep_url');
         $this->form_validation->set_rules('jobs_url', 'Jobs URL', 'required|prep_url');
@@ -396,7 +446,8 @@ class Company extends CI_Controller {
         $this->form_validation->set_rules('company_lifecycle', 'Company Lifecycle', 'required');
         $this->form_validation->set_rules('corp_citizenship', 'Corporate Citizenship', 'required');
         $this->form_validation->set_rules('benefits', 'Benefits', 'required');
-        $this->form_validation->set_rules('category[]', 'Category', 'required');            
+        $this->form_validation->set_rules('category[]', 'Category', 'required'); 
+        */
 
         if ($this->form_validation->run() == true)
         {   
@@ -486,7 +537,8 @@ class Company extends CI_Controller {
             }    
 
         //commit all session data to the database
-        if ($this->company_model->update_company($post_data,$id))
+       // if ($this->company_model->update_company($post_data,$id))
+        if ($this->company_model->update_company_flexible($post_data,$id))        
         { //success
                 //move the image files from temp to the working directory
                 $original_path = "./assets/images/company_logos/temp/";
@@ -697,7 +749,7 @@ class Company extends CI_Controller {
             if ($max_dimension_num > $max_dimension){
                     $scale = $max_dimension/$max_dimension_num;
                     if (($scale*$min_dimension_num)<$min_dimension){
-                        $error_message = "This image does not meet our dimension requirements.  Please use a different image.";
+                        $error_message = "This image does not meet our dimension requirements of $min_dimension pixels tall and wide.  Please use a different image.";
                         $this->sendToJS(0, $error_message);                     
                     } else {
                         $uploaded = resizeImage($temp_image_location,$width,$height,$scale);

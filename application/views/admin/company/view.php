@@ -80,6 +80,8 @@
         
         <a href = "/admin/company/update_step_1/<?php echo $company_id;?>">Edit This Company</a>
         
+        <a href = "/company/temp/<?php echo $company_id;?>">Preview Company Page</a>
+        
 	<div id="bd"><!-- body -->
             <div id="type">
         <p>
