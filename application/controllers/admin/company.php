@@ -79,6 +79,7 @@ class Company extends CI_Controller {
         $config['base_url'] = '/admin/company/listing';
         //$config['use_page_numbers'] = TRUE;
         //$config['first_url'] = '1';
+
         $config['total_rows'] = $data['num_rows'];
         $config['per_page'] = $limit;         
         $config['uri_segment'] = $uri_segment;
@@ -90,7 +91,18 @@ class Company extends CI_Controller {
         $data['pagination'] = $this->pagination->create_links();
 
         //load the view
-        $this->load->view("admin/company/listing",$data);        
+	if ($this->ion_auth->logged_in()){
+		$data['title']="Company Listings";
+		$data['content']="admin/company/_listing";
+		$this->load->view('canvas', $data);
+		$this->session->unset_userdata('message');
+		
+	}   else {
+		$data['title']="Home";
+		$data['content']="pages/_home";
+		$this->load->view('canvas', $data);
+	}
+        
     }
     
     //Create a new company record
