@@ -585,7 +585,7 @@ class Company extends CI_Controller {
         //setup the file upload config values
         $config['upload_path'] = './assets/images/company_logos/temp/';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
-        $config['max_size']	= '500';
+        $config['max_size']	= '1024';
         //$config['max_width']  = '2024';
         //$config['max_height']  = '2024';
         $config['remove_spaces']  = 'TRUE';
@@ -600,14 +600,13 @@ class Company extends CI_Controller {
         //we can use this to clean up any abandoned files
         $last_temp_file = $this->input->post('last_temp_file');
         $full_temp_path = $config['upload_path'].$last_temp_file;
-
+       
         if ($last_temp_file){
             unlink($full_temp_path);
         }
 
         //load the upload library
         $this->load->library('upload', $config);            
-
         //attempt to upload the file
         if ($this->upload->do_upload())      
         {
@@ -633,7 +632,7 @@ class Company extends CI_Controller {
 
             //error if image is too small
             if ($min_dimension_num < $min_dimension){
-                    $error_message = "Please use a larger image.";
+                    $error_message = "Please use a larger image that is at least $min_dimension px in both width and height.";
                     $this->sendToJS(0, $error_message);                    
                     
             }
@@ -646,14 +645,14 @@ class Company extends CI_Controller {
             //Scale the image if it is greater than the max dimension
             if ($max_dimension_num > $max_dimension){
                     $scale = $max_dimension/$max_dimension_num;
-                    $uploaded = resizeImage($temp_image_location,$width,$height,$scale);
+                    $uploaded = resizeImage_lossless($temp_image_location,$width,$height,$scale);
                     //squarify was causing problems with 250x250 images...need to review the math here and 
                     // probably put a conditional in front of this...
-                    $square_image = squarify($uploaded,$max_dimension);
+                    $square_image = squarify_lossless($uploaded,$max_dimension);
             }else{
                     $scale = 1;
-                    $uploaded = resizeImage($temp_image_location,$width,$height,$scale);
-                    $square_image = squarify($uploaded,$max_dimension);
+                    $uploaded = resizeImage_lossless($temp_image_location,$width,$height,$scale);
+                    $square_image = squarify_lossless($uploaded,$max_dimension);
             } 
             $new_pic_name = basename($uploaded);
 
@@ -673,7 +672,14 @@ class Company extends CI_Controller {
         }
         else //there was an error with the file upload
         {
-            $messageToSend = array('success' => '0', 'message'=>'There was an error with the upload.  Please try again.');
+            $ci_upload_error = $this->upload->display_errors();
+            if ($ci_upload_error){
+                $message = $ci_upload_error;
+            } else {
+                $message = 'There was an error with the upload.  Please try again.';
+            }
+            //
+            $messageToSend = array('success' => '0', 'message'=> $message);
             $output = json_encode($messageToSend);
             echo $output;  
         }            
@@ -728,7 +734,7 @@ class Company extends CI_Controller {
 
             //error if image is too small
             if ($min_dimension_num < $min_dimension){
-                    $error_message = "Please use a larger image.";
+                    $error_message = "Please use a larger image that is at least $min_dimension px in both width and height.";
                     $this->sendToJS(0, $error_message);                    
                     
             }
@@ -759,7 +765,14 @@ class Company extends CI_Controller {
         }
         else //there was an error with the file upload
         {
-            $messageToSend = array('success' => '0', 'message'=>'There was an error with the upload.  Please try again.');
+            $ci_upload_error = $this->upload->display_errors();
+            if ($ci_upload_error){
+                $message = $ci_upload_error;
+            } else {
+                $message = 'There was an error with the upload.  Please try again.';
+            }
+            //
+            $messageToSend = array('success' => '0', 'message'=> $message);
             $output = json_encode($messageToSend);
             echo $output;  
         }            
@@ -808,8 +821,8 @@ class Company extends CI_Controller {
 
             $scale = $profile_width/$w;
             $cropped = '';
-            //$cropped = resizeThumbnailImage($profile_image_location, $original_location,$w,$h,$x1,$y1,$scale);
-            $cropped = resizeThumbnailImage($original_location, $original_location,$w,$h,$x1,$y1,$scale);
+              $cropped = resizeThumbnailImage_jpgout($original_location, $original_location,$w,$h,$x1,$y1,$scale);
+                       
             //the resizeThumbnailImage function will resize the image and save it into the $profile_path
 
             if (!empty($cropped)){
@@ -817,7 +830,15 @@ class Company extends CI_Controller {
                 //unlink($original_location);//removed this...will commit all deletes and moves in the final step
 
                 //save the image name to the session
-                $this->session->set_userdata($pic_db_field,$picture_name_input);
+                //$this->session->set_userdata($pic_db_field,$picture_name_input);
+                
+                //added the following to get the actual file name from the resize function.
+                //that way, if the filename is changed there, we have it to use here, 
+                //instead of relying on the old info passed by the client.
+                
+                $file_name  = substr($cropped,(strrpos($cropped, '/')+1));
+                //echo "filename: $file_name";
+                $this->session->set_userdata($pic_db_field,$file_name);
 
                 //success
                 $messageToSend = array('success' => '1', 'message'=>'Photo successfully processed.');
