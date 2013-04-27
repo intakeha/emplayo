@@ -18,7 +18,7 @@
 	<script>
 		var myCounter = new flipCounter("counter", {
 				value: <?php echo $num_rows; ?>,
-				pace: 0
+				pace: 500
 			});
 			myCounter.stop();
 	</script>

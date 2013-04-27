@@ -315,68 +315,8 @@ class Company_model extends MY_Model {
 
         //send an array of variables back to the controller
         return array('num_rows' => $num_rows, 'table' => $table);
-    }*/
-     function build_company_table($limit,$offset = 0)
-    {   
-        //get the company data from the db
-        $this->db->select('id,company_name,update_time');
-        $this->db->limit($limit, $offset);
-        $query = $this->db->get('company');
-        
-        //count the total number of rows (to be used for pagination)
-        $num_rows = $this->db->count_all('company');
-        
-        //this is a default 'styling' template from the Codeigniter folks.  Can be changed to whatever...
-        $tmpl = array (
-                        'table_open'          => '<table border="1" cellpadding="4" cellspacing="1" class="mytable">',
-
-                        'heading_row_start'   => '<tr class="table_heading">',
-                        'heading_row_end'     => '</tr>',
-                        'heading_cell_start'  => '<th>',
-                        'heading_cell_end'    => '</th>',
-
-                        'row_start'           => '<tr>',
-                        'row_end'             => '</tr>',
-                        'cell_start'          => '<td>',
-                        'cell_end'            => '</td>',
-
-                        'row_alt_start'       => '<tr>',
-                        'row_alt_end'         => '</tr>',
-                        'cell_alt_start'      => '<td>',
-                        'cell_alt_end'        => '</td>',
-
-                        'table_close'         => '</table>'
-                      );
-
-        //Apply the template to the table
-        $this->table->set_template($tmpl);
-        
-        //set empty fields in the table to a default value
-        $this->table->set_empty("&nbsp;");
-        //$this->table->set_caption('Companies');
-        
-        //Give names to each heading.  Default is the db field name
-        $this->table->set_heading('Name', 'Last Updated', 'Actions'); 
-
-        //define each table row exactly how we want it
-        foreach ($query->result() as $row) {
-            //echo $row->company_name;
-            $id_link = '<a href="/admin/company/update_step_1/'.$row->id.'">'.$row->id.'</a>';
-            $delete_link = '<a href="/admin/company/delete/'.$row->id.'">Delete</a>';
-            $edit_link = '<a href="/admin/company/update_step_1/'.$row->id.'">Edit</a>';
-            $view_link = '<a href="/admin/company/view/'.$row->id.'">View</a>';
-            $profile_link = '<a href="/admin/company/profile_view/'.$row->id.'">Profile</a>';
-            $quotes_link = '<a href="/admin/company/quotes_view/'.$row->id.'">Quotes</a>';
-            $actions_link = $view_link.'  &nbsp; '.$edit_link.'  &nbsp; '.$delete_link.'  &nbsp; '.$profile_link.'  &nbsp; '.$quotes_link;
-            $this->table->add_row($row->company_name, $row->update_time, $actions_link); 
-        }
-        
-        //generate the table code
-        $table = $this->table->generate();
-
-        //send an array of variables back to the controller
-        return array('num_rows' => $num_rows, 'table' => $table);
     }
+    
     /**
     * Get Categories
     * Fetches category reference data.
