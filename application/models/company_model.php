@@ -213,9 +213,9 @@ class Company_model extends MY_Model {
         
         //this is a default 'styling' template from the Codeigniter folks.  Can be changed to whatever...
         $tmpl = array (
-                        'table_open'          => '<table border="1" cellpadding="4" cellspacing="1" class="mytable">',
+                        'table_open'          => '<table border="1" cellpadding="4" cellspacing="1" class="companies_table"><colgroup><col id="company"><col id="data"><col id="progress"><col id="update"><col id="action"></colgroup>',
 
-                        'heading_row_start'   => '<tr class="table_heading">',
+                        'heading_row_start'   => '<tr>',
                         'heading_row_end'     => '</tr>',
                         'heading_cell_start'  => '<th>',
                         'heading_cell_end'    => '</th>',
@@ -224,11 +224,6 @@ class Company_model extends MY_Model {
                         'row_end'             => '</tr>',
                         'cell_start'          => '<td>',
                         'cell_end'            => '</td>',
-
-                        'row_alt_start'       => '<tr>',
-                        'row_alt_end'         => '</tr>',
-                        'cell_alt_start'      => '<td>',
-                        'cell_alt_end'        => '</td>',
 
                         'table_close'         => '</table>'
                       );
@@ -241,23 +236,10 @@ class Company_model extends MY_Model {
         //$this->table->set_caption('Companies');
         
         //Give names to each heading.  Default is the db field name
-        $this->table->set_heading('Name', 'Areas','% Complete', 'Last Updated', 'Actions'); 
+        $this->table->set_heading('Company Name', 'Data','% Complete', 'Last Updated', 'Actions'); 
 
         
         //define each table row exactly how we want it
-        /*
-        foreach ($query->result() as $row) {
-            //echo $row->company_name;
-            $id_link = '<a href="/admin/company/update_step_1/'.$row->id.'">'.$row->id.'</a>';
-            $delete_link = '<a href="/admin/company/delete/'.$row->id.'">Delete</a>';
-            $edit_link = '<a href="/admin/company/update_step_1/'.$row->id.'">Edit</a>';
-            $view_link = '<a href="/admin/company/view/'.$row->id.'">View</a>';
-            $profile_link = '<a href="/admin/company/profile_view/'.$row->id.'">Profile</a>';
-            $quotes_link = '<a href="/admin/company/quotes_view/'.$row->id.'">Quotes</a>';
-            $actions_link = $view_link.'  &nbsp; '.$edit_link.'  &nbsp; '.$delete_link.'  &nbsp; '.$profile_link.'  &nbsp; '.$quotes_link;
-            $this->table->add_row($row->company_name, '' ,'' ,$row->update_time,$actions_link); 
-        }
-        */
         foreach ($new_array as $row) {
             
             if($row['url_done'] == TRUE){
@@ -290,15 +272,15 @@ class Company_model extends MY_Model {
                 $quotes_class = "quotes_0";
             }            
             
-            $icon_field = "<img class='$url_class'/>
-                <img class='$logo_class'/>
-                <img class='$core_data_class'/>
-                <img class='$profile_pic_class'/>
-                <img class='$quotes_class'/>";
+            $icon_field = "<div class='$logo_class' title='Logo'></div>
+		<div class='$profile_pic_class' title='Pics'></div>
+		<div class='$quotes_class' title='Quotes'></div>
+		<div class='$url_class' title='URLs'></div>
+                <div class='$core_data_class' title='Data'></div>";
             $id_link = '<a href="/admin/company/update_step_1/'.$row['id'].'">'.$row['id'].'</a>';
             $delete_link = '<a href="/admin/company/delete/'.$row['id'].'">Delete</a>';
             $edit_link = '<a href="/admin/company/update_step_1/'.$row['id'].'">Edit</a>';
-            $view_link = '<a href="/admin/company/view/'.$row['id'].'">View</a>';
+            $view_link = '<a href="/admin/company/overview/'.$row['id'].'">View</a>';
             $profile_link = '<a href="/admin/company/profile_view/'.$row['id'].'">Profile</a>';
             $quotes_link = '<a href="/admin/company/quotes_view/'.$row['id'].'">Quotes</a>';
             $completion = "{$row['completion_score']}%";

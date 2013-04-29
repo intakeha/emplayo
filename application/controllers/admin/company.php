@@ -379,7 +379,7 @@ class Company extends CI_Controller {
     }        
  
     //Update an existing company record
-    public function view($id)
+    public function overview($id)
     {
         //Grab the data to be used to populate the form
         $data['company_id'] = $id;
@@ -397,9 +397,18 @@ class Company extends CI_Controller {
             $data['benefits_info'] = $this->company_model->get_benefits_info($id);
             $data['categories_info'] = $this->company_model->get_categories_info($id);
         }
-
-        //load the view
-        $this->load->view("admin/company/view",$data); 
+	
+	//load the view
+	if ($this->ion_auth->logged_in()){
+		$data['title']="Company Listings";
+		$data['content']="admin/company/_overview";
+		$this->load->view('canvas', $data);
+		$this->session->unset_userdata('message');
+	}   else {
+		$data['title']="Home";
+		$data['content']="pages/_home";
+		$this->load->view('canvas', $data);
+	}
                
     }//view  
     
