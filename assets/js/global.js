@@ -46,6 +46,19 @@ $(document).ready(function(){
 			$(this).find('div.fit').hide();
 			$(this).find('img.logo').hide();
 		});
+		
+		if($('div#admin').find('.company_search')){
+			$('.company_search').typeahead({
+				name: 'company_search',
+				limit: 5,
+				remote: '/inquire/company_search/%QUERY',
+				template: '<p><strong>{{value}}</strong></p>',
+				engine: Hogan
+			}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
+				$("#listing_search input[name='search_id']").val(datum.id);
+				$('div#admin #company_search').submit();
+			});
+		};
 	};
 	
 	if(currentPage == 'company'){
