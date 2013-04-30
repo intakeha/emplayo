@@ -5,6 +5,7 @@ set :branch, 'develop'
 # This task does post deploy configuration for the target environment
 task :post_deploy_config, :roles => :web do
   run "cp #{release_path}/application/config/environment.config.development #{release_path}/application/config/environment.config"
+  run "ln -s #{shared_path}/uploads #{release_path}/uploads"
 
 end
 

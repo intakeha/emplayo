@@ -315,7 +315,8 @@ class Company_model extends MY_Model {
 
         //send an array of variables back to the controller
         return array('num_rows' => $num_rows, 'table' => $table);
-    }*/
+    }
+    /*
      function build_company_table($limit,$offset = 0)
     {   
         //get the company data from the db
@@ -377,6 +378,7 @@ class Company_model extends MY_Model {
         //send an array of variables back to the controller
         return array('num_rows' => $num_rows, 'table' => $table);
     }
+    */
     /**
     * Get Categories
     * Fetches category reference data.
@@ -1002,7 +1004,10 @@ class Company_model extends MY_Model {
             
             //randomizing could randomly put all the small pics next to each other...
             //so, distribute the pictures to spread the types/shapes out
-            $distributed_array = $this->distribute_pics($pic_array);
+            //
+            //4/30/13: THERE WAS AN ISSUE WITH THIS FUNCTION SKIPPING IMAGES.  COMMENTING OUT FOR NOW...
+            //$distributed_array = $this->distribute_pics($pic_array);
+            $distributed_array = NULL;
             
             if (!empty($distributed_array)){       
                 return $distributed_array; 

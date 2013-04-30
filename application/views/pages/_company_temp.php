@@ -8,8 +8,8 @@
 
             <div id="tiles">
                     <?php
-                    $image_path = "/assets/images/company_tiles/";
-                    $logo_path = "/assets/images/company_logos/";
+                    $image_path = base_url().PROFILE_PIC_PATH;
+                    $logo_path = base_url().COMPANY_LOGO_PATH;
                     $counter = 0;
                     
                     //display the logo
@@ -22,7 +22,11 @@
                     $facebook_tile = "<div class='smallTile highlights'><div class='smallContent'><a href='{$company_info['facebook_url']}' target='_blank'><div class='message'>Check us out on Facebook!</div></a></div></div>";
    
                     //loop through and display the tiles
-                    if (!empty($pic_array) && !empty($company_info) && !empty($quote_array))
+                    //
+                    //TODO: Figure out how important this conditional is.  Commenting out for
+                    //now to faciliate the seed data entry process...
+                    //
+                   // if (!empty($pic_array) && !empty($company_info) && !empty($quote_array))
                     {
                         
                         foreach ($merged_array as $row)

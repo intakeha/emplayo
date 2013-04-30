@@ -163,7 +163,7 @@ if ( ! function_exists('resizeThumbnailImage'))
                     case "image/png":
                     case "image/x-png":
                             $png_quality = 8;
-                            imagepng($newImage,$thumb_image_name,$png_quality,NULL);  
+                            imagepng($newImage,$thumb_image_name,$png_quality,PNG_ALL_FILTERS);  
                             break;
         }
             chmod($thumb_image_name, 0777);

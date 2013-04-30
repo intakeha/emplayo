@@ -42,8 +42,8 @@ $(document).ready(function(){
             dataType: 'json',
             done: function (e, data) {
                  $('#crop_logo_pic').show();
-                $('.logo_pic').attr('src','/assets/images/company_logos/temp/'+data.result.message);
-                $('#logo_preview img').attr('src','/assets/images/company_logos/temp/'+data.result.message);
+                $('.logo_pic').attr('src','<?php echo base_url().COMPANY_LOGO_TEMP_PATH;?>'+data.result.message);
+                $('#logo_preview img').attr('src','<?php echo base_url().COMPANY_LOGO_TEMP_PATH;?>'+data.result.message);
                 $('input[name=cropFile]').val(data.result.message);       
             }
         });

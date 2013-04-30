@@ -8,5 +8,5 @@ RewriteEngine on
 # The leading slash is made optional so that this will work either in httpd.conf
 # or .htaccess context
 
-RewriteCond $1 !^(index\.php|js|css|images|assets|robots\.txt|killsess\.php|knn\.php|knn2\.php)
+RewriteCond $1 !^(index\.php|js|css|images|assets|uploads|robots\.txt|killsess\.php|knn\.php|knn2\.php)
 RewriteRule ^(.*)$ index.php/$1 [L]
