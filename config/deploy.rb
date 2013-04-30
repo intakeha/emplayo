@@ -18,7 +18,9 @@ role :web, "emplayo.com"
 
 # What remote directory hosts the website?
 set :deploy_to,   "/var/www/vhosts/emplayo.com/dev"
-#set :shared_path, "#{deploy_to}/shared"
+set :shared_path, "#{deploy_to}/shared"
+set :shared_children, shared_children + %w{uploads/images/company_logos/temp}
+set :shared_children, shared_children + %w{uploads/images/company_profile_pics/temp}
 
 # Is sudo required to manipulate files on the remote server?
 set :use_sudo, false
