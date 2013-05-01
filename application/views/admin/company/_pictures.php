@@ -13,7 +13,7 @@
 				<?php
 				    if (!empty($profile_pics))
 				    {
-					$image_path = "/assets/images/company_tiles/";
+					$image_path = base_url().PROFILE_PIC_PATH;
 					foreach ($profile_pics as $row)
 					{                         
 					    echo "<div><img src='{$image_path}{$row['file_name']}' height='100px'/>";
