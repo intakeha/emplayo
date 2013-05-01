@@ -924,7 +924,10 @@ class Company_model extends MY_Model {
             
             //randomizing could randomly put all the small pics next to each other...
             //so, distribute the pictures to spread the types/shapes out
-            $distributed_array = $this->distribute_pics($pic_array);
+            //
+            //4/30/13: THERE WAS AN ISSUE WITH THIS FUNCTION SKIPPING IMAGES.  COMMENTING OUT FOR NOW...
+            //$distributed_array = $this->distribute_pics($pic_array);
+            $distributed_array = NULL;
             
             if (!empty($distributed_array)){       
                 return $distributed_array; 

@@ -113,14 +113,14 @@
   
             //COMPANY LOGO        
             echo form_fieldset('Company Logo'); 
-            $image_path = "/assets/images/company_logos/".$company_info['company_logo'];
+            $image_path = base_url().COMPANY_LOGO_PATH.$company_info['company_logo'];
             echo "<div class=\"logo\"><img src=\"$image_path\"></div>";
             echo $company_info['company_logo'];
             echo form_fieldset_close();
             
             //CREATIVE LOGO        
             echo form_fieldset('Creative Logo');   
-            $image_path2 = "/assets/images/company_logos/".$company_info['creative_logo'];
+            $image_path2 = base_url().COMPANY_LOGO_PATH.$company_info['creative_logo'];
             echo "<div class=\"logo\"><img src=\"$image_path2\"></div>";
             echo $company_info['creative_logo'];
             echo form_fieldset_close();            

@@ -147,7 +147,7 @@ class Preview extends CI_Controller {
     public function run_matching_algorithm($user_type,$user_pace,$user_lifecycle,$user_benefits,$user_citizenship,$user_industry,$user_work){
         
         $this->load->model('preview_model');
-        $image_path = "assets/images/company_logos/";
+        $image_path = './'.COMPANY_LOGO_PATH;
 
         //FIND COMPANIES THAT MATCH THE USER'S INDUSTRY CHOICE
         $comps_by_industry = $this->preview_model->industry_filter($user_industry);

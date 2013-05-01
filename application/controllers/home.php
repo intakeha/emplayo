@@ -25,7 +25,7 @@ class Home extends CI_Controller {
                         //get the user's match data
                         $user_id = $this->session->userdata('user_id');
                         $data['matches'] = $this->home_model->get_matches($user_id);
-                        $data['image_path'] = "assets/images/company_logos/";
+                        $data['image_path'] = './'.COMPANY_LOGO_PATH;
                         
 			$data['title']="Home";
 			$data['content']="pages/_user_home";

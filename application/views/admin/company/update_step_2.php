@@ -84,8 +84,8 @@ $(document).ready(function(){
                     $('#next_one').hide();
                     $('#upload_result').html('');
                     $('#crop_logo_pic').show("slow");
-                    $('.logo_pic').attr('src','/assets/images/company_logos/temp/'+data.result.message);
-                    $('#logo_preview img').attr('src','/assets/images/company_logos/temp/'+data.result.message);
+                    $('.logo_pic').attr('src','<?php echo base_url().COMPANY_LOGO_TEMP_PATH;?>'+data.result.message);
+                    $('#logo_preview img').attr('src','<?php echo base_url().COMPANY_LOGO_TEMP_PATH;?>'+data.result.message);
                     $('input[name=cropFile]').val(data.result.message); 
                      
                 } else {
@@ -133,7 +133,7 @@ $(document).ready(function(){
     $("#logo_crop_form").submit(function(event) {
         event.preventDefault();
         $.post(
-            "/admin/company/crop",
+            "/admin/company/crop_png",
             $('#logo_crop_form').serialize(),
             function(data){
                 //console.dir(data);
@@ -180,8 +180,8 @@ $(document).ready(function(){
                     $('#creative_next_one').hide();                    
                     $('#upload_result').html('');
                     $('#crop_creative_pic').show("slow");
-                    $('.creative_pic').attr('src','/assets/images/company_logos/temp/'+data.result.message);
-                    $('#creative_preview img').attr('src','/assets/images/company_logos/temp/'+data.result.message);
+                    $('.creative_pic').attr('src','<?php echo base_url().COMPANY_LOGO_TEMP_PATH;?>'+data.result.message);
+                    $('#creative_preview img').attr('src','<?php echo base_url().COMPANY_LOGO_TEMP_PATH;?>'+data.result.message);
                     $('input[name=cropFile]').val(data.result.message);     
                 } else {
                     $('#upload_result2').html(data.result.message);
@@ -278,7 +278,7 @@ $(document).ready(function(){
     <div id="logo">
         <div id="hd"><h1>Emplayo - Edit Existing Company (Step 2 of 3)</h1></div>
         <div id="current_logo">
-            <img src="/assets/images/company_logos/<?php echo $company_logo;?>">        
+            <img src="<?php echo base_url().COMPANY_LOGO_PATH.$company_logo;?>">        
         <p> Browse to select and upload a different company logo </p>
         </div>
         
@@ -308,7 +308,7 @@ $(document).ready(function(){
             </div>        
 
             <div id="logo_save">
-                <form id="logo_crop_form" action="/admin/company/crop" method="POST">       
+                <form id="logo_crop_form" action="/admin/company/crop_png" method="POST">       
                     <input type="hidden" name="x1" value="" />
                     <input type="hidden" name="y1" value="" />
                     <input type="hidden" name="x2" value="" />
@@ -330,7 +330,7 @@ $(document).ready(function(){
         <div id="hd"><h1>Emplayo - Edit Existing Company (Step 3 of 3)</h1></div>
         
         <div id="current_creative_logo">
-            <img src="/assets/images/company_logos/<?php echo $creative_logo;?>">        
+            <img src="<?php echo base_url().COMPANY_LOGO_PATH.$creative_logo;?>">        
         <p> Browse to select and upload a different creative logo.  Make it hot! </p>
         </div>
         

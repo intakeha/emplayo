@@ -74,8 +74,8 @@ $(document).ready(function(){
                     });                    
                     $('#upload_result').html('');
                     $('#crop_logo_pic').show();
-                    $('.logo_pic').attr('src','/assets/images/company_logos/temp/'+data.result.message);
-                    $('#logo_preview img').attr('src','/assets/images/company_logos/temp/'+data.result.message);
+                    $('.logo_pic').attr('src','<?php echo base_url().COMPANY_LOGO_TEMP_PATH;?>'+data.result.message);
+                    $('#logo_preview img').attr('src','<?php echo base_url().COMPANY_LOGO_TEMP_PATH;?>'+data.result.message);
                     $('input[name=cropFile]').val(data.result.message);    
                 } else {
                     $('#upload_result').html(data.result.message);
@@ -122,7 +122,7 @@ $(document).ready(function(){
     $("#logo_crop_form").submit(function(event) {
         event.preventDefault();
         $.post(
-            "/admin/company/crop",
+            "/admin/company/crop_png",
             $('#logo_crop_form').serialize(),
             function(data){
                 console.dir(data);
@@ -164,8 +164,8 @@ $(document).ready(function(){
                     });                    
                     $('#upload_result').html('');
                     $('#crop_creative_pic').show();
-                    $('.creative_pic').attr('src','/assets/images/company_logos/temp/'+data.result.message);
-                    $('#creative_preview img').attr('src','/assets/images/company_logos/temp/'+data.result.message);
+                    $('.creative_pic').attr('src','<?php echo base_url().COMPANY_LOGO_TEMP_PATH;?>'+data.result.message);
+                    $('#creative_preview img').attr('src','<?php echo base_url().COMPANY_LOGO_TEMP_PATH;?>'+data.result.message);
                     $('input[name=cropFile]').val(data.result.message);     
                 } else {
                     $('#upload_result2').html(data.result.message);
@@ -258,7 +258,7 @@ $(document).ready(function(){
             </div>        
 
             <div id="logo_save">
-                <form id="logo_crop_form" action="/admin/company/crop" method="POST">       
+                <form id="logo_crop_form" action="/admin/company/crop_png" method="POST">       
                     <input type="hidden" name="x1" value="" />
                     <input type="hidden" name="y1" value="" />
                     <input type="hidden" name="x2" value="" />

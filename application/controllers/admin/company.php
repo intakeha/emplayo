@@ -91,6 +91,8 @@ class Company extends CI_Controller {
         $data['pagination'] = $this->pagination->create_links();
 
         //load the view
+        //$this->load->view("admin/company/listing",$data);  
+      
 	if ($this->ion_auth->logged_in()){
 		$data['title']="Company Listings";
 		$data['content']="admin/company/_listing";
@@ -102,7 +104,7 @@ class Company extends CI_Controller {
 		$data['content']="pages/_home";
 		$this->load->view('canvas', $data);
 	}
-        
+             
     }
     
     //Create a new company record
@@ -192,8 +194,8 @@ class Company extends CI_Controller {
         {
             //success
             //move the image files from temp to the working directory
-            $original_path = "./assets/images/company_logos/temp/";
-            $destination_path = "./assets/images/company_logos/";
+            $original_path = './'.COMPANY_LOGO_TEMP_PATH;
+            $destination_path = './'.COMPANY_LOGO_PATH;
             $original_logo = $original_path.$post_data['company_logo'];
             $original_creative = $original_path.$post_data['creative_logo'];
             $destination_logo = $destination_path.$post_data['company_logo'];
@@ -242,7 +244,7 @@ class Company extends CI_Controller {
                 {
                     //successfully deleted from database
                     //now delete images from filesystem:
-                    $image_path = "./assets/images/company_logos/";
+                    $image_path = './'.COMPANY_LOGO_PATH;
                     $company_logo_path = $image_path.$data['company_info']['company_logo'];
                     $creative_logo_path = $image_path.$data['company_info']['creative_logo'];
                     if (file_exists($creative_logo_path)){
@@ -334,7 +336,7 @@ class Company extends CI_Controller {
             $post = $this->input->post();
 
             //setup the file upload config values
-            $config['upload_path'] = './assets/images/company_logos/';
+            $config['upload_path'] = './'.COMPANY_LOGO_PATH;
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']	= '100';
             $config['max_width']  = '1024';
@@ -559,8 +561,8 @@ class Company extends CI_Controller {
         if ($this->company_model->update_company_flexible($post_data,$id))        
         { //success
                 //move the image files from temp to the working directory
-                $original_path = "./assets/images/company_logos/temp/";
-                $destination_path = "./assets/images/company_logos/";            
+                $original_path = './'.COMPANY_LOGO_TEMP_PATH;
+                $destination_path = './'.COMPANY_LOGO_PATH;            
             
             if ($new_company_logo){               
                 $original_logo = $original_path.$post_data['company_logo'];
@@ -613,7 +615,8 @@ class Company extends CI_Controller {
     {    
         
         //setup the file upload config values
-        $config['upload_path'] = './assets/images/company_logos/temp/';
+        $config['upload_path'] = './'.COMPANY_LOGO_TEMP_PATH;
+        //$config['upload_path'] = './uploads/images/company_logos/temp/';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']	= '1024';
         //$config['max_width']  = '2024';
@@ -631,6 +634,12 @@ class Company extends CI_Controller {
         $last_temp_file = $this->input->post('last_temp_file');
         $full_temp_path = $config['upload_path'].$last_temp_file;
        
+       // echo "<br>base: ".base_url();
+       // echo "<br>site: ".site_url();
+       // echo "<br>current: ".current_url();
+        //echo $config['upload_path'];
+        //var_dump(is_dir(COMPANY_LOGO_TEMP_PATH));
+        
         if ($last_temp_file){
             unlink($full_temp_path);
         }
@@ -709,7 +718,7 @@ class Company extends CI_Controller {
                 $message = 'There was an error with the upload.  Please try again.';
             }
             //
-            $messageToSend = array('success' => '0', 'message'=> $message);
+            $messageToSend = array('success' => '0', 'message'=> $message,);
             $output = json_encode($messageToSend);
             echo $output;  
         }            
@@ -718,7 +727,7 @@ class Company extends CI_Controller {
     function tile_upload()
     {    
         //setup the file upload config values
-        $config['upload_path'] = './assets/images/company_tiles/temp/';
+        $config['upload_path'] = './'.PROFILE_PIC_TEMP_PATH;
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']	= '1024';
         $config['remove_spaces']  = 'TRUE';
@@ -845,13 +854,14 @@ class Company extends CI_Controller {
         else
         {
         
-            $original_location = "./assets/images/company_logos/temp/".$picture_name_input;
-            $profile_path = "./assets/images/company_logos";
+            $original_location = './'.COMPANY_LOGO_TEMP_PATH.$picture_name_input;
+            $profile_path = './'.COMPANY_LOGO_PATH;
             $profile_image_location = $profile_path."/".$picture_name_input;
 
             $scale = $profile_width/$w;
             $cropped = '';
-              $cropped = resizeThumbnailImage_jpgout($original_location, $original_location,$w,$h,$x1,$y1,$scale);
+             $cropped = resizeThumbnailImage_jpgout($original_location, $original_location,$w,$h,$x1,$y1,$scale);
+              //$cropped = resizeThumbnailImage($original_location, $original_location,$w,$h,$x1,$y1,$scale);
                        
             //the resizeThumbnailImage function will resize the image and save it into the $profile_path
 
@@ -884,7 +894,79 @@ class Company extends CI_Controller {
                 echo $output;  
             }  
         }
-    }  
+    } 
+    
+     //The Crop function is called via AJAX
+    public function crop_png()
+    {
+        //$this->load->helper('image_functions_helper');
+        
+        $profile_width = "250";		// Width of profile picture
+        $profile_height = "250";	// Height of profile picture       
+        
+        $x1 = $this->input->post('x1');
+        $y1 = $this->input->post('y1');
+        $x2 = $this->input->post('x2');
+        $y2 = $this->input->post('y2');
+        $w = $this->input->post('w');
+        $h = $this->input->post('h');   
+        $picture_name_input= $this->input->post('cropFile');
+        $pic_db_field= $this->input->post('pic_db_field');
+
+        
+        //if coordinates are empty or not numeric, send error message to JS
+        if ($x1 === NULL || $y1 === NULL || $x2 === NULL || $y2 === NULL || $w === NULL || $h === NULL || $picture_name_input === NULL || $pic_db_field === NULL
+                || !is_numeric($x1) || !is_numeric($y1) || !is_numeric($x2) || !is_numeric($y2) || !is_numeric($w) || !is_numeric($h))
+        {          
+            $message = "Please click on the image & crop to create your profile picture."; 
+            $messageToSend = array('success' => '0', 'message'=>$message);
+            $output = json_encode($messageToSend);
+            echo $output;              
+        }
+        else
+        {
+        
+            $original_location = './'.COMPANY_LOGO_TEMP_PATH.$picture_name_input;
+            $profile_path = './'.COMPANY_LOGO_PATH;
+            $profile_image_location = $profile_path."/".$picture_name_input;
+
+            $scale = $profile_width/$w;
+            $cropped = '';
+             //$cropped = resizeThumbnailImage_jpgout($original_location, $original_location,$w,$h,$x1,$y1,$scale);
+             $cropped = resizeThumbnailImage($original_location, $original_location,$w,$h,$x1,$y1,$scale);
+                       
+            //the resizeThumbnailImage function will resize the image and save it into the $profile_path
+
+            if (!empty($cropped)){
+                //delete the temp file
+                //unlink($original_location);//removed this...will commit all deletes and moves in the final step
+
+                //save the image name to the session
+                //$this->session->set_userdata($pic_db_field,$picture_name_input);
+                
+                //added the following to get the actual file name from the resize function.
+                //that way, if the filename is changed there, we have it to use here, 
+                //instead of relying on the old info passed by the client.
+                
+                $file_name  = substr($cropped,(strrpos($cropped, '/')+1));
+                //echo "filename: $file_name";
+                $this->session->set_userdata($pic_db_field,$file_name);
+
+                //success
+                $messageToSend = array('success' => '1', 'message'=>'Photo successfully processed.');
+                $output = json_encode($messageToSend);
+                echo $output;              
+
+            }
+            else
+            {
+                //There was an error with the DB insert
+                $messageToSend = array('success' => '0', 'message'=>'There was an error processing the photo.');
+                $output = json_encode($messageToSend);
+                echo $output;  
+            }  
+        }
+    }     
     
      //The Crop function is called via AJAX
     public function tile_crop()
@@ -935,11 +1017,11 @@ class Company extends CI_Controller {
         else
         {
         
-            $original_location = "./assets/images/company_tiles/temp/".$picture_name_input;
+            $original_location = './'.PROFILE_PIC_TEMP_PATH.$picture_name_input;
             $cropped_image_name = '';
             //$cropped_image_name = 't_'.$picture_name_input;
             $cropped_image_name  = substr($picture_name_input, 0, strrpos($picture_name_input, '.'))."_c".$pic_shape.".jpg";
-            $cropped_image_location = "./assets/images/company_tiles/temp/".$cropped_image_name;
+            $cropped_image_location = './'.PROFILE_PIC_TEMP_PATH.$cropped_image_name;
             
             //$profile_path = "./assets/images/company_tiles";
             //$profile_image_location = $profile_path."/".$picture_name_input;
@@ -988,8 +1070,8 @@ class Company extends CI_Controller {
         $result = $this->company_model->insert_profile_pics($company_id,$pic_shape,$cropped_image_name);
         
         //move the files from temp to the proper path
-            $original_path = "./assets/images/company_tiles/temp/";
-            $destination_path = "./assets/images/company_tiles/";
+            $original_path = './'.PROFILE_PIC_TEMP_PATH;
+            $destination_path = './'.PROFILE_PIC_PATH;
             $original_pic = $original_path.$picture_name_input;
             $original_crop = $original_path.$cropped_image_name;
             $destination_pic = $destination_path.$picture_name_input;
