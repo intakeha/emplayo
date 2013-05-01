@@ -440,7 +440,7 @@ div#admin #overview_nav a{
 div#admin #company_overview{
 	font-size: 16px;
 	margin-top: 25px;
-	border-top: 1px solid #CCC;
+	border-top: 2px solid #DDD;
 }
 
 div#admin fieldset{
@@ -470,6 +470,16 @@ div#admin #company_overview div.file_name{
 
 div#admin #company_overview ul{
 	list-style-type: circle;
+}
+
+div#admin span#company_name{
+	font-weight: bold;
+	color: #258CD1;
+}
+
+div#admin div#company_name a{
+	font-weight: bold;
+	color: #258CD1;
 }
 
 /* Login */

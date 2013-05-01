@@ -278,9 +278,18 @@ class Company extends CI_Controller {
             
         }
         else//the form has not been posted
-        {
-            //redisplay the view
-            $this->load->view("admin/company/delete",$data);
+        {	    
+		//load the view
+		if ($this->ion_auth->logged_in()){
+			$data['title']="Delete Company";
+			$data['content']="admin/company/_delete";
+			$this->load->view('canvas', $data);
+			$this->session->unset_userdata('message');
+		}   else {
+			$data['title']="Home";
+			$data['content']="pages/_home";
+			$this->load->view('canvas', $data);
+		}
         }  
     }    
 
@@ -1035,9 +1044,9 @@ class Company extends CI_Controller {
 
     }  
     
-    function profile_view($id)
+    function pictures($id)
     {
-        $this->form_validation->set_rules('pics_to_delete', 'A selected picture to delete', 'required');            
+        $this->form_validation->set_rules('pics_to_delete', 'Select pictures to delete.', 'required');            
 
         if ($this->form_validation->run() == true)
         {   
@@ -1045,7 +1054,7 @@ class Company extends CI_Controller {
             if ($this->company_model->delete_profile_pics($pics_to_delete,$id))
             {
                 //update the message
-                $message =  "Profile Pictures successfully deleted.";
+                $message =  "Company pictures successfully deleted.";
                 $this->session->set_flashdata('message', $message);
 
                 //load the view                
@@ -1054,7 +1063,7 @@ class Company extends CI_Controller {
             else
             {
                  //update the message
-                $message =  "There was an error with your request";
+                $message =  "There was an error with your request.";
                 $this->session->set_flashdata('message', $message);
 
                 //load the view                
@@ -1063,15 +1072,26 @@ class Company extends CI_Controller {
         }   
         else
         {
-            $company_info = $this->company_model->get_company_info($id);
-            $profile_pics = $this->company_model->view_profile_pics($id);
-            $data['company_logo'] =  $company_info['company_logo'];
-            $data['creative_logo'] =  $company_info['creative_logo'];
-            $data['company_id'] = $id;
-            $data['company_info'] = $company_info;
-            $data['profile_pics'] = $profile_pics;
+		$company_info = $this->company_model->get_company_info($id);
+		$profile_pics = $this->company_model->view_profile_pics($id);
+		$data['company_logo'] =  $company_info['company_logo'];
+		$data['creative_logo'] =  $company_info['creative_logo'];
+		$data['company_id'] = $id;
+		$data['company_info'] = $company_info;
+		$data['profile_pics'] = $profile_pics;
 
-            $this->load->view("admin/company/profile_view",$data); 
+		//load the view
+		if ($this->ion_auth->logged_in()){
+			$data['title']="Company Pics";
+			$data['content']="admin/company/_pictures";
+			$this->load->view('canvas', $data);
+			$this->session->unset_userdata('message');
+		}   else {
+			$data['title']="Home";
+			$data['content']="pages/_home";
+			$this->load->view('canvas', $data);
+		}
+ 
         }
     }      
 

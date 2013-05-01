@@ -281,10 +281,10 @@ class Company_model extends MY_Model {
             $delete_link = '<a href="/admin/company/delete/'.$row['id'].'">Delete</a>';
             $edit_link = '<a href="/admin/company/update_step_1/'.$row['id'].'">Edit</a>';
             $view_link = '<a href="/admin/company/overview/'.$row['id'].'">View</a>';
-            $profile_link = '<a href="/admin/company/profile_view/'.$row['id'].'">Profile</a>';
+            $profile_link = '<a href="/admin/company/pictures/'.$row['id'].'">Pics</a>';
             $quotes_link = '<a href="/admin/company/quotes_view/'.$row['id'].'">Quotes</a>';
             $completion = "{$row['completion_score']}%";
-            $actions_link = $view_link.'  &nbsp; '.$edit_link.'  &nbsp; '.$delete_link.'  &nbsp; '.$profile_link.'  &nbsp; '.$quotes_link;
+            $actions_link = $view_link.'  &nbsp; '.$edit_link.'  &nbsp; '.$profile_link.'  &nbsp; '.$quotes_link;
 
            // if (in_array($row['completion_score'], $completion_array, true)){
            //     $result_rows++;
