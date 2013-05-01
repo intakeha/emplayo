@@ -74,33 +74,35 @@ if ( ! function_exists('resizeImage_lossless'))
             switch($imageType) {
                     case "image/gif":
                             $source=imagecreatefromgif($image); 
-                            $delete_old = 1;
+                            $delete_old = 1;                           
+                            // integer representation of the color black (rgb: 0,0,0)
+                            $background = imagecolorallocate($source, 0, 0, 0);
+                            // removing the black from the placeholder
+                            imagecolortransparent($source, $background);                                                       
                             break;
                     case "image/pjpeg":
-                            $source=imagecreatefromjpeg($image); 
-                            $delete_old = 1;
-                            break;
+                    case "image/jpg":
                     case "image/jpeg":
                             $source=imagecreatefromjpeg($image); 
                             $delete_old = 1;
                             break;
-                    case "image/jpg":
-                            $source=imagecreatefromjpeg($image); 
-                            $delete_old = 1;
-                            break;
                     case "image/png":
-                            $source=imagecreatefrompng($image); 
-                            $delete_old = 0; //final format will be png...no need to delete
-                            break;
                     case "image/x-png":
                             $source=imagecreatefrompng($image); 
-                            $delete_old = 0; //final format will be png...no need to delete
+                            $delete_old = 0; //final format will be png...no need to delete                           
+                            // Preserve alpha
+                            imagesavealpha($newImage, true);
+                            //$color = imagecolorallocatealpha($newImage, 0, 0, 0, 127); // Create transparent background                            
+                            $color = imagecolorallocate($newImage, 255, 255, 255); //create white background
+                            // Fill in background
+                            imagefill($newImage, 0, 0, $color);                               
                             break;
-            }
+            }           
+
             //the following scales the source image onto the newImage 'canvas'
             imagecopyresampled($newImage,$source,0,0,0,0,$newImageWidth,$newImageHeight,$width,$height);
             
-            $newImage = pixel_bleacher($newImage, $newImageWidth, $newImageHeight);
+           // $newImage = pixel_bleacher($newImage, $newImageWidth, $newImageHeight);
         
             //adding the png extension onto the new image
             $new_image_name  = substr($image, 0, strrpos($image, '.')).".png";
@@ -306,10 +308,11 @@ if ( ! function_exists('squarify'))
 if ( ! function_exists('squarify_lossless'))
 {
     function squarify_lossless($image,$max_dimension) {
-        //get the dimensions of the image
+        //get the dimensions of the image    
         $size = getimagesize($image);
         $width = $size[0];
         $height = $size[1];
+        //$imageType = image_type_to_mime_type($size[2]);
         
         //determine the longest side
         if ($width > $height){
@@ -329,6 +332,13 @@ if ( ! function_exists('squarify_lossless'))
         //turn the file-based image into a 'resource' so we can work with it
         //$im = imagecreatefromjpeg($image);
         $im = imagecreatefrompng($image);
+        
+        // Preserve alpha
+        imagesavealpha($img_canvas, true);
+        //$color = imagecolorallocatealpha($newImage, 0, 0, 0, 127); // Create transparent background                            
+        $color = imagecolorallocate($img_canvas, 255, 255, 255); //create white background
+        // Fill in background
+        imagefill($img_canvas, 0, 0, $color);         
         
         //determine vertical position for centering the image in the canvas
         $new_y = ($max_dimension/2) - ($height/2);       
