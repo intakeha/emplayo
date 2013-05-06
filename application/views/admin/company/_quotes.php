@@ -15,7 +15,7 @@
 			    {
 				foreach ($quotes as $row)
 				{                         
-				    echo "<div class='quotes'><input type='checkbox' value='{$row['id']}' name='quotes_to_delete[]' ><div>\"{$row['quote']}\"</div></div>";
+				    echo "<div class='quotes'><div class='delete_icon'></div><input type='checkbox' value='{$row['id']}' name='remove_quotes[]' ><div>\"{$row['quote']}\"</div></div>";
 				}
 			    }
 			?>
@@ -23,14 +23,30 @@
 			</form>			
 			
 			<?php
-				if (form_error('quote')) {
-					echo "<div class='errors messages'>".form_error('quote')."</div>"; 
+				if (form_error('remove_quotes')) {
+					echo "<div class='errors messages'>".form_error('remove_quotes')."</div>"; 
 				};
 				if ($this->session->flashdata('message')) {
 					echo "<div class='messages'>".$this->session->flashdata('message')."</div>";
 				};
 			?>
 		</div>
+		
+		<script>
+			$(document).ready(function(){
+				$('div#admin div.quotes').on("click", function(){
+					if($(this).find('input').is(':checked')){
+						$(this).find('input').prop('checked', false);
+						$(this).find('.delete_icon').removeClass('selected');
+					} else {
+						$(this).find('input').prop('checked', true);
+						$(this).find('.delete_icon').addClass('selected');
+					};
+				});
+				
+				
+			});//end of document ready 
+		</script>
 	</div>
 </div>
 

@@ -1122,25 +1122,47 @@ class Company extends CI_Controller {
         $data['company_id'] = $id;
         $data['company_info'] = $company_info;
         
-        $this->load->view("admin/company/profile_edit",$data);     
+        $this->load->view("admin/company/profile_edit",$data); 
+
+    }  
+    
+    function add_pictures($id)
+    {
+        $company_info = $this->company_model->get_company_info($id);
+        $data['company_logo'] =  $company_info['company_logo'];
+        $data['creative_logo'] =  $company_info['creative_logo'];
+        $data['company_id'] = $id;
+        $data['company_info'] = $company_info;
+
+	//load the view
+	if ($this->ion_auth->logged_in()){
+		$data['title']="Add Company Pics";
+		$data['content']="admin/company/_addPictures";
+		$this->load->view('canvas', $data);
+		$this->session->unset_userdata('message');
+	}   else {
+		$data['title']="Home";
+		$data['content']="pages/_home";
+		$this->load->view('canvas', $data);
+	}
 
     }  
     
     function pictures($id)
     {
-        $this->form_validation->set_rules('pics_to_delete', 'Select pictures to delete.', 'required');            
+        $this->form_validation->set_rules('remove_pics', 'Checkbox', 'required');            
 
         if ($this->form_validation->run() == true)
         {   
-            $pics_to_delete = $this->input->post('pics_to_delete');
-            if ($this->company_model->delete_profile_pics($pics_to_delete,$id))
+            $remove_pics = $this->input->post('remove_pics');
+            if ($this->company_model->delete_profile_pics($remove_pics,$id))
             {
                 //update the message
-                $message =  "Company pictures successfully deleted.";
+                $message =  "Selected pictures successfully deleted.";
                 $this->session->set_flashdata('message', $message);
 
                 //load the view                
-                redirect('admin/company/profile_view/'.$id, 'refresh');
+                redirect('admin/company/pictures/'.$id, 'refresh');
             }
             else
             {
@@ -1149,7 +1171,7 @@ class Company extends CI_Controller {
                 $this->session->set_flashdata('message', $message);
 
                 //load the view                
-                redirect('admin/company/quotes_view/'.$id, 'refresh');
+                redirect('admin/company/pictures/'.$id, 'refresh');
             }
         }   
         else
@@ -1179,15 +1201,15 @@ class Company extends CI_Controller {
 
     function quotes($id)
     {
-        $this->form_validation->set_rules('quotes_to_delete', 'A selected quote to delete', 'required');            
+        $this->form_validation->set_rules('remove_quotes', 'Checkbox', 'required');            
 
         if ($this->form_validation->run() == true)
         {   
-            $quotes_to_delete = $this->input->post('quotes_to_delete');
-            if ($this->company_model->delete_quotes($quotes_to_delete,$id))
+            $remove_quotes = $this->input->post('remove_quotes');
+            if ($this->company_model->delete_quotes($remove_quotes,$id))
             {
                 //update the message
-                $message =  "Quotes successfully deleted.";
+                $message =  "Selected quotes successfully deleted.";
                 $this->session->set_flashdata('message', $message);
 
                 //load the view                

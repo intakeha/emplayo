@@ -423,6 +423,34 @@ div#admin #overview_nav, div#admin #quotes_nav, div#admin #pictures_nav{
 	height: 55px;
 }
 
+div#admin div#pictures form div{
+	border: 1px solid #eee;
+    float: left;
+    padding: 10px;
+    text-align: center;
+    width: 220px;
+	cursor: pointer;
+}
+
+div#admin div#pictures input#remove_pics{
+	display: none;
+}
+
+div#admin div#pictures div.delete_icon{
+	background: url(../images/admin/delete_icon.png) no-repeat -20px 0;
+    border: none;
+    float: right;
+    height: 20px;
+    margin-top: -105px;
+    padding: 0;
+    position: relative;
+    width: 20px;
+}
+
+div#admin div#pictures form div.highlight{
+	border: 1px solid #27c339;
+}
+
 div#admin #overview_nav a, div#admin #quotes_nav a, div#admin #pictures_nav a{
     background-color: #258CD1;
     border: 2px solid #364954;
@@ -485,11 +513,25 @@ div#admin div#company_name a{
 div#admin div.quotes{
 	width: 1022px;
 	margin-bottom: 15px;
+	cursor: pointer;
+}
+
+div#admin div.quotes div.delete_icon{
+	background: url(../images/admin/delete_icon.png) no-repeat;
+    border: none;
+    height: 20px;
+    padding: 0;
+    width: 20px;
+	margin: 0 10px 0 0;
+	float: left;
 }
 
 div#admin div.quotes input{
-	margin-right: 5px;
-	float: left;
+	display: none;
+}
+
+div#admin div.quotes div.selected{
+	background-position: -20px 0 !important;
 }
 
 div#admin div.quotes div{

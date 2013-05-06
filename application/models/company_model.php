@@ -895,10 +895,10 @@ class Company_model extends MY_Model {
         return $query;
     }   
     
-    function delete_profile_pics($pics_to_delete,$company_id)
+    function delete_profile_pics($remove_pics,$company_id)
     {
         $this->db->where('company_id', $company_id);
-        $this->db->where_in('file_name', $pics_to_delete);
+        $this->db->where_in('file_name', $remove_pics);
         $query = $this->db->delete('company_profile_pics');
         return $query;
        
@@ -1062,10 +1062,10 @@ class Company_model extends MY_Model {
         return $query;        
     }
     
-    function delete_quotes($quotes_to_delete,$company_id)
+    function delete_quotes($remove_quotes,$company_id)
     {
         $this->db->where('company_id', $company_id);
-        $this->db->where_in('id', $quotes_to_delete);
+        $this->db->where_in('id', $remove_quotes);
         $query = $this->db->delete('company_quotes');
         return $query;
        
