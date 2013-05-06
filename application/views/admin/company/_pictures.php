@@ -1,13 +1,12 @@
 <div id="admin">
 	<div class="content">
-		
-		<a href = "/admin/company/listing">Back to Listing</a>
+		<div id="pictures_nav">
+		<a href = "/admin/company/listing">Back<br>to Listing</a>
 		<?php
-		echo "<a href = '/admin/company/profile_edit/{$company_id}'>Add picture</a>";
-		echo "<div>".$this->session->flashdata('message')."</div>";
+		echo "<a href = '/admin/company/profile_edit/{$company_id}'>Add<br>Picture</a></div>";
 		?>
 		
-		<div>
+		<div id="pictures">
 			<div id="company_name">Company: <a href="/admin/company/view/<?php echo $company_id;?>"><?php echo $company_info['company_name'];?></a></div> 
 			<form accept-charset="utf-8" action="/admin/company/pictures/<?php echo $company_id;?>" method="POST">
 				<?php
@@ -25,7 +24,10 @@
 			    
 				<input type="submit" name="remove" value="Remove" />
 			</form>
-			<?php echo form_error('pics_to_delete'); ?>
+			<?php 
+				echo form_error('pics_to_delete');
+				echo "<div id='messages'>".$this->session->flashdata('message')."</div>";
+			?>
 		</div>
  
 	</div>

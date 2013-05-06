@@ -282,7 +282,7 @@ class Company_model extends MY_Model {
             $edit_link = '<a href="/admin/company/update_step_1/'.$row['id'].'">Edit</a>';
             $view_link = '<a href="/admin/company/overview/'.$row['id'].'">View</a>';
             $profile_link = '<a href="/admin/company/pictures/'.$row['id'].'">Pics</a>';
-            $quotes_link = '<a href="/admin/company/quotes_view/'.$row['id'].'">Quotes</a>';
+            $quotes_link = '<a href="/admin/company/quotes/'.$row['id'].'">Quotes</a>';
             $completion = "{$row['completion_score']}%";
             $actions_link = $view_link.'  &nbsp; '.$edit_link.'  &nbsp; '.$profile_link.'  &nbsp; '.$quotes_link;
 

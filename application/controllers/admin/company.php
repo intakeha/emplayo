@@ -1177,7 +1177,7 @@ class Company extends CI_Controller {
         }
     }      
 
-    function quotes_view($id)
+    function quotes($id)
     {
         $this->form_validation->set_rules('quotes_to_delete', 'A selected quote to delete', 'required');            
 
@@ -1191,7 +1191,7 @@ class Company extends CI_Controller {
                 $this->session->set_flashdata('message', $message);
 
                 //load the view                
-                redirect('admin/company/quotes_view/'.$id, 'refresh');
+                redirect('admin/company/quotes/'.$id, 'refresh');
             }
             else
             {
@@ -1200,7 +1200,7 @@ class Company extends CI_Controller {
                 $this->session->set_flashdata('message', $message);
 
                 //load the view                
-                redirect('admin/company/quotes_view/'.$id, 'refresh');
+                redirect('admin/company/quotes/'.$id, 'refresh');
             }
         }   
         else
@@ -1211,11 +1211,21 @@ class Company extends CI_Controller {
             $data['company_id'] = $id;
             $data['company_info'] = $company_info;
 
-            $this->load->view("admin/company/quotes_view",$data);             
+		//load the view
+		if ($this->ion_auth->logged_in()){
+			$data['title']="Company Quotes";
+			$data['content']="admin/company/_quotes";
+			$this->load->view('canvas', $data);
+			$this->session->unset_userdata('message');
+		}   else {
+			$data['title']="Home";
+			$data['content']="pages/_home";
+			$this->load->view('canvas', $data);
+		}	    
         }
     }       
     
-    function enter_quotes($id)
+    function add_quotes($id)
     {
         $this->form_validation->set_rules('quote', 'Quote', 'required|max_length[200]');            
 
@@ -1260,7 +1270,8 @@ class Company extends CI_Controller {
                 $this->session->set_flashdata('message', $message);
 
                 //load the view                
-                redirect('admin/company/enter_quotes/'.$id, 'refresh');        
+                redirect('admin/company/add_quotes/'.$id, 'refresh');
+
             }
 
         }
@@ -1270,7 +1281,20 @@ class Company extends CI_Controller {
             $data['company_id'] = $id;
             $data['company_info'] = $company_info;
 
-            $this->load->view("admin/company/enter_quotes",$data); 
+
+		//load the view
+		if ($this->ion_auth->logged_in()){
+			$data['title']="Add Company Quotes";
+			$data['content']="admin/company/_addQuotes";
+			$this->load->view('canvas', $data);
+			$this->session->unset_userdata('message');
+		}   else {
+			$data['title']="Home";
+			$data['content']="pages/_home";
+			$this->load->view('canvas', $data);
+		}
+
+            //$this->load->view("admin/company/add_quotes",$data); 
         }
 
     }

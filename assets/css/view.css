@@ -358,7 +358,7 @@ div#admin table{
 	margin-top: 25px;
 	width: 1022px;
 	table-layout: fixed;
-	border: 2px solid #1d71a2 !important;
+	border: 2px solid #258CD1 !important;
 }
 
 div#admin table, div#admin th, div#admin td{
@@ -369,7 +369,7 @@ div#admin table, div#admin th, div#admin td{
 }
 
  div#admin th{
-	background-color: #364954;
+	background-color: #258CD1;
 	color: #fff;
 	font-size: 16px;
 	height: 30px;
@@ -418,12 +418,12 @@ div#pagination a{
 	line-height: 40px;
 }
 
-div#admin #overview_nav{
+div#admin #overview_nav, div#admin #quotes_nav, div#admin #pictures_nav{
 	width: 1022px;
 	height: 55px;
 }
 
-div#admin #overview_nav a{
+div#admin #overview_nav a, div#admin #quotes_nav a, div#admin #pictures_nav a{
     background-color: #258CD1;
     border: 2px solid #364954;
     color: #FFFFFF;
@@ -480,6 +480,51 @@ div#admin span#company_name{
 div#admin div#company_name a{
 	font-weight: bold;
 	color: #258CD1;
+}
+
+div#admin div.quotes{
+	width: 1022px;
+	margin-bottom: 15px;
+}
+
+div#admin div.quotes input{
+	margin-right: 5px;
+	float: left;
+}
+
+div#admin div.quotes div{
+    margin-left: 30px;
+    padding: 0;
+    width: 992px;
+    word-wrap: break-word;
+}
+
+div#admin div#quotes textarea{
+	resize: none;
+	outline: none;
+}
+
+div#admin div#quotes #limit{
+	font-size: 16px;
+	margin-bottom: 25px;
+}
+
+div#admin div#quotes span{
+	color: #27c339;
+}
+
+div#admin div#pictures, div#admin div#quotes{
+	margin-top: 20px;
+}
+
+div#admin div.messages{
+    color: #27C339;
+    font-size: 15px;
+	margin-top: 10px;
+}
+
+div#admin div.errors{
+    color: #941f1c !important;
 }
 
 /* Login */

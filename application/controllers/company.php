@@ -33,7 +33,7 @@ class Company extends CI_Controller {
 
 	}
         
-	public function temp($company_id){
+	public function profile($company_id){
 		
 		if ($this->ion_auth->logged_in()){
                     //get company details using company id
