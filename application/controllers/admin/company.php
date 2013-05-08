@@ -1150,7 +1150,7 @@ class Company extends CI_Controller {
     
     function pictures($id)
     {
-        $this->form_validation->set_rules('remove_pics', 'Checkbox', 'required');            
+        $this->form_validation->set_rules('remove_pics', 'Selection', 'required');            
 
         if ($this->form_validation->run() == true)
         {   
@@ -1201,7 +1201,7 @@ class Company extends CI_Controller {
 
     function quotes($id)
     {
-        $this->form_validation->set_rules('remove_quotes', 'Checkbox', 'required');            
+        $this->form_validation->set_rules('remove_quotes', 'Selection', 'required');            
 
         if ($this->form_validation->run() == true)
         {   
