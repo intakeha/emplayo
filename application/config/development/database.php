@@ -50,7 +50,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'emplayo_dev';
-$db['default']['password'] = 'worklifeplay';
+$db['default']['password'] = 'w0rkl1fePl4y';
 $db['default']['database'] = 'emplayo_dev';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

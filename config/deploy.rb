@@ -8,7 +8,7 @@ set :application, "emplayo"
 
 # What user is connecting to the remote server?
 set :user, "emplayo"
-set :password, "BradCammon2012"  # The deploy user's password
+set :password, "BradCammon2013"  # The deploy user's password
 
 # Where is the local repository?
 set :repository,  "git@github.com:intakeha/emplayo.git"

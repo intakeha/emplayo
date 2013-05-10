@@ -193,6 +193,7 @@ $config['log_threshold'] = 1;
 */
 $config['log_path'] = '/var/www/vhosts/emplayo.com/dev/current/application/logs/';
 
+
 /*
 |--------------------------------------------------------------------------
 | Date Format for Logs
