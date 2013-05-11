@@ -203,6 +203,20 @@ if (defined('ENVIRONMENT'))
 
 /*
  * --------------------------------------------------------------------
+ * PHP CONFIG SETTINGS
+ * --------------------------------------------------------------------
+ *
+ * So we don't have to rely on certain config values being set on the server
+ *
+ */        
+    if( ! ini_get('date.timezone') )
+    {
+       date_default_timezone_set('GMT');
+    }         
+        
+        
+/*
+ * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
  * --------------------------------------------------------------------
  *
