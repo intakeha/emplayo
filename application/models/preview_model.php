@@ -653,6 +653,10 @@ class Preview_model extends CI_Model {
         //our data should already be in rank 1-5
         
         //$raw_data_array = $data_array;
+        if (!is_dir("temp_arrays")) {
+          // dir doesn't exist, make it
+          mkdir("temp_arrays");
+        }              
         file_put_contents('temp_arrays/raw_array.txt', serialize($data_array)); 
         
         foreach ($data_array as &$row)
