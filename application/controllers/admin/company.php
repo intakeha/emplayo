@@ -729,11 +729,11 @@ class Company extends CI_Controller {
         //setup the file upload config values
         $config['upload_path'] = './'.PROFILE_PIC_TEMP_PATH;
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
-        $config['max_size']	= '1024';
+        $config['max_size']	= '2048';
         $config['remove_spaces']  = 'TRUE';
         $config['encrypt_name']  = 'TRUE';
         $config['max_filename']  = 15;     
-        $max_dimension = "600";		// They can upload a larger image.  This is the max size we will scale it down to.
+        $max_dimension = "1000";		// They can upload a larger image.  This is the max size we will scale it down to.
         $min_dimension = "390";         // They must upload an image at least this big in both dimensions.
         
         //get the value for the last temp file that was uploaded (if this is beyond the first upload)
@@ -782,7 +782,7 @@ class Company extends CI_Controller {
             if ($max_dimension_num > $max_dimension){
                     $scale = $max_dimension/$max_dimension_num;
                     if (($scale*$min_dimension_num)<$min_dimension){
-                        $error_message = "This image does not meet our dimension requirements of $min_dimension pixels tall and wide.  Please use a different image.";
+                        $error_message = "After scaling, this image does not meet our minimum dimension requirements of $min_dimension pixels tall and wide.  Please use a different image.";
                         $this->sendToJS(0, $error_message);                     
                     } else {
                         $uploaded = resizeImage($temp_image_location,$width,$height,$scale);
@@ -804,6 +804,7 @@ class Company extends CI_Controller {
         }
         else //there was an error with the file upload
         {
+            $last_temp_file = NULL;
             $ci_upload_error = $this->upload->display_errors();
             if ($ci_upload_error){
                 $message = $ci_upload_error;
