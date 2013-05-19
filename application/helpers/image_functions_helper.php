@@ -307,7 +307,7 @@ if ( ! function_exists('squarify'))
 
 if ( ! function_exists('squarify_lossless'))
 {
-    function squarify_lossless($image,$max_dimension) {
+    function squarify_lossless($image) {
         //get the dimensions of the image    
         $size = getimagesize($image);
         $width = $size[0];
@@ -341,7 +341,8 @@ if ( ! function_exists('squarify_lossless'))
         imagefill($img_canvas, 0, 0, $color);         
         
         //determine vertical position for centering the image in the canvas
-        $new_y = ($max_dimension/2) - ($height/2);       
+        //$new_y = ($max_dimension/2) - ($height/2);  
+        $new_y = ($max_dimension_num/2) - ($height/2);  
         if (!$new_y>0){$new_y = 0;}
         
         //TODO: what about horizontal centering?

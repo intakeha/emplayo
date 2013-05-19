@@ -687,11 +687,11 @@ class Company extends CI_Controller {
                     $uploaded = resizeImage_lossless($temp_image_location,$width,$height,$scale);
                     //squarify was causing problems with 250x250 images...need to review the math here and 
                     // probably put a conditional in front of this...
-                    $square_image = squarify_lossless($uploaded,$max_dimension);
+                    $square_image = squarify_lossless($uploaded);
             }else{
                     $scale = 1;
                     $uploaded = resizeImage_lossless($temp_image_location,$width,$height,$scale);
-                    $square_image = squarify_lossless($uploaded,$max_dimension);
+                    $square_image = squarify_lossless($uploaded);
             } 
             $new_pic_name = basename($uploaded);
 
