@@ -1010,7 +1010,7 @@ class Company extends CI_Controller {
         if ($x1 === NULL || $y1 === NULL || $x2 === NULL || $y2 === NULL || $w === NULL || $h === NULL || $picture_name_input === NULL || $pic_db_field === NULL
                 || !is_numeric($x1) || !is_numeric($y1) || !is_numeric($x2) || !is_numeric($y2) || !is_numeric($w) || !is_numeric($h))
         {          
-            $message = "Please click on the image & crop to create your profile picture."; 
+            $message = "Please click on the image & crop to create your picture."; 
             $messageToSend = array('success' => '0', 'message'=>$message);
             $output = json_encode($messageToSend);
             echo $output;              

@@ -432,6 +432,104 @@ div#admin div#pictures form div{
 	cursor: pointer;
 }
 
+div#admin div#pictures div#upload_result{
+	margin: 10px 0;
+	color: #27c339;
+	font-size: 15px;
+}
+
+div#admin div#crop_tile_pic li{
+    cursor: pointer;
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 20px;
+    padding: 10px;
+    width: 130px;
+	border: 1px solid #ccc;
+}
+
+div#admin div#pictures .tile_choice{
+	float: left;
+}
+
+div#admin div#pictures .tile_frame{
+	background: url(../images/admin/tiles.png) no-repeat;
+	float: left;
+	margin-right: 10px;
+}
+
+div#admin div#pictures #small_tile{
+	width: 25px;
+	height: 25px;
+	margin-top: 13px;
+}
+
+div#admin div#pictures #wide_tile{
+	width: 50px;
+	height: 25px;
+	margin-top: 13px;
+}
+
+div#admin div#pictures #tall_tile{
+	width: 25px;
+	height: 50px;
+}
+
+div#admin div#pictures #large_tile{
+	width: 50px;
+	height: 50px;
+}
+
+div#admin div#crop_tile_pic ul{
+	height: 72px;
+}
+
+div#admin div#pictures #picture_original_photo{
+	max-width: 1000px;
+	margin: 15px 0;
+	padding-top: 5px;
+}
+
+div#admin div#pictures #picture_original_photo img{
+	margin: 10px 0;
+}
+
+div#admin div#pictures #tile_preview_area {
+	float: left;
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: center;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #eee;
+}  
+
+.preview_small{
+        width: 190px;
+        height: 190px;
+        margin-top: 20px;
+        overflow: hidden;    
+}
+.preview_wide{
+        width: 390px;
+        height: 190px;
+        margin-top: 20px;
+        overflow: hidden;    
+}
+.preview_tall{
+        width: 190px;
+        height: 390px;
+        margin-top: 20px;
+        overflow: hidden;    
+}
+.preview_large{
+        width: 390px;
+        height: 390px;
+        margin-top: 20px;
+        overflow: hidden;    
+}
+
 div#admin div#pictures input#remove_pics{
 	display: none;
 }

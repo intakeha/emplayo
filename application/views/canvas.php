@@ -5,11 +5,11 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/global.css" type="text/css"/>  
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/view.css" type="text/css"/>
-	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/jquery-ui.css" />
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/jquery-ui.css" type="text/css"/>
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/typeahead.css" type="text/css"/>
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/counter.css" type="text/css"/>
 	
-	<script src="http://twitter.github.com/typeahead.js/js/hogan-2.0.0.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/hogan-2.0.0.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>	
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/typeahead.js"></script>
