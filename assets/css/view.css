@@ -990,14 +990,24 @@ div#admin div.current_logo{
 	border-bottom: 1px solid #ccc;
 }
 
-div#admin div.company_logo div#browse{
+div#admin div#current_logo {
+	height: 252px;
+	margin: 20px 0;
+}
+
+div#admin input#next_logo{
+	height: 20px;
+}
+
+div#admin div.company_logo div#browse, div#admin div.company_creative_logo div#browse{
 	height: 252px;
 	width: 509px;
 	display: table-cell;
 	vertical-align: middle;
 }
 
-div#admin div.company_logo div#browse form#fileupload{
+div#admin div.company_logo div#browse form#fileupload, 
+div#admin div.company_creative_logo div#browse form#fileupload{
 	margin-bottom: 20px;
 }
 
@@ -1009,6 +1019,39 @@ div#admin div#upload_result{
 
 div#admin input#next_logo{
 	float: right;
+}
+
+div#admin div#logo_crop_instruction{
+	margin-bottom: 20px;
+}
+
+div#admin div#logo_original_pic{
+	width: 501px;
+	float: left;
+	border: 1px solid #ccc;
+}
+
+div#admin div#logo_preview_area, div#admin div#creative_preview_area{
+	float: left;
+	margin-left: 20px;
+}
+
+div#admin div#logo_preview, div#admin div#creative_preview{
+	overflow: hidden;
+	width: 250px;
+	height: 250px;
+	border: 1px solid #ccc;
+}
+
+div#admin input.save{
+    font-size: 20px;
+    height: 50px;
+    margin-top: 20px;
+    width: 250px;
+}
+
+div#admin div.company_creative_logo{
+	display: none;
 }
 
 /* Login */
