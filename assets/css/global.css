@@ -245,6 +245,28 @@ img.btn_close {
 	float: right;
 	margin: -55px -55px 0 0;
 }
+
+.button_grey {
+	background-color: #333;
+	color: #fff;
+	border: 1px #258cd1 solid;
+	cursor: pointer;
+}
+
+.button_blue {
+	background-color: #1d71a2;
+	color: #fff;
+	border: 1px #258cd1 solid;
+	cursor: pointer;
+}
+
+.button_green {
+	background-color: #27c339;
+	color: #fff;
+	border: 1px #333 solid;
+	cursor: pointer;
+}
+
 /*--Making IE6 Understand Fixed Positioning--*/
 *html #fade {
 	position: absolute;

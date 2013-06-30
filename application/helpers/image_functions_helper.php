@@ -102,7 +102,7 @@ if ( ! function_exists('resizeImage_lossless'))
             //the following scales the source image onto the newImage 'canvas'
             imagecopyresampled($newImage,$source,0,0,0,0,$newImageWidth,$newImageHeight,$width,$height);
             
-           // $newImage = pixel_bleacher($newImage, $newImageWidth, $newImageHeight);
+           $newImage = pixel_bleacher($newImage, $newImageWidth, $newImageHeight); 
         
             //adding the png extension onto the new image
             $new_image_name  = substr($image, 0, strrpos($image, '.')).".png";
@@ -150,7 +150,8 @@ if ( ! function_exists('resizeThumbnailImage'))
             }
             
             imagecopyresampled($newImage,$source,0,0,$start_width,$start_height,$newImageWidth,$newImageHeight,$width,$height);
-            
+            $newImage = pixel_bleacher($newImage, $newImageWidth, $newImageHeight); 
+	    
             $jpg_quality = 100;   
             
             switch($imageType) {

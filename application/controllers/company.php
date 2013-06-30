@@ -47,7 +47,7 @@ class Company extends CI_Controller {
                     //shuffle($data['merged_array']);
                     
                     $data['title']="Company";
-                    $data['content']="pages/_company_temp";
+                    $data['content']="pages/_company";
                     $this->load->helper('url');
                     $this->load->view('canvas', $data);
                     $this->session->unset_userdata('message');

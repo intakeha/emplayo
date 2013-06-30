@@ -177,7 +177,7 @@ div#signup .errors{
 	width: 240px;
 }
 
-/* Administration */
+/* Administration Panel */
 
 div#admin .content{
 	min-height: 500px;
@@ -423,6 +423,8 @@ div#admin #overview_nav, div#admin #quotes_nav, div#admin #pictures_nav{
 	height: 55px;
 }
 
+/* Administration Upload Picture */
+
 div#admin div#pictures form div{
 	border: 1px solid #eee;
     float: left;
@@ -563,6 +565,8 @@ div#admin #overview_nav a, div#admin #quotes_nav a, div#admin #pictures_nav a{
 	margin-right: 10px;
 }
 
+/* Administration Overview */
+
 div#admin #company_overview{
 	font-size: 16px;
 	margin-top: 25px;
@@ -665,6 +669,346 @@ div#admin div.messages{
 
 div#admin div.errors{
     color: #941f1c !important;
+}
+
+/* Administration Edit Company*/
+
+div#admin fieldset#categories .select2-container {
+	font-size: 12px;
+    width: 500px;
+}
+
+div#admin div#dataUpdate legend {
+	width: 200px;
+}
+
+div#admin div#dataUpdate #companyName legend,
+div#admin div#dataUpdate #companyURL legend,
+div#admin div#dataUpdate #jobURL legend,
+div#admin div#dataUpdate #facebookURL legend,
+div#admin div#dataUpdate #twitterURL legend{
+	width: 250px;
+	float: left;
+}
+
+div#admin div#dataUpdate #companyName input,
+div#admin div#dataUpdate #companyURL input,
+div#admin div#dataUpdate #jobURL input,
+div#admin div#dataUpdate #facebookURL input,
+div#admin div#dataUpdate #twitterURL input{
+	float: left;
+	width: 600px;
+}
+
+li#coType_2{
+	background-position: -208px 0px !important;
+}
+
+li#coType_3{
+	background-position: -418px 0px !important;
+}
+
+li#coType_4{
+	background-position: -627px 0px !important;
+}
+
+div#admin ul#coPace{
+	height: 175px;
+	margin-left: 230px;
+}
+
+div#admin ul#coPace li{
+	width: 120px;
+	padding-top: 150px;
+	margin-right: 100px;
+	float: left;
+	text-align: center;
+	cursor: pointer;
+}
+
+li#coPace_1{
+	background: url(../images/survey/co_pace.jpg) no-repeat;
+	background-position: 0px 0px;
+}
+
+li#coPace_2{
+	background: url(../images/survey/co_pace.jpg) no-repeat;
+	background-position: -120px 0px;
+}
+
+li#coPace_3{
+	background: url(../images/survey/co_pace.jpg) no-repeat;
+	background-position: -240px 0px;
+}
+
+li.coCycleSelected{
+	height: 414px !important;
+}
+
+li#coLifecycle_1{
+	width: 105px;
+	background-position: 0px 0px !important;
+}
+
+li#coLifecycle_2{
+	width: 105px;
+	background-position: -105px 0px !important;
+}
+
+li#coLifecycle_3{
+	width: 210px;
+	background-position: -210px 0px !important;
+}
+
+li#coLifecycle_4{
+	width: 210px;
+	background-position: -420px 0px !important;
+}
+
+li#coLifecycle_5{
+	width: 210px;
+	background-position: -630px 0px !important;
+}
+
+div#admin fieldset#citizenship .ui-state-default {
+    background: url("../images/survey/sliderHandle.png") no-repeat !important;
+    border: 0px;
+}
+
+div#admin fieldset#citizenship .sliderActive {
+    background:  url("../images/survey/sliderHandle.png") no-repeat !important;
+}
+
+div#admin fieldset#citizenship .ui-slider-handle {
+    height: 33px;
+    width: 33px;
+}
+
+div#admin div.coCitizenshipMarkers {
+    background: url("../images/survey/slider_5markers.jpg") no-repeat scroll center top transparent;
+    height: 110px;
+    margin: -34px 0 0 14px;
+    padding-top: 60px;
+    position: absolute;
+    width: 1000px;
+    z-index: -50;
+}
+
+div#admin div.coCitizenshipMarkers  ul{
+	margin-left: 50px;
+}
+
+div#admin div.coCitizenshipMarkers  li{
+	color: #999;
+	font-size: 18px;
+	width: 100px;
+	float: left;
+}
+
+div#admin div.benefits_wrapper{
+	float: left;
+	margin: 5px;
+}
+
+div#admin div.benefits{
+	width: 170px;
+	height: 70px;
+	border: 2px solid #1d71a2;
+	color: #258cd1;
+	cursor: pointer;
+	font-size: 18px;
+	text-align: left;
+	padding-left: 70px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+div#admin div.benefits_1{
+	background: url(../images/admin/benefits/healthcare.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_1.selected{
+	background: url(../images/admin/benefits/healthcare.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_2{
+	background: url(../images/admin/benefits/childcare.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_2.selected{
+	background: url(../images/admin/benefits/childcare.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_3{
+	background: url(../images/admin/benefits/maternity.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_3.selected{
+	background: url(../images/admin/benefits/maternity.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_4{
+	background: url(../images/admin/benefits/gym.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_4.selected{
+	background: url(../images/admin/benefits/gym.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_5{
+	background: url(../images/admin/benefits/dependent.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_5.selected{
+	background: url(../images/admin/benefits/dependent.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_6{
+	background: url(../images/admin/benefits/telecommute.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_6.selected{
+	background: url(../images/admin/benefits/telecommute.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_7{
+	background: url(../images/admin/benefits/pto.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_7.selected{
+	background: url(../images/admin/benefits/pto.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_8{
+	background: url(../images/admin/benefits/sabbatical.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_8.selected{
+	background: url(../images/admin/benefits/sabbatical.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_9{
+	background: url(../images/admin/benefits/flexible.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_9.selected{
+	background: url(../images/admin/benefits/flexible.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_10{
+	background: url(../images/admin/benefits/education.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_10.selected{
+	background: url(../images/admin/benefits/education.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_11{
+	background: url(../images/admin/benefits/retirement.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_11.selected{
+	background: url(../images/admin/benefits/retirement.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_12{
+	background: url(../images/admin/benefits/bonus.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_12.selected{
+	background: url(../images/admin/benefits/bonus.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_13{
+	background: url(../images/admin/benefits/meals.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_13.selected{
+	background: url(../images/admin/benefits/meals.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_14{
+	background: url(../images/admin/benefits/overtime.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_14.selected{
+	background: url(../images/admin/benefits/overtime.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_15{
+	background: url(../images/admin/benefits/pet.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_15.selected{
+	background: url(../images/admin/benefits/pet.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin div.benefits_16{
+	background: url(../images/admin/benefits/casual.png) no-repeat #000 10px 10px;
+}
+
+div#admin div.benefits_16.selected{
+	background: url(../images/admin/benefits/casual.png) no-repeat #1d71a2 10px 10px;
+	color: #fff;
+}
+
+div#admin fieldset#categories select{
+	width: 1000px;
+}
+
+div#admin fieldset#categories legend, div#admin fieldset#benefits legend{
+	margin-bottom: 15px;
+}
+
+div#admin fieldset.hide input, div#admin fieldset.hide label{
+	display: none;
+}
+
+/* Administration Logo Upload */
+
+div#admin div.current_logo{
+	float: left;
+	width: 509px;
+	height: 252px;
+	text-align: center;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+div#admin div.company_logo div#browse{
+	height: 252px;
+	width: 509px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+div#admin div.company_logo div#browse form#fileupload{
+	margin-bottom: 20px;
+}
+
+div#admin div#upload_result{
+    background-color: #E9B60B;
+    color: #FFFFFF;
+    font-size: 18px;
+}
+
+div#admin input#next_logo{
+	float: right;
 }
 
 /* Login */
@@ -1865,6 +2209,11 @@ div#company ul#filters{
 	margin-bottom: 20px;
 }
 
+div#company ul#filters a.selected{
+	border-bottom: 4px solid #258cd1;
+	padding-bottom: 5px;
+}
+
 div#company ul#filters li{
 	float: left;
 	width: 150px;
@@ -1919,6 +2268,86 @@ div#company .bigContent{
 	margin-left: 15px;
 }
 
+div#company .smallQuoteContent{
+	background: url(../images/tiles/quotes_bg_small.png) no-repeat #364954 0px 177px;
+	width: 190px;
+	height: 190px;
+	margin-left: 15px;
+}
+
+div#company .smallQuote{
+	background: url(../images/tiles/quotes_small.png) no-repeat;
+	height: 177px;
+	padding: 0 15px;
+	display: table-cell;
+	vertical-align: middle;
+	font-style: italic;
+	font-size: 24px;
+	text-align: center;
+	line-height: 30px;
+	cursor: default;
+}
+
+div#company .horizontalQuoteContent{
+	background: url(../images/tiles/quotes_bg_large.png) no-repeat #e9b60b 0px 177px;
+	width: 390px;
+	height: 190px;
+	margin-left: 15px;
+}
+
+div#company .horizontalQuote{
+	background: url(../images/tiles/quotes_horizontal.png) no-repeat;
+	height: 177px;
+	padding: 0 15px;
+	display: table-cell;
+	vertical-align: middle;
+	font-style: italic;
+	font-size: 24px;
+	text-align: center;
+	line-height: 30px;	
+	cursor: default;
+}
+
+div#company .verticalQuoteContent{
+	background: url(../images/tiles/quotes_bg_large.png) no-repeat #ad27c1 0px 377px;
+	width: 190px;
+	height: 390px;
+	margin-left: 15px;
+}
+
+div#company .verticalQuote{
+	background: url(../images/tiles/quotes_vertical.png) no-repeat;
+	height: 377px;
+	padding: 0 15px;
+	display: table-cell;
+	vertical-align: middle;
+	font-style: italic;
+	font-size: 24px;
+	text-align: center;
+	line-height: 30px;
+	cursor: default;
+}
+
+div#company .bigQuoteContent{
+	background: url(../images/tiles/quotes_bg_large.png) no-repeat #1d71a2 0px 377px;
+	width: 390px;
+	height: 390px;
+	margin-left: 15px;
+}
+
+div#company .bigQuote{
+	background: url(../images/tiles/quotes_big.png) no-repeat;
+	height: 377px;
+	padding: 0 15px;
+	display: table-cell;
+	vertical-align: middle;
+	font-style: italic;
+	font-size: 24px;
+	text-align: center;
+	line-height: 30px;
+	cursor: default;
+}
+
 div#company .message{
 	font-size: 32px;
 	height: 190px;
@@ -1935,4 +2364,38 @@ div#company .smallPic{
 div#company .bigPic{
 	width: 390px;
 	height: 390px;
+}
+
+div#company .facebookTile{
+	background: url(../images/tiles/facebook.png) no-repeat;
+	width: 190px;
+	height: 190px;
+	margin-left: 15px;
+	display: block;
+	text-align: center;
+	color: #fff;
+}
+
+div#company .twitterTile{
+	background: url(../images/tiles/twitter.png) no-repeat;
+	width: 190px;
+	height: 190px;
+	margin-left: 15px;
+	display: block;
+	text-align: center;
+	color: #fff;
+}
+
+div#company .jobTile{
+	background: url(../images/tiles/job.png) no-repeat;
+	width: 190px;
+	height: 190px;
+	margin-left: 15px;
+	display: block;
+	text-align: center;
+	color: #fff;
+}
+
+div#company a:hover.twitterTile, div#company a:hover.facebookTile, div#company a:hover.jobTile{
+	border-bottom: 5px solid #941f1c;
 }

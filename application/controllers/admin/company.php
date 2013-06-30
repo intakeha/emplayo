@@ -8,7 +8,8 @@ class Company extends CI_Controller {
         $this->load->library('session');
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
-        $this->load->helper(array('form', 'url'));        
+        //$this->load->helper(array('form', 'url'));    
+	$this->load->helper('url');	
         $this->load->database();
         $this->load->helper('image_functions_helper');
         
@@ -493,10 +494,24 @@ class Company extends CI_Controller {
         }  
         else //form validation errors.  re-load the form
         {
-            $data['message'] = $this->session->flashdata('message');
+		$data['message'] = $this->session->flashdata('message');
 
-            //load the view
-            $this->load->view("admin/company/update_step_1",$data); 
+		//load the view
+		//$this->load->view("admin/company/update_step_1",$data); 
+
+		//load the view
+		if ($this->ion_auth->logged_in()){
+			
+			$data['title']="Company Data";
+			$data['content']="admin/company/_dataUpdate";
+			$this->load->view('canvas', $data);
+			//$this->session->unset_userdata('message');
+		}   else {
+			$data['title']="Home";
+			$data['content']="pages/_home";
+			$this->load->view('canvas', $data);
+		}
+	    
         }        
     }//update_step_1
     
@@ -507,7 +522,11 @@ class Company extends CI_Controller {
         $data['creative_logo'] =  $company_info['creative_logo'];
         $data['company_id'] = $id;
         
-        $this->load->view("admin/company/update_step_2",$data);     
+//        $this->load->view("admin/company/update_step_2",$data);    
+	
+	$data['title']="Company Logo";
+	$data['content']="admin/company/_logoUpdate";
+	$this->load->view('canvas', $data);
 
     }         
     //Update Save function will commit all changes

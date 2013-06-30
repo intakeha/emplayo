@@ -115,13 +115,13 @@ $(document).ready(function(){
 		}
 	);	
 	
-	// Uncheck all checkboxes
-	$("input[type='checkbox']").each(function() {      
-		$(this).prop('checked', false);
-	 });
-	
 	// Display questionnaire	 
 	if(currentPage == 'criteria'){
+		
+		// Uncheck all checkboxes
+		$("input[type='checkbox']").each(function() {      
+			$(this).prop('checked', false);
+		 });
 		
 		$('#header_login, #footer, #progressBar').hide();
 		
