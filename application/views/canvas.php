@@ -41,7 +41,6 @@
                                                 echo '<li><a href="/admin">Admin</a></li>';
                                             }                                        
                                         ?>
-					<li><a href="/">Update Profile</a></li>
 					<li><a href="/settings">Account Settings</a></li>
 					<li><a href="/">Send Invitation</a></li>
 					<li><a href="logout">Logout</a></li>
