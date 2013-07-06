@@ -160,7 +160,22 @@ class Company extends CI_Controller {
             $data['message'] = $this->session->flashdata('message');
 
             //load the view
-            $this->load->view("admin/company/create_step_1",$data);          
+            //$this->load->view("admin/company/create_step_1",$data);          
+	    
+		//load the view
+		if ($this->ion_auth->logged_in()){
+			$data['title']="Company Data";
+			$data['content']="admin/company/_addData";
+			$this->load->view('canvas', $data);
+			//$this->session->unset_userdata('message');
+		}   else {
+			$data['title']="Home";
+			$data['content']="pages/_home";
+			$this->load->view('canvas', $data);
+		}
+	     
+	    
+	    
         }        
     }      
     
@@ -168,7 +183,11 @@ class Company extends CI_Controller {
     function create_step_2()
     {
 
-        $this->load->view("admin/company/create_step_2");     
+        //$this->load->view("admin/company/create_step_2");     
+	
+	$data['title']="Company Logo";
+	$data['content']="admin/company/_addLogo";
+	$this->load->view('canvas', $data);
 
     }      
 

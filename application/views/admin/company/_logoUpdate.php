@@ -184,7 +184,7 @@ $(document).ready(function(){
 	
 		<div class="company_logo">Emplayo - Edit Existing Company (Step 2 of 3)</div>
 		<div id="current_logo" class="company_logo">
-			<div class="current_logo"><img src="<?php echo base_url().COMPANY_LOGO_PATH.$company_logo;?>"> </div>
+			<div class="current_logo"><img src="<?php if($company_logo){echo base_url().COMPANY_LOGO_PATH.$company_logo;} else {echo base_url().IMAGES_PATH.'admin/default_logo.png';};?>"> </div>
 			<div class="current_logo">
 				<div id="browse">
 					<p> Browse to select and upload a different company logo</p><br>
@@ -224,7 +224,7 @@ $(document).ready(function(){
 		
 		<div class="company_creative_logo">Emplayo - Edit Existing Company (Step 3 of 3)</div>
 		<div id="current_logo" class="company_creative_logo">
-			<div class="current_logo"><img src="<?php echo base_url().COMPANY_LOGO_PATH.$creative_logo;?>"> </div>
+			<div class="current_logo"><img src="<?php if($creative_logo){echo base_url().COMPANY_LOGO_PATH.$creative_logo;} else {echo base_url().IMAGES_PATH.'admin/default_logo.png';};?>"> </div>
 			<div class="current_logo">
 				<div id="browse">
 					<p> Browse to select and upload a different creative logo</p><br>

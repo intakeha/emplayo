@@ -32,14 +32,28 @@
 
 			//COMPANY LOGO        
 			echo form_fieldset('Company Logo'); 
-			$image_path = base_url().COMPANY_LOGO_PATH.$company_info['company_logo'];
+			if ($company_info['company_logo'])
+			{
+				$image_path = base_url().COMPANY_LOGO_PATH.$company_info['company_logo'];
+			}
+			else
+			{
+				$image_path = base_url().IMAGES_PATH.'admin/default_logo.png';
+			}
 			echo "<div class='data'><img src=\"$image_path\"></div>";
 			echo "<div class='file_name'>File Name: <br>".$company_info['company_logo']."</div>";
 			echo form_fieldset_close();
 
 			//CREATIVE LOGO        
 			echo form_fieldset('Creative Logo');   
-			$image_path2 = base_url().COMPANY_LOGO_PATH.$company_info['creative_logo'];
+			if ($company_info['creative_logo'])
+			{
+				$image_path2 = base_url().COMPANY_LOGO_PATH.$company_info['creative_logo'];
+			}
+			else
+			{
+				$image_path2 = base_url().IMAGES_PATH.'admin/default_logo.png';
+			}
 			echo "<div class='data'><img src=\"$image_path2\"></div>";
 			echo "<div class='file_name'>File Name: <br>".$company_info['creative_logo']."</div>";
 			echo form_fieldset_close();            

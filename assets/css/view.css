@@ -678,8 +678,13 @@ div#admin fieldset#categories .select2-container {
     width: 500px;
 }
 
-div#admin div#dataUpdate legend {
+div#admin div#dataUpdate .hide legend {
 	width: 200px;
+	margin-bottom: 20px;
+}
+
+div#admin fieldset#citizenship legend{
+	margin-bottom: 50px !important;
 }
 
 div#admin div#dataUpdate #companyName legend,
@@ -698,6 +703,10 @@ div#admin div#dataUpdate #facebookURL input,
 div#admin div#dataUpdate #twitterURL input{
 	float: left;
 	width: 600px;
+}
+
+div#admin ul#co_type li{
+	margin: 0px 20px 0 0;
 }
 
 li#coType_2{
@@ -741,6 +750,10 @@ li#coPace_3{
 	background-position: -240px 0px;
 }
 
+div#admin div#co_cycle_header{
+	margin-top: 0px;
+}
+
 li.coCycleSelected{
 	height: 414px !important;
 }
@@ -768,6 +781,10 @@ li#coLifecycle_4{
 li#coLifecycle_5{
 	width: 210px;
 	background-position: -630px 0px !important;
+}
+
+div#admin div#citizenshipSlider {
+	margin-top: 0px;
 }
 
 div#admin fieldset#citizenship .ui-state-default {

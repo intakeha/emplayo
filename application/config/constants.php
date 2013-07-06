@@ -47,6 +47,7 @@ define('COMPANY_LOGO_PATH', 'uploads/images/company_logos/');
 define('COMPANY_LOGO_TEMP_PATH', 'uploads/images/company_logos/temp/');
 define('PROFILE_PIC_PATH', 'uploads/images/company_profile_pics/');
 define('PROFILE_PIC_TEMP_PATH', 'uploads/images/company_profile_pics/temp/');
+define('IMAGES_PATH', 'assets/images/');
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
