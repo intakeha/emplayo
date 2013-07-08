@@ -42,7 +42,7 @@
                                             }                                        
                                         ?>
 					<li><a href="/settings">Account Settings</a></li>
-					<li><a href="/">Send Invitation</a></li>
+					<li><a href="/">Send Invite</a></li>
 					<li><a href="logout">Logout</a></li>
 				</ul>
 			</div>
