@@ -831,7 +831,7 @@ div#admin div.benefits{
 	width: 170px;
 	height: 70px;
 	border: 2px solid #1d71a2;
-	color: #258cd1;
+	color: #fff;
 	cursor: pointer;
 	font-size: 18px;
 	text-align: left;
@@ -841,7 +841,7 @@ div#admin div.benefits{
 }
 
 div#admin div.benefits_1{
-	background: url(../images/admin/benefits/healthcare.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/healthcare.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_1.selected{
@@ -850,7 +850,7 @@ div#admin div.benefits_1.selected{
 }
 
 div#admin div.benefits_2{
-	background: url(../images/admin/benefits/childcare.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/childcare.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_2.selected{
@@ -859,7 +859,7 @@ div#admin div.benefits_2.selected{
 }
 
 div#admin div.benefits_3{
-	background: url(../images/admin/benefits/maternity.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/maternity.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_3.selected{
@@ -868,7 +868,7 @@ div#admin div.benefits_3.selected{
 }
 
 div#admin div.benefits_4{
-	background: url(../images/admin/benefits/gym.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/gym.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_4.selected{
@@ -877,7 +877,7 @@ div#admin div.benefits_4.selected{
 }
 
 div#admin div.benefits_5{
-	background: url(../images/admin/benefits/dependent.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/dependent.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_5.selected{
@@ -886,7 +886,7 @@ div#admin div.benefits_5.selected{
 }
 
 div#admin div.benefits_6{
-	background: url(../images/admin/benefits/telecommute.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/telecommute.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_6.selected{
@@ -895,7 +895,7 @@ div#admin div.benefits_6.selected{
 }
 
 div#admin div.benefits_7{
-	background: url(../images/admin/benefits/pto.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/pto.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_7.selected{
@@ -904,7 +904,7 @@ div#admin div.benefits_7.selected{
 }
 
 div#admin div.benefits_8{
-	background: url(../images/admin/benefits/sabbatical.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/sabbatical.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_8.selected{
@@ -913,7 +913,7 @@ div#admin div.benefits_8.selected{
 }
 
 div#admin div.benefits_9{
-	background: url(../images/admin/benefits/flexible.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/flexible.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_9.selected{
@@ -922,7 +922,7 @@ div#admin div.benefits_9.selected{
 }
 
 div#admin div.benefits_10{
-	background: url(../images/admin/benefits/education.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/education.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_10.selected{
@@ -931,7 +931,7 @@ div#admin div.benefits_10.selected{
 }
 
 div#admin div.benefits_11{
-	background: url(../images/admin/benefits/retirement.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/retirement.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_11.selected{
@@ -940,7 +940,7 @@ div#admin div.benefits_11.selected{
 }
 
 div#admin div.benefits_12{
-	background: url(../images/admin/benefits/bonus.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/bonus.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_12.selected{
@@ -949,7 +949,7 @@ div#admin div.benefits_12.selected{
 }
 
 div#admin div.benefits_13{
-	background: url(../images/admin/benefits/meals.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/meals.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_13.selected{
@@ -958,7 +958,7 @@ div#admin div.benefits_13.selected{
 }
 
 div#admin div.benefits_14{
-	background: url(../images/admin/benefits/overtime.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/overtime.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_14.selected{
@@ -967,7 +967,7 @@ div#admin div.benefits_14.selected{
 }
 
 div#admin div.benefits_15{
-	background: url(../images/admin/benefits/pet.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/pet.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_15.selected{
@@ -976,7 +976,7 @@ div#admin div.benefits_15.selected{
 }
 
 div#admin div.benefits_16{
-	background: url(../images/admin/benefits/casual.png) no-repeat #000 10px 10px;
+	background: url(../images/admin/benefits/casual.png) no-repeat #ccc 10px 10px;
 }
 
 div#admin div.benefits_16.selected{
@@ -1138,6 +1138,183 @@ div#login .errors{
 	margin-top: 5px;
 	width: 260px;
 }
+
+/* User Settings */
+div#settings .content{
+	height: 500px;
+	font-size: 20px;
+}
+
+div#settings ul#menu li{
+	float: left;
+	border: 1px solid #ccc;
+	margin: 9px;
+	text-align: center;
+	cursor: pointer;
+	width: 150px;
+	height: 150px;
+}
+
+div#settings ul#menu li div{
+	font-size: 25px;
+	display: table-cell;
+	vertical-align: middle;
+	width: 150px;
+	height: 150px;
+	line-height: 30px;
+}
+
+div#settings ul#menu li#key{
+	background: url(../images/profile/password.png) no-repeat #eee;
+}
+
+div#settings ul#menu li#key:hover{
+	background: url(../images/profile/password.png) no-repeat #258cd1;
+}
+
+div#settings ul#menu li#key:active{
+	background: url(../images/profile/password.png) no-repeat #364954;
+}
+
+div#settings ul#menu li#key.selected{
+	background: url(../images/profile/password.png) no-repeat #eee;
+	cursor: default;
+}
+
+div#settings ul#menu li#work{
+	background: url(../images/profile/work_history.png) no-repeat #eee;
+}
+
+div#settings ul#menu li#work:hover{
+	background: url(../images/profile/work_history.png) no-repeat #258cd1;
+}
+
+div#settings ul#menu li#work:active{
+	background: url(../images/profile/work_history.png) no-repeat #364954;
+}
+
+div#settings ul#menu li#work.selected{
+	background: url(../images/profile/work_history.png) no-repeat #eee;
+	cursor: default;
+}
+
+div#settings ul#menu li#education{
+	background: url(../images/profile/education.png) no-repeat #eee;
+}
+
+div#settings ul#menu li#education:hover{
+	background: url(../images/profile/education.png) no-repeat #258cd1;
+}
+
+div#settings ul#menu li#education:active{
+	background: url(../images/profile/education.png) no-repeat #364954;
+}
+
+div#settings ul#menu li#education.selected{
+	background: url(../images/profile/education.png) no-repeat #eee;
+	cursor: default;
+}
+
+div#settings ul#menu li#location{
+	background: url(../images/profile/location.png) no-repeat #eee;
+}
+
+div#settings ul#menu li#location:hover{
+	background: url(../images/profile/location.png) no-repeat #258cd1;
+}
+
+div#settings ul#menu li#location:active{
+	background: url(../images/profile/location.png) no-repeat #364954;
+}
+
+div#settings ul#menu li#location.selected{
+	background: url(../images/profile/location.png) no-repeat #eee;
+	cursor: default;
+}
+
+div#settings ul#menu li#industry{
+	background: url(../images/profile/next.png) no-repeat #eee;
+}
+
+div#settings ul#menu li#industry:hover{
+	background: url(../images/profile/next.png) no-repeat #258cd1;
+}
+
+div#settings ul#menu li#industry:active{
+	background: url(../images/profile/next.png) no-repeat #364954;
+}
+
+div#settings ul#menu li#industry.selected{
+	background: url(../images/profile/next.png) no-repeat #eee;
+	cursor: default;
+}
+
+div#settings ul#menu li#prefs{
+	background: url(../images/profile/preferences.png) no-repeat #eee;
+}
+
+div#settings ul#menu li#prefs:hover{
+	background: url(../images/profile/preferences.png) no-repeat #258cd1;
+}
+
+div#settings ul#menu li#prefs:active{
+	background: url(../images/profile/preferences.png) no-repeat #364954;
+}
+
+div#settings ul#menu li#prefs.selected{
+	background: url(../images/profile/preferences.png) no-repeat #eee;
+	cursor: default;
+}
+
+div#settings ul#menu li#notification{
+	background: url(../images/profile/tell.png) no-repeat #eee;
+}
+
+div#settings ul#menu li#notification:hover{
+	background: url(../images/profile/tell.png) no-repeat #258cd1;
+}
+
+div#settings ul#menu li#notification:active{
+	background: url(../images/profile/tell.png) no-repeat #364954;
+}
+
+div#settings ul#menu li#notification.selected{
+	background: url(../images/profile/tell.png) no-repeat #eee;
+	cursor: default;
+}
+
+div#settings div#crumbs{
+	font-size: 17px;
+    margin: 10px;
+	width: 830px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+	float: left;
+	display: none;
+}
+
+div#settings div#panel{
+	width: 830px;
+	min-height: 400px;
+	float: left;
+	margin: 5px 10px;
+	display: none;
+}
+
+div#settings div#panel label {
+    display: inline-block;
+    width: 250px;
+	margin: 5px;
+}
+
+div#settings div#panel input{
+	font-size: 20px;
+	color: #777;
+	width: 300px;
+	margin: 5px;
+}
+
+
 
 /* Forgot */
 div#forgot .content{
