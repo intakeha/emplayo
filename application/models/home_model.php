@@ -1,4 +1,4 @@
-<?php
+    <?php
 class Home_model extends MY_Model {
 
     public function __construct()
@@ -256,13 +256,16 @@ class Home_model extends MY_Model {
         $this->db->insert('user_motivation', $motivation_array);         
 
         //18a. USER_EDUCATION (checkbox)
-        $education_array = $this->build_array_education($user_education, 'education', $user_id);
-        $this->db->insert_batch('user_education', $education_array);             
+        if (!empty($user_education)){
+            $education_array = $this->build_array_education($user_education, 'education', $user_id);
+            $this->db->insert_batch('user_education', $education_array);   
+        }
         
         //18b. USER_WORK (checkbox)
-        $work_array = $this->build_array_work($user_work, 'work', $user_id);
-        $this->db->insert_batch('user_work', $work_array);        
-        
+        if (!empty($user_work)){
+            $work_array = $this->build_array_work($user_work, 'work', $user_id);
+            $this->db->insert_batch('user_work', $work_array);        
+        }
         //19. LOCATION/CITY (checkbox)
         $location_array = $this->build_array_checkbox($user_location, 'location', $user_id);
         $this->db->insert_batch('user_location', $location_array);        

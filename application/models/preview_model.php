@@ -53,6 +53,59 @@ class Preview_model extends CI_Model {
 
     }
     
+    function validate_education_array($education_array)
+    {
+     //walk through each value...and if each value is not empty, copy it to a new array
+     //after we walk through the entire array, then count its size.  if greater than zero, 
+     //then this is a valid array with info
+        
+        $counter = 0;
+        foreach ($education_array as $key=>$value)
+        {
+            if ((!empty ($value['school_id'])) OR (!empty ($value['school_name']))){
+                $counter++;
+            }  
+        }
+        if ($counter > 0)
+        {
+            //at least one of the school IDs or names was not empty
+            //so, the array contains valid data
+            //this should be extended to actually validate the data values, types, etc.
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+        
+    }
+    
+    function validate_work_array($work_array)
+    {
+     //walk through each value...and if each value is not empty, copy it to a new array
+     //after we walk through the entire array, then count its size.  if greater than zero, 
+     //then this is a valid array with info
+        
+        $counter = 0;
+        foreach ($work_array as $key=>$value)
+        {
+            if ((!empty ($value['company_id'])) OR (!empty ($value['company_name']))){
+                $counter++;
+            }
+        }
+        if ($counter > 0)
+        {
+            //at least one of the school IDs or names was not empty
+            //so, the array contains valid data
+            //this should be extended to actually validate the data values, types, etc.
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+        
+    }    
     
     function insert_survey()
     {
@@ -365,7 +418,8 @@ class Preview_model extends CI_Model {
         $prev_job_types = array();
         foreach ($user_work as $key=>$value)
         {
-            $prev_job_types[$key] = $value['job_type'];        
+            //$prev_job_types[$key] = $value['job_type'];
+            $prev_job_types[$key] = $value['job_id'];
         }
         
         return $prev_job_types;
@@ -419,7 +473,57 @@ class Preview_model extends CI_Model {
             return $scores;
     }      
    
-    
+    function history_scoring_fake($queried_comp_ids)
+    {            
+
+            //get the user submitted history categories
+            //$user_history_cats = $this->input->post('history');   
+            
+            //get all the companies (that meet the previous criteria) and their associated benefits
+            $sql2 = 'SELECT company_id,category_id FROM company_category WHERE company_id IN ('.$queried_comp_ids.')';
+            $query2 = $this->db->query($sql2);
+
+            //$user_history_cats = implode(',', $user_history_cats);            
+        
+            //build an array with a specific format to be used in the upcoming scoring process
+            $company_set = array();
+            foreach ($query2->result_array() as $row) {
+                $company_set[$row['company_id']][]=$row['category_id'];
+            }
+
+            $scores = array();
+            // For every company, we will assign it a score based on how many
+            // of the user's category choices it has.  Each category is worth 1 point.
+            
+            foreach($company_set as $company_id => $array_row)
+            {   
+                $score = 0;
+                /*
+                foreach ($array_row as $key=>$category_id)
+                {
+                    //we walk through the array that contains each company's categories
+                    //then, we search for each category in the user's choices.  if we find
+                    //a match, we give the company a point. and so on...
+                    
+                    
+                    if (in_array($category_id, $user_history_cats, true)){
+                        ++$score;
+                    }
+                    
+                    
+                }
+                */
+                //added the following line to limit max score to 1
+                //if ($score >1){$score=1;}
+                //end of added line
+                $scores[$company_id] = $score;
+
+            }
+            
+            arsort($scores);
+
+            return $scores;
+    }    
     
     
     function get_company2($ranked_comps)
@@ -594,7 +698,7 @@ class Preview_model extends CI_Model {
     
     
     
-    function get_distance_matrix3($ranked_comps,$history_scoring,$corp_citizenship,$pace_array,$lifecycle_array,$history_array)
+    function get_distance_matrix3($ranked_comps,$history_scoring,$corp_citizenship,$pace_array,$lifecycle_array)
     {
         //$this->session->set_userdata('some_name', 'some_value');
         //1. Create array of data points

@@ -326,7 +326,6 @@
             //user_location
             $locations = array(1=>'San Jose',2=>'Oakland', 8=>'Birmingham');
             $locations_choice = array(8);
-            //$locations_choice = '';
             echo form_fieldset('Where do you want to work?');
             echo form_multiselect('user_location[]', $locations, $locations_choice);
             echo form_fieldset_close();             
@@ -345,6 +344,36 @@ user_education[0][end_month]
 user_education[0][end_month]
      */        
  ?>           
+    <ul>
+            <li><label>School</label><input class="text_form" type="text" maxlength="150" name="user_education[0][school_name]" value="">
+                <input type="hidden" name="user_education[0][school_id]" value=""></li>
+            
+            <li><label>Degree</label><input class="text_form" type="text" maxlength="150" name="user_education[0][degree_name]" value="">
+                <input type="hidden" name="user_education[0][degree_id]" value=""></li>
+            
+            <li><label>Field of Study</label><input class="text_form" type="text" maxlength="150" name="user_education[0][field_name]" value="">
+                <input type="hidden" name="user_education[0][field_id]" value=""></li>
+            
+            <li class="history_sets"><label>Time Period</label>
+                <select name="user_education[0][start_month]">
+                    <option selected="" value="01">Jan</option>
+                    <option value="02">Feb</option>
+                </select>
+                    <select name="user_education[0][start_year]" class=" year prefill">
+                    <option selected="" value="1999">1999</option>
+                    <option value="2000">2001</option>                        
+                    </select> 
+                    <select name="user_education[0][end_month]" class=" month prefill">
+                    <option selected="" value="03">Mar</option>
+                    <option value="04">Apr</option>                        
+                    </select> 
+                    <select name="user_education[0][end_year]" class=" year prefill">
+                    <option selected="" value="2001">2001</option>
+                    <option value="2002">2002</option>                        
+                    </select>
+            </li>
+    </ul>            
+ <!--  
     <ul>
             <li><label>School</label><input class="text_form" type="text" maxlength="150" name="user_education[0][school_name]" value="University of Alabama at Birmingham">
                 <input type="hidden" name="user_education[0][school_id]" value="3"></li>								
@@ -370,8 +399,8 @@ user_education[0][end_month]
                     <option value="2002">2002</option>                        
                     </select>
             </li>
-    </ul>            
-    
+    </ul>   
+ 
     <ul>
             <li><label>School</label><input class="text_form" type="text" maxlength="150" name="user_education[1][school_name]" value="School of Hard Knocks">
                 <input type="hidden" name="user_education[1][school_id]" value=""></li>								
@@ -397,7 +426,8 @@ user_education[0][end_month]
                     <option value="2002">2002</option>                        
                     </select>
             </li>
-    </ul>        
+    </ul>  
+        -->
  <?php          
             
             
@@ -415,6 +445,36 @@ user_work[0][current]
  */           
  ?>  
 
+<ul>
+        <li><label>Company</label><input class="text_form" type="text" maxlength="150" name="user_work[0][company_name]" value="">
+            <input type="hidden" name="user_work[0][company_id]" value=""></li>
+        <li><label>Job</label><input class="text_form" type="text" maxlength="150" name="user_work[0][job_type]" value="">
+            <input type="hidden" name="user_work[0][job_id]" value=""></li>
+        <li><label class="happiness_label">Happiness</label><div class="happiness"></div></li>
+        <input type="hidden" value="" name="user_work[0][rating]">
+        <li class="history_sets">
+                <label>Time Period</label>
+                <select name="user_work[0][start_month]">
+                    <option selected="" value="01">Jan</option>
+                    <option value="02">Feb</option>
+                </select>
+                    <select name="user_work[0][start_year]" class=" year prefill">
+                    <option selected="" value="2003">2003</option>
+                    <option value="2004">2004</option>                        
+                    </select> 
+                    <select name="user_work[0][end_month]" class=" month prefill">
+                    <option selected="" value="03">Mar</option>
+                    <option value="04">Apr</option>                        
+                    </select> 
+                    <select name="user_work[0][end_year]" class=" year prefill">
+                    <option selected="" value="2005">2005</option>
+                    <option value="2006">2006</option>                        
+                    </select>                
+                <span class="presentText">I currently work here</span><input type="checkbox" name="user_work[0][current]" value="0"/>
+        </li>
+</ul>  
+   
+        <!--
 <ul>
         <li><label>Company</label><input class="text_form" type="text" maxlength="150" name="user_work[0][company_name]" value="Apple Inc">
             <input type="hidden" name="user_work[0][company_id]" value="69"></li>
@@ -442,7 +502,7 @@ user_work[0][current]
                     </select>                
                 <span class="presentText">I currently work here</span><input type="checkbox" name="user_work[0][current]" value="0"/>
         </li>
-</ul>  
+</ul>         
         
 <ul>
         <li><label>Company</label><input class="text_form" type="text" maxlength="150" name="user_work[1][company_name]" value="Banana Factory">
@@ -472,6 +532,8 @@ user_work[0][current]
                 <span class="presentText">I currently work here</span><input type="checkbox" checked="checked" name="user_work[1][current]" value="1"/>
         </li>
 </ul>          
+        
+        -->
  <?php   
             
             echo '<br/>';
