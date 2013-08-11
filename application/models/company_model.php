@@ -840,6 +840,8 @@ class Company_model extends MY_Model {
               $company_array['pace_id'] = $row->pace_id;
               $company_array['lifecycle_id'] = $row->lifecycle_id;
               $company_array['corp_citizenship_id'] = $row->corp_citizenship_id;
+              $company_array['update_time'] = $row->update_time;//added on 8-11-13 by BLC
+              $company_array['update_time'] = $row->update_time;//added on 8-11-13 by BLC
               
            }
            return $company_array;

@@ -140,10 +140,19 @@ class Preview extends CI_Controller {
 
             if ($data['company_count']>0)
             {
-                //WE FOUND MATCHES! DISPLAY THE VIEW
-                $data['title']="Preview Results";
-                $data['content']="pages/_preview";
-                $this->load->view('canvas', $data);
+                //WE FOUND MATCHES!
+                /*
+                if ($this->ion_auth->logged_in()){
+                    $data['title']="Are you sure you would like to proceed?";
+                    $data['content']="pages/_preview_confirm";
+                    $this->load->view('canvas', $data);                    
+                }
+                */
+               // else {
+                    $data['title']="Preview Results";
+                    $data['content']="pages/_preview";
+                    $this->load->view('canvas', $data);
+               // }
             }
             else
             {

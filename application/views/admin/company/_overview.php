@@ -183,7 +183,22 @@
 				}
 			}   
 			echo "</ul></div>";
-			echo form_fieldset_close();             
+			echo form_fieldset_close();       
+                        
+			//UPDATE TIME
+			echo form_fieldset('Last Updated');
+                            if (isset($company_info['update_time'])){
+                                echo "<div class='data'>".$company_info['update_time']."</div>"; 
+                            }			
+			echo form_fieldset_close();  
+
+			//STATE
+			echo form_fieldset('State');
+                            if (isset($company_info['update_time'])){
+                                echo "<div class='data'>".$company_info['update_time']."</div>"; 
+                            }			
+			echo form_fieldset_close(); 
+                        
 			?>
 		</div><!--end div "type"-->
 	</div>
