@@ -492,9 +492,9 @@ $(document).ready(function(){
 			
 			//update next subquestion
 			if (currentEnvQuestion < 10){
-				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(50).animate({opacity: 0, marginLeft:'300px'},50).hide(50);
+				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(1).animate({opacity: 0, marginLeft:'300px'},1).hide(1);
 				currentEnvQuestion = currentEnvQuestion + 1;
-				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(80).animate({opacity: 1, marginLeft:'149px'},80).show(80);
+				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(30).animate({opacity: 1, marginLeft:'149px'},30).show(30);
 			};
 			
 			//check for next button
