@@ -14,7 +14,8 @@ class Preview extends CI_Controller {
 		$this->config->item('use_mongodb', 'ion_auth') ?
 		$this->load->library('mongo_db') :
 		$this->load->database();
-                $this->load->model('survey_model');                
+                $this->load->model('survey_model');
+                $this->load->model('preview_model');
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 	}
@@ -50,18 +51,18 @@ class Preview extends CI_Controller {
         /*17*/  $this->form_validation->set_rules('user_motivation', 'Motivation', 'required|greater_than[0]|less_than[6]');
         /*18a*/  //$this->form_validation->set_rules('user_education', 'Education', 'required');
         /*18b*/  //$this->form_validation->set_rules('user_work', 'Work', 'required');
-        /*19*/  //$this->form_validation->set_rules('user_location', 'Location', 'required');
+        /*19*/  $this->form_validation->set_rules('user_location', 'Location', 'required');
         /*20*/  $this->form_validation->set_rules('user_industry', 'Industry', 'required');
 
  
         if ($this->form_validation->run() == FALSE){
             //reload the form
-            //$this->load->library('ion_auth');
-            //$data['title']="Work-Life-Play";
-            //$data['content']="pages/_criteria";
-            //$this->load->view('canvas', $data);
-            $this->load->view("survey/user_tester");
-	    echo "5 - validate data fail";
+            $this->load->library('ion_auth');
+            $data['title']="Work-Life-Play";
+            $data['content']="pages/_criteria";
+            $this->load->view('canvas', $data);
+           // $this->load->view("survey/user_tester2");
+	   // echo "5 - validate data fail";
         }
         else {//data is good...process it.
                 
@@ -83,15 +84,26 @@ class Preview extends CI_Controller {
             /*16*/$user_traits = $this->input->post('user_traits');
             /*17*/$user_motivation = $this->input->post('user_motivation');
             /*18a*/$user_education = $this->input->post('user_education');
-            /*18b*/$user_work = $this->input->post('user_work');
+            /*18b*/$user_work = $this->input->post('user_work'); 
+            
+            //DETERMINE IF USER EDUCATION AND WORK ARE POPULATED OR EMPTY...
+            $education_exists = $this->preview_model->validate_education_array($user_education);
+            $work_exists = $this->preview_model->validate_work_array($user_work);
+            
+            if (!$education_exists)
+            {
+                $user_education = NULL;
+            } 
+            
+            if (!$work_exists) 
+            {
+                $user_work = NULL;
+            }
+                      
             /*19*/$user_location = $this->input->post('user_location');
             /*20*/$user_industry = $this->input->post('user_industry');
             //$categories = $this->input->post('category');//NOT SURE OF THIS NAME!!!                
             //$history = $this->input->post('history'); //NOT SURE OF THIS NAME!!!  
-
-
-            //print_r($user_work);
-
 
             //TODO: MAKE SURE WE MAKE WORK AND EDUCATION HISTORY OPTIONAL!
             //TODO: FIX THESE NAMES ASSIGNED TO THE SESSION AND EVERYWHERE ELSE THEY MAY BE USED:
@@ -128,10 +140,19 @@ class Preview extends CI_Controller {
 
             if ($data['company_count']>0)
             {
-                //WE FOUND MATCHES! DISPLAY THE VIEW
-                $data['title']="Preview Results";
-                $data['content']="pages/_preview";
-                $this->load->view('canvas', $data);
+                //WE FOUND MATCHES!
+                /*
+                if ($this->ion_auth->logged_in()){
+                    $data['title']="Are you sure you would like to proceed?";
+                    $data['content']="pages/_preview_confirm";
+                    $this->load->view('canvas', $data);                    
+                }
+                */
+               // else {
+                    $data['title']="Preview Results";
+                    $data['content']="pages/_preview";
+                    $this->load->view('canvas', $data);
+               // }
             }
             else
             {
@@ -163,13 +184,22 @@ class Preview extends CI_Controller {
                 $benefit_scoring = $this->preview_model->benefits_scoring($basic_criteria_list,$user_benefits);
 
                 //GET USER'S PREVIOUS JOB TYPE IDs
-                $prev_job_types = $this->preview_model->prev_job_types($user_work);
+                if (!empty($user_work)){
+                    $prev_job_types = $this->preview_model->prev_job_types($user_work);
+                   // echo '<pre>prev job types:<br>',print_r($prev_job_types,1),'</pre>';
+                }
                 if (!empty($prev_job_types)){
                     //SCORE THE COMPANIES BASED ON WHETHER THEY HAVE A JOB TYPE THAT MATCHES THE USER'S HISTORY
                     $history_scoring = $this->preview_model->history_scoring($basic_criteria_list,$prev_job_types);
+                    //echo '<pre>history scoring:<br>',print_r($history_scoring,1),'</pre>';
+                }
+                else {
+                    $history_scoring = $this->preview_model->history_scoring_fake($basic_criteria_list);
+                    //echo '<pre>history scoring fake:<br>',print_r($history_scoring,1),'</pre>';                    
                 }
                 //SCORE THE COMPANIES USING KNN METHOD
-                $ranked_results = $this->preview_model->get_distance_matrix3($benefit_scoring,$history_scoring,$user_citizenship,$user_pace,$user_lifecycle,$prev_job_types);
+                //$ranked_results = $this->preview_model->get_distance_matrix3($benefit_scoring,$history_scoring,$user_citizenship,$user_pace,$user_lifecycle,$prev_job_types);
+                $ranked_results = $this->preview_model->get_distance_matrix3($benefit_scoring,$history_scoring,$user_citizenship,$user_pace,$user_lifecycle);                
 
                 //TRANSLATE THE RESULTS INTO 'FIT SCORES', WITH 100% OR 1.0 BEING PERFECT
                 $company_fit = $this->preview_model->fit_score($ranked_results);

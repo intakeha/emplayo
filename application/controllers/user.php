@@ -52,6 +52,7 @@ class User extends CI_Controller {
 
                         if ($this->ion_auth->login($email, $password, $remember))
                         {
+                            /*
                             //the login was successful, now save any inquiry/preference data
                             if ($this->session->userdata('save_data') == TRUE)
                             {
@@ -70,6 +71,8 @@ class User extends CI_Controller {
                                    print_r($this->home_model->errors); 
                                 }
                             }
+                            */
+                            $this->session->set_userdata('new_user', TRUE);
                             $this->session->set_flashdata('message', $this->ion_auth->messages());
                             redirect('/', 'refresh');                            
                             

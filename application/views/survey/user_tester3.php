@@ -84,7 +84,7 @@
             //company pace
             $company_pace = array('id' => 'user_pace','name' => 'user_pace[]'); 
             echo form_fieldset('What company pace would you prefer?');
-            echo form_checkbox($company_pace,'1',FALSE);
+            echo form_checkbox($company_pace,'1',TRUE);
             echo form_label('Slow','slow');
             echo '<br/>';            
             echo form_checkbox($company_pace,'2',TRUE);
@@ -98,7 +98,7 @@
             //lifecycle
             $lifecycle = array('id' => 'user_lifecycle','name' => 'user_lifecycle[]'); 
             echo form_fieldset('What company lifecycle would you prefer?');
-            echo form_checkbox($lifecycle,'1',FALSE);
+            echo form_checkbox($lifecycle,'1',TRUE);
             echo form_label('Startup','startup');
             echo '<br/>';            
             echo form_checkbox($lifecycle,'2',TRUE);
@@ -107,7 +107,7 @@
             echo form_checkbox($lifecycle,'3',TRUE);
             echo form_label('Maturity','maturity');
             echo '<br/>';
-            echo form_checkbox($lifecycle,'4',FALSE);
+            echo form_checkbox($lifecycle,'4',TRUE);
             echo form_label('Rebirth','rebirth');
             echo '<br/>';            
             echo form_fieldset_close();             
@@ -172,10 +172,10 @@
             echo '<input type="radio" name="user_citizenship" value="2" id="slightly_important"  />';
             echo form_label('Slightly Important','slightly_important');
             echo '<br/>';
-            echo '<input type="radio" name="user_citizenship" value="3" checked="checked" id="important"  />';
+            echo '<input type="radio" name="user_citizenship" value="3" id="important"  />';
             echo form_label('Important','important');
             echo '<br/>';
-            echo '<input type="radio" name="user_citizenship" value="4" id="fairly_important"  />';
+            echo '<input type="radio" name="user_citizenship" value="4" checked="checked" id="fairly_important"  />';
             echo form_label('Fairly Important','fairly_important');
             echo '<br/>';
             echo '<input type="radio" name="user_citizenship" value="5" id="very_important"  />';
