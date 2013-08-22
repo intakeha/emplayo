@@ -10,6 +10,10 @@ class Company_model extends MY_Model {
         $this->messages = array();
         $this->errors = array();
     }
+    //READ THIS!
+    //THE COMPANY MODEL uses the 'company_all' table to show ALL companies in the 
+    //Database, published or not.  This is the model in use by the Admin Interface.
+    
     /**
     * Get Company List
     * This function simply gets a list of all companies in the company table
@@ -19,7 +23,7 @@ class Company_model extends MY_Model {
     **/ 
     function get_company_list()
     {
-        $query = $this->db->query("SELECT id,company_name,company_url,update_time FROM company");       
+        $query = $this->db->query("SELECT id,company_name,company_url,update_time FROM company_all");       
         return $query;
     }
     
@@ -204,13 +208,13 @@ class Company_model extends MY_Model {
         if (!empty($id)){
             $this->db->where('id', $id);
         }
-
-        $query = $this->db->get('company');
+       
+        $query = $this->db->get('company_all');
 
         $return_array = $this->count_seed_completion($query, $limit, $offset, $completion_array);
         $new_array = $return_array['new_array'];
         $num_rows = $return_array['total_rows'];
-        
+
         //this is a default 'styling' template from the Codeigniter folks.  Can be changed to whatever...
         $tmpl = array (
                         'table_open'          => '<table border="1" cellpadding="4" cellspacing="1" class="companies_table"><colgroup><col id="company"><col id="data"><col id="progress"><col id="update"><col id="action"></colgroup>',
@@ -429,7 +433,7 @@ class Company_model extends MY_Model {
         $this->db->select('company_name, id');
         $this->db->like('company_name', $kws, 'after');
         $this->db->limit('10');
-        $query = $this->db->get('company');
+        $query = $this->db->get('company_all');
         $count = $query->num_rows();
   
         $i = 0;
@@ -493,7 +497,7 @@ class Company_model extends MY_Model {
             $this->db->trans_start();
 
                 //INSERT COMPANY DATA (escaped using Active Records)
-                $this->db->insert('company', $company_array);
+                $this->db->insert('company_all', $company_array);
 
                 //grab the id of this inserted record to use later...
                 $company_id = $this->db->insert_id();
@@ -573,7 +577,7 @@ class Company_model extends MY_Model {
 
             //UPDATE COMPANY DATA
             $this->db->where('id', $id);
-            $this->db->update('company', $company_array);
+            $this->db->update('company_all', $company_array);
 
             //BUILD PROPERLY FORMATTED ARRAY FOR BENEFITS INSERT
             foreach ($post['benefits'] as $key=>$value)
@@ -678,14 +682,17 @@ class Company_model extends MY_Model {
             'pace_id' => $post['company_pace'],
             'lifecycle_id' => $post['company_lifecycle'],
             'corp_citizenship_id' => $post['corp_citizenship'],
+            'state_id' => $post['company_state'],
             'update_time' => date('Y-m-d H:i:s') 
         );   
         
         // check to ensure the company exists prior to trying to update it
-        if (!$this->company_exists($post['company_name']))
-        {
-            $this->set_error('Company does not exist');
-            return FALSE;
+       // if (!$this->company_exists($post['company_name']))
+       // {
+       //     $this->set_error('Company does not exist');
+       //     return FALSE;
+        if (0){
+            //ensure we never get here by setting condition to 0
         }
         else 
         {
@@ -694,7 +701,7 @@ class Company_model extends MY_Model {
 
             //UPDATE COMPANY DATA
             $this->db->where('id', $id);
-            $this->db->update('company', $company_array);
+            $this->db->update('company_all', $company_array);
 
             //BUILD PROPERLY FORMATTED ARRAY FOR BENEFITS INSERT
             if ($post['benefits']) 
@@ -790,7 +797,7 @@ class Company_model extends MY_Model {
     {
         
         $this->db->where('id', $company_id);
-        $this->db->delete('company');        
+        $this->db->delete('company_all');        
         
          return (bool)($this->db->affected_rows() > 0);
         /*
@@ -823,7 +830,7 @@ class Company_model extends MY_Model {
         //from BENEFITS: benefits_id[]
         //from CATEGORY: category_id[]
 
-        $query = $this->db->get_where('company', array('id' => $id));
+        $query = $this->db->get_where('company_all', array('id' => $id));
         $company_array = array();
         if ($query->num_rows() > 0)
         {
@@ -841,7 +848,7 @@ class Company_model extends MY_Model {
               $company_array['lifecycle_id'] = $row->lifecycle_id;
               $company_array['corp_citizenship_id'] = $row->corp_citizenship_id;
               $company_array['update_time'] = $row->update_time;//added on 8-11-13 by BLC
-              $company_array['update_time'] = $row->update_time;//added on 8-11-13 by BLC
+              $company_array['state_id'] = $row->state_id;//added on 8-11-13 by BLC
               
            }
            return $company_array;
@@ -905,7 +912,7 @@ class Company_model extends MY_Model {
         return $query;
        
     }      
-
+/*
     function get_profile_pics($company_id)
     {
         //get the profile pics from the database
@@ -946,7 +953,7 @@ class Company_model extends MY_Model {
         }
 
     }  //end of get_profile_pics       
-    
+    */
     function view_profile_pics($company_id)//for admin panel
     {
         //get the profile pics from the database
@@ -1073,6 +1080,7 @@ class Company_model extends MY_Model {
        
     }     
 
+    /*
     function get_quotes($company_id)
     {
         //get the quotes from the database
@@ -1098,7 +1106,7 @@ class Company_model extends MY_Model {
         }
 
     }  //end of get_quotes   
-    
+    */
     function view_quotes($company_id)
     {
         //get the quotes from the database
@@ -1123,6 +1131,7 @@ class Company_model extends MY_Model {
 
     }  //end of get_quotes     
 
+    /*MOVED THIS TO PUBLIC_COMPANY_MODEL
 function array_interlace ($a, $b)
 {
     $c = array();
@@ -1144,7 +1153,9 @@ function array_interlace ($a, $b)
     }
     
     return $c;
-}    
+}   
+
+*/
     
     //function for setting errors in the model and returning them to the controller
     public function set_error($error)

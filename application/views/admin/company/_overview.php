@@ -194,9 +194,17 @@
 
 			//STATE
 			echo form_fieldset('State');
-                            if (isset($company_info['update_time'])){
-                                echo "<div class='data'>".$company_info['update_time']."</div>"; 
-                            }			
+                            
+			foreach ($state_array as $row) 
+			{
+				if (isset($company_info['state_id'])){
+					if ($company_info['state_id'] == $row['id'])
+					{                       
+						echo "<div class='data'>".$row['state']."</div>"; 
+					}
+				}
+			}                                 
+                            
 			echo form_fieldset_close(); 
                         
 			?>

@@ -127,7 +127,11 @@
 
 		if ($this->session->flashdata('upload_error') != ''){
 			$upload_error = $this->session->flashdata('upload_error');
-		}   
+		} 
+                
+		if (isset($errors)){
+			print_r($errors);
+		}                 
 
 		if (isset($company_info['company_name'])){
 			$default_name = $company_info['company_name'];
@@ -345,6 +349,39 @@
 		echo form_multiselect('category[]', $category_array, $postcat);
 		
 		echo form_fieldset_close();  
+                
+                //COMPANY STATE
+                //Added by BLC on 8-11-13
+
+                echo form_fieldset('Company State');
+                echo "<div class='errors'>";
+                echo form_error('company_state');
+                echo "</div>";
+                
+                foreach ($state_array as $row) 
+                {
+                    ?>
+                    <input type="radio" name="company_state" value="<?php echo $row['id'];?>" 
+                           id="company_state" <?php 
+
+                    if (isset($company_info['state_id'])){
+                        if ($company_info['state_id'] == $row['id'])
+                        {                       
+                           echo set_radio('company_state', ''.$row['id'].'',TRUE); 
+                        } else {
+                            echo set_radio('company_state', ''.$row['id'].'',FALSE);
+                        }
+                    } else {
+                        echo set_radio('company_state', ''.$row['id'].'');
+                    }
+                           ?>/>
+                    <?php                   
+                    echo form_label($row['state'],'company_state');
+                    echo '<br/>';
+                }  
+
+                echo form_fieldset_close();                  
+                
 
 		$submitButton = array('class' => 'button_green');
 		echo form_submit($submitButton, 'Next');

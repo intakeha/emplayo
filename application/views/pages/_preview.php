@@ -23,6 +23,45 @@
                             //echo '<br>';
                         }
                         echo "</div>";
+                        
+// Temmporary tables for debugging & refining
+            function table_print($title,$this_array) 
+            {               
+                $keys = array_keys($this_array[0]);
+                echo "<div class = 'table'>";
+                //echo "<div style='float:left;margin:10px'>";
+                echo "<h3>$title</h3>";
+                echo "<table style ='border:1px solid #FF0000;padding:5px;'><tr><th>".implode("</th><th>", $keys)."</th></tr>";
+                foreach ($this_array as $row) {
+                  if (!is_array($row))
+                    continue;
+                  echo "<tr><td style='border:1px solid #FF0000;padding:5px;'>".implode("</td><td style='border:1px solid #FF0000;padding:5px;'>", $row )."</td></tr>";
+                }
+                echo "</table>";
+                echo "</div>";
+            }                              
+                        
+                        
+                echo "<div>";        
+                $raw_data = unserialize(file_get_contents('temp_arrays/raw_array.txt'));
+                table_print('Raw Data', $raw_data);
+                $coord_data = unserialize(file_get_contents('temp_arrays/coord_array.txt')); 
+                table_print('Coordinate Data', $coord_data);
+                $dist_data = unserialize(file_get_contents('temp_arrays/dist_array.txt'));
+                table_print('Distance Data', $dist_data);
+                $norm_disp_data = unserialize(file_get_contents('temp_arrays/norm_disp_array.txt'));
+                table_print('Normalized Data', $norm_disp_data);
+                $aggregate_data = unserialize(file_get_contents('temp_arrays/aggregate_array.txt'));
+                table_print('Aggregate Data', $aggregate_data);
+                $company_fit = unserialize(file_get_contents('temp_arrays/fit_array.txt'));
+                table_print('Company Fit Data', $company_fit);    
+                echo "</div>";
+                   
+                    
+                        
+// End temp tables                        
+                        
+                        
                     }
                 }
                 else

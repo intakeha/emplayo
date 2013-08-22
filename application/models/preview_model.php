@@ -279,6 +279,34 @@ class Preview_model extends CI_Model {
         }
 
     }    
+ 
+    function industry_filter_dummy($industry)
+    {
+        //find companies that match the DO NEXT categories
+        $categories = implode(',', $industry);
+
+        $sql = 'SELECT id FROM company';
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0)
+        {
+            //build array of company ids that came from the last query...so we can use them in the upcoming query
+            foreach ($query->result_array() as $row) {
+                //$companyid_array[]=$row;
+                $companyid_array[]=$row['id'];
+            }
+            $queried_comp_ids = implode(',', $companyid_array);
+            
+            //return a comma-separated squeried comp ids: tring of the company ids that match
+            return $queried_comp_ids;
+            
+        }
+        else //no companies were found
+        {
+            return FALSE;
+        }
+
+    }  
     
     function survey_filter3($company_list)
     {            
@@ -353,6 +381,30 @@ class Preview_model extends CI_Model {
             return FALSE;
         }
     }    
+    
+    function toggle_filters_dummy($company_list,$type_array,$pace_array,$lifecycle_array)
+    {
+        $sql = 'SELECT id,company_name FROM company';        
+        //run the query
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0)
+        {
+            //build array of company ids that came from the last query...so we can use them in the upcoming query
+            foreach ($query->result_array() as $row) {
+                //$companyid_array[]=$row;
+                $companyid_array[]=$row['id'];
+            }
+            $queried_comp_ids = implode(',', $companyid_array);
+
+            return $queried_comp_ids;
+            
+        }
+        else //no companies were found
+        {
+            return FALSE;
+        }        
+    }
  
     function benefits_scoring($queried_comp_ids,$user_benefits_array)
     {            
@@ -402,7 +454,7 @@ class Preview_model extends CI_Model {
             return $scores;
     }    
 
-    function prev_job_types($user_work)
+    function prev_job_ids($user_work)
     {            
         /*
         user_work[0][company_id]	69
@@ -415,18 +467,21 @@ class Preview_model extends CI_Model {
         user_work[0][start_year]	2003
          */        
         //walk through user_work array and pull out the historical job types
-        $prev_job_types = array();
+        $prev_job_ids = array();
         foreach ($user_work as $key=>$value)
         {
             //$prev_job_types[$key] = $value['job_type'];
-            $prev_job_types[$key] = $value['job_id'];
+            //6-30-13: was previously using job_type, but it should be job_id...
+            $prev_job_ids[$key] = $value['job_id'];
         }
         
-        return $prev_job_types;
+        return $prev_job_ids;
     }
     
     function history_scoring($queried_comp_ids,$user_history_cats)
     {            
+        
+        //echo '<pre>user history cats:<br>',print_r($user_history_cats,1),'</pre>';
 
             //get the user submitted history categories
             //$user_history_cats = $this->input->post('history');   
@@ -443,6 +498,8 @@ class Preview_model extends CI_Model {
                 $company_set[$row['company_id']][]=$row['category_id'];
             }
 
+       // echo '<pre>company set:<br>',print_r($company_set,1),'</pre>';            
+            
             $scores = array();
             // For every company, we will assign it a score based on how many
             // of the user's category choices it has.  Each category is worth 1 point.
@@ -465,65 +522,58 @@ class Preview_model extends CI_Model {
                 if ($score >1){$score=1;}
                 //end of added line
                 $scores[$company_id] = $score;
-
+                
             }
-            
+      //  echo '<pre>scores:<br>',print_r($scores,1),'</pre>';            
             arsort($scores);
 
             return $scores;
     }      
    
-    function history_scoring_fake($queried_comp_ids)
+    function type_scoring($queried_comp_ids,$user_type)
     {            
-
-            //get the user submitted history categories
-            //$user_history_cats = $this->input->post('history');   
-            
+       
+      //  echo '<pre>user type(s):<br>',print_r($user_type,1),'</pre>';
+        
             //get all the companies (that meet the previous criteria) and their associated benefits
-            $sql2 = 'SELECT company_id,category_id FROM company_category WHERE company_id IN ('.$queried_comp_ids.')';
+            $sql2 = 'SELECT id,type_id FROM company WHERE id IN ('.$queried_comp_ids.')';
             $query2 = $this->db->query($sql2);
 
-            //$user_history_cats = implode(',', $user_history_cats);            
-        
             //build an array with a specific format to be used in the upcoming scoring process
             $company_set = array();
             foreach ($query2->result_array() as $row) {
-                $company_set[$row['company_id']][]=$row['category_id'];
+                $company_set[$row['id']][]=$row['type_id'];
             }
 
             $scores = array();
             // For every company, we will assign it a score based on how many
-            // of the user's category choices it has.  Each category is worth 1 point.
+            // of the user's choices it has.  Each match is worth 1 point.
             
             foreach($company_set as $company_id => $array_row)
             {   
                 $score = 0;
-                /*
-                foreach ($array_row as $key=>$category_id)
+                foreach ($array_row as $key=>$type_id)
                 {
-                    //we walk through the array that contains each company's categories
-                    //then, we search for each category in the user's choices.  if we find
+                    //we walk through the array that contains each company's type(s)
+                    //then, we search for each type in the user's choices.  if we find
                     //a match, we give the company a point. and so on...
                     
-                    
-                    if (in_array($category_id, $user_history_cats, true)){
+                    if (in_array($type_id, $user_type, true)){
                         ++$score;
                     }
                     
-                    
                 }
-                */
                 //added the following line to limit max score to 1
-                //if ($score >1){$score=1;}
+                if ($score >1){$score=1;}
                 //end of added line
                 $scores[$company_id] = $score;
 
             }
-            
+//echo '<pre>type scores:<br>',print_r($scores,1),'</pre>';            
             arsort($scores);
 
             return $scores;
-    }    
+    }     
     
     
     function get_company2($ranked_comps)
@@ -612,6 +662,24 @@ class Preview_model extends CI_Model {
 
     } 
     
+    function merge_arrays_pace(&$companyData,$companyKey, $paceArray)
+    {
+        //echo '<pre>Pace array:<br>',print_r($paceArray,1),'</pre>';
+        //echo '<pre>company key:<br>',print_r($companyKey,1),'</pre>';
+        //when the 'id' of companyData equals the key of benefitsArray, add the 'benefits' key=>value to companyData
+        foreach ($paceArray as $key=>$row)
+            //echo "<br>Pace Key: ".$key;
+            //echo '<pre>Pace value:<br>',print_r($row,1),'</pre>';
+        
+        {
+            if ($companyData['id'] == $row['id'])
+            {
+                $companyData['pace'] = $row['pace'];
+            }
+        }
+
+    }     
+    
     function city_block_distance_benefits(&$sourceCoords,$sourceKey, $data)
     {        
         $user_benefit_score = $data[0]['benefits'];
@@ -628,7 +696,13 @@ class Preview_model extends CI_Model {
     {
         $user_citizenship_score = $data_array_copy[0]['citizenship'];   
         $sourceCoords['citizenship'] = abs($sourceCoords['citizenship']-$user_citizenship_score);   
-    }       
+    }     
+    
+    function city_block_distance_pace(&$sourceCoords,$sourceKey, $data_array_copy)
+    {
+        $user_pace_score = $data_array_copy[0]['pace'];   
+        $sourceCoords['pace'] = abs($sourceCoords['pace']-$user_pace_score);   
+    }     
     
     function normalize_benefits(&$sourceCoords,$sourceKey, $isolated_benefits)
     {
@@ -695,10 +769,32 @@ class Preview_model extends CI_Model {
 
         $sourceCoords = $aggregate_array;
     }          
+ 
+    function aggregate2(&$sourceCoords,$sourceKey)
+    {
+        $aggregate_array = array();
+        //$var_count = 2;
+
+        //weights should add up to 1
+        $benefits_weight = .4;
+        $history_weight = .2;
+        $citizenship_weight = .1;
+        $pace_weight = .3;
+        
+
+        $aggregate_array['id'] = $sourceCoords['id'];
+
+        $aggregate_array['ag_score'] = 
+                ($sourceCoords['benefits']*$benefits_weight
+                + $sourceCoords['citizenship']*$citizenship_weight
+                + $sourceCoords['pace']*$pace_weight
+                );  
+
+        $sourceCoords = $aggregate_array;
+    }     
     
     
-    
-    function get_distance_matrix3($ranked_comps,$history_scoring,$corp_citizenship,$pace_array,$lifecycle_array)
+    function get_distance_matrix3($ranked_comps,$history_scoring,$corp_citizenship,$pace_array,$lifecycle_array,$history_array)
     {
         //$this->session->set_userdata('some_name', 'some_value');
         //1. Create array of data points
@@ -831,6 +927,108 @@ class Preview_model extends CI_Model {
         return $data_array;
         
     }//END OF get_distance_matrix FUNCTION
+
+    function get_distance_matrix4($benefit_scoring,$corp_citizenship,$pace_array,$lifecycle_array,$user_industry,$user_type)
+    {
+        /*
+         * TODO: Repeat process used for pace to add:
+         * lifecycle (average), type(score like history), industry(score like history)
+         */
+        
+        /*
+         * 1. CREATE ARRAY OF DATA POINTS
+         * user's benefit score is always perfect, so we know it is the triangular
+         * number of the highest ranking 15t=>120.
+         * build the one row user coordinates array in order to measure distance from it to the companies
+         * the user's coordinates are 'perfect', so the distance from user to company is what matters.
+         */
+            $user_avg_pace = $this->calculate_average($pace_array);
+            
+            $user_data = array();       
+            $user_data[0]['id'] = 'user';
+            $user_data[0]['citizenship'] = $corp_citizenship;        
+            $user_data[0]['benefits'] = 120;//hardcoded based on total max score of benefits  
+            $user_data[0]['pace'] = $user_avg_pace;//temp value..
+
+            //Merge the company citizenship values with the benefits scoring array
+            //a. BENEFITS + 
+            //b. CITIZENSHIP
+            $company_data_array = $this->citizenship_merge($benefit_scoring);
+            //c. PACE
+            $company_data_array = $this->pace_merge($benefit_scoring,$company_data_array);
+            //d. LIFECYCLE
+            
+            //e. TYPE
+            
+            //f. INDUSTRY
+            
+            //MERGE USER DATA
+            $data = array_merge($user_data,$company_data_array);
+
+            //writing to temp arrays for troubleshooting and diagnostics.
+            $this->write_temp_arrays('raw_array',$data);
+        
+        /*
+         * 2. TRANSFORM DATA INTO COORDINATES
+         */
+            $data_array = $data;//make a copy of the $data array
+            //normalize citizenship data (convert to rank 1-max, then normalize)    
+            foreach ($data_array as &$row)
+            {
+                $row['citizenship']=($row['citizenship']-1)/(5-1);//5 is max citizenship value in db
+                $row['pace']=($row['pace']-1)/(3-1);//3 is max pace value in db
+            }
+            $this->write_temp_arrays('coord_array',$data_array);
+
+            $data_array_copy = $data_array;//make a copy of the $data_array
+            $data_array_copy2 = $data_array;//make a copy of the $data_array
+        
+        /*
+         * 3. Calculate distance for each variable
+         */
+            array_walk($data_array, array($this,'city_block_distance_benefits'),$data);   
+            array_walk($data_array, array($this,'city_block_distance_citizenship'),$data_array_copy);
+            array_walk($data_array, array($this,'city_block_distance_pace'),$data_array_copy2); 
+
+            $this->write_temp_arrays('dist_array',$data_array);
+
+        /*
+         * 4. Normalize each variable's distance (scale of 0-1)
+         * for quantitative data: norm = (d-dmin)/(dmax-dmin)
+         * for ordinal data, with rank of 1-5: norm = (r-1)/(R-1)
+         */
+            //BENEFITS
+            $isolated_benefits = array_map(array($this,'isolate_benefits'), $data_array);  
+            array_walk($data_array, array($this,'normalize_benefits'),$isolated_benefits);   
+            //CITIZENSHIP - already normalized (0-1)
+            //PACE - already normalized (0-1)
+
+            $this->write_temp_arrays('norm_disp_array',$data_array);
+
+            
+        /*
+         * 5. Aggregate the normalized distance matrix
+         * assuming each feature variable has the same weight, sum them up then divide
+         * by the number of feature variables
+         */    
+
+            array_walk($data_array, array($this,'aggregate2')); 
+
+            $this->write_temp_arrays('aggregate_array',$data_array);
+
+            unset($data_array[0]);
+
+            //sort the array
+            foreach ($data_array as $array) {
+                $agscore[] = $array['ag_score'];
+            }
+
+            array_multisort($agscore,SORT_NUMERIC,SORT_ASC,$data_array);
+            
+
+            return $data_array;
+        
+    }//END OF get_distance_matrix FUNCTION
     
     function fit_score($ranked_results)
     {
@@ -887,6 +1085,64 @@ class Preview_model extends CI_Model {
         
         $query = $this->db->insert_batch('user_matches', $new_array); 
         return $query;        
+    }   
+    
+    function write_temp_arrays($name,$array){
+        if (!is_dir("temp_arrays")) {
+          mkdir("temp_arrays");
+        }              
+        file_put_contents('temp_arrays/'.$name.'.txt', serialize($array));         
+    }
+    
+    function citizenship_merge($benefit_scoring){
+        //get the company citizenship values from the database
+        $comp_ids = array_keys($benefit_scoring);//company ids, along with benefit scores
+        $comp_ids_imploded = implode(',', $comp_ids);
+        $sql = 'SELECT id,corp_citizenship_id AS citizenship FROM company where id IN ('.$comp_ids_imploded.')';
+        //run the query
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0)
+        {
+            $company_data_array = $query->result_array();            
+            //echo '<pre>citizenship array before merge:<br>',print_r($company_data_array,1),'</pre>';
+            //walk the array of company citizenship info and merge in the benefits data
+            array_walk($company_data_array, array($this, 'merge_arrays'),$benefit_scoring);
+            
+            return $company_data_array;
+
+        } else {
+            return FALSE;
+        }    
+    } 
+    
+    function pace_merge($benefit_scoring,$full_company_array){
+        //get the company pace values from the database
+        $comp_ids = array_keys($benefit_scoring);//company ids, along with benefit scores
+        $comp_ids_imploded = implode(',', $comp_ids);
+        $sql = 'SELECT id,pace_id AS pace FROM company where id IN ('.$comp_ids_imploded.')';
+        //run the query
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0)
+        {
+            $pace_array = $query->result_array();            
+            //walk the array of company citizenship info and merge in the benefits data
+            array_walk($full_company_array, array($this, 'merge_arrays_pace'),$pace_array);
+            //echo '<pre>company data after pace merge:<br>',print_r($full_company_array,1),'</pre>';
+            return $full_company_array;
+
+        } else {
+            return FALSE;
+        }    
+    }        
+    
+    function calculate_average($arr) {
+        $count = count($arr); //total numbers in array
+        $total = 0;
+        foreach ($arr as $value) {
+            $total = $total + $value; // total value of array numbers
+        }
+        $average = ($total/$count); // get average value
+        return $average;
     }    
     
 }

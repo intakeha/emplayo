@@ -23,7 +23,7 @@ class Company extends CI_Controller {
     
     //Listing - displays a list of the companies in the database
     public function listing()
-    {
+    {    
         //load table library for table generation
         $this->load->library('table');
         
@@ -53,7 +53,7 @@ class Company extends CI_Controller {
                 //echo "case 2";
                 $completion_array = array(100);
                 //print_r($completion_array);
-                break;
+                break;           
             default:
                 //echo "case default";
                 $completion_array = array(0,20,40,60,80,100);
@@ -420,6 +420,7 @@ class Company extends CI_Controller {
         $data['lifecycle_array'] = $this->company_model->get_ref('lifecycle');
         $data['corp_citizenship_array'] = $this->company_model->get_ref('corp_citizenship');
         $data['benefits_array'] = $this->company_model->get_ref('benefits');
+        $data['state_array'] = $this->company_model->get_ref('state');
         
         if (isset($id)){
             //get the data for the specified company id
@@ -454,6 +455,7 @@ class Company extends CI_Controller {
         $data['lifecycle_array'] = $this->company_model->get_ref('lifecycle');
         $data['corp_citizenship_array'] = $this->company_model->get_ref('corp_citizenship');
         $data['benefits_array'] = $this->company_model->get_ref('benefits');
+        $data['state_array'] = $this->company_model->get_ref('state');
         
         if (isset($id)){
             //get the data for the specified company id
@@ -473,7 +475,8 @@ class Company extends CI_Controller {
         $this->form_validation->set_rules('company_lifecycle', 'Company Lifecycle');
         $this->form_validation->set_rules('corp_citizenship', 'Corporate Citizenship');
         $this->form_validation->set_rules('benefits', 'Benefits');
-        $this->form_validation->set_rules('category[]', 'Category'); 
+        $this->form_validation->set_rules('category[]', 'Category');
+        $this->form_validation->set_rules('company_state', 'Company State');
         
         /*
         $this->form_validation->set_rules('company_name', 'Company Name', 'required');
@@ -504,6 +507,7 @@ class Company extends CI_Controller {
             $step_1_post['corp_citizenship'] = $this->input->post('corp_citizenship');
             $step_1_post['benefits'] = $this->input->post('benefits');
             $step_1_post['category'] = $this->input->post('category');
+            $step_1_post['company_state'] = $this->input->post('company_state');
  
             //save the data to the session
             $this->session->set_userdata($step_1_post);//should confirm that this is actually set...
@@ -570,7 +574,8 @@ class Company extends CI_Controller {
         $post_data['benefits'] = $this->session->userdata('benefits');
         $post_data['category'] = $this->session->userdata('category');
         $post_data['company_logo'] = $this->session->userdata('company_logo');
-        $post_data['creative_logo'] = $this->session->userdata('creative_logo');   
+        $post_data['creative_logo'] = $this->session->userdata('creative_logo'); 
+        $post_data['company_state'] = $this->session->userdata('company_state'); 
         $new_company_logo = '';
         $new_creative_logo = '';
         
@@ -632,7 +637,22 @@ class Company extends CI_Controller {
             $data['errors'] = $this->company_model->errors;
 
             //load the view
-            $this->load->view("admin/company/update_step_1",$data); 
+            //$this->load->view("admin/company/update_step_1",$data); 
+            
+		//load the view
+		if ($this->ion_auth->logged_in()){
+			
+			$data['title']="Company Data";
+			$data['content']="admin/company/_dataUpdate";
+			$this->load->view('canvas', $data);
+			//$this->session->unset_userdata('message');
+		}   else {
+			$data['title']="Home";
+			$data['content']="pages/_home";
+			$this->load->view('canvas', $data);
+		}            
+            
+            
         }      
         
     }//update_save     

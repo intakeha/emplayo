@@ -21,6 +21,7 @@
 				<input type="hidden" name="filter" value="3"/>
 				<input class="submit" type="submit" name="completed_link" value="All"/>
 			</form>
+                    
 			<?php echo '<a id="add_company" href = "/admin/company/create_step_1">Add Company</a><br>'; ?>
 		</div>
 		<form action="/admin/company/listing" method="post" id="company_search">
