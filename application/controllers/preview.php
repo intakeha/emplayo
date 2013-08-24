@@ -273,6 +273,7 @@ class Preview extends CI_Controller {
             //RANK THE COMPANIES BY THEIR BENEFITS
             $benefit_scoring = $this->preview_model->benefits_scoring($basic_criteria_list,$user_benefits);            
             $type_scoring = $this->preview_model->type_scoring($basic_criteria_list,$user_type);
+            $industry_scoring = $this->preview_model->industry_scoring($basic_criteria_list,$user_industry);
             
           //  if (!empty($basic_criteria_list))
           //  {
@@ -291,7 +292,7 @@ class Preview extends CI_Controller {
                // }
                 //SCORE THE COMPANIES USING KNN METHOD
                 //$ranked_results = $this->preview_model->get_distance_matrix3($benefit_scoring,$history_scoring,$user_citizenship,$user_pace,$user_lifecycle,$prev_job_ids);
-                $ranked_results = $this->preview_model->get_distance_matrix4($benefit_scoring,$user_citizenship,$user_pace,$user_lifecycle,$user_industry,$user_type);
+                $ranked_results = $this->preview_model->get_distance_matrix4($benefit_scoring,$user_citizenship,$user_pace,$user_lifecycle,$user_industry,$user_type,$type_scoring,$industry_scoring);
 
                 //TRANSLATE THE RESULTS INTO 'FIT SCORES', WITH 100% OR 1.0 BEING PERFECT
                 $company_fit = $this->preview_model->fit_score($ranked_results);
