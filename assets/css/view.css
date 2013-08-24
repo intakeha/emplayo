@@ -1297,7 +1297,7 @@ div#settings div#panel{
 	width: 830px;
 	min-height: 400px;
 	float: left;
-	margin: 5px 10px;
+	margin: 20px 10px 10px;
 	display: none;
 }
 
@@ -1305,6 +1305,8 @@ div#settings div#panel label {
     display: inline-block;
     width: 250px;
 	margin: 5px;
+	padding: 5px 0;
+	color: #1d71a2;
 }
 
 div#settings div#panel input{
@@ -1312,9 +1314,218 @@ div#settings div#panel input{
 	color: #777;
 	width: 300px;
 	margin: 5px;
+	border-width: 1px;
+}
+
+div#settings div#panel select {
+    color: #777;
+    font-size: 18px;
+	border-width: 1px;
+	margin: 10px 2px 0px;	
+    margin: 5px 2px 0px;
+	text-align: center;
 }
 
 
+div#settings div#password_update{
+	width: 578px;
+	margin: auto;
+}
+
+div#settings div#work_update{
+	width: 610px;
+	margin: auto;
+}
+
+div#settings div#location_update{
+	width: 645px;
+	margin: auto;
+}
+
+div#settings div#location_update label{
+	float: left;
+	width: 285px;
+}
+
+div#settings div#location_update .tt-hint{
+	color: #ccc !important;
+    font-size: 20px;
+    width: 325px;
+	border-width: 1px;
+}
+
+div#settings div#location_update .tt-dropdown-menu {
+	background-color: #fff;
+	border: 1px solid #6d7a83;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	text-align: left;
+	margin-left: 5px;
+	width: 334px;
+	-moz-box-shadow: 0px 0px 5px #ccc;
+	-webkit-box-shadow: 0px 0px 5px #ccc;
+	box-shadow: 0px 0px 5px #ccc;
+}
+
+div#settings div#location_update .tt-suggestion{
+	padding: 10px;
+	font-weight: normal;
+}
+
+div#settings div#location_update .tt-is-under-cursor {
+	background-color: #1d71a2;
+	color: #fff;
+	font-weight: normal;
+}
+
+div#settings div#industry_update{
+	width: 785px;
+	margin: auto;
+}
+
+div#settings div#industry_update label{
+	float: left;
+	width: 425px;
+}
+
+div#settings div#industry_update .tt-hint{
+	color: #ccc !important;
+    font-size: 20px;
+    width: 325px;
+	border-width: 1px;
+}
+
+div#settings div#industry_update .tt-dropdown-menu {
+	background-color: #fff;
+	border: 1px solid #6d7a83;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	text-align: left;
+	margin-left: 5px;
+	width: 334px;
+	-moz-box-shadow: 0px 0px 5px #ccc;
+	-webkit-box-shadow: 0px 0px 5px #ccc;
+	box-shadow: 0px 0px 5px #ccc;
+}
+
+div#settings div#industry_update .tt-suggestion{
+	padding: 10px;
+	font-weight: normal;
+}
+
+div#settings div#industry_update .tt-is-under-cursor {
+	background-color: #1d71a2;
+	color: #fff;
+	font-weight: normal;
+}
+
+div#settings div#panel .buttons{
+	color: #fff;
+	border: 1px solid #666;
+	float: right;
+	margin: 5px;
+	width: 100px;
+	height: 30px;
+	cursor: pointer;
+}
+
+div#settings div#panel .buttons div{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	width: 100px;
+	height: 30px;
+	font-size: 20px;
+}
+
+div#settings div#panel .buttons.save{
+	background-color: #27c339;
+}
+
+div#settings div#panel .buttons.cancel{
+	background-color: #ccc;
+	height: 28px;
+}
+
+div#settings div#experience_layout{
+    width: 608px;
+}
+
+div#settings div#experience_layout input, 
+div#settings div#location_update input,
+div#settings div#industry_update input{
+    border: 1px solid #ccc;
+    color: #777;
+    font-size: 20px;
+    margin-bottom: 10px;
+	padding-left: 9px;
+    width: 325px;
+}
+
+div#settings div#experience_layout .tt-hint{
+	color: #ccc !important;
+    font-size: 20px;
+    width: 325px;
+	border-width: 1px;
+}
+
+div#settings div#experience_layout .tt-dropdown-menu {
+	background-color: #fff;
+	border: 1px solid #6d7a83;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	text-align: left;
+	margin-left: 5px;
+	width: 334px;
+	-moz-box-shadow: 0px 0px 5px #ccc;
+	-webkit-box-shadow: 0px 0px 5px #ccc;
+	box-shadow: 0px 0px 5px #ccc;
+}
+
+div#settings div#experience_layout .tt-suggestion{
+	padding: 10px;
+	font-weight: normal;
+}
+
+div#settings div#experience_layout select.month{
+	width: 80px;
+}
+
+div#settings div#experience_layout select.year{
+	width: 69px;
+}
+
+div#settings div#experience_layout .tt-is-under-cursor {
+	background-color: #1d71a2;
+	color: #fff;
+	font-weight: normal;
+}
+
+
+div#settings div#experience_layout div.happiness img {
+    height: 34px;
+    width: 34px;
+}
+
+div#settings div#experience_layout .presentText{
+    display: block;
+    float: left;
+    font-size: 11px;
+    font-weight: normal;
+    margin-left: 480px;
+    margin-top: 6px;
+    width: 105px;
+}
+
+div#settings div#experience_layout .history_sets {
+	margin-bottom: 20px;
+	height: 55px;
+	float: left;
+}
+
+div#settings div#experience_layout .prefill{
+	color: #ddd;
+}
 
 /* Forgot */
 div#forgot .content{
@@ -2206,7 +2417,7 @@ div#history {
 	margin-top: 25px;
 }
 
-#history div#education_layout, div#experience_layout{
+div#history div#education_layout,div#history div#experience_layout{
     float: left;
     font-size: 20px;
     padding: 0 10px 20px;
@@ -2214,7 +2425,7 @@ div#history {
 	height: 460px;
 }
 
-div#education_layout {
+div#history div#education_layout {
 	border-right: 1px solid #258cd1;
 }
 
@@ -2246,6 +2457,11 @@ div#history input, div#history select {
 	border-width: 1px;
 }
 
+div#history select {
+    font-size: 18px;
+	text-align: center;
+}
+
 div#history .twitter-typeahead {
     top: -2px;
 }
@@ -2270,7 +2486,7 @@ div#history .tt-dropdown-menu{
 }
 
 div#history .tt-suggestion{
-	padding: 0px;
+	padding: 5px 0px;
 	font-weight: normal;
 }
 
