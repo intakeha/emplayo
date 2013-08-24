@@ -143,7 +143,7 @@ class Preview extends CI_Controller {
             //in the event the match count is very low, or the scores are not 
             //that great. Maybe tell them that there were not any good matches,
             //but ...
-            
+
             if ($data['company_count']>0)
             {
                 //WE FOUND MATCHES! DISPLAY THE VIEW
@@ -179,7 +179,6 @@ class Preview extends CI_Controller {
             
             //6-30-13 created dummy filter to eliminate filtering temporarily.  Remove this later to save on db trips.
             $basic_criteria_list = $this->preview_model->toggle_filters_dummy($comps_by_industry,$user_type,$user_pace,$user_lifecycle);
-            
 
             if (!empty($basic_criteria_list))
             {

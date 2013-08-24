@@ -396,7 +396,6 @@ class Preview_model extends CI_Model {
                 $companyid_array[]=$row['id'];
             }
             $queried_comp_ids = implode(',', $companyid_array);
-
             return $queried_comp_ids;
             
         }
@@ -409,28 +408,29 @@ class Preview_model extends CI_Model {
     function benefits_scoring($queried_comp_ids,$user_benefits_array)
     {            
 
-            //get the user submitted benefits ranking
-            //$user_benefits_array = $this->input->post('users_benefits');              
-
-            //get all the companies (that meet the previous criteria) and their associated benefits
         if (!empty($queried_comp_ids)){
-            $sql2 = 'SELECT company_id,benefits_id FROM company_benefits WHERE company_id IN ('.$queried_comp_ids.')';
-            $query2 = $this->db->query($sql2);
+            $this->db->select('company_id,benefits_id');
+            $this->db->from('company_benefits');
+            $this->db->join('company', 'company.id=company_benefits.company_id');            
+            $query2 = $this->db->get();          
+            
         }
         else {
             return FALSE;          
         }
             
             //build an array with a specific format to be used in the upcoming scoring process
+        
             $company_set = array();
             foreach ($query2->result_array() as $row) {
                 $company_set[$row['company_id']][]=$row['benefits_id'];
             }
-
+            
             $scores = array();
             // For every company, we will assign it a score based on what benefits it has
             // and how the user ranked that benefit.  Higher ranks are more valuable, so the highest
             // total score wins.
+
             foreach($company_set as $company_id => $array_row)
             {   
                 $score = 0;
@@ -450,7 +450,6 @@ class Preview_model extends CI_Model {
             }
             
             arsort($scores);
-
             return $scores;
     }    
 
@@ -998,7 +997,8 @@ class Preview_model extends CI_Model {
 
     function get_distance_matrix4($benefit_scoring,$corp_citizenship,$pace_array,$lifecycle_array,$user_industry,$user_type,$type_scoring,$industry_scoring)
     {
-
+        //echo '<pre>fit scored up!:<br>',print_r($benefit_scoring,1),'</pre>';
+//        echo "<br>benefit score count: ". count($benefit_scoring);
         /*
          * 1. CREATE ARRAY OF DATA POINTS
          * user's benefit score is always perfect, so we know it is the triangular
