@@ -17,8 +17,9 @@
 
                         }
                         echo "</div>";
-                        
+                        /**************************************************/
                         /*** Temmporary tables for debugging & refining ***/
+                        /**************************************************/
                         function table_print($title,$this_array) 
                         {               
                             $keys = array_keys($this_array[0]);
@@ -33,16 +34,21 @@
                             echo "</table>";
                             echo "</div>";
                         }                              
-
-                        function table_print_to_file($title,$this_array) 
+                        function header_print_to_file() 
                         {                              
-                            $keys = array_keys($this_array[0]);
+                            //$keys = array_keys($this_array[0]);
                             $header = '<html><head><title>Algorithm Diagnostic Tables</title></head><body>';
-                            file_put_contents('temp_arrays/algotables.html', $header, FILE_APPEND);
+                            file_put_contents('temp_arrays/algotables.html', $header);//will create a new file
+
+                        }       
+                        
+                        function table_print_to_file($title,$this_array) 
+                        {    
+                            $keys = array_keys($this_array[0]);
                             $open_table =  "<div class = 'table'><br><h3>$title</h3>";
                             file_put_contents('temp_arrays/algotables.html', $open_table, FILE_APPEND);
                             $table_header = "<table style ='border:1px solid #FF0000;padding:5px;'><tr><th style='border:1px solid #FF0000;padding:5px;'>".implode("</th><th style='border:1px solid #FF0000;padding:5px;'>", $keys)."</th></tr>";
-                            file_put_contents('temp_arrays/algotables.html', $table_header, FILE_APPEND);
+                            file_put_contents('temp_arrays/algotables.html', $table_header, FILE_APPEND);                            
                             foreach ($this_array as $row) {
                               if (!is_array($row))
                                 continue;
@@ -51,12 +57,17 @@
                             }
                             $close_table = "</table></div>";
                             file_put_contents('temp_arrays/algotables.html', $close_table, FILE_APPEND);
-                            $footer = '</body></html>';
-                            file_put_contents('temp_arrays/algotables.html', $footer, FILE_APPEND);
                         }              
 
-                        function make_tables(){
-                            echo "<div>";        
+                        function footer_print_to_file() 
+                        {                              
+                            //$keys = array_keys($this_array[0]);
+                            $footer = '</body></html>';
+                            file_put_contents('temp_arrays/algotables.html', $footer, FILE_APPEND);
+                        }                           
+                        
+                        function make_tables(){   
+                            header_print_to_file();
                             $raw_data = unserialize(file_get_contents('temp_arrays/raw_array.txt'));
                             table_print_to_file('Raw Data', $raw_data);
                             $coord_data = unserialize(file_get_contents('temp_arrays/coord_array.txt')); 
@@ -68,11 +79,13 @@
                             $aggregate_data = unserialize(file_get_contents('temp_arrays/aggregate_array.txt'));
                             table_print_to_file('Aggregate Data', $aggregate_data);
                             $company_fit = unserialize(file_get_contents('temp_arrays/fit_array.txt'));
-                            table_print_to_file('Company Fit Data', $company_fit);    
-                            echo "</div>";                  
+                            table_print_to_file('Company Fit Data', $company_fit);  
+                            footer_print_to_file();
                         }           
                         make_tables();           
-                        /*** End temp tables ****/                
+                        /************************/
+                        /*** End temp tables ****/ 
+                        /************************/
                         
                         
                     } //end of if (!empty(full company info))

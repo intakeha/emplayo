@@ -456,21 +456,10 @@ class Preview_model extends CI_Model {
 
     function prev_job_ids($user_work)
     {            
-        /*
-        user_work[0][company_id]	69
-        user_work[0][company_name...	Apple Inc
-        user_work[0][end_month]	03
-        user_work[0][end_year]	2005
-        user_work[0][job_id]	1
-        user_work[0][job_type]	Accounting
-        user_work[0][start_month]	01
-        user_work[0][start_year]	2003
-         */        
         //walk through user_work array and pull out the historical job types
         $prev_job_ids = array();
         foreach ($user_work as $key=>$value)
         {
-            //$prev_job_types[$key] = $value['job_type'];
             //6-30-13: was previously using job_type, but it should be job_id...
             $prev_job_ids[$key] = $value['job_id'];
         }
@@ -480,17 +469,9 @@ class Preview_model extends CI_Model {
     
     function history_scoring($queried_comp_ids,$user_history_cats)
     {            
-        
-        //echo '<pre>user history cats:<br>',print_r($user_history_cats,1),'</pre>';
-
-            //get the user submitted history categories
-            //$user_history_cats = $this->input->post('history');   
-            
             //get all the companies (that meet the previous criteria) and their associated benefits
             $sql2 = 'SELECT company_id,category_id FROM company_category WHERE company_id IN ('.$queried_comp_ids.')';
-            $query2 = $this->db->query($sql2);
-
-            //$user_history_cats = implode(',', $user_history_cats);            
+            $query2 = $this->db->query($sql2);            
         
             //build an array with a specific format to be used in the upcoming scoring process
             $company_set = array();
@@ -498,8 +479,6 @@ class Preview_model extends CI_Model {
                 $company_set[$row['company_id']][]=$row['category_id'];
             }
 
-       // echo '<pre>company set:<br>',print_r($company_set,1),'</pre>';            
-            
             $scores = array();
             // For every company, we will assign it a score based on how many
             // of the user's category choices it has.  Each category is worth 1 point.
@@ -515,16 +494,14 @@ class Preview_model extends CI_Model {
                     
                     if (in_array($category_id, $user_history_cats, true)){
                         ++$score;
-                    }
-                    
+                    }                  
                 }
                 //added the following line to limit max score to 1
                 if ($score >1){$score=1;}
                 //end of added line
                 $scores[$company_id] = $score;
                 
-            }
-      //  echo '<pre>scores:<br>',print_r($scores,1),'</pre>';            
+            }           
             arsort($scores);
 
             return $scores;
@@ -577,17 +554,13 @@ class Preview_model extends CI_Model {
             //get all the companies
             $sql2 = 'SELECT company_id,category_id FROM company_category WHERE company_id IN ('.$queried_comp_ids.')';
             $query2 = $this->db->query($sql2);
-
-            //$user_history_cats = implode(',', $user_history_cats);            
-        
+            
             //build an array with a specific format to be used in the upcoming scoring process
             $company_set = array();
             foreach ($query2->result_array() as $row) {
                 $company_set[$row['company_id']][]=$row['category_id'];
             }
 
-       // echo '<pre>company set:<br>',print_r($company_set,1),'</pre>';            
-            
             $scores = array();
             // For every company, we will assign it a score based on how many
             // of the user's category choices it has.  Each category is worth 1 point.
@@ -603,8 +576,7 @@ class Preview_model extends CI_Model {
                     
                     if (in_array($category_id, $user_industry_cats, true)){
                         ++$score;
-                    }
-                    
+                    }                    
                 }
                 //added the following line to limit max score to 1
                 //if ($score >1){$score=1;}
@@ -613,13 +585,11 @@ class Preview_model extends CI_Model {
                 
             }            
             arsort($scores);
-              //echo '<pre>industry scores:<br>',print_r($scores,1),'</pre>';
             return $scores;
     }        
     
     function get_company2($ranked_comps)
     { 
-        //$this->output->enable_profiler(TRUE);
         if (!empty($ranked_comps)){
 
                $new_ranked_comps = array();
@@ -640,22 +610,18 @@ class Preview_model extends CI_Model {
             $sql = 'SELECT * FROM company WHERE id IN ('.$companyid_array.') '.$order_array.'';
             $query = $this->db->query($sql);
 
-            return $query->result_array();
-            
+            return $query->result_array();            
         }
-
-
     }    
     
-    function get_company3($ranked_comps)
+    function get_company3($ranked_comps, $limit = 5)
     { 
         //$this->output->enable_profiler(TRUE);
         if (!empty($ranked_comps)){
 
-               $new_ranked_comps = array();
+              $new_ranked_comps = array();
               foreach ($ranked_comps as $row) {
-                  $new_ranked_comps[]=$row['id'];
-                  
+                  $new_ranked_comps[]=$row['id'];                  
               }
 
             $companyid_array = implode(',', $new_ranked_comps);
@@ -667,14 +633,11 @@ class Preview_model extends CI_Model {
             }
             $order_array = trim($order_array, ',');
 
-            $sql = 'SELECT * FROM company WHERE id IN ('.$companyid_array.') '.$order_array.' LIMIT 5';
+            $sql = 'SELECT * FROM company WHERE id IN ('.$companyid_array.') '.$order_array.' LIMIT '.$limit.'';
             $query = $this->db->query($sql);
 
-            return $query->result_array();
-            
+            return $query->result_array();            
         }
-
-
     }      
     
     function merge_arrays(&$companyData,$companyKey, $benefitsArray)
@@ -687,7 +650,6 @@ class Preview_model extends CI_Model {
                 $companyData['benefits'] = $value;
             }
         }
-
     }  
    
     function merge_arrays_history(&$companyData,$companyKey, $historyArray)
@@ -700,25 +662,17 @@ class Preview_model extends CI_Model {
                 $companyData['history'] = $value;
             }
         }
-
     } 
     
     function merge_arrays_pace(&$companyData,$companyKey, $paceArray)
     {
-        //echo '<pre>Pace array:<br>',print_r($paceArray,1),'</pre>';
-        //echo '<pre>company key:<br>',print_r($companyKey,1),'</pre>';
-        //when the 'id' of companyData equals the key of benefitsArray, add the 'benefits' key=>value to companyData
         foreach ($paceArray as $key=>$row)
-            //echo "<br>Pace Key: ".$key;
-            //echo '<pre>Pace value:<br>',print_r($row,1),'</pre>';
-        
         {
             if ($companyData['id'] == $row['id'])
             {
                 $companyData['pace'] = $row['pace'];
             }
         }
-
     }  
     
     function merge_arrays_lifecycle(&$companyData,$companyKey, $lifecycleArray)
@@ -730,7 +684,6 @@ class Preview_model extends CI_Model {
                 $companyData['lifecycle'] = $row['lifecycle'];
             }
         }
-
     }      
 
     function merge_arrays_type(&$companyData,$companyKey, $typeArray)
@@ -742,7 +695,6 @@ class Preview_model extends CI_Model {
                 $companyData['type'] = $value;
             }
         }
-
     }       
     
     function merge_arrays_industry(&$companyData,$companyKey, $industryArray)
@@ -754,7 +706,6 @@ class Preview_model extends CI_Model {
                 $companyData['industry'] = $value;
             }
         }
-
     }     
     
     function city_block_distance_benefits(&$sourceCoords,$sourceKey, $data)
@@ -847,19 +798,18 @@ class Preview_model extends CI_Model {
     
     function normalize_history(&$sourceCoords,$sourceKey, $isolated_history)
     {
-    //what about division by zero?
-
-     $min = min($isolated_history);
-     $max = max($isolated_history);
-     if (!(($min >= 0 && $min <= 1)&&($max >= 0 && $max <= 1))){
-         //we're already in the range of normalization, between 0 & 1
-         if ($max == $min){
-             //we don't want to divide by zero...so do something else here
-             echo "caught prior to dividing by zero inside of normalize_benefits";
-         }else {
-            $sourceCoords['history'] = ($sourceCoords['history']-$min)/($max-$min);  
+        //what about division by zero?
+         $min = min($isolated_history);
+         $max = max($isolated_history);
+         if (!(($min >= 0 && $min <= 1)&&($max >= 0 && $max <= 1))){
+             //we're already in the range of normalization, between 0 & 1
+             if ($max == $min){
+                 //we don't want to divide by zero...so do something else here
+                 echo "caught prior to dividing by zero inside of normalize_benefits";
+             }else {
+                $sourceCoords['history'] = ($sourceCoords['history']-$min)/($max-$min);  
+             }
          }
-     }
     }         
    
     function isolate_history($details) {
@@ -869,8 +819,6 @@ class Preview_model extends CI_Model {
     function aggregate(&$sourceCoords,$sourceKey)
     {
         $aggregate_array = array();
-        //$var_count = 2;
-
         //weights should add up to 1
         $benefits_weight = .4;
         $history_weight = .2;
@@ -891,8 +839,6 @@ class Preview_model extends CI_Model {
     function aggregate2(&$sourceCoords,$sourceKey)
     {
         $aggregate_array = array();
-        //$var_count = 2;
-
         //weights should add up to 1
         $benefits_weight = .2;
         $citizenship_weight = .1;
@@ -1052,11 +998,7 @@ class Preview_model extends CI_Model {
 
     function get_distance_matrix4($benefit_scoring,$corp_citizenship,$pace_array,$lifecycle_array,$user_industry,$user_type,$type_scoring,$industry_scoring)
     {
-        /*
-         * TODO: Repeat process used for pace to add:
-         * industry(score like history)
-         */
-        
+
         /*
          * 1. CREATE ARRAY OF DATA POINTS
          * user's benefit score is always perfect, so we know it is the triangular
@@ -1151,12 +1093,12 @@ class Preview_model extends CI_Model {
         /*
          * 5. Aggregate the normalized distance matrix
          */    
-            //BENEFITS -    .2
-            //CITIZENSHIP - .1 
-            //PACE -        .2
-            //LIFECYCLE -   .2
-            //TYPE -        .2
-            //INDUSTRY -    .2
+            //BENEFITS
+            //CITIZENSHIP 
+            //PACE
+            //LIFECYCLE
+            //TYPE
+            //INDUSTRY
 
             array_walk($data_array, array($this,'aggregate2')); 
 

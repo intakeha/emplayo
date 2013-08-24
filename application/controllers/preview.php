@@ -106,10 +106,6 @@ class Preview extends CI_Controller {
             //$categories = $this->input->post('category');//NOT SURE OF THIS NAME!!!                
             //$history = $this->input->post('history'); //NOT SURE OF THIS NAME!!!  
 
-
-            //print_r($user_type);
-
-
             //TODO: MAKE SURE WE MAKE WORK AND EDUCATION HISTORY OPTIONAL!
             //TODO: FIX THESE NAMES ASSIGNED TO THE SESSION AND EVERYWHERE ELSE THEY MAY BE USED:
             //
@@ -257,90 +253,41 @@ class Preview extends CI_Controller {
         $this->load->model('preview_model');
         $image_path = './'.COMPANY_LOGO_PATH;
 
-        //FIND COMPANIES THAT MATCH THE USER'S INDUSTRY CHOICE
-        //BLC 06-25-13: We should use scoring instead of filtering.  Perhaps do a scoring
-        //system for industry similar to what we're currently doing for history_scoring
-        //$comps_by_industry = $this->preview_model->industry_filter_dummy($user_industry);
-        //print_r($comps_by_industry);
-       // if (!empty($comps_by_industry))
-       // {
-            //FIND COMPANIES THAT MATCH THE USER'S BASIC CRITERIA
-            //$basic_criteria_list = $this->preview_model->toggle_filters($comps_by_industry,$user_type,$user_pace,$user_lifecycle);
-            
-            //6-30-13 created dummy filter to eliminate filtering temporarily.  Remove this later to save on db trips.
-            $comps_by_industry = $this->preview_model->industry_filter_dummy($user_industry);
-            $basic_criteria_list = $this->preview_model->toggle_filters_dummy($comps_by_industry,$user_type,$user_pace,$user_lifecycle);
-            //RANK THE COMPANIES BY THEIR BENEFITS
-            $benefit_scoring = $this->preview_model->benefits_scoring($basic_criteria_list,$user_benefits);            
-            $type_scoring = $this->preview_model->type_scoring($basic_criteria_list,$user_type);
-            $industry_scoring = $this->preview_model->industry_scoring($basic_criteria_list,$user_industry);
-            
-          //  if (!empty($basic_criteria_list))
-          //  {
+        //6-30-13 created dummy filter to eliminate filtering temporarily.  Remove this later to save on db trips.
+        $comps_by_industry = $this->preview_model->industry_filter_dummy($user_industry);
+        $basic_criteria_list = $this->preview_model->toggle_filters_dummy($comps_by_industry,$user_type,$user_pace,$user_lifecycle);
+        
+        //SCORE THE COMPANIES BY THEIR BENEFITS, TYPE, and INDUSTRY
+        $benefit_scoring = $this->preview_model->benefits_scoring($basic_criteria_list,$user_benefits);            
+        $type_scoring = $this->preview_model->type_scoring($basic_criteria_list,$user_type);
+        $industry_scoring = $this->preview_model->industry_scoring($basic_criteria_list,$user_industry);
+
+        $ranked_results = $this->preview_model->get_distance_matrix4($benefit_scoring,$user_citizenship,$user_pace,$user_lifecycle,$user_industry,$user_type,$type_scoring,$industry_scoring);
+
+        //TRANSLATE THE RESULTS INTO 'FIT SCORES', WITH 100% OR 1.0 BEING PERFECT
+        $company_fit = $this->preview_model->fit_score($ranked_results);
+        $company_fit = $company_fit;
+
+        //COUNT THE NUMBER OF COMPANIES IN THE LIST
+        $company_count = count($ranked_results);
 
 
-                //GET USER'S PREVIOUS JOB TYPE IDs
-                //$prev_job_ids = $this->preview_model->prev_job_ids($user_work);
-                //if (!empty($prev_job_ids)){
-                    //SCORE THE COMPANIES BASED ON WHETHER THEY HAVE A JOB TYPE THAT MATCHES THE USER'S HISTORY
-                   // $history_scoring = $this->preview_model->history_scoring($basic_criteria_list,$prev_job_ids);
-                    //echo "<br>history scoring elements: ".count($history_scoring);
-                    //echo '<br><pre>history scoring:<br>',print_r($history_scoring,1),'</pre>';                    
-                    //$type_scoring = $this->preview_model->type_scoring($basic_criteria_list,$user_type);
-                    //echo "<br>type scoring elements: ".count($type_scoring);     
-                    //echo '<br><pre>type scoring:<br>',print_r($type_scoring,1),'</pre>';                            
-               // }
-                //SCORE THE COMPANIES USING KNN METHOD
-                //$ranked_results = $this->preview_model->get_distance_matrix3($benefit_scoring,$history_scoring,$user_citizenship,$user_pace,$user_lifecycle,$prev_job_ids);
-                $ranked_results = $this->preview_model->get_distance_matrix4($benefit_scoring,$user_citizenship,$user_pace,$user_lifecycle,$user_industry,$user_type,$type_scoring,$industry_scoring);
+        //WRITE THE FIT DATA TO THE SESSION FOR USE IF THE USER SIGNS UP
+        $this->session->set_userdata('company_fit',$company_fit);
 
-                //TRANSLATE THE RESULTS INTO 'FIT SCORES', WITH 100% OR 1.0 BEING PERFECT
-                $company_fit = $this->preview_model->fit_score($ranked_results);
-                $company_fit = $company_fit;
+        //SET A FLAG SO WE KNOW TO SAVE THE USER'S DATA IF THEY SIGN UP
+        $this->session->set_userdata('save_data',TRUE);       
 
-                //COUNT THE NUMBER OF COMPANIES IN THE LIST
-                $company_count = count($ranked_results);
-                
+        //RETURN THE FIRST 5 COMPANIES FOR THE PREVIEW.  get_company2 returns the full list...
+        $company_info = $this->preview_model->get_company3($ranked_results,5);
+        $full_company_info = $this->preview_model->merge_company_info($company_info,$company_fit); 
 
-                //WRITE THE FIT DATA TO THE SESSION FOR USE IF THE USER SIGNS UP
-                $this->session->set_userdata('company_fit',$company_fit);
+        $match_data = array();
+        $match_data['company_count']   = $company_count;
+        $match_data['full_company_info']   = $full_company_info;
+        $match_data['image_path']   = $image_path;
 
-                //SET A FLAG SO WE KNOW TO SAVE THE USER'S DATA IF THEY SIGN UP
-                $this->session->set_userdata('save_data',TRUE);       
-
-                //RETURN THE FIRST 5 COMPANIES FOR THE PREVIEW.  get_company2 returns the full list...
-                //should make the limit value a variable and pass it from here (right now 5 is hardcoded in the model)
-                $company_info = $this->preview_model->get_company3($ranked_results);
-                $full_company_info = $this->preview_model->merge_company_info($company_info,$company_fit); 
-                
-                $match_data = array();
-                $match_data['company_count']   = $company_count;
-                $match_data['full_company_info']   = $full_company_info;
-                $match_data['image_path']   = $image_path;
-                
-                return $match_data;                    
-           // }
-                /*
-            else 
-            {
-                $match_data = array();
-                $match_data['company_count']   = 0;
-                $match_data['full_company_info']   = NULL;
-                $match_data['image_path']   = $image_path;
-                
-                return $match_data;                     
-            }
-            */
-        //}
-        //else 
-        //{
-        //    $match_data = array();
-        //    $match_data['company_count']   = 0;
-        //    $match_data['full_company_info']   = NULL;
-        //    $match_data['image_path']   = $image_path;
-//
-       //     return $match_data;                     
-       // }        
+        return $match_data;                           
         
     }//end of run_matching_algorithm    
     
@@ -354,31 +301,6 @@ class Preview extends CI_Controller {
         //$this->load->view("survey/newload",$data);
     }     
     
-    //commenting out because I don't think this is actually being used anymore.
-    //probably just a test function...
-    /*
-    public function insert_matches(){
-        //echo "i'm saving you data!";
-        //$result = $this->preview_model->save_user_inquiry();
-        
-        $company_fit = $this->session->userdata('company_fit');
-
-        if (!empty($company_fit)){
-            $result = $this->preview_model->insert_matches($company_fit);
-            if ($result){
-                echo "success!";
-            }
-            else {
-                echo "failure :-(";
-            }
-        }
-        else {
-            //return error
-       
-        }
-        
-    }
-    */
     
         
 }

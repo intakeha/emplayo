@@ -317,7 +317,8 @@
             echo '<br/>';                     
             echo form_fieldset_close();             
             
-            $default_next = array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16);
+            //$default_next = array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16);
+            $default_next = array(1,23,34,16,67);
             //user_industry
             echo form_fieldset('DO NEXT: What do you want to do next?');
             echo form_multiselect('user_industry[]', $categories, $default_next);

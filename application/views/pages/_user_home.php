@@ -15,7 +15,7 @@
                         echo "No company matches were found for your profile. <a href='inquire'>Click here to take the Work.Life.Play survey!</a>";
                     } else {
                         foreach ($matches as $row) {
-                            echo "<li><a href='/company/temp/{$row['company_id']}'><img class='photo' alt = '{$row['company_name']}' src='$image_path{$row['creative_logo']}' >";
+                            echo "<li><a href='/company/profile/{$row['company_id']}'><img class='photo' alt = '{$row['company_name']}' src='$image_path{$row['creative_logo']}' >";
                             echo "<img class='logo' style='display:none;' src='$image_path{$row['company_logo']}' ></a>";
                             echo "<div class='fit' style='display:none;'>{$row['score']}</div></li>";
                         }
