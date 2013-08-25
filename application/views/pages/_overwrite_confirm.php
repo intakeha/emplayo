@@ -1,5 +1,5 @@
 <div id="preview">
-    <?
+    <?php
                 if ($this->ion_auth->logged_in()){
                     //USER IS ALREADY LOGGED IN
                     if ($last_survey_date){
