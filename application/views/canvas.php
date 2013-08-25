@@ -1,33 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title><?php echo isset($title) ? "Emplayo - $title" : "Emplayo"; ?></title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/global.css" type="text/css"/>  
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/view.css" type="text/css"/>
-        
-	<!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />-->
-	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>-->
-	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script> -->     
-        
-        <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/jquery-ui.css" />
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/jquery-ui.css" type="text/css"/>
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/typeahead.css" type="text/css"/>
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/counter.css" type="text/css"/>
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/select2.css" type="text/css"/> 
+	
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/hogan-2.0.0.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>	
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/typeahead.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.raty.min.js"></script> 
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.isotope.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/flipcounter.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/select2.min.js"></script> 
+
         
-	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script> 
+	
+	
 </head>
 <body>
 	<div id="header">
 		<div class="content">
-			<div id="login" class="clear"><a href="">Sign Up</a> | <a href="">Sign In</a></div>
-			<div id="nextQuestion"><div class="next">next</div><div class="arrow"></div></div>
-			<div id="showPreview"><a href="preview"><div class="next">next</div><div class="arrow"></div></a></div>
+			<div id="header_login" class="clear"><a href="signup">Sign Up</a> | <a href="login">Log In</a></div>
+			<div id="next_question"><div class="next">next</div><div class="arrow"></div></div>
+			<div id="show_preview"><div class="next">next</div><div class="arrow"></div></div>
+			<div id="header_icon" onclick="settings('#modal_settings');"></div>
+			<div id="header_email"><a href="/"><?php if ($this->ion_auth->user()->row()){$user = $this->ion_auth->user()->row(); echo $user->email;}?></a></div>
+			<div id="modal_settings">
+				<ul>
+					<li><a href="/">Home</a></li>
+                                        <?php
+                                        if ($this->ion_auth->logged_in() && $this->ion_auth->is_admin())
+                                            {
+                                                echo '<li><a href="/admin">Admin</a></li>';
+                                            }                                        
+                                        ?>
+					<li><a href="/settings">Account Settings</a></li>
+					<li style="display: none;"><a href="/">Send Invite</a></li>
+					<li><a href="logout">Logout</a></li>
+				</ul>
+			</div>
+			
 			<a id="logo" href="/"></a>
 			<div class="hints">
 				<div id="singleChoice">select one</div>
 				<div id="multipleChoice">select one or more items</div>
 				<div id="rankChoice">sort by drag and drop</div>
 				<div id="clickChoice">click to select</div>
+				<div id="textChoice">enter text in textbox</div>
 			</div>
 		</div>
 	</div>

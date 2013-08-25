@@ -36,11 +36,15 @@ if (defined('ENVIRONMENT'))
 	switch (ENVIRONMENT)
 	{
 		case 'development':
+			error_reporting(E_ALL);
+		break;                    
                 case 'localhost':                    
 			error_reporting(E_ALL);
 		break;
 	
 		case 'testing':
+			error_reporting(0);
+		break;                    
 		case 'production':
 			error_reporting(0);
 		break;
@@ -197,6 +201,20 @@ if (defined('ENVIRONMENT'))
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
 
+/*
+ * --------------------------------------------------------------------
+ * PHP CONFIG SETTINGS
+ * --------------------------------------------------------------------
+ *
+ * So we don't have to rely on certain config values being set on the server
+ *
+ */        
+    if( ! ini_get('date.timezone') )
+    {
+       date_default_timezone_set('GMT');
+    }         
+        
+        
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE

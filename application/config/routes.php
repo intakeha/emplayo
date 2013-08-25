@@ -40,9 +40,15 @@
 
 //$route['default_controller'] = "emplayo";//chon's setting
 //$route['default_controller'] = "home";//brad's orig setting
-$route['default_controller'] = "emplayo";
+$route['default_controller'] = "home";
 $route['404_override'] = '';
-
+$route['login'] = 'user/login';
+$route['signup'] = 'user/signup';
+$route['forgot'] = 'user/forgot_password';
+$route['change'] = 'user/change_password';
+$route['logout'] = 'user/logout';
+$route['company'] = 'company';
+$route['admin'] = 'admin/home';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
