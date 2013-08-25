@@ -61,8 +61,9 @@ class Preview extends CI_Controller {
             $data['title']="Work-Life-Play";
             $data['content']="pages/_criteria";
             $this->load->view('canvas', $data);
-           // $this->load->view("survey/user_tester2");
-	   // echo "5 - validate data fail";
+            //$this->load->view("survey/user_tester");
+	    //echo "5 - validate data fail";
+            //redirect('error', 'refresh');
         }
         else {//data is good...process it.
                 
@@ -135,28 +136,24 @@ class Preview extends CI_Controller {
             //$this->session->set_userdata('history',$history); //NEED TO REVIEW THIS!!                
 
             //SEND THE USER ENTERED DATA OFF TO THE MATCHING ALGORITHM
-            $data = $this->run_matching_algorithm($user_type,$user_pace,$user_lifecycle,$user_benefits,$user_citizenship,$user_industry,$user_work);
+            $data = $this->run_matching_algorithm2($user_type,$user_pace,$user_lifecycle,$user_benefits,$user_citizenship,$user_industry,$user_work);
             //$data VAR IS AN ARRAY THAT CONTAINS LIST OF COMPANIES WITH ALL REQUIRED INFO TO DISPLAY
+
+            //Ideally, we should always have something to display.  Need to figure out what to show
+            //in the event the match count is very low, or the scores are not 
+            //that great. Maybe tell them that there were not any good matches,
+            //but ...
 
             if ($data['company_count']>0)
             {
-                //WE FOUND MATCHES!
-                /*
-                if ($this->ion_auth->logged_in()){
-                    $data['title']="Are you sure you would like to proceed?";
-                    $data['content']="pages/_preview_confirm";
-                    $this->load->view('canvas', $data);                    
-                }
-                */
-               // else {
-                    $data['title']="Preview Results";
-                    $data['content']="pages/_preview";
-                    $this->load->view('canvas', $data);
-               // }
+                //WE FOUND MATCHES! DISPLAY THE VIEW
+                $data['title']="Preview Results";
+                $data['content']="pages/_preview";
+                $this->load->view('canvas', $data);
             }
             else
             {
-                //THERE WERE NO MATCHES...DISPLAY THE VIEW
+                //THERE WERE NO MATCHES...DISPLAY THE VIEW, and pass company_count data
                 //$data['company_count'] = 0;
                 $data['title']="Preview Results";
                 $data['content']="pages/_preview";
@@ -171,12 +168,17 @@ class Preview extends CI_Controller {
         $image_path = './'.COMPANY_LOGO_PATH;
 
         //FIND COMPANIES THAT MATCH THE USER'S INDUSTRY CHOICE
+        //BLC 06-25-13: We should use scoring instead of filtering.  Perhaps do a scoring
+        //system for industry similar to what we're currently doing for history_scoring
         $comps_by_industry = $this->preview_model->industry_filter($user_industry);
         //print_r($comps_by_industry);
         if (!empty($comps_by_industry))
         {
             //FIND COMPANIES THAT MATCH THE USER'S BASIC CRITERIA
-            $basic_criteria_list = $this->preview_model->toggle_filters($comps_by_industry,$user_type,$user_pace,$user_lifecycle);
+            //$basic_criteria_list = $this->preview_model->toggle_filters($comps_by_industry,$user_type,$user_pace,$user_lifecycle);
+            
+            //6-30-13 created dummy filter to eliminate filtering temporarily.  Remove this later to save on db trips.
+            $basic_criteria_list = $this->preview_model->toggle_filters_dummy($comps_by_industry,$user_type,$user_pace,$user_lifecycle);
 
             if (!empty($basic_criteria_list))
             {
@@ -184,22 +186,18 @@ class Preview extends CI_Controller {
                 $benefit_scoring = $this->preview_model->benefits_scoring($basic_criteria_list,$user_benefits);
 
                 //GET USER'S PREVIOUS JOB TYPE IDs
-                if (!empty($user_work)){
-                    $prev_job_types = $this->preview_model->prev_job_types($user_work);
-                   // echo '<pre>prev job types:<br>',print_r($prev_job_types,1),'</pre>';
-                }
-                if (!empty($prev_job_types)){
+                $prev_job_ids = $this->preview_model->prev_job_ids($user_work);
+                if (!empty($prev_job_ids)){
                     //SCORE THE COMPANIES BASED ON WHETHER THEY HAVE A JOB TYPE THAT MATCHES THE USER'S HISTORY
-                    $history_scoring = $this->preview_model->history_scoring($basic_criteria_list,$prev_job_types);
-                    //echo '<pre>history scoring:<br>',print_r($history_scoring,1),'</pre>';
-                }
-                else {
-                    $history_scoring = $this->preview_model->history_scoring_fake($basic_criteria_list);
-                    //echo '<pre>history scoring fake:<br>',print_r($history_scoring,1),'</pre>';                    
+                    $history_scoring = $this->preview_model->history_scoring($basic_criteria_list,$prev_job_ids);
+                    //echo "<br>history scoring elements: ".count($history_scoring);
+                    //echo '<br><pre>history scoring:<br>',print_r($history_scoring,1),'</pre>';                    
+                    $type_scoring = $this->preview_model->type_scoring($basic_criteria_list,$user_type);
+                    //echo "<br>type scoring elements: ".count($type_scoring);     
+                    //echo '<br><pre>type scoring:<br>',print_r($type_scoring,1),'</pre>';                            
                 }
                 //SCORE THE COMPANIES USING KNN METHOD
-                //$ranked_results = $this->preview_model->get_distance_matrix3($benefit_scoring,$history_scoring,$user_citizenship,$user_pace,$user_lifecycle,$prev_job_types);
-                $ranked_results = $this->preview_model->get_distance_matrix3($benefit_scoring,$history_scoring,$user_citizenship,$user_pace,$user_lifecycle);                
+                $ranked_results = $this->preview_model->get_distance_matrix3($benefit_scoring,$history_scoring,$user_citizenship,$user_pace,$user_lifecycle,$prev_job_ids);
 
                 //TRANSLATE THE RESULTS INTO 'FIT SCORES', WITH 100% OR 1.0 BEING PERFECT
                 $company_fit = $this->preview_model->fit_score($ranked_results);
@@ -216,6 +214,7 @@ class Preview extends CI_Controller {
                 $this->session->set_userdata('save_data',TRUE);       
 
                 //RETURN THE FIRST 5 COMPANIES FOR THE PREVIEW.  get_company2 returns the full list...
+                //should make the limit value a variable and pass it from here (right now 5 is hardcoded in the model)
                 $company_info = $this->preview_model->get_company3($ranked_results);
                 $full_company_info = $this->preview_model->merge_company_info($company_info,$company_fit); 
                 
@@ -247,6 +246,49 @@ class Preview extends CI_Controller {
         }        
         
     }//end of run_matching_algorithm
+ 
+    public function run_matching_algorithm2($user_type,$user_pace,$user_lifecycle,$user_benefits,$user_citizenship,$user_industry,$user_work){
+        
+        $this->load->model('preview_model');
+        $image_path = './'.COMPANY_LOGO_PATH;
+
+        //6-30-13 created dummy filter to eliminate filtering temporarily.  Remove this later to save on db trips.
+        $comps_by_industry = $this->preview_model->industry_filter_dummy($user_industry);
+        $basic_criteria_list = $this->preview_model->toggle_filters_dummy($comps_by_industry,$user_type,$user_pace,$user_lifecycle);
+        
+        //SCORE THE COMPANIES BY THEIR BENEFITS, TYPE, and INDUSTRY
+        $benefit_scoring = $this->preview_model->benefits_scoring($basic_criteria_list,$user_benefits);            
+        $type_scoring = $this->preview_model->type_scoring($basic_criteria_list,$user_type);
+        $industry_scoring = $this->preview_model->industry_scoring($basic_criteria_list,$user_industry);
+
+        $ranked_results = $this->preview_model->get_distance_matrix4($benefit_scoring,$user_citizenship,$user_pace,$user_lifecycle,$user_industry,$user_type,$type_scoring,$industry_scoring);
+
+        //TRANSLATE THE RESULTS INTO 'FIT SCORES', WITH 100% OR 1.0 BEING PERFECT
+        $company_fit = $this->preview_model->fit_score($ranked_results);
+        $company_fit = $company_fit;
+
+        //COUNT THE NUMBER OF COMPANIES IN THE LIST
+        $company_count = count($ranked_results);
+
+
+        //WRITE THE FIT DATA TO THE SESSION FOR USE IF THE USER SIGNS UP
+        $this->session->set_userdata('company_fit',$company_fit);
+
+        //SET A FLAG SO WE KNOW TO SAVE THE USER'S DATA IF THEY SIGN UP
+        $this->session->set_userdata('save_data',TRUE);       
+
+        //RETURN THE FIRST 5 COMPANIES FOR THE PREVIEW.  get_company2 returns the full list...
+        $company_info = $this->preview_model->get_company3($ranked_results,5);
+        $full_company_info = $this->preview_model->merge_company_info($company_info,$company_fit); 
+
+        $match_data = array();
+        $match_data['company_count']   = $company_count;
+        $match_data['full_company_info']   = $full_company_info;
+        $match_data['image_path']   = $image_path;
+
+        return $match_data;                           
+        
+    }//end of run_matching_algorithm    
     
     
     public function user_tester(){
@@ -258,27 +300,6 @@ class Preview extends CI_Controller {
         //$this->load->view("survey/newload",$data);
     }     
     
-    public function insert_matches(){
-        //echo "i'm saving you data!";
-        //$result = $this->preview_model->save_user_inquiry();
-        
-        $company_fit = $this->session->userdata('company_fit');
-
-        if (!empty($company_fit)){
-            $result = $this->preview_model->insert_matches($company_fit);
-            if ($result){
-                echo "success!";
-            }
-            else {
-                echo "failure :-(";
-            }
-        }
-        else {
-            //return error
-       
-        }
-        
-    }        
     
         
 }

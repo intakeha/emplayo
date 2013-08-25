@@ -70,7 +70,8 @@
                     echo '<br>';
                     echo "id: ".$row['id'];
                     echo '<br>';
-                    echo '<img src="'.$row['company_logo'].'" height="50" />';
+                    //echo '<img src="'.$row['company_logo'].'" height="50" />';
+                    echo '<img src="/uploads/images/company_logos/'.$row['company_logo'].'" height="50" />';
                     echo '<br>';
                     echo "fit score: ".$row['fit_score'];
                     echo '<br>';

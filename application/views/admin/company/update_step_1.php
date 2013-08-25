@@ -430,8 +430,30 @@ $(document).ready(function()
             echo form_multiselect('category[]', $category_array, $postcat);
 
             echo form_fieldset_close();  
+            /*
+            //COMPANY STATE
+            echo form_fieldset('Company Publish State');
+            echo "<div class='errors'>";
+            echo form_error('company_state');
+            
+            echo "</div>";
+
+            echo '<input type="radio" name="company_state" value="1" id="published"  />';
+            echo form_label('Published','published');
+            echo '<br/>';            
+            echo '<input type="radio" name="company_state" value="2" id="active"  />';
+            echo form_label('Active','active');                           
+            echo '<br/>';            
+            echo '<input type="radio" name="company_state" value="3" id="inactive"  />';
+            echo form_label('Inactive','inactive');    
+            
+                echo '<br/>';
+            
+            echo form_fieldset_close();             
+            
 
             echo '<br/>';
+            */
             echo form_submit('mysubmit', 'Next');
             echo form_close();
            
