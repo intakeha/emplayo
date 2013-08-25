@@ -1,7 +1,8 @@
 require 'capistrano/ext/multistage'
 
-set :stages, ["dev", "testenv", "prod"]
-set :default_stage, "dev"
+#set :stages, ["dev", "testenv", "prod"]
+set :stages, %w(dev testenv prod)
+#set :default_stage, "dev"
 
 # What is the name of the local application?
 set :application, "emplayo"
