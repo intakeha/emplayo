@@ -28,7 +28,7 @@ set :use_sudo, false
 
 # What version control solution does the project use?
 set :scm,        :git
-#set :branch,     'develop'
+#	set :branch,     'develop'
 
 # How are the project files being transferred?
 #set :deploy_via, :copy
