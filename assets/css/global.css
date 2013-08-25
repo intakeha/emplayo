@@ -200,6 +200,10 @@ ul#nav-list .borders{
 	cursor: pointer;
 }
 
+.float_right{
+	float: right;
+}
+
 .zindex{
 	z-index: 9999;
 }
@@ -244,6 +248,18 @@ div.preload{
 img.btn_close {
 	float: right;
 	margin: -55px -55px 0 0;
+}
+
+a.buttons{
+	padding: 4px 5px;
+}
+
+.success{
+	color: #27c339;
+}
+
+.errors{
+	color: #941f1c;
 }
 
 .button_grey {

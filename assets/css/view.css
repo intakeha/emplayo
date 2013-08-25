@@ -1145,6 +1145,11 @@ div#settings .content{
 	font-size: 20px;
 }
 
+div#settings #infoMessage {
+	font-size: 16px;
+	text-align: right;
+}
+
 div#settings ul#menu li{
 	float: left;
 	border: 1px solid #ccc;
@@ -1422,20 +1427,11 @@ div#settings div#industry_update .tt-is-under-cursor {
 div#settings div#panel .buttons{
 	color: #fff;
 	border: 1px solid #666;
-	float: right;
 	margin: 5px;
 	width: 100px;
 	height: 30px;
 	cursor: pointer;
-}
-
-div#settings div#panel .buttons div{
-	display: table-cell;
-	vertical-align: middle;
 	text-align: center;
-	width: 100px;
-	height: 30px;
-	font-size: 20px;
 }
 
 div#settings div#panel .buttons.save{
@@ -1444,7 +1440,7 @@ div#settings div#panel .buttons.save{
 
 div#settings div#panel .buttons.cancel{
 	background-color: #ccc;
-	height: 28px;
+	height: 20px;
 }
 
 div#settings div#experience_layout{

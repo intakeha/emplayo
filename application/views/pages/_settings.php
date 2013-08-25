@@ -48,6 +48,21 @@
 		}
 	});
 	
+	// Change password ajax call
+	
+	$('#password_update form').submit(function(e){
+		e.preventDefault();
+		$.post(
+			"settings/change_password", 
+			$("#password_update form").serialize(),
+			function(data){
+				$('#infoMessage').html(data.message);
+				$('#password_update form').find("input[type=password]").val("");
+			},
+			"json"
+		);
+	});
+	
 	company_ratings('.happiness', 'user_work[0][rating]');  // Initiate stars rating
 	dateSelect('select.prefill'); // Change font color when selected
 	monthDropdown('#work_update .month');
@@ -263,18 +278,20 @@ function presentFlagSettings(){
 		<div id="crumbs"><a href="settings">Account Settings</a></div>
 		<div id="panel">
 			<div id="password_update" style="display: none;">
-				<form>
+				<?php echo form_open("settings/change_password");?>
 					<fieldset>
 						<label for="old">Old Password</label>
-						<input type="password" name="old" id="old"  />
+						<?php echo form_input($old_password);?>
 						<label for="new">New Password</label>
-						<input type="password" name="new" id="new"  />
+						<?php echo form_input($new_password);?>
 						<label for="confirm">Confirm New Password</label>
-						<input type="password" name="confirm" id="confirm"  /> 
-						<input type="submit" class="buttons save" value="Save" />
-						<a class="buttons cancel" href="settings"><div>Cancel</div></a>
+						<?php echo form_input($new_password_confirm);?>
+						<?php echo form_input($user_id);?>
+						<input type="submit" class="buttons save float_right" value="Save" />
+						<a class="buttons cancel float_right" href="settings">Cancel</a>
 					</fieldset>
-				</form>
+				<?php echo form_close();?>
+				<div id="infoMessage"><?php echo $message;?></div>
 			</div>
 			
 			<div id="work_update" style="display: none;">
@@ -323,7 +340,7 @@ function presentFlagSettings(){
 			</div>
 			
 			<div id="prefs_update" style="display: none;">
-				Click start to re-enter your career preferences.
+				Click start to re-enter your career preferences.<a href="/inquire" class="buttons save">Start</a>
 			</div>
 			
 			<div id="notification_update" style="display: none;">

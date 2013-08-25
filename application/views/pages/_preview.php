@@ -53,7 +53,7 @@
                     </div> 
                     
                     
-                    <?                    
+                    <?php                    
                     
                 } else {
                     ?>
@@ -69,7 +69,7 @@
                         <a href="login" id="signIn">Sign In</a>
                     </div>            
             
-                    <?
+                    <?php
                     
                     
                 }
