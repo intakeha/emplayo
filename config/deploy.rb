@@ -18,8 +18,8 @@ set :repository,  "git@github.com:intakeha/emplayo.git"
 role :web, "emplayo.com"
 
 # What remote directory hosts the website?
-set :deploy_to,   "/var/www/vhosts/emplayo.com/dev"
-set :shared_path, "#{deploy_to}/shared"
+#set :deploy_to,   "/var/www/vhosts/emplayo.com/dev"
+#set :shared_path, "#{deploy_to}/shared"
 set :shared_children, shared_children + %w{uploads/images/company_logos/temp}
 set :shared_children, shared_children + %w{uploads/images/company_profile_pics/temp}
 
@@ -28,7 +28,7 @@ set :use_sudo, false
 
 # What version control solution does the project use?
 set :scm,        :git
-set :branch,     'develop'
+#set :branch,     'develop'
 
 # How are the project files being transferred?
 #set :deploy_via, :copy

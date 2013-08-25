@@ -1,5 +1,6 @@
 server "emplayo.com", :app, :web, :db, :primary => true
 set :deploy_to, "/var/www/vhosts/emplayo.com/dev"
+set :shared_path, "#{deploy_to}/shared"
 set :branch, 'develop'
 
 # This task does post deploy configuration for the target environment
