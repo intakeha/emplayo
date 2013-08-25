@@ -2,8 +2,7 @@
 	<div id="banner">
 		<div class="content">
 			<div id="icon"></div>
-			<div id="start">Emplayo helps you find jobs<br>that fit you best.
-				<!--<a href="index.php/emplayo/criteria">Get Started</a>-->
+			<div id="start">Emplayo helps you find the companies<br>that fit you best.
                                 <a href="emplayo/criteria">Get Started</a>
 			</div>
 		</div>
@@ -24,4 +23,18 @@
 			<p>Which one is right for you? We'll help you figure it out.</p>
 		</div>
 	</div>
+	<div class="preload">
+		<img src="<?php echo base_url() ?>assets/images/survey/co_type.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/progressBar.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/progressBar.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/co_pace.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/co_cycle_header.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/co_cycle.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/benefits_bar.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/slider_5markers.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/sliderHandleDefault.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/sliderHandle.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/instructions.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/instructions_preview.png">
+</div>
 </div>

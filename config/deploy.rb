@@ -16,7 +16,7 @@ set :repository,  "git@github.com:intakeha/emplayo.git"
 # What is the production server domain?
 role :web, "emplayo.com"
 
-# What remote directory hosts the production website?
+# What remote directory hosts the website?
 set :deploy_to,   "/var/www/vhosts/emplayo.com/dev"
 
 # Is sudo required to manipulate files on the remote server?

@@ -20,8 +20,15 @@
 	<div id="header">
 		<div class="content">
 			<div id="login" class="clear"><a href="">Sign Up</a> | <a href="">Sign In</a></div>
-			<div id="nextQuestion"><div id="next">next</div><div id="arrow"></div></div>
-			<a id="logo" href="/emplayo"></a>
+			<div id="nextQuestion"><div class="next">next</div><div class="arrow"></div></div>
+			<div id="showPreview"><a href="preview"><div class="next">next</div><div class="arrow"></div></a></div>
+			<a id="logo" href="/"></a>
+			<div class="hints">
+				<div id="singleChoice">select one</div>
+				<div id="multipleChoice">select one or more items</div>
+				<div id="rankChoice">sort by drag and drop</div>
+				<div id="clickChoice">click to select</div>
+			</div>
 		</div>
 	</div>
 	<div id="container">

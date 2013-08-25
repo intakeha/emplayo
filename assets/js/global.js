@@ -1,10 +1,17 @@
 // Using jQuery for front-end functionalities
 $(document).ready(function(){
 	
+	//Close Modal and Fade Layer
+	$('#fade, a.close').live('click', function() {
+		$('#fade , .modal_popup').fadeOut(function() {
+			$('#fade, a.close').remove();
+		});
+		return false;
+	});
+	
 	// Homepage animation
-	$('#banner').delay(500).animate({ opacity: 1, backgroundColor: '#1d2a33'}, 500);
 	$('#start').delay(500).animate({ opacity: 1, left: "50px" }, 500);
-	$('#icon').delay(700).animate({ opacity: 1, top: "-=10px" }, 300);
+	$('#icon').delay(500).animate({ opacity: 1, top: "-=10px" }, 500);
 	$("#start a").hover(
 		function () {
 		$(this).animate({backgroundColor: '#ad27c1'}, 200);
@@ -17,12 +24,6 @@ $(document).ready(function(){
 	// Determine current page
 	var currentPage = $('div#container div').eq(0).attr('id');
 
-	// Display home
-	if(currentPage == 'home'){
-		$('#nextQuestion').hide();
-		$('#login, #footer').show();
-	};
-
 	// Reset all answers to 0
 	$("input[name^='q']").each(function() {      
 		$(this).val(0);
@@ -30,43 +31,58 @@ $(document).ready(function(){
 	
 	// Display questionnaire	 
 	if(currentPage == 'criteria'){
-		$('#login, #footer').hide();
+		$('#login, #footer, #progressBar').hide();
 
 		// Hover animation for next button
-		$("div#nextQuestion").hover(
+		$("div#nextQuestion, div#showPreview").hover(
 			function () {
-				$('div#nextQuestion #next').animate({backgroundColor: '#27c339', color:'#fff'}, 200);
-				$('div#nextQuestion #arrow').animate({borderLeftColor: '#27c339'}, 200);
+				$('div#nextQuestion .next, div#showPreview .next').animate({backgroundColor: '#27c339', color:'#fff'}, 200);
+				$('div#nextQuestion .arrow, div#showPreview .arrow').animate({borderLeftColor: '#27c339'}, 200);
 			},
 			function () {
-				$('div#nextQuestion #next').animate({backgroundColor: '#e9b60b', color:'#364954'}, 200);
-				$('div#nextQuestion #arrow').animate({borderLeftColor: '#e9b60b'}, 200);
+				$('div#nextQuestion .next, div#showPreview .next').animate({backgroundColor: '#e9b60b', color:'#364954'}, 200);
+				$('div#nextQuestion .arrow, div#showPreview .arrow').animate({borderLeftColor: '#e9b60b'}, 200);
 			}
 		);
 			
 		// Set variables for pagination 
-		var currentQuestion = 1;
-		var lastEmpty =1;
+		var currentQuestion = 0;
+		var lastEmpty = 1;
 		var lastQuestion = 1;
-		$('div#1').show(); //default to first question on refresh
+		$('div#0, #nextQuestion').show(); //default to first question on refresh
 
 		// Assign actions when next is clicked
 		$('#nextQuestion').click(function(){
+			$('div#progressBar').show();
+			$('div.hints, div.hints div').hide();
 			// Update progress bar
-			$('#progressBar li').eq(currentQuestion-1).removeClass().addClass('progress filled');
-			$('#progressBar li').eq(currentQuestion).removeClass().addClass('progress ip');
+			if(currentQuestion>=1){
+				$('#progressBar li').eq(currentQuestion-1).removeClass().addClass('progress filled');
+				$('#progressBar li').eq(currentQuestion).removeClass().addClass('progress ip');
+			}
 			
 			// Show next question
 			$('div.questions').hide();
 			currentQuestion = currentQuestion + 1;
 			if (currentQuestion > lastQuestion){lastQuestion = currentQuestion;};
+			questionType = $('div#'+currentQuestion).attr("name");
+			if(questionType){$('div.hints, div#'+questionType).show();};
 			$('div#'+currentQuestion).show();
-			lastEmpty = showNextButton(currentQuestion, lastEmpty);
+			if ((currentQuestion == 20)&&($('input[name=q20]').val()!=0)){
+				$('#nextQuestion').hide();
+				$('#showPreview').show();
+			}else{
+				lastEmpty = showNextButton(currentQuestion, lastEmpty);
+			};
 		});
 		
 		// Assign actions for the progress bar
 		$('li.progress').click(function(){
 			if ((lastQuestion >= (1+$(this).index()))&&(lastEmpty >=(1+$(this).index()))){
+				// Hide preview button
+				$('div#showPreview').hide();
+				$('div.hints, div.hints div').hide();
+				
 				// Update progress bar
 				$('#progressBar li').eq(currentQuestion-1).removeClass().addClass('progress filled');
 				$(this).removeClass().addClass('progress ip');
@@ -74,8 +90,15 @@ $(document).ready(function(){
 				//Show current question
 				currentQuestion = 1+$(this).index();
 				$('div.questions').hide();
+				questionType = $('div#'+currentQuestion).attr("name");
+				if(questionType){$('div.hints, div#'+questionType).show();};
 				$('div#'+currentQuestion).show();
-				lastEmpty = showNextButton(currentQuestion, lastEmpty);
+				if ((currentQuestion == 20)&&($('input[name=q20]').val()!=0)){
+					$('#nextQuestion').hide();
+					$('#showPreview').show();
+				}else{
+					lastEmpty = showNextButton(currentQuestion, lastEmpty);
+				};
 			};
 		});
 			
@@ -196,7 +219,7 @@ $(document).ready(function(){
 		$( '#travelSlider').slider({
 			animate: true,
 			min: 1,
-			max: 4,
+			max: 5,
 			value: 1,
 			change: function(event, ui){
 				$('#travelSlider a').addClass('sliderActive');
@@ -207,16 +230,20 @@ $(document).ready(function(){
 					$('input[name=q6]').val(1);
 					break;
 				case 2:
-					$('div#6 .sliderSelected').html("Little Travel");
+					$('div#6 .sliderSelected').html("Seldom Travel");
 					$('input[name=q6]').val(2);
-					break;
+					break;					
 				case 3:
-					$('div#6 .sliderSelected').html("Some Travel");
+					$('div#6 .sliderSelected').html("Little Travel");
 					$('input[name=q6]').val(3);
 					break;
 				case 4:
-					$('div#6 .sliderSelected').html("Frequent Travel");
+					$('div#6 .sliderSelected').html("Some Travel");
 					$('input[name=q6]').val(4);
+					break;
+				case 5:
+					$('div#6 .sliderSelected').html("Frequent Travel");
+					$('input[name=q6]').val(5);
 					break;
 				default:
 					$('div#6 .sliderSelected').html("No Travel");
@@ -303,11 +330,9 @@ $(document).ready(function(){
 			
 			//update next subquestion
 			if ((currentEnvQuestion < 10)&&(parseFloat($("input[name^=q9_"+currentEnvQuestion+"]").val())!=0)){
-				$('div#q9_'+currentEnvQuestion).delay(300).fadeOut(500);
+				$('div#q9_'+currentEnvQuestion).delay(400).animate({opacity: 0, marginLeft:'300px'},300).hide(500);
 				currentEnvQuestion = currentEnvQuestion + 1;
-				$('div#q9_'+currentEnvQuestion).delay(800).fadeIn(300);
-			}else{
-				//$('img#envProgressOverlay').css('cursor', 'pointer');
+				$('div#q9_'+currentEnvQuestion).delay(600).animate({opacity: 1, marginLeft:'149px'},300).show(500);
 			};
 			
 			//check for next button
@@ -325,11 +350,11 @@ $(document).ready(function(){
 		$("map#environmentMap area").click(function(){
 			if (parseFloat($("input[name^=q9_"+currentEnvQuestion+"]").val())!=0){
 				envComplete = 1;
-				$('div#q9_'+currentEnvQuestion).delay(200).fadeOut(400);
+				$('div#q9_'+currentEnvQuestion).delay(400).animate({opacity: 0, marginLeft:'300px'},300).hide(500);
 				currentEnvQuestion = $(this).index()+1;
 				progressBackground = (currentEnvQuestion) * -127;
 				$('#envProgressOverlay').css("background-position", progressBackground+"px 0px");
-				$('div#q9_'+(currentEnvQuestion)).delay(600).fadeIn(300);
+				$('div#q9_'+(currentEnvQuestion)).delay(600).animate({opacity: 1, marginLeft:'149px'},300).show(500);
 			};
 		});
 		
@@ -412,7 +437,7 @@ $(document).ready(function(){
 		// Q19 - Traits
 		var traitCount = 0;
 		$("div#traits div").click(function(){
-			if (traitCount < 10){
+			if (traitCount < 5){
 				$(this).toggleClass("selected");
 				if ($(this).hasClass("selected")){
 					traitCount = traitCount + 1;
@@ -426,14 +451,16 @@ $(document).ready(function(){
 				};
 			};
 			$('input[name=q19]').val($(this).index()+1);
-			if (traitCount == 10){$('#nextQuestion').show();}else{$('#nextQuestion').hide(); lastEmpty = 19;};
+			if (traitCount == 5){$('#nextQuestion').show();}else{$('#nextQuestion').hide(); lastEmpty = 19;};
 		});
 		
 		// Q20 - Motivation
 		$("map#motivationCloud area").click(function(){
 			$('#motivation img').css("background-position", "0px "+(-390*($(this).index()+1))+"px");
 			$('input[name=q20]').val($(this).index()+1);
-			lastEmpty = showNextButton(20, lastEmpty);
+			lastEmpty = 20;
+			$('#nextQuestion').hide();
+			$('#showPreview').show();
 		});
 		
 	};
@@ -447,4 +474,29 @@ function showNextButton(e, lastEmpty) { // determine if user selected an answer
 	 });
 	if (nextFlag > 0){$('#nextQuestion').show();}else{$('#nextQuestion').hide(); lastEmpty = e;};
 	return lastEmpty;
+};
+
+// Modal popup function
+function modal(modalID, modalWidth, topMargin){
+
+	//Fade in the Popup and add close button
+	$(modalID).fadeIn().css({ 'width': modalWidth }).prepend('<a href="#" class="close"><img src="../assets/images/modals/close_modal.png" class="btn_close" title="Close Window" alt="Close" /></a>');
+
+	//Define margin for center alignment (vertical   horizontal) - we add 80px to the height/width to accomodate for the padding  and border width defined in the css
+	//var popMargTop = ($(modalID).height() + 80) / 2;
+	var popMargLeft = ($(modalID).width() + 80) / 2;
+
+	//Apply Margin to Popup
+	$(modalID).css({
+		//'margin-top' : -popMargTop,
+		'margin-top' : topMargin+'px',
+		'margin-left' : -popMargLeft
+	});
+
+	//Fade in Background
+	$('body').append('<div id="fade"></div>'); //Add the fade layer to bottom of the body tag.
+	$('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn(); //Fade in the fade layer - .css({'filter' : 'alpha(opacity=80)'}) is used to fix the IE Bug on fading transparencies 
+
+	return false;
+
 };
