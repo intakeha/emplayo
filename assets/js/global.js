@@ -31,10 +31,12 @@ $(document).ready(function(){
 		$('#header_icon, #header_email').hide(); // show profile navigation
 	};
 	
+	if(currentPage == 'criteria'){
+		$('#header_icon, #header_email').hide(); // show profile navigation
+	};
+	
 	// Customize header elements based on current page
 	if(currentPage == 'profile' || currentPage == 'admin'){
-		$('#header_login').hide(); // hide login link
-		$('#header_icon, #header_email').show(); // show profile navigation
 
 		//mouseover on company tiles
 		$('div#profile li').mouseenter(function() {

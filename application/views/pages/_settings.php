@@ -340,7 +340,7 @@ function presentFlagSettings(){
 			</div>
 			
 			<div id="prefs_update" style="display: none;">
-				Click start to re-enter your career preferences.<a href="/inquire" class="buttons save">Start</a>
+				<div style="margin-bottom: 25px;">Click start to re-enter your Work-Life-Play preferences.</div><a href="/inquire" class="buttons save">Start</a>
 			</div>
 			
 			<div id="notification_update" style="display: none;">

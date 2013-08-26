@@ -1,11 +1,9 @@
 <div id="profile">
 	<div class="content">
-            <div style="color:red;font-size:18px;">
                 <?php 
                 if(!empty($message)){echo '<div id="message">'.$message.'</div>';} 
-                echo $this->session->flashdata('update_message');
+                echo '<div class="messages">'.$this->session->flashdata('update_message').'</div>';
                 ?>
-            </div>
             
 		<div id="summary">Here are the company results based on your <br>preferences and work history.</div>
                

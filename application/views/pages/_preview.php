@@ -109,7 +109,7 @@
                     <div id="previewButtons">
                         <form action="/home/manage_prefs" method="post">
                             <input type="hidden" name="prefs_action" value="0"/>
-                            <input type="submit" name="cancel" value="Cancel" id="signUp"/>
+                            <input type="submit" name="cancel" value="Cancel" id="cancel"/>
                         </form> 
                         <div id="progressIcon">
                             <img src="<?php echo base_url() ?>assets/images/progressIcon.png"></img>

@@ -1428,10 +1428,22 @@ div#settings div#panel .buttons{
 	color: #fff;
 	border: 1px solid #666;
 	margin: 5px;
-	width: 100px;
+	width: 90px;
+	height: 20px;
+	cursor: pointer;
+	text-align: center;
+	display: block;
+}
+
+div#settings div#panel input.buttons{
+	color: #fff;
+	border: 1px solid #666;
+	margin: 5px;
+	width: 90px;
 	height: 30px;
 	cursor: pointer;
 	text-align: center;
+	display: block;
 }
 
 div#settings div#panel .buttons.save{
@@ -2585,14 +2597,44 @@ div#preview #previewButtons{
 }
 
 div#preview #signUp, div#preview #signIn{
-	float: left;
-	width: 155px;
-	height: 50px;
-	background-color: #e9b60b;
-	color: #364954;
-	font-size: 35px;
-	padding-top: 10px;
-	cursor: pointer;
+    background-color: #E9B60B;
+    color: #364954;
+    cursor: pointer;
+    float: left;
+    font-size: 35px;
+    height: 46px;
+    padding-top: 14px;
+    width: 155px;
+}
+
+div#preview input#update{
+    background-color: #E9B60B;
+    border: 1px none;
+    color: #364954;
+    cursor: pointer;
+    float: left;
+    font-size: 35px;
+    height: 60px;
+    width: 155px;
+}
+
+div#preview input#update:hover{
+	color: #fff;
+}
+
+div#preview input#cancel{
+    background-color: #CCC;
+    border: 1px none;
+    color: #364954;
+    cursor: pointer;
+    float: left;
+    font-size: 35px;
+    height: 60px;
+    width: 155px;
+}
+
+div#preview input#cancel:hover{
+	color: #fff;
 }
 
 div#preview #signUp:hover, div#preview #signIn:hover{
