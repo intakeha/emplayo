@@ -76,8 +76,8 @@
                             table_print_to_file('Distance Data', $dist_data);
                             $norm_disp_data = unserialize(file_get_contents('temp_arrays/norm_disp_array.txt'));
                             table_print_to_file('Normalized Data', $norm_disp_data);
-                            $weight_data = unserialize(file_get_contents('temp_arrays/weight_array.txt'));
-                            table_print_to_file('Weight Data', $weight_data);                            
+                            //$weight_data = unserialize(file_get_contents('temp_arrays/weight_array.txt'));
+                            //table_print_to_file('Weight Data', $weight_data);                            
                             $aggregate_data = unserialize(file_get_contents('temp_arrays/aggregate_array.txt'));
                             table_print_to_file('Aggregate Data', $aggregate_data);
                             $company_fit = unserialize(file_get_contents('temp_arrays/fit_array.txt'));
