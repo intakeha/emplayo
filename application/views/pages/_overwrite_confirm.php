@@ -4,28 +4,29 @@
                     //USER IS ALREADY LOGGED IN
                     if ($last_survey_date){
                         ?>
-                    <p id="info">  
-                        According to our records, you last updated your Work.Life.Play preferences on <?php echo $last_survey_date;?>, PST.
-                        <br><br>
-                        Click 'Overwrite' and we will overwrite your previously entered preferences with the data you just provided. 
-                        Click 'Cancel' and we'll discard your newly entered data, take you back to where this all started and act like nothing ever happened.
-                    </p>  
-                    <div id="previewButtons">
-                        <form action="/home/manage_prefs" method="post">
-                            <input type="hidden" name="prefs_action" value="0"/>
-                            <input type="submit" name="cancel" value="Cancel" id="signUp"/>
-                        </form> 
-                        
-                        <div id="progressIcon">
-                            <img src="<?php echo base_url() ?>assets/images/progressIcon.png"></img>
-                        </div>
-                        <!--Implement modal confirmation popup....-->
-                        <form action="/home/manage_prefs" method="post">
-                            <input type="hidden" name="prefs_action" value="1"/>
-                            <input type="submit" name="overwrite" value="Overwrite" id="signIn"/>
-                        </form>                         
-                    </div>                  
-                    <?
+			<div class="content">
+				<p id="info">
+					<p>Click <font class="yellow">Update</font> to see your <font class="blue">new list of ranked companies.</font><br/>
+					This will overwrite the Work-Life-Play data you provided last time on <br/><font class="blue"><?php echo $last_survey_date;?> (Pacific)</font>
+					</p>To discard your recently entered data, <br/>just click <font class="yellow">Cancel</font> and it&#39;s like nothing ever happened.
+				</p>
+				<div id="previewButtons">
+					<form action="/home/manage_prefs" method="post">
+					    <input type="hidden" name="prefs_action" value="0"/>
+					    <input type="submit" name="cancel" value="Cancel" id="cancel"/>
+					</form> 
+					
+					<div id="progressIcon">
+					    <img src="<?php echo base_url() ?>assets/images/progressIcon.png"></img>
+					</div>
+					<!--Implement modal confirmation popup....-->
+					<form action="/home/manage_prefs" method="post">
+					    <input type="hidden" name="prefs_action" value="1"/>
+					    <input type="submit" name="overwrite" value="Update" id="update"/>
+					</form>                         
+				</div>
+			</div>
+                    <?php
                         
                     } else {
                         ?>
@@ -51,19 +52,16 @@
                     </div>                    
                     
                     
-                    <?                        
+                    <?php                        
                         
                     }
-                    
-                   
-                    
                 } else {
                     ?>
                     <p id="info">
                         You must be logged in to view this page.  Click <a href="/">here</a> to return home.
                     </p>          
             
-                    <?
+                    <?php
                     
                     
                 }

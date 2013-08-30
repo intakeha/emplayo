@@ -27,11 +27,26 @@
 <body>
 	<div id="header">
 		<div class="content">
-			<div id="header_login" class="clear"><a href="signup">Sign Up</a> | <a href="login">Log In</a></div>
+			<!-- <div id="header_login" class="clear"><a href="signup">Sign Up</a> | <a href="login">Log In</a></div> -->
 			<div id="next_question"><div class="next">next</div><div class="arrow"></div></div>
 			<div id="show_preview"><div class="next">next</div><div class="arrow"></div></div>
+			<?php 
+			if ($this->ion_auth->user()->row()){
+				$user = $this->ion_auth->user()->row();
+				echo "<div id=\"header_icon\" onclick=\"settings('#modal_settings');\"></div>";
+				echo "<div id=\"header_email\"><a href=\"/\">";
+				echo $user->email;
+				echo "</a></div>";
+			}else{
+				echo "<div id=\"header_login\" class=\"clear\"><a href=\"signup\">Sign Up</a> | <a href=\"login\">Log In</a></div>";
+			}
+			?>
+			
+			<!--
 			<div id="header_icon" onclick="settings('#modal_settings');"></div>
 			<div id="header_email"><a href="/"><?php if ($this->ion_auth->user()->row()){$user = $this->ion_auth->user()->row(); echo $user->email;}?></a></div>
+			-->
+			
 			<div id="modal_settings">
 				<ul>
 					<li><a href="/">Home</a></li>
