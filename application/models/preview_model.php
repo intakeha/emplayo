@@ -839,12 +839,12 @@ class Preview_model extends CI_Model {
     {
         $aggregate_array = array();
         //weights should add up to 1
-        $benefits_weight = .2;
-        $citizenship_weight = .1;
-        $pace_weight = .1;
-        $lifecycle_weight = .1;
-        $type_weight = .2;
-        $industry_weight = .3;
+        $benefits_weight = .05;
+        $citizenship_weight = .05;
+        $pace_weight = .05;
+        $lifecycle_weight = .05;
+        $type_weight = .1;
+        $industry_weight = .7;
 
         $aggregate_array['id'] = $sourceCoords['id'];
 
@@ -854,12 +854,33 @@ class Preview_model extends CI_Model {
                 + $sourceCoords['pace']*$pace_weight
                 + $sourceCoords['lifecycle']*$lifecycle_weight
                 + $sourceCoords['type']*$type_weight
-                + $sourceCoords['type']*$industry_weight
+                + $sourceCoords['industry']*$industry_weight
                 );  
 
         $sourceCoords = $aggregate_array;
     }     
     
+    
+    function weighting(&$sourceCoords,$sourceKey)
+    {
+        //$weighting_array = array();
+        //weights should add up to 1
+        $benefits_weight = .05;
+        $citizenship_weight = .05;
+        $pace_weight = .05;
+        $lifecycle_weight = .05;
+        $type_weight = .1;
+        $industry_weight = .7;
+
+        //$weighting_array['id'] = $sourceCoords['id'];
+        $sourceCoords['benefits'] = $sourceCoords['benefits']*$benefits_weight;
+        $sourceCoords['citizenship'] = $sourceCoords['citizenship']*$citizenship_weight;
+        $sourceCoords['pace'] = $sourceCoords['pace']*$pace_weight;
+        $sourceCoords['lifecycle'] = $sourceCoords['lifecycle']*$lifecycle_weight;
+        $sourceCoords['type'] = $sourceCoords['type']*$type_weight;
+        $sourceCoords['industry'] = $sourceCoords['industry']*$industry_weight;
+
+    }         
     
     function get_distance_matrix3($ranked_comps,$history_scoring,$corp_citizenship,$pace_array,$lifecycle_array,$history_array)
     {
@@ -1100,6 +1121,10 @@ class Preview_model extends CI_Model {
             //TYPE
             //INDUSTRY
 
+         //   $weight_array = $data_array;
+         //   array_walk($weight_array, array($this,'weighting'));
+         //   $this->write_temp_arrays('weight_array',$weight_array);
+            
             array_walk($data_array, array($this,'aggregate2')); 
 
             $this->write_temp_arrays('aggregate_array',$data_array);
