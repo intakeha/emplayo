@@ -99,13 +99,57 @@ div#belt .content{
 }
 
 div#story .content{
-	height: 335px;
+	min-height: 335px;
 	padding-top: 20px;
 }
 
+div#story .content #video{
+    border: 1px solid #258cd1;
+    float: left;
+    margin: 30px 20px 0 0;
+    padding: 5px;
+}
+
 #story p{
-	padding-top: 30px;
-	padding-left: 30px;
+	font-size: 18px;
+    padding-top: 23px;
+}
+
+/* Terms & Privacy*/
+div#terms .content, div#privacy .content{
+	font-size: 16px;
+}
+
+div#terms ol{
+    list-style: decimal outside none;
+    margin: 0 100px;
+}
+
+div#privacy ol{
+    list-style: lower-alpha outside none;
+    margin: 0 100px;
+}
+
+div#terms #title, div#privacy #title{
+	margin: 20px 130px 0;
+	font-weight: bold;
+}
+
+div#terms li, div#privacy li{
+	margin: 20px 50px;
+}
+
+div#terms ul{
+	list-style: circle outside none;
+}
+
+div#privacy ul{
+	list-style: disc outside none;
+	margin: 0 100px;
+}
+
+div#privacy p{
+	margin: 0 130px;
 }
 
 /* Sign Up */

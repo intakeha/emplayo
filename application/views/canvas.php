@@ -85,8 +85,8 @@
 					<li class="borders"><a href="">Employers</a></li>
 					<li class="borders"><a href="">Pricing</a></li>
 					<li class="borders"><a href="">Contact</a></li>
-					<li class="borders"><a href="">Terms</a></li>
-					<li><a href="">Privacy</a></li>
+					<li class="borders"><a href="/terms">Terms</a></li>
+					<li><a href="/privacy">Privacy</a></li>
 				</ul>
 				<div class="clear">&copy; 2013 Emplayo, Inc. All rights reserved.</div>
 			</div>
