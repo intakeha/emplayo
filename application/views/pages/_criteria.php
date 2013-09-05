@@ -2,18 +2,18 @@
 	<div class="modal_popup" id="modal_q1">
 		<img src="<?php echo base_url() ?>assets/images/modals/q1.png">
 		<div><span>Privately Held - For Profit</span><br>Privately held companies are not subject to the ups and downs of the stock market.  Employees can expect more interaction with executives and more opportunities for increased responsibility. </div>
-		<div><span>Publicly Traded - For Profit</span><br>At a public company, there is constant pressure from the stock market to grow revenue.  This constant growth can result in increased headcount, expanded product lines, and opportunites for employees to grow their career.</div>
-		<div><span>Government</span><br>The public sector has a reputation for stability and job security, as well as a slower pace than private companies.  There can be a high level of taxpayer scrutiny, so red tape and bureaucratic procedures are common.</div>
+		<div><span>Publicly Traded - For Profit</span><br>At a public company, there is constant pressure from the stock market to grow revenue.  This constant growth can result in increased headcount, expanded product lines, and opportunities for employees to grow their career.</div>
+		<div><span>Government</span><br>The public sector (The Government sector) has a reputation for stability and job security, as well as a slower pace than private companies.  There can be a high level of taxpayer scrutiny, so red tape and bureaucratic procedures are common.</div>
 		<div><span>Non-Profit</span><br>Non-profits are a good option for people who really want to make a difference in the lives of others.  Compensation and perks may not be as high as for-profit businesses.</div>
 	</div>
 	<div class="modal_popup" id="modal_q2">
 		<div class="intro">Pace is an indicator of life inside a company.  Think of it like life in the big city versus life in the country.</div>
-		<div><span>Slower Pace</span><br>More predictable and stable work environment, with a slower business and/or industry lifecycle (e.g. research laboratory).  This could translate to less stress in the workplace and/or boredom, depending on your perspective.</div>
+		<div><span>Slower Pace</span><br>More predictable and stable work environment, with a slower business and/or industry life cycle (e.g. research laboratory).  This could translate to less stress in the workplace and/or boredom, depending on your perspective.</div>
 		<div><span>Medium Pace</span><br>A balance of planned and unplanned deadlines.  Some days are fast-paced, while others allow you to catch your breath.</div>
 		<div><span>Face Pace</span><br>Tighter deadlines, more pressure, and a shorter business and/or industry lifecycle (e.g. journalism).  This could be the jolt of excitement you need, or the job you dread daily if it isn't suited to you.</div>
 	</div>
 	<div class="modal_popup" id="modal_q3">
-		<div><span>Start Up | Co-Founders</span><br>You're interested in joining forces with others to start a business from scratch. Highest risk of success and highest potential for reward.</div>
+		<div><span>Start Up | Co-Founders</span><br>You're interested in joining forces with others to start a business from scratch. Highest risk of success and/or failure, with highest potential for reward.</div>
 		<div><span>Start Up | First Employees</span><br>You're interested in getting in on the ground floor as one of the first employees of a company. The risk is still somewhat high, and the chance for equity is still good.</div>
 		<div><span>Rapid Growth</span><br>Once a startup begins to gain significant traction, it enters the Rapid Growth phase.  The risk of success has been reduced slightly, but there is still a ways to go to achieve maturity and stability.</div>
 		<div><span>Maturity</span><br>A solid company structure is in place, long term investments are being made, and financial statements are strong.  The company will be around for a while.</div>
@@ -46,11 +46,11 @@
 	</div>	
 	<div class="modal_popup" id="modal_q10">
 		<div class="intro">Use drag and drop to rank/order your items on the list.</div>
-		<div>There are many ways to be rewarded for a job well done. Rank your most preferred method of recognition on the top of the list.</div>
+		<div>There are many ways to be rewarded for a job well done. Rank your most preferred method of recognition at the top of the list.</div>
 	</div>
 	<div class="modal_popup" id="modal_q11">
 		<div class="intro">Use drag and drop to rank/order your items on the list.</div>
-		<div>We all have differerent preferences and skillsets.  Some of us are more interested in working with the community, while others prefer using their creativity.  By using more of your natural strengths at work, you'll make it more enjoyable.</div>
+		<div>We all have different preferences and skillsets.  Some of us are more interested in working with the community, while others prefer using their creativity.  By using more of your natural strengths at work, you'll make it more enjoyable.</div>
 	</div>	
 	<div class="modal_popup" id="modal_q12">
 		<div>When you have a conversation, what is your usual communication style?</div>
@@ -73,12 +73,22 @@
 	</div>	
 	<div class="modal_popup" id="modal_q17">
 		<div class="intro">What's the most important aspect of your work?</div>
-		<div><span>With people I like to be around</span><br>The most important thing to you is working with a great team of people that you get along with and likely spend time with outside of work.</div>
-		<div><span>On things I am passionate about</span><br>What you work on is the most important thing to you.  Money and prestige are lower in priority.</div>
-		<div><span>Where I can make lots of money</span><br>The amount of money you make is your main motivator.  You'd be willing to do something you aren't passionate about, or work with a team that isn't that great, as long as the money is good.</div>
-		<div><span>At a reputable company</span><br>You want to be associated with a company that is well known, successful, and impressive.  You want to be proud to tell people where you work.</div>
-		<div><span>To live not live to work</span><br>Your life is not centered around or defined by your job.  You merely work to pay your bills; your focus is outside of work</div>
-	</div>	
+		<div><span>Working with people I like to be around</span><br>The most important thing to you is working with a great team of people that you get along with and likely spend time with outside of work.</div>
+		<div><span>Working on things I am passionate about</span><br>What you work on is the most important thing to you.  Money and prestige are lower in priority.</div>
+		<div><span>Working where I can make lots of money</span><br>The amount of money you make is your main motivator.  You'd be willing to do something you aren't passionate about, or work with a team that isn't that great, as long as the money is good.</div>
+		<div><span>Working at a reputable company</span><br>You want to be associated with a company that is well known, successful, and impressive.  You want to be proud to tell people where you work.</div>
+		<div><span>Working to live not live to work</span><br>Your life is not centered around or defined by your job.  You merely work to pay your bills; your focus is outside of work</div>
+	</div>
+	<div class="modal_popup" id="modal_q18">
+		<div>Depending on your interests, select up to 5 industries you could see yourself enjoying a successful career in.</div>
+	</div>
+	<div class="modal_popup" id="modal_q19">
+		<div>The city you work in can be just as important as the company you work for. Being close to family, friends and home can make or break your decision to take a job. 
+		On the other hand, you may be looking for new adventures in various cities around the world.  Choose up to 5 cities you want to work in?</div>
+	</div>
+	<div class="modal_popup" id="modal_q20">
+		<div>Your education and/or work history plays a part in determining company fit.  Use the happiness rating for each company to indicate the type of companies you thrive in.</div>
+	</div>
 	<div class="content">
 		<form id="criteria" action="preview" method="post">
 		<div id="0" class="questions">

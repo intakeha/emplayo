@@ -19,43 +19,43 @@ class About extends CI_Controller {
 	}
 
 	public function index(){
-		$data['title']="Emplayo | About";
+		$data['title']="About";
 		$data['content']="pages/_about";
 		$this->load->view('canvas', $data);
 	}
 	
 	public function testimonials(){
-		$data['title']="Emplayo | Testimonials";
+		$data['title']="Testimonials";
 		$data['content']="pages/_testimonials";
 		$this->load->view('canvas', $data);
 	}
 
 	public function employers(){
-		$data['title']="Emplayo | Employers";
+		$data['title']="Employers";
 		$data['content']="pages/_employers";
 		$this->load->view('canvas', $data);
 	}
 
 	public function pricing(){
-		$data['title']="Emplayo | Pricing";
+		$data['title']="Pricing";
 		$data['content']="pages/_pricing";
 		$this->load->view('canvas', $data);
 	}
 
 	public function contact(){
-		$data['title']="Emplayo | Contact";
+		$data['title']="Contact";
 		$data['content']="pages/_contact";
 		$this->load->view('canvas', $data);
 	}
 
 	public function terms(){
-		$data['title']="Emplayo | Terms";
+		$data['title']="Terms";
 		$data['content']="pages/_terms";
 		$this->load->view('canvas', $data);
 	}
 
 	public function privacy(){
-		$data['title']="Emplayo | Privacy";
+		$data['title']="Privacy";
 		$data['content']="pages/_privacy";
 		$this->load->view('canvas', $data);
 	}

@@ -33,6 +33,7 @@ $(document).ready(function(){
 	
 	if(currentPage == 'criteria'){
 		$('#header_icon, #header_email').hide(); // show profile navigation
+		window.onbeforeunload = function() {return 'You have unsaved changes.  If you go back, your answers will be lost.';};
 	};
 	
 	// Customize header elements based on current page

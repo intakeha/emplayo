@@ -181,8 +181,9 @@ div#navigation .content{
 }
 
 #nav-list {
-	height: 30px;
-	margin-left: 170px;
+    height: 30px;
+    margin: auto;
+    width: 416px;
 }
 
 #nav-list li{
