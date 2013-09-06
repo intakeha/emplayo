@@ -115,6 +115,30 @@ div#story .content #video{
     padding-top: 23px;
 }
 
+/* 404 Page */
+div#page404 .content{
+	font-size: 20px;
+	min-height: 500px;
+	background: url(../images/404.png) no-repeat;
+}
+
+div#page404 #message{
+    float: right;
+    margin-top: 200px;
+    padding: 0 25px;
+    width: 500px;
+}
+
+div#page404 p{
+	margin-bottom: 20px;
+}
+
+div#page404 ul{
+	list-style: circle outside none;
+	margin-left: 50px;
+	line-height: 30px;
+}
+
 /* Terms & Privacy*/
 div#terms .content, div#privacy .content{
 	font-size: 16px;
@@ -154,7 +178,7 @@ div#privacy p{
 
 /* Sign Up */
 div#signup .content{
-	height: 550px;
+	min-height: 550px;
 }
 
 #signup_left{
@@ -1118,7 +1142,7 @@ div#admin div.company_creative_logo{
 /* Login */
 
 div#login .content{
-	height: 550px;
+	min-height: 550px;
 }
 
 #login_left{
@@ -1638,7 +1662,7 @@ div#forgot .errors{
 /* Password Reset */
 
 div#reset .content{
-	height: 500px;
+	min-height: 500px;
 	font-size: 20px;
 }
 
@@ -2611,7 +2635,7 @@ div#history .presentText{
 /* Preview Results */
 div#preview .content{
 	padding-top: 25px;
-	height: 550px;
+	min-height: 550px;
 	text-align: center;
 }
 
@@ -2694,7 +2718,7 @@ div#preview #progressIcon{
 
 div#profile .content{
 	text-align: center;
-	height: 550px;
+	min-height: 550px;
 }
 
 div#profile #summary{

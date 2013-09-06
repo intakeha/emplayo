@@ -81,10 +81,8 @@
 		<div id="navigation">
 			<div class="content">
 				<ul id="nav-list">
-					<li class="borders"><a href="">Testimonials</a></li>
-					<li class="borders"><a href="">Employers</a></li>
-					<li class="borders"><a href="">Pricing</a></li>
-					<li class="borders"><a href="">Contact</a></li>
+					<li class="borders"><a href="/">Employers</a></li>
+					<li class="borders"><a href="/">About</a></li>
 					<li class="borders"><a href="/terms">Terms</a></li>
 					<li><a href="/privacy">Privacy</a></li>
 				</ul>
