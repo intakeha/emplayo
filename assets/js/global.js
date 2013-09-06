@@ -53,7 +53,9 @@ $(document).ready(function(){
 			$('.company_search').typeahead({
 				name: 'company_search',
 				limit: 5,
-				remote: '/inquire/company_search/%QUERY',
+                                //BLC: Changed this to work for admin company table
+				//remote: '/inquire/company_search/%QUERY',
+                                remote: '/admin/company/company_search/%QUERY',
 				template: '<p><strong>{{value}}</strong></p>',
 				engine: Hogan
 			}).on('typeahead:selected typeahead:autocompleted', function($e, datum){

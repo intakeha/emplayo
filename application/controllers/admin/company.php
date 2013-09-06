@@ -667,7 +667,17 @@ class Company extends CI_Controller {
             $this->company_model->company_name_search($kws);
             
         }        
-    }//end of company_name_search      
+    }//end of company_name_search   
+    
+    public function company_search($search_term)
+    {
+        if(($search_term) && ($search_term) != '')    
+        {
+            $decoded_search_term = urldecode($search_term);
+            $result = $this->company_model->company_search($decoded_search_term);
+            echo $result;
+        }        
+    }//end of company_type_search      
 
     function logo_upload()
     {    

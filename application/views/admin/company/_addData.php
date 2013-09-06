@@ -180,6 +180,8 @@
 		);
 		
 		$submit_url = 'admin/company/create_step_1';
+                echo validation_errors();
+                
 		echo form_open_multipart($submit_url);
 		
 		$companyName = array('id' => 'companyName');
