@@ -9,7 +9,7 @@
       <p>Click below to reset your Emplayo password.  This link will expire in 24 hours.</p>
       <?php echo anchor('user/reset_password/'. $forgotten_password_code, 'Reset Password', 'style="display: block; width: 150px; height: 20px; background-color: #258CD1; color: #fff; padding: 10px; font-weight: bold; text-align: center; text-decoration: none; margin: 0 auto;"');?>
     <p>Or paste the following into your browser:</p>
-    <div style="margin-bottom:15px;"><?php echo anchor('user/reset_password/'. $forgotten_password_code, 'user/reset_password/'. $forgotten_password_code);?></div>
+    <div style="margin-bottom:15px;"><?php echo anchor('user/reset_password/'. $forgotten_password_code, base_url().'user/reset_password/'. $forgotten_password_code);?></div>
     </td>
   </tr>
   <tr>
