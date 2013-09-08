@@ -72,6 +72,10 @@ class User extends CI_Controller {
                                 }
                             }
                             */
+                            //SEND WELCOME EMAIL                           
+                            $email_sent = $this->send_welcome_email($email);
+                            //END OF WELCOME EMAIL SEND 
+                            
                             $this->session->set_userdata('new_user', TRUE);
                             $this->session->set_flashdata('message', $this->ion_auth->messages());
                             redirect('/', 'refresh');                            
@@ -92,7 +96,32 @@ class User extends CI_Controller {
 		}
             }
 	}        
+        function send_welcome_email($email){
+            //LOAD LIBRARIES
+            $this->load->config('ion_auth', TRUE);
+            $this->load->library('email');        
 
+            //CLEAR OUT ANY VARIABLES FROM A PREVIOUS MESSAGE
+            $this->email->clear();
+
+            //LOAD TEMPLATE
+            $message = $this->load->view('emails/welcome.tpl.php', '', true);
+
+            //GRAB CONFIG VALUES TO SET 'FROM' INFO
+            $this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
+
+            $subject = 'Welcome To Emplayo!';
+            $this->email->to($email); 
+            $this->email->subject($subject);
+            $this->email->message($message);
+
+            if ($this->email->send()){
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+            
+        }
 	//log the user in
 	function login()
 	{
