@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'https://test.emplayo.com';
+$config['base_url']	= 'http://test.emplayo.com';
 
 /*
 |--------------------------------------------------------------------------
