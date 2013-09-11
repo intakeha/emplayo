@@ -124,7 +124,7 @@ class Home_model extends MY_Model {
                 $array[$key]['company_name'] = NULL;
             } else {
                 $array[$key]['company_id'] = NULL;
-                $array[$key]['company_name'] = $value['company_id'];                
+                $array[$key]['company_name'] = $value['company_name'];                
             }
             
             $array[$key]['start_date'] = $value['start_year'].'-'.$value['start_month'].'-01';
