@@ -785,15 +785,15 @@ $(document).ready(function(){
 			} else {
 				$('#experience_layout ul').append(
 					'<hr/> \
-						<li><label>Company</label><input class="text_form company'+educationRef+'" type="text" maxlength="150" name="user_work['+experienceRef+'][company_name]"><input type="hidden" name="user_work['+experienceRef+'][company_id]" value=""></li>\
-						<li><label>Job</label><input class="text_form job'+educationRef+'" type="text" maxlength="150" name="user_work['+experienceRef+'][job_type]"><input type="hidden" name="user_work['+experienceRef+'][job_id]" value=""></li>\
+						<li><label>Company</label><input class="text_form company'+experienceRef+'" type="text" maxlength="150" name="user_work['+experienceRef+'][company_name]"><input type="hidden" name="user_work['+experienceRef+'][company_id]" value=""></li>\
+						<li><label>Job</label><input class="text_form job'+experienceRef+'" type="text" maxlength="150" name="user_work['+experienceRef+'][job_type]"><input type="hidden" name="user_work['+experienceRef+'][job_id]" value=""></li>\
 						<li><label class="happiness_label">Happiness</label><div class="happiness"></div></li>\
 						<li class="history_sets">\
 							<label>Time Period</label><select name="user_work['+experienceRef+'][start_month]" class=" monthEmpty prefill"></select>\
 							<select name="user_work['+experienceRef+'][start_year]" class=" yearEmpty prefill"></select> \
 							&ndash; <span class="presentFlag" style="display: none;">Present</span>\
 							<select name="user_work['+experienceRef+'][end_month]" class=" monthEmpty prefill endDateFlag"></select> <select name="user_work['+experienceRef+'][end_year]" class=" yearEmpty prefill endDateFlag"></select>\
-							<span class="presentText">I currently work here</span><input type="checkbox" style="width: 13px; float: left;" name="user_work['+experienceRef+'][current]"/>\
+							<span class="presentText">I currently work here</span><input type="checkbox" style="width: 13px; float: left;" name="user_work['+experienceRef+'][current]" value="0"/>\
 						</li>\
 					'
 				);
@@ -974,13 +974,16 @@ function ratings(containerID, scoreID){ // initialize raty
 };
 
 function presentFlag(){
+	$("#history input[type='checkbox']").val(0);
 	$("#history input[type='checkbox']").on("change",function(event){
 		if ($(this).prop('checked')){
 			$(this).parent().find('.endDateFlag').hide();
 			$(this).parent().find('.presentFlag').show();
+			$(this).val(1);
 		}else{
 			$(this).parent().find('.endDateFlag').show();
 			$(this).parent().find('.presentFlag').hide();
+			$(this).val(0);
 		};
 	});
 };
