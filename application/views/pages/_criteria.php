@@ -542,7 +542,7 @@
 									<select name="user_work[0][start_year]" class=" year prefill"></select> 
 									&ndash; <span class="presentFlag" style="display: none;">Present</span>
 									<select name="user_work[0][end_month]" class=" month prefill endDateFlag"></select> <select name="user_work[0][end_year]" class=" year prefill endDateFlag"></select>
-									<span class="presentText">I currently work here</span><input type="checkbox" style="width: 13px; float: left;" name="user_work[0][current]"/>
+									<span class="presentText">I currently work here</span><input type="checkbox" style="width: 13px; float: left;" name="user_work[0][current]" value="0" />
 								</li>
 							</ul>
 							<div class="addButton" id="addWork"> </div>
