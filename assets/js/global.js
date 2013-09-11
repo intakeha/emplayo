@@ -33,7 +33,7 @@ $(document).ready(function(){
 	
 	if(currentPage == 'criteria'){
 		$('#header_icon, #header_email').hide(); // show profile navigation
-
+		window.onbeforeunload = function() { return "Your data will be lost if you leave now."; }; // enable onbeforeunload
 	};
 	
 	// Customize header elements based on current page
@@ -132,6 +132,7 @@ $(document).ready(function(){
 		
 		//Activiate form submit button
 		$('div#show_preview').click(function(){
+			window.onbeforeunload = null; // disabled onbeforeunload
 			$('form#criteria').submit();
 		});
 
@@ -974,7 +975,6 @@ function ratings(containerID, scoreID){ // initialize raty
 };
 
 function presentFlag(){
-	$("#history input[type='checkbox']").val(0);
 	$("#history input[type='checkbox']").on("change",function(event){
 		if ($(this).prop('checked')){
 			$(this).parent().find('.endDateFlag').hide();
