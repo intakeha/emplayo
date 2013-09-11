@@ -117,14 +117,18 @@ class Home_model extends MY_Model {
         $array = array();
         foreach ($original_array as $key=>$value)
         {
-            $array[$key]['user_id'] = $user_id;
             
             if (!empty ($value['company_id'])){
+                $array[$key]['user_id'] = $user_id;
                 $array[$key]['company_id'] = $value['company_id'];
-                $array[$key]['company_name'] = NULL;
-            } else {
+                //$array[$key]['company_name'] = NULL;
+                $array[$key]['company_name'] = $value['company_name'];
+            } elseif (!empty ($value['company_name'])) {
+                $array[$key]['user_id'] = $user_id;
                 $array[$key]['company_id'] = NULL;
                 $array[$key]['company_name'] = $value['company_name'];                
+            } else {
+                continue;
             }
             
             $array[$key]['start_date'] = $value['start_year'].'-'.$value['start_month'].'-01';
@@ -142,10 +146,11 @@ class Home_model extends MY_Model {
             
             if (!empty ($value['job_id'])){
                 $array[$key]['job_type_id'] = $value['job_id'];
-                $array[$key]['job_type_name'] = NULL;
+                //$array[$key]['job_type_name'] = NULL;
+                $array[$key]['job_type_name'] = $value['job_type'];
             } else {
                 $array[$key]['job_type_id'] = NULL;
-                $array[$key]['job_type_name'] = $value['job_id'];                
+                $array[$key]['job_type_name'] = $value['job_type'];                
             }            
   
             $array[$key]['rating'] = $value['rating'];
