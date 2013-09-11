@@ -33,7 +33,7 @@ $(document).ready(function(){
 	
 	if(currentPage == 'criteria'){
 		$('#header_icon, #header_email').hide(); // show profile navigation
-		window.onbeforeunload = function() {return 'You have unsaved changes.  If you go back, your answers will be lost.';};
+
 	};
 	
 	// Customize header elements based on current page
@@ -933,7 +933,7 @@ function workHistoryTypeahead(experienceRef){ // initialize typeahead for work h
 		template: '<p><strong>{{value}}</strong></p>',
 		engine: Hogan
 	}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
-		$("#history input[name='user_education["+experienceRef+"][company_id]']").val(datum.id);
+		$("#history input[name='user_work["+experienceRef+"][company_id]']").val(datum.id);
 	});
 	
 	$('.job'+experienceRef).typeahead({
@@ -943,7 +943,7 @@ function workHistoryTypeahead(experienceRef){ // initialize typeahead for work h
 		template: '<p><strong>{{value}}</strong></p>',
 		engine: Hogan
 	}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
-		$("#history input[name='user_education["+experienceRef+"][job_id]']").val(datum.id);
+		$("#history input[name='user_work["+experienceRef+"][job_id]']").val(datum.id);
 	});
 };
 
