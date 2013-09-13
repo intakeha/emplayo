@@ -97,18 +97,37 @@ class Home_model extends MY_Model {
         $array = array();
         foreach ($original_array as $key=>$value)
         {
-            $array[$key]['user_id'] = $user_id;
             if (!empty ($value['school_id'])){
+                $array[$key]['user_id'] = $user_id;
                 $array[$key]['college_id'] = $value['school_id'];
-                $array[$key]['college_name'] = NULL;
-            } else {
+               $array[$key]['college_name'] = NULL;
+                //$array[$key]['college_name'] = $value['school_name'];
+            } elseif (!empty ($value['school_name'])) {
+                $array[$key]['user_id'] = $user_id;
                 $array[$key]['college_id'] = NULL;
-                $array[$key]['college_name'] = $value['school_id'];                
+                $array[$key]['college_name'] = $value['school_name'];                
+            } else {
+                continue;
             }
+                       
             $array[$key]['start_date'] = $value['start_year'].'-'.$value['start_month'].'-01';
             $array[$key]['end_date'] = $value['end_year'].'-'.$value['end_month'].'-01';
-            $array[$key]['degree_id'] = $value['degree_id'];
-            $array[$key]['major_id'] = $value['field_id'];           
+            
+            if (!empty($value['degree_id'])){
+                $array[$key]['degree_id'] = $value['degree_id'];
+                //$array[$key]['degree_name'] = $value['degree_name'];
+            } else {
+                $array[$key]['degree_name'] = $value['degree_name'];
+                $array[$key]['degree_id'] = NULL;
+            }
+            
+            if (!empty($value['field_id'])){
+                $array[$key]['major_id'] = $value['field_id'];
+                //$array[$key]['major_name'] = $value['field_name'];
+            } else {
+                $array[$key]['major_name'] = $value['field_name'];
+                $array[$key]['major_id'] = NULL;
+            }                           
         }   
         return $array; 
     }
@@ -116,13 +135,12 @@ class Home_model extends MY_Model {
     function build_array_work($original_array, $keyword, $user_id){
         $array = array();
         foreach ($original_array as $key=>$value)
-        {
-            
+        {           
             if (!empty ($value['company_id'])){
                 $array[$key]['user_id'] = $user_id;
                 $array[$key]['company_id'] = $value['company_id'];
-                //$array[$key]['company_name'] = NULL;
-                $array[$key]['company_name'] = $value['company_name'];
+                $array[$key]['company_name'] = NULL;
+                //$array[$key]['company_name'] = $value['company_name'];
             } elseif (!empty ($value['company_name'])) {
                 $array[$key]['user_id'] = $user_id;
                 $array[$key]['company_id'] = NULL;
@@ -146,8 +164,8 @@ class Home_model extends MY_Model {
             
             if (!empty ($value['job_id'])){
                 $array[$key]['job_type_id'] = $value['job_id'];
-                //$array[$key]['job_type_name'] = NULL;
-                $array[$key]['job_type_name'] = $value['job_type'];
+                $array[$key]['job_type_name'] = NULL;
+                //$array[$key]['job_type_name'] = $value['job_type'];
             } else {
                 $array[$key]['job_type_id'] = NULL;
                 $array[$key]['job_type_name'] = $value['job_type'];                
