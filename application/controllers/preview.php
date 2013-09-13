@@ -100,13 +100,8 @@ class Preview extends CI_Controller {
             {
                 $user_work = NULL;
             }
-            
-            //for debugging
-            echo "work exists: ".$work_exists;
-            echo '<br><pre>user work:<br>',print_r($user_work,1),'</pre>';
-            
-            
-                      
+
+                                  
             /*19*/$user_location = $this->input->post('user_location');
             /*20*/$user_industry = $this->input->post('user_industry');
             //$categories = $this->input->post('category');//NOT SURE OF THIS NAME!!!                
