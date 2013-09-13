@@ -778,7 +778,7 @@ $(document).ready(function(){
 					<li><label>Field of Study</label><input class="text_form study'+educationRef+'" type="text" maxlength="150" name="user_education['+educationRef+'][field_name]"><input type="hidden" name="user_education['+educationRef+'][field_id]" value=""></li>\
 					<li class="history_sets"><label>Time Period</label><select name="user_education['+educationRef+'][start_month]" class=" monthEmpty prefill"></select>\
 						<select name="user_education['+educationRef+'][start_year]" class=" yearEmpty prefill"></select> &ndash; <select name="user_education['+educationRef+'][end_month]" class=" monthEmpty prefill"></select> \
-						<select name="user_education['+educationRef+'][end_month]" class=" yearEmpty prefill"></select>\
+						<select name="user_education['+educationRef+'][end_year]" class=" yearEmpty prefill"></select>\
 					</li>\
 					'
 				);
