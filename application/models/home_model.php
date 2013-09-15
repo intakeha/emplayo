@@ -109,9 +109,20 @@ class Home_model extends MY_Model {
             } else {
                 continue;
             }
-                       
-            $array[$key]['start_date'] = $value['start_year'].'-'.$value['start_month'].'-01';
-            $array[$key]['end_date'] = $value['end_year'].'-'.$value['end_month'].'-01';
+                                 
+            if ($value['start_year'] != 0 AND $value['start_month'] != 0){
+                $array[$key]['start_date'] = $value['start_year'].'-'.$value['start_month'].'-01';
+            } else {
+                $array[$key]['start_date'] = NULL;
+            }            
+ 
+            if ($value['end_year'] != 0 AND $value['end_month'] != 0){
+                $array[$key]['end_date'] = $value['end_year'].'-'.$value['end_month'].'-01';
+            } else {
+                $array[$key]['end_date'] = NULL;
+            }            
+            
+            
             
             if (!empty($value['degree_id'])){
                 $array[$key]['degree_id'] = $value['degree_id'];
@@ -149,16 +160,29 @@ class Home_model extends MY_Model {
                 continue;
             }
             
-            $array[$key]['start_date'] = $value['start_year'].'-'.$value['start_month'].'-01';
+            if ($value['start_year'] != 0 AND $value['start_month'] != 0){
+                $array[$key]['start_date'] = $value['start_year'].'-'.$value['start_month'].'-01';
+            } else {
+                $array[$key]['start_date'] = NULL;
+            }
+            
             if (isset($value['current'])){
                 if ($value['current'] == 0){
-                    $array[$key]['end_date'] = $value['end_year'].'-'.$value['end_month'].'-01';
+                    if ($value['end_year'] != 0 AND $value['end_month'] != 0){
+                        $array[$key]['end_date'] = $value['end_year'].'-'.$value['end_month'].'-01';
+                    } else {
+                        $array[$key]['end_date'] = NULL;
+                    }
                 }else {
                     $array[$key]['end_date'] = NULL;
                 }
                 $array[$key]['current'] = $value['current'];
             }else {
-                $array[$key]['end_date'] = $value['end_year'].'-'.$value['end_month'].'-01';
+                    if ($value['end_year'] != 0 AND $value['end_month'] != 0){
+                        $array[$key]['end_date'] = $value['end_year'].'-'.$value['end_month'].'-01';
+                    } else {
+                        $array[$key]['end_date'] = NULL;
+                    }                
                 $array[$key]['current'] = 0;
             }
             
@@ -171,7 +195,11 @@ class Home_model extends MY_Model {
                 $array[$key]['job_type_name'] = $value['job_type'];                
             }            
   
-            $array[$key]['rating'] = $value['rating'];
+            if (isset($value['rating']) AND $value['rating'] > 0){
+                $array[$key]['rating'] = $value['rating'];
+            } else {
+                $array[$key]['rating'] = NULL;
+            }
         }   
         return $array; 
     }    
