@@ -82,7 +82,7 @@
 			<div class="content">
 				<ul id="nav-list">
 					<li class="borders"><a href="/">Employers</a></li>
-					<li class="borders"><a href="/">About</a></li>
+					<li class="borders"><a href="/about">About</a></li>
 					<li class="borders"><a href="/terms">Terms</a></li>
 					<li><a href="/privacy">Privacy</a></li>
 				</ul>

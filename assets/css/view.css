@@ -139,6 +139,15 @@ div#page404 ul{
 	line-height: 30px;
 }
 
+/* About */
+div#about .content{
+	font-size: 16px;
+}
+
+div#about p{
+	margin: 20px 100px;
+}
+
 /* Terms & Privacy*/
 div#terms .content, div#privacy .content{
 	font-size: 16px;
