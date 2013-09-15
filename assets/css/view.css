@@ -238,12 +238,14 @@ div#signup .errors{
 }
 
 #signup_message, #login_message{
-	background-color: #900;
-	text-align: center;
-	color: #fff;
-	padding: 10px;
-	width: 240px;
+    background-color: #135100;
+    border-bottom: 1px solid #CCCCCC;
+    color: #FFFFFF;
+    padding: 10px;
+    text-align: center;
+	margin: -10px 0 20px !important;
 }
+
 
 /* Administration Panel */
 
@@ -1642,13 +1644,12 @@ div#forgot .submit{
 }
 
 div#forgot .errors{
-    background: #900;
-    color: #fff;
+    color: #990000;
     font-size: 15px;
-    margin: 15px auto;
+    margin: 5px 0 -10px 40px;
+    padding: 10px;
     text-align: center;
     width: 300px;
-	padding: 10px;
 }
 
 #forgot_message{
