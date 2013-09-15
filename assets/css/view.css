@@ -247,8 +247,7 @@ div#signup .errors{
 	font-size: 22px;
 }
 
-#signup_message, #login_message{
-    background-color: #135100;
+#signup_message{
     border-bottom: 1px solid #CCCCCC;
     color: #FFFFFF;
     padding: 10px;
@@ -1213,11 +1212,13 @@ div#login_right p, div#signup_left p, div#forgot p{
 	font-size: 15px;
 }
 
-div#login .errors{
+div#login p.errors{
 	font-size: 15px;
-	color: #941f1c;
-	margin-top: 5px;
-	width: 260px;
+	color: #fff;
+	margin: 0 0 10px;
+	text-align: center;
+	padding: 10px;
+	background-color: #900;
 }
 
 /* User Settings */
