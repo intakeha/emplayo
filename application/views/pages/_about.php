@@ -1,5 +1,6 @@
 <div id="about">
 	<div class="content">
+	<img src="/assets/images/team.png" alt="team" style="float: right;">
 	<p>At Emplayo, our mission is to help everyone find companies that match his/her career trajectory and personal preferences.</p>
  
 	<p>We know first-hand how challenging the job market can be.  From choosing your career path, to deciding if you should work
