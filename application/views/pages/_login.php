@@ -15,10 +15,10 @@
 			<?php echo form_open('login') ;?>
 			<?php echo form_label('Email:','email')?>
 			<?php echo form_input('email',set_value('email'),'id=email')?>
-			<div class="errors"><?php echo form_error('email'); ?></div>
+			<?php echo form_error('email'); ?>
 			<?php echo form_label('Password:','password')?>
 			<?php echo form_password('password','','id=password')?>
-			<div class="errors"><?php echo form_error('password'); ?></div>                
+			<?php echo form_error('password'); ?>
 			
 			<?php echo form_submit('submit','Login','class="submit"')?>			
 			<?php echo form_close() ;?>

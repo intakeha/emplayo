@@ -231,7 +231,7 @@ class User extends CI_Controller {
                              //we did NOT find a matching email address in our system
                              //re-display the form with an error
 			     
-                            $this->data['message'] = 'There is no user with that <br> email address in our system.';
+                            $this->data['message'] = '<p class="errors">There is no user with that email address<br>in our system.</p>';
                             $this->data['title']="Forgot Password";
                             $this->data['content']="pages/_forgot";
                             $this->_render_page('canvas', $this->data);

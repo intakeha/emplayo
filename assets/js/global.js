@@ -118,8 +118,18 @@ $(document).ready(function(){
 		function () {
 		$(this).animate({backgroundColor: '#e9b60b'}, 200);
 		}
-	);	
-	
+	);
+
+	// User Home Start button animation
+	$("#profile a#start_btn").hover(
+		function () {
+		$(this).animate({backgroundColor: '#27c339', color: '#fff'}, 200);
+		},
+		function () {
+		$(this).animate({backgroundColor: '#e9b60b', color: '#1D2A33'}, 200);
+		}
+	);
+		
 	// Display questionnaire	 
 	if(currentPage == 'criteria'){
 		
@@ -675,6 +685,7 @@ $(document).ready(function(){
 			engine: Hogan
 		}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
 			numChosen = $('.chosenIndustry li').length;
+			if(numChosen == 5){alert ("You may only select up to 5 industries and/or fields. Use the orange arrow to remove your last selection.");};
 			if(numChosen >= 0 && numChosen < 5){
 				var duplicationFlag = 0;
 				$('.chosenIndustry').show("slide", { direction: "right" }, 100);
@@ -718,6 +729,7 @@ $(document).ready(function(){
 			engine: Hogan
 		}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
 			numChosen = $('.chosenCities li').length;
+			if(numChosen == 5){alert ("You may only select up to 5 cities. Use the orange arrow to remove your last selection.");};
 			if(numChosen >= 0 && numChosen < 5){
 				var duplicationFlag = 0;
 				$('.chosenCities').show("slide", { direction: "right" }, 100);

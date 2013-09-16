@@ -243,19 +243,19 @@
 			<div><div class="bulb" onclick="modal('#modal_q8','600','35');"></div>What should matter most to management in deciding on promotion?</div>
 			<div id="promotion_bar"></div>
 			<ul id="co_promotion">
-				<li id="q8_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Business Need</li>
-				<li id="q8_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Time at Level</li>
-				<li id="q8_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Skills Qualification</li>
-				<li id="q8_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Increased Responsibilities</li>
-				<li id="q8_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Leadership Readiness</li>
-				<li id="q8_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Job Performance</li>
+				<li id="q8_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Business Need</li>
+				<li id="q8_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Time at Level</li>
+				<li id="q8_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Skills Qualification</li>
+				<li id="q8_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Increased Responsibilities</li>
+				<li id="q8_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Leadership Readiness</li>
+				<li id="q8_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Job Performance</li>
 			</ul>
-				<input id="q8_1_0" type="text" name="user_promotion[1][rank]"  value="6">
-				<input id="q8_2_0" type="text" name="user_promotion[2][rank]"  value="5">
-				<input id="q8_3_0" type="text" name="user_promotion[3][rank]"  value="4">
-				<input id="q8_4_0" type="text" name="user_promotion[4][rank]"  value="3">
-				<input id="q8_5_0" type="text" name="user_promotion[5][rank]"  value="2">
-				<input id="q8_6_0" type="text" name="user_promotion[6][rank]"  value="1">
+				<input id="q8_6_0" type="text" name="user_promotion[6][rank]"  value="6">
+				<input id="q8_5_0" type="text" name="user_promotion[5][rank]"  value="5">
+				<input id="q8_4_0" type="text" name="user_promotion[4][rank]"  value="4">
+				<input id="q8_3_0" type="text" name="user_promotion[3][rank]"  value="3">
+				<input id="q8_2_0" type="text" name="user_promotion[2][rank]"  value="2">
+				<input id="q8_1_0" type="text" name="user_promotion[1][rank]"  value="1">
 				<div id="q8_flag" style="display: none;"></div>
 		</div>
 		<div id="9" class="questions"  name="singleChoice">
@@ -333,38 +333,38 @@
 			<div><div class="bulb" onclick="modal('#modal_q10','600','35');"></div>Rank your most preferred type of recognition for doing exceptional work:</div>
 			<div id="recognition_bar"></div>
 			<ul id="co_recognition">
-				<li id="q10_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Team Dinners</li>
-				<li id="q10_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Informal "Thank You"</li>
-				<li id="q10_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Salary Compensation</li>
-				<li id="q10_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Time with Senior Leadership</li>
-				<li id="q10_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Public Recognition</li>
-				<li id="q10_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Time Away from Work</li>
+				<li id="q10_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Team Dinners</li>
+				<li id="q10_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Informal "Thank You"</li>
+				<li id="q10_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Salary Compensation</li>
+				<li id="q10_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Time with Senior Leadership</li>
+				<li id="q10_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Public Recognition</li>
+				<li id="q10_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Time Away from Work</li>
 			</ul>
-			<input id="q10_1_0" type="text" name="user_recognition[1][rank]"  value="6">
-			<input id="q10_2_0" type="text" name="user_recognition[2][rank]"  value="5">
-			<input id="q10_3_0" type="text" name="user_recognition[3][rank]"  value="4">
-			<input id="q10_4_0" type="text" name="user_recognition[4][rank]"  value="3">
-			<input id="q10_5_0" type="text" name="user_recognition[5][rank]"  value="2">
-			<input id="q10_6_0" type="text" name="user_recognition[6][rank]"  value="1">
+			<input id="q10_6_0" type="text" name="user_recognition[6][rank]"  value="6">
+			<input id="q10_5_0" type="text" name="user_recognition[5][rank]"  value="5">
+			<input id="q10_4_0" type="text" name="user_recognition[4][rank]"  value="4">
+			<input id="q10_3_0" type="text" name="user_recognition[3][rank]"  value="3">
+			<input id="q10_2_0" type="text" name="user_recognition[2][rank]"  value="2">
+			<input id="q10_1_0" type="text" name="user_recognition[1][rank]"  value="1">
 			<div id="q10_flag" style="display: none;"></div>
 		</div>
 		<div id="11" class="questions"  name="rankChoice">
 			<div><div class="bulb" onclick="modal('#modal_q11','600','35');"></div>Rank the following type of tasks you typically enjoy working on:</div>
 			<div id="task_bar"></div>
 			<ul id="favTask">
-				<li id="q11_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Physical</font><br>skill, strength, coordination, accuracy</li>
-				<li id="q11_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Strategic</font><br>thinking, organizing, understanding</li>
-				<li id="q11_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Creative</font><br>originality, imagination, innovation</li>
-				<li id="q11_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Competitive</font><br>leadership, influence, selling, status</li>
-				<li id="q11_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Orderly</font><br>routine, regulation, process, precision</li>
-				<li id="q11_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Community</font><br>helping, healing, developing others</li>
+				<li id="q11_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Physical</font><br>skill, strength, coordination, accuracy</li>
+				<li id="q11_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Strategic</font><br>thinking, organizing, understanding</li>
+				<li id="q11_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Creative</font><br>originality, imagination, innovation</li>
+				<li id="q11_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Competitive</font><br>leadership, influence, selling, status</li>
+				<li id="q11_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Orderly</font><br>routine, regulation, process, precision</li>
+				<li id="q11_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Community</font><br>helping, healing, developing others</li>
 			</ul>
-			<input id="q11_1_0" type="text" name="user_tasks[1][rank]"  value="6">
-			<input id="q11_2_0" type="text" name="user_tasks[2][rank]"  value="5">
-			<input id="q11_3_0" type="text" name="user_tasks[3][rank]"  value="4">
-			<input id="q11_4_0" type="text" name="user_tasks[4][rank]"  value="3">
-			<input id="q11_5_0" type="text" name="user_tasks[5][rank]"  value="2">
-			<input id="q11_6_0" type="text" name="user_tasks[6][rank]"  value="1">
+			<input id="q11_6_0" type="text" name="user_tasks[6][rank]"  value="6">
+			<input id="q11_5_0" type="text" name="user_tasks[5][rank]"  value="5">
+			<input id="q11_4_0" type="text" name="user_tasks[4][rank]"  value="4">
+			<input id="q11_3_0" type="text" name="user_tasks[3][rank]"  value="3">
+			<input id="q11_2_0" type="text" name="user_tasks[2][rank]"  value="2">
+			<input id="q11_1_0" type="text" name="user_tasks[1][rank]"  value="1">
 			<div id="q11_flag" style="display: none;"></div>		
 		</div>
 		<div id="12" class="questions"  name="singleChoice">
@@ -386,17 +386,17 @@
 			<div><div class="bulb" onclick="modal('#modal_q13','600','35');"></div>If you don't know something about your job, what are the<br>steps you would take to find the answers?</div>
 			<div id="steps_bar"></div>
 			<ul id="resource">
-				<li id="q13_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Search the Internet</li>
-				<li id="q13_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Search Company Internal Websites</li>
+				<li id="q13_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Search the Internet</li>
+				<li id="q13_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Search Company Internal Websites</li>
 				<li id="q13_3"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Find a Relevant Book</li>
-				<li id="q13_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Ask Direct Supervisor / Manager</li>
-				<li id="q13_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Ask Co-Workers</li>
+				<li id="q13_2"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Ask Direct Supervisor / Manager</li>
+				<li id="q13_1"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Ask Co-Workers</li>
 			</ul>
-			<input id="q13_1_0" type="text" name="user_resource[1][rank]"  value="5">
-			<input id="q13_2_0" type="text" name="user_resource[2][rank]"  value="4">
+			<input id="q13_5_0" type="text" name="user_resource[5][rank]"  value="5">
+			<input id="q13_4_0" type="text" name="user_resource[4][rank]"  value="4">
 			<input id="q13_3_0" type="text" name="user_resource[3][rank]"  value="3">
-			<input id="q13_4_0" type="text" name="user_resource[4][rank]"  value="2">
-			<input id="q13_5_0" type="text" name="user_resource[5][rank]"  value="1">
+			<input id="q13_2_0" type="text" name="user_resource[2][rank]"  value="2">
+			<input id="q13_1_0" type="text" name="user_resource[1][rank]"  value="1">
 			<div id="q13_flag" style="display: none;"></div>
 		</div>
 		<div id="14" class="questions"  name="singleChoice">
@@ -512,7 +512,7 @@
 			<div id="q19_flag" style="display: none;"></div>
 		</div>
 		<div id="20" class="questions q20"  name="textChoice">
-			<div><div class="bulb" onclick="modal('#modal_q19','600','35');"></div>What's your education and work history?</div>
+			<div><div class="bulb" onclick="modal('#modal_q20','600','35');"></div>What's your education and work history?</div>
 			<div id="history" class="clear">
 				<div>
 					<div id="education_layout">

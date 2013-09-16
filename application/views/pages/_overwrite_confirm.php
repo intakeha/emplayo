@@ -30,27 +30,28 @@
                         
                     } else {
                         ?>
-                    <p id="info">  
-                        According to our records, this is your first time taking the Work.Life.Play survey.
-                        <br><br>
-                        Click 'Save' to save your preferences.
-                    </p>   
-                    <div id="previewButtons">
-                        <form action="/home/manage_prefs" method="post">
-                            <input type="hidden" name="prefs_action" value="0"/>
-                            <input type="submit" name="cancel" value="Cancel" id="signUp"/>
-                        </form> 
-                        
-                        <div id="progressIcon">
-                            <img src="<?php echo base_url() ?>assets/images/progressIcon.png"></img>
-                        </div>
-                        <!--Implement modal confirmation popup....-->
-                        <form action="/home/manage_prefs" method="post">
-                            <input type="hidden" name="prefs_action" value="2"/>
-                            <input type="submit" name="save" value="Save" id="signIn"/>
-                        </form>                         
-                    </div>                    
-                    
+			<div class="content">
+				<p id="info">  
+					<p>According to our records, this is your first time <br>entering the Work.Life.Play preferences.</p>
+					<br>
+					<p>Click the &#34;Save&#34; button below to see your list of company matches.</p>
+				</p>   
+				<div id="previewButtons">
+					<form action="/home/manage_prefs" method="post">
+					    <input type="hidden" name="prefs_action" value="0"/>
+					    <input type="submit" name="cancel" value="Cancel" id="cancel"/>
+					</form> 
+
+					<div id="progressIcon">
+					    <img src="<?php echo base_url() ?>assets/images/progressIcon.png"></img>
+					</div>
+					<!--Implement modal confirmation popup....-->
+					<form action="/home/manage_prefs" method="post">
+					    <input type="hidden" name="prefs_action" value="2"/>
+					    <input type="submit" name="save" value="Save" id="update"/>
+					</form>                         
+				</div>                    
+			</div>
                     
                     <?php                        
                         

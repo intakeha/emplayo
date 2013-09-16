@@ -17,7 +17,7 @@
 			<?php echo form_submit('submit','Sign Up','class="submit"')?>			
 			<?php echo form_close() ;?>
 			
-			<p>By clicking Sign Up, you agree to Emplayo's Terms of Service.</p>
+			<p>By clicking Sign Up, you agree to Emplayo's <a href="/terms">Terms of Service</a>.</p>
 			<hr>
 			<p><span>Already have an account?</span></p>
 			<p><a href="login">Log In</a></p>

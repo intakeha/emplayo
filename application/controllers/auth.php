@@ -329,7 +329,7 @@ class Auth extends CI_Controller {
 				$this->data['identity_label'] = 'Email';
 			}                             
                              
-                            $this->data['message'] = 'There is no user with that email address in our system.';
+                            $this->data['message'] = '<p class="errors">There is no user with that email address in our system.</p>';
                             //$this->_render_page('auth/forgot_password', $this->data);
                             $this->data['title']="Forgot Password";
                             $this->data['content']="_forgot";

@@ -17,14 +17,14 @@
 // Account Creation
 $lang['account_creation_successful'] 	  	 = 'Account successfully created.';
 $lang['account_creation_unsuccessful'] 	 	 = 'Unable to create account. Please try again.';
-$lang['account_creation_duplicate_email'] 	 = 'This email already exists. Please try again.';
-$lang['account_creation_duplicate_username'] = 'Username already used. Please try again.';
+$lang['account_creation_duplicate_email'] 	 = 'This email already exists.';
+$lang['account_creation_duplicate_username'] = 'Username already used.';
 
 // Password
 $lang['password_change_successful'] 	 	 = 'You&#39;ve successfully reset your password.';
 $lang['password_change_unsuccessful'] 	  	 = 'Unable to change password. Please try again.';
 $lang['forgot_password_successful'] 	 	 = 'We&#39;ve sent you an email that will allow you to reset your password.';
-$lang['forgot_password_unsuccessful'] 	 	 = 'Unable to reset password. Please try again.';
+$lang['forgot_password_unsuccessful'] 	 	 = 'Unable to reset password.';
 
 // Activation
 $lang['activate_successful'] 		  	     = 'Account successfully activated.';
@@ -49,7 +49,7 @@ $lang['delete_unsuccessful']           = 'Unable to delete user. Please try agai
 
 // Groups
 $lang['group_creation_successful']  = 'Group created successfully.';
-$lang['group_already_exists']       = 'Group name already taken. Please try again.';
+$lang['group_already_exists']       = 'Group name already taken.';
 $lang['group_update_successful']    = 'Group details updated.';
 $lang['group_delete_successful']    = 'Group deleted.';
 $lang['group_delete_unsuccessful'] 	= 'Unable to delete group. Please try again.';

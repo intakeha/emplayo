@@ -223,11 +223,12 @@ div#signup .submit{
 	width: 90px;
 }
 
-div#signup .errors{
+div#signup p.errors{
 	font-size: 15px;
 	color: #ad27c1;
-	margin-top: 5px;
 	width: 260px;
+	text-align: left;
+	margin-top: 5px;
 }
 
 #signup_right{
@@ -246,16 +247,6 @@ div#signup .errors{
 	color: #258CD1;
 	font-size: 22px;
 }
-
-#signup_message{
-    border-bottom: 1px solid #CCCCCC;
-    color: #FFFFFF;
-    padding: 10px;
-    text-align: center;
-	margin: -10px 0 20px !important;
-	font-size: 15px;
-}
-
 
 /* Administration Panel */
 
@@ -1178,6 +1169,7 @@ div#login_left span{
 	padding: 20px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 	font-size: 20px;
+	width: 265px;
 }
 
 div#login_right span{
@@ -1212,13 +1204,26 @@ div#login_right p, div#signup_left p, div#forgot p{
 	font-size: 15px;
 }
 
-div#login p.errors{
-	font-size: 15px;
-	color: #fff;
-	margin: 0 0 10px;
-	text-align: center;
-	padding: 10px;
-	background-color: #900;
+div#login p.success{
+    background-color: #27c339;
+    color: #FFFFFF;
+    font-size: 15px;
+    margin: -15px 0 25px;
+    padding: 10px;
+    text-align: center;
+}
+
+div#login div#login_left p.errors{
+    background-color: #990000;
+    color: #FFFFFF;
+    font-size: 15px;
+    margin: -15px 0 25px;
+    padding: 10px;
+    text-align: center;
+}
+
+div#login div#login_right p.errors{
+	margin-top: 5px;
 }
 
 /* User Settings */
@@ -2648,7 +2653,7 @@ div#history .presentText{
 /* Preview Results */
 div#preview .content{
 	padding-top: 25px;
-	min-height: 550px;
+	min-height: 475px;
 	text-align: center;
 }
 
@@ -2731,7 +2736,27 @@ div#preview #progressIcon{
 
 div#profile .content{
 	text-align: center;
-	min-height: 550px;
+	min-height: 450px;
+}
+
+div#profile p{
+	margin: 10px 100px;
+}
+
+div#profile p.top{
+	margin-top: 50px;
+}
+
+div#profile a#start_btn{
+	font-size: 30px;
+	color: #1d2a33;
+	background-color: #e9b60b;
+	height: 30px;
+	width: 200px;
+	text-align: center;
+	margin: auto;
+	padding: 10px 0;
+	display: block;
 }
 
 div#profile #summary{
