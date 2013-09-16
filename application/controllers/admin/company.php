@@ -1389,6 +1389,28 @@ class Company extends CI_Controller {
         }
 
     }
+    
+	public function profile($company_id){
+		
+            //get company details using company id
+            $this->load->model('public_company_model');
+            //get_profile_pics
+            $data['pic_array'] = $this->public_company_model->get_profile_pics($company_id);
+            //$data['company_info'] = $this->public_company_model->get_public_company_info($company_id);
+            $data['company_info'] = $this->company_model->get_company_info($company_id);
+            $data['quote_array'] = $this->public_company_model->get_quotes($company_id);
+
+            $data['merged_array'] = $this->public_company_model->array_interlace($data['pic_array'], $data['quote_array']);
+            //shuffle($data['merged_array']);
+
+            $data['title']="Company";
+            $data['content']="pages/_company";
+            $this->load->helper('url');
+            $this->load->view('canvas', $data);
+            $this->session->unset_userdata('message');
+			
+
+	}      
 
     
 
