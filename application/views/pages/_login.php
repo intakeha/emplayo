@@ -1,7 +1,7 @@
 <div id="login">
 	<div class="content">
 		<div id="login_left">
-			<?php if($message){echo '<div id="login_message">'.$message.'</div>';} ?>
+			<?php if($message){echo $message;} ?>
 			<span>Welcome back!</span><br>
 			<div>
 				It's always good to see you.  While you were away, we've been hard at work finding the best companies, crunching lots of data, and ranking your matches.  

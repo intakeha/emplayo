@@ -99,7 +99,7 @@ div#belt .content{
 }
 
 div#story .content{
-	min-height: 335px;
+	min-height: 500px;
 	padding-top: 20px;
 }
 
@@ -137,6 +137,16 @@ div#page404 ul{
 	list-style: circle outside none;
 	margin-left: 50px;
 	line-height: 30px;
+}
+
+/* About */
+div#about .content{
+	font-size: 16px;
+	min-height: 475px;
+}
+
+div#about p{
+	margin: 20px 100px;
 }
 
 /* Terms & Privacy*/
@@ -237,13 +247,13 @@ div#signup .errors{
 	font-size: 22px;
 }
 
-#signup_message, #login_message{
-    background-color: #135100;
+#signup_message{
     border-bottom: 1px solid #CCCCCC;
     color: #FFFFFF;
     padding: 10px;
     text-align: center;
 	margin: -10px 0 20px !important;
+	font-size: 15px;
 }
 
 
@@ -1202,11 +1212,13 @@ div#login_right p, div#signup_left p, div#forgot p{
 	font-size: 15px;
 }
 
-div#login .errors{
+div#login p.errors{
 	font-size: 15px;
-	color: #941f1c;
-	margin-top: 5px;
-	width: 260px;
+	color: #fff;
+	margin: 0 0 10px;
+	text-align: center;
+	padding: 10px;
+	background-color: #900;
 }
 
 /* User Settings */
