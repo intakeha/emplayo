@@ -126,17 +126,23 @@ class Home_model extends MY_Model {
             
             if (!empty($value['degree_id'])){
                 $array[$key]['degree_id'] = $value['degree_id'];
-                //$array[$key]['degree_name'] = $value['degree_name'];
-            } else {
+                $array[$key]['degree_name'] = NULL;
+            } elseif (!empty ($value['degree_name'])) {
                 $array[$key]['degree_name'] = $value['degree_name'];
+                $array[$key]['degree_id'] = NULL;
+            } else {
+                $array[$key]['degree_name'] = NULL;
                 $array[$key]['degree_id'] = NULL;
             }
             
             if (!empty($value['field_id'])){
                 $array[$key]['major_id'] = $value['field_id'];
-                //$array[$key]['major_name'] = $value['field_name'];
-            } else {
+                $array[$key]['major_name'] = NULL;
+            } elseif (!empty ($value['field_name'])) {
                 $array[$key]['major_name'] = $value['field_name'];
+                $array[$key]['major_id'] = NULL;
+            } else {
+                $array[$key]['major_name'] = NULL;
                 $array[$key]['major_id'] = NULL;
             }                           
         }   
@@ -190,10 +196,13 @@ class Home_model extends MY_Model {
                 $array[$key]['job_type_id'] = $value['job_id'];
                 $array[$key]['job_type_name'] = NULL;
                 //$array[$key]['job_type_name'] = $value['job_type'];
-            } else {
+            } elseif (!empty ($value['job_type'])) {
                 $array[$key]['job_type_id'] = NULL;
                 $array[$key]['job_type_name'] = $value['job_type'];                
-            }            
+            } else {
+                $array[$key]['job_type_name'] = NULL;
+                $array[$key]['job_type_id'] = NULL;
+            }           
   
             if (isset($value['rating']) AND $value['rating'] > 0){
                 $array[$key]['rating'] = $value['rating'];
