@@ -150,6 +150,12 @@ div#about p{
 	line-height: 30px;
 }
 
+div#about img#title{
+	margin: 20px 100px 0px;
+	font-weight: bold;
+	font-size: 30px;
+}
+
 /* Terms & Privacy*/
 div#terms .content, div#privacy .content{
 	font-size: 16px;

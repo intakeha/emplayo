@@ -1327,13 +1327,30 @@ class Company extends CI_Controller {
             $quote = $this->input->post('quote');
             $quote_length = strlen($quote);
             $tile_shape = NULL;
+	    
+	    $words  = explode(' ', $quote);
+	    $longestWordLength = 0;
+	    
+	    foreach ($words as $word) {
+		if (strlen($word) > $longestWordLength) {
+			$longestWordLength = strlen($word);
+		}
+	    };
 
             $small = 50;
             $medium = 100;
             $large = 150;
             $xlarge = 200;
+	    $maxWordLength = 13; // maximum word length before word overflows the tile
 
-            if (($quote_length > 0) && ($quote_length <= $small))
+            if (($longestWordLength > $maxWordLength) && ($quote_length <= $large)){
+		$tile_shape = 3;
+	    }
+	    elseif (($longestWordLength > $maxWordLength) && ($quote_length <= $xlarge))
+            {
+                $tile_shape = 4;
+            }
+	    else if (($quote_length > 0) && ($quote_length <= $small))
             {
                 $tile_shape = 1; 
             }
@@ -1352,7 +1369,7 @@ class Company extends CI_Controller {
             else
             {
                 $tile_shape = 4;
-            }
+            };
 
             if ($this->company_model->insert_quote($id,$quote,$tile_shape))
             {
