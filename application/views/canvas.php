@@ -3,6 +3,9 @@
 <head>
 	<title><?php echo isset($title) ? "Emplayo - $title" : "Emplayo"; ?></title>
 	<meta charset="utf-8">
+	
+	<link rel="shortcut icon" href="<?php echo base_url()?>assets/images/favicon.ico" type="image/x-icon">
+	
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/global.css" type="text/css"/>  
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/view.css" type="text/css"/>
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/jquery-ui.css" type="text/css"/>
@@ -18,8 +21,7 @@
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.isotope.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/flipcounter.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/select2.min.js"></script> 
-
-        
+	
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script> 
 	
 	

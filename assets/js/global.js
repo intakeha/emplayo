@@ -685,7 +685,7 @@ $(document).ready(function(){
 			engine: Hogan
 		}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
 			numChosen = $('.chosenIndustry li').length;
-			if(numChosen == 5){alert ("You may only select up to 5 industries and/or fields. Use the orange arrow to remove your last selection.");};
+			if(numChosen == 5){alert ("You may only select up to 5 industries. In order to add another choice, use the orange arrow to remove your last selection.");};
 			if(numChosen >= 0 && numChosen < 5){
 				var duplicationFlag = 0;
 				$('.chosenIndustry').show("slide", { direction: "right" }, 100);
@@ -729,7 +729,7 @@ $(document).ready(function(){
 			engine: Hogan
 		}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
 			numChosen = $('.chosenCities li').length;
-			if(numChosen == 5){alert ("You may only select up to 5 cities. Use the orange arrow to remove your last selection.");};
+			if(numChosen == 5){alert ("You may select up to 5 cities. In order to add another choice, use the orange arrow to remove your last selection.");};
 			if(numChosen >= 0 && numChosen < 5){
 				var duplicationFlag = 0;
 				$('.chosenCities').show("slide", { direction: "right" }, 100);

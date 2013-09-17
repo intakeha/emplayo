@@ -181,9 +181,10 @@ div#navigation .content{
 }
 
 #nav-list {
-    height: 30px;
+    height: 55px;
     margin: auto;
-    width: 416px;
+    padding-left: 80px;
+    width: 500px;
 }
 
 #nav-list li{
