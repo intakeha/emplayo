@@ -139,6 +139,21 @@ div#page404 ul{
 	line-height: 30px;
 }
 
+/* Be Right Back Page */
+
+div#brb .content{
+	font-size: 20px;
+	min-height: 500px;
+	background: url(../images/brb.png) no-repeat;
+}
+
+div#brb #message{
+    float: right;
+    margin-top: 200px;
+    padding: 0 25px;
+    width: 500px;
+}
+
 /* About */
 div#about .content{
 	font-size: 18px;
