@@ -7,7 +7,7 @@
 			<div id="forgot_input">
 				<?php echo form_label('Email:','email')?>
 				<?php echo form_input('email',set_value('email'),'id=email')?>
-				<?php if($message){echo '<div class="errors">'.$message.'</div>';} ?>
+				<?php if($message){echo $message;} ?>
 			</div>
 			<?php echo form_submit('submit','Send','class="submit"')?>			
 			<?php echo form_close() ;?>

@@ -99,18 +99,118 @@ div#belt .content{
 }
 
 div#story .content{
-	height: 335px;
+	min-height: 380px;
 	padding-top: 20px;
 }
 
+div#story .content #video{
+    border: 1px solid #258cd1;
+    float: left;
+    margin: 30px 20px 0 0;
+    padding: 5px;
+}
+
 #story p{
-	padding-top: 30px;
-	padding-left: 30px;
+	font-size: 18px;
+    padding-top: 23px;
+}
+
+/* 404 Page */
+div#page404 .content{
+	font-size: 20px;
+	min-height: 500px;
+	background: url(../images/404.png) no-repeat;
+}
+
+div#page404 #message{
+    float: right;
+    margin-top: 200px;
+    padding: 0 25px;
+    width: 500px;
+}
+
+div#page404 p{
+	margin-bottom: 20px;
+}
+
+div#page404 ul{
+	list-style: circle outside none;
+	margin-left: 50px;
+	line-height: 30px;
+}
+
+/* Be Right Back Page */
+
+div#brb .content{
+	font-size: 20px;
+	min-height: 500px;
+	background: url(../images/brb.png) no-repeat;
+}
+
+div#brb #message{
+    float: right;
+    margin-top: 200px;
+    padding: 0 25px;
+    width: 500px;
+}
+
+/* About */
+div#about .content{
+	font-size: 18px;
+	min-height: 475px;
+}
+
+div#about p{
+	margin: 20px 100px;
+	line-height: 30px;
+}
+
+div#about img#title{
+	margin: 20px 100px 0px;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+/* Terms & Privacy*/
+div#terms .content, div#privacy .content{
+	font-size: 16px;
+}
+
+div#terms ol{
+    list-style: decimal outside none;
+    margin: 0 100px;
+}
+
+div#privacy ol{
+    list-style: lower-alpha outside none;
+    margin: 0 100px;
+}
+
+div#terms #title, div#privacy #title{
+	margin: 20px 130px 0;
+	font-weight: bold;
+}
+
+div#terms li, div#privacy li{
+	margin: 20px 50px;
+}
+
+div#terms ul{
+	list-style: circle outside none;
+}
+
+div#privacy ul{
+	list-style: disc outside none;
+	margin: 0 100px;
+}
+
+div#privacy p{
+	margin: 0 130px;
 }
 
 /* Sign Up */
 div#signup .content{
-	height: 550px;
+	min-height: 550px;
 }
 
 #signup_left{
@@ -145,11 +245,12 @@ div#signup .submit{
 	width: 90px;
 }
 
-div#signup .errors{
+div#signup p.errors{
 	font-size: 15px;
 	color: #ad27c1;
-	margin-top: 5px;
 	width: 260px;
+	text-align: left;
+	margin-top: 5px;
 }
 
 #signup_right{
@@ -167,14 +268,6 @@ div#signup .errors{
 #signup_right span{
 	color: #258CD1;
 	font-size: 22px;
-}
-
-#signup_message, #login_message{
-	background-color: #900;
-	text-align: center;
-	color: #fff;
-	padding: 10px;
-	width: 240px;
 }
 
 /* Administration Panel */
@@ -1074,7 +1167,7 @@ div#admin div.company_creative_logo{
 /* Login */
 
 div#login .content{
-	height: 550px;
+	min-height: 550px;
 }
 
 #login_left{
@@ -1098,6 +1191,7 @@ div#login_left span{
 	padding: 20px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 	font-size: 20px;
+	width: 265px;
 }
 
 div#login_right span{
@@ -1132,17 +1226,37 @@ div#login_right p, div#signup_left p, div#forgot p{
 	font-size: 15px;
 }
 
-div#login .errors{
-	font-size: 15px;
-	color: #941f1c;
+div#login p.success{
+    background-color: #27c339;
+    color: #FFFFFF;
+    font-size: 15px;
+    margin: -15px 0 25px;
+    padding: 10px;
+    text-align: center;
+}
+
+div#login div#login_left p.errors{
+    background-color: #990000;
+    color: #FFFFFF;
+    font-size: 15px;
+    margin: -15px 0 25px;
+    padding: 10px;
+    text-align: center;
+}
+
+div#login div#login_right p.errors{
 	margin-top: 5px;
-	width: 260px;
 }
 
 /* User Settings */
 div#settings .content{
 	height: 500px;
 	font-size: 20px;
+}
+
+div#settings #infoMessage {
+	font-size: 16px;
+	text-align: right;
 }
 
 div#settings ul#menu li{
@@ -1422,20 +1536,23 @@ div#settings div#industry_update .tt-is-under-cursor {
 div#settings div#panel .buttons{
 	color: #fff;
 	border: 1px solid #666;
-	float: right;
 	margin: 5px;
-	width: 100px;
-	height: 30px;
+	width: 90px;
+	height: 20px;
 	cursor: pointer;
+	text-align: center;
+	display: block;
 }
 
-div#settings div#panel .buttons div{
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
-	width: 100px;
+div#settings div#panel input.buttons{
+	color: #fff;
+	border: 1px solid #666;
+	margin: 5px;
+	width: 90px;
 	height: 30px;
-	font-size: 20px;
+	cursor: pointer;
+	text-align: center;
+	display: block;
 }
 
 div#settings div#panel .buttons.save{
@@ -1444,7 +1561,7 @@ div#settings div#panel .buttons.save{
 
 div#settings div#panel .buttons.cancel{
 	background-color: #ccc;
-	height: 28px;
+	height: 20px;
 }
 
 div#settings div#experience_layout{
@@ -1566,13 +1683,12 @@ div#forgot .submit{
 }
 
 div#forgot .errors{
-    background: #900;
-    color: #fff;
+    color: #990000;
     font-size: 15px;
-    margin: 15px auto;
+    margin: 5px 0 -10px 40px;
+    padding: 10px;
     text-align: center;
     width: 300px;
-	padding: 10px;
 }
 
 #forgot_message{
@@ -1586,7 +1702,7 @@ div#forgot .errors{
 /* Password Reset */
 
 div#reset .content{
-	height: 500px;
+	min-height: 500px;
 	font-size: 20px;
 }
 
@@ -2559,7 +2675,7 @@ div#history .presentText{
 /* Preview Results */
 div#preview .content{
 	padding-top: 25px;
-	height: 550px;
+	min-height: 475px;
 	text-align: center;
 }
 
@@ -2589,14 +2705,44 @@ div#preview #previewButtons{
 }
 
 div#preview #signUp, div#preview #signIn{
-	float: left;
-	width: 155px;
-	height: 50px;
-	background-color: #e9b60b;
-	color: #364954;
-	font-size: 35px;
-	padding-top: 10px;
-	cursor: pointer;
+    background-color: #E9B60B;
+    color: #364954;
+    cursor: pointer;
+    float: left;
+    font-size: 35px;
+    height: 46px;
+    padding-top: 14px;
+    width: 155px;
+}
+
+div#preview input#update{
+    background-color: #E9B60B;
+    border: 1px none;
+    color: #364954;
+    cursor: pointer;
+    float: left;
+    font-size: 35px;
+    height: 60px;
+    width: 155px;
+}
+
+div#preview input#update:hover{
+	color: #fff;
+}
+
+div#preview input#cancel{
+    background-color: #CCC;
+    border: 1px none;
+    color: #364954;
+    cursor: pointer;
+    float: left;
+    font-size: 35px;
+    height: 60px;
+    width: 155px;
+}
+
+div#preview input#cancel:hover{
+	color: #fff;
 }
 
 div#preview #signUp:hover, div#preview #signIn:hover{
@@ -2612,7 +2758,27 @@ div#preview #progressIcon{
 
 div#profile .content{
 	text-align: center;
-	height: 550px;
+	min-height: 450px;
+}
+
+div#profile p{
+	margin: 10px 100px;
+}
+
+div#profile p.top{
+	margin-top: 50px;
+}
+
+div#profile a#start_btn{
+	font-size: 30px;
+	color: #1d2a33;
+	background-color: #e9b60b;
+	height: 30px;
+	width: 200px;
+	text-align: center;
+	margin: auto;
+	padding: 10px 0;
+	display: block;
 }
 
 div#profile #summary{

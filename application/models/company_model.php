@@ -23,7 +23,11 @@ class Company_model extends MY_Model {
     **/ 
     function get_company_list()
     {
-        $query = $this->db->query("SELECT id,company_name,company_url,update_time FROM company_all");       
+        //$query = $this->db->query("SELECT id,company_name,company_url,update_time FROM company_all");  
+        
+        $this->db->select('id, company_name, company_url, update_time');
+        $query = $this->db->get('company_all'); 
+       
         return $query;
     }
     
@@ -457,7 +461,29 @@ class Company_model extends MY_Model {
         {
         echo "<div id='no_result'>No result found !</div>";
         }          
+    }
+    
+    function company_search($search_term)
+    {
+        $this->db->select('id, company_name');
+        $this->db->like('company_name', $search_term, 'after');
+        $this->db->limit('5');
+        $query = $this->db->get('company_all');
+        $count = $query->num_rows();        
+
+        if($query)
+        {      
+            $result_array = array();
+            foreach($query->result_array() as $row=>$item)
+            {
+                $result_array[$row]['id'] = $item['id'];
+                $result_array[$row]['value'] = $item['company_name'];
+            }
+            $output = json_encode($result_array);    
+            return $output;            
+        }        
     }    
+    
  
     /**
     * Create Company

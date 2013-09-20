@@ -3,6 +3,9 @@
 <head>
 	<title><?php echo isset($title) ? "Emplayo - $title" : "Emplayo"; ?></title>
 	<meta charset="utf-8">
+	
+	<link rel="shortcut icon" href="<?php echo base_url()?>assets/images/favicon.ico" type="image/x-icon">
+	
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/global.css" type="text/css"/>  
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/view.css" type="text/css"/>
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/jquery-ui.css" type="text/css"/>
@@ -18,20 +21,34 @@
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.isotope.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/flipcounter.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/select2.min.js"></script> 
-
-        
-	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script> 
 	
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script> 
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/uservoice.js"></script>
 	
 </head>
 <body>
 	<div id="header">
 		<div class="content">
-			<div id="header_login" class="clear"><a href="signup">Sign Up</a> | <a href="login">Log In</a></div>
+			<!-- <div id="header_login" class="clear"><a href="signup">Sign Up</a> | <a href="login">Log In</a></div> -->
 			<div id="next_question"><div class="next">next</div><div class="arrow"></div></div>
 			<div id="show_preview"><div class="next">next</div><div class="arrow"></div></div>
+			<?php 
+			if ($this->ion_auth->user()->row()){
+				$user = $this->ion_auth->user()->row();
+				echo "<div id=\"header_icon\" onclick=\"settings('#modal_settings');\"></div>";
+				echo "<div id=\"header_email\"><a href=\"/\">";
+				echo $user->email;
+				echo "</a></div>";
+			}else{
+				echo "<div id=\"header_login\" class=\"clear\"><a href=\"signup\">Sign Up</a> | <a href=\"login\">Log In</a></div>";
+			}
+			?>
+			
+			<!--
 			<div id="header_icon" onclick="settings('#modal_settings');"></div>
 			<div id="header_email"><a href="/"><?php if ($this->ion_auth->user()->row()){$user = $this->ion_auth->user()->row(); echo $user->email;}?></a></div>
+			-->
+			
 			<div id="modal_settings">
 				<ul>
 					<li><a href="/">Home</a></li>
@@ -66,12 +83,10 @@
 		<div id="navigation">
 			<div class="content">
 				<ul id="nav-list">
-					<li class="borders"><a href="">Testimonials</a></li>
-					<li class="borders"><a href="">Employers</a></li>
-					<li class="borders"><a href="">Pricing</a></li>
-					<li class="borders"><a href="">Contact</a></li>
-					<li class="borders"><a href="">Terms</a></li>
-					<li><a href="">Privacy</a></li>
+					<li class="borders"><a href="/">Employers</a></li>
+					<li class="borders"><a href="/about">About</a></li>
+					<li class="borders"><a href="/terms">Terms</a></li>
+					<li><a href="/privacy">Privacy</a></li>
 				</ul>
 				<div class="clear">&copy; 2013 Emplayo, Inc. All rights reserved.</div>
 			</div>

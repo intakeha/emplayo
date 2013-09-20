@@ -100,7 +100,8 @@ class Preview extends CI_Controller {
             {
                 $user_work = NULL;
             }
-                      
+
+                                  
             /*19*/$user_location = $this->input->post('user_location');
             /*20*/$user_industry = $this->input->post('user_industry');
             //$categories = $this->input->post('category');//NOT SURE OF THIS NAME!!!                

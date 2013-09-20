@@ -72,6 +72,10 @@ class User extends CI_Controller {
                                 }
                             }
                             */
+                            //SEND WELCOME EMAIL                           
+                            $email_sent = $this->send_welcome_email($email);
+                            //END OF WELCOME EMAIL SEND 
+                            
                             $this->session->set_userdata('new_user', TRUE);
                             $this->session->set_flashdata('message', $this->ion_auth->messages());
                             redirect('/', 'refresh');                            
@@ -92,7 +96,32 @@ class User extends CI_Controller {
 		}
             }
 	}        
+        function send_welcome_email($email){
+            //LOAD LIBRARIES
+            $this->load->config('ion_auth', TRUE);
+            $this->load->library('email');        
 
+            //CLEAR OUT ANY VARIABLES FROM A PREVIOUS MESSAGE
+            $this->email->clear();
+
+            //LOAD TEMPLATE
+            $message = $this->load->view('emails/welcome.tpl.php', '', true);
+
+            //GRAB CONFIG VALUES TO SET 'FROM' INFO
+            $this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
+
+            $subject = 'Welcome To Emplayo!';
+            $this->email->to($email); 
+            $this->email->subject($subject);
+            $this->email->message($message);
+
+            if ($this->email->send()){
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+            
+        }
 	//log the user in
 	function login()
 	{
@@ -177,7 +206,7 @@ class User extends CI_Controller {
 		{
 			// get identity for that email
 			$config_tables = $this->config->item('tables', 'ion_auth');
-			$identity = $this->db->where('email', $this->input->post('email'))->limit('1')->get($config_tables['users'])->row();
+			$identity = $this->db->where('email', $this->input->post('email'))->limit('1')->get($config_tables['users'])->row();                        //
                         //$identity is an array; the entire row from the user db, with all of the user info
                         if (!empty($identity))                            
                         {
@@ -202,7 +231,7 @@ class User extends CI_Controller {
                              //we did NOT find a matching email address in our system
                              //re-display the form with an error
 			     
-                            $this->data['message'] = 'There is no user with that <br> email address in our system.';
+                            $this->data['message'] = '<p class="errors">There is no user with that email address<br>in our system.</p>';
                             $this->data['title']="Forgot Password";
                             $this->data['content']="pages/_forgot";
                             $this->_render_page('canvas', $this->data);

@@ -667,7 +667,17 @@ class Company extends CI_Controller {
             $this->company_model->company_name_search($kws);
             
         }        
-    }//end of company_name_search      
+    }//end of company_name_search   
+    
+    public function company_search($search_term)
+    {
+        if(($search_term) && ($search_term) != '')    
+        {
+            $decoded_search_term = urldecode($search_term);
+            $result = $this->company_model->company_search($decoded_search_term);
+            echo $result;
+        }        
+    }//end of company_type_search      
 
     function logo_upload()
     {    
@@ -1317,13 +1327,30 @@ class Company extends CI_Controller {
             $quote = $this->input->post('quote');
             $quote_length = strlen($quote);
             $tile_shape = NULL;
+	    
+	    $words  = explode(' ', $quote);
+	    $longestWordLength = 0;
+	    
+	    foreach ($words as $word) {
+		if (strlen($word) > $longestWordLength) {
+			$longestWordLength = strlen($word);
+		}
+	    };
 
             $small = 50;
             $medium = 100;
             $large = 150;
             $xlarge = 200;
+	    $maxWordLength = 13; // maximum word length before word overflows the tile
 
-            if (($quote_length > 0) && ($quote_length <= $small))
+            if (($longestWordLength > $maxWordLength) && ($quote_length <= $large)){
+		$tile_shape = 3;
+	    }
+	    elseif (($longestWordLength > $maxWordLength) && ($quote_length <= $xlarge))
+            {
+                $tile_shape = 4;
+            }
+	    else if (($quote_length > 0) && ($quote_length <= $small))
             {
                 $tile_shape = 1; 
             }
@@ -1342,7 +1369,7 @@ class Company extends CI_Controller {
             else
             {
                 $tile_shape = 4;
-            }
+            };
 
             if ($this->company_model->insert_quote($id,$quote,$tile_shape))
             {
@@ -1379,6 +1406,28 @@ class Company extends CI_Controller {
         }
 
     }
+    
+	public function profile($company_id){
+		
+            //get company details using company id
+            $this->load->model('public_company_model');
+            //get_profile_pics
+            $data['pic_array'] = $this->public_company_model->get_profile_pics($company_id);
+            //$data['company_info'] = $this->public_company_model->get_public_company_info($company_id);
+            $data['company_info'] = $this->company_model->get_company_info($company_id);
+            $data['quote_array'] = $this->public_company_model->get_quotes($company_id);
+
+            $data['merged_array'] = $this->public_company_model->array_interlace($data['pic_array'], $data['quote_array']);
+            //shuffle($data['merged_array']);
+
+            $data['title']="Company";
+            $data['content']="pages/_company";
+            $this->load->helper('url');
+            $this->load->view('canvas', $data);
+            $this->session->unset_userdata('message');
+			
+
+	}      
 
     
 

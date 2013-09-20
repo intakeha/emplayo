@@ -174,4 +174,29 @@ class Survey extends CI_Controller {
             echo "I'm in the match function!";
 	}     
     
+    public function email(){
+        echo "I'm in the email function!<br>";
+        
+        
+        $this->load->config('ion_auth', TRUE);
+        $email = 'hipnoddic@mac.com';
+        $subject = 'Welcome To Emplayo!';
+        $this->load->library('email');
+        $this->email->clear();
+        
+        $message = $this->load->view('emails/welcome.tpl.php', '', true);
+        $this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
+
+        $this->email->to($email); 
+
+        $this->email->subject($subject);
+        $this->email->message($message);
+
+        $this->email->send();
+
+        echo $this->email->print_debugger();        
+        
+        
+    }           
+        
 }

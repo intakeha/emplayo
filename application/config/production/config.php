@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '//www.emplayo.com';
+$config['base_url']	= 'https://www.emplayo.com';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'Lhgbcbje1O8KS9BzLt68C8X568itdOwS';
+$config['encryption_key'] = 'J78l2311uv1UXLvvdB8P49S6DJvp7aE8';
 
 /*
 |--------------------------------------------------------------------------

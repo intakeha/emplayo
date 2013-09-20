@@ -1,16 +1,37 @@
 /* CSS Reset */
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
 
-/* Emplayo Palette 
-	#364954 (Dark Blue)
-	#6d7a83 (Dark Blue Shade)
-	#e9b60b (Yellow)
-	#941f1c (Red)
-	#1d71a2 (Blue)
-	#258cd1 (Light Blue)
-	#ad27c1 (Purple)
-	#27c339 (Green)
-*/
+.emplayo_blue{
+	color: #364954;
+}
+
+.dark_blue{
+	color: #6d7a83;
+}
+
+.yellow{
+	color: #e9b60b;
+}
+
+.red{
+	color: #941f1c;
+}
+
+.blue{
+	color: #1d71a2;
+}
+
+.light_blue{
+	color: #258cd1;
+}
+
+.purple{
+	color: #ad27c1;
+}
+
+.green{
+	color: #27c339;
+}
 
 /* Page styles */
 hr {
@@ -31,7 +52,7 @@ span {
 }
 
 a:link, a:active, a:visited {
-	color: #6d7a83;
+	color: #1d71a2;
 	text-decoration: none;
 }
 
@@ -65,9 +86,9 @@ div#header .content{
 }
 
 #logo{
-	background: url(../images/emplayo.png) no-repeat;
+	background: url(../images/emplayo_beta.png) no-repeat;
 	display: block;
-	width: 204px;
+	width: 240px;
 	height: 38px;
 }
 
@@ -80,14 +101,12 @@ div#header_icon{
 	border: 1px solid #6d7a83;
 	margin-right: 10px;
 	cursor: pointer;
-	display: none;
 }
 
 div#header_email{
 	float: right;
 	font-size: 16px;
 	margin: 14px 15px 0; 
-	display: none;
 }
 
 div#header_email a:link, div#header_email a:active, div#header_email a:visited, div#header_email a:hover{
@@ -162,8 +181,10 @@ div#navigation .content{
 }
 
 #nav-list {
-	height: 30px;
-	margin-left: 170px;
+    height: 55px;
+    margin: auto;
+    padding-left: 80px;
+    width: 500px;
 }
 
 #nav-list li{
@@ -198,6 +219,10 @@ ul#nav-list .borders{
 .block{
 	display: block;
 	cursor: pointer;
+}
+
+.float_right{
+	float: right;
 }
 
 .zindex{
@@ -246,6 +271,18 @@ img.btn_close {
 	margin: -55px -55px 0 0;
 }
 
+a.buttons{
+	padding: 4px 0px;
+}
+
+.success{
+	color: #27c339;
+}
+
+.errors{
+	color: #941f1c;
+}
+
 .button_grey {
 	background-color: #333;
 	color: #fff;
@@ -265,6 +302,10 @@ img.btn_close {
 	color: #fff;
 	border: 1px #333 solid;
 	cursor: pointer;
+}
+
+.messages{
+    color: #ad27c1;
 }
 
 /*--Making IE6 Understand Fixed Positioning--*/

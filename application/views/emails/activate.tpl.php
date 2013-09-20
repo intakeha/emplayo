@@ -9,7 +9,7 @@
       <p>Click below to confirm your email address:</p>
       <?php echo anchor('auth/activate/'. $id .'/'. $activation, 'Confirm Email', 'style="display: block; width: 150px; height: 20px; background-color: #258CD1; color: #fff; padding: 10px; font-weight: bold; text-align: center; text-decoration: none; margin: 0 auto;"');?>
     <p>Or paste the following into your browser:</p>
-    <div style="margin-bottom:15px;"><?php echo anchor('auth/activate/'. $id .'/'. $activation, 'auth/activate/'. $id .'/'. $activation);?></div>
+    <div style="margin-bottom:15px;"><?php echo anchor('auth/activate/'. $id .'/'. $activation, base_url().'auth/activate/'. $id .'/'. $activation);?></div>
     </td>
   </tr>
   <tr>

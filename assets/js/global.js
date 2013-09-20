@@ -25,16 +25,19 @@ $(document).ready(function(){
 		
 
 	// Default cursor location
-	if(currentPage == 'login' || currentPage == 'signup' || currentPage == 'reset' || currentPage == 'forgot'){
+	if(currentPage == 'login' || currentPage == 'signup' || currentPage == 'reset' || currentPage == 'forgot' || currentPage == 'brb'){
 		$('input#email').focus();
 		$('#header_login').hide(); // hide login link
 		$('#header_icon, #header_email').hide(); // show profile navigation
 	};
 	
+	if(currentPage == 'criteria'){
+		$('#header_icon, #header_email').hide(); // show profile navigation
+		window.onbeforeunload = function() { return "Your data will be lost if you leave now."; }; // enable onbeforeunload
+	};
+	
 	// Customize header elements based on current page
 	if(currentPage == 'profile' || currentPage == 'admin'){
-		$('#header_login').hide(); // hide login link
-		$('#header_icon, #header_email').show(); // show profile navigation
 
 		//mouseover on company tiles
 		$('div#profile li').mouseenter(function() {
@@ -51,7 +54,9 @@ $(document).ready(function(){
 			$('.company_search').typeahead({
 				name: 'company_search',
 				limit: 5,
-				remote: '/inquire/company_search/%QUERY',
+                                //BLC: Changed this to work for admin company table
+				//remote: '/inquire/company_search/%QUERY',
+                                remote: '/admin/company/company_search/%QUERY',
 				template: '<p><strong>{{value}}</strong></p>',
 				engine: Hogan
 			}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
@@ -113,8 +118,18 @@ $(document).ready(function(){
 		function () {
 		$(this).animate({backgroundColor: '#e9b60b'}, 200);
 		}
-	);	
-	
+	);
+
+	// User Home Start button animation
+	$("#profile a#start_btn").hover(
+		function () {
+		$(this).animate({backgroundColor: '#27c339', color: '#fff'}, 200);
+		},
+		function () {
+		$(this).animate({backgroundColor: '#e9b60b', color: '#1D2A33'}, 200);
+		}
+	);
+		
 	// Display questionnaire	 
 	if(currentPage == 'criteria'){
 		
@@ -127,6 +142,7 @@ $(document).ready(function(){
 		
 		//Activiate form submit button
 		$('div#show_preview').click(function(){
+			window.onbeforeunload = null; // disabled onbeforeunload
 			$('form#criteria').submit();
 		});
 
@@ -669,6 +685,7 @@ $(document).ready(function(){
 			engine: Hogan
 		}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
 			numChosen = $('.chosenIndustry li').length;
+			if(numChosen == 5){alert ("You may only select up to 5 industries. In order to add another choice, use the orange arrow to remove your last selection.");};
 			if(numChosen >= 0 && numChosen < 5){
 				var duplicationFlag = 0;
 				$('.chosenIndustry').show("slide", { direction: "right" }, 100);
@@ -712,6 +729,7 @@ $(document).ready(function(){
 			engine: Hogan
 		}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
 			numChosen = $('.chosenCities li').length;
+			if(numChosen == 5){alert ("You may select up to 5 cities. In order to add another choice, use the orange arrow to remove your last selection.");};
 			if(numChosen >= 0 && numChosen < 5){
 				var duplicationFlag = 0;
 				$('.chosenCities').show("slide", { direction: "right" }, 100);
@@ -772,7 +790,7 @@ $(document).ready(function(){
 					<li><label>Field of Study</label><input class="text_form study'+educationRef+'" type="text" maxlength="150" name="user_education['+educationRef+'][field_name]"><input type="hidden" name="user_education['+educationRef+'][field_id]" value=""></li>\
 					<li class="history_sets"><label>Time Period</label><select name="user_education['+educationRef+'][start_month]" class=" monthEmpty prefill"></select>\
 						<select name="user_education['+educationRef+'][start_year]" class=" yearEmpty prefill"></select> &ndash; <select name="user_education['+educationRef+'][end_month]" class=" monthEmpty prefill"></select> \
-						<select name="user_education['+educationRef+'][end_month]" class=" yearEmpty prefill"></select>\
+						<select name="user_education['+educationRef+'][end_year]" class=" yearEmpty prefill"></select>\
 					</li>\
 					'
 				);
@@ -780,15 +798,15 @@ $(document).ready(function(){
 			} else {
 				$('#experience_layout ul').append(
 					'<hr/> \
-						<li><label>Company</label><input class="text_form company'+educationRef+'" type="text" maxlength="150" name="user_work['+experienceRef+'][company_name]"><input type="hidden" name="user_work['+experienceRef+'][company_id]" value=""></li>\
-						<li><label>Job</label><input class="text_form job'+educationRef+'" type="text" maxlength="150" name="user_work['+experienceRef+'][job_type]"><input type="hidden" name="user_work['+experienceRef+'][job_id]" value=""></li>\
+						<li><label>Company</label><input class="text_form company'+experienceRef+'" type="text" maxlength="150" name="user_work['+experienceRef+'][company_name]"><input type="hidden" name="user_work['+experienceRef+'][company_id]" value=""></li>\
+						<li><label>Job</label><input class="text_form job'+experienceRef+'" type="text" maxlength="150" name="user_work['+experienceRef+'][job_type]"><input type="hidden" name="user_work['+experienceRef+'][job_id]" value=""></li>\
 						<li><label class="happiness_label">Happiness</label><div class="happiness"></div></li>\
 						<li class="history_sets">\
 							<label>Time Period</label><select name="user_work['+experienceRef+'][start_month]" class=" monthEmpty prefill"></select>\
 							<select name="user_work['+experienceRef+'][start_year]" class=" yearEmpty prefill"></select> \
 							&ndash; <span class="presentFlag" style="display: none;">Present</span>\
 							<select name="user_work['+experienceRef+'][end_month]" class=" monthEmpty prefill endDateFlag"></select> <select name="user_work['+experienceRef+'][end_year]" class=" yearEmpty prefill endDateFlag"></select>\
-							<span class="presentText">I currently work here</span><input type="checkbox" style="width: 13px; float: left;" name="user_work['+experienceRef+'][current]"/>\
+							<span class="presentText">I currently work here</span><input type="checkbox" style="width: 13px; float: left;" name="user_work['+experienceRef+'][current]" value="0"/>\
 						</li>\
 					'
 				);
@@ -928,7 +946,7 @@ function workHistoryTypeahead(experienceRef){ // initialize typeahead for work h
 		template: '<p><strong>{{value}}</strong></p>',
 		engine: Hogan
 	}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
-		$("#history input[name='user_education["+experienceRef+"][company_id]']").val(datum.id);
+		$("#history input[name='user_work["+experienceRef+"][company_id]']").val(datum.id);
 	});
 	
 	$('.job'+experienceRef).typeahead({
@@ -938,7 +956,7 @@ function workHistoryTypeahead(experienceRef){ // initialize typeahead for work h
 		template: '<p><strong>{{value}}</strong></p>',
 		engine: Hogan
 	}).on('typeahead:selected typeahead:autocompleted', function($e, datum){
-		$("#history input[name='user_education["+experienceRef+"][job_id]']").val(datum.id);
+		$("#history input[name='user_work["+experienceRef+"][job_id]']").val(datum.id);
 	});
 };
 
@@ -973,9 +991,11 @@ function presentFlag(){
 		if ($(this).prop('checked')){
 			$(this).parent().find('.endDateFlag').hide();
 			$(this).parent().find('.presentFlag').show();
+			$(this).val(1);
 		}else{
 			$(this).parent().find('.endDateFlag').show();
 			$(this).parent().find('.presentFlag').hide();
+			$(this).val(0);
 		};
 	});
 };

@@ -41,7 +41,7 @@
 //$route['default_controller'] = "emplayo";//chon's setting
 //$route['default_controller'] = "home";//brad's orig setting
 $route['default_controller'] = "home";
-$route['404_override'] = '';
+$route['404_override'] = 'Emplayo404';
 $route['login'] = 'user/login';
 $route['signup'] = 'user/signup';
 $route['forgot'] = 'user/forgot_password';
@@ -49,6 +49,8 @@ $route['change'] = 'user/change_password';
 $route['logout'] = 'user/logout';
 $route['company'] = 'company';
 $route['admin'] = 'admin/home';
+$route['terms'] = 'about/terms';
+$route['privacy'] = 'about/privacy';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

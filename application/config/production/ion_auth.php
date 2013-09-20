@@ -86,7 +86,7 @@ $config['admin_email']          = "admin@emplayo.com"; 	// Admin Email, admin@ex
 $config['default_group']        = 'members'; 			// Default group, use name
 $config['admin_group']          = 'admin'; 				// Default administrators group, use name
 $config['identity']             = 'email'; 				// A database column which is used to login with
-$config['min_password_length']  = 6; 				// Minimum Required Length of Password
+$config['min_password_length']  = 8; 				// Minimum Required Length of Password
 $config['max_password_length']  = 20; 				// Maximum Allowed Length of Password
 $config['email_activation']     = FALSE; 				// Email Activation for registration
 $config['manual_activation']    = FALSE; 				// Manual Activation for registration
@@ -166,9 +166,9 @@ $config['store_salt']  = FALSE;
  | Message Delimiters.
  | -------------------------------------------------------------------------
  */
-$config['message_start_delimiter'] = '<p>'; 	// Message start delimiter
+$config['message_start_delimiter'] = '<p class="success">'; 	// Message start delimiter
 $config['message_end_delimiter']   = '</p>'; 	// Message end delimiter
-$config['error_start_delimiter']   = '<p>';		// Error mesage start delimiter
+$config['error_start_delimiter']   = '<p class="errors">';		// Error mesage start delimiter
 $config['error_end_delimiter']     = '</p>';	// Error mesage end delimiter
 
 /* End of file ion_auth.php */
