@@ -25,7 +25,7 @@ $(document).ready(function(){
 		
 
 	// Default cursor location
-	if(currentPage == 'login' || currentPage == 'signup' || currentPage == 'reset' || currentPage == 'forgot'){
+	if(currentPage == 'login' || currentPage == 'signup' || currentPage == 'reset' || currentPage == 'forgot' || currentPage == 'brb'){
 		$('input#email').focus();
 		$('#header_login').hide(); // hide login link
 		$('#header_icon, #header_email').hide(); // show profile navigation
