@@ -23,7 +23,11 @@ class Company_model extends MY_Model {
     **/ 
     function get_company_list()
     {
-        $query = $this->db->query("SELECT id,company_name,company_url,update_time FROM company_all");       
+        //$query = $this->db->query("SELECT id,company_name,company_url,update_time FROM company_all");  
+        
+        $this->db->select('id, company_name, company_url, update_time');
+        $query = $this->db->get('company_all'); 
+       
         return $query;
     }
     

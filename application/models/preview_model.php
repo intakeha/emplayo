@@ -42,7 +42,7 @@ class Preview_model extends CI_Model {
                 AND (t.id IN ('.$categories.'))
                 AND b.id = bt.company_id
                 GROUP BY b.id';
-
+       
         $query = $this->db->query($sql);
 
         foreach ($query->result_array() as $row)
@@ -162,9 +162,9 @@ class Preview_model extends CI_Model {
             //build array of company ids that came from the last query...so we can use them in the upcoming query
             foreach ($query->result_array() as $row) {
                 //$companyid_array[]=$row;
-                $companyid_array[]=$row['id'];
+                $companyid_array[]=$this->db->escape($row['id']);
             }
-            $queried_comp_ids = implode(',', $companyid_array);
+            $queried_comp_ids = implode(',', $companyid_array);//this has been escaped
             
             //get the user submitted benefits ranking
             $user_benefits_array = $this->input->post('users_benefits');   
@@ -172,7 +172,7 @@ class Preview_model extends CI_Model {
             //$this->output->enable_profiler(TRUE);
             
             //get all the companies (that meet the previous criteria) and their associated benefits
-            $sql2 = 'SELECT company_id,benefits_id FROM company_benefits WHERE company_id IN ('.$queried_comp_ids.')';
+            $sql2 = 'SELECT company_id,benefits_id FROM company_benefits WHERE company_id IN ('.$queried_comp_ids.')';//escaped
             $query2 = $this->db->query($sql2);
             
             //build an array with a specific format to be used in the upcoming scoring process
@@ -249,6 +249,7 @@ class Preview_model extends CI_Model {
     
     function industry_filter($industry)
     {
+        echo "hi";
         //find companies that match the DO NEXT categories
         $categories = implode(',', $industry);
 
@@ -620,7 +621,7 @@ class Preview_model extends CI_Model {
 
               $new_ranked_comps = array();
               foreach ($ranked_comps as $row) {
-                  $new_ranked_comps[]=$row['id'];                  
+                  $new_ranked_comps[]=$this->db->escape($row['id']);            
               }
 
             $companyid_array = implode(',', $new_ranked_comps);
@@ -1210,8 +1211,14 @@ class Preview_model extends CI_Model {
     function citizenship_merge($benefit_scoring){
         //get the company citizenship values from the database
         $comp_ids = array_keys($benefit_scoring);//company ids, along with benefit scores
-        $comp_ids_imploded = implode(',', $comp_ids);
-        $sql = 'SELECT id,corp_citizenship_id AS citizenship FROM company where id IN ('.$comp_ids_imploded.')';
+        
+        $temp_escaped_array = array();
+        foreach ($comp_ids as $id) {
+          $temp_escaped_array[] = $this->db->escape($id);
+        }      
+        
+        $comp_ids_imploded = implode(',', $temp_escaped_array);
+        $sql = 'SELECT id,corp_citizenship_id AS citizenship FROM company where id IN ('.$comp_ids_imploded.')';//escaped
         //run the query
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0)
@@ -1231,7 +1238,14 @@ class Preview_model extends CI_Model {
     function pace_merge($benefit_scoring,$full_company_array){
         //get the company pace values from the database
         $comp_ids = array_keys($benefit_scoring);//company ids, along with benefit scores
-        $comp_ids_imploded = implode(',', $comp_ids);
+        
+        $temp_escaped_array = array();
+        foreach ($comp_ids as $id) {
+          $temp_escaped_array[] = $this->db->escape($id);
+        }      
+        
+        $comp_ids_imploded = implode(',', $temp_escaped_array);
+
         $sql = 'SELECT id,pace_id AS pace FROM company where id IN ('.$comp_ids_imploded.')';
         //run the query
         $query = $this->db->query($sql);
@@ -1251,7 +1265,13 @@ class Preview_model extends CI_Model {
     function lifecycle_merge($benefit_scoring,$full_company_array){
         //get the company lifecycle values from the database
         $comp_ids = array_keys($benefit_scoring);//company ids, along with benefit scores
-        $comp_ids_imploded = implode(',', $comp_ids);
+        
+        $temp_escaped_array = array();
+        foreach ($comp_ids as $id) {
+          $temp_escaped_array[] = $this->db->escape($id);
+        }              
+        $comp_ids_imploded = implode(',', $temp_escaped_array);        
+
         $sql = 'SELECT id,lifecycle_id AS lifecycle FROM company where id IN ('.$comp_ids_imploded.')';
         //run the query
         $query = $this->db->query($sql);

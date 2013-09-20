@@ -206,7 +206,7 @@ class User extends CI_Controller {
 		{
 			// get identity for that email
 			$config_tables = $this->config->item('tables', 'ion_auth');
-			$identity = $this->db->where('email', $this->input->post('email'))->limit('1')->get($config_tables['users'])->row();
+			$identity = $this->db->where('email', $this->input->post('email'))->limit('1')->get($config_tables['users'])->row();                        //
                         //$identity is an array; the entire row from the user db, with all of the user info
                         if (!empty($identity))                            
                         {
