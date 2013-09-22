@@ -31,11 +31,15 @@
 		<img src="<?php echo base_url() ?>assets/images/survey/co_pace.jpg">
 		<img src="<?php echo base_url() ?>assets/images/survey/co_cycle_header.jpg">
 		<img src="<?php echo base_url() ?>assets/images/survey/co_cycle.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/co_type.jpg">
 		<img src="<?php echo base_url() ?>assets/images/survey/benefits_bar.png">
 		<img src="<?php echo base_url() ?>assets/images/survey/slider_5markers.jpg">
 		<img src="<?php echo base_url() ?>assets/images/survey/sliderHandleDefault.png">
 		<img src="<?php echo base_url() ?>assets/images/survey/sliderHandle.png">
 		<img src="<?php echo base_url() ?>assets/images/survey/instructions.png">
 		<img src="<?php echo base_url() ?>assets/images/survey/instructions_preview.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/industries.png">
+		<img src="<?php echo base_url() ?>assets/images/survey/globe.jpg">
+		<img src="<?php echo base_url() ?>assets/images/survey/leadership.jpg">
 </div>
 </div>
