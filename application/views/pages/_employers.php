@@ -21,7 +21,7 @@
 			</ul>
 			
 			<p class="clear">Contact our Emplayo team to discuss your recruiting needs.</p>
-			<a id="button">Contact Us</a>
+			<a id="button" href="/contact">Contact Us</a>
 		</div>
 	</div>
 </div>
