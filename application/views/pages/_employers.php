@@ -11,7 +11,7 @@
 				<li>
 					<div class="icon"><img src="../assets/images/static/postings_icon.png"></div>
 					<img src="../assets/images/static/postings.png">
-					<p class="desc">Expand job opportunities to the most relevant candidates.</p>
+					<p class="desc">Channel job openings to the most suitable candidates.</p>
 				</li>
 				<li>
 					<div class="icon"><img src="../assets/images/static/target_icon.png"></div>
@@ -20,7 +20,7 @@
 				</li>
 			</ul>
 			
-			<p class="clear">Contact our Emplayo team to discuss your recruiting needs.</p>
+			<p class="clear">Contact Emplayo to discuss your recruiting needs.</p>
 			<a id="button" href="/contact">Contact Us</a>
 		</div>
 	</div>
