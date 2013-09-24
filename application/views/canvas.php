@@ -24,6 +24,7 @@
 	
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script> 
         <script type="text/javascript" src="<?php echo base_url() ?>assets/js/uservoice.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/googleanalytics.js"></script>
 	
 </head>
 <body>
@@ -83,8 +84,9 @@
 		<div id="navigation">
 			<div class="content">
 				<ul id="nav-list">
-					<li class="borders"><a href="/">Employers</a></li>
+					<li class="borders"><a href="/employers">Employers</a></li>
 					<li class="borders"><a href="/about">About</a></li>
+					<li class="borders"><a href="/contact">Contact</a></li>
 					<li class="borders"><a href="/terms">Terms</a></li>
 					<li><a href="/privacy">Privacy</a></li>
 				</ul>

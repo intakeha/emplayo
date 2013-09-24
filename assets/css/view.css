@@ -17,6 +17,7 @@
 div#banner .content{
 	padding-top: 50px;
 	height: 400px;
+	cursor: default;
 }
 
 div#icon {
@@ -67,6 +68,7 @@ div#icon {
 div#belt .content{
 	height: 100px;
 	line-height: 105%;
+	cursor: default;
 }
 
 .steps {
@@ -101,6 +103,7 @@ div#belt .content{
 div#story .content{
 	min-height: 380px;
 	padding-top: 20px;
+	cursor: default;
 }
 
 div#story .content #video{
@@ -119,7 +122,8 @@ div#story .content #video{
 div#page404 .content{
 	font-size: 20px;
 	min-height: 500px;
-	background: url(../images/404.png) no-repeat;
+	background: url(../images/static/404.png) no-repeat;
+	cursor: default;
 }
 
 div#page404 #message{
@@ -144,7 +148,8 @@ div#page404 ul{
 div#brb .content{
 	font-size: 20px;
 	min-height: 500px;
-	background: url(../images/brb.png) no-repeat;
+	background: url(../images/static/brb.png) no-repeat;
+	cursor: default;
 }
 
 div#brb #message{
@@ -154,15 +159,68 @@ div#brb #message{
     width: 500px;
 }
 
+/* Employers */
+
+div#employers .content{
+	min-height: 500px;
+	text-align: center;
+	cursor: default;
+}
+
+div#employers img#title{
+	margin-top: 25px;
+}
+
+div#employers div.icon{
+	height: 50px;
+	margin: 10px 0;
+}
+
+div#employers ul{
+	width: 900px;
+	height: 200px;
+	margin: 50px auto 10px;
+}
+
+div#employers li{
+	width: 300px;
+	height: 160px;
+	float: left;
+}
+
+div#employers p.desc{
+	font-size: 16px;
+	padding: 0 32px;
+	line-height: 20px;
+}
+
+div#employers a{
+    background-color: #E9B60B;
+    color: #1D2A33;
+    display: block;
+    font-size: 30px;
+    height: 40px;
+    margin: 40px auto;
+    padding-top: 10px;
+    text-align: center;
+    width: 200px;
+	cursor: pointer;
+}
+
 /* About */
 div#about .content{
 	font-size: 18px;
-	min-height: 475px;
+	min-height: 500px;
+	cursor: default;
 }
 
 div#about p{
 	margin: 20px 100px;
 	line-height: 30px;
+}
+
+div#about div{
+	margin-top: 30px;
 }
 
 div#about img#title{
@@ -171,9 +229,21 @@ div#about img#title{
 	font-size: 30px;
 }
 
+/* Contact Us */
+
+div#contact .content{
+	min-height: 500px;
+	cursor: default;
+}
+
+div#contact .content div{
+	margin: 30px 250px;
+}
+
 /* Terms & Privacy*/
 div#terms .content, div#privacy .content{
 	font-size: 16px;
+	cursor: default;
 }
 
 div#terms ol{
@@ -211,6 +281,7 @@ div#privacy p{
 /* Sign Up */
 div#signup .content{
 	min-height: 550px;
+	cursor: default;
 }
 
 #signup_left{
@@ -275,6 +346,7 @@ div#signup p.errors{
 div#admin .content{
 	min-height: 500px;
 	font-size: 20px;
+	cursor: default;
 }
 ul#admin_menu a{
 	background: url(../images/admin/circle.png) no-repeat;
@@ -1168,6 +1240,7 @@ div#admin div.company_creative_logo{
 
 div#login .content{
 	min-height: 550px;
+	cursor: default;
 }
 
 #login_left{
@@ -1252,6 +1325,7 @@ div#login div#login_right p.errors{
 div#settings .content{
 	height: 500px;
 	font-size: 20px;
+	cursor: default;
 }
 
 div#settings #infoMessage {
@@ -1648,6 +1722,7 @@ div#settings div#experience_layout .prefill{
 div#forgot .content{
 	height: 500px;
 	font-size: 20px;
+	cursor: default;
 }
 
 div#forgot span, div#forgot label {
@@ -1704,6 +1779,7 @@ div#forgot .errors{
 div#reset .content{
 	min-height: 500px;
 	font-size: 20px;
+	cursor: default;
 }
 
 div#reset span, div#reset label {
@@ -1853,6 +1929,7 @@ div#textDecor{
 
 div#criteria .content{
 	min-height: 600px;
+	cursor: default;
 }
 
 div.questions {
@@ -2677,6 +2754,7 @@ div#preview .content{
 	padding-top: 25px;
 	min-height: 475px;
 	text-align: center;
+	cursor: default;
 }
 
 div#preview p{
@@ -2759,6 +2837,7 @@ div#preview #progressIcon{
 div#profile .content{
 	text-align: center;
 	min-height: 450px;
+	cursor: default;
 }
 
 div#profile p{
