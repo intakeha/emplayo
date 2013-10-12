@@ -1862,26 +1862,48 @@ form#criteria{
 	margin-bottom: 10px;
 }
 
+div.currentQuestion {
+    background-color: #EEEEEE;
+    border: 1px solid #CCCCCC;
+    border-radius: 10px 10px 0 0;
+    color: #364954;
+    display: none;
+    font-size: 25px;
+    height: 40px;
+    margin: -39px auto 0;
+    padding-top: 15px;
+    text-align: center;
+    width: 230px;
+}
+
 div.hints {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #CCCCCC;
     border-left: 1px solid #CCCCCC;
-    border-radius: 5px 5px 0 0;
+    border-radius: 0 0 10px 10px;
     border-right: 1px solid #CCCCCC;
-    border-top: 1px solid #CCCCCC;
-    color: #E9B60B;
+    color: purple;
     display: none;
     font-size: 16px;
     height: 22px;
-    margin-left: 410px;
-    margin-top: -10px;
+	margin: -60px auto 30px;
     padding-top: 5px;
     text-align: center;
-    width: 200px;
+    width: 230px;
 }
 
 div.hints div {
     display: none;
 }
 
+div.currentQuestion font{
+	color: #364954;
+	font-weight: normal;
+}
+
+div.currentQuestion span{
+	font-weight: normal;
+}
 
 area{
 	outline: none;
@@ -1934,7 +1956,7 @@ div#criteria .content{
 
 div.questions {
 	text-align: center;
-	min-height: 550px;
+	min-height: 600px;
 	display: none;
 }
 
@@ -2518,7 +2540,7 @@ img#motivationOverlay {
 /* Question 18 & 19 - Industry & City */
 
 div.q18 {
-	background: url("../images/survey/industries.png") no-repeat;
+	background: url("../images/survey/industries.png") no-repeat 0 65px transparent;
 }
 
 div#industry input, div#location input{
@@ -2567,7 +2589,7 @@ div.questions .tt-is-under-cursor {
 }
 
 div.q19 {
-	background: url("../images/survey/globe.jpg") no-repeat;
+	background: url("../images/survey/globe.jpg") no-repeat 0 75px transparent;
 }
 
 div.chosenCities, div.chosenIndustry{
@@ -2625,7 +2647,7 @@ div#history div#education_layout {
 div#history .details{
 	text-align: left;
 	margin: 10px 0;
-	height: 430px;
+	height: 475px;
 }
 
 div#history p.titles{

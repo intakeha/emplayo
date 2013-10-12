@@ -178,9 +178,14 @@ $(document).ready(function(){
 			// Show next question
 			$('div.questions').hide();
 			currentQuestion = currentQuestion + 1;
+			$('div.currentQuestion span').html(currentQuestion);
+			$('div.currentQuestion').show();
 			if (currentQuestion > lastQuestion){lastQuestion = currentQuestion;};
 			questionType = $('div#'+currentQuestion).attr("name");
-			if(questionType){$('div.hints, div#'+questionType).show();};
+			if(questionType){
+				generateHints(currentQuestion, questionType);
+				$('div.hints, div#'+questionType).show();
+			};
 			$('div#'+currentQuestion).show();
 			if ((currentQuestion == 20)&&($('input[name=q20]').val()!=0)){
 				$('#next_question').hide();
@@ -211,9 +216,13 @@ $(document).ready(function(){
 				
 				//Show current question
 				currentQuestion = 1+$(this).index();
+				$('div.currentQuestion span').html(currentQuestion);
+				$('div.currentQuestion').show();
 				$('div.questions').hide();
 				questionType = $('div#'+currentQuestion).attr("name");
-				if(questionType){$('div.hints, div#'+questionType).show();};
+				if(questionType){//enter question type for each question
+					$('div.hints, div#'+questionType).show();
+				};
 				$('div#'+currentQuestion).show();
 				if ((currentQuestion == 20)&&($('input[name=q20]').val()!=0)){
 					$('#next_question').hide();
@@ -769,7 +778,8 @@ $(document).ready(function(){
 		dateSelect('#history .prefill'); // Change font color when selected
 		$('#history input').val(''); // reset all forms
 		monthDropdown('#history .month');
-		yearDropdown('#history .year');
+		yearDropdown('#history div#experience_layout .year');
+		yearDropdownEducation('#history div#education_layout .year');
 		presentFlag();
 		educationHistoryTypeahead(0);
 		workHistoryTypeahead(0);
@@ -815,25 +825,26 @@ $(document).ready(function(){
 			}
 			dateSelect('#history .prefill');
 			monthDropdown('#history .monthEmpty');
-			yearDropdown('#history .yearEmpty');
+			yearDropdown('#history div#experience_layout .yearEmpty');
+			yearDropdownEducation('#history div#education_layout .yearEmpty');
+			
 			presentFlag();
 			
 			var education_sets = $('#education_layout li').length / 4;
 			var experience_sets = $('#experience_layout li').length / 4;
 			var sets, question_height, layout_height;
-			
 			sets = Math.max(education_sets, experience_sets);
 			
 			switch (sets)
 			{
 				case 2:
 					if($('div#20').height() < 620){
-						$('div#20').css('min-height','600px');
+						$('div#20').css('min-height','650px');
 						$('#history div#education_layout, #history div#experience_layout').css('height','510px');
 					};
 					break;
 				case 3:
-					if($('div#20').height() < 620){
+					if($('div#20').height() < 850){
 						question_height = $('div#20').height();
 						layout_height = $('#history div#education_layout').height();
 						$('div#20').css('min-height',question_height+210+'px');
@@ -841,7 +852,7 @@ $(document).ready(function(){
 					};
 					break;
 				case 4:
-					if($('div#20').height() < 830){
+					if($('div#20').height() < 1070){
 						question_height = $('div#20').height();
 						layout_height = $('#history div#education_layout').height();
 						$('div#20').css('min-height',question_height+210+'px');
@@ -849,7 +860,7 @@ $(document).ready(function(){
 					};
 					break;
 				case 5:
-					if($('div#20').height() < 1100){
+					if($('div#20').height() < 1150){
 						question_height = $('div#20').height();
 						layout_height = $('#history div#education_layout').height();
 						$('div#20').css('min-height',question_height+100+'px');
@@ -886,14 +897,57 @@ function showNextButtonCheckbox(e, lastEmpty) { // determine if user selected an
 	return lastEmpty;
 };
 
+// Populate question hints and instruction at the top
+function generateHints(e, questionType){
+	var hint="";
+	switch(questionType)
+	{
+		case "singleChoice":
+			hint="<div id='singleChoice'>select one</div>";
+			break;
+		case "multipleChoice":
+			hint="<div id='multipleChoice'>select one or more items</div>";
+			break;
+		case "rankChoice":
+			hint="<div id='rankChoice'>sort by drag and drop</div>";
+			break;
+		case "clickChoice":
+			hint="<div id='clickChoice'>click to select</div>";
+			break;
+		case "textChoice":
+			hint="<div id='textChoice'>enter text in textbox</div>";
+			break;
+		default:
+			hint="please select an answer";
+	}
+	$('div#'+e+" div.hints").remove();
+	$('div#'+e).prepend("<div class='hints'>"+hint+"</div>");
+};
+	
+// Generate number months for the drop-downs
 function monthDropdown(selector){
 	$(selector).append('<option value="0"> Month</option><option value="1"> Jan</option><option value="2"> Feb</option><option value="3"> Mar</option><option value="4"> Apr</option><option value="5"> May</option><option value="6"> Jun</option><option value="7"> Jul</option><option value="8"> Aug</option><option value="9"> Sept</option><option value="10"> Oct</option><option value="11"> Nov</option><option value="12"> Dec</option>');
 	$(selector).removeClass('monthEmpty').addClass('month');
 	
 };
 
+// Generate number years for the drop-downs
 function yearDropdown(selector){
 	var i = 1, year = 2013;
+	var html = '<option value="0">Year</option>';
+	
+	for (var i=1;i<65;i++)
+	{ 
+		html += '<option value="'+year+'">'+year+'</option>';
+		year -= 1;
+	}
+	
+	$(selector).append(html);
+	$(selector).switchClass('yearEmpty').addClass('year');
+};
+
+function yearDropdownEducation(selector){
+	var i = 1, year = 2017;
 	var html = '<option value="0">Year</option>';
 	
 	for (var i=1;i<65;i++)

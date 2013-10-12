@@ -66,12 +66,8 @@
 			</div>
 			
 			<a id="logo" href="/"></a>
-			<div class="hints">
-				<div id="singleChoice">select one</div>
-				<div id="multipleChoice">select one or more items</div>
-				<div id="rankChoice">sort by drag and drop</div>
-				<div id="clickChoice">click to select</div>
-				<div id="textChoice">enter text in textbox</div>
+			<div class="currentQuestion">
+				<div><font>Question <span></span> of 20</font></div>
 			</div>
 		</div>
 	</div>

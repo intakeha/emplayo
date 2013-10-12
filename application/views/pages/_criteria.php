@@ -112,8 +112,8 @@
 				
 			</div>
 		</div>
-		<div id="1" class="questions" name="multipleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q1','600','35');"></div>Select the type of companies you want to work for:</div>
+		<div id="1" class="questions" name="multipleChoice">		
+			<div><div class="bulb" onclick="modal('#modal_q1','600','35');"></div><font class="blue">Select the type of companies you want to work for:</font></div>
 			<ul id="co_type">
 				<li id="q1_1"></li>
 				<li id="q1_2"></li>
@@ -126,7 +126,7 @@
 			<input id="q1_4_0" type="checkbox" value="4" name="user_type[]" >
 		</div>
 		<div id="2" class="questions" name="multipleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q2','600','35');"></div>Select the pace of the company you want to work in:</div>
+			<div><div class="bulb" onclick="modal('#modal_q2','600','35');"></div><font class="blue">Select the pace of the company you want to work in:</font></div>
 			<ul id="co_pace">
 				<li id="q2_1">Slow</li>
 				<li id="q2_2">Medium</li>
@@ -137,7 +137,7 @@
 			<input id="q2_3_0" type="checkbox" value="3" name="user_pace[]">
 		</div>
 		<div id="3" class="questions" name="multipleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q3','600','35');"></div>Select the life cycle of the companies you want to work in:</div>
+			<div><div class="bulb" onclick="modal('#modal_q3','600','35');"></div><font class="blue">Select the life cycle of the companies you want to work in:</font></div>
 			<div id="co_cycle_header"></div>
 			<ul id="co_cycle">
 				<li id="q3_1"></li>
@@ -153,7 +153,7 @@
 			<input id="q3_5_0" type="checkbox" value="5" name="user_lifecycle[]" >
 		</div>
 		<div id="4" class="questions" name="rankChoice">
-			<div><div class="bulb" onclick="modal('#modal_q4','600','35');"></div>Rank the following company benefits &amp; perks you find important:</div>
+			<div><div class="bulb" onclick="modal('#modal_q4','600','35');"></div><font class="blue">Rank the following company benefits &amp; perks you find important:</font></div>
 			<div id="benefits_bar"></div>
 			<ul id="co_benefits">
 				<li id="q4_10"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Training / Education Reimbursement</li>
@@ -193,7 +193,7 @@
 				<div id="q4_flag" style="display: none;"></div>
 		</div>
 		<div id="5" class="questions" name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q5','600','35');"></div>How important is corporate citizenship to you?</div>
+			<div><div class="bulb" onclick="modal('#modal_q5','600','35');"></div><font class="blue">How important is corporate citizenship to you?</font></div>
 			<div class="sliderSelected"></div>
 			<div id="citizenshipSlider" style="background: none; border: none; cursor: pointer;"></div>
 			<div class="slider5Markers">
@@ -209,7 +209,7 @@
 			<div id="q5_flag" style="display: none;"></div>
 		</div>
 		<div id="6" class="questions" name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q6','600','35');"></div>How much traveling would you like to do for work?</div>
+			<div><div class="bulb" onclick="modal('#modal_q6','600','35');"></div><font class="blue">How much traveling would you like to do for work?</font></div>
 			<div class="sliderSelected"></div>
 			<div id="travelSlider" style="background: none; border: none; cursor: pointer;"></div>
 			<div class="slider5Markers">
@@ -225,7 +225,7 @@
 			<div id="q6_flag" style="display: none;"></div>
 		</div>
 		<div id="7" class="questions" name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q7','600','35');"></div>How often do you want your roles &amp; responsibilities to change?</div>
+			<div><div class="bulb" onclick="modal('#modal_q7','600','35');"></div><font class="blue">How often do you want your roles &amp; responsibilities to change?</font></div>
 			<div class="sliderSelected"></div>
 			<div id="roleSlider" style="background: none; border: none; cursor: pointer;"></div>
 			<div class="slider4Markers">
@@ -240,7 +240,7 @@
 			<div id="q7_flag" style="display: none;"></div>
 		</div>
 		<div id="8" class="questions" name="rankChoice">
-			<div><div class="bulb" onclick="modal('#modal_q8','600','35');"></div>What should matter most to management in deciding on promotion?</div>
+			<div><div class="bulb" onclick="modal('#modal_q8','600','35');"></div><font class="blue">What should matter most to management in deciding on promotion?</font></div>
 			<div id="promotion_bar"></div>
 			<ul id="co_promotion">
 				<li id="q8_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Business Need</li>
@@ -259,7 +259,7 @@
 				<div id="q8_flag" style="display: none;"></div>
 		</div>
 		<div id="9" class="questions"  name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q9','600','35');"></div>Which type of work environment allows you to do your best work?</div>
+			<div><div class="bulb" onclick="modal('#modal_q9','600','35');"></div><font class="blue">Which type of work environment allows you to do your best work?</font></div>
 			<div id="envQuestions">
 				<div class="env">
 					<div id="q9_1" class="envAnswer1">Supportive</div><div class="or">- or -</div><div id="q9_2" class="envAnswer2">Independent</div>
@@ -330,7 +330,7 @@
 			<div id="q9_flag" style="display: none;"></div>
 		</div>
 		<div id="10" class="questions"  name="rankChoice">
-			<div><div class="bulb" onclick="modal('#modal_q10','600','35');"></div>Rank your most preferred type of recognition for doing exceptional work:</div>
+			<div><div class="bulb" onclick="modal('#modal_q10','600','35');"></div><font class="blue">Rank your most preferred type of recognition for doing exceptional work:</font></div>
 			<div id="recognition_bar"></div>
 			<ul id="co_recognition">
 				<li id="q10_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Team Dinners</li>
@@ -349,7 +349,7 @@
 			<div id="q10_flag" style="display: none;"></div>
 		</div>
 		<div id="11" class="questions"  name="rankChoice">
-			<div><div class="bulb" onclick="modal('#modal_q11','600','35');"></div>Rank the following type of tasks you typically enjoy working on:</div>
+			<div><div class="bulb" onclick="modal('#modal_q11','600','35');"></div><font class="blue">Rank the following type of tasks you typically enjoy working on:</font></div>
 			<div id="task_bar"></div>
 			<ul id="favTask">
 				<li id="q11_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span><font>Physical</font><br>skill, strength, coordination, accuracy</li>
@@ -368,7 +368,7 @@
 			<div id="q11_flag" style="display: none;"></div>		
 		</div>
 		<div id="12" class="questions"  name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q12','600','35');"></div>When communicating ...</div>
+			<div><div class="bulb" onclick="modal('#modal_q12','600','35');"></div><font class="blue">When communicating ...</font></div>
 			<div id="communications" class="clear">
 				<img id="communicationOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#communicationCloud" />
 				<map name="communicationCloud" id="communicationCloud">
@@ -383,7 +383,7 @@
 			<div id="q12_flag" style="display: none;"></div>
 		</div>
 		<div id="13" class="questions"  name="rankChoice">
-			<div><div class="bulb" onclick="modal('#modal_q13','600','35');"></div>If you don't know something about your job, what are the<br>steps you would take to find the answers?</div>
+			<div><div class="bulb" onclick="modal('#modal_q13','600','35');"></div><font class="blue">If you don't know something about your job, what are the<br>steps you would take to find the answers?</font></div>
 			<div id="steps_bar"></div>
 			<ul id="resource">
 				<li id="q13_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Search the Internet</li>
@@ -400,7 +400,7 @@
 			<div id="q13_flag" style="display: none;"></div>
 		</div>
 		<div id="14" class="questions"  name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q14','600','35');"></div>Which of the following is most effective role of a supervisor:</div>
+			<div><div class="bulb" onclick="modal('#modal_q14','600','35');"></div><font class="blue">Which of the following is most effective role of a supervisor:</font></div>
 			<div id="supervisor" class="clear">
 				<img id="supervisorOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#supervisorCloud" />
 				<map name="supervisorCloud" id="supervisorCloud">
@@ -416,7 +416,7 @@
 			<div id="q14_flag" style="display: none;"></div>
 		</div>
 		<div id="15" class="questions" name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q15','600','35');"></div>How would you effectively lead a team?</div>
+			<div><div class="bulb" onclick="modal('#modal_q15','600','35');"></div><font class="blue">How would you effectively lead a team?</font></div>
 			<div id="leadership" class="clear">
 				<img id="leadershipOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#leadershipCloud" />
 				<map name="leadershipCloud" id="leadershipCloud">
@@ -429,7 +429,7 @@
 			<div id="q15_flag" style="display: none;"></div>
 		</div>
 		<div id="16" class="questions" name="clickChoice">
-			<div><div class="bulb" onclick="modal('#modal_q16','600','35');"></div>Pick the top 5 traits of people you enjoy being around:</div>
+			<div><div class="bulb" onclick="modal('#modal_q16','600','35');"></div><font class="blue">Pick the top 5 traits of people you enjoy being around:</font></div>
 			<div id="traits">				
 				<div id="q16_1">Competent</div>
 				<div id="q16_2">Patient</div>
@@ -475,7 +475,7 @@
 			<div id="q16_flag" style="display: none;"></div>
 		</div>
 		<div id="17" class="questions"  name="singleChoice">
-			<div><div class="bulb" onclick="modal('#modal_q17','600','35');"></div>I want to work ________</div>
+			<div><div class="bulb" onclick="modal('#modal_q17','600','35');"></div><font class="blue">I want to work ________</font></div>
 			<div id="motivation" class="clear">
 				<img id="motivationOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#motivationCloud" />
 				<map name="motivationCloud" id="motivationCloud">
@@ -490,7 +490,7 @@
 			<div id="q17_flag" style="display: none;"></div>
 		</div>
 		<div id="18" class="questions q18"  name="textChoice">
-			<div><div class="bulb" onclick="modal('#modal_q18','600','35');"></div>Which industry or field do you want to work in?</div>
+			<div><div class="bulb" onclick="modal('#modal_q18','600','35');"></div><font class="blue">Which industry or field do you want to work in?</font></div>
 			<div class="chosenIndustry">
 				<img src="<?php echo base_url() ?>assets/images/survey/undo_icon.png" alt="undo">
 				<ul></ul>
@@ -501,7 +501,7 @@
 			<div id="q18_flag" style="display: none;"></div>
 		</div>		
 		<div id="19" class="questions q19"  name="textChoice">
-			<div><div class="bulb" onclick="modal('#modal_q19','600','35');"></div>Where would you like to work?</div>
+			<div><div class="bulb" onclick="modal('#modal_q19','600','35');"></div><font class="blue">Where would you like to work?</font></div>
 			<div class="chosenCities">
 				<img src="<?php echo base_url() ?>assets/images/survey/undo_icon.png" alt="undo">
 				<ul></ul>
@@ -512,7 +512,7 @@
 			<div id="q19_flag" style="display: none;"></div>
 		</div>
 		<div id="20" class="questions q20"  name="textChoice">
-			<div><div class="bulb" onclick="modal('#modal_q20','600','35');"></div>What's your education and work history?</div>
+			<div><div class="bulb" onclick="modal('#modal_q20','600','35');"></div><font class="blue">What's your education and work history?</font></div>
 			<div id="history" class="clear">
 				<div>
 					<div id="education_layout">
