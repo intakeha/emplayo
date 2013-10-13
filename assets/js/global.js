@@ -163,7 +163,7 @@ $(document).ready(function(){
 		var lastEmpty = 1;
 		var lastQuestion = 1;
 		$('div#0, #next_question').show(); //default to first question on refresh
-
+			
 		// Assign actions when next is clicked
 		$('#next_question').click(function(){
 			$('div#progressBar').show();
@@ -181,12 +181,35 @@ $(document).ready(function(){
 			$('div.currentQuestion span').html(currentQuestion);
 			$('div.currentQuestion').show();
 			if (currentQuestion > lastQuestion){lastQuestion = currentQuestion;};
-			questionType = $('div#'+currentQuestion).attr("name");
-			if(questionType){
-				generateHints(currentQuestion, questionType);
-				$('div.hints, div#'+questionType).show();
+			questionTypeHints = $('div#'+currentQuestion).attr("name");
+			if(questionTypeHints){
+				generateHints(currentQuestion, questionTypeHints);
+				$('div.hints').show().css({opacity: 0, marginTop: "-66px"}).animate({
+					opacity: 1,
+					marginTop: "-61px",
+					}, 500 );
 			};
 			$('div#'+currentQuestion).show();
+			if ((currentQuestion == 1)&&($('div#firstTimeFlag').text() == 1)){ // show navigation hints
+				$('#criteria #hints_q1_1').fadeIn(1000);
+				$('#criteria #hints_q1_1 .gotIt').click(function () {
+					$('#criteria #hints_q1_1').fadeOut(500);
+					$('#criteria #hints_q1_2').fadeIn(1000);
+				});
+				$('#criteria #hints_q1_2 .gotIt').click(function () {
+					$('#criteria #hints_q1_2').fadeOut(500);
+					$('#criteria #hints_q1_3').fadeIn(1000);
+				});
+				$('#criteria #hints_q1_3 .gotIt').click(function () {
+					$('#criteria #hints_q1_3').fadeOut(500);
+				});				
+			};
+			if ((currentQuestion == 4)&&($('div#firstTimeFlag').text() == 1)){ // show navigation hints
+				$('#criteria #hints_q4_1').fadeIn(1000);
+				$('#criteria #hints_q4_1 .gotIt').click(function () {
+					$('#criteria #hints_q4_1').fadeOut(500);
+				});
+			};			
 			if ((currentQuestion == 20)&&($('input[name=q20]').val()!=0)){
 				$('#next_question').hide();
 				$('#show_preview').show();
@@ -219,10 +242,15 @@ $(document).ready(function(){
 				$('div.currentQuestion span').html(currentQuestion);
 				$('div.currentQuestion').show();
 				$('div.questions').hide();
-				questionType = $('div#'+currentQuestion).attr("name");
-				if(questionType){//enter question type for each question
-					$('div.hints, div#'+questionType).show();
+				questionTypeHints = $('div#'+currentQuestion).attr("name");
+				if(questionTypeHints){
+					generateHints(currentQuestion, questionTypeHints);
+					$('div.hints').show().css({opacity: 0, marginTop: "-66px"}).animate({
+					    opacity: 1,
+					    marginTop: "-61px",
+					    }, 500 );
 				};
+				questionType = $('div#'+currentQuestion).find('input').attr('type');
 				$('div#'+currentQuestion).show();
 				if ((currentQuestion == 20)&&($('input[name=q20]').val()!=0)){
 					$('#next_question').hide();
@@ -234,7 +262,6 @@ $(document).ready(function(){
 					if (questionType == "text"){
 						lastEmpty = showNextButton(currentQuestion, lastEmpty);
 					};
-					if(currentQuestion == 19){showNextButtonDropdown($('.chosenCities li').length, lastEmpty);};
 				};
 			};
 		});
@@ -517,9 +544,9 @@ $(document).ready(function(){
 			
 			//update next subquestion
 			if (currentEnvQuestion < 10){
-				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(1).animate({opacity: 0, marginLeft:'300px'},1).hide(1);
+				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(200).fadeOut(100);
 				currentEnvQuestion = currentEnvQuestion + 1;
-				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(30).animate({opacity: 1, marginLeft:'149px'},30).show(30);
+				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(400).fadeIn(100);
 			};
 			
 			//check for next button
@@ -536,11 +563,11 @@ $(document).ready(function(){
 		$("map#environmentMap area").click(function(){			
 			if(($(this).index()+1)<=$('div#9 input:checked').length){
 				envComplete = 1;
-				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(50).animate({opacity: 0, marginLeft:'300px'},50).hide(50);
+				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(200).fadeOut(100);
 				currentEnvQuestion = $(this).index()+1; // assign the current environment question to the associated map index
 				progressBackground = (currentEnvQuestion) * -127;
 				$('#envProgressOverlay').css("background-position", progressBackground+"px 0px");
-				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(80).animate({opacity: 1, marginLeft:'149px'},80).show(80);
+				$('div.env:eq('+(currentEnvQuestion-1)+')').delay(400).fadeIn(100);
 			}
 		});
 		

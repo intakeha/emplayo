@@ -1824,6 +1824,202 @@ div#reset .errors{
 
 /* Questionnaire */
 
+#criteria .bubbleTitle{
+	padding-bottom: 5px;
+	border-bottom: 1px solid #1d71a2;
+}
+
+#criteria .bubbleContent{
+    color: #364954;
+    font-size: 16px;
+    padding: 10px 0 20px;
+    text-align: left;
+}
+
+#criteria .bubble .gotIt{
+	padding: 10px;
+	background-color: #27c339;
+	color: #fff;
+	font-size: 16px;
+	width: 50px;
+	cursor: pointer;
+	float: right;
+}
+
+#criteria #hints_q1_1 {
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	color: #1D71A2;
+	font-size: 20px;
+	min-height: 100px;
+	margin: -117px 0 0 639px;
+	padding: 10px;
+	position: absolute;
+	text-align: center;
+	display: none;
+	width: 300px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 5px 5px #666;
+	-webkit-box-shadow: 0px 5px 5px #666;
+	box-shadow: 0px 5px 5px #666;
+}
+
+#criteria #hints_q1_1_arrow_border {
+    border-color: transparent #CCC transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    bottom: -10px;
+    height: 0;
+    left: -112px;
+    margin: 90px;
+    position: absolute;
+    width: 0;
+}
+
+#criteria #hints_q1_1_arrow {
+    border-color: transparent #FFF transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    bottom: -10px;
+    height: 0;
+    left: -110px;
+    margin: 90px;
+    position: absolute;
+    width: 0;
+}
+
+
+#criteria #hints_q1_2 {
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	color: #1D71A2;
+	font-size: 20px;
+	min-height: 100px;
+	margin: 391px 0 0 52px;
+	padding: 10px;
+	position: absolute;
+	text-align: center;
+	display: none;
+	width: 230px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 5px 5px #666;
+	-webkit-box-shadow: 0px 5px 5px #666;
+	box-shadow: 0px 5px 5px #666;
+}
+
+#criteria #hints_q1_2_arrow_border {
+	border-color: #CCC transparent transparent;
+	border-style: solid;
+	border-width: 10px;
+	height: 0;
+	width: 0;
+	position: absolute;
+	bottom: -21px;
+	left: 20px;
+}
+
+#criteria #hints_q1_2_arrow {
+    border-color: #FFF transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    bottom: -100px;
+    height: 0;
+    left: -61px;
+    margin: 81px;
+    position: absolute;
+    width: 0;
+}
+
+#criteria #hints_q1_3 {
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	color: #1D71A2;
+	font-size: 20px;
+	min-height: 100px;
+	margin: -25px 0 0 688px;
+	padding: 10px;
+	position: absolute;
+	text-align: center;
+	display: none;
+	width: 250px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 5px 5px #666;
+	-webkit-box-shadow: 0px 5px 5px #666;
+	box-shadow: 0px 5px 5px #666;
+}
+
+#criteria #hints_q1_3_arrow_border {
+	border-color: transparent transparent transparent #CCC;
+	border-style: solid;
+	border-width: 10px;
+	height: 0;
+	width: 0;
+	position: absolute;
+	bottom: 105px;
+	left: 270px;
+}
+
+#criteria #hints_q1_3_arrow {
+    border-color: transparent transparent transparent #FFF;
+    border-style: solid;
+    border-width: 10px;
+    bottom: 105px;
+    height: 0;
+    left: 268px;
+    position: absolute;
+    width: 0;
+}
+
+#criteria #hints_q4_1 {
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	color: #1D71A2;
+	font-size: 20px;
+	min-height: 100px;
+	margin: 65px 0 0 700px;
+	padding: 10px;
+	position: absolute;
+	text-align: center;
+	display: none;
+	width: 275px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 5px 5px #666;
+	-webkit-box-shadow: 0px 5px 5px #666;
+	box-shadow: 0px 5px 5px #666;
+	z-index: 1;
+}
+
+#criteria #hints_q4_1_arrow_border {
+	border-color: transparent #CCC transparent transparent;
+	border-style: solid;
+	border-width: 10px;
+	height: 0;
+	width: 0;
+	position: absolute;
+	bottom: 208px;
+	left: -22px;
+}
+
+#criteria #hints_q4_1_arrow {
+    border-color: transparent #FFF transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    bottom: 208px;
+    height: 0;
+    left: -20px;
+    position: absolute;
+    width: 0;
+}
+
+#criteria #hints_q4_1 img {
+	width: 275px;
+	margin-top: 20px;
+}
+
 form#criteria{
 	border: none;
 }
@@ -1886,14 +2082,11 @@ div.hints {
     display: none;
     font-size: 16px;
     height: 22px;
-	margin: -60px auto 30px;
+	margin: -61px 0 0 395px;
     padding-top: 5px;
     text-align: center;
     width: 230px;
-}
-
-div.hints div {
-    display: none;
+	position: absolute;
 }
 
 div.currentQuestion font{
@@ -1956,8 +2149,9 @@ div#criteria .content{
 
 div.questions {
 	text-align: center;
-	min-height: 600px;
+	min-height: 550px;
 	display: none;
+	border-top: 1px solid #fff;
 }
 
 div#next_question, div#show_preview{
@@ -2026,6 +2220,12 @@ li.ip{
 li.filled{
 	background-position: -58px 0px;
 	cursor: pointer;
+}
+
+/* Question 0 - Intro*/
+div#criteria div#intro{
+	margin-top: -20px;
+	display: inherit;
 }
 
 /* Question 1 - Company Type*/
@@ -2540,7 +2740,7 @@ img#motivationOverlay {
 /* Question 18 & 19 - Industry & City */
 
 div.q18 {
-	background: url("../images/survey/industries.png") no-repeat 0 65px transparent;
+	background: url("../images/survey/industries.png") no-repeat 0 0 transparent;
 }
 
 div#industry input, div#location input{
@@ -2589,7 +2789,7 @@ div.questions .tt-is-under-cursor {
 }
 
 div.q19 {
-	background: url("../images/survey/globe.jpg") no-repeat 0 75px transparent;
+	background: url("../images/survey/globe.jpg") no-repeat 0 10px transparent;
 }
 
 div.chosenCities, div.chosenIndustry{

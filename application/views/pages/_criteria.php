@@ -1,4 +1,5 @@
 <div id="criteria">
+	<div id="firstTimeFlag" style="display: none;">1</div>
 	<div class="modal_popup" id="modal_q1">
 		<img src="<?php echo base_url() ?>assets/images/modals/q1.png">
 		<div><span>Privately Held - For Profit</span><br>Privately held companies are not subject to the ups and downs of the stock market.  Employees can expect more interaction with executives and more opportunities for increased responsibility. </div>
@@ -91,7 +92,7 @@
 	</div>
 	<div class="content">
 		<form id="criteria" action="preview" method="post">
-		<div id="0" class="questions">
+		<div id="intro" class="questions">
 			<div id="intro">
 				<p>Before you begin, we want to give you a quick overview of what to expect.</p>
 				<div>
@@ -104,7 +105,7 @@
 					<div id="questions_preview">
 						<span>The Destination</span>
 						<div><div id="textDecor"><img src="<?php echo base_url() ?>assets/images/progressIcon.png" height=50px></div>
-							When you finish, you&#39;ll get a preview of the top companies that fit you best.  You can then login or create an account to check out the entire list and apply for jobs!
+							When you finish, you&#39;ll get a ranked list of top companies that fit you best.  You can then login or create an account to check out the entire list and apply for jobs!
 						</div>
 						<img src="<?php echo base_url() ?>assets/images/survey/instructions_preview.png">
 					</div>
@@ -112,7 +113,28 @@
 				
 			</div>
 		</div>
-		<div id="1" class="questions" name="multipleChoice">		
+		<div id="1" class="questions" name="multipleChoice">
+			<div id="hints_q1_1" class="bubble">
+				<div class="bubbleTitle">Navigation</div>
+				<div class="bubbleContent">See what question you're on and hints for how to answer each question.</div>
+				<div class="gotIt">Got It!</div>
+				<div id="hints_q1_1_arrow_border"></div>
+				<div id="hints_q1_1_arrow"></div>
+			</div>
+			<div id="hints_q1_2" class="bubble">
+				<div class="bubbleTitle">Navigation</div>
+				<div class="bubbleContent">Click on the progress bar if you need to go back.</div>
+				<div class="gotIt">Got It!</div>
+				<div id="hints_q1_2_arrow_border"></div>
+				<div id="hints_q1_2_arrow"></div>
+			</div>
+			<div id="hints_q1_3" class="bubble">
+				<div class="bubbleTitle">Navigation</div>
+				<div class="bubbleContent">Use the <font style="font-style:italic;" class="blue">Quick Tip</font> icon to help you learn more about each question.</div>
+				<div class="gotIt">Got It!</div>
+				<div id="hints_q1_3_arrow_border"></div>
+				<div id="hints_q1_3_arrow"></div>
+			</div>			
 			<div><div class="bulb" onclick="modal('#modal_q1','600','35');"></div><font class="blue">Select the type of companies you want to work for:</font></div>
 			<ul id="co_type">
 				<li id="q1_1"></li>
@@ -124,6 +146,7 @@
 			<input id="q1_2_0" type="checkbox" value="2" name="user_type[]" >
 			<input id="q1_3_0" type="checkbox" value="3" name="user_type[]" >
 			<input id="q1_4_0" type="checkbox" value="4" name="user_type[]" >
+			<div id="q1_flag" style="display: none;"></div>
 		</div>
 		<div id="2" class="questions" name="multipleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q2','600','35');"></div><font class="blue">Select the pace of the company you want to work in:</font></div>
@@ -135,6 +158,7 @@
 			<input id="q2_1_0" type="checkbox" value="1" name="user_pace[]">
 			<input id="q2_2_0" type="checkbox" value="2" name="user_pace[]">
 			<input id="q2_3_0" type="checkbox" value="3" name="user_pace[]">
+			<div id="q2_flag" style="display: none;"></div>
 		</div>
 		<div id="3" class="questions" name="multipleChoice">
 			<div><div class="bulb" onclick="modal('#modal_q3','600','35');"></div><font class="blue">Select the life cycle of the companies you want to work in:</font></div>
@@ -151,8 +175,16 @@
 			<input id="q3_3_0" type="checkbox" value="3" name="user_lifecycle[]" >
 			<input id="q3_4_0" type="checkbox" value="4" name="user_lifecycle[]" >
 			<input id="q3_5_0" type="checkbox" value="5" name="user_lifecycle[]" >
+			<div id="q3_flag" style="display: none;"></div>
 		</div>
 		<div id="4" class="questions" name="rankChoice">
+			<div id="hints_q4_1" class="bubble">
+				<div class="bubbleTitle">Drag &amp; Drop</div>
+				<div class="bubbleContent">Rank your desired benefits by clicking and dragging elements to a new spot within the list.<br><img src="<?php echo base_url() ?>assets/images/survey/drag_drop.png" alt="Drag and Drop" /></div>
+				<div class="gotIt">Got It!</div>
+				<div id="hints_q4_1_arrow_border"></div>
+				<div id="hints_q4_1_arrow"></div>
+			</div>		
 			<div><div class="bulb" onclick="modal('#modal_q4','600','35');"></div><font class="blue">Rank the following company benefits &amp; perks you find important:</font></div>
 			<div id="benefits_bar"></div>
 			<ul id="co_benefits">
