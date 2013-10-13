@@ -39,6 +39,8 @@ class Public_company_model extends MY_Model {
               
            }
            return $company_array;
+        } else {
+            return false;
         }        
     }
     
