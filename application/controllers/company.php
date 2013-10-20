@@ -38,13 +38,20 @@ class Company extends CI_Controller {
 		if ($this->ion_auth->logged_in()){
                     //get company details using company id
                     $this->load->model('public_company_model');
+                    $data['company_info'] = $this->public_company_model->get_public_company_info($company_id);//used by the admin company controller also       
+                    
+                    if (!$data['company_info']) {
+                      redirect('emplayo404');
+                    }  
+                    
                     //get_profile_pics
                     $data['pic_array'] = $this->public_company_model->get_profile_pics($company_id);
-                    $data['company_info'] = $this->public_company_model->get_public_company_info($company_id);//used by the admin company controller also
                     $data['quote_array'] = $this->public_company_model->get_quotes($company_id);
                     
                     $data['merged_array'] = $this->public_company_model->array_interlace($data['pic_array'], $data['quote_array']);
                     //shuffle($data['merged_array']);
+                    
+                    
                     
                     $data['title']="Company";
                     $data['content']="pages/_company";

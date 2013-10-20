@@ -24,7 +24,10 @@
 	
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script> 
         <script type="text/javascript" src="<?php echo base_url() ?>assets/js/uservoice.js"></script>
-        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/googleanalytics.js"></script>
+        <?php //Only load google analytics when we're in production, so as not to pollute our data
+        if (ENVIRONMENT == 'production') {?>
+            <script type="text/javascript" src="<?php echo base_url() ?>assets/js/googleanalytics.js"></script>
+        <?php }?>
 	
 </head>
 <body>
