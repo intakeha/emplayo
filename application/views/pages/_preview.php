@@ -13,7 +13,7 @@
                         echo "<div class = 'company'>";
                         foreach ($full_company_info as $row)
                         {
-                            echo "<img src='{$image_path}{$row['company_logo']}' height='100' style = 'margin:30px;'/>";
+                            echo "<img src='{$image_path}{$row['creative_logo']}'  style = 'margin:30px;'/>";
 
                         }
                         echo "</div>";

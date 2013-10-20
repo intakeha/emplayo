@@ -284,7 +284,7 @@ class Preview extends CI_Controller {
         $this->session->set_userdata('save_data',TRUE);       
 
         //RETURN THE FIRST 5 COMPANIES FOR THE PREVIEW.  get_company2 returns the full list...
-        $company_info = $this->preview_model->get_company3($ranked_results,5);
+        $company_info = $this->preview_model->get_company3($ranked_results,12);
         $full_company_info = $this->preview_model->merge_company_info($company_info,$company_fit); 
 
         $match_data = array();
