@@ -57,6 +57,9 @@ div#icon {
 	text-align: center;
 	margin-top: 125px;
 	display: block;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 }
 
 #belt{
@@ -1824,6 +1827,210 @@ div#reset .errors{
 
 /* Questionnaire */
 
+#criteria .bubbleTitle{
+	padding-bottom: 5px;
+	border-bottom: 1px solid #1d71a2;
+}
+
+#criteria .bubbleContent{
+    color: #364954;
+    font-size: 16px;
+    padding: 10px 0 20px;
+    text-align: left;
+}
+
+#criteria .bubble .gotIt{
+	padding: 10px;
+	background-color: #27c339;
+	color: #fff;
+	font-size: 16px;
+	width: 50px;
+	cursor: pointer;
+	float: right;
+}
+
+#criteria #hints_q1_1 {
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	color: #1D71A2;
+	font-size: 20px;
+	min-height: 100px;
+	margin: -117px 0 0 639px;
+	padding: 10px;
+	position: absolute;
+	text-align: center;
+	display: none;
+	width: 300px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 5px 5px #666;
+	-webkit-box-shadow: 0px 5px 5px #666;
+	box-shadow: 0px 5px 5px #666;
+	border-radius: 10px;
+	behavior: url(/assets/pie/PIE.htc);
+}
+
+#criteria #hints_q1_1_arrow_border {
+    border-color: transparent #CCC transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    bottom: -10px;
+    height: 0;
+    left: -112px;
+    margin: 90px;
+    position: absolute;
+    width: 0;
+}
+
+#criteria #hints_q1_1_arrow {
+    border-color: transparent #FFF transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    bottom: -10px;
+    height: 0;
+    left: -110px;
+    margin: 90px;
+    position: absolute;
+    width: 0;
+}
+
+
+#criteria #hints_q1_2 {
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	color: #1D71A2;
+	font-size: 20px;
+	min-height: 100px;
+	margin: 391px 0 0 52px;
+	padding: 10px;
+	position: absolute;
+	text-align: center;
+	display: none;
+	width: 230px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 5px 5px #666;
+	-webkit-box-shadow: 0px 5px 5px #666;
+	box-shadow: 0px 5px 5px #666;
+	border-radius: 10px;
+	behavior: url(/assets/pie/PIE.htc);
+}
+
+#criteria #hints_q1_2_arrow_border {
+	border-color: #CCC transparent transparent;
+	border-style: solid;
+	border-width: 10px;
+	height: 0;
+	width: 0;
+	position: absolute;
+	bottom: -21px;
+	left: 20px;
+}
+
+#criteria #hints_q1_2_arrow {
+    border-color: #FFF transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    bottom: -100px;
+    height: 0;
+    left: -61px;
+    margin: 81px;
+    position: absolute;
+    width: 0;
+}
+
+#criteria #hints_q1_3 {
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	color: #1D71A2;
+	font-size: 20px;
+	min-height: 100px;
+	margin: -25px 0 0 688px;
+	padding: 10px;
+	position: absolute;
+	text-align: center;
+	display: none;
+	width: 250px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 5px 5px #666;
+	-webkit-box-shadow: 0px 5px 5px #666;
+	box-shadow: 0px 5px 5px #666;
+	border-radius: 10px;
+	behavior: url(/assets/pie/PIE.htc);
+}
+
+#criteria #hints_q1_3_arrow_border {
+	border-color: transparent transparent transparent #CCC;
+	border-style: solid;
+	border-width: 10px;
+	height: 0;
+	width: 0;
+	position: absolute;
+	bottom: 105px;
+	left: 270px;
+}
+
+#criteria #hints_q1_3_arrow {
+    border-color: transparent transparent transparent #FFF;
+    border-style: solid;
+    border-width: 10px;
+    bottom: 105px;
+    height: 0;
+    left: 268px;
+    position: absolute;
+    width: 0;
+}
+
+#criteria #hints_q4_1 {
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	color: #1D71A2;
+	font-size: 20px;
+	min-height: 100px;
+	margin: 65px 0 0 700px;
+	padding: 10px;
+	position: absolute;
+	text-align: center;
+	display: none;
+	width: 275px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 5px 5px #666;
+	-webkit-box-shadow: 0px 5px 5px #666;
+	box-shadow: 0px 5px 5px #666;
+	border-radius: 10px;
+	behavior: url(/assets/pie/PIE.htc);
+	z-index: 1;
+}
+
+#criteria #hints_q4_1_arrow_border {
+	border-color: transparent #CCC transparent transparent;
+	border-style: solid;
+	border-width: 10px;
+	height: 0;
+	width: 0;
+	position: absolute;
+	bottom: 208px;
+	left: -22px;
+}
+
+#criteria #hints_q4_1_arrow {
+    border-color: transparent #FFF transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    bottom: 208px;
+    height: 0;
+    left: -20px;
+    position: absolute;
+    width: 0;
+}
+
+#criteria #hints_q4_1 img {
+	width: 275px;
+	margin-top: 20px;
+}
+
 form#criteria{
 	border: none;
 }
@@ -1862,26 +2069,51 @@ form#criteria{
 	margin-bottom: 10px;
 }
 
+div.currentQuestion {
+    background-color: #EEEEEE;
+    border: 1px solid #CCCCCC;
+    color: #364954;
+    display: none;
+    font-size: 25px;
+    height: 40px;
+    margin: -39px auto 0;
+    padding-top: 15px;
+    text-align: center;
+    width: 230px;
+	-moz-border-radius: 10px 10px 0 0;
+	-webkit-border-radius: 10px 10px 0 0;
+	border-radius: 10px 10px 0 0;
+	behavior: url(/assets/pie/PIE.htc);
+}
+
 div.hints {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #CCCCCC;
     border-left: 1px solid #CCCCCC;
-    border-radius: 5px 5px 0 0;
     border-right: 1px solid #CCCCCC;
-    border-top: 1px solid #CCCCCC;
-    color: #E9B60B;
+    color: purple;
     display: none;
     font-size: 16px;
     height: 22px;
-    margin-left: 410px;
-    margin-top: -10px;
+	margin: -61px 0 0 395px;
     padding-top: 5px;
     text-align: center;
-    width: 200px;
+    width: 230px;
+	position: absolute;
+	-moz-border-radius: 0 0 10px 10px;
+	-webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+	behavior: url(/assets/pie/PIE.htc);
 }
 
-div.hints div {
-    display: none;
+div.currentQuestion font{
+	color: #364954;
+	font-weight: normal;
 }
 
+div.currentQuestion span{
+	font-weight: normal;
+}
 
 area{
 	outline: none;
@@ -1936,6 +2168,7 @@ div.questions {
 	text-align: center;
 	min-height: 550px;
 	display: none;
+	border-top: 1px solid #fff;
 }
 
 div#next_question, div#show_preview{
@@ -2004,6 +2237,12 @@ li.ip{
 li.filled{
 	background-position: -58px 0px;
 	cursor: pointer;
+}
+
+/* Question 0 - Intro*/
+div#criteria div#intro{
+	margin-top: -20px;
+	display: inherit;
 }
 
 /* Question 1 - Company Type*/
@@ -2316,7 +2555,7 @@ img#envProgressOverlay{
 	background: url("../images/survey/harvey_ball_10.png") no-repeat scroll 0 0 transparent;
 	width: 127px;
 	height: 125px;
-	border: 0px;
+	border: none;
 }
 
 /* Question 10 - Recognition */
@@ -2412,6 +2651,7 @@ img#communicationOverlay {
 	width: 910px;
 	height: 390px;
 	overflow: hidden;
+	border: none;
 }
 
 /* Question 13 - Resources */
@@ -2466,6 +2706,7 @@ img#supervisorOverlay {
 	width: 928px;
 	height: 445px;
 	overflow: hidden;
+	border: none;
 }
 
 /* Question 15 - Leadership */
@@ -2478,6 +2719,7 @@ img#leadershipOverlay {
 	width: 966px;
 	height: 418px;
 	overflow: hidden;
+	border: none;
 }
 
 /* Question 16 - Traits */
@@ -2513,12 +2755,13 @@ img#motivationOverlay {
 	width: 910px;
 	height: 390px;
 	overflow: hidden;
+	border: none;
 }
 
 /* Question 18 & 19 - Industry & City */
 
 div.q18 {
-	background: url("../images/survey/industries.png") no-repeat;
+	background: url("../images/survey/industries.png") no-repeat 0 0 transparent;
 }
 
 div#industry input, div#location input{
@@ -2567,7 +2810,7 @@ div.questions .tt-is-under-cursor {
 }
 
 div.q19 {
-	background: url("../images/survey/globe.jpg") no-repeat;
+	background: url("../images/survey/globe.jpg") no-repeat 0 10px transparent;
 }
 
 div.chosenCities, div.chosenIndustry{
@@ -2625,7 +2868,7 @@ div#history div#education_layout {
 div#history .details{
 	text-align: left;
 	margin: 10px 0;
-	height: 430px;
+	height: 475px;
 }
 
 div#history p.titles{

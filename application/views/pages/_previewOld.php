@@ -1,5 +1,7 @@
 <div id="preview">
-	<div class="content">                        
+	<div class="content">
+
+                        
                 <?php
                 if ($company_count>0)
                 {
@@ -11,7 +13,7 @@
                         echo "<div class = 'company'>";
                         foreach ($full_company_info as $row)
                         {
-                            echo "<img src='{$image_path}{$row['creative_logo']}'  style = 'margin:30px;'/>";
+                            echo "<img src='{$image_path}{$row['company_logo']}' height='100' style = 'margin:30px;'/>";
 
                         }
                         echo "</div>";
@@ -96,6 +98,7 @@
                     echo "<p>We didn't find any matches for you.</p>";                   
                 }
                 
+                
                 if ($this->ion_auth->logged_in()){
                     //USER IS ALREADY LOGGED IN
                     ?>
@@ -115,6 +118,8 @@
                         </div>
                         <a href="home" id="signIn">Save</a>
                     </div> 
+                    
+                    
                     <?php                    
                     
                 } else {
@@ -130,8 +135,10 @@
                         </div>
                         <a href="login" id="signIn">Sign In</a>
                     </div>            
-
+            
                     <?php
+                    
+                    
                 }
                 ?>
 	</div>
