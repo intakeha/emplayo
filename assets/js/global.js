@@ -1113,7 +1113,31 @@ function modal(modalID, modalWidth, topMargin){
 
 };
 
-// Settings modal popup function
+// Modal popup function for locked messaging
+function lockedModal(modalID, modalWidth, topMargin){
+	//Fade in the Popup
+	$(modalID).fadeIn();
+	
+	//Define margin for center alignment (vertical   horizontal) - we add 80px to the height/width to accomodate for the padding  and border width defined in the css
+	//var popMargTop = ($(modalID).height() + 80) / 2;
+	var popMargLeft = ($(modalID).width() + 80) / 2;
+
+	//Apply Margin to Popup
+	$(modalID).css({
+		//'margin-top' : -popMargTop,
+		'margin-top' : topMargin+'px',
+		'margin-left' : -popMargLeft
+	});
+
+	//Fade in Background
+	$('body').append('<div id="locked_fade"></div>'); //Add the fade layer to bottom of the body tag.
+	$('#locked_fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn(); //Fade in the fade layer - .css({'filter' : 'alpha(opacity=80)'}) is used to fix the IE Bug on fading transparencies 
+
+	return false;
+	
+}
+
+// User settings menu modal popup function
 function settings(modalID){
 
 	//Fade in the Popup

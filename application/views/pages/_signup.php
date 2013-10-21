@@ -24,9 +24,9 @@
 		</div>
 		<div id="signup_right">
 			<div><span>Fast and free. Get started now!</span></div>
-			<div><span>See the full list of your best-fit companies</span><br>If you haven't created an account yet, then you haven't even scratched the surface of your company matches.</div>
-			<div><span>Receive automatic alerts for new company matches</span><br>We're constantly looking for companies that fit you, and when you save your preferences we'll let you know when we find new matches.</div>
-			<div><span>Allow employers to find you</span><br>It's a two-way street: you're looking for the perfect company, and employers are looking for you.  With your profile saved, you're one step closer to being found!</div>
+			<div><img src="<?php echo base_url() ?>assets/images/modals/signup_benefits_list.png"></img><span>See the full list of your best-fit companies</span><br>If you haven't created an account yet, then you haven't even scratched the surface of your company matches.</div>
+			<div><img src="<?php echo base_url() ?>assets/images/modals/signup_benefits_notify.png"></img><span>Receive alerts on new company matches</span><br>We're constantly looking for companies that fit you, and when you save your preferences we'll let you know when we find new matches.</div>
+			<div><img src="<?php echo base_url() ?>assets/images/modals/signup_benefits_find.png"></img><span>Connect with employers and apply for jobs</span><br>It's a two-way street: you're looking for the perfect company, and employers are looking for you.  With your profile saved, you're one step closer to being found!</div>
 			
 		</div>
 	</div>

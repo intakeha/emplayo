@@ -329,9 +329,8 @@ div#signup p.errors{
 
 #signup_right{
 	float: left;
-	width: 600px;
-	margin-left: 40px;
-	padding: 20px 30px;
+	width: 630px;
+	padding: 25px 0 0 90px;
 }
 
 #signup_right div{
@@ -342,6 +341,11 @@ div#signup p.errors{
 #signup_right span{
 	color: #258CD1;
 	font-size: 22px;
+}
+
+#signup_right img{
+	float: left;
+	margin: 0 25px 25px 0;
 }
 
 /* Administration Panel */
@@ -3008,21 +3012,52 @@ div#preview #title{
 	font-size: 40px;
 }
 
-div#preview span{
-	color: #e9b60b;
-}
-
 div#preview font{
 	font-style: italic;
+	color: #1d71a2;
+}
+
+div#preview div.company img{
+	border: 1px solid #000;
+	width: 250px;
+	height: 250px;
+	margin: 0 3px 0 0;
 }
 
 div#preview #info{
-    margin-left: 110px;
     width: 800px;
+	height: 90px;
+	font-size: 30px;
+}
+
+div#preview div#benefits_title{
+	color: #364954;
+	font-weight: bold;
+	font-size: 30px;
+	margin: 20px;
+}
+
+div#preview div#benefits{
+	width: 720px;
+	height: 120px;
+	margin: 0 auto;
+	color: #6D7A83;
+	font-weight: bold;
+}
+
+div#preview div#benefits img{
+	float: none;
+	margin: 10px;
+}
+
+div#preview img.transparent_fade{
+	margin-top: -280px;
 }
 
 div#preview #previewButtons{
-	margin: 60px 270px;
+    height: 69px;
+    margin: 0 auto 30px;
+    width: 480px;
 }
 
 div#preview #signUp, div#preview #signIn{
@@ -3070,9 +3105,14 @@ div#preview #signUp:hover, div#preview #signIn:hover{
 	color: #fff;
 }
 
-div#preview #progressIcon{
+div#preview #progressIcon img{
 	float: left;
 	margin: 0 50px;
+}
+
+div#preview div#benefits div{
+	float: left;
+	width: 200px;
 }
 
 /* Profile Page */
