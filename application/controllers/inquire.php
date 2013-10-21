@@ -96,4 +96,69 @@ class Inquire extends CI_Controller {
             }        
         }//end of company_type_search    
         
+/*
+ * NEW SELECT2 FUNCTIONS - UNCOMMENT THESE WHEN READY TO REMOVE THE OLD TYPEAHEAD STUFF.  BE SURE
+ * TO COMMENT THOSE OUT OR REMOVE THEM TO AVOID CONFLICTS AND CONFUSION
+
+        public function industry_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->survey_model->industry_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;           
+        }//end     
+   
+        public function location_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->survey_model->location_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end         
+ 
+        public function college_name_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->survey_model->college_name_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end           
+     
+        public function college_degree_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->survey_model->college_degree_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end          
+        
+        public function college_major_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->survey_model->college_major_search($decoded_search_term);
+            header('Content-Type: application/json');  
+            echo $result;     
+        }//end          
+        
+         public function company_name_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->survey_model->company_name_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end   
+        
+         public function job_type_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->survey_model->job_type_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end  
+
+
+
+ */        
+        
+        
 }//end of controller
