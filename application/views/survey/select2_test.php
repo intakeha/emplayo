@@ -22,12 +22,6 @@ $(document).ready(function(){
     formatSearching: function() {
         return "Searching...";
     },
-    createSearchChoice:function(term, data) {
-        if ($(data).filter(function() {         
-            return this.text.localeCompare(term)===0; }).length===0) {
-            return {id:term, text:term};          
-        } 
-    },
     ajax: {
       url: "/survey/location_search",
       dataType: 'json',
@@ -42,16 +36,20 @@ $(document).ready(function(){
       }
     }
   });
+  //The following function is optional...Select2 will automatically add additional values
+  //to the value param using commas
   $("#location")
     .on("change", function(e) {
-        console.log(e);
-        if (e.added.id==e.added.text){
-            //$('#location').val("user_"+e.added.id+"," + $(this).val());
-            $('#location').val();
-        }else {
-            
-        };
-    })  
+        $('#q19').append('<input id="q19_1_0" type="text" name="user_location[]"  value="'+e.added.id+'">');
+       // console.log(e);
+       // if (e.added.id==e.added.text){
+            //If the id and text of an added term are the same. 
+            //$('#location').val();
+            //console.log(e);
+        //}else {
+            //console.log(e);
+       // };
+    });  
   
   //INDUSTRY - Multi
    $('#industry').select2({
@@ -59,12 +57,6 @@ $(document).ready(function(){
     minimumInputLength: 0,
     maximumSelectionSize: 5,
     width: 300,
-    createSearchChoice:function(term, data) {
-        if ($(data).filter(function() {         
-            return this.text.localeCompare(term)===0; }).length===0) {
-            return {id:term, text:term};          
-        } 
-    },
     ajax: {
       url: "/survey/industry_search",
       dataType: 'json',
@@ -279,10 +271,13 @@ $(document).ready(function(){
 </head>
 <body>
 
-
-
-<div><input type="hidden" name="user_location[]" id="location" data-placeholder="Choose A Location.." /></div>   
-
+<div id="q19">
+    <form id="my_form5" action="/survey/select2_post_loc" method="POST"> 
+    <div><input type="hidden" name="user_location[]" id="location" data-placeholder="Choose A Location.." /></div>   
+    <input type="submit" name="submit" value="Submit" />
+    </form>
+</div>
+    
 <form id="my_form6" action="/survey/select2_post" method="POST"> 
 <div><input type="hidden" name="user_industry[]" id="industry" data-placeholder="Choose An Industry.." /></div>
 <input type="submit" name="submit" value="Submit" />
