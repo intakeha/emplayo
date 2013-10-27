@@ -3067,8 +3067,12 @@ div#preview #signUp, div#preview #signIn{
     float: left;
     font-size: 35px;
     height: 46px;
-    padding-top: 14px;
+    padding-top: 10px;
     width: 155px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	behavior: url(/assets/pie/PIE.htc);
 }
 
 div#preview input#update{
@@ -3080,6 +3084,10 @@ div#preview input#update{
     font-size: 35px;
     height: 60px;
     width: 155px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	behavior: url(/assets/pie/PIE.htc);
 }
 
 div#preview input#update:hover{
@@ -3095,6 +3103,10 @@ div#preview input#cancel{
     font-size: 35px;
     height: 60px;
     width: 155px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	behavior: url(/assets/pie/PIE.htc);	
 }
 
 div#preview input#cancel:hover{
@@ -3148,6 +3160,37 @@ div#profile #summary{
 	padding: 30px 0;
 }
 
+div#profile ul#filters{
+	border-top: 1px dotted #CCCCCC;
+    height: 80px;
+    padding-top: 25px;
+}
+
+div#profile ul#filters li{
+	height: 45px;
+	border: none;
+	width: 250px;
+}
+
+div#profile ul#filters a.selected{
+    border-bottom: 4px solid #258CD1;
+    padding-bottom: 5px;
+}
+
+div#profile ul#filters a{
+	vertical-align: middle;
+	width: 190px;
+	height: 45px;
+	display: block;
+	line-height: 20px;
+	margin: 0 auto;
+}
+
+div#profile ul#filters span{
+	font-weight: normal;
+	font-size: 15px;
+}
+
 div#profile li{
 	width: 250px;
 	height: 250px;
@@ -3158,19 +3201,48 @@ div#profile li{
 }
 
 div#profile .fit{
-	position: absolute;
-	width: 250px;
+	width: 100px;
 	background-color: #ccc;
 	color: #1d71a2;
 	height: 54px;
 	padding-top: 8px;
-	margin-top: -66px;
+	margin: -225px 0 0 165px;
 	font-size: 50px;
 	font-weight: bold;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
-	filter: alpha(opacity=60);
-	-moz-opacity: 0.6;
-	opacity: 0.6;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+	-moz-border-radius: 50px 0 0 50px;
+	-webkit-border-radius: 50px 0 0 50px;
+	border-radius: 50px 0 0 50px;
+}
+
+div#profile .fit.green{
+	background-color: #27c339;
+	color: #fff !important;
+}
+
+div#profile .fit.yellow{
+	background-color: #e9b60b;
+	color: #fff !important;
+}
+
+div#profile .fit.red{
+	background-color: #cc0000;
+	color: #fff !important;
+}
+
+div#profile ul#filters li#good a{
+    color: #27c339;
+}
+
+div#profile ul#filters li#decent a{
+    color: #e9b60b;
+}
+
+div#profile ul#filters li#poor a{
+    color: #cc0000;
 }
 
 /* Company */
