@@ -42,11 +42,11 @@ $(document).ready(function(){
 		//mouseover on company tiles
 		$('div#profile li').mouseenter(function() {
 			$(this).find('img.photo').hide();
-			$(this).find('div.fit').slideDown(50);
+			$(this).find('div.fit').animate({marginLeft: "-=15px", opacity: .9}, 50);
 			$(this).find('img.logo').show();
 		}).mouseleave(function(){
 			$(this).find('img.photo').show();
-			$(this).find('div.fit').hide();
+			$(this).find('div.fit').animate({marginLeft: "+=15px", opacity: 0}, 0);
 			$(this).find('img.logo').hide();
 		});
 		
