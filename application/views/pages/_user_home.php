@@ -21,7 +21,20 @@
 	});
 
 </script> 
+
 <div id="profile">
+	<div id="modal_filter" class="modal_popup">
+		<img src="<?php echo base_url() ?>assets/images/user/company_filters.png">
+		<div><span>Your personalized list of company matches are organized into three categories: Good Matches, Decent Matches, and Poor Matches.</span></div>
+		<div>By clicking on any of the category names, you can filter your results list to only show that category.  Click on 'Show All' to reset the filter and see the complete list.</div>
+		<div>Our matching algorithm takes into account your Work-Life-Play preferences and compares them to our database of companies.</div>
+		<ul id="modal">
+		<li>Companies that match <span>at least 70%</span> of your preferences are considered Good Matches for you.  This is where you should focus
+		the majority of your job search time and effort.</li>
+		<li>Those that match <span>40-70%</span> of your preferences are considered Decent Matches. These companies just might be a good fit for you, so they're worth checking out if you have the time.</li>
+		<li>Companies that match <span>less than 40%</span> are considered Poor Matches for you.  Don't waste your time on them.</li>
+		</ul>
+	</div>
 	<div class="content">
 		<?php 
 			if(!empty($message)){echo '<div id="message">'.$message.'</div>';} 
@@ -31,11 +44,12 @@
 					<a id=\"start_btn\" href='inquire'>Get Started</a><br>
 					<p>We'll then match your preferences with <br>the companies we have on file!</p>";
 			    } else {
-				echo "<div id=\"summary\">Here are the company results based on your <br>preferences and work history.</div>";
-				echo "<ul id=\"filters\"><li><a href=\"#\" data-filter=\"*\">Show All<br><span>(Match score: 1-100)</span></a></li>
-					<li id=\"good\"><a href=\"#\" data-filter=\".good\">Good Matches<br><span>(Match score: 70-100)</span></a></li>
-					<li id=\"decent\"><a  href=\"#\" data-filter=\".prettyGood\">Decent Matches<br><span>(Match score: 40-70)</span></a></li>
-					<li id=\"poor\"><a  href=\"#\" data-filter=\".notGood\">Poor Matches<br><span>(Match score: 0-40)</span></a></li></ul>";
+				echo "<div id=\"summary\">Here is your personalized list of company matches<br>based on your preferences and work history.</div>";
+				echo "<div onclick=\"modal('#modal_filter','600','100');\" class=\"bulb\"></div>
+					<ul id=\"filters\"><li><a href=\"#\" data-filter=\"*\">Show All<br><span>(Scores: 1-100)</span></a></li>
+					<li id=\"good\"><a href=\"#\" data-filter=\".good\">Good Matches<br><span>(Scores: 70-100)</span></a></li>
+					<li id=\"decent\"><a  href=\"#\" data-filter=\".prettyGood\">Decent Matches<br><span>(Scores: 40-70)</span></a></li>
+					<li id=\"poor\"><a  href=\"#\" data-filter=\".notGood\">Poor Matches<br><span>(Scores: 0-40)</span></a></li></ul>";
 				echo "<ul id='company_match'>";
 				foreach ($matches as $row) {
 					switch ($row['score']) {
