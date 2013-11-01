@@ -272,7 +272,15 @@ class Survey extends CI_Controller {
                 print_r($this->input->post());
             }
         }
-            
+
+        public function select2_post_loc(){
+            if($this->input->post('submit')){
+
+                $user_location = $this->input->post('user_location');
+                //print_r($this->input->post());
+                print_r($user_location);
+            }
+        }        
         
         
 }
