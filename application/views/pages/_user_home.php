@@ -11,7 +11,7 @@
 			$(this).addClass('selected');
 			if(!$container.data('isotope').$filteredAtoms.length){
 				$( "div#noMatch" ).remove();
-				$( "ul#company_match" ).after("<div id='noMatch'>Bummer, there are no results for this category at the moment.</div>");
+				$( "ul#company_match" ).after("<div id='noMatch'>There are no results for this category at the moment.<br><br>Our company list is constantly growing,<br>so be sure to check back for updates.</div>");
 			}else{
 				$( "div#noMatch" ).remove();
 			};
