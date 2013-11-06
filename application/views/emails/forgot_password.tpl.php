@@ -2,7 +2,7 @@
 <body style="text-align: center;">
 <table width="500" cellspacing="0" cellpadding="0" style="border:1px solid #ccc; font-family: Arial, Helvetica, sans-serif; color: #6d7a83; text-align: center; margin: 0 auto;">
   <tr >
-    <td width="500" style="border-bottom:1px solid #ccc; padding: 20px; text-align: center;"><img src="http://emplayo.com/emplayo.png" alt="Emplayo" /></td>
+    <td width="500" style="border-bottom:1px solid #ccc; padding: 20px; text-align: center;"><img src="<?php echo base_url() ?>assets/images/emplayo.png" alt="Emplayo" /></td>
   </tr>
   <tr>
     <td><div style="color:#258CD1; font-weight: bold; font-size:20px; margin-top:15px;">Reset your password!</div>
