@@ -16,9 +16,9 @@
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/hogan-2.0.0.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>	
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.isotope.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/typeahead.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.raty.min.js"></script> 
-	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.isotope.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/flipcounter.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/select2.min.js"></script> 
 	

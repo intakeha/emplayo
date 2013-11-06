@@ -10,9 +10,10 @@
 			$( "ul#filters a").removeClass();
 			$(this).addClass('selected');
 			if(!$container.data('isotope').$filteredAtoms.length){
-				//alert("It's empty");
+				$( "div#noMatch" ).remove();
+				$( "ul#company_match" ).after("<div id='noMatch'>Bummer, there are no results for this category at the moment.</div>");
 			}else{
-				//alert("It's not empty");
+				$( "div#noMatch" ).remove();
 			};
 			return false;
 		});

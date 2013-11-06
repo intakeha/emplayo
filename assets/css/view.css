@@ -2039,13 +2039,18 @@ form#criteria{
 	border: none;
 }
 
-#criteria input[type="checkbox"], #criteria input[type="text"]{
+#criteria input[type="checkbox"]{
 	display: none;
 }
 
-#criteria input.text_form, #experience_layout input[type="checkbox"]{
+#criteria input.hide{
+	display: none;
+}
+
+#experience_layout input[type="checkbox"]{
 	display: inherit !important;
 	background-color: #fff !important;
+	margin-right: 10px;
 }
 
 .modal_popup div{
@@ -2768,87 +2773,46 @@ div.q18 {
 	background: url("../images/survey/industries.png") no-repeat 0 0 transparent;
 }
 
-div#industry input, div#location input{
-	margin-top: 175px;
-	padding: 5px 0 0 10px;
-	color: #777;
-    font-size: 20px;
-    width: 350px;
-	height: 40px;
-	line-height: 35px;
-	border-width: 1px;
+div.q18 div#industryBlock, div.q19 div#locationBlock{
+	margin-top: 155px;
 }
 
-div#industry .tt-hint, div#location .tt-hint{
-	margin-top: 175px;
-	padding-left: 10px;
-	color: #ccc;
-    font-size: 20px;
-    width: 350px;
-	height: 40px;
-	line-height: 35px;
-	border-width: 1px;
+div.q18 .select2-container-multi .select2-choices .select2-search-choice, div.q19 .select2-container-multi .select2-choices .select2-search-choice{
+	line-height: 25px;
+	font-size: 25px;
 }
 
-div#industry .tt-dropdown-menu, div#location .tt-dropdown-menu {
-	background-color: #fff;
-	border: 1px solid #6d7a83;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 20px;
-	text-align: left;
-	width: 360px;
-	-moz-box-shadow: 0px 0px 5px #ccc;
-	-webkit-box-shadow: 0px 0px 5px #ccc;
-	box-shadow: 0px 0px 5px #ccc;
+div.q18 .select2-container-multi .select2-search-choice-close, div.q19 .select2-container-multi .select2-search-choice-close{
+	top: 9px;
 }
 
-div.questions .tt-suggestion{
-	padding: 10px;
-	font-weight: normal;
-}
-
-div.questions .tt-is-under-cursor {
-	background-color: #1d71a2;
+ul.select2-results li.select2-no-results{
+	background-color: #e9b60b;
 	color: #fff;
-	font-weight: normal;
+	font-size: 16px;
+	padding: 5px;
+	text-align: center;
 }
+
+ul.select2-results li.select2-selection-limit{
+	background-color: #941F1C;
+	color: #fff;
+	font-size: 16px;
+	padding: 5px;
+	text-align: center;
+}
+
+li.select2-highlighted div.select2-result-label{
+	color: #fff;
+}
+
+div.select2-result-label{
+	color: #777;
+}
+
 
 div.q19 {
 	background: url("../images/survey/globe.jpg") no-repeat 0 10px transparent;
-}
-
-div.chosenCities, div.chosenIndustry{
-	background-color: #364954;
-	color: #fff;
-	padding: 10px 0;
-	font-size: 16px;
-    border-radius: 20px 0 0 20px;
-    margin-left: 825px;
-    margin-top: 50px;
-    min-height: 35px;
-    position: absolute;
-	text-align: left;
-    width: 200px;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-	filter: alpha(opacity=80);
-	-moz-opacity: 0.8;
-	opacity: 0.8;
-	display: none;
-}
-
-div.chosenCities ul, div.chosenIndustry ul{
-	list-style-type:circle;
-	margin: 10px 5px 10px 25px;
-}
-
-div.chosenCities li, div.chosenIndustry li{
-	margin: 15px 0px;
-}
-
-div.chosenCities img, div.chosenIndustry img{
-	float: right;
-	margin: -5px 5px 0 0;
-	cursor: pointer;
 }
 
 /* Question 20 - History */
@@ -2869,6 +2833,23 @@ div#history div#education_layout {
 	border-right: 1px solid #258cd1;
 }
 
+div#history ul.history_master{
+	font-size: 12px;
+	font-weight: normal;
+}
+
+div#history ul.history_master li.happiness{
+	height: 35px;
+	margin: 15px 0 -4px 0;
+	width: 490px;
+}
+
+div#history ul.history_master li{
+	height: 28px;
+	margin: 10px 0;
+	width: 490px;
+}
+
 div#history .details{
 	text-align: left;
 	margin: 10px 0;
@@ -2885,74 +2866,23 @@ div#history p.titles{
 
 #history label {
     display: inline-block;
-    width: 150px;
+    width: 130px;
 	font-size: 18px;
-}
-
-div#history input, div#history select {
-    color: #777;
-    font-size: 20px;
-    margin-bottom: 10px;
-    width: 325px;
-	border-width: 1px;
-}
-
-div#history select {
-    font-size: 18px;
-	text-align: center;
-}
-
-div#history .twitter-typeahead {
-    top: -2px;
-}
-
-div#history .tt-hint{
-	color: #ccc;
-    font-size: 20px;
-    width: 325px;
-	border-width: 1px;
-}
-
-div#history .tt-dropdown-menu{
-	background-color: #fff;
-	border: 1px solid #6d7a83;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 20px;
-	text-align: left;
-	width: 325px;
-	-moz-box-shadow: 0px 0px 5px #ccc;
-	-webkit-box-shadow: 0px 0px 5px #ccc;
-	box-shadow: 0px 0px 5px #ccc;
-}
-
-div#history .tt-suggestion{
-	padding: 5px 0px;
-	font-weight: normal;
-}
-
-div#history select.month{
-	width: 80px;
-}
-
-div#history select.year{
-	width: 69px;
+	float: left;
+	margin-top: 5px;
 }
 
 div#history .presentFlag{
 	width: 100px;
 }
 
-div#history .prefill{
-	color: #ddd;
-}
-
 div#history .happiness_label{
     float: left;
     margin-top: 9px;
-    width: 145px;
+    width: 130px;
 }
 
-div#history .happiness{
+div#history .happiness_stars{
 	margin-bottom: 9px;
     margin-top: -8px;
 }
@@ -2963,7 +2893,7 @@ div#history .happiness img{
 }
 
 div#history .history_sets {
-	margin-bottom: 20px;
+	margin-bottom: 30px !important;
 	height: 55px;
 }
 
@@ -2977,7 +2907,7 @@ div#history .presentText{
     float: left;
     font-size: 11px;
     font-weight: normal;
-    margin-left: 359px;
+    margin-left: 350px;
     margin-top: 5px;
     width: 105px;
 }
@@ -2988,12 +2918,20 @@ div#history .presentText{
 	background: url("../images/survey/add.png") no-repeat;
 	cursor: pointer;
     float: right;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .addButton:hover {
 	background-position: -50px 0px;
 	cursor: pointer;
+}
+
+div#addEducation{
+	margin-top: 0px;
+}
+
+div#addWork{
+	margin-top: 0px;
 }
 
 /* Preview Results */
@@ -3158,18 +3096,23 @@ div#profile a#start_btn{
 div#profile #summary{
 	height: 50px;
 	padding: 30px 0;
+	border-bottom: 1px dotted #CCCCCC;
 }
 
 div#profile ul#filters{
-	border-top: 1px dotted #CCCCCC;
     height: 80px;
     padding-top: 25px;
+	font-size: 20px;
+	font-weight: bold;
+	width: 745px;
+	margin: 0 auto;
 }
 
 div#profile ul#filters li{
 	height: 45px;
 	border: none;
-	width: 250px;
+	width: 185px;
+	margin: 0;
 }
 
 div#profile ul#filters a.selected{
@@ -3179,7 +3122,7 @@ div#profile ul#filters a.selected{
 
 div#profile ul#filters a{
 	vertical-align: middle;
-	width: 190px;
+	width: 155px;
 	height: 45px;
 	display: block;
 	line-height: 20px;
@@ -3188,7 +3131,7 @@ div#profile ul#filters a{
 
 div#profile ul#filters span{
 	font-weight: normal;
-	font-size: 15px;
+	font-size: 14px;
 }
 
 div#profile li{
@@ -3198,6 +3141,36 @@ div#profile li{
 	float: left;
 	margin: 0 3px 3px 0;
 	cursor: pointer;
+}
+
+div#profile div.bulb{
+	background: url(../images/survey/tip_bulb.png) no-repeat;
+	width: 52px;
+	height: 52px;
+	cursor: pointer;
+	margin: -34px 0 0 970px;
+	float: right;
+	position: absolute;
+}
+
+div#profile div#modal_filter p{
+	margin: 5px 0;
+}
+
+div#profile div#modal_filter ul{
+	list-style-type:circle;
+}
+
+div#profile div#modal_filter li{
+    border: none;
+    cursor: pointer;
+    height: inherit;
+    margin: 0 65px 10px;
+    width: inherit;
+}
+
+div#profile div#noMatch{
+	margin-top: 50px;
 }
 
 div#profile .fit{
@@ -3243,6 +3216,10 @@ div#profile ul#filters li#decent a{
 
 div#profile ul#filters li#poor a{
     color: #cc0000;
+}
+
+div#profile ul#filters li#good, div#profile ul#filters li#decent, div#profile ul#filters li#poor{
+	border-left: 1px solid #ccc;
 }
 
 /* Company */
