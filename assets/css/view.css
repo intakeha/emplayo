@@ -2051,6 +2051,7 @@ form#criteria{
 	display: inherit !important;
 	background-color: #fff !important;
 	margin-right: 10px;
+	float: left;
 }
 
 .modal_popup div{
@@ -2907,7 +2908,7 @@ div#history .presentText{
     float: left;
     font-size: 11px;
     font-weight: normal;
-    margin-left: 350px;
+    margin-left: 343px;
     margin-top: 5px;
     width: 105px;
 }
