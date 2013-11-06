@@ -25,75 +25,62 @@ class Inquire extends CI_Controller {
 		$data['content']="pages/_criteria";
 		$this->load->view('canvas', $data);
 	}
+
+        public function industry_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->inquire_model->industry_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;           
+        }//end     
+   
+        public function location_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->inquire_model->location_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end         
  
-        public function industry_search($search_term)
+        public function college_name_search()
         {
-		if(($search_term) && ($search_term) != '')    
-		{
-			$decoded_search_term = urldecode($search_term);
-			$result = $this->inquire_model->industry_search($decoded_search_term);
-			echo $result;
-		}
-        }//end of industry_search
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->inquire_model->college_name_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end           
+     
+        public function college_degree_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->inquire_model->college_degree_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end          
         
-        public function location_search($search_term)
+        public function college_major_search()
         {
-		if(($search_term) && ($search_term) != '')    
-		{
-		    $decoded_search_term = urldecode($search_term);
-		    $result = $this->inquire_model->location_search($decoded_search_term);
-		    echo $result;
-		}	    
-        }//end of location_search
-
-        public function college_search($search_term)
-        {
-		if(($search_term) && ($search_term) != '')    
-		{
-			$decoded_search_term = urldecode($search_term);
-			$result = $this->inquire_model->college_search($decoded_search_term);
-			echo $result;    
-		}	    
-        }//end of college_search 
-    
-        public function degree_type_search($search_term)
-        {
-            if(($search_term) && ($search_term) != '')    
-            {
-                $decoded_search_term = urldecode($search_term);
-                $result = $this->inquire_model->degree_type_search($decoded_search_term);
-                echo $result;
-            }        
-        }//end of degree_type_search                
-      
-        public function major_search($search_term)
-        {
-            if(($search_term) && ($search_term) != '')    
-            {
-                $decoded_search_term = urldecode($search_term);
-                $result = $this->inquire_model->major_search($decoded_search_term);
-                echo $result;
-            }        
-        }//end of degree_type_search  
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->inquire_model->college_major_search($decoded_search_term);
+            header('Content-Type: application/json');  
+            echo $result;     
+        }//end          
         
-        public function company_search($search_term)
+         public function company_name_search()
         {
-            if(($search_term) && ($search_term) != '')    
-            {
-                $decoded_search_term = urldecode($search_term);
-                $result = $this->inquire_model->company_search($decoded_search_term);
-                echo $result;
-            }        
-        }//end of company_type_search    
-
-        public function jobtype_search($search_term)
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->inquire_model->company_name_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end   
+        
+         public function job_type_search()
         {
-            if(($search_term) && ($search_term) != '')    
-            {
-                $decoded_search_term = urldecode($search_term);
-                $result = $this->inquire_model->jobtype_search($decoded_search_term);
-                echo $result;
-            }        
-        }//end of company_type_search    
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->inquire_model->job_type_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end  
+        
         
 }//end of controller

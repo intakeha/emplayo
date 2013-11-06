@@ -198,5 +198,89 @@ class Survey extends CI_Controller {
         
         
     }           
+    
+//SELECT2 TEST CODE BELOW
+           
+        
+        public function industry_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->survey_model->industry_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;           
+        }//end     
+   
+        public function location_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->survey_model->location_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end         
+ 
+        public function college_name_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->survey_model->college_name_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end           
+     
+        public function college_degree_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->survey_model->college_degree_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end          
+        
+        public function college_major_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->survey_model->college_major_search($decoded_search_term);
+            header('Content-Type: application/json');  
+            echo $result;     
+        }//end          
+        
+         public function company_name_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->survey_model->company_name_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end   
+        
+         public function job_type_search()
+        {
+            $decoded_search_term = urldecode($this->input->get('searchterm'));
+            $result = $this->survey_model->job_type_search($decoded_search_term);
+            header('Content-Type: application/json');
+            echo $result;     
+        }//end          
+        
+        
+        
+	public function select2test(){
+            //$data['degree_array'] = $this->inquire_model->get_degree_type();
+            $data = null;
+            
+		$this->load->view('survey/select2_test.php',$data);
+	}  
+        
+        public function select2_post(){
+            if($this->input->post('submit')){
+                print_r($this->input->post());
+            }
+        }
+
+        public function select2_post_loc(){
+            if($this->input->post('submit')){
+
+                $user_location = $this->input->post('user_location');
+                //print_r($this->input->post());
+                print_r($user_location);
+            }
+        }        
+        
         
 }

@@ -32,7 +32,18 @@ UserVoice.push(['identify', {
 }]);
 
 // Add default trigger to the bottom-right corner of the window:
-UserVoice.push(['addTrigger', { mode: 'satisfaction', trigger_position: 'bottom-right' }]);
+//UserVoice.push(['addTrigger', { mode: 'satisfaction', trigger_position: 'bottom-right' }]);
+
+UserVoice.push(['addTrigger', {
+  // Options can also be set globally instead of on specific widgets
+  trigger_style: 'tab', // icon or tab
+  trigger_position: 'right',
+  trigger_color: 'white',
+  trigger_background_color: '448dd6',
+  trigger_prevent_default_enabled: true,
+  mode: 'satisfaction', // contact, smartvote, or satisfaction
+  menu_enabled: true, // Defaults to false for custom triggers, embedded widgets, autoprompts, and the show method
+}]);
 
 // Or, use your own custom trigger:
 //UserVoice.push(['addTrigger', '#id', { mode: 'satisfaction' }]);

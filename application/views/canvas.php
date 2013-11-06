@@ -16,15 +16,18 @@
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/hogan-2.0.0.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-ui.min.js"></script>	
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.isotope.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/typeahead.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.raty.min.js"></script> 
-	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.isotope.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/flipcounter.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/select2.min.js"></script> 
 	
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script> 
         <script type="text/javascript" src="<?php echo base_url() ?>assets/js/uservoice.js"></script>
-        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/googleanalytics.js"></script>
+        <?php //Only load google analytics when we're in production, so as not to pollute our data
+        if (ENVIRONMENT == 'production') {?>
+            <script type="text/javascript" src="<?php echo base_url() ?>assets/js/googleanalytics.js"></script>
+        <?php }?>
 	
 </head>
 <body>
@@ -61,17 +64,13 @@
                                         ?>
 					<li><a href="/settings">Account Settings</a></li>
 					<li style="display: none;"><a href="/">Send Invite</a></li>
-					<li><a href="logout">Logout</a></li>
+					<li><a href="/logout">Logout</a></li>
 				</ul>
 			</div>
 			
 			<a id="logo" href="/"></a>
-			<div class="hints">
-				<div id="singleChoice">select one</div>
-				<div id="multipleChoice">select one or more items</div>
-				<div id="rankChoice">sort by drag and drop</div>
-				<div id="clickChoice">click to select</div>
-				<div id="textChoice">enter text in textbox</div>
+			<div class="currentQuestion">
+				<div><font>Question <span></span> of 20</font></div>
 			</div>
 		</div>
 	</div>
