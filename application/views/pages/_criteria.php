@@ -667,7 +667,7 @@
 			if($('input#location_0').val()){
 				$("div#q19_flag").text(1);
 				$.each(locationSplit, function(e, value){
-					$('div.q19').append('<input id="q19_'+(e+1)+'_0" type="text" class="hide" name="user_industry[]"  value="'+value+'">');
+					$('div.q19').append('<input id="q19_'+(e+1)+'_0" type="text" class="hide" name="user_location[]"  value="'+value+'">');
 				});
 			}else {
 				$("div#q19_flag").empty();
