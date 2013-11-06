@@ -1,3 +1,29 @@
+<script>
+	$(function() {
+		// Homepage animation
+		$('#start, #start a').delay(500).animate({ opacity: 1, left: "0px" }, 500);
+		$('#icon').delay(500).animate({ opacity: 1, top: "-=10px" }, 500);
+		$("#start a").hover(
+			function () {
+			$(this).animate({backgroundColor: '#ad27c1'}, 200);
+			},
+			function () {
+			$(this).animate({backgroundColor: '#e9b60b'}, 200);
+			}
+		);
+
+		// User Home Start button animation
+		$("#profile a#start_btn").hover(
+			function () {
+			$(this).animate({backgroundColor: '#27c339', color: '#fff'}, 200);
+			},
+			function () {
+			$(this).animate({backgroundColor: '#e9b60b', color: '#1D2A33'}, 200);
+			}
+		);
+	});
+
+</script> 
 <div id="home">
 	<div id="banner">
 		<div class="content">

@@ -56,17 +56,22 @@ class Preview extends CI_Controller {
 
  
         if ($this->form_validation->run() == FALSE){
+            //Log this error
+            $this->load->library('user_agent');
+            $user_agent = $this->agent->agent_string();
+            $all_post = json_encode($this->input->post());
+            log_message('error', 'START ERROR');
+            log_message('error', 'User Agent: '.$user_agent);
+            log_message('error', 'Form Validation FAILED on preview controller: '.$all_post); 
+            log_message('error', 'END ERROR');
+            
             //reload the form
             $this->load->library('ion_auth');
             $data['title']="Work-Life-Play";
             $data['content']="pages/_criteria";
             $this->load->view('canvas', $data);
-            //$this->load->view("survey/user_tester");
-	    //echo "5 - validate data fail";
-            //redirect('error', 'refresh');
         }
         else {//data is good...process it.
-                
             /*01*/$user_type = $this->input->post('user_type');
             /*02*/$user_pace = $this->input->post('user_pace');
             /*03*/$user_lifecycle = $this->input->post('user_lifecycle');
@@ -279,7 +284,7 @@ class Preview extends CI_Controller {
         $this->session->set_userdata('save_data',TRUE);       
 
         //RETURN THE FIRST 5 COMPANIES FOR THE PREVIEW.  get_company2 returns the full list...
-        $company_info = $this->preview_model->get_company3($ranked_results,5);
+        $company_info = $this->preview_model->get_company3($ranked_results,12);
         $full_company_info = $this->preview_model->merge_company_info($company_info,$company_fit); 
 
         $match_data = array();

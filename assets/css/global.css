@@ -2,35 +2,35 @@
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
 
 .emplayo_blue{
-	color: #364954;
+	color: #364954 !important;
 }
 
 .dark_blue{
-	color: #6d7a83;
+	color: #6d7a83 !important;
 }
 
 .yellow{
-	color: #e9b60b;
+	color: #e9b60b !important;
 }
 
 .red{
-	color: #941f1c;
+	color: #941f1c !important;;
 }
 
 .blue{
-	color: #1d71a2;
+	color: #1d71a2 !important;
 }
 
 .light_blue{
-	color: #258cd1;
+	color: #258cd1 !important;
 }
 
 .purple{
-	color: #ad27c1;
+	color: #ad27c1 !important;
 }
 
 .green{
-	color: #27c339;
+	color: #27c339 !important;
 }
 
 /* Page styles */
@@ -113,7 +113,17 @@ div#header_email a:link, div#header_email a:active, div#header_email a:visited, 
 	color: #ccc;
 }
 
-/* Settings Modal */
+/* Locked Modal */
+#locked_fade { /*--Transparent background layer--*/
+	display: none; /*--hidden by default--*/
+	background: #000;
+	position: fixed; left: 0; top: 0;
+	width: 100%; height: 100%;
+	opacity: .80;
+	z-index: 9999;
+}
+
+/* User Settings Menu Modal */
 #transparent_fade { /*--Transparent background layer--*/
 	display: none; /*--hidden by default--*/
 	background: #000;

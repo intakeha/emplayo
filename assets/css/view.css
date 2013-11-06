@@ -57,6 +57,9 @@ div#icon {
 	text-align: center;
 	margin-top: 125px;
 	display: block;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 }
 
 #belt{
@@ -326,9 +329,8 @@ div#signup p.errors{
 
 #signup_right{
 	float: left;
-	width: 600px;
-	margin-left: 40px;
-	padding: 20px 30px;
+	width: 630px;
+	padding: 25px 0 0 90px;
 }
 
 #signup_right div{
@@ -339,6 +341,11 @@ div#signup p.errors{
 #signup_right span{
 	color: #258CD1;
 	font-size: 22px;
+}
+
+#signup_right img{
+	float: left;
+	margin: 0 25px 25px 0;
 }
 
 /* Administration Panel */
@@ -1824,17 +1831,227 @@ div#reset .errors{
 
 /* Questionnaire */
 
+#criteria .bubbleTitle{
+	padding-bottom: 5px;
+	border-bottom: 1px solid #1d71a2;
+}
+
+#criteria .bubbleContent{
+    color: #364954;
+    font-size: 16px;
+    padding: 10px 0 20px;
+    text-align: left;
+}
+
+#criteria .bubble .gotIt{
+	padding: 10px;
+	background-color: #27c339;
+	color: #fff;
+	font-size: 16px;
+	width: 50px;
+	cursor: pointer;
+	float: right;
+}
+
+#criteria #hints_q1_1 {
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	color: #1D71A2;
+	font-size: 20px;
+	min-height: 100px;
+	margin: -117px 0 0 639px;
+	padding: 10px;
+	position: absolute;
+	text-align: center;
+	display: none;
+	width: 300px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 5px 5px #666;
+	-webkit-box-shadow: 0px 5px 5px #666;
+	box-shadow: 0px 5px 5px #666;
+	border-radius: 10px;
+	behavior: url(/assets/pie/PIE.htc);
+}
+
+#criteria #hints_q1_1_arrow_border {
+    border-color: transparent #CCC transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    bottom: -10px;
+    height: 0;
+    left: -112px;
+    margin: 90px;
+    position: absolute;
+    width: 0;
+}
+
+#criteria #hints_q1_1_arrow {
+    border-color: transparent #FFF transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    bottom: -10px;
+    height: 0;
+    left: -110px;
+    margin: 90px;
+    position: absolute;
+    width: 0;
+}
+
+
+#criteria #hints_q1_2 {
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	color: #1D71A2;
+	font-size: 20px;
+	min-height: 100px;
+	margin: 391px 0 0 52px;
+	padding: 10px;
+	position: absolute;
+	text-align: center;
+	display: none;
+	width: 230px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 5px 5px #666;
+	-webkit-box-shadow: 0px 5px 5px #666;
+	box-shadow: 0px 5px 5px #666;
+	border-radius: 10px;
+	behavior: url(/assets/pie/PIE.htc);
+}
+
+#criteria #hints_q1_2_arrow_border {
+	border-color: #CCC transparent transparent;
+	border-style: solid;
+	border-width: 10px;
+	height: 0;
+	width: 0;
+	position: absolute;
+	bottom: -21px;
+	left: 20px;
+}
+
+#criteria #hints_q1_2_arrow {
+    border-color: #FFF transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    bottom: -100px;
+    height: 0;
+    left: -61px;
+    margin: 81px;
+    position: absolute;
+    width: 0;
+}
+
+#criteria #hints_q1_3 {
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	color: #1D71A2;
+	font-size: 20px;
+	min-height: 100px;
+	margin: -25px 0 0 688px;
+	padding: 10px;
+	position: absolute;
+	text-align: center;
+	display: none;
+	width: 250px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 5px 5px #666;
+	-webkit-box-shadow: 0px 5px 5px #666;
+	box-shadow: 0px 5px 5px #666;
+	border-radius: 10px;
+	behavior: url(/assets/pie/PIE.htc);
+}
+
+#criteria #hints_q1_3_arrow_border {
+	border-color: transparent transparent transparent #CCC;
+	border-style: solid;
+	border-width: 10px;
+	height: 0;
+	width: 0;
+	position: absolute;
+	bottom: 105px;
+	left: 270px;
+}
+
+#criteria #hints_q1_3_arrow {
+    border-color: transparent transparent transparent #FFF;
+    border-style: solid;
+    border-width: 10px;
+    bottom: 105px;
+    height: 0;
+    left: 268px;
+    position: absolute;
+    width: 0;
+}
+
+#criteria #hints_q4_1 {
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	color: #1D71A2;
+	font-size: 20px;
+	min-height: 100px;
+	margin: 65px 0 0 700px;
+	padding: 10px;
+	position: absolute;
+	text-align: center;
+	display: none;
+	width: 275px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 5px 5px #666;
+	-webkit-box-shadow: 0px 5px 5px #666;
+	box-shadow: 0px 5px 5px #666;
+	border-radius: 10px;
+	behavior: url(/assets/pie/PIE.htc);
+	z-index: 1;
+}
+
+#criteria #hints_q4_1_arrow_border {
+	border-color: transparent #CCC transparent transparent;
+	border-style: solid;
+	border-width: 10px;
+	height: 0;
+	width: 0;
+	position: absolute;
+	bottom: 208px;
+	left: -22px;
+}
+
+#criteria #hints_q4_1_arrow {
+    border-color: transparent #FFF transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    bottom: 208px;
+    height: 0;
+    left: -20px;
+    position: absolute;
+    width: 0;
+}
+
+#criteria #hints_q4_1 img {
+	width: 275px;
+	margin-top: 20px;
+}
+
 form#criteria{
 	border: none;
 }
 
-#criteria input[type="checkbox"], #criteria input[type="text"]{
+#criteria input[type="checkbox"]{
 	display: none;
 }
 
-#criteria input.text_form, #experience_layout input[type="checkbox"]{
+#criteria input.hide{
+	display: none;
+}
+
+#experience_layout input[type="checkbox"]{
 	display: inherit !important;
 	background-color: #fff !important;
+	margin-right: 10px;
+	float: left;
 }
 
 .modal_popup div{
@@ -1862,26 +2079,51 @@ form#criteria{
 	margin-bottom: 10px;
 }
 
+div.currentQuestion {
+    background-color: #EEEEEE;
+    border: 1px solid #CCCCCC;
+    color: #364954;
+    display: none;
+    font-size: 25px;
+    height: 40px;
+    margin: -39px auto 0;
+    padding-top: 15px;
+    text-align: center;
+    width: 230px;
+	-moz-border-radius: 10px 10px 0 0;
+	-webkit-border-radius: 10px 10px 0 0;
+	border-radius: 10px 10px 0 0;
+	behavior: url(/assets/pie/PIE.htc);
+}
+
 div.hints {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #CCCCCC;
     border-left: 1px solid #CCCCCC;
-    border-radius: 5px 5px 0 0;
     border-right: 1px solid #CCCCCC;
-    border-top: 1px solid #CCCCCC;
-    color: #E9B60B;
+    color: purple;
     display: none;
     font-size: 16px;
     height: 22px;
-    margin-left: 410px;
-    margin-top: -10px;
+	margin: -61px 0 0 395px;
     padding-top: 5px;
     text-align: center;
-    width: 200px;
+    width: 230px;
+	position: absolute;
+	-moz-border-radius: 0 0 10px 10px;
+	-webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+	behavior: url(/assets/pie/PIE.htc);
 }
 
-div.hints div {
-    display: none;
+div.currentQuestion font{
+	color: #364954;
+	font-weight: normal;
 }
 
+div.currentQuestion span{
+	font-weight: normal;
+}
 
 area{
 	outline: none;
@@ -1936,6 +2178,7 @@ div.questions {
 	text-align: center;
 	min-height: 550px;
 	display: none;
+	border-top: 1px solid #fff;
 }
 
 div#next_question, div#show_preview{
@@ -2004,6 +2247,12 @@ li.ip{
 li.filled{
 	background-position: -58px 0px;
 	cursor: pointer;
+}
+
+/* Question 0 - Intro*/
+div#criteria div#intro{
+	margin-top: -20px;
+	display: inherit;
 }
 
 /* Question 1 - Company Type*/
@@ -2316,7 +2565,7 @@ img#envProgressOverlay{
 	background: url("../images/survey/harvey_ball_10.png") no-repeat scroll 0 0 transparent;
 	width: 127px;
 	height: 125px;
-	border: 0px;
+	border: none;
 }
 
 /* Question 10 - Recognition */
@@ -2412,6 +2661,7 @@ img#communicationOverlay {
 	width: 910px;
 	height: 390px;
 	overflow: hidden;
+	border: none;
 }
 
 /* Question 13 - Resources */
@@ -2466,6 +2716,7 @@ img#supervisorOverlay {
 	width: 928px;
 	height: 445px;
 	overflow: hidden;
+	border: none;
 }
 
 /* Question 15 - Leadership */
@@ -2478,6 +2729,7 @@ img#leadershipOverlay {
 	width: 966px;
 	height: 418px;
 	overflow: hidden;
+	border: none;
 }
 
 /* Question 16 - Traits */
@@ -2513,95 +2765,55 @@ img#motivationOverlay {
 	width: 910px;
 	height: 390px;
 	overflow: hidden;
+	border: none;
 }
 
 /* Question 18 & 19 - Industry & City */
 
 div.q18 {
-	background: url("../images/survey/industries.png") no-repeat;
+	background: url("../images/survey/industries.png") no-repeat 0 0 transparent;
 }
 
-div#industry input, div#location input{
-	margin-top: 175px;
-	padding: 5px 0 0 10px;
-	color: #777;
-    font-size: 20px;
-    width: 350px;
-	height: 40px;
-	line-height: 35px;
-	border-width: 1px;
+div.q18 div#industryBlock, div.q19 div#locationBlock{
+	margin-top: 155px;
 }
 
-div#industry .tt-hint, div#location .tt-hint{
-	margin-top: 175px;
-	padding-left: 10px;
-	color: #ccc;
-    font-size: 20px;
-    width: 350px;
-	height: 40px;
-	line-height: 35px;
-	border-width: 1px;
+div.q18 .select2-container-multi .select2-choices .select2-search-choice, div.q19 .select2-container-multi .select2-choices .select2-search-choice{
+	line-height: 25px;
+	font-size: 25px;
 }
 
-div#industry .tt-dropdown-menu, div#location .tt-dropdown-menu {
-	background-color: #fff;
-	border: 1px solid #6d7a83;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 20px;
-	text-align: left;
-	width: 360px;
-	-moz-box-shadow: 0px 0px 5px #ccc;
-	-webkit-box-shadow: 0px 0px 5px #ccc;
-	box-shadow: 0px 0px 5px #ccc;
+div.q18 .select2-container-multi .select2-search-choice-close, div.q19 .select2-container-multi .select2-search-choice-close{
+	top: 9px;
 }
 
-div.questions .tt-suggestion{
-	padding: 10px;
-	font-weight: normal;
-}
-
-div.questions .tt-is-under-cursor {
-	background-color: #1d71a2;
+ul.select2-results li.select2-no-results{
+	background-color: #e9b60b;
 	color: #fff;
-	font-weight: normal;
+	font-size: 16px;
+	padding: 5px;
+	text-align: center;
 }
+
+ul.select2-results li.select2-selection-limit{
+	background-color: #941F1C;
+	color: #fff;
+	font-size: 16px;
+	padding: 5px;
+	text-align: center;
+}
+
+li.select2-highlighted div.select2-result-label{
+	color: #fff;
+}
+
+div.select2-result-label{
+	color: #777;
+}
+
 
 div.q19 {
-	background: url("../images/survey/globe.jpg") no-repeat;
-}
-
-div.chosenCities, div.chosenIndustry{
-	background-color: #364954;
-	color: #fff;
-	padding: 10px 0;
-	font-size: 16px;
-    border-radius: 20px 0 0 20px;
-    margin-left: 825px;
-    margin-top: 50px;
-    min-height: 35px;
-    position: absolute;
-	text-align: left;
-    width: 200px;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-	filter: alpha(opacity=80);
-	-moz-opacity: 0.8;
-	opacity: 0.8;
-	display: none;
-}
-
-div.chosenCities ul, div.chosenIndustry ul{
-	list-style-type:circle;
-	margin: 10px 5px 10px 25px;
-}
-
-div.chosenCities li, div.chosenIndustry li{
-	margin: 15px 0px;
-}
-
-div.chosenCities img, div.chosenIndustry img{
-	float: right;
-	margin: -5px 5px 0 0;
-	cursor: pointer;
+	background: url("../images/survey/globe.jpg") no-repeat 0 10px transparent;
 }
 
 /* Question 20 - History */
@@ -2622,10 +2834,27 @@ div#history div#education_layout {
 	border-right: 1px solid #258cd1;
 }
 
+div#history ul.history_master{
+	font-size: 12px;
+	font-weight: normal;
+}
+
+div#history ul.history_master li.happiness{
+	height: 35px;
+	margin: 15px 0 -4px 0;
+	width: 490px;
+}
+
+div#history ul.history_master li{
+	height: 28px;
+	margin: 10px 0;
+	width: 490px;
+}
+
 div#history .details{
 	text-align: left;
 	margin: 10px 0;
-	height: 430px;
+	height: 475px;
 }
 
 div#history p.titles{
@@ -2638,74 +2867,23 @@ div#history p.titles{
 
 #history label {
     display: inline-block;
-    width: 150px;
+    width: 130px;
 	font-size: 18px;
-}
-
-div#history input, div#history select {
-    color: #777;
-    font-size: 20px;
-    margin-bottom: 10px;
-    width: 325px;
-	border-width: 1px;
-}
-
-div#history select {
-    font-size: 18px;
-	text-align: center;
-}
-
-div#history .twitter-typeahead {
-    top: -2px;
-}
-
-div#history .tt-hint{
-	color: #ccc;
-    font-size: 20px;
-    width: 325px;
-	border-width: 1px;
-}
-
-div#history .tt-dropdown-menu{
-	background-color: #fff;
-	border: 1px solid #6d7a83;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 20px;
-	text-align: left;
-	width: 325px;
-	-moz-box-shadow: 0px 0px 5px #ccc;
-	-webkit-box-shadow: 0px 0px 5px #ccc;
-	box-shadow: 0px 0px 5px #ccc;
-}
-
-div#history .tt-suggestion{
-	padding: 5px 0px;
-	font-weight: normal;
-}
-
-div#history select.month{
-	width: 80px;
-}
-
-div#history select.year{
-	width: 69px;
+	float: left;
+	margin-top: 5px;
 }
 
 div#history .presentFlag{
 	width: 100px;
 }
 
-div#history .prefill{
-	color: #ddd;
-}
-
 div#history .happiness_label{
     float: left;
     margin-top: 9px;
-    width: 145px;
+    width: 130px;
 }
 
-div#history .happiness{
+div#history .happiness_stars{
 	margin-bottom: 9px;
     margin-top: -8px;
 }
@@ -2716,7 +2894,7 @@ div#history .happiness img{
 }
 
 div#history .history_sets {
-	margin-bottom: 20px;
+	margin-bottom: 30px !important;
 	height: 55px;
 }
 
@@ -2730,7 +2908,7 @@ div#history .presentText{
     float: left;
     font-size: 11px;
     font-weight: normal;
-    margin-left: 359px;
+    margin-left: 343px;
     margin-top: 5px;
     width: 105px;
 }
@@ -2741,12 +2919,20 @@ div#history .presentText{
 	background: url("../images/survey/add.png") no-repeat;
 	cursor: pointer;
     float: right;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .addButton:hover {
 	background-position: -50px 0px;
 	cursor: pointer;
+}
+
+div#addEducation{
+	margin-top: 0px;
+}
+
+div#addWork{
+	margin-top: 0px;
 }
 
 /* Preview Results */
@@ -2765,21 +2951,52 @@ div#preview #title{
 	font-size: 40px;
 }
 
-div#preview span{
-	color: #e9b60b;
-}
-
 div#preview font{
 	font-style: italic;
+	color: #1d71a2;
+}
+
+div#preview div.company img{
+	border: 1px solid #000;
+	width: 250px;
+	height: 250px;
+	margin: 0 3px 0 0;
 }
 
 div#preview #info{
-    margin-left: 110px;
     width: 800px;
+	height: 90px;
+	font-size: 30px;
+}
+
+div#preview div#benefits_title{
+	color: #364954;
+	font-weight: bold;
+	font-size: 30px;
+	margin: 20px;
+}
+
+div#preview div#benefits{
+	width: 720px;
+	height: 120px;
+	margin: 0 auto;
+	color: #6D7A83;
+	font-weight: bold;
+}
+
+div#preview div#benefits img{
+	float: none;
+	margin: 10px;
+}
+
+div#preview img.transparent_fade{
+	margin-top: -280px;
 }
 
 div#preview #previewButtons{
-	margin: 60px 270px;
+    height: 69px;
+    margin: 0 auto 30px;
+    width: 480px;
 }
 
 div#preview #signUp, div#preview #signIn{
@@ -2789,8 +3006,12 @@ div#preview #signUp, div#preview #signIn{
     float: left;
     font-size: 35px;
     height: 46px;
-    padding-top: 14px;
+    padding-top: 10px;
     width: 155px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	behavior: url(/assets/pie/PIE.htc);
 }
 
 div#preview input#update{
@@ -2802,6 +3023,10 @@ div#preview input#update{
     font-size: 35px;
     height: 60px;
     width: 155px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	behavior: url(/assets/pie/PIE.htc);
 }
 
 div#preview input#update:hover{
@@ -2817,6 +3042,10 @@ div#preview input#cancel{
     font-size: 35px;
     height: 60px;
     width: 155px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	behavior: url(/assets/pie/PIE.htc);	
 }
 
 div#preview input#cancel:hover{
@@ -2827,9 +3056,14 @@ div#preview #signUp:hover, div#preview #signIn:hover{
 	color: #fff;
 }
 
-div#preview #progressIcon{
+div#preview #progressIcon img{
 	float: left;
 	margin: 0 50px;
+}
+
+div#preview div#benefits div{
+	float: left;
+	width: 200px;
 }
 
 /* Profile Page */
@@ -2863,6 +3097,42 @@ div#profile a#start_btn{
 div#profile #summary{
 	height: 50px;
 	padding: 30px 0;
+	border-bottom: 1px dotted #CCCCCC;
+}
+
+div#profile ul#filters{
+    height: 80px;
+    padding-top: 25px;
+	font-size: 20px;
+	font-weight: bold;
+	width: 745px;
+	margin: 0 auto;
+}
+
+div#profile ul#filters li{
+	height: 45px;
+	border: none;
+	width: 185px;
+	margin: 0;
+}
+
+div#profile ul#filters a.selected{
+    border-bottom: 4px solid #258CD1;
+    padding-bottom: 5px;
+}
+
+div#profile ul#filters a{
+	vertical-align: middle;
+	width: 155px;
+	height: 45px;
+	display: block;
+	line-height: 20px;
+	margin: 0 auto;
+}
+
+div#profile ul#filters span{
+	font-weight: normal;
+	font-size: 14px;
 }
 
 div#profile li{
@@ -2874,20 +3144,83 @@ div#profile li{
 	cursor: pointer;
 }
 
-div#profile .fit{
+div#profile div.bulb{
+	background: url(../images/survey/tip_bulb.png) no-repeat;
+	width: 52px;
+	height: 52px;
+	cursor: pointer;
+	margin: -34px 0 0 970px;
+	float: right;
 	position: absolute;
-	width: 250px;
+}
+
+div#profile div#modal_filter p{
+	margin: 5px 0;
+}
+
+div#profile div#modal_filter ul{
+	list-style-type:circle;
+}
+
+div#profile div#modal_filter li{
+    border: none;
+    cursor: pointer;
+    height: inherit;
+    margin: 0 65px 10px;
+    width: inherit;
+}
+
+div#profile div#noMatch{
+	margin-top: 50px;
+}
+
+div#profile .fit{
+	width: 100px;
 	background-color: #ccc;
 	color: #1d71a2;
 	height: 54px;
 	padding-top: 8px;
-	margin-top: -66px;
+	margin: -225px 0 0 165px;
 	font-size: 50px;
 	font-weight: bold;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
-	filter: alpha(opacity=60);
-	-moz-opacity: 0.6;
-	opacity: 0.6;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+	-moz-border-radius: 50px 0 0 50px;
+	-webkit-border-radius: 50px 0 0 50px;
+	border-radius: 50px 0 0 50px;
+}
+
+div#profile .fit.green{
+	background-color: #27c339;
+	color: #fff !important;
+}
+
+div#profile .fit.yellow{
+	background-color: #e9b60b;
+	color: #fff !important;
+}
+
+div#profile .fit.red{
+	background-color: #cc0000;
+	color: #fff !important;
+}
+
+div#profile ul#filters li#good a{
+    color: #27c339;
+}
+
+div#profile ul#filters li#decent a{
+    color: #e9b60b;
+}
+
+div#profile ul#filters li#poor a{
+    color: #cc0000;
+}
+
+div#profile ul#filters li#good, div#profile ul#filters li#decent, div#profile ul#filters li#poor{
+	border-left: 1px solid #ccc;
 }
 
 /* Company */
