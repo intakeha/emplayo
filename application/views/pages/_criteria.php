@@ -1186,6 +1186,7 @@
 		<div>Your education and/or work history plays a part in determining company fit.  Use the happiness rating for each company to indicate the type of companies you thrive in.</div>
 	</div>
 	<div class="content">
+            <?php if($message){echo $message;} ?>
 		<form id="criteria" action="preview" method="post">
 			<div id="intro" class="questions">
 				<div id="intro">

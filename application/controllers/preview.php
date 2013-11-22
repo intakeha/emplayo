@@ -56,17 +56,21 @@ class Preview extends CI_Controller {
 
  
         if ($this->form_validation->run() == FALSE){
+            //print_r( $this->form_validation->error_array() );
             //Log this error
             $this->load->library('user_agent');
             $user_agent = $this->agent->agent_string();
+            $error_array = json_encode($this->form_validation->error_array());
             $all_post = json_encode($this->input->post());
             log_message('error', 'START ERROR');
             log_message('error', 'User Agent: '.$user_agent);
-            log_message('error', 'Form Validation FAILED on preview controller: '.$all_post); 
+            log_message('error', 'Form Validation FAILED on preview controller: '.$error_array);
+            log_message('error', 'Submitted data: '.$all_post);
             log_message('error', 'END ERROR');
             
             //reload the form
             $this->load->library('ion_auth');
+            $data['message']="There was an unexpected error with your submission.  Please try again.  We apologize for any inconvenience.";
             $data['title']="Work-Life-Play";
             $data['content']="pages/_criteria";
             $this->load->view('canvas', $data);
