@@ -30,6 +30,12 @@ class About extends CI_Controller {
 		$this->load->view('canvas', $data);
 	}
 
+	public function ambassadors(){
+		$data['title']="Ambassadors";
+		$data['content']="pages/_ambassadors";
+		$this->load->view('canvas', $data);
+	}
+
 	public function employers(){
 		$data['title']="Employers";
 		$data['content']="pages/_employers";

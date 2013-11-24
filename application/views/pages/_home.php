@@ -1,7 +1,7 @@
 <script>
 	$(function() {
 		// Homepage animation
-		$('#start, #start a').delay(500).animate({ opacity: 1, left: "0px" }, 500);
+		$('#start, #start a').delay(500).animate({ opacity: 1, left: "35px" }, 500);
 		$('#icon').delay(500).animate({ opacity: 1, top: "-=10px" }, 500);
 		$("#start a").hover(
 			function () {

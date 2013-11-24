@@ -1,6 +1,6 @@
 <div id="terms">
 	<div class="content">
-	<div id="title">Terms of Use:</div>
+	<div id="title" class="blue">Terms of Use:</div>
 	<ol>
 		<li>Introduction: The purpose of the Emplayo site is to match prospective job seekers with employers 
 		and empower the job seeker to make an informed decision on employment. By registering on the Emplayo 

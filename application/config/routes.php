@@ -53,6 +53,7 @@ $route['employers'] = 'about/employers';
 $route['contact'] = 'about/contact';
 $route['terms'] = 'about/terms';
 $route['privacy'] = 'about/privacy';
+$route['ambassadors'] = 'about/ambassadors';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

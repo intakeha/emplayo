@@ -1,6 +1,6 @@
 <div id="privacy">
 	<div class="content">
-	<div id="title">Privacy Policy:</div><br/>
+	<div id="title" class="blue">Privacy Policy:</div><br/>
 	<p>The most important thing for us at Emplayo is to ensure we have your trust, and that we always
 	act in the best interest of you, the user. In order to do this we maintain our site according to the following principles:</p>
 	<ul>
