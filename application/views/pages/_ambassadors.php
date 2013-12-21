@@ -13,7 +13,7 @@
 <div id="ambassadors">
 	<div class="content">
 		<div>
-			<h1 class="titles blue">Student Ambassador Program!</h1>
+			<h1 class="titles blue">Student Ambassador Program!!</h1>
 			<p>Emplayo is committed to growing and preparing the next generation of leaders for the future workforce.</p>
 			<p>The Emplayo Student Ambassador Program is an opportunity for active students to experience entrepreneurship
 			at their universities and to prepare for a successful start in their careers. The program is designed to enhance professional
