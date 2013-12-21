@@ -27,7 +27,7 @@
 	
 	<!-- scripts for ShareThis -->
 	<script type="text/javascript">var switchTo5x=true;</script>
-	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
 	<script type="text/javascript" src="http://s.sharethis.com/loader.js"></script>
 
 	<style>
@@ -111,7 +111,7 @@
 					<li class="borders"><a href="/terms">Terms</a></li>
 					<li><a href="/privacy">Privacy</a></li>
 				</ul>
-				<div class="clear">&copy; 2013 Emplayo, Inc. All rights reserved.</div>
+				<div class="clear">&copy; 2014 Emplayo, Inc. All rights reserved.</div>
 			</div>
 		</div>
 	</div>
