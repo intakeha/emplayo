@@ -23,7 +23,28 @@
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/select2.min.js"></script> 
 	
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script> 
-        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/uservoice.js"></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/uservoice.js"></script>
+	
+	<!-- scripts for ShareThis -->
+	<script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript" src="http://s.sharethis.com/loader.js"></script>
+
+	<style>
+		@font-face {
+			font-family: 'SketchRockwell';
+			src: url('<?php echo base_url() ?>assets/fonts/sketch_block-webfont.ttf') format('truetype');
+			font-weight: normal;
+			src: url('<?php echo base_url() ?>assets/fonts/sketch_block_bold-webfont.eot');
+			src: url('<?php echo base_url() ?>assets/fonts/sketch_block_bold-webfont.eot?#iefix') format('embedded-opentype'),
+			url('<?php echo base_url() ?>assets/fonts/sketch_block_bold-webfont.woff') format('woff'),
+			url('<?php echo base_url() ?>assets/fonts/sketch_block_bold-webfont.ttf') format('truetype'),
+			url('<?php echo base_url() ?>assets/fonts/sketch_block_bold-webfont.svg#FFFTusjBold') format('svg');
+			font-weight: normal;
+			font-style: normal; 			
+		}
+	</style>
+
         <?php //Only load google analytics when we're in production, so as not to pollute our data
         if (ENVIRONMENT == 'production') {?>
             <script type="text/javascript" src="<?php echo base_url() ?>assets/js/googleanalytics.js"></script>
@@ -83,6 +104,7 @@
 		<div id="navigation">
 			<div class="content">
 				<ul id="nav-list">
+					<li class="borders"><a href="/ambassadors">Ambassadors</a></li>
 					<li class="borders"><a href="/employers">Employers</a></li>
 					<li class="borders"><a href="/about">About</a></li>
 					<li class="borders"><a href="/contact">Contact</a></li>
@@ -95,3 +117,8 @@
 	</div>
 </body>
 </html>
+<script type="text/javascript">stLight.options({publisher: "63eeda11-425d-4b4b-9851-a5932faf6c66", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
+<script>
+var options={ "publisher": "63eeda11-425d-4b4b-9851-a5932faf6c66", "position": "right", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0}, "chicklets": { "items": ["facebook", "twitter", "linkedin", "pinterest", "googleplus", "email", "sharethis"]}};
+var st_hover_widget = new sharethis.widgets.hoverbuttons(options);
+</script>

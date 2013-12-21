@@ -22,10 +22,10 @@ div#banner .content{
 
 div#icon {
 	background: url(../images/icon.png) no-repeat;
-	width: 478px;
-	height: 338px;
+	width: 340px;
+	height: 340px;
 	display: block;
-	margin-left: 540px;
+	margin-left: 600px;
 	top: 240px;
 	position: absolute;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -170,10 +170,6 @@ div#employers .content{
 	cursor: default;
 }
 
-div#employers img#title{
-	margin-top: 25px;
-}
-
 div#employers div.icon{
 	height: 50px;
 	margin: 10px 0;
@@ -197,7 +193,7 @@ div#employers p.desc{
 	line-height: 20px;
 }
 
-div#employers a{
+div#employers a, div#ambassadors a{
     background-color: #E9B60B;
     color: #1D2A33;
     display: block;
@@ -208,28 +204,30 @@ div#employers a{
     text-align: center;
     width: 200px;
 	cursor: pointer;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;	
 }
 
-/* About */
-div#about .content{
+/* About & Ambassadors */
+div#about .content, div#ambassadors .content{
 	font-size: 18px;
 	min-height: 500px;
 	cursor: default;
 }
 
-div#about p{
+div#about p, div#ambassadors p, div#ambassadors ul{
 	margin: 20px 100px;
 	line-height: 30px;
 }
 
-div#about div{
+div#about div, div#ambassadors div{
 	margin-top: 30px;
 }
 
-div#about img#title{
-	margin: 20px 100px 0px;
-	font-weight: bold;
-	font-size: 30px;
+div#ambassadors li{
+	list-style-type: circle;
+	margin-left: 50px;
 }
 
 /* Contact Us */
@@ -261,7 +259,8 @@ div#privacy ol{
 
 div#terms #title, div#privacy #title{
 	margin: 20px 130px 0;
-	font-weight: bold;
+	font-size: 40px;
+	font-family: 'SketchRockwell';
 }
 
 div#terms li, div#privacy li{
@@ -1830,6 +1829,15 @@ div#reset .errors{
 }
 
 /* Questionnaire */
+
+#criteria .message{
+    background-color: #990000;
+    color: #FFFFFF;
+    font-size: 15px;
+    margin: -15px 0 25px;
+    padding: 10px;
+    text-align: center;
+}
 
 #criteria .bubbleTitle{
 	padding-bottom: 5px;
