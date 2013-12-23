@@ -3100,6 +3100,9 @@ div#profile a#start_btn{
 	margin: auto;
 	padding: 10px 0;
 	display: block;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 }
 
 div#profile #summary{

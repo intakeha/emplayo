@@ -25,11 +25,26 @@
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script> 
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/uservoice.js"></script>
 	
-	<!-- scripts for ShareThis -->
-	<script type="text/javascript">var switchTo5x=true;</script>
-	<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
-	<script type="text/javascript" src="http://s.sharethis.com/loader.js"></script>
-
+	<!-- AddThis Smart Layers BEGIN -->
+	<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52b6881c09377820"></script>
+	<script type="text/javascript">
+		addthis.layers({
+			'theme' : 'transparent',
+			'domain' : 'www.emplayo.com',
+			'share' : {
+				'position' : 'left',
+				'services' : 'facebook,twitter,linkedin,google_plusone_share,pinterest_share,email',
+				'numPreferredServices' : 6,
+				'postShareTitle' : 'Thanks! Sharing is good karma.',
+				'desktop' : true,
+				'mobile' : true,
+				'theme' : 'transparent'
+			}
+		});
+	</script>
+	<!-- AddThis Smart Layers END -->
+	
 	<style>
 		@font-face {
 			font-family: 'SketchRockwell';
@@ -117,8 +132,3 @@
 	</div>
 </body>
 </html>
-<script type="text/javascript">stLight.options({publisher: "63eeda11-425d-4b4b-9851-a5932faf6c66", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
-<script>
-var options={ "publisher": "63eeda11-425d-4b4b-9851-a5932faf6c66", "position": "right", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0}, "chicklets": { "items": ["facebook", "twitter", "linkedin", "pinterest", "googleplus", "email", "sharethis"]}};
-var st_hover_widget = new sharethis.widgets.hoverbuttons(options);
-</script>
