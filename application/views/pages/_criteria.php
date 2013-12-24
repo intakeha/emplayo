@@ -35,6 +35,7 @@
 		$('#next_question').click(function(){
 			$('div#progressBar').show();
 			$('div.hints, div.hints div').hide();
+			$('#criteria .message').hide(); // hide error message after display on the preview page
 			
 			// Update progress bar
 			if(currentQuestion>=1){
