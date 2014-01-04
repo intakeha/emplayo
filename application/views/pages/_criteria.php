@@ -1196,13 +1196,13 @@
 						<div id="questions_layout">
 							<span>The Journey</span>
 							<div><div id="textDecor">20</div>You&#39;re going to be presented with 20 questions - don&#39;t worry, they&#39;re pretty fun &amp; easy.
-							Here are a few key elements that will help you as you answer the questions.</div>
+							Use the following navigation elements to help you through the questions.</div>
 							<img src="<?php echo base_url() ?>assets/images/survey/instructions.png">
 						</div>
 						<div id="questions_preview">
 							<span>The Destination</span>
 							<div><div id="textDecor"><img src="<?php echo base_url() ?>assets/images/progressIcon.png" height=50px></div>
-								When you finish, you&#39;ll get a ranked list of top companies that fit you best.  You can then login or create an account to check out the entire list and apply for jobs!
+								When you finish, you&#39;ll get a ranked list of top companies that fit you best.  You can login or create an account to check out the entire list and apply for jobs!
 							</div>
 							<img src="<?php echo base_url() ?>assets/images/survey/instructions_preview.png">
 						</div>

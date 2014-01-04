@@ -18,7 +18,7 @@
 				<li>
 					<div class="icon"><img src="../assets/images/static/brand_icon.png"></div>
 					<img src="../assets/images/static/brand.png">
-					<p class="desc">Showcase your company&#39;s brand &amp; culture with a visual collage.</p>
+					<p class="desc">Showcase your company&#39;s brand &amp; culture to attract new talent.</p>
 				</li>
 				<li>
 					<div class="icon"><img src="../assets/images/static/postings_icon.png"></div>

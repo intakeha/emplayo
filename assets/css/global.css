@@ -72,6 +72,16 @@ body{
 	height:80px;
 	left: 0;
     min-width: 1022px;
+	position:fixed;
+	top:0;
+	width: 100%;
+	background-color: #fff;
+	border-bottom: 1px solid #ccc;
+}
+
+#container{
+	margin-top: 80px;
+	padding-top: 20px;
 }
 
 .content {
@@ -129,7 +139,8 @@ div#header_email a:link, div#header_email a:active, div#header_email a:visited, 
 	display: none; /*--hidden by default--*/
 	background: #000;
 	position: fixed; left: 0; top: 0;
-	width: 100%; height: 100%;
+	width: 100%; 
+	height: 100%;
 	opacity: 0;
 	z-index: 9999;
 }

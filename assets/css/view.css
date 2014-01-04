@@ -12,6 +12,9 @@
     height: 529px;
     min-height: 529px;
     min-width: 1022px;
+	margin-top: -20px;
+	position: relative;
+	z-index: -100;
 }
 
 div#banner .content{
@@ -26,7 +29,7 @@ div#icon {
 	height: 340px;
 	display: block;
 	margin-left: 600px;
-	top: 240px;
+	top: 160px;
 	position: absolute;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	filter: alpha(opacity=0);
@@ -46,6 +49,7 @@ div#icon {
 	filter: alpha(opacity=0);
 	-moz-opacity: 0;
 	opacity: 0;
+	
 }
 
 #start a{
