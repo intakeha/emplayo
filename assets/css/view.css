@@ -239,10 +239,11 @@ div#ambassadors li{
 div#contact .content{
 	min-height: 500px;
 	cursor: default;
+	background: url(../images/static/contact.png) no-repeat right top;
 }
 
 div#contact .content div{
-	margin: 30px 250px;
+	margin: 30px 90px;
 }
 
 /* Terms & Privacy*/
