@@ -54,7 +54,7 @@
 				generateHints(currentQuestion, questionTypeHints);
 				$('div.hints').show().css({opacity: 0, marginTop: "-66px"}).animate({
 					opacity: 1,
-					marginTop: "-61px",
+					marginTop: "-80px",
 					}, 500 );
 			};
 			$('div#'+currentQuestion).show();

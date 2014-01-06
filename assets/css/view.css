@@ -14,7 +14,7 @@
     min-width: 1022px;
 	margin-top: -20px;
 	position: relative;
-	z-index: -100;
+	z-index: 0;
 }
 
 div#banner .content{
@@ -1874,7 +1874,7 @@ div#reset .errors{
 	min-height: 100px;
 	margin: -117px 0 0 639px;
 	padding: 10px;
-	position: absolute;
+	position: fixed;
 	text-align: center;
 	display: none;
 	width: 300px;
@@ -1885,6 +1885,7 @@ div#reset .errors{
 	box-shadow: 0px 5px 5px #666;
 	border-radius: 10px;
 	behavior: url(/assets/pie/PIE.htc);
+	z-index: 99999;
 }
 
 #criteria #hints_q1_1_arrow_border {
@@ -2099,7 +2100,7 @@ div.currentQuestion {
     display: none;
     font-size: 25px;
     height: 40px;
-    margin: -39px auto 0;
+    margin: -41px auto 0;
     padding-top: 15px;
     text-align: center;
     width: 230px;
@@ -2118,11 +2119,11 @@ div.hints {
     display: none;
     font-size: 16px;
     height: 22px;
-	margin: -61px 0 0 395px;
+	margin: -51px 0 0 395px;
     padding-top: 5px;
     text-align: center;
     width: 230px;
-	position: absolute;
+	position: fixed;
 	-moz-border-radius: 0 0 10px 10px;
 	-webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
@@ -2178,7 +2179,6 @@ div#textDecor{
 }
 
 #criteria{
-	border-top: 1px solid #ccc;
 	padding-top: 30px;
 }
 

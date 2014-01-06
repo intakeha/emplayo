@@ -400,7 +400,6 @@ h1.titles{
 
 /* Feedback Tab */
 div#uvTab{
-	top: 20% !important;
 	margin: 0 !important;
 }
 
@@ -467,3 +466,5 @@ span.stButton img {
 	margin: auto;
 	color: #1d71a2;
 }
+
+
