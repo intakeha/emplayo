@@ -1,12 +1,24 @@
+<script>
+    $( document ).ready(function() {
+	$("#employers a#button").hover(
+		function () {
+		$(this).animate({backgroundColor: '#27c339', color: '#fff'}, 200);
+		},
+		function () {
+		$(this).animate({backgroundColor: '#e9b60b', color: '#1D2A33'}, 200);
+		}
+	);
+    });
+</script>
 <div id="employers">
 	<div class="content">
 		<div>
-			<img id="title" src="../assets/images/static/employers_title.png">
+			<h1 class="titles emplayo_blue">Attract top talent with Emplayo!</h1>
 			<ul>
 				<li>
 					<div class="icon"><img src="../assets/images/static/brand_icon.png"></div>
 					<img src="../assets/images/static/brand.png">
-					<p class="desc">Showcase your company&#39;s brand &amp; culture with a visual collage.</p>
+					<p class="desc">Showcase your company&#39;s brand &amp; culture to attract new talent.</p>
 				</li>
 				<li>
 					<div class="icon"><img src="../assets/images/static/postings_icon.png"></div>
@@ -25,15 +37,4 @@
 		</div>
 	</div>
 </div>
-<script>
-    $( document ).ready(function() {
-	$("#employers a#button").hover(
-		function () {
-		$(this).animate({backgroundColor: '#27c339', color: '#fff'}, 200);
-		},
-		function () {
-		$(this).animate({backgroundColor: '#e9b60b', color: '#1D2A33'}, 200);
-		}
-	);
-    });
-</script>
+

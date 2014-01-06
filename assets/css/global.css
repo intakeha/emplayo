@@ -72,6 +72,17 @@ body{
 	height:80px;
 	left: 0;
     min-width: 1022px;
+	position:fixed;
+	top:0;
+	width: 100%;
+	background-color: #fff;
+	border-bottom: 1px solid #ccc;
+	z-index: 99999;
+}
+
+#container{
+	margin-top: 80px;
+	padding-top: 20px;
 }
 
 .content {
@@ -88,8 +99,9 @@ div#header .content{
 #logo{
 	background: url(../images/emplayo_beta.png) no-repeat;
 	display: block;
-	width: 240px;
-	height: 38px;
+	width: 300px;
+	height: 50px;
+	margin-top: -10px;
 }
 
 div#header_icon{
@@ -128,7 +140,8 @@ div#header_email a:link, div#header_email a:active, div#header_email a:visited, 
 	display: none; /*--hidden by default--*/
 	background: #000;
 	position: fixed; left: 0; top: 0;
-	width: 100%; height: 100%;
+	width: 100%; 
+	height: 100%;
 	opacity: 0;
 	z-index: 9999;
 }
@@ -193,8 +206,7 @@ div#navigation .content{
 #nav-list {
     height: 55px;
     margin: auto;
-    padding-left: 80px;
-    width: 600px;
+    width: 685px;
 }
 
 #nav-list li{
@@ -318,6 +330,12 @@ a.buttons{
     color: #ad27c1;
 }
 
+h1.titles{
+	font-family: 'SketchRockwell';
+	font-size: 40px;
+	margin: 20px 100px;
+}
+
 /*--Making IE6 Understand Fixed Positioning--*/
 *html #fade {
 	position: absolute;
@@ -379,3 +397,74 @@ a.buttons{
 }
 
 /* End: Recommended Isotope styles */
+
+/* Feedback Tab */
+div#uvTab{
+	margin: 0 !important;
+}
+
+/* Share Buttons */
+
+div#sthoverbuttons{
+	top: 55% !important;
+}
+
+div#sthoverbuttons .sthoverbuttons-top-r, div#sthoverbuttons .sthoverbuttons-shade-r, div#sthoverbuttons .sthoverbuttons-bottom-r{
+	background: none !important;
+}
+
+span.st_facebook_large span.stLarge{
+	background: url(../images/share/facebook_32.png) no-repeat !important;
+	width: 32px;
+	height: 32px;
+}
+
+span.st_twitter_large span.stLarge{
+	background: url(../images/share/twitter_32.png) no-repeat !important;
+	width: 32px;
+	height: 32px;
+}
+
+span.st_linkedin_large span.stLarge{
+	background: url(../images/share/linkedin_32.png) no-repeat !important;
+	width: 32px;
+	height: 32px;
+}
+
+span.st_pinterest_large span.stLarge{
+	background: url(../images/share/pinterest_32.png) no-repeat !important;
+	width: 32px;
+	height: 32px;
+}
+
+span.st_googleplus_large span.stLarge{
+	background: url(../images/share/googleplus_32.png) no-repeat !important;
+	width: 32px;
+	height: 32px;
+}
+
+span.st_email_large span.stLarge{
+	background: url(../images/share/email_32.png) no-repeat !important;
+	width: 32px;
+	height: 32px;
+}
+
+span.st_sharethis_large span.stLarge{
+	background: url(../images/share/sharethis_32.png) no-repeat !important;
+	width: 32px;
+	height: 32px;
+}
+
+span.stButton img {
+	right: 21px !important;
+	top: 15px !important;
+}
+
+#sthoverbuttons div.sthoverbuttons-label{
+	width: 35px;
+	text-align: center;
+	margin: auto;
+	color: #1d71a2;
+}
+
+

@@ -22,6 +22,7 @@ class Inquire extends CI_Controller {
 	public function index(){
                 $this->load->library('ion_auth');
 		$data['title']="Work-Life-Play";
+		$data['message'] = ''; // set message variable to empty.  message will be set after user has gone through survey in 'preview' controller 
 		$data['content']="pages/_criteria";
 		$this->load->view('canvas', $data);
 	}
