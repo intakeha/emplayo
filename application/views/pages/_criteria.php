@@ -132,9 +132,10 @@
 					generateHints(currentQuestion, questionTypeHints);
 					$('div.hints').show().css({opacity: 0, marginTop: "-66px"}).animate({
 					    opacity: 1,
-					    marginTop: "-61px",
+					    marginTop: "-80px",
 					    }, 500 );
 				};
+				
 				questionType = $('div#'+currentQuestion).find('input').attr('type');
 				$('div#'+currentQuestion).show();
 				if(currentQuestion==18){
@@ -839,6 +840,9 @@
 			case "textChoice":
 				hint="<div id='textChoice'>enter text in textbox</div>";
 				break;
+			case "selectChoice":
+				hint="<div id='selectChoice'>select from drop-down</div>";
+			break;
 			default:
 				hint="please select an answer";
 		}
@@ -1299,7 +1303,7 @@
 					<li id="q4_8"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Paid Sabbatical</li>
 					<li id="q4_5"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Dependent Care Support</li>
 					<li id="q4_4"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Fitness Facilities / Membership</li>
-					<li id="q4_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Telecommunting / Alternative Work Sites</li>
+					<li id="q4_6"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Telecommuting / Alternative Work Sites</li>
 					<li id="q4_9"><span class="ui-icon ui-icon-grip-dotted-vertical"></span>Compressed Workweek / Flexible Work Schedule</li>
 					
 				</ul>
@@ -1529,7 +1533,7 @@
 				<div id="q13_flag" style="display: none;"></div>
 			</div>
 			<div id="14" class="questions"  name="singleChoice">
-				<div><div class="bulb" onclick="modal('#modal_q14','600','35');"></div><font class="blue">Which of the following is most effective role of a supervisor:</font></div>
+				<div><div class="bulb" onclick="modal('#modal_q14','600','35');"></div><font class="blue">Which of the following is the most effective role of a supervisor?</font></div>
 				<div id="supervisor" class="clear">
 					<img id="supervisorOverlay" src="<?php echo base_url() ?>assets/images/imgOverlay.png" alt="cloud" usemap="#supervisorCloud" />
 					<map name="supervisorCloud" id="supervisorCloud">
@@ -1632,7 +1636,7 @@
 				</div>
 				<div id="q19_flag" style="display: none;"></div>
 			</div>
-			<div id="20" class="questions q20"  name="textChoice">
+			<div id="20" class="questions q20"  name="selectChoice">
 				<div><div class="bulb" onclick="modal('#modal_q20','600','35');"></div><font class="blue">What's your education and work history?</font></div>
 				<div id="history" class="clear">
 					<div>
