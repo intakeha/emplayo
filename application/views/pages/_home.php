@@ -1,24 +1,14 @@
 <script>
 	$(function() {
 		// Homepage animation
-		$('#start, #start a').delay(500).animate({ opacity: 1, left: "35px" }, 500);
+		$('#start, #start a').animate({ opacity: 1, left: "35px" }, 500);
 		$('#icon').delay(500).animate({ opacity: 1, top: "-=10px" }, 500);
 		$("#start a").hover(
 			function () {
-			$(this).animate({backgroundColor: '#ad27c1'}, 200);
+			$(this).animate({backgroundColor: '#009900'}, 200);
 			},
 			function () {
-			$(this).animate({backgroundColor: '#e9b60b'}, 200);
-			}
-		);
-
-		// User Home Start button animation
-		$("#profile a#start_btn").hover(
-			function () {
-			$(this).animate({backgroundColor: '#27c339', color: '#fff'}, 200);
-			},
-			function () {
-			$(this).animate({backgroundColor: '#e9b60b', color: '#1D2A33'}, 200);
+			$(this).animate({backgroundColor: '#33cc00'}, 200);
 			}
 		);
 	});
@@ -28,7 +18,7 @@
 	<div id="banner">
 		<div class="content">
 			<div id="icon"></div>
-			<div id="start">Emplayo helps you find the companies<br>that fit you best.
+			<div id="start">
                                 <a href="inquire">Get Started</a>
 			</div>
 		</div>
