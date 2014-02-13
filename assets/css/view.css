@@ -7,8 +7,8 @@
 }
 
 #banner{
-    background: url("../images/banner_bg.jpg") no-repeat scroll center top #1D2A33;
-    border-bottom: 15px solid #941F1C;
+    background: url("../images/homepage_banner_bg.jpg") no-repeat scroll center top #1d71a2;
+    border-bottom: 15px solid #e9b60b;
     height: 529px;
     min-height: 529px;
     min-width: 1022px;
@@ -27,7 +27,7 @@ div#icon {
 	background: url(../images/icon.png) no-repeat;
 	width: 340px;
 	height: 340px;
-	display: block;
+	display: none;
 	margin-left: 600px;
 	top: 160px;
 	position: absolute;
@@ -54,12 +54,14 @@ div#icon {
 
 #start a{
 	font-size: 30px;
-	color: #1d2a33;
-	background-color: #e9b60b;
+	color: #fff;
+	background-color: #33cc00;
+	border: 5px solid #fff;
 	height: 60px;
 	width: 200px;
 	text-align: center;
-	margin-top: 125px;
+	margin-top: 185px;
+	margin-left: 615px;
 	display: block;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -67,7 +69,7 @@ div#icon {
 }
 
 #belt{
-	background-color: #6d7a83;
+	background-color: #1d71a2;
 	color: #fff;
 	min-width: 1022px;
 }
