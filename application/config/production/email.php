@@ -11,7 +11,7 @@ $config['mailtype'] = 'html';
 $config['smtp_timeout'] = 5;
 $config['smtp_host'] = 'smtp.mandrillapp.com';
 $config['smtp_port'] = 587;
-$config['smtp_user'] = 'hipnoddic@mac.com';
+$config['smtp_user'] = 'admin@emplayo.com';
 $config['smtp_pass'] = 'EJkV_IqmhO-6El5R7IuNnA'; // It's your API key
 
 /* End of file email.php */
