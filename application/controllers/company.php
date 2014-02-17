@@ -20,6 +20,8 @@ class Company extends CI_Controller {
 
 	public function index(){
 		
+		redirect('coffee');
+		/*
 		if ($this->ion_auth->logged_in()){
 			$data['title']="Company";
 			$data['content']="pages/_company";
@@ -30,18 +32,21 @@ class Company extends CI_Controller {
 		}   else {
 			redirect('/');
 		}
+		*/
 
 	}
         
 	public function profile($company_id){
 		
-		if ($this->ion_auth->logged_in()){
+/*		if ($this->ion_auth->logged_in()){ 
+Remove to make company page view by users only
+*/ 
                     //get company details using company id
                     $this->load->model('public_company_model');
                     $data['company_info'] = $this->public_company_model->get_public_company_info($company_id);//used by the admin company controller also       
                     
                     if (!$data['company_info']) {
-                      redirect('emplayo404');
+                      redirect('coffee');
                     }  
                     
                     //get_profile_pics
@@ -59,9 +64,10 @@ class Company extends CI_Controller {
                     $this->load->view('canvas', $data);
                     $this->session->unset_userdata('message');
 			
-		}   else {
+/*		}   else {
 			redirect('/');
 		}
+*/
 
 	}        
 	
