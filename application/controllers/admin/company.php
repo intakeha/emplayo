@@ -9,7 +9,8 @@ class Company extends CI_Controller {
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
         //$this->load->helper(array('form', 'url'));    
-	$this->load->helper('url');	
+	$this->load->helper('url');
+	$this->load->helper('text');	
         $this->load->database();
         $this->load->helper('image_functions_helper');
         
@@ -196,6 +197,7 @@ class Company extends CI_Controller {
         //grab the data from the session, then send to the model to insert
         $post_data = array();
         $post_data['company_name'] = $this->session->userdata('company_name');
+	$post_data['company_slug'] = url_title(strtolower(convert_accented_characters($this->session->userdata('company_name'))));
         $post_data['company_url'] = $this->session->userdata('company_url');
         $post_data['jobs_url'] = $this->session->userdata('jobs_url');
         $post_data['facebook_url'] = $this->session->userdata('facebook_url');
@@ -497,6 +499,7 @@ class Company extends CI_Controller {
             //validation is good.  setup the data to pass to the session
             $step_1_post = array();
             $step_1_post['company_name'] = $this->input->post('company_name');
+	    $step_1_post['company_slug'] = url_title(strtolower(convert_accented_characters($this->input->post('company_name'))));
             $step_1_post['company_url'] = $this->input->post('company_url');
             $step_1_post['jobs_url'] = $this->input->post('jobs_url');
             $step_1_post['facebook_url'] = $this->input->post('facebook_url');
@@ -563,6 +566,7 @@ class Company extends CI_Controller {
         //grab the data from the session, then send to the model to insert
         $post_data = array();
         $post_data['company_name'] = $this->session->userdata('company_name');
+	$post_data['company_slug'] = url_title(strtolower(convert_accented_characters($this->session->userdata('company_name'))));
         $post_data['company_url'] = $this->session->userdata('company_url');
         $post_data['jobs_url'] = $this->session->userdata('jobs_url');
         $post_data['facebook_url'] = $this->session->userdata('facebook_url');

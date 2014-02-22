@@ -498,6 +498,7 @@ class Company_model extends MY_Model {
         //and/or query bindings...
         $company_array = array(
             'company_name' => $post['company_name'],
+	    'company_slug' => $post['company_slug'],
             'company_url' => $post['company_url'],
             'jobs_url' => $post['jobs_url'],
             'facebook_url' => $post['facebook_url'],
@@ -577,6 +578,7 @@ class Company_model extends MY_Model {
         // it safe for db insertion.
         $company_array = array(
             'company_name' => $post['company_name'],
+	    'company_slug' => $post['company_slug'],
             'company_url' => $post['company_url'],
             'jobs_url' => $post['jobs_url'],
             'facebook_url' => $post['facebook_url'],
@@ -698,6 +700,7 @@ class Company_model extends MY_Model {
         // it safe for db insertion.
         $company_array = array(
             'company_name' => $post['company_name'],
+	    'company_slug' => $post['company_slug'],
             'company_url' => $post['company_url'],
             'jobs_url' => $post['jobs_url'],
             'facebook_url' => $post['facebook_url'],
