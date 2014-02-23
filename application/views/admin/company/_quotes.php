@@ -7,7 +7,7 @@
 		?>
 		
 		<div id="quotes">
-			<div id="company_name">Company: <a href="/company/profile/<?php echo $company_id;?>" target="_blank"><?php echo $company_info['company_name'];?></a></div>   
+			<div id="company_name">Company: <a href="/admin/company/preview/<?php echo $company_id;?>" target="_blank"><?php echo $company_info['company_name'];?></a></div>   
 			<br>
 			<form accept-charset="utf-8" action="/admin/company/quotes/<?php echo $company_id;?>" method="POST">
 			<?php
