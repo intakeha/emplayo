@@ -54,6 +54,7 @@ $route['contact'] = 'about/contact';
 $route['terms'] = 'about/terms';
 $route['privacy'] = 'about/privacy';
 $route['ambassadors'] = 'about/ambassadors';
+$route['company/(:any)'] = 'company/profile/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -10,6 +10,21 @@ class Public_company_model extends MY_Model {
         $this->messages = array();
         $this->errors = array();
     }
+    
+    public function get_company_id($slug){
+	$this->db->select('id');
+	$query = $this->db->get_where('company_all', array('company_slug' => $slug));
+	if ($query->num_rows() > 0)
+        {
+		foreach ($query->result() as $row)
+		{
+			$company_array['id'] = $row->id;
+		}
+		return $company_array;
+	} else {
+		return false;
+        };
+    }
 
     public function get_public_company_info($id)
     {

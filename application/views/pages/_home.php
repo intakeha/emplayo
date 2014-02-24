@@ -32,7 +32,7 @@
 	</div>
 	<div id="story">
 		<div class="content">
-			<iframe id="video" width="560" height="315" src="//www.youtube.com/embed/Y7_LRkcyKmg?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+			<iframe id="video" width="560" height="315" src="//www.youtube.com/embed/kt7o5k-57jw?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
 			<p>Every company has different culture, different perks, and different style. Each job has different expectations,
 			different management, and different team members.</p>
 			<p>Forget about those "Best Places To Work" lists, because one size definitely doesn't fit all.  Forget about those

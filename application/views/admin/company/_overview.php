@@ -3,7 +3,7 @@
 		<div id="overview_nav">
 			<a href = "/admin/company/listing">Back<br>to Listing</a> 
 			<a href = "/admin/company/update_step_1/<?php echo $company_id;?>">Edit<br>This Company</a>
-			<a href = "/admin/company/profile/<?php echo $company_id;?>" target="_blank">Preview<br>Company Page</a>
+			<a href = "/admin/company/preview/<?php echo $company_id;?>" target="_blank">Preview<br>Company Page</a>
 		</div>
 
 		<div id="company_overview">

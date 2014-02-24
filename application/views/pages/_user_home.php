@@ -74,17 +74,17 @@
 							echo "<li class='notGood'>";
 							break;			
 					};
-					echo "<a href='/company/profile/{$row['company_id']}'><img class='photo' alt = '{$row['company_name']}' src='$image_path{$row['creative_logo']}' >";
+					echo "<a href='/company/{$row['company_slug']}'><img class='photo' alt = '{$row['company_name']}' src='$image_path{$row['creative_logo']}' >";
 					echo "<img class='logo' style='display:none;' src='$image_path{$row['company_logo']}' ></a>";
 					switch ($row['score']) {
 						case ($row['score'] >= 70):
-							echo "<a href='/company/profile/{$row['company_id']}'><div class='fit green'>{$row['score']}</div></a></li>";
+							echo "<a href='/company/{$row['company_slug']}'><div class='fit green'>{$row['score']}</div></a></li>";
 							break;
 						case (($row['score'] < 70) && ($row['score'] >= 40)):
-							echo "<a href='/company/profile/{$row['company_id']}'><div class='fit yellow'>{$row['score']}</div></a></li>";
+							echo "<a href='/company/{$row['company_slug']}'><div class='fit yellow'>{$row['score']}</div></a></li>";
 							break;
 						case ($row['score'] < 40):
-							echo "<a href='/company/profile/{$row['company_id']}'><div class='fit red'>{$row['score']}</div></a></li>";
+							echo "<a href='/company/{$row['company_slug']}'><div class='fit red'>{$row['score']}</div></a></li>";
 							break;						
 					};
 				};

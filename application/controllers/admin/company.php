@@ -9,7 +9,8 @@ class Company extends CI_Controller {
         $this->load->library('ion_auth');
         $this->load->library('form_validation');
         //$this->load->helper(array('form', 'url'));    
-	$this->load->helper('url');	
+	$this->load->helper('url');
+	$this->load->helper('text');	
         $this->load->database();
         $this->load->helper('image_functions_helper');
         
@@ -196,6 +197,7 @@ class Company extends CI_Controller {
         //grab the data from the session, then send to the model to insert
         $post_data = array();
         $post_data['company_name'] = $this->session->userdata('company_name');
+	$post_data['company_slug'] = url_title(strtolower(convert_accented_characters($this->session->userdata('company_name'))));
         $post_data['company_url'] = $this->session->userdata('company_url');
         $post_data['jobs_url'] = $this->session->userdata('jobs_url');
         $post_data['facebook_url'] = $this->session->userdata('facebook_url');
@@ -497,6 +499,7 @@ class Company extends CI_Controller {
             //validation is good.  setup the data to pass to the session
             $step_1_post = array();
             $step_1_post['company_name'] = $this->input->post('company_name');
+	    $step_1_post['company_slug'] = url_title(strtolower(convert_accented_characters($this->input->post('company_name'))));
             $step_1_post['company_url'] = $this->input->post('company_url');
             $step_1_post['jobs_url'] = $this->input->post('jobs_url');
             $step_1_post['facebook_url'] = $this->input->post('facebook_url');
@@ -563,6 +566,7 @@ class Company extends CI_Controller {
         //grab the data from the session, then send to the model to insert
         $post_data = array();
         $post_data['company_name'] = $this->session->userdata('company_name');
+	$post_data['company_slug'] = url_title(strtolower(convert_accented_characters($this->session->userdata('company_name'))));
         $post_data['company_url'] = $this->session->userdata('company_url');
         $post_data['jobs_url'] = $this->session->userdata('jobs_url');
         $post_data['facebook_url'] = $this->session->userdata('facebook_url');
@@ -1407,28 +1411,26 @@ class Company extends CI_Controller {
 
     }
     
-	public function profile($company_id){
-		
-            //get company details using company id
-            $this->load->model('public_company_model');
-            //get_profile_pics
-            $data['pic_array'] = $this->public_company_model->get_profile_pics($company_id);
-            //$data['company_info'] = $this->public_company_model->get_public_company_info($company_id);
-            $data['company_info'] = $this->company_model->get_company_info($company_id);
-            $data['quote_array'] = $this->public_company_model->get_quotes($company_id);
+    public function preview($company_id){
+		//get company details using company id
+		$this->load->model('public_company_model');
 
-            $data['merged_array'] = $this->public_company_model->array_interlace($data['pic_array'], $data['quote_array']);
-            //shuffle($data['merged_array']);
+		//get_profile_pics
+		$data['pic_array'] = $this->public_company_model->get_profile_pics($company_id);
+		//$data['company_info'] = $this->public_company_model->get_public_company_info($company_id);
+		$data['company_info'] = $this->company_model->get_company_info($company_id);
+		$data['quote_array'] = $this->public_company_model->get_quotes($company_id);
 
-            $data['title']="Company";
-            $data['content']="pages/_company";
-            $this->load->helper('url');
-            $this->load->view('canvas', $data);
-            $this->session->unset_userdata('message');
+		$data['merged_array'] = $this->public_company_model->array_interlace($data['pic_array'], $data['quote_array']);
+		//shuffle($data['merged_array']);
+
+		$data['title']="Company";
+		$data['content']="pages/_company";
+		$this->load->helper('url');
+		$this->load->view('canvas', $data);
+		$this->session->unset_userdata('message');
 			
-
-	}      
-
+	}
     
 
 }//end of class
