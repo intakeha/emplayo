@@ -25,11 +25,12 @@ class Home_model extends MY_Model {
         $new_array = array();
         foreach ($query->result_array() as $key=>$value)
         {
-            $new_array[$key]['company_id'] = $value['company_id'];
-            $new_array[$key]['company_name'] = $value['company_name'];
-            $new_array[$key]['score'] = round($value['score']);
-            $new_array[$key]['company_logo'] = $value['company_logo'];
-            $new_array[$key]['creative_logo'] = $value['creative_logo']; 
+		$new_array[$key]['company_id'] = $value['company_id'];
+		$new_array[$key]['company_slug'] = $value['company_slug'];
+		$new_array[$key]['company_name'] = $value['company_name'];
+		$new_array[$key]['score'] = round($value['score']);
+		$new_array[$key]['company_logo'] = $value['company_logo'];
+		$new_array[$key]['creative_logo'] = $value['creative_logo']; 
         }
         
         return $new_array;
