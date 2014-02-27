@@ -3015,8 +3015,8 @@ div#preview #previewButtons{
 }
 
 div#preview #signUp, div#preview #signIn{
-    background-color: #E9B60B;
-    color: #364954;
+    background-color: #33CC00;
+    color: #fff;
     cursor: pointer;
     float: left;
     font-size: 35px;
@@ -3099,8 +3099,8 @@ div#profile p.top{
 
 div#profile a#start_btn{
 	font-size: 30px;
-	color: #1d2a33;
-	background-color: #e9b60b;
+	color: #fff;
+	background-color: #33CC00;
 	height: 30px;
 	width: 200px;
 	text-align: center;

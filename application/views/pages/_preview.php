@@ -3,10 +3,10 @@
 		lockedModal('#modal_preview', '600','75');	
 		$("#preview a").hover(
 			function () {
-			$(this).animate({backgroundColor: '#27c339'}, 200);
+			$(this).animate({backgroundColor: '#009900'}, 200);
 			},
 			function () {
-			$(this).animate({backgroundColor: '#e9b60b'}, 200);
+			$(this).animate({backgroundColor: '#33CC00'}, 200);
 			}
 		);
 	});

@@ -22,10 +22,10 @@
 		// User Home Start button animation
 		$("#profile a#start_btn").hover(
 			function () {
-			$(this).animate({backgroundColor: '#27c339', color: '#fff'}, 200);
+			$(this).animate({backgroundColor: '#009900', color: '#fff'}, 200);
 			},
 			function () {
-			$(this).animate({backgroundColor: '#e9b60b', color: '#1D2A33'}, 200);
+			$(this).animate({backgroundColor: '#33CC00', color: '#fff'}, 200);
 			}
 		);
 
