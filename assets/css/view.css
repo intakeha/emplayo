@@ -304,19 +304,19 @@ div#signup .content{
 }
 
 #signup_left span{
-	color: #e9b60b;
+	color: #258cd1;
 }
 
 div#signup label {
     display: block;
 	margin: 20px 0 10px 0;
-	color: #e9b60b;
+	color: #258cd1;
 }
 
 div#signup .submit{
-    background-color: #e9b60b;
-    background-image: -moz-linear-gradient(center top , #ffcc00, #e9b60b);
-    border: 1px solid #e9b60b;
+    background-color: #258CD1;
+    background-image: -moz-linear-gradient(center top , #4D90FE, #258CD1);
+    border: 1px solid #258CD1;
     color: #FFFFFF;
     border-radius: 2px;
     font-weight: bold;
@@ -345,7 +345,7 @@ div#signup p.errors{
 }
 
 #signup_right span{
-	color: #258CD1;
+	color: #1d71a2;
 	font-size: 22px;
 }
 
