@@ -13,7 +13,7 @@
     </td>
   </tr>
   <tr>
-    <td style="background-color: #6d7a83; padding:5px 30px; color: #fff; font-size: 11px; text-align: center;">&copy;2013 Emplayo, Inc. | All Rights Reserved</td>
+    <td style="background-color: #6d7a83; padding:5px 30px; color: #fff; font-size: 11px; text-align: center;">&copy;2014 Emplayo, Inc. | All Rights Reserved</td>
   </tr>
 </table>
 </body>

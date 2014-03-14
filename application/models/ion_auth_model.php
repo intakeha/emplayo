@@ -865,6 +865,8 @@ class Ion_auth_model extends CI_Model
 
 			if ($password === TRUE)
 			{
+
+				/** Take out the user activation for login since we want all users to login, only activated users will be able to share profile
 				if ($user->active == 0)
 				{
 					$this->trigger_events('post_login_unsuccessful');
@@ -872,6 +874,7 @@ class Ion_auth_model extends CI_Model
 
 					return FALSE;
 				}
+				*/
 
 				$this->set_session($user);
 

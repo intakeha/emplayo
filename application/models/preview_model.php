@@ -587,7 +587,7 @@ class Preview_model extends CI_Model {
             arsort($scores);
             return $scores;
     }        
-    
+    /*
     function get_company2($ranked_comps)
     { 
         if (!empty($ranked_comps)){
@@ -613,7 +613,7 @@ class Preview_model extends CI_Model {
             return $query->result_array();            
         }
     }    
-    
+    */
     function get_company3($ranked_comps, $limit = 5)
     { 
         //$this->output->enable_profiler(TRUE);
@@ -882,7 +882,7 @@ class Preview_model extends CI_Model {
         $sourceCoords['industry'] = $sourceCoords['industry']*$industry_weight;
 
     }         
-    
+   /* 
     function get_distance_matrix3($ranked_comps,$history_scoring,$corp_citizenship,$pace_array,$lifecycle_array,$history_array)
     {
         //$this->session->set_userdata('some_name', 'some_value');
@@ -1006,17 +1006,16 @@ class Preview_model extends CI_Model {
         array_multisort($agscore,SORT_NUMERIC,SORT_ASC,$data_array);
         //echo '<pre>sorted:<br>',print_r($data_array,1),'</pre>';         
         
-        /* commented out by BLC on 3-26-13
-        $dist_data = array();
-        $dist_data['ranked_results']   = $data_array;
+        // commented out by BLC on 3-26-13
+        //$dist_data = array();
+        //$dist_data['ranked_results']   = $data_array;
 
-        return $dist_data;
-         * 
-        */
+        //return $dist_data;
+         
         return $data_array;
         
     }//END OF get_distance_matrix FUNCTION
-
+*/
     function get_distance_matrix4($benefit_scoring,$corp_citizenship,$pace_array,$lifecycle_array,$user_industry,$user_type,$type_scoring,$industry_scoring)
     {
         //echo '<pre>fit scored up!:<br>',print_r($benefit_scoring,1),'</pre>';
