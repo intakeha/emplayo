@@ -43,7 +43,7 @@ class Preview extends CI_Controller {
         /*09*/  $this->form_validation->set_rules('user_environment[]', 'Environment', 'required|greater_than[0]|less_than[21]');
         /*10*/  $this->form_validation->set_rules('user_recognition[]', 'Recognition', 'required');
         /*11*/  $this->form_validation->set_rules('user_tasks[]', 'Tasks', 'required');
-        /*12*/  $this->form_validation->set_rules('user_communication', 'Communication', 'required|greater_than[0]|less_than[5]');
+        /*12*/  $this->form_validation->set_rules('user_communication', 'Communication', 'required|greater_than[0]|less_than[6]');
         /*13*/  $this->form_validation->set_rules('user_resource[]', 'Resource', 'required');
         /*14*/  $this->form_validation->set_rules('user_supervisor', 'Supervisor', 'required|greater_than[0]|less_than[7]');
         /*15*/  $this->form_validation->set_rules('user_leadership', 'Leadership', 'required|greater_than[0]|less_than[4]');
@@ -171,7 +171,7 @@ class Preview extends CI_Controller {
             }
         }
     } //end of index()
-
+/*
     public function run_matching_algorithm($user_type,$user_pace,$user_lifecycle,$user_benefits,$user_citizenship,$user_industry,$user_work){
         
         $this->load->model('preview_model');
@@ -256,7 +256,7 @@ class Preview extends CI_Controller {
         }        
         
     }//end of run_matching_algorithm
- 
+*/ 
     public function run_matching_algorithm2($user_type,$user_pace,$user_lifecycle,$user_benefits,$user_citizenship,$user_industry,$user_work){
         
         $this->load->model('preview_model');
