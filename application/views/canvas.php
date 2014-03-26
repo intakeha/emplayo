@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta name="google-site-verification" content="BHUMoYndp77QEYjb8cT5e9DCo14w2yH0uN3h5o11fKc" />
 	<title><?php echo isset($title) ? "Emplayo - $title" : "Emplayo"; ?></title>
 	<meta charset="utf-8">
 	
