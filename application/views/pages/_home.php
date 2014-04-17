@@ -17,7 +17,7 @@
 <div id="home">
 	<div id="banner">
 		<div class="content">
-			<div id="icon"></div>
+			<div id="ribbon"></div>
 			<div id="start">
                                 <a href="inquire">Get Started</a>
 			</div>

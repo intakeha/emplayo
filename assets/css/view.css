@@ -9,32 +9,25 @@
 #banner{
     background: url("../images/homepage_banner_bg.jpg") no-repeat scroll center top #1d71a2;
     border-bottom: 15px solid #e9b60b;
-    height: 529px;
-    min-height: 529px;
-    min-width: 1022px;
+	background-size: cover;
 	margin-top: -20px;
-	position: relative;
 	z-index: 0;
+	min-height: 529px;
 }
 
 div#banner .content{
 	padding-top: 50px;
-	height: 400px;
+	height: 375px;
 	cursor: default;
 }
 
-div#icon {
-	background: url(../images/icon.png) no-repeat;
-	width: 340px;
-	height: 340px;
-	display: none;
-	margin-left: 600px;
-	top: 160px;
-	position: absolute;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	filter: alpha(opacity=0);
-	-moz-opacity: 0;
-	opacity: 0;
+div#ribbon {
+	background: url(../images/homepage_banner.png) no-repeat;
+	background-size: cover;
+	width: 619px;
+	height: 529px;
+	float: left;
+	margin-top: -50px;
 }
 
 #start{
